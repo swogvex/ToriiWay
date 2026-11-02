@@ -12,8 +12,8 @@ describe('useTranslations', () => {
 
   it('fills named params and leaves unknown ones visible', () => {
     const t = useTranslations('en');
-    expect(t('home.sections', { count: '05' })).toBe('05 sections');
-    expect(t('home.sections')).toBe('{count} sections');
+    expect(t('notFound.glyph', { glyph: '迷' })).toMatch(/^迷,/);
+    expect(t('notFound.glyph')).toMatch(/^{glyph},/);
   });
 
   it('has the same keys in every locale', () => {
