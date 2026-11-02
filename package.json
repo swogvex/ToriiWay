@@ -20,7 +20,9 @@
     "test:e2e": "playwright test",
     "lhci": "lhci autorun",
     "fonts:copy": "node scripts/fonts/copy.ts",
-    "fonts:subset": "node scripts/fonts/subset.ts"
+    "fonts:subset": "node scripts/fonts/subset.ts",
+    "brand:outline": "node scripts/brand/outline-wordmark.ts",
+    "brand:favicons": "node scripts/brand/favicons.ts"
   },
   "dependencies": {
     "@astrojs/preact": "6.1.1",
