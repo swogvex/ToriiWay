@@ -1,0 +1,12 @@
+dist/
+.astro/
+.vercel/
+pnpm-lock.yaml
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+docs/
+CLAUDE.md
+START-AQUI.md
+claude-project-instructions.md
