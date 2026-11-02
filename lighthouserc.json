@@ -1,0 +1,95 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "pnpm exec astro preview --port 4321",
+      "startServerReadyPattern": "localhost:4321",
+      "url": ["http://localhost:4321/", "http://localhost:4321/404"],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertMatrix": [
+        {
+          "matchingUrlPattern": "^(?!.*/404$).*$",
+          "assertions": {
+            "categories:performance": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:accessibility": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:best-practices": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:seo": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "largest-contentful-paint": [
+              "error",
+              {
+                "maxNumericValue": 1800
+              }
+            ],
+            "cumulative-layout-shift": [
+              "error",
+              {
+                "maxNumericValue": 0.05
+              }
+            ]
+          }
+        },
+        {
+          "matchingUrlPattern": "/404$",
+          "assertions": {
+            "categories:performance": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:accessibility": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:best-practices": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "categories:seo": "off",
+            "largest-contentful-paint": [
+              "error",
+              {
+                "maxNumericValue": 1800
+              }
+            ],
+            "cumulative-layout-shift": [
+              "error",
+              {
+                "maxNumericValue": 0.05
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}
