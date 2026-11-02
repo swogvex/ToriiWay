@@ -14,6 +14,7 @@ import SectionHeader from '../ui/SectionHeader.astro';
 import Tabs from '../ui/Tabs.astro';
 import KanaChart from './KanaChart.astro';
 import KanaPanel from './KanaPanel.astro';
+import KanaPractice from './KanaPractice.astro';
 
 interface Props {
   script: Script;
@@ -103,6 +104,9 @@ const dataUrl = `/data/kana/${script}.json`;
           </div>
         ))}
       </Tabs>
+      <p class="learn-chart__count" data-learned-count data-template={t('learn.learnedCount')}>
+        {t('learn.learnedCount', { count: 0, total: items.length })}
+      </p>
       <KanaPanel kana={first} />
       <p class="learn-chart__credit">
         <a href={KANJIVG_CREDIT.url} rel="noopener" target="_blank">
@@ -114,11 +118,25 @@ const dataUrl = `/data/kana/${script}.json`;
   </div>
 </div>
 
+<KanaPractice items={items} script={script} dataUrl={dataUrl} />
+
 <script>
   import { initKanaExplorer } from '../../lib/kana/explorer';
+  import { initLearned } from '../../lib/kana/learned';
+  import { initListen } from '../../lib/kana/listen';
+  import { initPractice } from '../../lib/kana/practice-ui';
+  import { localKanaProgress } from '../../lib/progress/kana';
 
+  // One entry for the whole page keeps the number of script requests down.
   const root = document.querySelector<HTMLElement>('[data-kana-explorer]');
-  if (root) initKanaExplorer(root);
+  const practice = document.querySelector<HTMLElement>('[data-practice]');
+  if (root) {
+    const progress = localKanaProgress();
+    initKanaExplorer(root, progress);
+    initLearned(root, progress);
+    void initListen(root);
+    if (practice) initPractice(practice, progress);
+  }
 </script>
 
 <style>
@@ -214,6 +232,14 @@ const dataUrl = `/data/kana/${script}.json`;
     display: grid;
     gap: var(--space-4);
     min-inline-size: 0;
+  }
+
+  .learn-chart__count {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
   }
 
   .learn-chart__credit {

@@ -34,6 +34,16 @@ const GROUPS: Record<ChartGroup, string[]> = {
   yoon: ['yoon'],
 };
 
+/** The table a kana belongs to (handakuten shares the dakuten table). */
+export function chartGroup(kana: ChartKana): ChartGroup {
+  return kana.group === 'handakuten' ? 'dakuten' : (kana.group as ChartGroup);
+}
+
+/** Row key of a kana: its consonant row, or `nn` for ん. */
+export function chartRowKey(kana: ChartKana): string {
+  return kana.vowel === 'n' ? 'nn' : kana.row;
+}
+
 /**
  * Arranges one group of kana into chart rows, in the order rows first appear. ん has
  * its own vowel (`n`), so it gets a final row of its own, in the first column.
@@ -43,7 +53,7 @@ export function buildChart<T extends ChartKana>(items: readonly T[], group: Char
   const rows = new Map<string, ChartRow<T>>();
   for (const kana of items) {
     if (!GROUPS[group].includes(kana.group)) continue;
-    const key = kana.vowel === 'n' ? 'nn' : kana.row;
+    const key = chartRowKey(kana);
     const column = kana.vowel === 'n' ? 0 : columns.indexOf(kana.vowel);
     if (column < 0) throw new Error(`${kana.char}: vowel ${kana.vowel} is not a ${group} column`);
     let row = rows.get(key);

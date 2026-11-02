@@ -1,5 +1,7 @@
 import { splitJapanese } from '../ja';
-import type { PanelKana } from './data';
+import type { KanaProgress } from '../progress/kana';
+import { loadKanaData } from './client-data';
+import { syncLearned } from './learned';
 import { drawStrokes, playStrokes } from './strokes';
 
 const ARROWS: Record<string, [number, number]> = {
@@ -47,18 +49,19 @@ function neighbour(table: HTMLElement, button: HTMLElement, [dRow, dCol]: [numbe
 /**
  * Kana chart behaviour (components/learn/KanaView.astro): choosing a cell shows it in the
  * detail panel and replays its strokes; arrow keys move between cells (one tab stop per
- * table, the roving tabindex pattern), Home and End jump to the ends of a row.
+ * table, the roving tabindex pattern), Home and End jump to the ends of a row. The
+ * panel's Listen, "Mark as learned" and "Test this row" follow the chosen kana.
  */
-export function initKanaExplorer(root: HTMLElement): void {
+export function initKanaExplorer(root: HTMLElement, progress: KanaProgress): void {
   const panel = root.querySelector<HTMLElement>('[data-kana-panel]');
   const svg = panel?.querySelector<SVGSVGElement>('[data-strokes]');
   if (!root.dataset.kanaSrc || !panel || !svg) return;
 
   // Fetched once, right after load (so practice needs no network later); a click that
   // comes before it arrives waits for it.
-  const kana: Promise<Map<string, PanelKana>> = fetch(root.dataset.kanaSrc)
-    .then((response) => response.json() as Promise<PanelKana[]>)
-    .then((items) => new Map(items.map((item) => [item.char, item])));
+  const kana = loadKanaData(root.dataset.kanaSrc).then(
+    (items) => new Map(items.map((item) => [item.char, item])),
+  );
   const field = (name: string) => panel.querySelector<HTMLElement>(`[data-panel-${name}]`);
   const label = panel.dataset.strokeLabel ?? '{char}';
   const moreLabel = panel.dataset.moreLabel ?? '{char}';
@@ -109,6 +112,18 @@ export function initKanaExplorer(root: HTMLElement): void {
     more?.replaceChildren(...japaneseNodes(moreLabel.replace('{char}', item.char)));
     more?.closest('a')?.setAttribute('href', item.href);
     field('status')?.replaceChildren(`${item.romaji}. ${item.label}`);
+
+    const listen = field('listen');
+    if (listen) {
+      listen.dataset.listen = item.char;
+      if (item.audio) listen.dataset.listenAudio = item.audio;
+      else delete listen.dataset.listenAudio;
+    }
+    const learn = field('learn');
+    if (learn) learn.dataset.learnToggle = item.char;
+    const test = field('test');
+    if (test) test.dataset.practiceRow = item.row;
+    syncLearned(root, progress);
   }
 
   root.addEventListener('click', (event) => {

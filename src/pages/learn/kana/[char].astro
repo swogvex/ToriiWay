@@ -6,6 +6,8 @@
 import type { GetStaticPaths } from 'astro';
 
 import JaText from '../../../components/content/JaText.astro';
+import LearnToggle from '../../../components/learn/LearnToggle.astro';
+import ListenButton from '../../../components/learn/ListenButton.astro';
 import StrokeOrder from '../../../components/learn/StrokeOrder.astro';
 import Button from '../../../components/ui/Button.astro';
 import SectionHeader from '../../../components/ui/SectionHeader.astro';
@@ -88,8 +90,13 @@ const jsonLd = jsonLdGraph(
   jsonLd={jsonLd}
   searchMeta={{ group: 'kana', title: `${kana.char} (${kana.romaji})` }}
 >
-  <article class="kana-page column">
-    <SectionHeader level="h1" kicker={detail.label} title={`${kana.char} ${kana.romaji}`} />
+  <article class="kana-page column" data-kana-page>
+    <SectionHeader level="h1" kicker={detail.label} title={`${kana.char} ${kana.romaji}`}>
+      <div class="kana-page__actions">
+        <ListenButton text={kana.char} audio={kana.audio} />
+        <LearnToggle char={kana.char} />
+      </div>
+    </SectionHeader>
 
     <div class="kana-page__body">
       <figure class="kana-page__strokes" data-kana-strokes>
@@ -167,7 +174,16 @@ const jsonLd = jsonLdGraph(
 </BaseLayout>
 
 <script>
+  import { initLearned } from '../../../lib/kana/learned';
+  import { initListen } from '../../../lib/kana/listen';
   import { playStrokes } from '../../../lib/kana/strokes';
+  import { localKanaProgress } from '../../../lib/progress/kana';
+
+  const page = document.querySelector<HTMLElement>('[data-kana-page]');
+  if (page) {
+    initLearned(page, localKanaProgress());
+    void initListen(page);
+  }
 
   const figure = document.querySelector('[data-kana-strokes]');
   const svg = figure?.querySelector<SVGSVGElement>('[data-strokes]');
@@ -184,12 +200,26 @@ const jsonLd = jsonLdGraph(
     padding-block: var(--space-12) var(--space-16);
   }
 
+  .kana-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding-block-start: var(--space-2);
+  }
+
   .kana-page__body {
     display: grid;
     gap: var(--space-8);
   }
 
   @media (width >= 48rem) {
+    .kana-page__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      padding-block-start: var(--space-2);
+    }
+
     .kana-page__body {
       grid-template-columns: 280px minmax(0, 1fr);
       align-items: start;

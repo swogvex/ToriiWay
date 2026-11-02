@@ -67,6 +67,11 @@ const classes = ['btn', `btn--${variant}`, `btn--${size}`, className];
     transition: transform var(--duration-fast) var(--ease);
   }
 
+  /* The class sets display, which would otherwise beat the hidden attribute. */
+  .btn[hidden] {
+    display: none;
+  }
+
   .btn:disabled,
   .btn[aria-disabled='true'] {
     cursor: not-allowed;
