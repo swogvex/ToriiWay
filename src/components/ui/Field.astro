@@ -73,7 +73,13 @@ const control = {
   ) : as === 'textarea' ? (
     <textarea {...control} placeholder={placeholder} rows="4" set:text={value ?? ''} />
   ) : (
-    <input {...control} type={type} value={value} placeholder={placeholder} />
+    <input
+      {...control}
+      type={type}
+      value={value}
+      placeholder={placeholder}
+      spellcheck={type === 'email' || type === 'url' ? 'false' : undefined}
+    />
   )}
   {error && (
     <p class="field__error" id={errorId}>

@@ -51,10 +51,19 @@
   h4 {
     overflow-wrap: break-word;
   }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
 }
 
 @layer base {
   html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
     background: var(--bg);
     color: var(--ink);
     font-family: var(--font-ui);
