@@ -47,12 +47,16 @@ test.describe('listen', () => {
   test('hides Listen and explains why, once, without a Japanese voice', async ({ page }) => {
     await fakeSpeech(page, [{ lang: 'en-US', name: 'Samantha' }]);
     await page.goto('/learn/hiragana');
-    await expect(page.getByText('Your browser has no Japanese voice')).toBeVisible();
+    const note = page.getByText('Your browser has no Japanese voice');
+    await page.getByRole('button', { name: 'か ka' }).click();
+    await expect(note).toBeVisible();
     await expect(page.getByRole('button', { name: 'Listen' })).toBeHidden();
 
     await page.reload();
+    await page.getByRole('button', { name: 'き ki' }).click();
     await expect(page.getByRole('button', { name: 'Replay strokes' })).toBeVisible();
-    await expect(page.getByText('Your browser has no Japanese voice')).toBeHidden();
+    await expect(note).toBeHidden();
+    await expect(page.getByRole('button', { name: 'Listen' })).toBeHidden();
   });
 });
 

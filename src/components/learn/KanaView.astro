@@ -41,12 +41,7 @@ const guideHref = localizePath(`/learn/guide/${slug}`, locale);
 const dataUrl = `/data/kana/${script}.json`;
 ---
 
-<div
-  class="learn column"
-  data-kana-explorer
-  data-kana-src={dataUrl}
-  data-no-voice={t('learn.noVoice')}
->
+<div class="learn column" data-kana-explorer data-kana-src={dataUrl}>
   <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('learn.title')} />
 
   <nav class="learn-nav" aria-label={t('learn.sections')}>

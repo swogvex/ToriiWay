@@ -1,4 +1,3 @@
-import { showToast } from '../ui/toast';
 import { loadVoices, pickJapaneseVoice, speak } from './speech';
 
 const NOTICE_KEY = 'nnt:v1:no-ja-voice';
@@ -16,7 +15,8 @@ function noticeShown(): boolean {
 /**
  * Listen buttons: `[data-listen="か"]`, optionally with `data-listen-audio` for a
  * recorded file, which wins. They start hidden and appear once a Japanese voice (or a
- * recording) exists; without either, a one-time notice explains why there is no Listen.
+ * recording) exists; without either, the note beside them (`[data-listen-note]`) says
+ * why, once per browser, as soon as the visitor interacts with the page.
  */
 export async function initListen(root: ParentNode = document): Promise<void> {
   const buttons = () => [...root.querySelectorAll<HTMLElement>('[data-listen]')];
@@ -26,8 +26,17 @@ export async function initListen(root: ParentNode = document): Promise<void> {
   for (const button of buttons()) {
     button.hidden = !voice && !button.dataset.listenAudio;
   }
-  if (!voice && buttons().every((button) => button.hidden) && !noticeShown()) {
-    showToast(document.querySelector<HTMLElement>('[data-no-voice]')?.dataset.noVoice ?? '');
+  if (!voice && buttons().every((button) => button.hidden)) {
+    // Shown on the first click or key press: text that appears unprompted after load
+    // becomes the page's LCP element, and LCP stops counting at the first interaction.
+    const reveal = () => {
+      if (noticeShown()) return;
+      for (const note of root.querySelectorAll<HTMLElement>('[data-listen-note]')) {
+        note.hidden = false;
+      }
+    };
+    document.addEventListener('pointerdown', reveal, { once: true });
+    document.addEventListener('keydown', reveal, { once: true });
   }
 
   root.addEventListener('click', (event) => {

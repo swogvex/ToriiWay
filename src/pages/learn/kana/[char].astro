@@ -90,7 +90,7 @@ const jsonLd = jsonLdGraph(
   jsonLd={jsonLd}
   searchMeta={{ group: 'kana', title: `${kana.char} (${kana.romaji})` }}
 >
-  <article class="kana-page column" data-kana-page data-no-voice={t('learn.noVoice')}>
+  <article class="kana-page column" data-kana-page>
     <SectionHeader level="h1" kicker={detail.label} title={`${kana.char} ${kana.romaji}`}>
       <div class="kana-page__actions">
         <ListenButton text={kana.char} audio={kana.audio} />

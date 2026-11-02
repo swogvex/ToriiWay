@@ -1,7 +1,8 @@
 ---
 /**
  * Says a kana with the browser's Japanese voice, or plays its recording (lib/kana/listen.ts).
- * Hidden until a voice or recording is known to exist, so it never appears broken.
+ * Hidden until a voice or recording is known to exist, so it never appears broken; the
+ * note beside it explains, once per browser, why there is no Listen.
  */
 import { getLocale, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
@@ -20,3 +21,15 @@ const t = useTranslations(getLocale(Astro.url.pathname));
   <Icon name="volume-2" size={18} />
   {t('learn.listen')}
 </Button>
+<p class="listen-note" data-listen-note hidden>
+  {t('learn.noVoice')}
+</p>
+
+<style>
+  /* Small on purpose: a late, large block of text would become the page's LCP element. */
+  .listen-note {
+    align-self: center;
+    color: var(--muted);
+    font-size: var(--text-2xs);
+  }
+</style>
