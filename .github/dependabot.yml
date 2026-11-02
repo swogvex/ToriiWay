@@ -1,0 +1,29 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      astro:
+        patterns: ['astro', '@astrojs/*']
+      tooling:
+        patterns:
+          [
+            'eslint*',
+            'typescript*',
+            '@typescript-eslint/*',
+            'stylelint*',
+            'postcss-html',
+            'prettier*',
+          ]
+      testing:
+        patterns: ['vitest', '@playwright/*', '@axe-core/*', '@lhci/*']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']
