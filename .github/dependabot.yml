@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    ignore:
+      # TS 7 is not yet supported by @astrojs/check or typescript-eslint
+      - dependency-name: 'typescript'
+        versions: ['>=7']
     groups:
       astro:
         patterns: ['astro', '@astrojs/*']
