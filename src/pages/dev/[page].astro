@@ -1,0 +1,52 @@
+---
+/**
+ * Hidden component showcase (/dev/ui). Built everywhere except Vercel production,
+ * marked noindex and filtered out of the sitemap.
+ */
+import type { GetStaticPaths } from 'astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Toast from '../../components/ui/Toast.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Showcase from './_Showcase.astro';
+
+export const getStaticPaths = (() =>
+  process.env.VERCEL_ENV === 'production'
+    ? []
+    : [{ params: { page: 'ui' } }]) satisfies GetStaticPaths;
+---
+
+<BaseLayout
+  title="UI showcase · Nihongo No Torii"
+  description="Design system components in both themes."
+  noindex
+>
+  <div class="intro" id="top">
+    <SectionHeader level="h1" kicker="00 / Dev" title="Design system">
+      <p class="intro__lead">Every component in both themes. Direction A · Sumi & Shu.</p>
+    </SectionHeader>
+  </div>
+  <Showcase theme="light" />
+  <Showcase theme="dark" />
+  <Toast />
+</BaseLayout>
+
+<script>
+  import { showToast } from '../../lib/ui/toast';
+
+  document.addEventListener('click', (event) => {
+    const trigger = (event.target as Element | null)?.closest<HTMLElement>('[data-toast]');
+    if (trigger?.dataset.toast) showToast(trigger.dataset.toast);
+  });
+</script>
+
+<style>
+  .intro {
+    max-inline-size: var(--col);
+    margin-inline: auto;
+    padding: var(--space-12) var(--col-padding) var(--space-8);
+  }
+
+  .intro__lead {
+    color: var(--muted);
+  }
+</style>
