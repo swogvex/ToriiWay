@@ -1,6 +1,37 @@
 import { describe, expect, it } from 'vitest';
 
-import { matches, normalize } from './search';
+import { excerptParts, matches, normalize, pageHref } from './search';
+
+describe('Pagefind results', () => {
+  it('maps result URLs to the site links', () => {
+    expect(pageHref('/')).toBe('/');
+    expect(pageHref('/index.html')).toBe('/');
+    expect(pageHref('/learn/hiragana/')).toBe('/learn/hiragana');
+    expect(pageHref('/learn/hiragana.html')).toBe('/learn/hiragana');
+    expect(pageHref('/es/learn/index.html#top')).toBe('/es/learn');
+  });
+
+  it('splits an excerpt into plain and marked runs', () => {
+    expect(excerptParts('the <mark>torii</mark> gate')).toEqual([
+      { text: 'the ', mark: false },
+      { text: 'torii', mark: true },
+      { text: ' gate', mark: false },
+    ]);
+  });
+
+  it('decodes escaped text and drops any other tag', () => {
+    expect(excerptParts('a &lt;b&gt; &amp; &#39;c&#x27; <img src=x onerror=alert(1)>')).toEqual([
+      { text: "a <b> & 'c' ", mark: false },
+    ]);
+  });
+
+  it('keeps kana untouched', () => {
+    expect(excerptParts('<mark>ひらがな</mark>の表')).toEqual([
+      { text: 'ひらがな', mark: true },
+      { text: 'の表', mark: false },
+    ]);
+  });
+});
 
 describe('search matching', () => {
   it('folds case, width and accents', () => {

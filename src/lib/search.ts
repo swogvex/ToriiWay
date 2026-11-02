@@ -24,25 +24,104 @@ export function matches(query: string, haystack: string): boolean {
   return words.every((word) => target.includes(word));
 }
 
+/**
+ * Site path of a Pagefind result: drops `index.html`, `.html` and the trailing slash so
+ * it matches the links the site uses (`trailingSlash: 'never'`).
+ */
+export function pageHref(url: string): string {
+  const path = url
+    .replace(/[?#].*$/, '')
+    .replace(/index\.html$/, '')
+    .replace(/\.html$/, '')
+    .replace(/\/+$/, '');
+  return path || '/';
+}
+
+export interface ExcerptPart {
+  text: string;
+  mark: boolean;
+}
+
+const ENTITIES: Record<string, string> = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'" };
+
+function decodeEntities(text: string): string {
+  return text.replace(/&(?:#(\d+)|#x([\da-f]+)|(amp|lt|gt|quot|apos));/gi, (_, dec, hex, name) =>
+    name
+      ? (ENTITIES[name.toLowerCase()] ?? '')
+      : String.fromCodePoint(Number.parseInt(dec ?? hex, dec ? 10 : 16)),
+  );
+}
+
+/**
+ * Splits a Pagefind excerpt (escaped page text with matches wrapped in `<mark>`) into
+ * runs, so the dialog renders it as text nodes and never as HTML.
+ */
+export function excerptParts(excerpt: string): ExcerptPart[] {
+  return excerpt
+    .split(/(<mark>.*?<\/mark>)/s)
+    .filter(Boolean)
+    .map((chunk) => {
+      const mark = chunk.startsWith('<mark>');
+      const text = mark ? chunk.slice('<mark>'.length, -'</mark>'.length) : chunk;
+      return { text: decodeEntities(text.replace(/<[^>]*>/g, '')), mark };
+    });
+}
+
+/** The parts of the Pagefind browser API (/pagefind/pagefind.js) the dialog uses. */
+interface Pagefind {
+  options(options: { excerptLength?: number }): Promise<void>;
+  init(): Promise<void>;
+  search(query: string): Promise<{ results: { data(): Promise<PagefindPage> }[] }>;
+}
+
+interface PagefindPage {
+  url: string;
+  excerpt: string;
+  meta: { title?: string };
+}
+
+// Built by src/integrations/pagefind.ts; absent in `astro dev`, where only sections show.
+const PAGEFIND_URL = '/pagefind/pagefind.js';
+const MAX_PAGES = 6;
 const ANNOUNCE_DELAY_MS = 400;
+
+let pagefind: Promise<Pagefind | undefined> | undefined;
+
+/** Loads Pagefind once, on first use. Resolves to undefined when it cannot load. */
+function loadPagefind(): Promise<Pagefind | undefined> {
+  pagefind ??= (import(/* @vite-ignore */ PAGEFIND_URL) as Promise<Pagefind>)
+    .then(async (module) => {
+      await module.options({ excerptLength: 16 });
+      await module.init();
+      return module;
+    })
+    .catch(() => undefined);
+  return pagefind;
+}
 
 /**
  * Client behaviour of the search dialog (components/shell/SearchDialog.astro): filters
- * the options, moves the active option with the arrow keys, opens it with Enter or a
- * click and announces the result count.
+ * the section options, adds matching pages from Pagefind, moves the active option with
+ * the arrow keys, opens it with Enter or a click and announces the result count.
  */
 export function initSearch(root: HTMLElement): void {
   const dialog = root.closest('dialog');
   const input = root.querySelector<HTMLInputElement>('[data-search-input]');
   const empty = root.querySelector<HTMLElement>('[data-search-empty]');
   const status = root.querySelector<HTMLElement>('[data-search-status]');
-  const options = [...root.querySelectorAll<HTMLElement>('[role="option"]')];
-  if (!dialog || !input || !empty || !status) return;
+  const pagesGroup = root.querySelector<HTMLElement>('[data-search-pages]');
+  const pageIcon = root.querySelector<HTMLTemplateElement>('[data-search-page-icon]');
+  const sections = [...root.querySelectorAll<HTMLElement>('[data-search-section]')];
+  if (!dialog || !input || !empty || !status || !pagesGroup || !pageIcon) return;
 
+  // Section landing pages already have their own option, so Pagefind skips them.
+  const sectionHrefs = new Set(sections.map((option) => option.dataset.href));
   let active: HTMLElement | undefined;
   let announceTimer: ReturnType<typeof setTimeout> | undefined;
+  let searchId = 0;
 
-  const visible = () => options.filter((option) => !option.hidden);
+  const visible = () =>
+    [...root.querySelectorAll<HTMLElement>('[role="option"]')].filter((option) => !option.hidden);
 
   function setActive(option: HTMLElement | undefined): void {
     active?.setAttribute('aria-selected', 'false');
@@ -57,19 +136,79 @@ export function initSearch(root: HTMLElement): void {
     option.scrollIntoView({ block: 'nearest' });
   }
 
+  function pageOption(page: PagefindPage, index: number): HTMLElement {
+    const option = document.createElement('div');
+    option.className = 'search__option search__option--page';
+    option.id = `search-page-${index}`;
+    option.setAttribute('role', 'option');
+    option.setAttribute('aria-selected', 'false');
+    option.dataset.href = pageHref(page.url);
+    option.dataset.searchPage = '';
+
+    const text = document.createElement('span');
+    text.className = 'search__option-text';
+    const label = document.createElement('span');
+    label.className = 'search__option-label';
+    label.textContent = page.meta.title ?? option.dataset.href;
+    const excerpt = document.createElement('span');
+    excerpt.className = 'search__option-excerpt';
+    for (const part of excerptParts(page.excerpt)) {
+      if (part.mark) {
+        const mark = document.createElement('mark');
+        mark.textContent = part.text;
+        excerpt.append(mark);
+      } else {
+        excerpt.append(part.text);
+      }
+    }
+    text.append(label, excerpt);
+    option.append(pageIcon?.content.cloneNode(true) ?? '', text);
+    return option;
+  }
+
+  function showPages(pages: PagefindPage[]): void {
+    for (const option of pagesGroup?.querySelectorAll('[data-search-page]') ?? []) option.remove();
+    pagesGroup?.append(...pages.map(pageOption));
+  }
+
+  async function searchPages(query: string): Promise<void> {
+    const id = ++searchId;
+    if (!query) {
+      showPages([]);
+      return;
+    }
+    const api = await loadPagefind();
+    if (!api || id !== searchId) return;
+    const { results } = await api.search(query);
+    const pages = (await Promise.all(results.slice(0, MAX_PAGES * 2).map((r) => r.data())))
+      .filter((page) => !sectionHrefs.has(pageHref(page.url)))
+      .slice(0, MAX_PAGES);
+    if (id !== searchId) return;
+    showPages(pages);
+    update(query);
+  }
+
   function filter(): void {
-    if (!input || !empty || !status) return;
+    if (!input) return;
     const query = input.value.trim();
-    for (const option of options) {
+    for (const option of sections) {
       option.hidden = !matches(query, option.dataset.keywords ?? '');
     }
+    update(query);
+    void searchPages(query);
+  }
+
+  /** Groups, empty message, active option and the announced count for the shown options. */
+  function update(query: string): void {
+    if (!empty || !status) return;
     const shown = visible();
     for (const group of root.querySelectorAll<HTMLElement>('[role="group"]')) {
       group.hidden = !group.querySelector('[role="option"]:not([hidden])');
     }
     empty.hidden = shown.length > 0;
     empty.textContent = (root.dataset.empty ?? '').replace('{query}', query);
-    setActive(query ? shown[0] : undefined);
+    // Keep the active option when late page results arrive.
+    setActive(query ? (active && shown.includes(active) ? active : shown[0]) : undefined);
 
     clearTimeout(announceTimer);
     const message =
@@ -108,6 +247,7 @@ export function initSearch(root: HTMLElement): void {
   // Focus the field whenever the dialog opens, whatever opened it.
   new MutationObserver(() => {
     if (dialog.open) {
+      void loadPagefind();
       input.focus();
       input.select();
     }

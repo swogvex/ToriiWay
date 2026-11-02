@@ -1,8 +1,9 @@
 ---
 /**
- * ⌘K command palette (07-spec-shell). For now it searches the site's sections, which are
- * rendered here as static options and filtered in the client; kana, kanji, books and
- * videos join as their sections ship. Combobox + listbox pattern with aria-activedescendant.
+ * ⌘K command palette (07-spec-shell). The site's sections are rendered here as static
+ * options and filtered in the client; pages indexed by Pagefind are added below them once
+ * it loads (lazily, on first open). Without Pagefind the sections still work.
+ * Combobox + listbox pattern with aria-activedescendant.
  */
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import { SECTIONS } from '../../lib/nav';
@@ -42,7 +43,12 @@ const t = useTranslations(locale);
       />
     </div>
     <div class="search__results" id="search-results" role="listbox" aria-label={t('search.title')}>
-      <div class="search__group" role="group" aria-label={t('search.group.pages')}>
+      <div
+        class="search__group"
+        role="group"
+        aria-label={t('search.group.pages')}
+        data-search-pages
+      >
         <div class="search__group-title" aria-hidden="true">
           {t('search.group.pages')}
         </div>
@@ -52,6 +58,7 @@ const t = useTranslations(locale);
             id={`search-option-${section.id}`}
             role="option"
             aria-selected="false"
+            data-search-section
             data-href={localizePath(section.href, locale)}
             data-keywords={`${t(`nav.${section.id}`)} ${t(`search.keywords.${section.id}`)}`}
           >
@@ -64,8 +71,12 @@ const t = useTranslations(locale);
             )}
           </div>
         ))}
+        {/* Pagefind results are appended here by lib/search.ts. */}
       </div>
     </div>
+    <template data-search-page-icon>
+      <Icon name="arrow-right" size={20} />
+    </template>
     <p class="search__empty" hidden data-search-empty></p>
     <p class="visually-hidden" role="status" data-search-status></p>
     <p class="search__note">{t('search.note')}</p>
@@ -140,7 +151,8 @@ const t = useTranslations(locale);
     text-transform: uppercase;
   }
 
-  .search__option {
+  /* Options are global: Pagefind results are built in the client without Astro's scope. */
+  :global(.search__option) {
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -150,23 +162,53 @@ const t = useTranslations(locale);
     cursor: pointer;
   }
 
-  .search__option[hidden] {
+  :global(.search__option[hidden]) {
     display: none;
   }
 
-  .search__option:hover {
+  :global(.search__option:hover) {
     background: var(--key);
   }
 
   /* Active option: ink fill, the same cue as the rail's current item. */
-  .search__option[aria-selected='true'] {
+  :global(.search__option[aria-selected='true']) {
     background: var(--ink);
     color: var(--bg);
   }
 
-  .search__option-label {
+  :global(.search__option-label) {
     flex: 1;
     font-weight: 500;
+  }
+
+  /* Pagefind results: title over a one-line excerpt. */
+  :global(.search__option--page) {
+    padding-block: var(--space-2);
+  }
+
+  :global(.search__option-text) {
+    display: grid;
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  :global(.search__option-excerpt) {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: var(--text-sm);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  :global(.search__option-excerpt mark) {
+    background: none;
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  :global(.search__option[aria-selected='true'] .search__option-excerpt),
+  :global(.search__option[aria-selected='true'] mark) {
+    color: var(--bg);
   }
 
   .search__option-glyph {

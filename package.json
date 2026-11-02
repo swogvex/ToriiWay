@@ -42,6 +42,7 @@
     "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "opentype.js": "2.0.0",
+    "pagefind": "1.5.2",
     "postcss-html": "2.0.0",
     "prettier": "3.9.10",
     "prettier-plugin-astro": "1.1.2",
