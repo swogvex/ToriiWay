@@ -1,0 +1,9 @@
+@layer reset, tokens, base, components, utilities;
+
+/* Placeholder until the design tokens land: keep browser defaults readable in both schemes. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+}

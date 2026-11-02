@@ -1,0 +1,11 @@
+# eslint-plugin-jsx-a11y works with ESLint 10 (verified) but its peer range stops at 9.
+peerDependencyRules:
+  allowedVersions:
+    eslint-plugin-jsx-a11y>eslint: '10'
+
+# Patched versions of vulnerable transitive dependencies (see pnpm audit --prod).
+# Remove each entry once the parent package ships the fix.
+overrides:
+  '@vercel/routing-utils>path-to-regexp': 6.3.0
+  '@vercel/cli-config>zod': ^4.6.6
+  '@vercel/nft>glob': ^14.0.2

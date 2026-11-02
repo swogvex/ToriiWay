@@ -1,0 +1,48 @@
+{
+  "name": "nihongo-no-torii",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@12.4.2",
+  "engines": {
+    "node": ">=24.11 <25"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check && tsc --noEmit",
+    "lint": "eslint . --max-warnings=0 && stylelint \"src/**/*.{css,astro}\" --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lhci": "lhci autorun"
+  },
+  "dependencies": {
+    "@astrojs/preact": "6.1.1",
+    "@astrojs/sitemap": "3.7.4",
+    "@astrojs/vercel": "11.0.17",
+    "astro": "7.4.4",
+    "preact": "11.1.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@axe-core/playwright": "4.14.0",
+    "@lhci/cli": "0.15.1",
+    "@playwright/test": "1.64.1",
+    "eslint": "10.14.0",
+    "eslint-plugin-astro": "3.2.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "postcss-html": "2.0.0",
+    "prettier": "3.9.10",
+    "prettier-plugin-astro": "1.1.2",
+    "stylelint": "17.16.0",
+    "stylelint-config-html": "2.0.0",
+    "stylelint-config-standard": "40.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.1",
+    "vitest": "5.0.5"
+  }
+}
