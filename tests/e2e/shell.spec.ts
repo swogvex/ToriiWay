@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from '@playwright/test';
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
@@ -183,6 +183,23 @@ test.describe('mobile shell', () => {
   });
 });
 
+/** Waits until a 404 glyph lies flat on the ground line. */
+async function waitForRest(page: Page, glyph: Locator): Promise<void> {
+  const field = page.locator('[data-lost-field]');
+  await expect
+    .poll(
+      async () => {
+        const [box, area] = await Promise.all([glyph.boundingBox(), field.boundingBox()]);
+        const ground = (area?.y ?? 0) + (area?.height ?? 0) - 1;
+        const gap = Math.abs(ground - ((box?.y ?? 0) + (box?.height ?? 0)));
+        const tilt = Math.abs((box?.width ?? 0) - (box?.height ?? 0));
+        return gap <= 2 && tilt <= 2;
+      },
+      { timeout: 8000 },
+    )
+    .toBe(true);
+}
+
 test.describe('404 playground', () => {
   test.use({ reducedMotion: 'no-preference' });
 
@@ -192,16 +209,8 @@ test.describe('404 playground', () => {
     const glyph = page.getByRole('button', { name: /^迷/ });
     await expect(glyph).toBeVisible();
 
-    // The glyphs fall onto the floor on their own (64px above the field's bottom)...
-    const field = page.locator('[data-lost-field]');
-    await expect
-      .poll(async () => {
-        const [box, area] = await Promise.all([glyph.boundingBox(), field.boundingBox()]);
-        return Math.round(
-          (area?.y ?? 0) + (area?.height ?? 0) - 64 - ((box?.y ?? 0) + (box?.height ?? 0)),
-        );
-      })
-      .toBe(0);
+    // The glyphs fall on their own, tumble and settle flat on the ground line...
+    await waitForRest(page, glyph);
 
     // ...and Space throws one back up: track its highest point for a moment.
     const before = await glyph.boundingBox();
@@ -224,6 +233,32 @@ test.describe('404 playground', () => {
     ]);
     expect(highest).toBeLessThan((before?.y ?? 0) - 50);
     await expect(page.locator('[data-lost-hint]')).toHaveAttribute('data-hidden', '');
+  });
+
+  test('a mouse press moves a glyph without drawing the focus ring', async ({ page }) => {
+    await page.goto('/this-page-does-not-exist');
+    const glyph = page.getByRole('button', { name: /^子/ });
+    await waitForRest(page, glyph);
+    const box = await glyph.boundingBox();
+    const x = (box?.x ?? 0) + (box?.width ?? 0) * 0.15;
+    const y = (box?.y ?? 0) + (box?.height ?? 0) * 0.15;
+    await page.mouse.move(x, y);
+    await page.mouse.down();
+    await page.mouse.move(x - 120, y - 160, { steps: 8 });
+    await page.mouse.up();
+    expect(await glyph.evaluate((el) => el.matches(':focus-visible'))).toBe(false);
+    await expect(page.locator('[data-lost-hint]')).toHaveAttribute('data-hidden', '');
+    // Grabbed off-centre, the glyph turns as it is dragged.
+    expect(await glyph.evaluate((el) => el.style.transform)).toMatch(/rotate\((?!0rad)/);
+  });
+
+  test('has no header or footer and fits one screen', async ({ page }) => {
+    await page.goto('/this-page-does-not-exist');
+    await expect(page.locator('header, footer')).toHaveCount(0);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
+    );
+    expect(overflow).toBe(0);
   });
 
   test('reduced motion keeps the glyphs still', async ({ browser }) => {

@@ -1,6 +1,6 @@
 ---
 import { getLocale, localizePath, useTranslations } from '../i18n';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BareLayout from '../layouts/BareLayout.astro';
 import { SECTIONS } from '../lib/nav';
 
 const locale = getLocale(Astro.url.pathname);
@@ -8,12 +8,12 @@ const t = useTranslations(locale);
 const glyphs = ['迷', '子'];
 ---
 
-<BaseLayout
+<BareLayout
   title={`${t('notFound.title')} · ${t('site.name')}`}
   description={t('notFound.metaDescription')}
   noindex
 >
-  <div class="lost">
+  <main class="lost" id="main">
     <div class="lost__field" data-lost-field>
       {glyphs.map((glyph, index) => (
         <button
@@ -28,18 +28,24 @@ const glyphs = ['迷', '子'];
       ))}
       <p class="lost__hint" aria-hidden="true" data-lost-hint>
         {t('notFound.hint')}
+        <svg class="lost__arrow" viewBox="0 0 40 40" focusable="false">
+          <path d="M30 4c2 14-6 26-22 30"></path>
+          <path d="M8 34l4-9M8 34l9 3"></path>
+        </svg>
       </p>
     </div>
     <p class="visually-hidden" id="lost-help">
       {t('notFound.instructions')}
     </p>
 
-    <div class="lost__text column">
-      <p class="lost__kicker">404</p>
-      <h1 class="lost__title">{t('notFound.title')}</h1>
-      <p class="lost__lead">{t('notFound.lead')}</p>
-      <nav aria-labelledby="lost-links">
-        <h2 class="lost__links-title" id="lost-links">
+    <div class="lost__ground column">
+      <div class="lost__copy">
+        <p class="lost__label">404</p>
+        <h1 class="lost__title">{t('notFound.title')}</h1>
+        <p class="lost__lead">{t('notFound.lead')}</p>
+      </div>
+      <nav class="lost__nav" aria-labelledby="lost-links">
+        <h2 class="lost__label" id="lost-links">
           {t('notFound.links')}
         </h2>
         <ul class="lost__links">
@@ -51,8 +57,8 @@ const glyphs = ['迷', '子'];
         </ul>
       </nav>
     </div>
-  </div>
-</BaseLayout>
+  </main>
+</BareLayout>
 
 <script>
   import { initPlayground } from '../lib/lost/playground';
@@ -64,19 +70,24 @@ const glyphs = ['迷', '子'];
 </script>
 
 <style>
+  /* One screen, no scroll: the playground above, the message below the ground line. */
+  .lost {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    block-size: 100dvh;
+    overflow: hidden;
+  }
+
   .lost__field {
-    --glyph: min(30vmin, 240px);
+    --glyph: min(30vmin, 240px, 40dvh);
 
     position: relative;
-    block-size: max(55vh, calc(var(--glyph) * 1.8 + 64px));
-    overflow: hidden;
+    border-block-end: 1px solid var(--ink);
   }
 
   .lost__glyph {
     position: absolute;
-
-    /* Keep in sync with FLOOR_GAP in lib/lost/playground.ts. */
-    inset-block-end: 64px;
+    inset-block-end: 0;
     display: grid;
     place-items: center;
     inline-size: var(--glyph);
@@ -95,6 +106,11 @@ const glyphs = ['迷', '子'];
     user-select: none;
   }
 
+  /* The global :lang(ja) line-height would push the glyph below its box. */
+  .lost__glyph span {
+    line-height: 1;
+  }
+
   .lost__glyph:active {
     cursor: grabbing;
   }
@@ -107,14 +123,17 @@ const glyphs = ['迷', '子'];
     inset-inline-start: 50%;
   }
 
+  /* "drag me" sits above 子 with an arrow pointing down at the glyphs. */
   .lost__hint {
     position: absolute;
-    inset-block-end: var(--space-4);
-    inset-inline: 0;
+    inset-block-end: calc(var(--glyph) * 0.9);
+    inset-inline-start: calc(50% + var(--glyph) * 0.7);
+    display: grid;
+    justify-items: start;
+    color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--muted);
-    text-align: center;
+    pointer-events: none;
     transition: opacity var(--duration-base) var(--ease);
   }
 
@@ -122,10 +141,21 @@ const glyphs = ['迷', '子'];
     opacity: 0;
   }
 
+  .lost__arrow {
+    inline-size: 40px;
+    block-size: 40px;
+    margin-inline-start: calc(-1 * var(--space-6));
+    fill: none;
+    stroke: currentcolor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+  }
+
   /* Motion allowed: glyphs start lifted and fall (the playground script). */
   @media (prefers-reduced-motion: no-preference) {
     .lost__glyph {
-      transform: translateY(calc(var(--glyph) * -0.6));
+      transform: translateY(calc(var(--glyph) * -0.9));
     }
   }
 
@@ -139,14 +169,26 @@ const glyphs = ['迷', '子'];
     }
   }
 
-  .lost__text {
+  .lost__ground {
     display: grid;
-    gap: var(--space-4);
-    padding-block: var(--space-10) 0;
+    gap: var(--space-6);
+    padding-block: var(--space-6) var(--space-8);
   }
 
-  .lost__kicker,
-  .lost__links-title {
+  @media (width >= 48rem) {
+    .lost__ground {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      padding-block: var(--space-8) var(--space-10);
+    }
+  }
+
+  .lost__copy {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .lost__label {
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -156,7 +198,7 @@ const glyphs = ['迷', '子'];
   }
 
   .lost__title {
-    font-size: clamp(var(--text-2xl), 6vw, var(--text-3xl));
+    font-size: clamp(var(--text-xl), 5vw, var(--text-3xl));
     letter-spacing: -0.02em;
     line-height: var(--leading-display);
   }
@@ -166,11 +208,16 @@ const glyphs = ['迷', '子'];
     font-size: var(--text-md);
   }
 
+  .lost__nav {
+    display: grid;
+    gap: var(--space-2);
+  }
+
   .lost__links {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2) var(--space-6);
-    margin: var(--space-3) 0 0;
+    gap: 0 var(--space-5);
+    margin: 0;
     padding: 0;
     list-style: none;
   }
