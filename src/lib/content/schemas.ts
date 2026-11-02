@@ -277,8 +277,12 @@ export const jlptMondaiSchema = z
   });
 
 const gameItem = z.strictObject({
+  /** What the bubble shows; for kana lists, the reading plus optional spaces and punctuation. */
   text: z.string().min(1),
-  reading: z.string().min(1),
+  /** Kana the player types; validation compares kana, never romaji. */
+  reading: z
+    .string()
+    .regex(/^[\p{Script=Hiragana}\p{Script=Katakana}ー]+$/u, 'Use kana only (no spaces)'),
   en: z.string().min(1),
   es: z.string().min(1).optional(),
   source: z
@@ -287,11 +291,67 @@ const gameItem = z.strictObject({
     .optional(),
 });
 
-export const gameListSchema = z.strictObject({
-  script,
-  difficulty: z.enum(['easy', 'normal', 'hard', 'extreme']),
-  items: z.array(gameItem).min(1),
-});
+/** An item must not repeat within this many spawns (REPEAT_WINDOW in src/game/config.ts). */
+const MIN_GAME_ITEMS = 16;
+/** Spaces and punctuation shown in a bubble but not typed. */
+const UNTYPED = /[\s、。！？・「」]/gu;
+const KANA_LENGTH = { normal: [2, 4], hard: [2, 8], extreme: [6, 30] } as const;
+
+// Easy kana lists come from the kana collection (the basic 46), so only Easy kanji has a file.
+export const gameListSchema = z
+  .strictObject({
+    script,
+    difficulty: z.enum(['easy', 'normal', 'hard', 'extreme']),
+    items: z.array(gameItem).min(MIN_GAME_ITEMS),
+  })
+  .superRefine((list, ctx) => {
+    if (list.script !== 'kanji' && list.difficulty === 'easy') {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Easy kana lists come from src/content/kana; remove this file',
+        path: ['difficulty'],
+      });
+    }
+    const seen = new Set<string>();
+    list.items.forEach((item, index) => {
+      if (seen.has(item.text)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `duplicate "${item.text}"`,
+          path: ['items', index],
+        });
+      }
+      seen.add(item.text);
+      if (list.script === 'kanji') return;
+
+      if (item.text.replace(UNTYPED, '') !== item.reading) {
+        ctx.addIssue({
+          code: 'custom',
+          message: 'text must be the reading plus spaces or punctuation',
+          path: ['items', index, 'text'],
+        });
+      }
+      const pattern =
+        list.script === 'hiragana'
+          ? /^\p{Script=Hiragana}+$/u
+          : /^[\p{Script=Katakana}\p{Script=Hiragana}ー]+$/u;
+      if (!pattern.test(item.reading)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `reading must be ${list.script}`,
+          path: ['items', index, 'reading'],
+        });
+      }
+      const range = list.difficulty === 'easy' ? null : KANA_LENGTH[list.difficulty];
+      if (range && (item.reading.length < range[0] || item.reading.length > range[1])) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `${list.difficulty} items have ${range[0]}–${range[1]} kana`,
+          path: ['items', index, 'reading'],
+        });
+      }
+    });
+  });
 
 const indexCard = z.strictObject({
   kicker: z.string().min(1).max(20),

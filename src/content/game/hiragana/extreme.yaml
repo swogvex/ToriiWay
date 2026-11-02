@@ -1,0 +1,85 @@
+# Hiragana Extreme: short, natural sentences in hiragana, with spaces between phrases.
+# Original sentences. Particles are typed as written: は = "ha", へ = "he", を = "wo".
+script: hiragana
+difficulty: extreme
+items:
+  - text: きょうは いい てんき です。
+    reading: きょうはいいてんきです
+    en: 'The weather is nice today.'
+    es: 'Hoy hace buen tiempo.'
+  - text: あさごはんを たべました。
+    reading: あさごはんをたべました
+    en: 'I had breakfast.'
+    es: 'He desayunado.'
+  - text: えきは どこですか。
+    reading: えきはどこですか
+    en: 'Where is the station?'
+    es: '¿Dónde está la estación?'
+  - text: いっしょに いきましょう。
+    reading: いっしょにいきましょう
+    en: "Let's go together."
+    es: 'Vamos juntos.'
+  - text: にほんごを べんきょうして います。
+    reading: にほんごをべんきょうしています
+    en: 'I am studying Japanese.'
+    es: 'Estoy estudiando japonés.'
+  - text: ねこが まどの そばで ねて います。
+    reading: ねこがまどのそばでねています
+    en: 'The cat is sleeping by the window.'
+    es: 'El gato duerme junto a la ventana.'
+  - text: あしたは あめが ふるでしょう。
+    reading: あしたはあめがふるでしょう
+    en: 'It will probably rain tomorrow.'
+    es: 'Mañana seguramente lloverá.'
+  - text: この ほんは とても おもしろい です。
+    reading: このほんはとてもおもしろいです
+    en: 'This book is very interesting.'
+    es: 'Este libro es muy interesante.'
+  - text: みずを ください。
+    reading: みずをください
+    en: 'Water, please.'
+    es: 'Agua, por favor.'
+  - text: しゅくだいは もう おわりました。
+    reading: しゅくだいはもうおわりました
+    en: 'I have already finished my homework.'
+    es: 'Ya he terminado los deberes.'
+  - text: でんしゃが すこし おくれて います。
+    reading: でんしゃがすこしおくれています
+    en: 'The train is running a little late.'
+    es: 'El tren va con un poco de retraso.'
+  - text: ともだちと こうえんで あそびました。
+    reading: ともだちとこうえんであそびました
+    en: 'I played in the park with friends.'
+    es: 'Jugué en el parque con mis amigos.'
+  - text: なつやすみに うみへ いきたい です。
+    reading: なつやすみにうみへいきたいです
+    en: 'I want to go to the sea in the summer holidays.'
+    es: 'Quiero ir al mar en las vacaciones de verano.'
+  - text: おなかが すきました。
+    reading: おなかがすきました
+    en: "I'm hungry."
+    es: 'Tengo hambre.'
+  - text: へやの でんきを けして ください。
+    reading: へやのでんきをけしてください
+    en: 'Please turn off the light in the room.'
+    es: 'Apaga la luz de la habitación, por favor.'
+  - text: かぜが つよい ですね。
+    reading: かぜがつよいですね
+    en: "The wind is strong, isn't it?"
+    es: 'Hace mucho viento, ¿verdad?'
+  - text: まいにち はやく おきます。
+    reading: まいにちはやくおきます
+    en: 'I get up early every day.'
+    es: 'Me levanto temprano todos los días.'
+  - text: もう いちど いって ください。
+    reading: もういちどいってください
+    en: 'Please say it once more.'
+    es: 'Repítelo, por favor.'
+  - text: はなが きれいに さいて います。
+    reading: はながきれいにさいています
+    en: 'The flowers are in full bloom.'
+    es: 'Las flores están en plena floración.'
+  - text: よるは ほしが よく みえます。
+    reading: よるはほしがよくみえます
+    en: 'You can see the stars well at night.'
+    es: 'De noche se ven bien las estrellas.'
