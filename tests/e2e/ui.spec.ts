@@ -54,11 +54,11 @@ test('toggle chip flips aria-pressed', async ({ page }) => {
 
 test('toast announces in the polite live region', async ({ page }) => {
   await page.locator('[data-theme="light"]').getByRole('button', { name: 'Show toast' }).click();
-  await expect(page.getByRole('status')).toHaveText('Progress saved');
+  await expect(page.locator('[data-toast-region]')).toHaveText('Progress saved');
 });
 
 test('stored theme is applied before paint', async ({ page }) => {
-  await page.evaluate(() => localStorage.setItem('theme', 'dark'));
+  await page.evaluate(() => localStorage.setItem('nnt:v1:theme', 'dark'));
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });

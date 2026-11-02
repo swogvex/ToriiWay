@@ -12,6 +12,12 @@ export default defineConfig({
   site,
   trailingSlash: 'never',
   output: 'static',
+  // Spanish pages live under /es (16-i18n); English has no prefix.
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: { prefixDefaultLocale: false },
+  },
   adapter: vercel(),
   integrations: [
     preact(),
@@ -22,4 +28,7 @@ export default defineConfig({
     // Keep CSS in external files so `style-src 'self'` works without inline hashes.
     inlineStylesheets: 'never',
   },
+  // Astro inlines scripts smaller than this limit; keep every script external so
+  // `script-src 'self'` needs no per-script hashes.
+  vite: { build: { assetsInlineLimit: 0 } },
 });

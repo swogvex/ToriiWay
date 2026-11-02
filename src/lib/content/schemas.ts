@@ -163,12 +163,54 @@ export const gameListSchema = z.strictObject({
   items: z.array(gameItem).min(1),
 });
 
-// Shape is refined when the Home is built; keep it strict so typos fail the build.
+const indexCard = z.strictObject({
+  kicker: z.string().min(1).max(20),
+  text: z.string().min(1).max(120),
+});
+
+// Bracket furigana after a kanji run: 一緒[いっしょ]に頑張[がんば]ろう
+const rubyText = z
+  .string()
+  .min(1)
+  .regex(/^(?:[^[\]]|(?<=[\p{Script=Han}々])\[[^[\]]+\])+$/u, 'Use 漢字[よみ] for furigana');
+
+// One file per locale: src/content/site/<locale>/home.yaml (Home copy, footer and social links).
 export const siteSchema = z.strictObject({
-  locale: z.enum(['en', 'es']),
+  title: z.string().min(1).max(60),
+  description: z.string().min(1).max(160),
   hero: z.strictObject({
+    kicker: z.string().min(1),
+    /** Hidden on small screens. */
+    kickerMore: z.string().min(1),
     title: z.string().min(1),
     lead: z.string().min(1),
+    primary: z.string().min(1),
+    secondary: z.string().min(1),
   }),
-  footerPhrase: z.string().min(1),
+  index: z.strictObject({
+    game: indexCard,
+    learn: indexCard,
+    jlpt: indexCard,
+    library: indexCard,
+    community: indexCard,
+  }),
+  video: z.strictObject({
+    kicker: z.string().min(1),
+    title: z.string().min(1),
+    text: z.string().min(1),
+  }),
+  discord: z.strictObject({
+    kicker: z.string().min(1),
+    title: z.string().min(1),
+    cta: z.string().min(1),
+  }),
+  footer: z.strictObject({
+    phrase: rubyText,
+  }),
+  social: z.strictObject({
+    discord: z.url({ protocol: /^https$/, hostname: /^discord\.gg$/ }),
+    youtube: z.url({ protocol: /^https$/, hostname: /^(www\.)?youtube\.com$/ }),
+    x: z.url({ protocol: /^https$/, hostname: /^x\.com$/ }).optional(),
+    github: z.url({ protocol: /^https$/, hostname: /^github\.com$/ }).optional(),
+  }),
 });

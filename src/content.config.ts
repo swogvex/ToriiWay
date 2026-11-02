@@ -56,7 +56,7 @@ const game = defineCollection({
 });
 
 const site = defineCollection({
-  loader: contentGlob('*.yaml', `${base}/site`),
+  loader: contentGlob('{en,es}/*.yaml', `${base}/site`),
   schema: siteSchema,
 });
 

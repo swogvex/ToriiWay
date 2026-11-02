@@ -1,13 +1,27 @@
 ---
+import CommunityRow from '../components/home/CommunityRow.astro';
+import Hero from '../components/home/Hero.astro';
+import IndexGrid from '../components/home/IndexGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteCopy } from '../lib/content/site';
+
+const site = await getSiteCopy('en');
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Nihongo No Torii',
+  alternateName: '日本語の鳥居',
+  url: new URL('/', Astro.site).href,
+  inLanguage: 'en',
+  description: site.description,
+};
 ---
 
-<BaseLayout
-  title="Nihongo No Torii"
-  description="A free, account-less website for learning Japanese: kana, kanji, typing game and JLPT practice."
->
-  <h1>
-    Nihongo No Torii <span lang="ja">日本語の鳥居</span>
-  </h1>
-  <p>Coming soon.</p>
+<BaseLayout title={site.title} description={site.description} jsonLd={jsonLd}>
+  <div class="column">
+    <Hero copy={site.hero} />
+    <IndexGrid copy={site.index} />
+    <CommunityRow video={site.video} discord={site.discord} social={site.social} />
+  </div>
 </BaseLayout>

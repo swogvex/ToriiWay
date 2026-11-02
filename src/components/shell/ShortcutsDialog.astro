@@ -1,0 +1,66 @@
+---
+import { getLocale, useTranslations } from '../../i18n';
+import Dialog from '../ui/Dialog.astro';
+import Kbd from '../ui/Kbd.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<Dialog id="shortcuts-dialog" title={t('shortcuts.title')}>
+  <dl class="shortcuts">
+    <div class="shortcuts__row">
+      <dt>
+        <Kbd>
+          <span data-mod-key>Ctrl</span>
+        </Kbd>{' '}
+        <Kbd>K</Kbd>
+      </dt>
+      <dd>{t('shortcuts.search')}</dd>
+    </div>
+    <div class="shortcuts__row">
+      <dt>
+        <Kbd>T</Kbd>
+      </dt>
+      <dd>{t('shortcuts.theme')}</dd>
+    </div>
+    <div class="shortcuts__row">
+      <dt>
+        <Kbd>L</Kbd>
+      </dt>
+      <dd>{t('shortcuts.language')}</dd>
+    </div>
+    <div class="shortcuts__row">
+      <dt>
+        <Kbd>?</Kbd>
+      </dt>
+      <dd>{t('shortcuts.help')}</dd>
+    </div>
+  </dl>
+  <p class="shortcuts__note">{t('shortcuts.note')}</p>
+</Dialog>
+
+<style>
+  .shortcuts {
+    display: grid;
+    margin: 0;
+  }
+
+  .shortcuts__row {
+    display: grid;
+    grid-template-columns: 8rem 1fr;
+    align-items: center;
+    gap: var(--space-4);
+    min-block-size: var(--target-min);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .shortcuts dd {
+    margin: 0;
+  }
+
+  .shortcuts__note {
+    margin-block-start: var(--space-4);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+</style>

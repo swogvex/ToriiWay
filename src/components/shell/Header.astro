@@ -1,0 +1,194 @@
+---
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import Icon from '../ui/Icon.astro';
+import IconButton from '../ui/IconButton.astro';
+import Kbd from '../ui/Kbd.astro';
+import LangSwitch from './LangSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+export interface Crumb {
+  label: string;
+  /** Omit for the current page. */
+  href?: string;
+}
+
+interface Props {
+  /** Inner pages show a breadcrumb instead of the wordmark. */
+  breadcrumb?: Crumb[] | undefined;
+}
+
+const { breadcrumb } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+<header class="header">
+  <div class="header__inner column">
+    {breadcrumb ? (
+      <nav class="header__crumbs" aria-label={t('nav.breadcrumb')}>
+        <ol>
+          {breadcrumb.map((crumb) => (
+            <li>
+              {crumb.href ? (
+                <a href={crumb.href}>{crumb.label}</a>
+              ) : (
+                <span aria-current="page">{crumb.label}</span>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    ) : (
+      <a class="header__brand" href={localizePath('/', locale)}>
+        <img class="header__mark" src="/brand/torii-mark.svg" alt="" width="36" height="36" />
+        <span class="header__name">{t('site.name')}</span>
+        <span class="header__ja" lang="ja">
+          日本語の鳥居
+        </span>
+      </a>
+    )}
+    <div class="header__actions">
+      <button
+        class="header__search"
+        type="button"
+        aria-keyshortcuts="Control+K Meta+K"
+        data-dialog-open="search-dialog"
+      >
+        <Icon name="search" size={18} />
+        <span class="header__search-text">{t('search.placeholder')}</span>
+        <Kbd class="header__kbd">
+          <span data-mod-key>Ctrl</span> K
+        </Kbd>
+      </button>
+      <LangSwitch class="header__desktop" />
+      <ThemeToggle class="header__desktop" />
+      <IconButton
+        icon="search"
+        label={t('search.open')}
+        size={40}
+        class="header__mobile"
+        data-dialog-open="search-dialog"
+      />
+      <IconButton
+        icon="menu"
+        label={t('menu.open')}
+        size={40}
+        class="header__mobile"
+        aria-haspopup="dialog"
+        data-dialog-open="site-menu"
+      />
+    </div>
+  </div>
+</header>
+
+<style>
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-block-size: 64px;
+    border-block-end: 1px solid var(--line);
+  }
+
+  @media (width >= 64rem) {
+    .header__inner {
+      min-block-size: 80px;
+    }
+  }
+
+  .header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-block-size: var(--target-min);
+    text-decoration: none;
+  }
+
+  .header__name {
+    font-size: var(--text-md);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+
+  .header__ja {
+    color: var(--muted);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+  }
+
+  .header__crumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 500;
+  }
+
+  .header__crumbs li + li::before {
+    margin-inline-end: var(--space-2);
+    color: var(--muted);
+    content: '/';
+  }
+
+  .header__crumbs a {
+    color: var(--muted);
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .header__search {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    inline-size: 256px;
+    min-block-size: 40px;
+    padding: 0 var(--space-2) 0 var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .header__search:hover {
+    border-color: var(--muted);
+  }
+
+  .header__search-text {
+    flex: 1;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .header__search :global(.header__kbd) {
+    white-space: nowrap;
+  }
+
+  /* Small screens: mark + name, search and menu icons (artboard 03). */
+  @media (width < 64rem) {
+    .header__ja,
+    .header__search,
+    .header__actions > :global(.header__desktop) {
+      display: none;
+    }
+  }
+
+  /* Desktop: the rail carries the mark. */
+  @media (width >= 64rem) {
+    .header__mark,
+    .header__actions > :global(.header__mobile) {
+      display: none;
+    }
+  }
+</style>

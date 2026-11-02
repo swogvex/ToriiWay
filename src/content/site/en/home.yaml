@@ -1,0 +1,56 @@
+# Home copy, footer phrase and social links (English).
+# Section names and buttons such as "Index" live in src/i18n/en.json.
+
+title: Nihongo No Torii · Learn Japanese one keystroke at a time
+description: >-
+  Free Japanese practice with no account: a kana typing game, kana and kanji guides, JLPT mock
+  exams and a library of books worth reading.
+
+hero:
+  kicker: Japanese for learners
+  kickerMore: free, open, no account needed
+  title: Learn Japanese one keystroke at a time.
+  lead: >-
+    Type kana against the clock, study every character, practise full JLPT simulations and grab
+    the books worth reading.
+  primary: Play Kana Rush
+  secondary: Start with hiragana
+
+# Home index cards, in order 01–05.
+index:
+  game:
+    kicker: Game
+    text: Speed typing for hiragana, katakana and kanji. Pop bubbles before they cross the screen.
+  learn:
+    kicker: Learn
+    text: Kana charts with stroke order, and a kanji dictionary in English and Spanish.
+  jlpt:
+    kicker: JLPT
+    text: Timed mock exams with a score report.
+  library:
+    kicker: Library
+    text: Books by level, skill and language.
+  community:
+    kicker: Community
+    text: Discord server and video lessons.
+
+# Until the channel feed is wired up, this card links to the YouTube channel.
+video:
+  kicker: YouTube · @nihongonotorii
+  title: Video lessons on the channel
+  text: Short lessons on kana, grammar and the JLPT.
+
+discord:
+  kicker: Discord
+  title: Study with others on the server
+  cta: Join the server
+
+footer:
+  # Furigana goes in brackets right after the kanji: 漢字[かんじ]
+  phrase: 一緒[いっしょ]に頑張[がんば]ろう
+
+social:
+  discord: https://discord.gg/PkQt42bDtk
+  youtube: https://www.youtube.com/@nihongonotorii
+  x: https://x.com/swogvex
+  github: https://github.com/swogvex

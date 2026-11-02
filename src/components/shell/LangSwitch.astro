@@ -1,0 +1,85 @@
+---
+/**
+ * EN / ES switch. Links to the same page in the other locale once that locale is
+ * published; until then it is a button that explains Spanish is on its way.
+ */
+import { getLocale, localizePath, PUBLISHED_LOCALES, useTranslations } from '../../i18n';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const pathname = Astro.url.pathname;
+const locale = getLocale(pathname);
+const other = locale === 'en' ? 'es' : 'en';
+const t = useTranslations(locale);
+const classes = ['lang-switch', className];
+---
+
+{PUBLISHED_LOCALES.includes(other) ? (
+  <a
+    class:list={classes}
+    href={localizePath(pathname, other)}
+    hreflang={other}
+    aria-keyshortcuts="L"
+    data-lang-link={other}
+  >
+    <span class="lang-switch__code" aria-current={locale === 'en' ? 'true' : undefined}>
+      EN
+    </span>
+    <span aria-hidden="true">/</span>
+    <span class="lang-switch__code" aria-current={locale === 'es' ? 'true' : undefined}>
+      ES
+    </span>
+    <span class="visually-hidden" lang={other}>
+      {t('lang.switchTo')}
+    </span>
+  </a>
+) : (
+  <button class:list={classes} type="button" aria-keyshortcuts="L" data-lang-soon={t('lang.soon')}>
+    <span class="lang-switch__code" aria-current="true">
+      EN
+    </span>
+    <span aria-hidden="true">/</span>
+    <span class="lang-switch__code">ES</span>
+  </button>
+)}
+
+<style>
+  .lang-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-block-size: 40px;
+    padding-inline: var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  /* Extends the hit area of the 40px control to the 44px touch target. */
+  .lang-switch::after {
+    position: absolute;
+    inset: -2px;
+    content: '';
+  }
+
+  .lang-switch:hover {
+    background: var(--key);
+  }
+
+  /* Current locale: ink and bold, not color alone. */
+  .lang-switch__code[aria-current='true'] {
+    color: var(--ink);
+    font-weight: 500;
+  }
+</style>

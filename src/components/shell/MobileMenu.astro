@@ -1,0 +1,147 @@
+---
+/**
+ * Full-screen menu for screens below 1024px, opened by the header's menu button
+ * (data-dialog-open, handled by the Dialog script). Native <dialog>: Esc closes it.
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import { SECTIONS, sectionCurrent } from '../../lib/nav';
+import Icon from '../ui/Icon.astro';
+import IconButton from '../ui/IconButton.astro';
+import LangSwitch from './LangSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const pathname = Astro.url.pathname;
+const locale = getLocale(pathname);
+const t = useTranslations(locale);
+---
+
+<dialog class="menu" id="site-menu" aria-labelledby="site-menu-title">
+  <div class="menu__inner column">
+    <header class="menu__header">
+      <img src="/brand/torii-mark.svg" alt="" width="36" height="36" />
+      <h2 class="menu__title" id="site-menu-title">
+        {t('menu.title')}
+      </h2>
+      <form method="dialog">
+        <IconButton icon="x" label="Close" size={40} type="submit" />
+      </form>
+    </header>
+    <nav aria-label={t('nav.main')}>
+      <ul class="menu__list">
+        {SECTIONS.map((section, index) => (
+          <li>
+            <a
+              class="menu__link"
+              href={localizePath(section.href, locale)}
+              aria-current={sectionCurrent(section, pathname)}
+            >
+              <span class="menu__num" aria-hidden="true">
+                {index > 0 && String(index).padStart(2, '0')}
+              </span>
+              <Icon name={section.icon} />
+              <span class="menu__label">{t(`nav.${section.id}`)}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="menu__prefs">
+      <LangSwitch class="menu__pref" />
+      <ThemeToggle variant="button" class="menu__pref" />
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .menu {
+    overscroll-behavior: contain;
+    inline-size: 100%;
+    max-inline-size: none;
+    block-size: 100dvh;
+    max-block-size: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: var(--bg);
+    color: var(--ink);
+    opacity: 0;
+    transition:
+      opacity var(--duration-base) var(--ease),
+      overlay var(--duration-base) allow-discrete,
+      display var(--duration-base) allow-discrete;
+  }
+
+  .menu[open] {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .menu[open] {
+      opacity: 0;
+    }
+  }
+
+  .menu__inner {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-block-size: 100%;
+    padding-block-end: var(--space-6);
+  }
+
+  .menu__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-block-size: 64px;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .menu__title {
+    flex: 1;
+    font-size: var(--text-md);
+  }
+
+  .menu__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    min-block-size: 64px;
+    border-block-end: 1px solid var(--line);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .menu__num {
+    min-inline-size: 2ch;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  /* Current section: underlined label, not color alone. */
+  .menu__link[aria-current] .menu__label {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+  }
+
+  .menu__prefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    padding-block-start: var(--space-6);
+  }
+
+  .menu__prefs > :global(.menu__pref) {
+    min-block-size: 48px;
+    inline-size: 100%;
+  }
+</style>

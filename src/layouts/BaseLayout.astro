@@ -1,51 +1,69 @@
 ---
-import '../styles/base.css';
-import { THEME_PREPAINT_SCRIPT } from '../lib/theme/prepaint';
+/**
+ * Site shell: skip link → rail → header (inside the column) → main → footer, plus the
+ * search, shortcuts and mobile menu dialogs (07-spec-shell).
+ */
+import Footer from '../components/shell/Footer.astro';
+import Head from '../components/shell/Head.astro';
+import Header, { type Crumb } from '../components/shell/Header.astro';
+import MobileMenu from '../components/shell/MobileMenu.astro';
+import Rail from '../components/shell/Rail.astro';
+import SearchDialog from '../components/shell/SearchDialog.astro';
+import ShortcutsDialog from '../components/shell/ShortcutsDialog.astro';
+import Toast from '../components/ui/Toast.astro';
+import { getLocale, useTranslations } from '../i18n';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  breadcrumb?: Crumb[];
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const { title, description, noindex, breadcrumb, jsonLd } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script is:inline set:html={THEME_PREPAINT_SCRIPT} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical.href} />
-    {noindex && <meta name="robots" content="noindex" />}
-    <link
-      rel="preload"
-      href="/fonts/schibsted-grotesk-latin-400-normal.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/schibsted-grotesk-latin-700-normal.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)" />
+    <Head title={title} description={description} noindex={noindex} jsonLd={jsonLd} />
   </head>
   <body>
-    <main id="main">
-      <slot />
-    </main>
+    <a class="skip-link" href="#main">
+      {t('skip')}
+    </a>
+    <Rail />
+    <div class="page">
+      <Header breadcrumb={breadcrumb} />
+      <main id="main" tabindex="-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <SearchDialog />
+    <ShortcutsDialog />
+    <MobileMenu />
+    <Toast />
   </body>
 </html>
+
+<script>
+  import { initShell } from '../lib/shell';
+
+  initShell();
+</script>
+
+<style>
+  @media (width >= 64rem) {
+    .page {
+      padding-inline-start: var(--rail);
+    }
+
+    :global(:root[data-rail='expanded']) .page {
+      padding-inline-start: var(--rail-expanded);
+    }
+  }
+</style>
