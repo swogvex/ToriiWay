@@ -1,0 +1,149 @@
+---
+/**
+ * Detail panel under the kana chart (artboard 08): stroke order, label, romaji, example
+ * words and mnemonic for the selected kana. Server-rendered for the first kana; the
+ * explorer script (lib/kana/explorer.ts) refills it when another cell is chosen.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import type { PanelKana } from '../../lib/kana/data';
+import JaText from '../content/JaText.astro';
+import Button from '../ui/Button.astro';
+import StrokeOrder from './StrokeOrder.astro';
+
+interface Props {
+  kana: PanelKana;
+}
+
+const { kana } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<section
+  class="kana-panel"
+  id="kana-panel"
+  aria-labelledby="kana-panel-title"
+  data-kana-panel
+  data-stroke-label={t('learn.strokeOrder')}
+  data-more-label={t('learn.more')}
+>
+  <div class="kana-panel__glyph">
+    <StrokeOrder glyph={kana.glyph} label={t('learn.strokeOrder', { char: kana.char })} />
+  </div>
+  <div class="kana-panel__body">
+    <p class="kana-panel__label" data-panel-label>
+      {kana.label}
+    </p>
+    <h3 class="kana-panel__title" id="kana-panel-title">
+      <span class="kana-panel__char" lang="ja" data-panel-char>
+        {kana.char}
+      </span>
+      <span data-panel-romaji>{kana.romaji}</span>
+    </h3>
+    <ul class="kana-panel__examples" data-panel-examples>
+      {kana.examples.map((example) => (
+        <li>
+          <span lang="ja">{example.word}</span> {example.reading} — {example.meaning}
+        </li>
+      ))}
+    </ul>
+    <p class="kana-panel__mnemonic" data-panel-mnemonic hidden={!kana.mnemonic}>
+      <JaText text={kana.mnemonic ?? ''} />
+    </p>
+  </div>
+  <div class="kana-panel__actions">
+    <Button variant="outline" data-panel-replay>
+      {t('learn.replay')}
+    </Button>
+    <Button variant="ghost" href={kana.href} data-panel-link>
+      <span data-panel-more>{t('learn.more', { char: kana.char })}</span>
+    </Button>
+  </div>
+  <p class="visually-hidden" role="status" data-panel-status></p>
+</section>
+
+<style>
+  .kana-panel {
+    display: grid;
+    grid-template-columns: 168px minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+    padding: var(--space-6);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  .kana-panel__glyph {
+    padding: var(--space-2);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
+  .kana-panel__body {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .kana-panel__label {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .kana-panel__title {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: var(--leading-display);
+  }
+
+  .kana-panel__char {
+    font-family: var(--font-display-ja);
+  }
+
+  .kana-panel__examples {
+    display: grid;
+    gap: var(--space-1);
+    padding: 0;
+    color: var(--muted);
+    list-style: none;
+  }
+
+  .kana-panel__mnemonic {
+    padding-block-start: var(--space-2);
+    border-block-start: 1px solid var(--line);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .kana-panel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 2;
+    gap: var(--space-3);
+  }
+
+  @media (width < 48rem) {
+    .kana-panel {
+      grid-template-columns: 120px minmax(0, 1fr);
+      padding: var(--space-4);
+    }
+
+    .kana-panel__actions {
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* Without animation there is nothing to replay. */
+  @media (prefers-reduced-motion: reduce) {
+    .kana-panel :global([data-panel-replay]) {
+      display: none;
+    }
+  }
+</style>

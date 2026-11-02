@@ -1,0 +1,113 @@
+---
+/** Beginner guides from the `guides` collection (section: learn), English for now. */
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+
+import JaText from '../../../components/content/JaText.astro';
+import SectionHeader from '../../../components/ui/SectionHeader.astro';
+import { DEFAULT_LOCALE, localizePath, useTranslations } from '../../../i18n';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SCRIPTS } from '../../../lib/kana/data';
+import { breadcrumbList, jsonLdGraph } from '../../../lib/seo';
+
+export const getStaticPaths = (async () => {
+  const guides = await getCollection(
+    'guides',
+    (entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`) && entry.data.section === 'learn',
+  );
+  return guides.map((guide) => ({
+    params: { slug: guide.id.slice(DEFAULT_LOCALE.length + 1) },
+    props: { guide },
+  }));
+}) satisfies GetStaticPaths;
+
+const { guide } = Astro.props;
+const locale = DEFAULT_LOCALE;
+const t = useTranslations(locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const { Content } = await render(guide);
+const pageUrl = new URL(Astro.url.pathname, site);
+// "what-is-hiragana" links back to the hiragana chart.
+const script = SCRIPTS.find((item) => Astro.params.slug === `what-is-${item}`);
+
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('learn.title'), href: localizePath('/learn', locale) },
+  { label: guide.data.title },
+];
+
+const jsonLd = jsonLdGraph(
+  {
+    '@type': 'LearningResource',
+    name: guide.data.title,
+    description: guide.data.description,
+    url: pageUrl.href,
+    inLanguage: locale,
+    educationalLevel: 'Beginner',
+    dateModified: guide.data.updated.toISOString().slice(0, 10),
+  },
+  breadcrumbList(breadcrumb, site, pageUrl),
+);
+---
+
+<BaseLayout
+  title={`${guide.data.title} · ${t('site.name')}`}
+  description={guide.data.description}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+>
+  <article class="guide column">
+    <SectionHeader level="h1" kicker={t('learn.guide.kicker')} title={guide.data.title} />
+    <div class="guide__prose">
+      {guide.data.intro?.map((paragraph) => (
+        <p class="guide__lead">
+          <JaText text={paragraph} />
+        </p>
+      ))}
+      <Content />
+    </div>
+    {script && (
+      <p>
+        <a href={localizePath(`/learn/${script}`, locale)}>
+          {t('learn.openChart', { script: t(`learn.${script}`).toLowerCase() })}
+        </a>
+      </p>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  .guide {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  /* Reading measure: about 70 characters per line. */
+  .guide__prose {
+    display: grid;
+    gap: var(--space-4);
+    max-inline-size: 68ch;
+  }
+
+  .guide__lead {
+    font-size: var(--text-md);
+  }
+
+  .guide__prose :global(h2) {
+    margin-block-start: var(--space-8);
+    font-size: var(--text-lg);
+    line-height: 1.2;
+    scroll-margin-block-start: var(--space-8);
+  }
+
+  .guide__prose :global(ul) {
+    display: grid;
+    gap: var(--space-2);
+    padding-inline-start: var(--space-6);
+  }
+
+  .guide__prose :global(rt) {
+    font-size: 0.6em;
+  }
+</style>

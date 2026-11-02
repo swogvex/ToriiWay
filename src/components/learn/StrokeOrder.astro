@@ -1,0 +1,123 @@
+---
+/**
+ * KanjiVG stroke order of a kana: a faint guide, the ink strokes and the stroke numbers.
+ * lib/kana/strokes.ts animates it (`strokes--playing`) and redraws it in the chart panel,
+ * so the styles are global. Without JS the full glyph shows, numbers included.
+ */
+import { GLYPH_SIZE, type GlyphLayout } from '../../lib/kana/glyph';
+
+interface Props {
+  glyph: GlyphLayout;
+  label: string;
+  class?: string;
+}
+
+const { glyph, label, class: className } = Astro.props;
+const offset = (x: number) => (x ? `translate(${x} 0)` : undefined);
+---
+
+<svg
+  class:list={['strokes', className]}
+  viewBox={`0 0 ${glyph.width} ${GLYPH_SIZE}`}
+  role="img"
+  aria-label={label}
+  data-strokes
+>
+  <g class="strokes__guide">
+    {glyph.strokes.map((stroke) => (
+      <path d={stroke.d} transform={offset(stroke.x)} />
+    ))}
+  </g>
+  <g class="strokes__ink">
+    {glyph.strokes.map((stroke) => (
+      <path d={stroke.d} transform={offset(stroke.x)} pathLength="1" />
+    ))}
+  </g>
+  <g class="strokes__numbers">
+    {glyph.numbers.map((number, index) => (
+      <text x={number.x} y={number.y}>
+        {index + 1}
+      </text>
+    ))}
+  </g>
+</svg>
+
+<style is:global>
+  .strokes path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+  }
+
+  .strokes__guide path {
+    stroke: var(--line-strong);
+  }
+
+  .strokes__ink path {
+    stroke: var(--ink);
+  }
+
+  .strokes__numbers text {
+    fill: var(--accent-ink);
+    font-family: var(--font-mono);
+    font-size: 8px;
+  }
+
+  /*
+   * Stroke order is the one place that animates stroke-dashoffset rather than opacity or
+   * transform: drawing the line is the content. Each stroke starts after the previous.
+   */
+  @media (prefers-reduced-motion: no-preference) {
+    .strokes--playing .strokes__ink path {
+      animation: strokes-draw 480ms var(--ease) both;
+      stroke-dasharray: 1;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(2) {
+      animation-delay: 600ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(3) {
+      animation-delay: 1200ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(4) {
+      animation-delay: 1800ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(5) {
+      animation-delay: 2400ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(6) {
+      animation-delay: 3000ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(7) {
+      animation-delay: 3600ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(8) {
+      animation-delay: 4200ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(9) {
+      animation-delay: 4800ms;
+    }
+
+    .strokes--playing .strokes__ink path:nth-child(10) {
+      animation-delay: 5400ms;
+    }
+  }
+
+  @keyframes strokes-draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+</style>

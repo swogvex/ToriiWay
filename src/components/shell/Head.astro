@@ -9,10 +9,12 @@ interface Props {
   noindex?: boolean | undefined;
   /** Structured data object, rendered as JSON-LD. */
   jsonLd?: Record<string, unknown> | undefined;
+  /** Canonical path when this page duplicates another one; defaults to its own path. */
+  canonical?: string | undefined;
 }
 
-const { title, description, noindex = false, jsonLd } = Astro.props;
-const pathname = Astro.url.pathname;
+const { title, description, noindex = false, jsonLd, canonical: canonicalPath } = Astro.props;
+const pathname = canonicalPath ?? Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site);
 const alternates = PUBLISHED_LOCALES.map((locale) => ({
   locale,

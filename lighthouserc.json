@@ -3,7 +3,12 @@
     "collect": {
       "startServerCommand": "pnpm exec astro preview --port 4321",
       "startServerReadyPattern": "localhost:4321",
-      "url": ["http://localhost:4321/", "http://localhost:4321/404"],
+      "url": [
+        "http://localhost:4321/",
+        "http://localhost:4321/learn/hiragana",
+        "http://localhost:4321/learn/kana/%E3%81%8B",
+        "http://localhost:4321/404"
+      ],
       "numberOfRuns": 3
     },
     "assert": {

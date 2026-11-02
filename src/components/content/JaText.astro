@@ -1,0 +1,12 @@
+---
+/** Plain text with every Japanese run wrapped in lang="ja" (lib/ja.ts). */
+import { splitJapanese } from '../../lib/ja';
+
+interface Props {
+  text: string;
+}
+
+const segments = splitJapanese(Astro.props.text);
+---
+
+{segments.map((segment) => (segment.ja ? <span lang="ja">{segment.text}</span> : segment.text))}

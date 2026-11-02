@@ -77,6 +77,8 @@ test.describe('desktop shell', () => {
   });
 
   test('search opens with Ctrl K, filters in any script and opens with Enter', async ({ page }) => {
+    // Sections only: page results from Pagefind are covered in search.spec.ts.
+    await page.route('**/pagefind/pagefind.js', (route) => route.abort());
     await page.goto('/');
     await page.keyboard.press('Control+k');
     const dialog = page.getByRole('dialog', { name: 'Search' });

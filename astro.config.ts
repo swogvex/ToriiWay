@@ -23,7 +23,13 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     preact(),
-    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/dev/') }),
+    sitemap({
+      filter: (page) => {
+        const { pathname } = new URL(page);
+        // /learn duplicates /learn/hiragana (canonical), so only the canonical is listed.
+        return !pathname.startsWith('/dev/') && pathname !== '/learn';
+      },
+    }),
     pagefind(),
   ],
   build: {
@@ -33,5 +39,5 @@ export default defineConfig({
   },
   // Astro inlines scripts smaller than this limit; keep every script external so
   // `script-src 'self'` needs no per-script hashes.
-  vite: { build: { assetsInlineLimit: 0 } },
+  vite: { build: { assetsInlineLimit: 0, cssCodeSplit: false } },
 });

@@ -43,11 +43,23 @@ const t = useTranslations(locale);
       />
     </div>
     <div class="search__results" id="search-results" role="listbox" aria-label={t('search.title')}>
+      {/* Groups follow 07-spec-shell: Kana · Kanji & words · Library · Videos · Pages. */}
+      <div
+        class="search__group"
+        role="group"
+        aria-label={t('search.group.kana')}
+        data-search-group="kana"
+        hidden
+      >
+        <div class="search__group-title" aria-hidden="true">
+          {t('search.group.kana')}
+        </div>
+      </div>
       <div
         class="search__group"
         role="group"
         aria-label={t('search.group.pages')}
-        data-search-pages
+        data-search-group="pages"
       >
         <div class="search__group-title" aria-hidden="true">
           {t('search.group.pages')}
@@ -71,7 +83,7 @@ const t = useTranslations(locale);
             )}
           </div>
         ))}
-        {/* Pagefind results are appended here by lib/search.ts. */}
+        {/* Pagefind results are appended to their group by lib/search.ts. */}
       </div>
     </div>
     <template data-search-page-icon>
