@@ -30,7 +30,8 @@
     "@astrojs/sitemap": "3.7.4",
     "@astrojs/vercel": "11.0.17",
     "astro": "7.4.4",
-    "preact": "11.1.1"
+    "preact": "11.1.1",
+    "wanakana": "5.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
