@@ -1,0 +1,121 @@
+---
+/**
+ * Latest video + Discord cards. Until the channel feed and the cached member count
+ * exist, both cards link out to the channel and the server.
+ */
+import type { CollectionEntry } from 'astro:content';
+import { getLocale, useTranslations } from '../../i18n';
+import Icon from '../ui/Icon.astro';
+
+type Site = CollectionEntry<'site'>['data'];
+
+interface Props {
+  video: Site['video'];
+  discord: Site['discord'];
+  social: Site['social'];
+}
+
+const { video, discord, social } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<section class="community" aria-labelledby="community-title">
+  <h2 class="visually-hidden" id="community-title">
+    {t('home.communityRow')}
+  </h2>
+  <a class="community-card community-card--video" href={social.youtube}>
+    <span class="community-card__thumb" aria-hidden="true">
+      <Icon name="play" size={24} />
+    </span>
+    <span class="community-card__body">
+      <span class="community-card__kicker">{video.kicker}</span>
+      <h3 class="community-card__title">{video.title}</h3>
+      <span class="community-card__text">{video.text}</span>
+    </span>
+  </a>
+  <a class="community-card" href={social.discord}>
+    <span class="community-card__body">
+      <span class="community-card__kicker">{discord.kicker}</span>
+      <h3 class="community-card__title">{discord.title}</h3>
+      <span class="community-card__cta">
+        {discord.cta}
+        <Icon name="arrow-up-right" size={16} />
+      </span>
+    </span>
+  </a>
+</section>
+
+<style>
+  .community {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  @media (width >= 64rem) {
+    .community {
+      grid-template-columns: 7fr 5fr;
+      gap: var(--gutter);
+    }
+  }
+
+  .community-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .community-card:hover {
+    border-color: var(--ink);
+  }
+
+  .community-card__thumb {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: clamp(112px, 24%, 180px);
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-control);
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .community-card__body {
+    display: grid;
+    gap: var(--space-1);
+    padding-inline: var(--space-2);
+  }
+
+  .community-card__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .community-card__title {
+    font-size: var(--text-md);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .community-card__text {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .community-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    margin-block-start: var(--space-2);
+    color: var(--accent);
+    font-weight: 700;
+  }
+</style>

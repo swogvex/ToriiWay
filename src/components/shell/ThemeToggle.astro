@@ -1,0 +1,101 @@
+---
+/**
+ * Toggle button for dark theme (aria-pressed = dark on screen). The shell script keeps
+ * aria-pressed in sync; the sun/moon icon follows the theme through CSS alone.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  /** `icon` for the header, `button` for full-width text buttons (menu, mobile footer). */
+  variant?: 'icon' | 'button';
+  class?: string;
+}
+
+const { variant = 'icon', class: className } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+{variant === 'icon' ? (
+  <button
+    class:list={['theme-toggle', className]}
+    type="button"
+    aria-pressed="false"
+    aria-label={t('theme.dark')}
+    aria-keyshortcuts="T"
+    data-theme-toggle
+  >
+    <Icon name="moon" size={20} class="theme-toggle__moon" />
+    <Icon name="sun" size={20} class="theme-toggle__sun" />
+  </button>
+) : (
+  <button
+    class:list={['theme-toggle', 'theme-toggle--button', className]}
+    type="button"
+    aria-pressed="false"
+    data-theme-toggle
+  >
+    <Icon name="moon" size={20} class="theme-toggle__moon" />
+    <Icon name="sun" size={20} class="theme-toggle__sun" />
+    {t('theme.dark')}
+  </button>
+)}
+
+<style>
+  .theme-toggle {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    inline-size: 40px;
+    block-size: 40px;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  /* Extends the hit area of the 40px control to the 44px touch target. */
+  .theme-toggle::after {
+    position: absolute;
+    inset: -2px;
+    content: '';
+  }
+
+  .theme-toggle:hover {
+    background: var(--key);
+  }
+
+  .theme-toggle--button {
+    display: inline-flex;
+    gap: var(--space-2);
+    inline-size: auto;
+    block-size: 48px;
+    padding-inline: var(--space-5);
+    font-weight: 500;
+  }
+
+  /* Light on screen shows the moon (go dark); dark shows the sun. */
+  .theme-toggle :global(.theme-toggle__sun) {
+    display: none;
+  }
+
+  :global(:root[data-theme='dark']) .theme-toggle :global(.theme-toggle__sun) {
+    display: block;
+  }
+
+  :global(:root[data-theme='dark']) .theme-toggle :global(.theme-toggle__moon) {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .theme-toggle :global(.theme-toggle__sun) {
+      display: block;
+    }
+
+    :global(:root:not([data-theme='light'])) .theme-toggle :global(.theme-toggle__moon) {
+      display: none;
+    }
+  }
+</style>

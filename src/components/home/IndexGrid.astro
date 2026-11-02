@@ -1,0 +1,252 @@
+---
+/**
+ * Home index (artboard 01/02): numbered cards, each a single link with its area's
+ * kanji. Small screens show the same links as a list (artboard 03).
+ */
+import type { CollectionEntry } from 'astro:content';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import { SECTIONS, type SectionId } from '../../lib/nav';
+
+interface Props {
+  copy: CollectionEntry<'site'>['data']['index'];
+}
+
+const { copy } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+
+const ORDER = ['game', 'learn', 'jlpt', 'library', 'community'] as const;
+const cards = ORDER.map((id, index) => {
+  const section = SECTIONS.find((item) => item.id === id);
+  return {
+    id,
+    number: String(index + 1).padStart(2, '0'),
+    href: localizePath(section?.href ?? '/', locale),
+    glyph: section?.glyph ?? '',
+    title: t(`nav.${id}`),
+    ...copy[id],
+  };
+});
+const large = new Set<SectionId>(['game', 'learn']);
+---
+
+<section class="index" aria-labelledby="index-title">
+  <header class="index__header">
+    <h2 class="index__title" id="index-title">
+      {t('home.index')}
+    </h2>
+    <p class="index__count">
+      {t('home.sections', { count: String(cards.length).padStart(2, '0') })}
+    </p>
+  </header>
+  <ul class="index__grid">
+    {cards.map((card) => (
+      <li class:list={['index__item', large.has(card.id) && 'index__item--large']}>
+        <a class:list={['index-card', `index-card--${card.id}`]} href={card.href}>
+          <span class="index-card__kicker">
+            <span class="index-card__number">{card.number}</span>
+            <span class="index-card__category"> / {card.kicker}</span>
+          </span>
+          <span class="index-card__glyph" lang="ja" aria-hidden="true">
+            {card.glyph}
+          </span>
+          <h3 class="index-card__title">{card.title}</h3>
+          <p class="index-card__text">{card.text}</p>
+          {card.id === 'game' && <span class="index-card__tag">{t('home.desktopOnly')}</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .index {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-10);
+    border-block-start: 1px solid var(--ink);
+  }
+
+  .index__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .index__title,
+  .index__count {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .index__count {
+    text-transform: none;
+  }
+
+  .index__grid {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .index-card {
+    display: grid;
+    grid-template-areas: 'number title glyph';
+    grid-template-columns: 2.5rem 1fr auto;
+    align-items: center;
+    gap: var(--space-4);
+    min-block-size: 64px;
+    border-block-end: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .index-card__kicker {
+    grid-area: number;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .index-card__glyph {
+    grid-area: glyph;
+    font-family: var(--font-display-ja);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .index-card__title {
+    grid-area: title;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .index-card__tag {
+    grid-area: glyph;
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  /* Small screens: a list of links; the game shows its desktop-only tag. */
+  @media (width < 64rem) {
+    .index__header {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .index {
+      padding-block-start: var(--space-2);
+    }
+
+    .index-card__category,
+    .index-card__text,
+    .index-card--game .index-card__glyph {
+      display: none;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .index__grid {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: var(--gutter);
+    }
+
+    .index__item {
+      grid-column: span 2;
+    }
+
+    .index__item--large {
+      grid-column: span 3;
+    }
+
+    .index-card {
+      grid-template:
+        'kicker glyph' 1fr
+        'title title' auto
+        'text text' auto / 1fr auto;
+      align-items: start;
+      gap: var(--space-2) var(--space-4);
+      block-size: 100%;
+      min-block-size: 232px;
+      padding: var(--space-6);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-card);
+      background: var(--surface);
+    }
+
+    .index__item--large .index-card {
+      min-block-size: 272px;
+    }
+
+    .index-card:hover {
+      border-color: var(--ink);
+    }
+
+    .index-card__kicker {
+      grid-area: kicker;
+      font-size: var(--text-xs);
+    }
+
+    .index-card__glyph {
+      font-size: var(--text-display);
+    }
+
+    .index__item--large .index-card__glyph {
+      font-size: 5.5rem;
+    }
+
+    .index-card__title {
+      font-size: var(--text-lg);
+    }
+
+    .index__item--large .index-card__title {
+      font-size: var(--text-xl);
+    }
+
+    .index-card__text {
+      grid-area: text;
+      color: var(--muted);
+      font-size: var(--text-sm);
+    }
+
+    .index-card__tag {
+      display: none;
+    }
+
+    /* Kana Rush: the ink card with the vermilion glyph. */
+    .index-card--game {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .index-card--game .index-card__kicker,
+    .index-card--game .index-card__text {
+      color: color-mix(in srgb, var(--bg) 78%, var(--ink));
+    }
+
+    .index-card--game .index-card__glyph {
+      color: var(--accent);
+    }
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getLocale, localizePath } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  copy: CollectionEntry<'site'>['data']['hero'];
+}
+
+const { copy } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__text">
+    <p class="hero__kicker">
+      {copy.kicker}
+      <span class="hero__kicker-more"> — {copy.kickerMore}</span>
+    </p>
+    <h1 class="hero__title" id="hero-title">
+      {copy.title}
+    </h1>
+    <p class="hero__lead">{copy.lead}</p>
+    <div class="hero__actions">
+      <Button href={localizePath('/game', locale)} size={48} class="hero__play">
+        {copy.primary}
+        <Icon name="arrow-right" size={18} />
+      </Button>
+      <Button
+        href={localizePath('/learn/hiragana', locale)}
+        variant="outline"
+        size={48}
+        class="hero__start"
+      >
+        {copy.secondary}
+      </Button>
+    </div>
+  </div>
+  <div class="hero__glyphs" aria-hidden="true">
+    <span class="hero__torii" lang="ja">
+      鳥居
+    </span>
+    <span class="hero__seal" lang="ja">
+      日本語
+    </span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--gutter);
+    padding-block: var(--space-12) var(--space-10);
+  }
+
+  .hero__text {
+    display: grid;
+    align-content: start;
+    gap: var(--space-6);
+  }
+
+  .hero__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .hero__title {
+    max-inline-size: 15ch;
+    font-size: clamp(2.75rem, 7vw, var(--text-display));
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: var(--leading-display);
+  }
+
+  .hero__lead {
+    max-inline-size: 34rem;
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .hero__glyphs {
+    display: none;
+  }
+
+  /* Small screens (artboard 03): one ink CTA, no lead, no glyph column. */
+  @media (width < 64rem) {
+    .hero__kicker-more,
+    .hero__lead,
+    .hero__actions :global(.hero__play) {
+      display: none;
+    }
+
+    .hero__actions :global(.hero__start) {
+      inline-size: 100%;
+      min-block-size: 52px;
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+    }
+  }
+
+  @media (width >= 64rem) {
+    .hero {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      padding-block: var(--space-16);
+    }
+
+    .hero__text {
+      grid-column: 1 / span 9;
+    }
+
+    .hero__glyphs {
+      display: flex;
+      grid-column: 10 / -1;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--space-4);
+    }
+  }
+
+  .hero__torii {
+    font-family: var(--font-display-ja);
+    font-size: clamp(7rem, 11vw, 10rem);
+    font-weight: 700;
+    line-height: 1;
+    writing-mode: vertical-rl;
+    user-select: none;
+  }
+
+  /* Seal mark (hanko): the hero's one accent. */
+  .hero__seal {
+    display: grid;
+    place-items: center;
+    inline-size: 64px;
+    block-size: 64px;
+    padding: var(--space-2);
+    border: 2px solid var(--accent);
+    border-radius: var(--radius-control);
+    color: var(--accent);
+    font-family: var(--font-display-ja);
+    font-size: var(--text-base);
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: center;
+    word-break: break-all;
+  }
+</style>

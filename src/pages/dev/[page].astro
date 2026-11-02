@@ -5,7 +5,6 @@
  */
 import type { GetStaticPaths } from 'astro';
 import SectionHeader from '../../components/ui/SectionHeader.astro';
-import Toast from '../../components/ui/Toast.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Showcase from './_Showcase.astro';
 
@@ -27,7 +26,6 @@ export const getStaticPaths = (() =>
   </div>
   <Showcase theme="light" />
   <Showcase theme="dark" />
-  <Toast />
 </BaseLayout>
 
 <script>

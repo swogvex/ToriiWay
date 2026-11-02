@@ -1,0 +1,59 @@
+---
+import '../../styles/base.css';
+import { DEFAULT_LOCALE, localizePath, PUBLISHED_LOCALES } from '../../i18n';
+import { THEME_PREPAINT_SCRIPT } from '../../lib/theme/prepaint';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean | undefined;
+  /** Structured data object, rendered as JSON-LD. */
+  jsonLd?: Record<string, unknown> | undefined;
+}
+
+const { title, description, noindex = false, jsonLd } = Astro.props;
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname, Astro.site);
+const alternates = PUBLISHED_LOCALES.map((locale) => ({
+  locale,
+  href: new URL(localizePath(pathname, locale), Astro.site).href,
+}));
+const xDefault = new URL(localizePath(pathname, DEFAULT_LOCALE), Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script is:inline set:html={THEME_PREPAINT_SCRIPT} />
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
+{!noindex && (
+  <>
+    <link rel="canonical" href={canonical.href} />
+    {alternates.map(({ locale, href }) => (
+      <link rel="alternate" hreflang={locale} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
+  </>
+)}
+<link
+  rel="preload"
+  href="/fonts/schibsted-grotesk-latin-400-normal.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/schibsted-grotesk-latin-700-normal.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" href="/brand/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)" />
+{jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

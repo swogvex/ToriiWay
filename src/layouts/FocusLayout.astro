@@ -1,0 +1,65 @@
+---
+/**
+ * Distraction-free shell for the game in play and the JLPT exam: no rail, no footer and
+ * no global shortcuts, just a minimal header with the way home.
+ */
+import Head from '../components/shell/Head.astro';
+import { getLocale, localizePath, useTranslations } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <Head title={title} description={description} noindex={noindex} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {t('skip')}
+    </a>
+    <header class="focus-header column">
+      <a class="focus-header__brand" href={localizePath('/', locale)}>
+        <img src="/brand/torii-mark.svg" alt="" width="32" height="32" />
+        {t('site.name')}
+      </a>
+      <slot name="header" />
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  import { loadLateFonts } from '../lib/fonts';
+
+  loadLateFonts();
+</script>
+
+<style>
+  .focus-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    min-block-size: 56px;
+  }
+
+  .focus-header__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--target-min);
+    font-weight: 700;
+    text-decoration: none;
+  }
+</style>

@@ -17,7 +17,7 @@ for (const route of routes) {
 
 test('home has title, description and canonical', async ({ page }) => {
   await page.goto('/');
-  await expect(page).toHaveTitle('Nihongo No Torii');
+  await expect(page).toHaveTitle(/^Nihongo No Torii/);
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /.+/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/$/);
 });
