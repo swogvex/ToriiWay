@@ -126,6 +126,25 @@ test.describe('desktop shell', () => {
     await expectNoAxeViolations(page);
   });
 
+  test('secondary fonts load after the page, off the critical path', async ({ page }) => {
+    await page.goto('/');
+    await expect
+      .poll(() =>
+        page.evaluate(() =>
+          [...document.fonts]
+            .filter((face) => face.status === 'loaded')
+            .map((face) => `${face.family.replaceAll('"', '')} ${face.weight}`),
+        ),
+      )
+      .toEqual(
+        expect.arrayContaining([
+          'IBM Plex Mono 400',
+          'Schibsted Grotesk 500',
+          'Zen Kaku Gothic New Display 700',
+        ]),
+      );
+  });
+
   test('home exposes structured data, canonical and hreflang', async ({ page }) => {
     await page.goto('/');
     await expect(page.locator('link[rel="alternate"][hreflang="x-default"]')).toHaveCount(1);

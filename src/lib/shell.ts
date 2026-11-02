@@ -3,6 +3,7 @@
  * the language switch and the global keyboard shortcuts. Event delegation only, so it
  * runs once and needs no per-component setup.
  */
+import { loadLateFonts } from './fonts';
 import { RAIL_STORAGE_KEY } from './theme/prepaint';
 import { isTypingTarget, shortcutFor } from './shortcuts';
 import { syncThemeToggles, toggleTheme } from './theme/theme';
@@ -64,6 +65,7 @@ function isMac(): boolean {
 }
 
 export function initShell(): void {
+  loadLateFonts();
   syncThemeToggles();
   syncRailToggle();
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeToggles);
