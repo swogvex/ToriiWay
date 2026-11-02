@@ -1,0 +1,161 @@
+---
+/**
+ * One kana table (artboard 08): vowel columns, consonant rows, a button per kana that
+ * shows it in the detail panel. lib/kana/explorer.ts adds selection and arrow keys.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import { buildChart, type ChartGroup } from '../../lib/kana/chart';
+import type { Kana } from '../../lib/kana/data';
+
+interface Props {
+  items: Kana[];
+  group: ChartGroup;
+  selected: string;
+}
+
+const { items, group, selected } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+const chart = buildChart(items, group);
+const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
+---
+
+<table class="kana-chart" data-kana-chart>
+  <caption class="visually-hidden">{t(`learn.group.${group}`)}</caption>
+  <thead>
+    <tr>
+      <td></td>
+      {chart.columns.map((vowel) => (
+        <th scope="col">{columnLabel(vowel)}</th>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {chart.rows.map((row) => (
+      <tr>
+        <th scope="row">
+          {row.key === 'vowel' ? (
+            <>
+              <span aria-hidden="true">–</span>
+              <span class="visually-hidden">{t('learn.row.vowel')}</span>
+            </>
+          ) : row.key === 'nn' ? (
+            <>
+              <span aria-hidden="true">n</span>
+              <span class="visually-hidden">{t('learn.row.nn')}</span>
+            </>
+          ) : (
+            row.key
+          )}
+        </th>
+        {row.cells.map((kana) => (
+          <td>
+            {kana ? (
+              <button
+                class="kana-cell"
+                type="button"
+                aria-pressed={kana.char === selected ? 'true' : 'false'}
+                aria-controls="kana-panel"
+                data-kana={kana.char}
+              >
+                <span class="kana-cell__char" lang="ja">
+                  {kana.char}
+                </span>
+                <span class="kana-cell__romaji">{kana.romaji}</span>
+              </button>
+            ) : (
+              <span class="kana-cell kana-cell--empty" />
+            )}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .kana-chart {
+    inline-size: 100%;
+    border-collapse: separate;
+    border-spacing: var(--space-2);
+    margin-inline: calc(-1 * var(--space-2));
+    table-layout: fixed;
+  }
+
+  .kana-chart th {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 400;
+  }
+
+  .kana-chart td {
+    padding: 0;
+  }
+
+  .kana-chart thead td {
+    inline-size: var(--space-6);
+  }
+
+  .kana-cell {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: var(--space-1);
+    inline-size: 100%;
+    min-block-size: 76px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease);
+  }
+
+  .kana-cell:hover:not(.kana-cell--empty, [aria-pressed='true']) {
+    border-color: var(--ink);
+  }
+
+  .kana-cell:active:not(.kana-cell--empty) {
+    transform: translateY(1px);
+  }
+
+  /* Selected: ink fill, the same cue as the rail and the search dialog. */
+  .kana-cell[aria-pressed='true'] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .kana-cell--empty {
+    border-color: transparent;
+    background: var(--key);
+    cursor: default;
+  }
+
+  .kana-cell__char {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .kana-cell__romaji {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+  }
+
+  @media (width < 40rem) {
+    .kana-chart {
+      border-spacing: var(--space-1);
+      margin-inline: calc(-1 * var(--space-1));
+    }
+
+    .kana-cell {
+      min-block-size: 60px;
+    }
+
+    .kana-chart thead td {
+      inline-size: var(--space-4);
+    }
+  }
+</style>

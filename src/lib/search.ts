@@ -77,7 +77,8 @@ interface Pagefind {
 interface PagefindPage {
   url: string;
   excerpt: string;
-  meta: { title?: string };
+  /** `group` comes from BaseLayout's searchMeta (kana pages); other pages join Pages. */
+  meta: { title?: string; group?: string };
 }
 
 // Built by src/integrations/pagefind.ts; absent in `astro dev`, where only sections show.
@@ -109,7 +110,13 @@ export function initSearch(root: HTMLElement): void {
   const input = root.querySelector<HTMLInputElement>('[data-search-input]');
   const empty = root.querySelector<HTMLElement>('[data-search-empty]');
   const status = root.querySelector<HTMLElement>('[data-search-status]');
-  const pagesGroup = root.querySelector<HTMLElement>('[data-search-pages]');
+  const groups = new Map(
+    [...root.querySelectorAll<HTMLElement>('[data-search-group]')].map((group) => [
+      group.dataset.searchGroup,
+      group,
+    ]),
+  );
+  const pagesGroup = groups.get('pages');
   const pageIcon = root.querySelector<HTMLTemplateElement>('[data-search-page-icon]');
   const sections = [...root.querySelectorAll<HTMLElement>('[data-search-section]')];
   if (!dialog || !input || !empty || !status || !pagesGroup || !pageIcon) return;
@@ -167,8 +174,11 @@ export function initSearch(root: HTMLElement): void {
   }
 
   function showPages(pages: PagefindPage[]): void {
-    for (const option of pagesGroup?.querySelectorAll('[data-search-page]') ?? []) option.remove();
-    pagesGroup?.append(...pages.map(pageOption));
+    for (const option of root.querySelectorAll('[data-search-page]')) option.remove();
+    pages.forEach((page, index) => {
+      const group = groups.get(page.meta.group ?? 'pages') ?? pagesGroup;
+      group?.append(pageOption(page, index));
+    });
   }
 
   async function searchPages(query: string): Promise<void> {

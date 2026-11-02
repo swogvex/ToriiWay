@@ -19,17 +19,28 @@ interface Props {
   noindex?: boolean;
   breadcrumb?: Crumb[];
   jsonLd?: Record<string, unknown>;
+  /** Path of the page this one duplicates; such a page stays out of the search index. */
+  canonical?: string | undefined;
+  /** Pagefind metadata for this page, e.g. { group: 'kana', title: 'Hiragana chart' }. */
+  searchMeta?: Record<string, string>;
 }
 
-const { title, description, noindex, breadcrumb, jsonLd } = Astro.props;
+const { title, description, noindex, breadcrumb, jsonLd, canonical, searchMeta } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
+const searchable = !noindex && !canonical;
 ---
 
 <!doctype html>
 <html lang={locale}>
   <head>
-    <Head title={title} description={description} noindex={noindex} jsonLd={jsonLd} />
+    <Head
+      title={title}
+      description={description}
+      noindex={noindex}
+      jsonLd={jsonLd}
+      canonical={canonical}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main">
@@ -38,7 +49,12 @@ const t = useTranslations(locale);
     <Rail />
     <div class="page">
       <Header breadcrumb={breadcrumb} />
-      <main id="main" tabindex="-1" data-pagefind-body={noindex ? undefined : ''}>
+      <main id="main" tabindex="-1" data-pagefind-body={searchable ? '' : undefined}>
+        {/* One element per Pagefind meta: it reads a single "key:value" per attribute. */}
+        {searchable &&
+          Object.entries(searchMeta ?? {}).map(([key, value]) => (
+            <span hidden data-pagefind-meta={`${key}:${value}`} />
+          ))}
         <slot />
       </main>
       <Footer />

@@ -1,0 +1,62 @@
+---
+/**
+ * Full page for a script chart: /learn/hiragana, /learn/katakana, and /learn, which
+ * shows hiragana with its canonical pointing at /learn/hiragana (owner decision, M3).
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getKana, kanaHref, type Script, scriptHref } from '../../lib/kana/data';
+import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import KanaView from './KanaView.astro';
+
+interface Props {
+  script: Script;
+  /** Set on /learn, which duplicates /learn/hiragana. */
+  hub?: boolean;
+}
+
+const { script, hub = false } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const href = scriptHref(script, locale);
+const learn = localizePath('/learn', locale);
+const title = t(`learn.${script}.title`);
+
+const breadcrumb = hub
+  ? [{ label: t('nav.home'), href: localizePath('/', locale) }, { label: t('learn.title') }]
+  : [
+      { label: t('nav.home'), href: localizePath('/', locale) },
+      { label: t('learn.title'), href: learn },
+      { label: t(`learn.${script}`) },
+    ];
+
+const items = await getKana(script);
+const jsonLd = jsonLdGraph(
+  {
+    '@type': 'DefinedTermSet',
+    '@id': new URL(href, site).href,
+    name: title,
+    url: new URL(href, site).href,
+    inLanguage: locale,
+    hasDefinedTerm: items.map((kana) => ({
+      '@type': 'DefinedTerm',
+      name: kana.char,
+      alternateName: kana.romaji,
+      url: new URL(kanaHref(kana.char, locale), site).href,
+    })),
+  },
+  breadcrumbList(breadcrumb, site, new URL(Astro.url.pathname, site)),
+);
+---
+
+<BaseLayout
+  title={`${title} · ${t('site.name')}`}
+  description={t(`learn.${script}.description`)}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+  canonical={hub ? href : undefined}
+  searchMeta={{ group: 'kana', title }}
+>
+  <KanaView script={script} />
+</BaseLayout>

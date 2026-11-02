@@ -18,6 +18,11 @@ export const guideSchema = z.strictObject({
   section: z.enum(['learn', 'about', 'legal']),
   order: z.number().int().nonnegative(),
   updated: z.coerce.date(),
+  /**
+   * Plain-text opening paragraphs, shown before the body and beside the kana chart.
+   * Japanese runs are tagged lang="ja" automatically.
+   */
+  intro: z.array(z.string().min(1)).max(4).optional(),
 });
 
 const kanaExample = z.strictObject({
