@@ -153,6 +153,17 @@ test.describe('desktop shell', () => {
     );
     expect(jsonLd).toMatchObject({ '@type': 'WebSite', name: 'Nihongo No Torii' });
   });
+
+  test('external links open in a new tab and say so', async ({ page }) => {
+    await page.goto('/');
+    const external = page.locator('a[href^="http"]');
+    expect(await external.count()).toBeGreaterThanOrEqual(6);
+    for (const link of await external.all()) {
+      await expect(link).toHaveAttribute('target', '_blank');
+      await expect(link).toHaveAttribute('rel', 'noopener');
+      await expect(link).toContainText('(opens in a new tab)');
+    }
+  });
 });
 
 test.describe('mobile shell', () => {

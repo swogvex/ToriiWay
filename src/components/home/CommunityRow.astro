@@ -23,7 +23,12 @@ const t = useTranslations(getLocale(Astro.url.pathname));
   <h2 class="visually-hidden" id="community-title">
     {t('home.communityRow')}
   </h2>
-  <a class="community-card community-card--video" href={social.youtube}>
+  <a
+    class="community-card community-card--video"
+    href={social.youtube}
+    target="_blank"
+    rel="noopener"
+  >
     <span class="community-card__thumb" aria-hidden="true">
       <Icon name="play" size={24} />
     </span>
@@ -31,15 +36,17 @@ const t = useTranslations(getLocale(Astro.url.pathname));
       <span class="community-card__kicker">{video.kicker}</span>
       <h3 class="community-card__title">{video.title}</h3>
       <span class="community-card__text">{video.text}</span>
+      <span class="visually-hidden">{t('a11y.newTab')}</span>
     </span>
   </a>
-  <a class="community-card" href={social.discord}>
+  <a class="community-card" href={social.discord} target="_blank" rel="noopener">
     <span class="community-card__body">
       <span class="community-card__kicker">{discord.kicker}</span>
       <h3 class="community-card__title">{discord.title}</h3>
       <span class="community-card__cta">
         {discord.cta}
         <Icon name="arrow-up-right" size={16} />
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
       </span>
     </span>
   </a>
