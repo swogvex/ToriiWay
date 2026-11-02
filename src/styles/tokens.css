@@ -1,0 +1,97 @@
+/*
+ * Design tokens — direction A · Sumi & Shu (docs: 04-design-system).
+ * Values change only with the owner's approval.
+ * Colors use light-dark(): the system preference applies by default and
+ * data-theme on <html> (set before paint) pins a manual choice.
+ */
+@layer tokens {
+  :root {
+    color-scheme: light dark;
+
+    /* Color */
+    --bg: light-dark(#f5f4f0, #111214);
+    --surface: light-dark(#fff, #1b1c1f);
+    --ink: light-dark(#141414, #edebe6);
+    --muted: light-dark(#5e5e58, #a3a19b);
+    --line: light-dark(#e2e0d9, #26272b);
+    --line-strong: light-dark(#cfcdc5, #34353a);
+    --accent: light-dark(#c8402e, #ee6b55);
+    --accent-soft: light-dark(#f7dcd6, #3a1f1a);
+    --accent-ink: light-dark(#8e2a1c, #f5a496);
+    --info: light-dark(#1f6f8b, #5bb4d3);
+    --info-soft: light-dark(#d7eaf1, #16303a);
+    --skeleton: light-dark(#e7e5df, #232428);
+    --focus: light-dark(#1f6f8b, #5bb4d3);
+    --key: light-dark(#eceae4, #202125);
+    --on-accent: #fff;
+
+    /* Type */
+    --font-ui: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display-ja:
+      'Zen Kaku Gothic New Display', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Noto Sans JP',
+      sans-serif;
+    --font-body-ja:
+      'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Yu Gothic', 'Noto Sans JP',
+      meiryo, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', menlo, monospace;
+    --text-2xs: 0.75rem;
+    --text-xs: 0.8125rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-md: 1.125rem;
+    --text-lg: 1.375rem;
+    --text-xl: 1.75rem;
+    --text-2xl: 2.25rem;
+    --text-3xl: 3.5rem;
+    --text-display: 4rem;
+    --leading-body: 1.5;
+    --leading-display: 1.05;
+    --leading-ja: 1.7;
+    --tracking-label: 0.08em;
+
+    /* Space (px scale 4 → 80) */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-20: 80px;
+
+    /* Layout */
+    --col: 1000px;
+    --col-padding: 24px;
+    --gutter: 24px;
+    --rail: 76px;
+    --rail-expanded: 240px;
+
+    /* Radius */
+    --radius-chip: 6px;
+    --radius-control: 8px;
+    --radius-card: 12px;
+    --radius-pill: 999px;
+
+    /* Elevation: flat; one shadow for modals only */
+    --shadow-modal: 0 24px 60px rgb(0 0 0 / 30%);
+
+    /* Motion */
+    --duration-fast: 120ms;
+    --duration-base: 200ms;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+    /* Targets */
+    --target-min: 44px;
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+  }
+}
