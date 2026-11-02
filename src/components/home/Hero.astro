@@ -38,24 +38,28 @@ const locale = getLocale(Astro.url.pathname);
     </div>
   </div>
   <div class="hero__art" aria-hidden="true">
-    <svg class="hero__clouds" viewBox="0 0 320 260" focusable="false">
-      <g class="hero__cloud hero__cloud--1">
-        <rect x="0" y="0" width="64" height="7" rx="3.5"></rect>
-        <rect x="18" y="12" width="92" height="7" rx="3.5"></rect>
-        <rect x="6" y="24" width="48" height="7" rx="3.5"></rect>
-      </g>
-      <g class="hero__cloud hero__cloud--2">
-        <rect x="262" y="112" width="44" height="6" rx="3"></rect>
-        <rect x="244" y="123" width="76" height="6" rx="3"></rect>
-      </g>
-      <g class="hero__cloud hero__cloud--3">
-        <rect x="14" y="238" width="70" height="6" rx="3"></rect>
-        <rect x="36" y="249" width="96" height="6" rx="3"></rect>
-      </g>
-    </svg>
     <div class="hero__stage">
       <svg class="hero__sun" viewBox="0 0 200 100" focusable="false">
-        <path d="M1 100 A99 99 0 0 1 199 100"></path>
+        <defs>
+          <linearGradient id="hero-sun-glow" x1="0" y1="0" x2="0" y2="1">
+            <stop class="hero__glow-stop" offset="0" stop-opacity="0.2"></stop>
+            <stop class="hero__glow-stop" offset="1" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <path class="hero__sun-glow" d="M1 100 A99 99 0 0 1 199 100 Z"></path>
+        <path class="hero__sun-arc" d="M1 100 A99 99 0 0 1 199 100"></path>
+        <g class="hero__cloud hero__cloud--1">
+          <rect x="68" y="7" width="34" height="3.5" rx="1.75"></rect>
+          <rect x="80" y="13" width="50" height="3.5" rx="1.75"></rect>
+        </g>
+        <g class="hero__cloud hero__cloud--2">
+          <rect x="176" y="48" width="24" height="3.5" rx="1.75"></rect>
+          <rect x="166" y="54" width="40" height="3.5" rx="1.75"></rect>
+        </g>
+        <g class="hero__cloud hero__cloud--3">
+          <rect x="6" y="70" width="28" height="3.5" rx="1.75"></rect>
+          <rect x="-2" y="76" width="42" height="3.5" rx="1.75"></rect>
+        </g>
       </svg>
       <span class="hero__torii" lang="ja">
         鳥居
@@ -153,56 +157,59 @@ const locale = getLocale(Astro.url.pathname);
     }
   }
 
-  /* Slow drifting clouds behind the torii; the reduced-motion reset stops them. */
-  .hero__clouds {
-    position: absolute;
-    inset: -12% -8%;
-    z-index: -1;
-    inline-size: 116%;
-    block-size: 124%;
-    fill: var(--line-strong);
-    overflow: visible;
-  }
-
-  .hero__cloud {
-    animation: hero-drift 18s var(--ease) infinite alternate;
-  }
-
-  .hero__cloud--2 {
-    animation-duration: 23s;
-    animation-delay: -6s;
-  }
-
-  .hero__cloud--3 {
-    animation-duration: 27s;
-    animation-delay: -12s;
-  }
-
-  @keyframes hero-drift {
-    from {
-      transform: translateX(-14px);
-    }
-
-    to {
-      transform: translateX(14px);
-    }
-  }
-
   .hero__stage {
     position: relative;
     display: grid;
     place-items: center;
   }
 
-  /* Rising-sun arc in vermilion: the art's single accent line. */
+  /* Rising sun in vermilion: a hairline arc over a soft wash that fades downward. */
   .hero__sun {
     position: absolute;
     inset-block-start: -18%;
     inline-size: 112%;
+    overflow: visible;
+  }
+
+  .hero__glow-stop {
+    stop-color: var(--accent);
+  }
+
+  .hero__sun-glow {
+    fill: url('#hero-sun-glow');
+  }
+
+  .hero__sun-arc {
     fill: none;
     stroke: var(--accent);
     stroke-width: 1.25;
     vector-effect: non-scaling-stroke;
+  }
+
+  /* Clouds sway inside the sun, behind the torii; the reduced-motion reset stops them. */
+  .hero__cloud {
+    fill: var(--line-strong);
+    animation: hero-sway 10s ease-in-out infinite alternate;
+  }
+
+  .hero__cloud--2 {
+    animation-duration: 12s;
+    animation-direction: alternate-reverse;
+  }
+
+  .hero__cloud--3 {
+    animation-duration: 14s;
+    animation-delay: -5s;
+  }
+
+  @keyframes hero-sway {
+    from {
+      transform: translateX(-12px);
+    }
+
+    to {
+      transform: translateX(12px);
+    }
   }
 
   .hero__torii {
