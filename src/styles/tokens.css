@@ -2,7 +2,8 @@
  * Design tokens — direction A · Sumi & Shu (docs: 04-design-system).
  * Values change only with the owner's approval.
  * Colors use light-dark(): the system preference applies by default and
- * data-theme on <html> (set before paint) pins a manual choice.
+ * data-theme on <html> (set before paint) pins a manual choice; it also works on
+ * any subtree, which the /dev/ui showcase uses to render both themes at once.
  */
 @layer tokens {
   :root {
@@ -23,7 +24,9 @@
     --skeleton: light-dark(#e7e5df, #232428);
     --focus: light-dark(#1f6f8b, #5bb4d3);
     --key: light-dark(#eceae4, #202125);
-    --on-accent: #fff;
+
+    /* White on light shu (4.96:1); white fails on dark shu (3.06:1), so ink there. */
+    --on-accent: light-dark(#fff, #141414);
 
     /* Type */
     --font-ui: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -87,11 +90,11 @@
     --target-min: 44px;
   }
 
-  :root[data-theme='light'] {
+  [data-theme='light'] {
     color-scheme: light;
   }
 
-  :root[data-theme='dark'] {
+  [data-theme='dark'] {
     color-scheme: dark;
   }
 }

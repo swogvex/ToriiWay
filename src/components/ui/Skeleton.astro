@@ -1,0 +1,58 @@
+---
+/**
+ * Loading placeholder for client-fetched content only. Pick the shape closest to the
+ * final content and fine-tune its size with a class from the caller (zero CLS);
+ * inline style attributes are blocked by the CSP. Set aria-busy="true" on the
+ * container while loading.
+ */
+interface Props {
+  shape?: 'text' | 'title' | 'chip' | 'block';
+  class?: string;
+}
+
+const { shape = 'text', class: className } = Astro.props;
+---
+
+<span class:list={['skeleton', `skeleton--${shape}`, className]} aria-hidden="true"></span>
+
+<style>
+  .skeleton {
+    display: block;
+    border-radius: var(--radius-chip);
+    background: var(--skeleton);
+  }
+
+  .skeleton--text {
+    inline-size: 100%;
+    block-size: 1em;
+  }
+
+  .skeleton--title {
+    inline-size: 60%;
+    block-size: var(--text-xl);
+  }
+
+  .skeleton--chip {
+    inline-size: 64px;
+    block-size: 28px;
+  }
+
+  .skeleton--block {
+    inline-size: 100%;
+    block-size: 120px;
+    border-radius: var(--radius-card);
+  }
+
+  /* A soft pulse (opacity only); reduced motion stops it. */
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton {
+      animation: skeleton-pulse 1.4s var(--ease) infinite;
+    }
+  }
+
+  @keyframes skeleton-pulse {
+    50% {
+      opacity: 0.55;
+    }
+  }
+</style>

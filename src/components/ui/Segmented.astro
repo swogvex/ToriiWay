@@ -1,0 +1,103 @@
+---
+/**
+ * Native radio group: the browser provides radiogroup semantics and arrow-key navigation.
+ */
+interface Option {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  name: string;
+  legend: string;
+  options: Option[];
+  value?: string;
+  class?: string;
+}
+
+const { name, legend, options, value = options[0]?.value, class: className } = Astro.props;
+---
+
+<fieldset class:list={['segmented', className]}>
+  <legend class="segmented__legend">{legend}</legend>
+  <div class="segmented__track">
+    {options.map((option) => (
+      <label class="segmented__option">
+        <input
+          class="segmented__input"
+          type="radio"
+          name={name}
+          value={option.value}
+          checked={option.value === value}
+        />
+        <span class="segmented__label">{option.label}</span>
+      </label>
+    ))}
+  </div>
+</fieldset>
+
+<style>
+  .segmented {
+    min-inline-size: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .segmented__legend {
+    margin-block-end: var(--space-2);
+    padding: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .segmented__track {
+    display: inline-flex;
+    gap: var(--space-1);
+    padding: var(--space-1);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+  }
+
+  .segmented__option {
+    position: relative;
+  }
+
+  .segmented__input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .segmented__label {
+    display: grid;
+    place-items: center;
+    min-block-size: 36px;
+    padding-inline: var(--space-4);
+    border-radius: calc(var(--radius-control) - 2px);
+    color: var(--muted);
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  .segmented__input:hover + .segmented__label {
+    color: var(--ink);
+  }
+
+  /* Selected: filled ink plus bold weight, so color is not the only cue. */
+  .segmented__input:checked + .segmented__label {
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .segmented__input:focus-visible + .segmented__label {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+</style>

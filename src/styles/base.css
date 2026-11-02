@@ -1,4 +1,10 @@
-@layer reset, tokens, base, components, utilities;
+/*
+ * Layers order the global styles only. Component styles stay unlayered on purpose:
+ * layer order is fixed by the first stylesheet that names a layer, and component CSS
+ * can load before this file, which would otherwise push components below the reset.
+ * Unlayered rules always beat layered ones, so components win regardless of load order.
+ */
+@layer reset, tokens, base, utilities;
 
 @import url('./tokens.css');
 @import url('./fonts.css');

@@ -1,0 +1,135 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'accent' | 'outline' | 'ghost';
+type Size = 40 | 48 | 52;
+
+interface Props extends Omit<HTMLAttributes<'button'>, 'class'> {
+  variant?: Variant;
+  size?: Size;
+  /** Renders a link styled as a button. */
+  href?: string;
+  loading?: boolean;
+  /** Replaces the label while loading, e.g. "Saving…". */
+  loadingLabel?: string;
+  class?: string;
+}
+
+const {
+  variant = 'primary',
+  size = 48,
+  href,
+  type = 'button',
+  disabled = false,
+  loading = false,
+  loadingLabel,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const classes = ['btn', `btn--${variant}`, `btn--${size}`, className];
+---
+
+{href ? (
+  <a class:list={classes} href={href}>
+    <slot />
+  </a>
+) : (
+  <button
+    class:list={classes}
+    type={type}
+    disabled={disabled}
+    aria-disabled={loading ? 'true' : undefined}
+    aria-busy={loading ? 'true' : undefined}
+    {...rest}
+  >
+    {loading && loadingLabel ? loadingLabel : <slot />}
+  </button>
+)}
+
+<style>
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-block-size: var(--btn-size);
+    padding-inline: var(--btn-padding);
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    font-size: var(--text-base);
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .btn:active:not(:disabled, [aria-disabled='true']) {
+    transform: translateY(1px);
+  }
+
+  .btn--40 {
+    --btn-size: 40px;
+    --btn-padding: var(--space-4);
+  }
+
+  /* Extends the hit area of the 40px size to the 44px touch target. */
+  .btn--40::after {
+    position: absolute;
+    inset: -2px;
+    content: '';
+  }
+
+  .btn--48 {
+    --btn-size: 48px;
+    --btn-padding: var(--space-5);
+  }
+
+  .btn--52 {
+    --btn-size: 52px;
+    --btn-padding: var(--space-6);
+  }
+
+  .btn--primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .btn--primary:hover:not(:disabled, [aria-disabled='true']) {
+    background: color-mix(in srgb, var(--ink) 85%, var(--bg));
+  }
+
+  .btn--accent {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .btn--accent:hover:not(:disabled, [aria-disabled='true']) {
+    background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+  }
+
+  .btn--outline {
+    border-color: var(--ink);
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn--outline:hover:not(:disabled, [aria-disabled='true']),
+  .btn--ghost:hover:not(:disabled, [aria-disabled='true']) {
+    background: var(--key);
+  }
+</style>

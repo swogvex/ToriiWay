@@ -1,0 +1,47 @@
+---
+/**
+ * Polite live region for toasts. Render it once per page (it must exist before the
+ * first message so screen readers pick it up); show messages with showToast().
+ */
+---
+
+<div
+  class="toast-region"
+  role="status"
+  aria-live="polite"
+  aria-atomic="true"
+  data-toast-region
+></div>
+
+<style>
+  .toast-region {
+    position: fixed;
+    inset-block-end: var(--space-6);
+    inset-inline: 0;
+    z-index: 10;
+    display: grid;
+    justify-items: center;
+    padding-inline: var(--space-4);
+    pointer-events: none;
+  }
+
+  .toast-region :global(.toast) {
+    max-inline-size: 480px;
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-control);
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 500;
+    pointer-events: auto;
+    transition:
+      opacity var(--duration-base) var(--ease),
+      transform var(--duration-base) var(--ease);
+  }
+
+  @starting-style {
+    .toast-region :global(.toast) {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+</style>

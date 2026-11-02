@@ -1,0 +1,81 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+interface Props extends Omit<HTMLAttributes<'button'>, 'class' | 'aria-label'> {
+  icon: IconName;
+  /** Mandatory accessible name: the button has no visible text. */
+  label: string;
+  size?: 40 | 48;
+  variant?: 'ghost' | 'outline';
+  class?: string;
+}
+
+const {
+  icon,
+  label,
+  size = 48,
+  variant = 'ghost',
+  type = 'button',
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<button
+  class:list={['icon-btn', `icon-btn--${size}`, `icon-btn--${variant}`, className]}
+  type={type}
+  aria-label={label}
+  {...rest}
+>
+  <Icon name={icon} size={size === 40 ? 20 : 22} />
+</button>
+
+<style>
+  .icon-btn {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    inline-size: var(--icon-btn-size);
+    block-size: var(--icon-btn-size);
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease);
+  }
+
+  .icon-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .icon-btn:hover:not(:disabled) {
+    background: var(--key);
+  }
+
+  .icon-btn:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  .icon-btn--40 {
+    --icon-btn-size: 40px;
+  }
+
+  .icon-btn--40::after {
+    position: absolute;
+    inset: -2px;
+    content: '';
+  }
+
+  .icon-btn--48 {
+    --icon-btn-size: 48px;
+  }
+
+  .icon-btn--outline {
+    border-color: var(--line-strong);
+  }
+</style>

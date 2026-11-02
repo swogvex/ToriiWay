@@ -1,0 +1,60 @@
+---
+/**
+ * Decorative kana/kanji used as a graphic anchor (e.g. 学 for Learn). Hidden from
+ * assistive tech: the meaning must also exist as real text nearby.
+ */
+interface Props {
+  glyph: string;
+  size?: 'md' | 'lg' | 'xl';
+  tone?: 'ink' | 'muted' | 'accent' | 'faint';
+  class?: string;
+}
+
+const { glyph, size = 'lg', tone = 'ink', class: className } = Astro.props;
+---
+
+<span
+  class:list={['big-glyph', `big-glyph--${size}`, `big-glyph--${tone}`, className]}
+  lang="ja"
+  aria-hidden="true"
+>
+  {glyph}
+</span>
+
+<style>
+  .big-glyph {
+    display: block;
+    font-family: var(--font-display-ja);
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .big-glyph--md {
+    font-size: var(--text-display);
+  }
+
+  .big-glyph--lg {
+    font-size: clamp(var(--text-display), 14vw, 8rem);
+  }
+
+  .big-glyph--xl {
+    font-size: clamp(6rem, 22vw, 14rem);
+  }
+
+  .big-glyph--ink {
+    color: var(--ink);
+  }
+
+  .big-glyph--muted {
+    color: var(--muted);
+  }
+
+  .big-glyph--accent {
+    color: var(--accent);
+  }
+
+  .big-glyph--faint {
+    color: var(--line-strong);
+  }
+</style>
