@@ -82,9 +82,11 @@ const social = (Object.entries(site.social) as [BrandName, string | undefined][]
         <ul class="footer__social">
           {social.map(([name, url]) => (
             <li>
-              <a class="footer__social-link" href={url}>
+              <a class="footer__social-link" href={url} target="_blank" rel="noopener">
                 <BrandIcon name={name} />
-                <span class="visually-hidden">{t(`footer.${name}`)}</span>
+                <span class="visually-hidden">
+                  {t(`footer.${name}`)} {t('a11y.newTab')}
+                </span>
               </a>
             </li>
           ))}
@@ -99,9 +101,10 @@ const social = (Object.entries(site.social) as [BrandName, string | undefined][]
           <ul>
             {column.links.map((link) => (
               <li>
-                <a href={link.href}>
+                <a href={link.href} {...(link.external && { target: '_blank', rel: 'noopener' })}>
                   {t(link.key)}
                   {link.external && <Icon name="arrow-up-right" size={14} />}
+                  {link.external && <span class="visually-hidden">{t('a11y.newTab')}</span>}
                 </a>
               </li>
             ))}
