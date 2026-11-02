@@ -1,0 +1,44 @@
+---
+/** "Mark as learned" toggle for a kana; lib/kana/learned.ts stores it and syncs the page. */
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  char: string;
+}
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<Button
+  variant="ghost"
+  class="learn-toggle"
+  aria-pressed="false"
+  data-learn-toggle={Astro.props.char}
+  data-panel-learn
+>
+  <span class="learn-toggle__box" aria-hidden="true">
+    <Icon name="check" size={14} />
+  </span>
+  {t('learn.markLearned')}
+</Button>
+
+<style>
+  /* A checkbox-like square: empty, then filled with info blue and a check when pressed. */
+  .learn-toggle__box {
+    display: inline-grid;
+    place-items: center;
+    inline-size: 20px;
+    block-size: 20px;
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    color: transparent;
+  }
+
+  :global(.learn-toggle[aria-pressed='true']) .learn-toggle__box {
+    border-color: var(--info);
+    background: var(--info);
+    color: var(--surface);
+  }
+</style>

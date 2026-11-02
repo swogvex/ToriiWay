@@ -1,11 +1,13 @@
 ---
 /**
  * One kana table (artboard 08): vowel columns, consonant rows, a button per kana that
- * shows it in the detail panel. lib/kana/explorer.ts adds selection and arrow keys.
+ * shows it in the detail panel. lib/kana/explorer.ts adds selection and arrow keys;
+ * lib/kana/learned.ts marks learned cells with a check and a spoken suffix.
  */
 import { getLocale, useTranslations } from '../../i18n';
 import { buildChart, type ChartGroup } from '../../lib/kana/chart';
 import type { Kana } from '../../lib/kana/data';
+import Icon from '../ui/Icon.astro';
 
 interface Props {
   items: Kana[];
@@ -61,6 +63,12 @@ const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
                   {kana.char}
                 </span>
                 <span class="kana-cell__romaji">{kana.romaji}</span>
+                <span class="kana-cell__check" aria-hidden="true">
+                  <Icon name="check" size={14} />
+                </span>
+                <span class="visually-hidden" data-learned-label hidden>
+                  {t('learn.learnedSuffix')}
+                </span>
               </button>
             ) : (
               <span class="kana-cell kana-cell--empty" />
@@ -97,6 +105,7 @@ const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
   }
 
   .kana-cell {
+    position: relative;
     display: grid;
     place-items: center;
     align-content: center;
@@ -130,6 +139,22 @@ const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
     border-color: transparent;
     background: var(--key);
     cursor: default;
+  }
+
+  .kana-cell__check {
+    position: absolute;
+    inset-block-start: var(--space-1);
+    inset-inline-end: var(--space-1);
+    display: none;
+    color: var(--info);
+  }
+
+  .kana-cell[data-learned] .kana-cell__check {
+    display: block;
+  }
+
+  .kana-cell[aria-pressed='true'] .kana-cell__check {
+    color: var(--bg);
   }
 
   .kana-cell__char {

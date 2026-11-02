@@ -1,0 +1,363 @@
+---
+/**
+ * "Test this row" (10-spec-learn: Practice) in a dialog: choose rows and how to answer,
+ * then 10–20 prompts with instant feedback and a score. lib/kana/practice-ui.ts runs it
+ * (started from KanaView's script); this file renders the three steps as real HTML.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import { buildChart, CHART_GROUPS } from '../../lib/kana/chart';
+import type { Kana, Script } from '../../lib/kana/data';
+import Button from '../ui/Button.astro';
+import Dialog from '../ui/Dialog.astro';
+import Segmented from '../ui/Segmented.astro';
+
+interface Props {
+  items: Kana[];
+  script: Script;
+  dataUrl: string;
+}
+
+const { items, script, dataUrl } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+const groups = CHART_GROUPS.map((group) => ({ group, rows: buildChart(items, group).rows }));
+const rowName = (key: string) => (key === 'vowel' ? '–' : key === 'nn' ? 'n' : key);
+---
+
+<Dialog id="kana-practice" title={t('practice.title')} class="practice-dialog">
+  <div
+    class="practice"
+    data-practice
+    data-src={dataUrl}
+    data-script={script}
+    data-progress={t('practice.progress')}
+    data-correct={t('practice.correct')}
+    data-wrong={t('practice.wrong')}
+    data-next={t('practice.next')}
+    data-finish={t('practice.finish')}
+    data-score={t('practice.score')}
+  >
+    <form class="practice__setup" data-practice-setup>
+      <fieldset class="practice__rows">
+        <legend class="practice__legend">{t('practice.rows')}</legend>
+        {groups.map(({ group, rows }) => (
+          <div class="practice__group">
+            <p class="practice__group-title">{t(`learn.group.${group}`)}</p>
+            <div class="practice__row-list">
+              {rows.map((row) => (
+                <label class="practice__row">
+                  <input type="checkbox" name="row" value={`${group}:${row.key}`} />
+                  <span
+                    class="practice__row-key"
+                    aria-hidden={row.key === 'vowel' ? 'true' : undefined}
+                  >
+                    {rowName(row.key)}
+                  </span>
+                  {row.key === 'vowel' && (
+                    <span class="visually-hidden">{t('learn.row.vowel')}</span>
+                  )}
+                  <span lang="ja">
+                    {row.cells
+                      .filter((cell) => cell !== null)
+                      .map((cell) => cell.char)
+                      .join(' ')}
+                  </span>
+                </label>
+              ))}
+            </div>
+          </div>
+        ))}
+      </fieldset>
+      <Segmented
+        name="mode"
+        legend={t('practice.mode')}
+        options={[
+          { value: 'choice', label: t('practice.mode.choice') },
+          { value: 'type', label: t('practice.mode.type') },
+        ]}
+      />
+      <p class="practice__error" role="alert" data-practice-error hidden>
+        {t('practice.pickRow')}
+      </p>
+      <Button type="submit">{t('practice.start')}</Button>
+    </form>
+
+    <section
+      class="practice__question"
+      aria-labelledby="practice-prompt"
+      data-practice-question
+      hidden
+    >
+      <p class="practice__progress" data-practice-progress></p>
+      <p class="practice__prompt" id="practice-prompt">
+        {t('practice.prompt')}
+      </p>
+      <p class="practice__kana" lang="ja" data-practice-kana></p>
+      <div
+        class="practice__choices"
+        role="group"
+        aria-labelledby="practice-prompt"
+        data-practice-choices
+      ></div>
+      <form class="practice__type" data-practice-type hidden>
+        <label class="practice__type-label" for="practice-answer">
+          {t('practice.typeLabel')}
+        </label>
+        <div class="practice__type-row">
+          <input
+            class="practice__input"
+            id="practice-answer"
+            type="text"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            enterkeyhint="done"
+          />
+          <Button type="submit" variant="outline">
+            {t('practice.check')}
+          </Button>
+        </div>
+      </form>
+      <p class="practice__feedback" role="status" data-practice-feedback></p>
+      <Button data-practice-next hidden>
+        {t('practice.next')}
+      </Button>
+    </section>
+
+    <section
+      class="practice__results"
+      aria-labelledby="practice-score"
+      data-practice-results
+      hidden
+    >
+      <p class="practice__score" id="practice-score" tabindex="-1" data-practice-score></p>
+      <p data-practice-perfect hidden>
+        {t('practice.perfect')}
+      </p>
+      <div data-practice-review hidden>
+        <h3 class="practice__legend">{t('practice.misses')}</h3>
+        <ul class="practice__misses" data-practice-misses></ul>
+      </div>
+      <div class="practice__actions">
+        <Button data-practice-again>{t('practice.again')}</Button>
+        <Button variant="outline" data-practice-change>
+          {t('practice.change')}
+        </Button>
+      </div>
+    </section>
+  </div>
+</Dialog>
+
+
+<style>
+  .practice {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .practice__setup,
+  .practice__question,
+  .practice__results {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .practice__question[hidden],
+  .practice__results[hidden],
+  .practice__setup[hidden],
+  .practice__type[hidden],
+  .practice__choices[hidden] {
+    display: none;
+  }
+
+  .practice__rows {
+    display: grid;
+    gap: var(--space-4);
+    min-inline-size: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .practice__legend,
+  .practice__group-title,
+  .practice__progress {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .practice__legend {
+    margin-block-end: var(--space-2);
+    padding: 0;
+  }
+
+  .practice__group {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .practice__row-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-2);
+  }
+
+  .practice__row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    cursor: pointer;
+  }
+
+  .practice__row:has(input:checked) {
+    border-color: var(--ink);
+    background: var(--key);
+  }
+
+  .practice__row input {
+    accent-color: var(--ink);
+  }
+
+  .practice__row-key {
+    min-inline-size: 2.5ch;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .practice__error {
+    color: var(--accent-ink);
+  }
+
+  .practice__question {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .practice__kana {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .practice__choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    inline-size: 100%;
+  }
+
+  .practice__choices :global(.practice__choice) {
+    min-block-size: 52px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    cursor: pointer;
+  }
+
+  .practice__choices :global(.practice__choice:hover:not(:disabled)) {
+    border-color: var(--ink);
+  }
+
+  /* Correct = info + check, wrong = accent + dashed border and strike (never colour alone). */
+  .practice__choices :global(.practice__choice[data-state='correct']) {
+    border-color: var(--info);
+    background: var(--info-soft);
+    color: var(--ink);
+  }
+
+  .practice__choices :global(.practice__choice[data-state='correct'])::before {
+    content: '✓ ';
+  }
+
+  .practice__choices :global(.practice__choice[data-state='wrong']) {
+    border: 1px dashed var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    text-decoration: line-through;
+  }
+
+  .practice__type {
+    display: grid;
+    gap: var(--space-2);
+    inline-size: 100%;
+    text-align: start;
+  }
+
+  .practice__type-row {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .practice__input {
+    flex: 1;
+    min-inline-size: 0;
+    min-block-size: 48px;
+    padding-inline: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+  }
+
+  .practice__input:focus-visible {
+    border-color: var(--ink);
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .practice__feedback {
+    min-block-size: 1.5em;
+    font-weight: 500;
+  }
+
+  .practice__feedback[data-state='correct'] {
+    color: var(--info);
+  }
+
+  .practice__feedback[data-state='wrong'] {
+    color: var(--accent-ink);
+  }
+
+  .practice__score {
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+
+  .practice__misses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .practice__misses :global(li) {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    font-family: var(--font-mono);
+  }
+
+  .practice__misses :global(.practice__miss-char) {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-lg);
+  }
+
+  .practice__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+</style>

@@ -3,11 +3,16 @@
  * Detail panel under the kana chart (artboard 08): stroke order, label, romaji, example
  * words and mnemonic for the selected kana. Server-rendered for the first kana; the
  * explorer script (lib/kana/explorer.ts) refills it when another cell is chosen.
+ * Actions: Listen, Replay strokes, Mark as learned and Test this row; a link leads to
+ * the kana's own page.
  */
 import { getLocale, useTranslations } from '../../i18n';
 import type { PanelKana } from '../../lib/kana/data';
 import JaText from '../content/JaText.astro';
 import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import LearnToggle from './LearnToggle.astro';
+import ListenButton from './ListenButton.astro';
 import StrokeOrder from './StrokeOrder.astro';
 
 interface Props {
@@ -49,13 +54,24 @@ const t = useTranslations(getLocale(Astro.url.pathname));
     <p class="kana-panel__mnemonic" data-panel-mnemonic hidden={!kana.mnemonic}>
       <JaText text={kana.mnemonic ?? ''} />
     </p>
+    <a class="kana-panel__more" href={kana.href} data-panel-link>
+      <span data-panel-more>{t('learn.more', { char: kana.char })}</span>
+      <Icon name="arrow-right" size={16} />
+    </a>
   </div>
   <div class="kana-panel__actions">
+    <ListenButton text={kana.char} audio={kana.audio} />
     <Button variant="outline" data-panel-replay>
       {t('learn.replay')}
     </Button>
-    <Button variant="ghost" href={kana.href} data-panel-link>
-      <span data-panel-more>{t('learn.more', { char: kana.char })}</span>
+    <LearnToggle char={kana.char} />
+    <Button
+      variant="ghost"
+      data-dialog-open="kana-practice"
+      data-practice-row={kana.row}
+      data-panel-test
+    >
+      {t('learn.testRow')}
     </Button>
   </div>
   <p class="visually-hidden" role="status" data-panel-status></p>
@@ -118,6 +134,15 @@ const t = useTranslations(getLocale(Astro.url.pathname));
     border-block-start: 1px solid var(--line);
     color: var(--muted);
     font-size: var(--text-sm);
+  }
+
+  .kana-panel__more {
+    display: inline-flex;
+    gap: var(--space-1);
+    align-items: center;
+    justify-self: start;
+    min-block-size: var(--target-min);
+    font-weight: 500;
   }
 
   .kana-panel__actions {

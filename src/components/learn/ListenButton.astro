@@ -1,0 +1,22 @@
+---
+/**
+ * Says a kana with the browser's Japanese voice, or plays its recording (lib/kana/listen.ts).
+ * Hidden until a voice or recording is known to exist, so it never appears broken.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  text: string;
+  audio?: string | undefined;
+}
+
+const { text, audio } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<Button variant="outline" hidden data-listen={text} data-listen-audio={audio} data-panel-listen>
+  <Icon name="volume-2" size={18} />
+  {t('learn.listen')}
+</Button>

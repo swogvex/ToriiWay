@@ -2,6 +2,7 @@ import { type CollectionEntry, getEntry } from 'astro:content';
 
 import kanjivg from '../../data/kanjivg/kana.json';
 import { localizePath, type Locale, useTranslations } from '../../i18n';
+import { chartGroup, chartRowKey } from './chart';
 import { type GlyphData, type GlyphLayout, glyphLayout } from './glyph';
 
 export type Script = CollectionEntry<'kana'>['data']['script'];
@@ -59,10 +60,20 @@ export function strokesLabel(count: number, locale: Locale): string {
   return count === 1 ? t('learn.strokes.one') : t('learn.strokes.other', { count });
 }
 
+export function practiceRow(kana: Kana): string {
+  return `${chartGroup(kana)}:${chartRowKey(kana)}`;
+}
+
 /** Everything the chart's detail panel shows for one kana, serialised for the client. */
 export interface PanelKana {
   char: string;
   romaji: string;
+  /** Accepted romaji spellings, for practice. */
+  variants: string[];
+  /** Practice row id, `<table>:<row>` such as `gojuon:k`. */
+  row: string;
+  /** Recorded audio; when present it plays instead of the browser voice. */
+  audio?: string | undefined;
   label: string;
   href: string;
   mnemonic?: string | undefined;
@@ -74,6 +85,9 @@ export function panelKana(kana: Kana, script: Script, locale: Locale): PanelKana
   return {
     char: kana.char,
     romaji: kana.romaji,
+    variants: kana.variants,
+    row: practiceRow(kana),
+    audio: kana.audio,
     label: kanaLabel(kana, script, locale),
     href: kanaHref(kana.char, locale),
     mnemonic: (locale === 'es' ? kana.mnemonic?.es : undefined) ?? kana.mnemonic?.en,
