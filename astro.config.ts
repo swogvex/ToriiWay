@@ -3,6 +3,8 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 import { defineConfig } from 'astro/config';
 
+import { pagefind } from './src/integrations/pagefind';
+
 // Until the final domain exists, Vercel builds fall back to the project's production URL.
 const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 const site =
@@ -22,6 +24,7 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/dev/') }),
+    pagefind(),
   ],
   build: {
     format: 'file',
