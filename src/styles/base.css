@@ -1,9 +1,142 @@
-@layer reset, tokens, base, components, utilities;
+/*
+ * Layers order the global styles only. Component styles stay unlayered on purpose:
+ * layer order is fixed by the first stylesheet that names a layer, and component CSS
+ * can load before this file, which would otherwise push components below the reset.
+ * Unlayered rules always beat layered ones, so components win regardless of load order.
+ */
+@layer reset, tokens, base, utilities;
 
-/* Placeholder until the design tokens land: keep browser defaults readable in both schemes. */
-@layer base {
-  a {
+@import url('./tokens.css');
+@import url('./fonts.css');
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  html {
+    text-size-adjust: none;
+  }
+
+  body {
+    min-block-size: 100dvh;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
     color: inherit;
-    text-decoration: underline;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
   }
 }
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    font-size: 100%;
+    line-height: var(--leading-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  :lang(ja) {
+    font-family: var(--font-body-ja);
+    line-height: var(--leading-ja);
+  }
+
+  a {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    text-decoration-thickness: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  code,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+  }
+
+  hr {
+    border: 0;
+    border-block-start: 1px solid var(--line);
+  }
+}
+
+@layer utilities {
+  .visually-hidden {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* The only allowed !important: reduced motion must win over component transitions. */
+/* stylelint-disable declaration-no-important */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* stylelint-enable declaration-no-important */

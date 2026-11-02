@@ -1,0 +1,39 @@
+---
+interface Props {
+  /** An interactive card is a single link. */
+  href?: string;
+  as?: 'div' | 'article' | 'section';
+  class?: string;
+}
+
+const { href, as: Tag = 'div', class: className } = Astro.props;
+---
+
+{href ? (
+  <a class:list={['card', 'card--link', className]} href={href}>
+    <slot />
+  </a>
+) : (
+  <Tag class:list={['card', className]}>
+    <slot />
+  </Tag>
+)}
+
+<style>
+  .card {
+    display: block;
+    padding: var(--space-6);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  .card--link {
+    text-decoration: none;
+  }
+
+  .card--link:hover {
+    border-color: var(--ink);
+  }
+</style>

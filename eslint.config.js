@@ -34,7 +34,8 @@ export default defineConfig(
   },
   {
     // Config files are loaded by tools that require a default export.
-    files: ['*.config.{js,ts}'],
+    // Ambient module declarations mirror the default export of the package they type.
+    files: ['*.config.{js,ts}', '**/*.d.ts'],
     rules: { 'no-restricted-syntax': 'off' },
   },
 );

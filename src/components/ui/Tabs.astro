@@ -1,0 +1,137 @@
+---
+/**
+ * WAI-ARIA tabs with automatic activation. Each panel is passed as a named slot
+ * matching its tab id: <div slot="kana">…</div>.
+ */
+interface Tab {
+  id: string;
+  label: string;
+}
+
+interface Props {
+  /** Unique prefix for the generated ids. */
+  id: string;
+  label: string;
+  tabs: Tab[];
+  selected?: string;
+  class?: string;
+}
+
+const { id, label, tabs, selected = tabs[0]?.id, class: className } = Astro.props;
+
+const panels = await Promise.all(
+  tabs.map(async (tab) => ({ ...tab, html: await Astro.slots.render(tab.id) })),
+);
+---
+
+<div class:list={['tabs', className]} data-tabs>
+  <div class="tabs__list" role="tablist" aria-label={label}>
+    {tabs.map((tab) => (
+      <button
+        class="tabs__tab"
+        type="button"
+        role="tab"
+        id={`${id}-tab-${tab.id}`}
+        aria-controls={`${id}-panel-${tab.id}`}
+        aria-selected={tab.id === selected ? 'true' : 'false'}
+        tabindex={tab.id === selected ? 0 : -1}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+  {/* APG: a tabpanel takes tabindex="0" so keyboard users can reach its content. */}
+  {/* eslint-disable astro/jsx-a11y/no-noninteractive-tabindex */}
+  {panels.map((panel) => (
+    <div
+      class="tabs__panel"
+      role="tabpanel"
+      id={`${id}-panel-${panel.id}`}
+      aria-labelledby={`${id}-tab-${panel.id}`}
+      tabindex="0"
+      hidden={panel.id !== selected}
+      set:html={panel.html}
+    />
+  ))}
+  {/* eslint-enable astro/jsx-a11y/no-noninteractive-tabindex */}
+</div>
+
+<script>
+  function select(tab: HTMLElement): void {
+    const list = tab.closest('[role="tablist"]');
+    const root = tab.closest('[data-tabs]');
+    if (!list || !root) return;
+    for (const other of list.querySelectorAll<HTMLElement>('[role="tab"]')) {
+      const active = other === tab;
+      other.setAttribute('aria-selected', String(active));
+      other.tabIndex = active ? 0 : -1;
+      const panel = root.querySelector<HTMLElement>(`#${other.getAttribute('aria-controls')}`);
+      if (panel) panel.hidden = !active;
+    }
+  }
+
+  document.addEventListener('click', (event) => {
+    const tab = (event.target as Element | null)?.closest<HTMLElement>('[data-tabs] [role="tab"]');
+    if (tab) select(tab);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const tab = (event.target as Element | null)?.closest<HTMLElement>('[data-tabs] [role="tab"]');
+    const list = tab?.closest('[role="tablist"]');
+    if (!tab || !list) return;
+    const tabs = [...list.querySelectorAll<HTMLElement>('[role="tab"]')];
+    const index = tabs.indexOf(tab);
+    const next = {
+      ArrowRight: tabs[(index + 1) % tabs.length],
+      ArrowLeft: tabs[(index - 1 + tabs.length) % tabs.length],
+      Home: tabs[0],
+      End: tabs[tabs.length - 1],
+    }[event.key];
+    if (!next) return;
+    event.preventDefault();
+    next.focus();
+    select(next);
+  });
+</script>
+
+<style>
+  .tabs__list {
+    display: flex;
+    gap: var(--space-6);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .tabs__tab {
+    position: relative;
+    min-block-size: var(--target-min);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .tabs__tab:hover {
+    color: var(--ink);
+  }
+
+  /* Selected: ink text, bold weight and a 2px rule, never color alone. */
+  .tabs__tab[aria-selected='true'] {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .tabs__tab[aria-selected='true']::after {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    block-size: 2px;
+    background: var(--ink);
+    content: '';
+  }
+
+  .tabs__panel {
+    padding-block: var(--space-6);
+  }
+</style>

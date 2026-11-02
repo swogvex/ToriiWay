@@ -1,0 +1,437 @@
+---
+import BigGlyph from '../../components/ui/BigGlyph.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+import Chip from '../../components/ui/Chip.astro';
+import Dialog from '../../components/ui/Dialog.astro';
+import Field from '../../components/ui/Field.astro';
+import IconButton from '../../components/ui/IconButton.astro';
+import Kbd from '../../components/ui/Kbd.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Segmented from '../../components/ui/Segmented.astro';
+import Skeleton from '../../components/ui/Skeleton.astro';
+import Tabs from '../../components/ui/Tabs.astro';
+
+interface Props {
+  theme: 'light' | 'dark';
+}
+
+const { theme } = Astro.props;
+const p = (id: string) => `${theme}-${id}`;
+const colorTokens = [
+  'bg',
+  'surface',
+  'ink',
+  'muted',
+  'line',
+  'line-strong',
+  'accent',
+  'accent-soft',
+  'accent-ink',
+  'info',
+  'info-soft',
+  'skeleton',
+  'focus',
+  'key',
+];
+---
+
+<section class="showcase" data-theme={theme} aria-label={`${theme} theme`}>
+  <div class="showcase__inner">
+    <SectionHeader
+      kicker={theme === 'light' ? 'A / Light' : 'A / Dark'}
+      title={theme === 'light' ? 'Light theme' : 'Dark theme'}
+      class="showcase__header"
+    />
+    <div class="group">
+      <h3>Brand</h3>
+      <div class="row">
+        <img
+          src={`/brand/logo-horizontal-${theme}.svg`}
+          alt="Nihongo No Torii"
+          width="360"
+          height="64"
+        />
+        <img src="/brand/torii-mark.svg" alt="" width="48" height="48" />
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Color tokens</h3>
+      <ul class="swatches">
+        {colorTokens.map((token) => (
+          <li class="swatch">
+            <span class:list={['swatch__chip', `swatch__chip--${token}`]} />
+            <code>--{token}</code>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="group">
+      <h3>Typography</h3>
+      <div class="type-sample">
+        <BigGlyph glyph="日本語" size="md" />
+        <p class="type-sample__latin">Nihongo No Torii</p>
+      </div>
+      <p>
+        Pop bubbles before they cross the screen. Body text sits at 16px with a 1.5 line height.
+      </p>
+      <p lang="ja">ひらがなとカタカナを毎日少しずつ練習しましょう。</p>
+      <p class="mono-label">Data label · 01:24</p>
+    </div>
+
+    <div class="group">
+      <h3>Buttons</h3>
+      <div class="row">
+        <Button variant="primary">Start</Button>
+        <Button variant="accent">Start the test</Button>
+        <Button variant="outline">Learn</Button>
+        <Button variant="ghost">Skip</Button>
+      </div>
+      <div class="row">
+        <Button size={40}>Size 40</Button>
+        <Button size={48}>Size 48</Button>
+        <Button size={52}>Size 52</Button>
+        <Button href="#top" variant="outline">
+          Link button
+        </Button>
+      </div>
+      <div class="row">
+        <Button disabled>Disabled</Button>
+        <Button loading loadingLabel="Saving…">
+          Save
+        </Button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Icon buttons</h3>
+      <div class="row">
+        <IconButton icon="search" label="Search" />
+        <IconButton icon="volume-2" label="Listen" variant="outline" />
+        <IconButton icon={theme === 'light' ? 'moon' : 'sun'} label="Switch theme" size={40} />
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Chips and tags</h3>
+      <div class="row">
+        <Chip>Kana</Chip>
+        <Chip tone="accent">N5</Chip>
+        <Chip tone="info" icon="check">
+          Cleared
+        </Chip>
+      </div>
+      <div class="row">
+        <Chip toggle pressed>
+          Hiragana
+        </Chip>
+        <Chip toggle>Katakana</Chip>
+        <Chip toggle>Kanji</Chip>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Segmented control</h3>
+      <Segmented
+        name={p('difficulty')}
+        legend="Difficulty"
+        value="normal"
+        options={[
+          { value: 'easy', label: 'Easy' },
+          { value: 'normal', label: 'Normal' },
+          { value: 'hard', label: 'Hard' },
+        ]}
+      />
+    </div>
+
+    <div class="group">
+      <h3>Tabs</h3>
+      <Tabs
+        id={p('tabs')}
+        label="Scripts"
+        tabs={[
+          { id: 'hiragana', label: 'Hiragana' },
+          { id: 'katakana', label: 'Katakana' },
+        ]}
+      >
+        <p slot="hiragana">Hiragana spells native words and grammar endings.</p>
+        <p slot="katakana">Katakana spells loanwords, names and emphasis.</p>
+      </Tabs>
+    </div>
+
+    <div class="group">
+      <h3>Cards</h3>
+      <div class="cards">
+        <Card as="article">
+          <p class="mono-label">Static card</p>
+          <p>Surface, strong border, 12px radius. No shadow.</p>
+        </Card>
+        <Card href="#top">
+          <p class="mono-label">Interactive card</p>
+          <p>The whole card is one link.</p>
+        </Card>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Fields</h3>
+      <div class="fields">
+        <Field
+          id={p('name')}
+          label="Display name"
+          hint="Shown on your share card."
+          autocomplete="nickname"
+        />
+        <Field
+          id={p('email')}
+          label="Email"
+          type="email"
+          required
+          error="Enter an email address like name@example.com."
+          value="name@"
+          autocomplete="email"
+        />
+        <Field
+          id={p('level')}
+          label="Level"
+          as="select"
+          value="n5"
+          options={[
+            { value: 'kana', label: 'Kana' },
+            { value: 'n5', label: 'N5' },
+            { value: 'n4', label: 'N4' },
+          ]}
+        />
+        <Field
+          id={p('report')}
+          label="What went wrong?"
+          as="textarea"
+          placeholder="Describe the problem…"
+        />
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Dialog and toast</h3>
+      <div class="row">
+        <Button variant="outline" data-dialog-open={p('dialog')}>
+          Open dialog
+        </Button>
+        <Button variant="outline" data-toast="Progress saved">
+          Show toast
+        </Button>
+      </div>
+      <Dialog id={p('dialog')} title="Finish the test?">
+        <p>You have 4 unanswered questions. Finished tests can't be resumed.</p>
+        <Fragment slot="footer">
+          <form method="dialog">
+            <Button variant="ghost" type="submit">
+              Keep going
+            </Button>
+          </form>
+          <form method="dialog">
+            <Button variant="accent" type="submit">
+              Finish test
+            </Button>
+          </form>
+        </Fragment>
+      </Dialog>
+    </div>
+
+    <div class="group">
+      <h3>Skeleton</h3>
+      <div class="skeletons" aria-busy="true">
+        <span class="visually-hidden">Loading results…</span>
+        <Skeleton shape="title" />
+        <Skeleton />
+        <Skeleton class="skeleton-short" />
+        <div class="row">
+          <Skeleton shape="chip" />
+          <Skeleton shape="chip" />
+        </div>
+        <Skeleton shape="block" />
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Keyboard hints</h3>
+      <p>
+        Press <Kbd>?</Kbd> for shortcuts, <Kbd>Esc</Kbd> to pause, <Kbd>Ctrl</Kbd> + <Kbd>K</Kbd> to
+        search.
+      </p>
+    </div>
+
+    <div class="group">
+      <h3>Big glyphs</h3>
+      <div class="row glyphs">
+        <BigGlyph glyph="打" size="md" />
+        <BigGlyph glyph="学" size="md" tone="muted" />
+        <BigGlyph glyph="試" size="md" tone="accent" />
+        <BigGlyph glyph="本" size="md" tone="faint" />
+        <BigGlyph glyph="輪" size="md" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .showcase {
+    padding-block: var(--space-12);
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  .showcase__inner {
+    display: grid;
+    gap: var(--space-10);
+    max-inline-size: var(--col);
+    margin-inline: auto;
+    padding-inline: var(--col-padding);
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .group h3 {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .swatch {
+    display: grid;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+  }
+
+  .swatch__chip {
+    block-size: 48px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
+  .swatch__chip--bg {
+    background: var(--bg);
+  }
+
+  .swatch__chip--surface {
+    background: var(--surface);
+  }
+
+  .swatch__chip--ink {
+    background: var(--ink);
+  }
+
+  .swatch__chip--muted {
+    background: var(--muted);
+  }
+
+  .swatch__chip--line {
+    background: var(--line);
+  }
+
+  .swatch__chip--line-strong {
+    background: var(--line-strong);
+  }
+
+  .swatch__chip--accent {
+    background: var(--accent);
+  }
+
+  .swatch__chip--accent-soft {
+    background: var(--accent-soft);
+  }
+
+  .swatch__chip--accent-ink {
+    background: var(--accent-ink);
+  }
+
+  .swatch__chip--info {
+    background: var(--info);
+  }
+
+  .swatch__chip--info-soft {
+    background: var(--info-soft);
+  }
+
+  .swatch__chip--skeleton {
+    background: var(--skeleton);
+  }
+
+  .swatch__chip--focus {
+    background: var(--focus);
+  }
+
+  .swatch__chip--key {
+    background: var(--key);
+  }
+
+  .type-sample {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: var(--space-6);
+  }
+
+  .type-sample__latin {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-display);
+  }
+
+  .mono-label {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .cards,
+  .fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .cards p + p {
+    margin-block-start: var(--space-2);
+  }
+
+  .skeletons {
+    display: grid;
+    gap: var(--space-3);
+    max-inline-size: 480px;
+  }
+
+  .skeleton-short {
+    inline-size: 40%;
+  }
+
+  .glyphs {
+    gap: var(--space-6);
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  /** Mono kicker such as "02 / Learn" (rendered uppercase). */
+  kicker: string;
+  title: string;
+  level?: 'h1' | 'h2';
+  class?: string;
+}
+
+const { kicker, title, level: Heading = 'h2', class: className } = Astro.props;
+---
+
+<header class:list={['section-header', `section-header--${Heading}`, className]}>
+  <p class="section-header__kicker">{kicker}</p>
+  <Heading class="section-header__title">{title}</Heading>
+  <slot />
+</header>
+
+<style>
+  .section-header {
+    display: grid;
+    gap: var(--space-2);
+    padding-block-end: var(--space-4);
+    border-block-end: 1px solid var(--ink);
+  }
+
+  .section-header__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .section-header__title {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: var(--leading-display);
+  }
+
+  .section-header--h1 .section-header__title {
+    font-size: clamp(var(--text-2xl), 6vw, var(--text-3xl));
+  }
+
+  .section-header--h2 .section-header__title {
+    font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
+  }
+</style>

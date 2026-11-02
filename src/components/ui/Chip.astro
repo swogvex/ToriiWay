@@ -1,0 +1,111 @@
+---
+import Icon from './Icon.astro';
+import type { IconName } from './icons';
+
+interface Props {
+  tone?: 'neutral' | 'accent' | 'info';
+  /** Renders a toggle button with aria-pressed instead of a static tag. */
+  toggle?: boolean;
+  pressed?: boolean;
+  icon?: IconName;
+  class?: string;
+}
+
+const { tone = 'neutral', toggle = false, pressed = false, icon, class: className } = Astro.props;
+const classes = ['chip', `chip--${tone}`, toggle && 'chip--toggle', className];
+---
+
+{toggle ? (
+  <button
+    class:list={classes}
+    type="button"
+    aria-pressed={pressed ? 'true' : 'false'}
+    data-chip-toggle
+  >
+    <Icon name="check" size={16} class="chip__check" />
+    <slot />
+  </button>
+) : (
+  <span class:list={classes}>
+    {icon && <Icon name={icon} size={14} />}
+    <slot />
+  </span>
+)}
+
+<script>
+  document.addEventListener('click', (event) => {
+    const chip = (event.target as Element | null)?.closest<HTMLButtonElement>('[data-chip-toggle]');
+    if (!chip) return;
+    chip.setAttribute('aria-pressed', String(chip.getAttribute('aria-pressed') !== 'true'));
+  });
+</script>
+
+<style>
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-block-size: 28px;
+    padding-inline: var(--space-2);
+    border: 1px solid transparent;
+    border-radius: var(--radius-chip);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .chip--neutral {
+    background: var(--key);
+    color: var(--ink);
+  }
+
+  .chip--accent {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  .chip--info {
+    background: var(--info-soft);
+    color: var(--info);
+  }
+
+  .chip--toggle {
+    position: relative;
+    min-block-size: 36px;
+    padding-inline: var(--space-3);
+    border-color: var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  /* Extends the hit area to the 44px touch target. */
+  .chip--toggle::after {
+    position: absolute;
+    inset: -4px;
+    content: '';
+  }
+
+  .chip--toggle:hover {
+    background: var(--key);
+  }
+
+  .chip--toggle[aria-pressed='true'] {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  /* The check is the non-color cue for the pressed state. */
+  .chip--toggle :global(.chip__check) {
+    display: none;
+  }
+
+  .chip--toggle[aria-pressed='true'] :global(.chip__check) {
+    display: block;
+  }
+</style>

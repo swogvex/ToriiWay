@@ -13,7 +13,10 @@ export default defineConfig({
   trailingSlash: 'never',
   output: 'static',
   adapter: vercel(),
-  integrations: [preact(), sitemap()],
+  integrations: [
+    preact(),
+    sitemap({ filter: (page) => !new URL(page).pathname.startsWith('/dev/') }),
+  ],
   build: {
     format: 'file',
     // Keep CSS in external files so `style-src 'self'` works without inline hashes.
