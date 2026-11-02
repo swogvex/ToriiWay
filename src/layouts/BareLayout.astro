@@ -1,0 +1,32 @@
+---
+/**
+ * Page with no shell at all (no rail, header or footer), for full-screen pages such as
+ * the 404. The page renders its own <main>.
+ */
+import Head from '../components/shell/Head.astro';
+import { getLocale } from '../i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex } = Astro.props;
+---
+
+<!doctype html>
+<html lang={getLocale(Astro.url.pathname)}>
+  <head>
+    <Head title={title} description={description} noindex={noindex} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script>
+  import { loadLateFonts } from '../lib/fonts';
+
+  loadLateFonts();
+</script>

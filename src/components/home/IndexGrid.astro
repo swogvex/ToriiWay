@@ -31,14 +31,9 @@ const large = new Set<SectionId>(['game', 'learn']);
 ---
 
 <section class="index" aria-labelledby="index-title">
-  <header class="index__header">
-    <h2 class="index__title" id="index-title">
-      {t('home.index')}
-    </h2>
-    <p class="index__count">
-      {t('home.sections', { count: String(cards.length).padStart(2, '0') })}
-    </p>
-  </header>
+  <h2 class="visually-hidden" id="index-title">
+    {t('home.index')}
+  </h2>
   <ul class="index__grid">
     {cards.map((card) => (
       <li class:list={['index__item', large.has(card.id) && 'index__item--large']}>
@@ -65,26 +60,6 @@ const large = new Set<SectionId>(['game', 'learn']);
     gap: var(--space-6);
     padding-block: var(--space-10);
     border-block-start: 1px solid var(--ink);
-  }
-
-  .index__header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-  }
-
-  .index__title,
-  .index__count {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-  }
-
-  .index__count {
-    text-transform: none;
   }
 
   .index__grid {
@@ -145,15 +120,6 @@ const large = new Set<SectionId>(['game', 'learn']);
 
   /* Small screens: a list of links; the game shows its desktop-only tag. */
   @media (width < 64rem) {
-    .index__header {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      overflow: hidden;
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
-
     .index {
       padding-block-start: var(--space-2);
     }

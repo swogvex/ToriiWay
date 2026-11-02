@@ -1,17 +1,16 @@
 /**
- * The 404 playground (07-spec-shell): 迷 and 子 fall into place and can be dragged,
- * thrown and nudged with the keyboard. Glyphs keep their CSS position and move only
- * through transforms, so there is no layout shift. The loop sleeps when everything
- * rests or the tab is hidden.
+ * The 404 playground (07-spec-shell): 迷 and 子 drop onto the ground line as soon as the
+ * page shows, and can be grabbed by any point, swung, thrown and nudged with the
+ * keyboard. Glyphs keep their CSS position and move only through transforms (no layout
+ * shift). requestAnimationFrame pauses by itself in hidden tabs; the loop also sleeps
+ * once everything rests.
  */
-import { atRest, MAX_SPEED, step, type Body } from './physics';
+import { atRest, step, toLocal, type Body } from './physics';
 
-/** Room left under the floor for the "drag me" hint. */
-const FLOOR_GAP = 64;
-/** How far back in time the release velocity is measured. */
-const THROW_WINDOW_MS = 80;
 const NUDGE = 600;
-const THROW = 1600;
+const THROW = 1700;
+/** Initial tumble (rad/s), so the glyphs land on a corner and tip over. */
+const DROP_SPIN = 1.6;
 
 interface Glyph {
   el: HTMLElement;
@@ -21,118 +20,97 @@ interface Glyph {
   homeY: number;
 }
 
-interface Sample {
-  x: number;
-  y: number;
-  t: number;
-}
-
 export function initPlayground(field: HTMLElement): void {
   const hint = field.querySelector<HTMLElement>('[data-lost-hint]');
   const glyphs: Glyph[] = [...field.querySelectorAll<HTMLElement>('[data-lost-glyph]')].map(
-    (el) => ({ el, body: { x: 0, y: 0, vx: 0, vy: 0, r: 0, held: false }, homeX: 0, homeY: 0 }),
+    (el) => ({
+      el,
+      body: { x: 0, y: 0, vx: 0, vy: 0, angle: 0, spin: 0, half: 0 },
+      homeX: 0,
+      homeY: 0,
+    }),
   );
+  const bodies = glyphs.map((glyph) => glyph.body);
   const bounds = { width: 0, height: 0 };
-  let frame = 0;
+  let running = false;
   let last = 0;
 
   function measure(): void {
     bounds.width = field.clientWidth;
-    bounds.height = field.clientHeight - FLOOR_GAP;
+    bounds.height = field.clientHeight;
     for (const glyph of glyphs) {
       const size = glyph.el.offsetWidth;
       glyph.homeX = glyph.el.offsetLeft + size / 2;
       glyph.homeY = glyph.el.offsetTop + size / 2;
-      glyph.body.r = size / 2;
+      glyph.body.half = size / 2;
     }
   }
 
   function render(): void {
     for (const { el, body, homeX, homeY } of glyphs) {
-      el.style.transform = `translate(${body.x - homeX}px, ${body.y - homeY}px)`;
+      el.style.transform = `translate(${body.x - homeX}px, ${body.y - homeY}px) rotate(${body.angle}rad)`;
     }
   }
 
   function tick(now: number): void {
-    step(
-      glyphs.map((glyph) => glyph.body),
-      bounds,
-      (now - last) / 1000,
-    );
+    step(bodies, bounds, (now - last) / 1000);
     last = now;
     render();
-    frame = atRest(
-      glyphs.map((glyph) => glyph.body),
-      bounds,
-    )
-      ? 0
-      : requestAnimationFrame(tick);
+    if (atRest(bodies, bounds)) running = false;
+    else requestAnimationFrame(tick);
   }
 
   function wake(): void {
-    if (frame || document.hidden) return;
+    if (running || document.visibilityState === 'hidden') return;
+    running = true;
     last = performance.now();
-    frame = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   }
 
   function hideHint(): void {
     hint?.setAttribute('data-hidden', '');
   }
 
+  function pointer(event: PointerEvent): [number, number] {
+    const box = field.getBoundingClientRect();
+    return [event.clientX - box.left, event.clientY - box.top];
+  }
+
   measure();
-  // Start from where the CSS drew them (lifted above their spot), then let them fall.
-  for (const glyph of glyphs) {
+  // Start where the CSS drew them (lifted above the ground), tumbling a little.
+  glyphs.forEach((glyph, index) => {
     const lifted = new DOMMatrixReadOnly(getComputedStyle(glyph.el).transform);
     glyph.body.x = glyph.homeX + lifted.m41;
     glyph.body.y = glyph.homeY + lifted.m42;
-  }
+    glyph.body.spin = index % 2 === 0 ? -DROP_SPIN : DROP_SPIN;
+  });
   render();
   wake();
 
-  for (const glyph of glyphs) {
-    const { el, body } = glyph;
-    let samples: Sample[] = [];
-    let grabX = 0;
-    let grabY = 0;
-
+  for (const { el, body } of glyphs) {
     el.addEventListener('pointerenter', hideHint, { once: true });
     el.addEventListener('focus', hideHint, { once: true });
 
+    // No focus on press: the focus ring is for keyboard users only.
     el.addEventListener('pointerdown', (event) => {
       event.preventDefault();
-      el.focus({ preventScroll: true });
       el.setPointerCapture(event.pointerId);
-      const box = field.getBoundingClientRect();
-      grabX = event.clientX - box.left - body.x;
-      grabY = event.clientY - box.top - body.y;
-      body.held = true;
-      body.vx = 0;
-      body.vy = 0;
-      samples = [];
+      const [x, y] = pointer(event);
+      const [localX, localY] = toLocal(body, x, y);
+      body.grab = { localX, localY, targetX: x, targetY: y };
       hideHint();
       wake();
     });
 
     el.addEventListener('pointermove', (event) => {
-      if (!body.held) return;
-      const box = field.getBoundingClientRect();
-      body.x = Math.min(Math.max(event.clientX - box.left - grabX, body.r), bounds.width - body.r);
-      body.y = Math.min(Math.max(event.clientY - box.top - grabY, body.r), bounds.height - body.r);
-      const now = performance.now();
-      samples.push({ x: body.x, y: body.y, t: now });
-      samples = samples.filter((sample) => now - sample.t <= THROW_WINDOW_MS);
+      if (!body.grab) return;
+      [body.grab.targetX, body.grab.targetY] = pointer(event);
+      wake();
     });
 
+    // Letting go keeps the body's own velocity and spin: that is the throw.
     const release = () => {
-      if (!body.held) return;
-      body.held = false;
-      const first = samples[0];
-      const latest = samples.at(-1);
-      if (first && latest && latest.t > first.t) {
-        const seconds = (latest.t - first.t) / 1000;
-        body.vx = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, (latest.x - first.x) / seconds));
-        body.vy = Math.max(-MAX_SPEED, Math.min(MAX_SPEED, (latest.y - first.y) / seconds));
-      }
+      body.grab = undefined;
       wake();
     };
     el.addEventListener('pointerup', release);
@@ -140,31 +118,25 @@ export function initPlayground(field: HTMLElement): void {
     el.addEventListener('lostpointercapture', release);
 
     el.addEventListener('keydown', (event) => {
-      const push: Record<string, [number, number]> = {
-        ArrowLeft: [-NUDGE, 0],
-        ArrowRight: [NUDGE, 0],
-        ArrowUp: [0, -NUDGE * 1.5],
-        ArrowDown: [0, NUDGE],
-        ' ': [0, -THROW],
+      const push: Record<string, [number, number, number]> = {
+        ArrowLeft: [-NUDGE, 0, -2],
+        ArrowRight: [NUDGE, 0, 2],
+        ArrowUp: [0, -NUDGE * 1.5, 0],
+        ArrowDown: [0, NUDGE, 0],
+        ' ': [0, -THROW, 4],
       };
-      const [dx, dy] = push[event.key] ?? [];
-      if (dx === undefined || dy === undefined) return;
+      const [dx, dy, spin] = push[event.key] ?? [];
+      if (dx === undefined || dy === undefined || spin === undefined) return;
       event.preventDefault();
       body.vx += dx;
       body.vy = event.key === ' ' ? dy : body.vy + dy;
+      body.spin += event.key === ' ' && Math.random() < 0.5 ? -spin : spin;
       hideHint();
       wake();
     });
   }
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      cancelAnimationFrame(frame);
-      frame = 0;
-    } else {
-      wake();
-    }
-  });
+  document.addEventListener('visibilitychange', wake);
 
   new ResizeObserver(() => {
     // Keep each glyph's offset from home while the field resizes.
@@ -172,14 +144,9 @@ export function initPlayground(field: HTMLElement): void {
     measure();
     glyphs.forEach((glyph, index) => {
       const [dx = 0, dy = 0] = offsets[index] ?? [];
-      glyph.body.x = Math.min(
-        Math.max(glyph.homeX + dx, glyph.body.r),
-        bounds.width - glyph.body.r,
-      );
-      glyph.body.y = Math.min(
-        Math.max(glyph.homeY + dy, glyph.body.r),
-        bounds.height - glyph.body.r,
-      );
+      const { half } = glyph.body;
+      glyph.body.x = Math.min(Math.max(glyph.homeX + dx, half), bounds.width - half);
+      glyph.body.y = Math.min(Math.max(glyph.homeY + dy, half), bounds.height - half);
     });
     render();
     wake();

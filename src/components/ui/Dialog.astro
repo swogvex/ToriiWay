@@ -59,6 +59,9 @@ const { id, title, class: className } = Astro.props;
     overscroll-behavior: contain;
     inline-size: min(560px, calc(100vw - 2 * var(--space-4)));
     max-block-size: calc(100dvh - 2 * var(--space-8));
+
+    /* The reset zeroes margins; auto margins are what centre a modal dialog. */
+    margin: auto;
     padding: 0;
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-card);
