@@ -58,4 +58,6 @@ jobs:
           path: |
             playwright-report/
             .lighthouseci/
+          # .lighthouseci is a hidden folder, which upload-artifact skips by default.
+          include-hidden-files: true
           retention-days: 14
