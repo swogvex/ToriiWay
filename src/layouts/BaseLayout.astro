@@ -62,8 +62,16 @@ const t = useTranslations(locale);
       padding-inline-start: var(--rail);
     }
 
+    /*
+     * The expanded rail sits in the empty gutter: the column only moves (just enough) when
+     * the gutter is narrower than the rail. The extra space-4 covers the scrollbar in 100vw.
+     */
     :global(:root[data-rail='expanded']) .page {
-      padding-inline-start: var(--rail-expanded);
+      padding-inline-start: clamp(
+        var(--rail),
+        2 * (var(--rail-expanded) + var(--space-4)) + var(--col) - 100vw,
+        var(--rail-expanded)
+      );
     }
   }
 </style>

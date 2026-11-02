@@ -37,6 +37,19 @@ test.describe('desktop shell', () => {
     await expect(toggle).toHaveAttribute('aria-pressed', 'true');
   });
 
+  test('the expanded rail fits the gutter without moving the column', async ({ page }) => {
+    await page.goto('/');
+    const column = page.locator('main .column').first();
+    const left = () => column.evaluate((el) => el.getBoundingClientRect().left);
+    const before = await left();
+    await page.getByRole('button', { name: 'Show labels' }).click();
+    expect(await left()).toBe(before);
+    const railRight = await page
+      .getByRole('navigation', { name: 'Main' })
+      .evaluate((el) => el.getBoundingClientRect().right);
+    expect(before).toBeGreaterThanOrEqual(railRight);
+  });
+
   test('rail tooltip shows on focus', async ({ page }) => {
     await page.goto('/');
     const learn = page
