@@ -10,3 +10,5 @@ docs/
 CLAUDE.md
 START-AQUI.md
 claude-project-instructions.md
+.claude/
+skills-lock.json
