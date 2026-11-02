@@ -2,7 +2,7 @@ import type { KanaProgress } from '../progress/kana';
 
 /**
  * "Learned" state in the page: chart cells (`[data-kana]`) get `data-learned` and an
- * accessible "learned" suffix, toggles (`[data-learn-toggle="か"]`) get aria-pressed and
+ * accessible "(learned)" suffix, toggles (`[data-learn-toggle="か"]`) get aria-pressed and
  * `[data-learned-count]` shows how many of the script's kana are learned.
  */
 export function syncLearned(root: ParentNode, progress: KanaProgress): void {
@@ -10,8 +10,17 @@ export function syncLearned(root: ParentNode, progress: KanaProgress): void {
   for (const cell of root.querySelectorAll<HTMLElement>('[data-kana]')) {
     const done = learned.has(cell.dataset.kana ?? '');
     cell.toggleAttribute('data-learned', done);
-    const suffix = cell.querySelector<HTMLElement>('[data-learned-label]');
-    if (suffix) suffix.hidden = !done;
+    // The spoken suffix exists only on learned cells, to keep the chart HTML small.
+    let suffix = cell.querySelector<HTMLElement>('[data-learned-label]');
+    if (done && !suffix) {
+      suffix = document.createElement('span');
+      suffix.className = 'visually-hidden';
+      suffix.dataset.learnedLabel = '';
+      suffix.textContent = ` ${cell.closest<HTMLElement>('[data-learned-suffix]')?.dataset.learnedSuffix ?? ''}`;
+      cell.append(suffix);
+    } else if (!done) {
+      suffix?.remove();
+    }
   }
   for (const toggle of root.querySelectorAll<HTMLElement>('[data-learn-toggle]')) {
     toggle.ariaPressed = String(learned.has(toggle.dataset.learnToggle ?? ''));

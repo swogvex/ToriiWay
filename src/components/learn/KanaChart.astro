@@ -2,12 +2,12 @@
 /**
  * One kana table (artboard 08): vowel columns, consonant rows, a button per kana that
  * shows it in the detail panel. lib/kana/explorer.ts adds selection and arrow keys;
- * lib/kana/learned.ts marks learned cells with a check and a spoken suffix.
+ * lib/kana/learned.ts marks learned cells (a CSS check and a spoken suffix it adds), so
+ * the 104 cells carry no extra markup until something is learned.
  */
 import { getLocale, useTranslations } from '../../i18n';
 import { buildChart, type ChartGroup } from '../../lib/kana/chart';
 import type { Kana } from '../../lib/kana/data';
-import Icon from '../ui/Icon.astro';
 
 interface Props {
   items: Kana[];
@@ -21,7 +21,7 @@ const chart = buildChart(items, group);
 const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
 ---
 
-<table class="kana-chart" data-kana-chart>
+<table class="kana-chart" data-kana-chart data-learned-suffix={t('learn.learnedSuffix')}>
   <caption class="visually-hidden">{t(`learn.group.${group}`)}</caption>
   <thead>
     <tr>
@@ -63,12 +63,6 @@ const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
                   {kana.char}
                 </span>
                 <span class="kana-cell__romaji">{kana.romaji}</span>
-                <span class="kana-cell__check" aria-hidden="true">
-                  <Icon name="check" size={14} />
-                </span>
-                <span class="visually-hidden" data-learned-label hidden>
-                  {t('learn.learnedSuffix')}
-                </span>
               </button>
             ) : (
               <span class="kana-cell kana-cell--empty" />
@@ -141,20 +135,21 @@ const columnLabel = (vowel: string) => (group === 'yoon' ? `y${vowel}` : vowel);
     cursor: default;
   }
 
-  .kana-cell__check {
+  /* Learned: a small check drawn with borders (an icon per cell would bloat the HTML). */
+  .kana-cell[data-learned]::after {
     position: absolute;
-    inset-block-start: var(--space-1);
-    inset-inline-end: var(--space-1);
-    display: none;
-    color: var(--info);
+    inset-block-start: 7px;
+    inset-inline-end: 9px;
+    inline-size: 5px;
+    block-size: 9px;
+    border: solid var(--info);
+    border-width: 0 2px 2px 0;
+    content: '';
+    transform: rotate(45deg);
   }
 
-  .kana-cell[data-learned] .kana-cell__check {
-    display: block;
-  }
-
-  .kana-cell[aria-pressed='true'] .kana-cell__check {
-    color: var(--bg);
+  .kana-cell[data-learned][aria-pressed='true']::after {
+    border-color: var(--bg);
   }
 
   .kana-cell__char {

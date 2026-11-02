@@ -5,7 +5,7 @@
  */
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getKana, kanaHref, type Script, scriptHref } from '../../lib/kana/data';
+import { type Script, scriptHref } from '../../lib/kana/data';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
 import KanaView from './KanaView.astro';
 
@@ -31,7 +31,8 @@ const breadcrumb = hub
       { label: t(`learn.${script}`) },
     ];
 
-const items = await getKana(script);
+// Each kana page points back here with inDefinedTermSet; listing all 104 terms here
+// would add about 1.3 KB gzip to a page that is already near the first TCP round trip.
 const jsonLd = jsonLdGraph(
   {
     '@type': 'DefinedTermSet',
@@ -39,12 +40,6 @@ const jsonLd = jsonLdGraph(
     name: title,
     url: new URL(href, site).href,
     inLanguage: locale,
-    hasDefinedTerm: items.map((kana) => ({
-      '@type': 'DefinedTerm',
-      name: kana.char,
-      alternateName: kana.romaji,
-      url: new URL(kanaHref(kana.char, locale), site).href,
-    })),
   },
   breadcrumbList(breadcrumb, site, new URL(Astro.url.pathname, site)),
 );
