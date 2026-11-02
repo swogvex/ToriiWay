@@ -22,7 +22,8 @@
     "fonts:copy": "node scripts/fonts/copy.ts",
     "fonts:subset": "node scripts/fonts/subset.ts",
     "brand:outline": "node scripts/brand/outline-wordmark.ts",
-    "brand:favicons": "node scripts/brand/favicons.ts"
+    "brand:favicons": "node scripts/brand/favicons.ts",
+    "kanjivg:kana": "node scripts/kanjivg/kana.ts"
   },
   "dependencies": {
     "@astrojs/preact": "6.1.1",

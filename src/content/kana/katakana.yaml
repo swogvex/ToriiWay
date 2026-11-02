@@ -1,0 +1,1155 @@
+# Katakana: the basic 46, dakuten and handakuten, and yōon (104 kana).
+# Mnemonics and examples are original. `strokes` must match KanjiVG (the schema checks it).
+script: katakana
+items:
+  - char: ア
+    romaji: a
+    variants: [a]
+    row: vowel
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A hook with a short tail below, like an axe swinging down: “ah!”'
+      es: 'Un gancho con una cola corta debajo, como un hacha que baja: «¡ah!».'
+    examples:
+      - { word: アイス, reading: 'aisu', en: 'ice cream', es: 'helado' }
+      - { word: アニメ, reading: 'anime', en: 'anime', es: 'anime' }
+  - char: イ
+    romaji: i
+    variants: [i]
+    row: vowel
+    vowel: i
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A slanted stroke leaning on a post, like a painter’s easel.'
+      es: 'Un trazo inclinado apoyado en un poste, como un caballete de pintor.'
+    examples:
+      - { word: インク, reading: 'inku', en: 'ink', es: 'tinta' }
+      - { word: イギリス, reading: 'Igirisu', en: 'the UK', es: 'Reino Unido' }
+  - char: ウ
+    romaji: u
+    variants: [u]
+    row: vowel
+    vowel: u
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Hiragana う with an extra stroke on top, like a lid.'
+      es: 'El う de hiragana con un trazo extra arriba, como una tapa.'
+    examples:
+      - { word: ウール, reading: 'ūru', en: 'wool', es: 'lana' }
+      - { word: ウイルス, reading: 'uirusu', en: 'virus', es: 'virus' }
+  - char: エ
+    romaji: e
+    variants: [e]
+    row: vowel
+    vowel: e
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Two bars joined by a post, like the steel beam of an elevator shaft.'
+      es: 'Dos barras unidas por un poste, como la viga de un hueco de ascensor (elevator).'
+    examples:
+      - { word: エアコン, reading: 'eakon', en: 'air conditioner', es: 'aire acondicionado' }
+      - { word: エレベーター, reading: 'erebētā', en: 'lift', es: 'ascensor' }
+  - char: オ
+    romaji: o
+    variants: [o]
+    row: vowel
+    vowel: o
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'A cross with a stroke kicking out to the left, like someone stumbling: “oh!”'
+      es: 'Una cruz con un trazo que sale hacia la izquierda, como alguien que tropieza: «¡oh!».'
+    examples:
+      - { word: オレンジ, reading: 'orenji', en: 'orange', es: 'naranja' }
+      - { word: オーブン, reading: 'ōbun', en: 'oven', es: 'horno' }
+  - char: カ
+    romaji: ka
+    variants: [ka]
+    row: k
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Hiragana か without its little spark: just the blade.'
+      es: 'El か de hiragana sin su chispa: solo la hoja.'
+    examples:
+      - { word: カメラ, reading: 'kamera', en: 'camera', es: 'cámara' }
+      - { word: カレー, reading: 'karē', en: 'curry', es: 'curry' }
+  - char: キ
+    romaji: ki
+    variants: [ki]
+    row: k
+    vowel: i
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Like き with the bottom cut off: a key without its curled tip.'
+      es: 'Como き, pero sin la parte de abajo: una llave sin su punta curvada.'
+    examples:
+      - { word: キロ, reading: 'kiro', en: 'kilo', es: 'kilo' }
+      - { word: キス, reading: 'kisu', en: 'kiss', es: 'beso' }
+  - char: ク
+    romaji: ku
+    variants: [ku]
+    row: k
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Hiragana く with a cap on top, like a beak under a hood.'
+      es: 'El く de hiragana con una visera arriba, como un pico bajo una capucha.'
+    examples:
+      - { word: クラス, reading: 'kurasu', en: 'class', es: 'clase' }
+      - { word: クッキー, reading: 'kukkī', en: 'cookie', es: 'galleta' }
+  - char: ケ
+    romaji: ke
+    variants: [ke]
+    row: k
+    vowel: e
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'A slanted stroke, a bar and a long tail: a K tipped sideways, for “ke”.'
+      es: 'Un trazo inclinado, una barra y una cola larga: una K tumbada, de «ke».'
+    examples:
+      - { word: ケーキ, reading: 'kēki', en: 'cake', es: 'pastel' }
+      - { word: ケース, reading: 'kēsu', en: 'case', es: 'estuche' }
+  - char: コ
+    romaji: ko
+    variants: [ko]
+    row: k
+    vowel: o
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Two strokes making a box with one side open, like a corner: “ko” for corner.'
+      es: 'Dos trazos que forman una caja abierta por un lado, como una esquina o un «co»frecito abierto.'
+    examples:
+      - { word: コーヒー, reading: 'kōhī', en: 'coffee', es: 'café' }
+      - { word: コップ, reading: 'koppu', en: 'glass, cup', es: 'vaso' }
+  - char: サ
+    romaji: sa
+    variants: [sa]
+    row: s
+    vowel: a
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'A crossbar with two legs, one longer and bent, like a sagging shelf.'
+      es: 'Un travesaño con dos patas, una más larga y doblada, como una estantería que se «sa»le de su sitio.'
+    examples:
+      - { word: サッカー, reading: 'sakkā', en: 'football', es: 'fútbol' }
+      - { word: サラダ, reading: 'sarada', en: 'salad', es: 'ensalada' }
+  - char: シ
+    romaji: shi
+    variants: [shi, si]
+    row: s
+    vowel: i
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Two dots on the left and a stroke sweeping up from the bottom, like a shower spraying upward. Compare ツ.'
+      es: 'Dos puntos a la izquierda y un trazo que sube desde abajo, como una ducha que salpica hacia arriba. Compáralo con ツ.'
+    examples:
+      - { word: シャツ, reading: 'shatsu', en: 'shirt', es: 'camisa' }
+      - { word: シーソー, reading: 'shīsō', en: 'seesaw', es: 'balancín' }
+  - char: ス
+    romaji: su
+    variants: [su]
+    row: s
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A bar that bends into a long leg with a small kick, like a skater gliding past.'
+      es: 'Una barra que se dobla en una pierna larga con una pequeña patada, como un patinador que se desliza.'
+    examples:
+      - { word: スープ, reading: 'sūpu', en: 'soup', es: 'sopa' }
+      - { word: スキー, reading: 'sukī', en: 'skiing', es: 'esquí' }
+  - char: セ
+    romaji: se
+    variants: [se]
+    row: s
+    vowel: e
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Hiragana せ with one leg missing.'
+      es: 'El せ de hiragana con una pata menos.'
+    examples:
+      - { word: セーター, reading: 'sētā', en: 'sweater', es: 'jersey' }
+      - { word: セール, reading: 'sēru', en: 'sale', es: 'rebajas' }
+  - char: ソ
+    romaji: so
+    variants: [so]
+    row: s
+    vowel: o
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A tick and a long stroke falling from the top, like rain pouring down. Compare ン.'
+      es: 'Una marca y un trazo largo que caen desde arriba, como la lluvia. Compáralo con ン.'
+    examples:
+      - { word: ソファ, reading: 'sofa', en: 'sofa', es: 'sofá' }
+      - { word: ソース, reading: 'sōsu', en: 'sauce', es: 'salsa' }
+  - char: タ
+    romaji: ta
+    variants: [ta]
+    row: t
+    vowel: a
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Like ク with a short stroke inside, like a tag tied to a package.'
+      es: 'Como ク, con un trazo corto dentro, como una etiqueta atada a un paquete.'
+    examples:
+      - { word: タクシー, reading: 'takushī', en: 'taxi', es: 'taxi' }
+      - { word: タオル, reading: 'taoru', en: 'towel', es: 'toalla' }
+  - char: チ
+    romaji: chi
+    variants: [chi, ti]
+    row: t
+    vowel: i
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'A small tick on top of a cross with a hooked base, like a cheerleader raising an arm.'
+      es: 'Una marca pequeña sobre una cruz con la base curvada, como alguien que levanta el brazo para pedir «chi»cle.'
+    examples:
+      - { word: チーズ, reading: 'chīzu', en: 'cheese', es: 'queso' }
+      - { word: チケット, reading: 'chiketto', en: 'ticket', es: 'entrada' }
+  - char: ツ
+    romaji: tsu
+    variants: [tsu, tu]
+    row: t
+    vowel: u
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Two dots across the top and a stroke falling from the right: water dripping down. Compare シ.'
+      es: 'Dos puntos arriba y un trazo que cae desde la derecha: agua que gotea. Compáralo con シ.'
+    examples:
+      - { word: ツアー, reading: 'tsuā', en: 'tour', es: 'visita guiada' }
+      - { word: スーツ, reading: 'sūtsu', en: 'suit', es: 'traje' }
+  - char: テ
+    romaji: te
+    variants: [te]
+    row: t
+    vowel: e
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Two bars over a bent leg, like a telephone pole.'
+      es: 'Dos barras sobre una pata doblada, como un poste de «te»léfono.'
+    examples:
+      - { word: テレビ, reading: 'terebi', en: 'television', es: 'televisión' }
+      - { word: テスト, reading: 'tesuto', en: 'test', es: 'examen' }
+  - char: ト
+    romaji: to
+    variants: [to]
+    row: t
+    vowel: o
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A post with a short branch on its side, like a totem pole.'
+      es: 'Un poste con una rama corta a un lado, como un «tó»tem.'
+    examples:
+      - { word: トマト, reading: 'tomato', en: 'tomato', es: 'tomate' }
+      - { word: トイレ, reading: 'toire', en: 'toilet', es: 'baño' }
+  - char: ナ
+    romaji: na
+    variants: [na]
+    row: n
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'The cross from hiragana な, without the knot.'
+      es: 'La cruz del な de hiragana, sin el nudo.'
+    examples:
+      - { word: ナイフ, reading: 'naifu', en: 'knife', es: 'cuchillo' }
+      - { word: バナナ, reading: 'banana', en: 'banana', es: 'plátano' }
+  - char: ニ
+    romaji: ni
+    variants: [ni]
+    row: n
+    vowel: i
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Two lines, just like the kanji 二 (ni), which means two.'
+      es: 'Dos líneas, igual que el kanji 二 (ni), que significa dos.'
+    examples:
+      - { word: テニス, reading: 'tenisu', en: 'tennis', es: 'tenis' }
+      - { word: ニュース, reading: 'nyūsu', en: 'news', es: 'noticias' }
+  - char: ヌ
+    romaji: nu
+    variants: [nu]
+    row: n
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Like ス with a short slash through it.'
+      es: 'Como ス, con una rayita que lo atraviesa.'
+    examples:
+      - { word: カヌー, reading: 'kanū', en: 'canoe', es: 'canoa' }
+      - { word: ヌードル, reading: 'nūdoru', en: 'noodles', es: 'fideos' }
+  - char: ネ
+    romaji: ne
+    variants: [ne]
+    row: n
+    vowel: e
+    group: gojuon
+    strokes: 4
+    mnemonic:
+      en: 'A dot, a bent stroke and a cross below, like a necktie under a collar.'
+      es: 'Un punto, un trazo doblado y una cruz debajo, como una corbata bajo el cuello.'
+    examples:
+      - { word: ネクタイ, reading: 'nekutai', en: 'necktie', es: 'corbata' }
+      - { word: ネット, reading: 'netto', en: 'internet, net', es: 'internet, red' }
+  - char: ノ
+    romaji: no
+    variants: [no]
+    row: n
+    vowel: o
+    group: gojuon
+    strokes: 1
+    mnemonic:
+      en: 'One slanted stroke, like a firm “no” slash.'
+      es: 'Un solo trazo inclinado, como una raya que dice «no».'
+    examples:
+      - { word: ノート, reading: 'nōto', en: 'notebook', es: 'cuaderno' }
+      - { word: ピアノ, reading: 'piano', en: 'piano', es: 'piano' }
+  - char: ハ
+    romaji: ha
+    variants: [ha]
+    row: h
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Two strokes spreading apart like a pointed hat: “ha” for hat.'
+      es: 'Dos trazos que se separan como un sombrero puntiagudo; o como alguien que dice «¡ja!» con la boca abierta.'
+    examples:
+      - { word: ハム, reading: 'hamu', en: 'ham', es: 'jamón' }
+      - { word: ハンバーガー, reading: 'hanbāgā', en: 'hamburger', es: 'hamburguesa' }
+  - char: ヒ
+    romaji: hi
+    variants: [hi]
+    row: h
+    vowel: i
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A short bar and a stroke that curves along the bottom, like the heel of a hiking boot.'
+      es: 'Una barra corta y un trazo que se curva por abajo, como el talón de una bota.'
+    examples:
+      - { word: ヒント, reading: 'hinto', en: 'hint', es: 'pista' }
+      - { word: ヒーター, reading: 'hītā', en: 'heater', es: 'calefactor' }
+  - char: フ
+    romaji: fu
+    variants: [fu, hu]
+    row: h
+    vowel: u
+    group: gojuon
+    strokes: 1
+    mnemonic:
+      en: 'One stroke that runs across and hooks down, like a hook to hang a hood on.'
+      es: 'Un trazo que cruza y baja en gancho, como una percha: «fu», cuelga el abrigo.'
+    examples:
+      - { word: フォーク, reading: 'fōku', en: 'fork', es: 'tenedor' }
+      - { word: フランス, reading: 'Furansu', en: 'France', es: 'Francia' }
+  - char: ヘ
+    romaji: he
+    variants: [he]
+    row: h
+    vowel: e
+    group: gojuon
+    strokes: 1
+    mnemonic:
+      en: 'The same small hill as hiragana へ.'
+      es: 'La misma colina pequeña que el へ de hiragana.'
+    examples:
+      - { word: ヘルメット, reading: 'herumetto', en: 'helmet', es: 'casco' }
+      - { word: ヘリコプター, reading: 'herikoputā', en: 'helicopter', es: 'helicóptero' }
+  - char: ホ
+    romaji: ho
+    variants: [ho]
+    row: h
+    vowel: o
+    group: gojuon
+    strokes: 4
+    mnemonic:
+      en: 'A cross with two little feet, like a scarecrow standing in a field: “ho!”'
+      es: 'Una cruz con dos piececitos, como un espantapájaros en el campo: «¡ho!».'
+    examples:
+      - { word: ホテル, reading: 'hoteru', en: 'hotel', es: 'hotel' }
+      - { word: ホーム, reading: 'hōmu', en: 'platform; home', es: 'andén; hogar' }
+  - char: マ
+    romaji: ma
+    variants: [ma]
+    row: m
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A stroke that folds back into a point, like the corner of a folded map.'
+      es: 'Un trazo que se dobla en punta, como la esquina de un «ma»pa doblado.'
+    examples:
+      - { word: マスク, reading: 'masuku', en: 'face mask', es: 'mascarilla' }
+      - { word: マンガ, reading: 'manga', en: 'manga, comics', es: 'manga, cómic' }
+  - char: ミ
+    romaji: mi
+    variants: [mi]
+    row: m
+    vowel: i
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Three short slanted dashes, like three steps up a scale: do-re-mi.'
+      es: 'Tres rayitas inclinadas, como tres notas de una escala: do-re-mi.'
+    examples:
+      - { word: ミルク, reading: 'miruku', en: 'milk', es: 'leche' }
+      - { word: ミス, reading: 'misu', en: 'mistake', es: 'error' }
+  - char: ム
+    romaji: mu
+    variants: [mu]
+    row: m
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A pointed loop with a small tick, like a muscle flexing: “mmm!”'
+      es: 'Un lazo en punta con una marquita, como un «mú»sculo en tensión.'
+    examples:
+      - { word: ゲーム, reading: 'gēmu', en: 'game', es: 'videojuego' }
+      - { word: ムード, reading: 'mūdo', en: 'mood', es: 'ambiente' }
+  - char: メ
+    romaji: me
+    variants: [me]
+    row: m
+    vowel: e
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Two strokes crossing like a closed eye; 目 (me) means eye.'
+      es: 'Dos trazos que se cruzan como un ojo cerrado; 目 (me) significa ojo.'
+    examples:
+      - { word: メール, reading: 'mēru', en: 'email', es: 'correo electrónico' }
+      - { word: メロン, reading: 'meron', en: 'melon', es: 'melón' }
+  - char: モ
+    romaji: mo
+    variants: [mo]
+    row: m
+    vowel: o
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Hiragana も with the hook bent sharply instead of curved.'
+      es: 'El も de hiragana con el gancho en ángulo en vez de curvo.'
+    examples:
+      - { word: モデル, reading: 'moderu', en: 'model', es: 'modelo' }
+      - { word: メモ, reading: 'memo', en: 'memo, note', es: 'nota' }
+  - char: ヤ
+    romaji: ya
+    variants: [ya]
+    row: y
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Hiragana や without its dot.'
+      es: 'El や de hiragana sin el punto.'
+    examples:
+      - { word: タイヤ, reading: 'taiya', en: 'tyre', es: 'neumático' }
+      - { word: ダイヤ, reading: 'daiya', en: 'diamond; timetable', es: 'diamante; horario' }
+  - char: ユ
+    romaji: yu
+    variants: [yu]
+    row: y
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A hook and a bar like a bathtub seen from the side; ゆ (yu) is the hot water inside.'
+      es: 'Un gancho y una barra como una bañera vista de lado; ゆ (yu) es el agua caliente que contiene.'
+    examples:
+      - { word: ユーモア, reading: 'yūmoa', en: 'humour', es: 'humor' }
+      - { word: ユニフォーム, reading: 'yunifōmu', en: 'uniform', es: 'uniforme' }
+  - char: ヨ
+    romaji: yo
+    variants: [yo]
+    row: y
+    vowel: o
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'It looks like a backwards capital E.'
+      es: 'Parece una E mayúscula al revés.'
+    examples:
+      - { word: ヨット, reading: 'yotto', en: 'yacht', es: 'yate' }
+      - { word: ヨーグルト, reading: 'yōguruto', en: 'yogurt', es: 'yogur' }
+  - char: ラ
+    romaji: ra
+    variants: [ra]
+    row: r
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A short bar on top of フ, like ら straightened out.'
+      es: 'Una barra corta sobre フ, como un ら enderezado.'
+    examples:
+      - { word: ラジオ, reading: 'rajio', en: 'radio', es: 'radio' }
+      - { word: ラーメン, reading: 'rāmen', en: 'ramen', es: 'ramen' }
+  - char: リ
+    romaji: ri
+    variants: [ri]
+    row: r
+    vowel: i
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Hiragana り, only straighter.'
+      es: 'El り de hiragana, pero más recto.'
+    examples:
+      - { word: リボン, reading: 'ribon', en: 'ribbon', es: 'lazo' }
+      - { word: リモコン, reading: 'rimokon', en: 'remote control', es: 'mando a distancia' }
+  - char: ル
+    romaji: ru
+    variants: [ru]
+    row: r
+    vowel: u
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Two strokes, the right one curling up at the bottom, like a root splitting.'
+      es: 'Dos trazos, el derecho curvado hacia arriba al final, como una raíz que se abre.'
+    examples:
+      - { word: ルール, reading: 'rūru', en: 'rule', es: 'regla' }
+      - { word: ビール, reading: 'bīru', en: 'beer', es: 'cerveza' }
+  - char: レ
+    romaji: re
+    variants: [re]
+    row: r
+    vowel: e
+    group: gojuon
+    strokes: 1
+    mnemonic:
+      en: 'One stroke down and up, like a check mark leaning to the right.'
+      es: 'Un trazo que baja y sube, como una marca de verificación inclinada a la derecha.'
+    examples:
+      - { word: レモン, reading: 'remon', en: 'lemon', es: 'limón' }
+      - { word: レストラン, reading: 'resutoran', en: 'restaurant', es: 'restaurante' }
+  - char: ロ
+    romaji: ro
+    variants: [ro]
+    row: r
+    vowel: o
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'A square, like a robot’s boxy head.'
+      es: 'Un cuadrado, como la cabeza de un «ro»bot.'
+    examples:
+      - { word: ロボット, reading: 'robotto', en: 'robot', es: 'robot' }
+      - { word: ロケット, reading: 'roketto', en: 'rocket', es: 'cohete' }
+  - char: ワ
+    romaji: wa
+    variants: [wa]
+    row: w
+    vowel: a
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'Like ウ without the top dash: a wide open mouth going “wa!”'
+      es: 'Como ウ sin la rayita de arriba: una boca muy abierta que dice «¡wa!».'
+    examples:
+      - { word: ワイン, reading: 'wain', en: 'wine', es: 'vino' }
+      - { word: ワイシャツ, reading: 'waishatsu', en: 'dress shirt', es: 'camisa de vestir' }
+  - char: ヲ
+    romaji: wo
+    variants: [wo, o]
+    row: w
+    vowel: o
+    group: gojuon
+    strokes: 3
+    mnemonic:
+      en: 'Like フ with an extra bar inside and a tail. You will rarely see it outside old telegrams.'
+      es: 'Como フ con una barra extra dentro y una cola. Casi solo aparece en telegramas antiguos.'
+    examples:
+      - {
+          word: カネヲオクレ,
+          reading: 'kane o okure',
+          en: 'send money (old telegram style)',
+          es: 'envía dinero (estilo telegrama antiguo)',
+        }
+  - char: ン
+    romaji: n
+    variants: [n, nn]
+    row: n
+    vowel: n
+    group: gojuon
+    strokes: 2
+    mnemonic:
+      en: 'A tick and a stroke rising from the bottom left: the opposite of ソ.'
+      es: 'Una marca y un trazo que sube desde abajo a la izquierda: lo contrario de ソ.'
+    examples:
+      - { word: パン, reading: 'pan', en: 'bread', es: 'pan' }
+      - { word: ペン, reading: 'pen', en: 'pen', es: 'bolígrafo' }
+  - char: ガ
+    romaji: ga
+    variants: [ga]
+    row: g
+    vowel: a
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ガム, reading: 'gamu', en: 'chewing gum', es: 'chicle' }
+      - { word: ガラス, reading: 'garasu', en: 'glass (material)', es: 'cristal' }
+  - char: ギ
+    romaji: gi
+    variants: [gi]
+    row: g
+    vowel: i
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: ギター, reading: 'gitā', en: 'guitar', es: 'guitarra' }
+      - { word: ギフト, reading: 'gifuto', en: 'gift', es: 'regalo' }
+  - char: グ
+    romaji: gu
+    variants: [gu]
+    row: g
+    vowel: u
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: グラス, reading: 'gurasu', en: 'glass (for drinks)', es: 'copa, vaso' }
+      - { word: グループ, reading: 'gurūpu', en: 'group', es: 'grupo' }
+  - char: ゲ
+    romaji: ge
+    variants: [ge]
+    row: g
+    vowel: e
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: ゲーム, reading: 'gēmu', en: 'game', es: 'videojuego' }
+      - { word: ゲスト, reading: 'gesuto', en: 'guest', es: 'invitado' }
+  - char: ゴ
+    romaji: go
+    variants: [go]
+    row: g
+    vowel: o
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ゴルフ, reading: 'gorufu', en: 'golf', es: 'golf' }
+      - { word: ゴール, reading: 'gōru', en: 'goal', es: 'meta, gol' }
+  - char: ザ
+    romaji: za
+    variants: [za]
+    row: z
+    vowel: a
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: ピザ, reading: 'piza', en: 'pizza', es: 'pizza' }
+      - { word: デザイン, reading: 'dezain', en: 'design', es: 'diseño' }
+  - char: ジ
+    romaji: ji
+    variants: [ji, zi]
+    row: z
+    vowel: i
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: ジム, reading: 'jimu', en: 'gym', es: 'gimnasio' }
+      - { word: ジュース, reading: 'jūsu', en: 'juice', es: 'zumo' }
+  - char: ズ
+    romaji: zu
+    variants: [zu]
+    row: z
+    vowel: u
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ズボン, reading: 'zubon', en: 'trousers', es: 'pantalones' }
+      - { word: ズーム, reading: 'zūmu', en: 'zoom', es: 'zoom' }
+  - char: ゼ
+    romaji: ze
+    variants: [ze]
+    row: z
+    vowel: e
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ゼロ, reading: 'zero', en: 'zero', es: 'cero' }
+      - { word: ゼリー, reading: 'zerī', en: 'jelly', es: 'gelatina' }
+  - char: ゾ
+    romaji: zo
+    variants: [zo]
+    row: z
+    vowel: o
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ゾーン, reading: 'zōn', en: 'zone', es: 'zona' }
+      - { word: ゾンビ, reading: 'zonbi', en: 'zombie', es: 'zombi' }
+  - char: ダ
+    romaji: da
+    variants: [da]
+    row: d
+    vowel: a
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: ダンス, reading: 'dansu', en: 'dance', es: 'baile' }
+      - { word: ダム, reading: 'damu', en: 'dam', es: 'presa' }
+  - char: ヂ
+    romaji: ji
+    variants: [ji, di]
+    row: d
+    vowel: i
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: チヂミ, reading: 'chijimi', en: 'Korean pancake', es: 'tortita coreana' }
+  - char: ヅ
+    romaji: zu
+    variants: [zu, du]
+    row: d
+    vowel: u
+    group: dakuten
+    strokes: 5
+  - char: デ
+    romaji: de
+    variants: [de]
+    row: d
+    vowel: e
+    group: dakuten
+    strokes: 5
+    examples:
+      - { word: デパート, reading: 'depāto', en: 'department store', es: 'grandes almacenes' }
+      - { word: デザート, reading: 'dezāto', en: 'dessert', es: 'postre' }
+  - char: ド
+    romaji: do
+    variants: [do]
+    row: d
+    vowel: o
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ドア, reading: 'doa', en: 'door', es: 'puerta' }
+      - { word: ドラマ, reading: 'dorama', en: 'TV drama', es: 'serie' }
+  - char: バ
+    romaji: ba
+    variants: [ba]
+    row: b
+    vowel: a
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: バス, reading: 'basu', en: 'bus', es: 'autobús' }
+      - { word: バター, reading: 'batā', en: 'butter', es: 'mantequilla' }
+  - char: ビ
+    romaji: bi
+    variants: [bi]
+    row: b
+    vowel: i
+    group: dakuten
+    strokes: 4
+    examples:
+      - { word: ビル, reading: 'biru', en: 'building', es: 'edificio' }
+      - { word: ビデオ, reading: 'bideo', en: 'video', es: 'vídeo' }
+  - char: ブ
+    romaji: bu
+    variants: [bu]
+    row: b
+    vowel: u
+    group: dakuten
+    strokes: 3
+    examples:
+      - { word: ブーツ, reading: 'būtsu', en: 'boots', es: 'botas' }
+      - { word: テーブル, reading: 'tēburu', en: 'table', es: 'mesa' }
+  - char: ベ
+    romaji: be
+    variants: [be]
+    row: b
+    vowel: e
+    group: dakuten
+    strokes: 3
+    examples:
+      - { word: ベッド, reading: 'beddo', en: 'bed', es: 'cama' }
+      - { word: ベル, reading: 'beru', en: 'bell', es: 'timbre' }
+  - char: ボ
+    romaji: bo
+    variants: [bo]
+    row: b
+    vowel: o
+    group: dakuten
+    strokes: 6
+    examples:
+      - { word: ボール, reading: 'bōru', en: 'ball', es: 'pelota' }
+      - { word: ボタン, reading: 'botan', en: 'button', es: 'botón' }
+  - char: パ
+    romaji: pa
+    variants: [pa]
+    row: p
+    vowel: a
+    group: handakuten
+    strokes: 3
+    examples:
+      - { word: パソコン, reading: 'pasokon', en: 'PC', es: 'ordenador' }
+      - { word: パーティー, reading: 'pātī', en: 'party', es: 'fiesta' }
+  - char: ピ
+    romaji: pi
+    variants: [pi]
+    row: p
+    vowel: i
+    group: handakuten
+    strokes: 3
+    examples:
+      - { word: ピンク, reading: 'pinku', en: 'pink', es: 'rosa' }
+      - { word: ピクニック, reading: 'pikunikku', en: 'picnic', es: 'pícnic' }
+  - char: プ
+    romaji: pu
+    variants: [pu]
+    row: p
+    vowel: u
+    group: handakuten
+    strokes: 2
+    examples:
+      - { word: プール, reading: 'pūru', en: 'swimming pool', es: 'piscina' }
+      - { word: プレゼント, reading: 'purezento', en: 'present', es: 'regalo' }
+  - char: ペ
+    romaji: pe
+    variants: [pe]
+    row: p
+    vowel: e
+    group: handakuten
+    strokes: 2
+    examples:
+      - { word: ページ, reading: 'pēji', en: 'page', es: 'página' }
+      - { word: ペット, reading: 'petto', en: 'pet', es: 'mascota' }
+  - char: ポ
+    romaji: po
+    variants: [po]
+    row: p
+    vowel: o
+    group: handakuten
+    strokes: 5
+    examples:
+      - { word: ポスト, reading: 'posuto', en: 'postbox', es: 'buzón' }
+      - { word: ポケット, reading: 'poketto', en: 'pocket', es: 'bolsillo' }
+  - char: キャ
+    romaji: kya
+    variants: [kya]
+    row: ky
+    vowel: a
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: キャベツ, reading: 'kyabetsu', en: 'cabbage', es: 'col' }
+      - { word: キャンプ, reading: 'kyanpu', en: 'camping', es: 'acampada' }
+  - char: キュ
+    romaji: kyu
+    variants: [kyu]
+    row: ky
+    vowel: u
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: キュート, reading: 'kyūto', en: 'cute', es: 'mono, lindo' }
+      - { word: バーベキュー, reading: 'bābekyū', en: 'barbecue', es: 'barbacoa' }
+  - char: キョ
+    romaji: kyo
+    variants: [kyo]
+    row: ky
+    vowel: o
+    group: yoon
+    strokes: 6
+    examples:
+      - {
+          word: キョロキョロ,
+          reading: 'kyorokyoro',
+          en: 'looking around',
+          es: 'mirando a todos lados',
+        }
+  - char: シャ
+    romaji: sha
+    variants: [sha, sya]
+    row: sh
+    vowel: a
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: シャツ, reading: 'shatsu', en: 'shirt', es: 'camisa' }
+      - { word: シャワー, reading: 'shawā', en: 'shower', es: 'ducha' }
+  - char: シュ
+    romaji: shu
+    variants: [shu, syu]
+    row: sh
+    vowel: u
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: シューズ, reading: 'shūzu', en: 'shoes', es: 'zapatillas' }
+      - { word: シュークリーム, reading: 'shūkurīmu', en: 'cream puff', es: 'pastelito de crema' }
+  - char: ショ
+    romaji: sho
+    variants: [sho, syo]
+    row: sh
+    vowel: o
+    group: yoon
+    strokes: 6
+    examples:
+      - { word: ショー, reading: 'shō', en: 'show', es: 'espectáculo' }
+      - { word: ショッピング, reading: 'shoppingu', en: 'shopping', es: 'compras' }
+  - char: チャ
+    romaji: cha
+    variants: [cha, tya, cya]
+    row: ch
+    vowel: a
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: チャンス, reading: 'chansu', en: 'chance', es: 'oportunidad' }
+      - { word: チャイム, reading: 'chaimu', en: 'chime', es: 'timbre' }
+  - char: チュ
+    romaji: chu
+    variants: [chu, tyu, cyu]
+    row: ch
+    vowel: u
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: シチュー, reading: 'shichū', en: 'stew', es: 'estofado' }
+      - { word: チューリップ, reading: 'chūrippu', en: 'tulip', es: 'tulipán' }
+  - char: チョ
+    romaji: cho
+    variants: [cho, tyo, cyo]
+    row: ch
+    vowel: o
+    group: yoon
+    strokes: 6
+    examples:
+      - { word: チョーク, reading: 'chōku', en: 'chalk', es: 'tiza' }
+      - { word: チョコレート, reading: 'chokorēto', en: 'chocolate', es: 'chocolate' }
+  - char: ニャ
+    romaji: nya
+    variants: [nya]
+    row: ny
+    vowel: a
+    group: yoon
+    strokes: 4
+    examples:
+      - { word: ニャー, reading: 'nyā', en: 'meow', es: 'miau' }
+  - char: ニュ
+    romaji: nyu
+    variants: [nyu]
+    row: ny
+    vowel: u
+    group: yoon
+    strokes: 4
+    examples:
+      - { word: ニュース, reading: 'nyūsu', en: 'news', es: 'noticias' }
+      - { word: メニュー, reading: 'menyū', en: 'menu', es: 'menú' }
+  - char: ニョ
+    romaji: nyo
+    variants: [nyo]
+    row: ny
+    vowel: o
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: ニョッキ, reading: 'nyokki', en: 'gnocchi', es: 'ñoquis' }
+  - char: ヒャ
+    romaji: hya
+    variants: [hya]
+    row: hy
+    vowel: a
+    group: yoon
+    strokes: 4
+  - char: ヒュ
+    romaji: hyu
+    variants: [hyu]
+    row: hy
+    vowel: u
+    group: yoon
+    strokes: 4
+    examples:
+      - { word: ヒューズ, reading: 'hyūzu', en: 'fuse', es: 'fusible' }
+      - { word: ヒューマン, reading: 'hyūman', en: 'human', es: 'humano' }
+  - char: ヒョ
+    romaji: hyo
+    variants: [hyo]
+    row: hy
+    vowel: o
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: ヒョウ, reading: 'hyō', en: 'leopard', es: 'leopardo' }
+  - char: ミャ
+    romaji: mya
+    variants: [mya]
+    row: my
+    vowel: a
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: ミャンマー, reading: 'Myanmā', en: 'Myanmar', es: 'Myanmar' }
+  - char: ミュ
+    romaji: myu
+    variants: [myu]
+    row: my
+    vowel: u
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: ミュージック, reading: 'myūjikku', en: 'music', es: 'música' }
+      - { word: ミュージカル, reading: 'myūjikaru', en: 'musical', es: 'musical' }
+  - char: ミョ
+    romaji: myo
+    variants: [myo]
+    row: my
+    vowel: o
+    group: yoon
+    strokes: 6
+  - char: リャ
+    romaji: rya
+    variants: [rya]
+    row: ry
+    vowel: a
+    group: yoon
+    strokes: 4
+  - char: リュ
+    romaji: ryu
+    variants: [ryu]
+    row: ry
+    vowel: u
+    group: yoon
+    strokes: 4
+    examples:
+      - { word: リュック, reading: 'ryukku', en: 'backpack', es: 'mochila' }
+  - char: リョ
+    romaji: ryo
+    variants: [ryo]
+    row: ry
+    vowel: o
+    group: yoon
+    strokes: 5
+  - char: ギャ
+    romaji: gya
+    variants: [gya]
+    row: gy
+    vowel: a
+    group: yoon
+    strokes: 7
+    examples:
+      - { word: ギャグ, reading: 'gyagu', en: 'gag, joke', es: 'chiste' }
+      - { word: ギャラリー, reading: 'gyararī', en: 'gallery', es: 'galería' }
+  - char: ギュ
+    romaji: gyu
+    variants: [gyu]
+    row: gy
+    vowel: u
+    group: yoon
+    strokes: 7
+    examples:
+      - { word: フィギュア, reading: 'figyua', en: 'figure', es: 'figura' }
+  - char: ギョ
+    romaji: gyo
+    variants: [gyo]
+    row: gy
+    vowel: o
+    group: yoon
+    strokes: 8
+    examples:
+      - { word: ギョーザ, reading: 'gyōza', en: 'gyoza dumplings', es: 'empanadillas gyoza' }
+  - char: ジャ
+    romaji: ja
+    variants: [ja, zya, jya]
+    row: j
+    vowel: a
+    group: yoon
+    strokes: 7
+    examples:
+      - { word: ジャム, reading: 'jamu', en: 'jam', es: 'mermelada' }
+      - { word: ジャケット, reading: 'jaketto', en: 'jacket', es: 'chaqueta' }
+  - char: ジュ
+    romaji: ju
+    variants: [ju, zyu, jyu]
+    row: j
+    vowel: u
+    group: yoon
+    strokes: 7
+    examples:
+      - { word: ジュース, reading: 'jūsu', en: 'juice', es: 'zumo' }
+      - { word: ジュエリー, reading: 'juerī', en: 'jewellery', es: 'joyas' }
+  - char: ジョ
+    romaji: jo
+    variants: [jo, zyo, jyo]
+    row: j
+    vowel: o
+    group: yoon
+    strokes: 8
+    examples:
+      - { word: ジョーク, reading: 'jōku', en: 'joke', es: 'broma' }
+      - { word: ジョギング, reading: 'jogingu', en: 'jogging', es: 'footing' }
+  - char: ビャ
+    romaji: bya
+    variants: [bya]
+    row: by
+    vowel: a
+    group: yoon
+    strokes: 6
+  - char: ビュ
+    romaji: byu
+    variants: [byu]
+    row: by
+    vowel: u
+    group: yoon
+    strokes: 6
+    examples:
+      - { word: レビュー, reading: 'rebyū', en: 'review', es: 'reseña' }
+      - { word: インタビュー, reading: 'intabyū', en: 'interview', es: 'entrevista' }
+  - char: ビョ
+    romaji: byo
+    variants: [byo]
+    row: by
+    vowel: o
+    group: yoon
+    strokes: 7
+  - char: ピャ
+    romaji: pya
+    variants: [pya]
+    row: py
+    vowel: a
+    group: yoon
+    strokes: 5
+  - char: ピュ
+    romaji: pyu
+    variants: [pyu]
+    row: py
+    vowel: u
+    group: yoon
+    strokes: 5
+    examples:
+      - { word: ピューレ, reading: 'pyūre', en: 'purée', es: 'puré' }
+      - { word: コンピューター, reading: 'konpyūtā', en: 'computer', es: 'ordenador' }
+  - char: ピョ
+    romaji: pyo
+    variants: [pyo]
+    row: py
+    vowel: o
+    group: yoon
+    strokes: 6
