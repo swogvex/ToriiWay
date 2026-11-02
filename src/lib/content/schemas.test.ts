@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 
-import { jlptMondaiSchema, librarySchema } from './schemas';
+import {
+  jlptMondaiSchema,
+  kanaSchema,
+  kanaScriptSchema,
+  kanjivgStrokes,
+  librarySchema,
+} from './schemas';
 
 const book = {
   title: 'Example book',
@@ -69,5 +75,77 @@ describe('jlptMondaiSchema', () => {
     const result = jlptMondaiSchema.safeParse({ ...mondai, questions: [question] });
     expect(result.success).toBe(false);
     expect(result.error?.issues[0]?.path).toEqual(['questions', 0, 'answer']);
+  });
+});
+
+describe('kanaSchema', () => {
+  const ka = {
+    char: 'か',
+    romaji: 'ka',
+    variants: ['ka'],
+    row: 'k',
+    vowel: 'a',
+    group: 'gojuon',
+    strokes: 3,
+    mnemonic: { en: 'A blade with a spark.' },
+    examples: [{ word: 'かさ', reading: 'kasa', en: 'umbrella' }],
+  };
+
+  const paths = (entry: unknown) =>
+    kanaSchema.safeParse(entry).error?.issues.map((issue) => issue.path.join('.')) ?? [];
+
+  it('accepts a valid basic kana', () => {
+    expect(kanaSchema.safeParse(ka).success).toBe(true);
+  });
+
+  it('counts strokes from KanjiVG, adding both glyphs of a yōon', () => {
+    expect(kanjivgStrokes('か')).toBe(3);
+    expect(kanjivgStrokes('きゃ')).toBe(7);
+    expect(kanjivgStrokes('A')).toBeUndefined();
+    expect(paths({ ...ka, strokes: 4 })).toEqual(['strokes']);
+  });
+
+  it('needs the romaji among the variants', () => {
+    expect(paths({ ...ka, variants: ['ca'] })).toEqual(['variants']);
+  });
+
+  it('needs a mnemonic and an example for basic kana only', () => {
+    expect(paths({ ...ka, mnemonic: undefined, examples: [] })).toEqual(['mnemonic', 'examples']);
+    const ga = { ...ka, char: 'が', romaji: 'ga', variants: ['ga'], row: 'g', group: 'dakuten' };
+    expect(paths({ ...ga, strokes: 5, mnemonic: undefined, examples: [] })).toEqual([]);
+  });
+
+  it('rejects an example that does not contain the kana', () => {
+    const examples = [{ word: 'いぬ', reading: 'inu', en: 'dog' }];
+    expect(paths({ ...ka, examples })).toEqual(['examples.0.word']);
+  });
+});
+
+describe('kanaScriptSchema', () => {
+  const kana = (char: string, row: string, vowel: string, group: string) => ({
+    char,
+    romaji: 'x',
+    variants: ['x'],
+    row,
+    vowel,
+    group,
+    strokes: kanjivgStrokes(char),
+    mnemonic: { en: 'Mnemonic.' },
+    examples: [{ word: char, reading: 'x', en: 'x' }],
+  });
+
+  const messages = (items: unknown[], script = 'hiragana') =>
+    kanaScriptSchema.safeParse({ script, items }).error?.issues.map((issue) => issue.message) ?? [];
+
+  it('reports duplicates, the wrong script and incomplete groups', () => {
+    const result = messages([
+      kana('か', 'k', 'a', 'gojuon'),
+      kana('か', 'k', 'i', 'gojuon'),
+      kana('キ', 'k', 'u', 'gojuon'),
+    ]);
+    expect(result).toContain('duplicates items[0] (か)');
+    expect(result).toContain('キ is not hiragana');
+    expect(result).toContain('expected 46 gojuon kana, found 3');
+    expect(result).toContain('expected 33 yoon kana, found 0');
   });
 });

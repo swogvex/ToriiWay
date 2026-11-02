@@ -1,5 +1,7 @@
 import { z } from 'astro/zod';
 
+import kanjivg from '../../data/kanjivg/kana.json';
+
 // Spanish is optional until the Spanish milestone; missing values fall back to English.
 export const localizedText = z.strictObject({
   en: z.string().min(1),
@@ -25,23 +27,146 @@ const kanaExample = z.strictObject({
   es: z.string().min(1).optional(),
 });
 
-export const kanaSchema = z.strictObject({
-  char: z.string().min(1).max(2),
-  romaji: z.string().min(1),
-  variants: z.array(z.string().min(1)).min(1),
-  row: z.string().min(1),
-  vowel: z.enum(['a', 'i', 'u', 'e', 'o', 'n']),
-  group: z.enum(['gojuon', 'dakuten', 'handakuten', 'yoon']),
-  strokes: z.number().int().positive(),
-  mnemonic: localizedText,
-  examples: z.array(kanaExample),
-});
+// Consonant rows of the chart; `vowel` is the a–o row, yōon rows use the a/u/o columns.
+const kanaRow = z.enum([
+  'vowel',
+  'k',
+  's',
+  't',
+  'n',
+  'h',
+  'm',
+  'y',
+  'r',
+  'w',
+  'g',
+  'z',
+  'd',
+  'b',
+  'p',
+  'ky',
+  'sh',
+  'ch',
+  'ny',
+  'hy',
+  'my',
+  'ry',
+  'gy',
+  'j',
+  'by',
+  'py',
+]);
+
+export const kanaSchema = z
+  .strictObject({
+    char: z.string().min(1).max(2),
+    romaji: z.string().regex(/^[a-z]+$/, 'Use lowercase Hepburn romaji'),
+    /** Every romaji spelling accepted in practice, the main one included. */
+    variants: z.array(z.string().regex(/^[a-z]+$/)).min(1),
+    row: kanaRow,
+    vowel: z.enum(['a', 'i', 'u', 'e', 'o', 'n']),
+    group: z.enum(['gojuon', 'dakuten', 'handakuten', 'yoon']),
+    strokes: z.number().int().positive(),
+    /** Original wording; required for the basic 46, optional elsewhere. */
+    mnemonic: localizedText.optional(),
+    examples: z.array(kanaExample).max(2).default([]),
+    /** A recorded file (path under public/ or https URL); wins over browser TTS. */
+    audio: z
+      .string()
+      .regex(/^(?:https:\/\/|\/)\S+$/, 'Use a /path or an https URL')
+      .optional(),
+  })
+  .superRefine((kana, ctx) => {
+    if (!kana.variants.includes(kana.romaji)) {
+      ctx.addIssue({ code: 'custom', message: 'variants must include romaji', path: ['variants'] });
+    }
+    if (kana.group === 'gojuon' && !kana.mnemonic) {
+      ctx.addIssue({ code: 'custom', message: 'basic kana need a mnemonic', path: ['mnemonic'] });
+    }
+    if (kana.group === 'gojuon' && kana.examples.length === 0) {
+      ctx.addIssue({ code: 'custom', message: 'basic kana need an example', path: ['examples'] });
+    }
+    kana.examples.forEach((example, index) => {
+      if (!example.word.includes(kana.char)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `example "${example.word}" does not contain ${kana.char}`,
+          path: ['examples', index, 'word'],
+        });
+      }
+    });
+    const expected = kanjivgStrokes(kana.char);
+    if (expected === undefined) {
+      ctx.addIssue({
+        code: 'custom',
+        message: `KanjiVG has no data for ${kana.char}`,
+        path: ['char'],
+      });
+    } else if (kana.strokes !== expected) {
+      ctx.addIssue({
+        code: 'custom',
+        message: `KanjiVG draws ${kana.char} in ${expected} strokes`,
+        path: ['strokes'],
+      });
+    }
+  });
+
+/** Stroke count of a kana (a yōon adds up both glyphs), or undefined without data. */
+export function kanjivgStrokes(char: string): number | undefined {
+  let total = 0;
+  for (const glyph of char) {
+    const data = (kanjivg.glyphs as Record<string, { strokes: string[] } | undefined>)[glyph];
+    if (!data) return undefined;
+    total += data.strokes.length;
+  }
+  return total;
+}
+
+const KANA_GROUP_SIZES = { gojuon: 46, dakuten: 20, handakuten: 5, yoon: 33 } as const;
+const SCRIPT_PATTERN = {
+  hiragana: /^\p{Script=Hiragana}+$/u,
+  katakana: /^\p{Script=Katakana}+$/u,
+} as const;
 
 // One file per script: { script, items: [...] } — collection entries must be objects.
-export const kanaScriptSchema = z.strictObject({
-  script: z.enum(['hiragana', 'katakana']),
-  items: z.array(kanaSchema).min(1),
-});
+export const kanaScriptSchema = z
+  .strictObject({
+    script: z.enum(['hiragana', 'katakana']),
+    items: z.array(kanaSchema).min(1),
+  })
+  .superRefine(({ script, items }, ctx) => {
+    const seen = new Map<string, number>();
+    items.forEach((kana, index) => {
+      if (!SCRIPT_PATTERN[script].test(kana.char)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `${kana.char} is not ${script}`,
+          path: ['items', index, 'char'],
+        });
+      }
+      for (const key of [kana.char, `${kana.group}:${kana.row}:${kana.vowel}`]) {
+        const first = seen.get(key);
+        if (first !== undefined) {
+          ctx.addIssue({
+            code: 'custom',
+            message: `duplicates items[${first}] (${key})`,
+            path: ['items', index],
+          });
+        }
+        seen.set(key, index);
+      }
+    });
+    for (const [group, size] of Object.entries(KANA_GROUP_SIZES)) {
+      const count = items.filter((kana) => kana.group === group).length;
+      if (count !== size) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `expected ${size} ${group} kana, found ${count}`,
+          path: ['items'],
+        });
+      }
+    }
+  });
 
 // Sharing our own PDF is only allowed when the license says so explicitly.
 const shareableLicense = /\b(CC BY|CC0|public domain|free to share)\b/i;
