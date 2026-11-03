@@ -13,6 +13,7 @@ const labels = Object.fromEntries([
   ...GAME_SCRIPTS.map((key) => [key, t(`game.script.${key}`)]),
   ...DIFFICULTIES.map((key) => [key, t(`game.difficulty.${key}`)]),
   ...MODES.map((key) => [key, t(`game.mode.${key}`)]),
+  ['level', t('game.hud.level')],
 ]);
 ---
 

@@ -1,4 +1,4 @@
-import type { Mode } from './config';
+import { ENDLESS, type Mode } from './config';
 import { accuracy, wpm } from './metrics';
 import type { Run } from './run';
 
@@ -23,7 +23,16 @@ export interface HudOptions {
   mode: Mode;
   /** Seconds to survive in challenge mode. */
   challengeTime: number;
+  /** "Level {level}", translated. */
+  levelLabel: string;
 }
+
+const LEVEL_TOAST: Keyframe[] = [
+  { opacity: 0, transform: 'translateY(8px)' },
+  { opacity: 1, transform: 'translateY(0)', offset: 0.15 },
+  { opacity: 1, transform: 'translateY(0)', offset: 0.8 },
+  { opacity: 0, transform: 'translateY(-8px)' },
+];
 
 /** Writes the run into the HUD; each value is only touched when its text changes. */
 export class Hud {
@@ -36,6 +45,7 @@ export class Hud {
   private readonly lifeBar: HTMLElement;
   private readonly field: HTMLElement;
   private readonly damageLayer: HTMLElement;
+  private readonly levelToast: HTMLElement;
 
   constructor(
     root: HTMLElement,
@@ -58,6 +68,7 @@ export class Hud {
     this.lifeBar = get('[data-life-bar]');
     this.field = get('[data-field]');
     this.damageLayer = get('[data-damage]');
+    this.levelToast = get('[data-level-toast]');
     this.segments = Array.from({ length: options.lives }, () => document.createElement('span'));
     this.lifeBar.replaceChildren(...this.segments);
   }
@@ -70,10 +81,17 @@ export class Hud {
     this.set(this.els.popped, String(stats.popped));
     this.set(
       this.els.time,
-      challenge ? formatClock(run.remaining) : formatClock(elapsed, Math.floor),
+      challenge
+        ? formatClock(run.remaining)
+        : `${this.level(run.level)} · ${formatClock(elapsed, Math.floor)}`,
     );
     this.set(this.els.lives, `${run.lives}/${this.options.lives}`);
-    const share = challenge ? Math.min(1, elapsed / this.options.challengeTime) : 0;
+    // Challenge: share of the timer; endless: progress towards the next level.
+    const share = challenge
+      ? Math.min(1, elapsed / this.options.challengeTime)
+      : run.level >= ENDLESS.maxLevel
+        ? 1
+        : (elapsed % ENDLESS.levelEvery) / ENDLESS.levelEvery;
     const percent = `${Math.floor(share * 100)}%`;
     if (this.set(this.els.progressLabel, percent)) {
       this.els.progress.style.transform = `scaleX(${share})`;
@@ -88,6 +106,16 @@ export class Hud {
     this.damageLayer.animate(DAMAGE_FLASH, { duration: 500, easing: 'ease-out' });
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     for (const el of [this.field, this.lifeBar]) el.animate(SHAKE, { duration: 300 });
+  }
+
+  /** Endless: "Level 4" rises and fades over the field. */
+  levelUp(level: number): void {
+    this.levelToast.textContent = this.level(level);
+    this.levelToast.animate(LEVEL_TOAST, { duration: 1600, easing: 'ease-out' });
+  }
+
+  private level(level: number): string {
+    return this.options.levelLabel.replace('{level}', String(level));
   }
 
   /** Returns true when the text changed. */

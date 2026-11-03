@@ -1,0 +1,460 @@
+---
+/**
+ * Kana Rush setup (artboard 05). A plain GET form to the play page, so it works without
+ * JavaScript; src/game/setup.ts restores the last setup, shows bests and cleared
+ * challenges, and keeps the Start label in sync.
+ */
+import { DIFFICULTIES, DIFFICULTY, GAME_SCRIPTS, MODES } from '../../game/config';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Segmented from '../ui/Segmented.astro';
+
+interface Props {
+  /** Lists that exist, as "script/difficulty". */
+  available: string[];
+}
+
+const { available } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const has = new Set(available);
+const glyphs = { hiragana: 'あ', katakana: 'ア', kanji: '字' } as const;
+const clock = (seconds: number) =>
+  `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+const labels = Object.fromEntries([
+  ...GAME_SCRIPTS.map((key) => [key, t(`game.script.${key}`)]),
+  ...DIFFICULTIES.map((key) => [key, t(`game.difficulty.${key}`)]),
+  ['start', t('game.start')],
+]);
+---
+
+<div
+  class="setup column"
+  data-setup
+  data-labels={JSON.stringify(labels)}
+  data-available={JSON.stringify(available)}
+>
+  <SectionHeader level="h1" kicker={t('game.kicker')} title={t('nav.game')}>
+    <div class="setup__intro">
+      <p class="setup__lead">{t('game.lead')}</p>
+      <dl class="setup__stats">
+        <div>
+          <dt>{t('game.best')}</dt>
+          <dd>
+            <span data-best aria-hidden="true">
+              [–]
+            </span>
+            <span class="visually-hidden" data-best-label>
+              {t('game.noBest')}
+            </span>
+          </dd>
+        </div>
+        <div>
+          <dt>{t('game.challenges')}</dt>
+          <dd>
+            <span data-cleared-count>0</span>/{available.length}
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </SectionHeader>
+
+  <form
+    class="setup__form"
+    action={localizePath('/game/play', locale)}
+    method="get"
+    data-setup-form
+  >
+    <fieldset class="setup__group">
+      <legend class="setup__legend">{t('game.step.script')}</legend>
+      <div class="setup__cards setup__cards--3">
+        {GAME_SCRIPTS.map((script) => (
+          <label class="choice">
+            <input type="radio" name="script" value={script} checked={script === 'hiragana'} />
+            <span class="choice__glyph" lang="ja" aria-hidden="true">
+              {glyphs[script]}
+            </span>
+            <span class="choice__name">{t(`game.script.${script}`)}</span>
+            <span class="choice__note">{t(`game.script.${script}.note`)}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <div class="setup__pair">
+      <div class="setup__group">
+        <Segmented
+          name="difficulty"
+          legend={t('game.step.difficulty')}
+          value="normal"
+          options={DIFFICULTIES.map((value) => ({ value, label: t(`game.difficulty.${value}`) }))}
+        />
+        {DIFFICULTIES.map((difficulty) => (
+          <p class="setup__note" data-note={difficulty}>
+            {t(`game.difficulty.${difficulty}.note`)}
+          </p>
+        ))}
+      </div>
+
+      <fieldset class="setup__group">
+        <legend class="setup__legend">{t('game.step.mode')}</legend>
+        <div class="setup__cards setup__cards--2">
+          {MODES.map((mode) => (
+            <label class="choice choice--row">
+              <input type="radio" name="mode" value={mode} checked={mode === 'challenge'} />
+              <span class="choice__name">{t(`game.mode.${mode}`)}</span>
+              {mode === 'challenge' ? (
+                DIFFICULTIES.map((difficulty) => (
+                  <span class="choice__note" data-note={difficulty}>
+                    {t('game.mode.challenge.note', {
+                      time: clock(DIFFICULTY[difficulty].challengeTime),
+                    })}
+                  </span>
+                ))
+              ) : (
+                <span class="choice__note">{t('game.mode.endless.note')}</span>
+              )}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </div>
+
+    <section class="setup__group" aria-labelledby="challenges-title">
+      <h2 id="challenges-title" class="setup__legend">
+        {t('game.challenges')}
+      </h2>
+      <div class="grid-wrap">
+        <table class="grid">
+          <thead>
+            <tr>
+              <td></td>
+              {DIFFICULTIES.map((difficulty) => (
+                <th scope="col">{t(`game.difficulty.${difficulty}`)}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {GAME_SCRIPTS.map((script) => (
+              <tr>
+                <th scope="row">{t(`game.script.${script}`)}</th>
+                {DIFFICULTIES.map((difficulty) =>
+                  has.has(`${script}/${difficulty}`) ? (
+                    <td data-challenge={`${script}/${difficulty}`}>
+                      <span class="grid__cleared" hidden>
+                        <Icon name="check" size={18} />
+                        {t('game.cleared')}
+                      </span>
+                      <span class="grid__open">{t('game.notYet')}</span>
+                    </td>
+                  ) : (
+                    <td>
+                      <span aria-hidden="true">—</span>
+                      <span class="visually-hidden">{t('game.comingSoon')}</span>
+                    </td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="setup__saved">{t('game.saved')}</p>
+    </section>
+
+    <div class="setup__footer">
+      <div class="setup__options">
+        <input type="hidden" name="hint" value="0" />
+        <label class="check">
+          <input type="checkbox" name="hint" value="1" checked />
+          {t('game.option.hint')}
+        </label>
+        <input type="hidden" name="meaning" value="0" />
+        <label class="check">
+          <input type="checkbox" name="meaning" value="1" checked />
+          {t('game.option.meaning')}
+        </label>
+        <Segmented
+          name="layout"
+          legend={t('game.option.layout')}
+          value="ansi"
+          class="setup__layout"
+          options={[
+            { value: 'ansi', label: t('game.layout.ansi') },
+            { value: 'iso-es', label: t('game.layout.iso-es') },
+          ]}
+        />
+      </div>
+      <div class="setup__go">
+        <p class="setup__soon" data-soon hidden>
+          {t('game.comingSoon')}
+        </p>
+        <Button variant="accent" size={52} type="submit" data-start>
+          <span data-start-label>{t('game.start', { setup: 'Hiragana Normal' })}</span>
+          <Icon name="arrow-right" size={20} />
+        </Button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  import { initSetup } from '../../game/setup';
+
+  const root = document.querySelector<HTMLElement>('[data-setup]');
+  if (root) initSetup(root);
+</script>
+
+<style>
+  .setup {
+    display: grid;
+    gap: var(--space-10);
+    padding-block: var(--space-10) var(--space-16);
+  }
+
+  .setup__intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .setup__lead {
+    max-inline-size: 52ch;
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+
+  .setup__stats {
+    display: flex;
+    gap: var(--space-8);
+  }
+
+  .setup__stats dt,
+  .setup__legend {
+    padding: 0;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .setup__stats dd {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .setup__form {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  .setup__group {
+    display: grid;
+    gap: var(--space-3);
+    min-inline-size: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .setup__legend {
+    margin-block-end: var(--space-1);
+    font-weight: 400;
+  }
+
+  .setup__cards {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .setup__cards--3 {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
+  .setup__cards--2 {
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  }
+
+  .setup__pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: var(--space-8);
+  }
+
+  .choice {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+    padding: var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    cursor: pointer;
+  }
+
+  .choice:has(input:checked) {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .choice:has(input:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .choice input {
+    position: absolute;
+    inset-block-start: var(--space-5);
+    inset-inline-end: var(--space-5);
+    inline-size: 20px;
+    block-size: 20px;
+    margin: 0;
+    accent-color: var(--ink);
+  }
+
+  .choice__glyph {
+    margin-block-end: var(--space-4);
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .choice__name {
+    font-size: var(--text-lg);
+    font-weight: 700;
+  }
+
+  .choice__note,
+  .setup__note,
+  .setup__saved {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .choice--row input {
+    inset-inline: var(--space-5) auto;
+  }
+
+  .choice--row {
+    padding-inline-start: calc(var(--space-5) + 20px + var(--space-3));
+  }
+
+  /* Only the note for the chosen difficulty shows (difficulty notes, challenge time). */
+  [data-note] {
+    display: none;
+  }
+
+  /* Global: the difficulty radios live inside Segmented, outside this component's scope. */
+  :global(.setup:has([value='easy']:checked) [data-note='easy']),
+  :global(.setup:has([value='normal']:checked) [data-note='normal']),
+  :global(.setup:has([value='hard']:checked) [data-note='hard']),
+  :global(.setup:has([value='extreme']:checked) [data-note='extreme']) {
+    display: block;
+  }
+
+  .grid-wrap {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .grid {
+    inline-size: 100%;
+    border-collapse: collapse;
+  }
+
+  .grid th,
+  .grid td {
+    padding: var(--space-4) var(--space-5);
+    text-align: start;
+    border-block-start: 1px solid var(--line);
+  }
+
+  .grid thead th {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    border-block-start: 0;
+  }
+
+  .grid tbody th {
+    font-weight: 700;
+  }
+
+  .grid td {
+    color: var(--muted);
+  }
+
+  .grid__cleared {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    color: var(--info);
+  }
+
+  .grid__cleared[hidden],
+  .grid__open[hidden] {
+    display: none;
+  }
+
+  .setup__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: center;
+    justify-content: space-between;
+    padding-block-start: var(--space-8);
+    border-block-start: 1px solid var(--line);
+  }
+
+  .setup__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .check {
+    display: inline-flex;
+    gap: var(--space-3);
+    align-items: center;
+    min-block-size: var(--target-min);
+    cursor: pointer;
+  }
+
+  .check input {
+    inline-size: 20px;
+    block-size: 20px;
+    margin: 0;
+    accent-color: var(--ink);
+  }
+
+  /* Start stays on the right, also when the options wrap onto their own line. */
+  .setup__go {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+    margin-inline-start: auto;
+  }
+
+  .setup__go :global(.btn) {
+    gap: var(--space-2);
+  }
+
+  .setup__soon {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+</style>

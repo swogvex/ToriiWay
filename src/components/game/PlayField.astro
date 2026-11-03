@@ -5,11 +5,13 @@
  * line. The field is decorative for screen readers: the game is not screen-reader
  * playable (see the accessibility statement).
  */
-import { getLocale, useTranslations } from '../../i18n';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 
-const t = useTranslations(getLocale(Astro.url.pathname));
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const setupHref = localizePath('/game', locale);
 const endings = [
   ['cleared', t('game.play.cleared')],
   ['failed', t('game.play.failed')],
@@ -31,6 +33,7 @@ const endings = [
     </template>
   </div>
   <div class="stage__damage" data-damage aria-hidden="true"></div>
+  <p class="stage__level" data-level-toast aria-hidden="true"></p>
 
   <div class="stage__overlay" data-overlay>
     <div class="stage__panel" data-panel="loading">
@@ -53,13 +56,25 @@ const endings = [
     </div>
     <div class="stage__panel" data-panel="unavailable" hidden>
       <p>{t('game.play.unavailable')}</p>
+      <Button variant="outline" href={setupHref}>
+        {t('game.play.change')}
+      </Button>
     </div>
     {endings.map(([status, title]) => (
       <div class="stage__panel" data-panel={status} hidden>
         <p class="stage__title" role="status">
           {title}
         </p>
-        <Button data-restart>{t('game.play.again')}</Button>
+        <p class="stage__best" data-new-best hidden>
+          <Icon name="check" size={16} />
+          {t('game.play.newBest')}
+        </p>
+        <div class="stage__actions">
+          <Button variant="outline" href={setupHref}>
+            {t('game.play.change')}
+          </Button>
+          <Button data-restart>{t('game.play.again')}</Button>
+        </div>
       </div>
     ))}
   </div>
@@ -162,6 +177,37 @@ const endings = [
   .stage__actions {
     display: flex;
     gap: var(--space-3);
+  }
+
+  .stage__best {
+    display: inline-flex;
+    gap: var(--space-1);
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    background: var(--info-soft);
+    border-radius: var(--radius-chip);
+  }
+
+  .stage__best[hidden] {
+    display: none;
+  }
+
+  .stage__level {
+    position: absolute;
+    inset-block-start: var(--space-6);
+    inset-inline: 0;
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-align: center;
+    pointer-events: none;
+    opacity: 0;
   }
 
   .entry {
