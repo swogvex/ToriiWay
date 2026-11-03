@@ -1,9 +1,13 @@
-import { DIFFICULTY, REDUCED_MOTION_SPEED } from './config';
+import { localGameProgress } from '../lib/progress/game';
+import { initBlocked } from './blocked';
+import { type Difficulty, DIFFICULTY, REDUCED_MOTION_SPEED } from './config';
 import { Field } from './field';
 import { Hud } from './hud';
 import { VirtualKeyboard } from './keyboard';
+import { loadItems, loadLongerPools } from './load';
+import { runResult } from './result';
 import { type GameItem, Run, type RunEvent, type RunStatus } from './run';
-import { modeLabel, type PlaySettings, readSettings } from './settings';
+import { modeLabel, readSettings } from './settings';
 import { type Random, seededRandom } from './spawner';
 
 type State = 'loading' | 'blocked' | 'countdown' | 'playing' | 'paused' | 'ended';
@@ -20,12 +24,6 @@ function required<T extends Element>(root: ParentNode, selector: string): T {
   const el = root.querySelector<T>(selector);
   if (!el) throw new Error(`Missing ${selector}`);
   return el;
-}
-
-async function loadItems(settings: PlaySettings): Promise<GameItem[]> {
-  const response = await fetch(`/data/game/${settings.script}/${settings.difficulty}.json`);
-  if (!response.ok) return [];
-  return (await response.json()) as GameItem[];
 }
 
 const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -48,7 +46,9 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     lives: config.lives,
     mode: settings.mode,
     challengeTime: config.challengeTime,
+    levelLabel: labels['level'] ?? 'Level {level}',
   });
+  const progress = localGameProgress();
   const field = new Field(
     {
       field: required(root, '[data-field]'),
@@ -57,7 +57,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
       wrong: required(root, '[data-wrong]'),
       kana: required(root, '[data-typed-kana]'),
     },
-    { locale: document.documentElement.lang, hint: true, meaning: true },
+    { locale: document.documentElement.lang, hint: settings.hint, meaning: settings.meaning },
   );
   const blocked = matchMedia(BLOCKED);
   let forced = false;
@@ -65,6 +65,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
   let state: State = 'loading';
   let run: Run | null = null;
   let items: GameItem[] = [];
+  let pools: Partial<Record<Difficulty, GameItem[]>> = {};
   let frame = 0;
   let last = 0;
   let timers: number[] = [];
@@ -92,6 +93,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     for (const event of events) {
       if (event.type === 'key') keyboard.flash(event.key, event.correct);
       else if (event.type === 'life') hud.damage();
+      else if (event.type === 'level') hud.levelUp(event.level);
       else if (event.type === 'end') finish(event.status);
     }
   };
@@ -153,7 +155,9 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     run = new Run({
       config,
       mode: settings.mode,
+      difficulty: settings.difficulty,
       items,
+      pools,
       random,
       speed: reducedMotion() ? REDUCED_MOTION_SPEED : 1,
     });
@@ -187,6 +191,11 @@ export async function initPlay(root: HTMLElement): Promise<void> {
 
   const finish = (status: Exclude<RunStatus, 'playing'>) => {
     stopClock();
+    const newBest = run ? progress.record(runResult(run, settings, status)) : false;
+    root.dataset['newBest'] = String(newBest);
+    for (const chip of overlay.querySelectorAll<HTMLElement>('[data-new-best]')) {
+      chip.hidden = !newBest;
+    }
     setState('ended', status);
     stage.classList.remove('is-paused');
     showPanel(status);
@@ -256,33 +265,14 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     ready();
   });
 
-  items = await loadItems(settings).catch(() => []);
+  [items, pools] = await Promise.all([
+    loadItems(settings.script, settings.difficulty),
+    settings.mode === 'endless' ? loadLongerPools(settings.script, settings.difficulty) : {},
+  ]);
   if (items.length === 0) {
     setState('ended', 'unavailable');
     showPanel('unavailable');
     return;
   }
   ready();
-}
-
-/** Blocked screen: copy the link, and "Play anyway" once a keyboard is likely. */
-function initBlocked(root: HTMLElement, playAnyway: () => void): void {
-  const anyway = required<HTMLElement>(root, '[data-play-anyway]');
-  const copy = required<HTMLElement>(root, '[data-copy-link]');
-  const copyLabel = required<HTMLElement>(copy, '[data-copy-label]');
-  const status = required<HTMLElement>(root, '[data-copy-status]');
-  // A fine pointer on a narrow screen is a laptop window; a keydown means a keyboard.
-  anyway.hidden = !matchMedia('(pointer: fine)').matches;
-  document.addEventListener('keydown', () => (anyway.hidden = false), { once: true });
-  anyway.addEventListener('click', playAnyway);
-
-  const original = copyLabel.textContent;
-  copy.addEventListener('click', () => {
-    void navigator.clipboard.writeText(location.href).then(() => {
-      const copied = copy.dataset['copiedLabel'] ?? '';
-      copyLabel.textContent = copied;
-      status.textContent = copied;
-      setTimeout(() => (copyLabel.textContent = original), 2000);
-    });
-  });
 }

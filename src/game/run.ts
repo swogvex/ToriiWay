@@ -1,71 +1,20 @@
 import {
   crossTime,
   DANGER_FROM,
-  type DifficultyConfig,
+  DIFFICULTIES,
+  type Difficulty,
+  endlessLevel,
+  endlessPool,
+  endlessTuning,
   LANES,
   MAX_STEP,
-  type Mode,
 } from './config';
 import { matchRomaji, typingForm } from './romaji';
-import { pickItem, pickLane, pickSide, type Random, type Side } from './spawner';
+import { pickItem, pickLane, pickSide, type Side } from './spawner';
 import { pickTarget } from './targeting';
+import type { Bubble, GameItem, RunEvent, RunOptions, RunStats, RunStatus } from './types';
 
-/** One bubble's content. Single kana have no meaning to show on pop. */
-export interface GameItem {
-  text: string;
-  reading: string;
-  en?: string;
-  es?: string;
-}
-
-export interface Bubble {
-  id: number;
-  item: GameItem;
-  lane: number;
-  side: Side;
-  /** Share of the path travelled, 0–1. */
-  progress: number;
-  /** Seconds to cross the field. */
-  duration: number;
-  /** Romaji typed for this bubble while it is the target. */
-  typed: string;
-  /** Kana of the reading already produced. */
-  kana: number;
-  /** Romaji not yet converted. */
-  pending: string;
-  /** Wrong keys while this bubble was the target (the romaji hint shows after the first). */
-  misses: number;
-}
-
-export type RunStatus = 'playing' | 'cleared' | 'failed' | 'quit';
-
-export type RunEvent =
-  | { type: 'spawn'; bubble: Bubble }
-  | { type: 'key'; key: string; correct: boolean; bubble: Bubble | null }
-  | { type: 'pop'; bubble: Bubble }
-  | { type: 'miss'; bubble: Bubble }
-  | { type: 'edit'; bubble: Bubble }
-  | { type: 'release'; bubble: Bubble }
-  | { type: 'life'; lives: number }
-  | { type: 'end'; status: Exclude<RunStatus, 'playing'> };
-
-export interface RunStats {
-  correctKeys: number;
-  wrongKeys: number;
-  popped: number;
-  missed: number;
-  combo: number;
-  maxCombo: number;
-}
-
-export interface RunOptions {
-  config: DifficultyConfig;
-  mode: Mode;
-  items: readonly GameItem[];
-  random: Random;
-  /** Speed multiplier (reduced motion uses 0.7). */
-  speed?: number;
-}
+export type { Bubble, GameItem, RunEvent, RunOptions, RunStats, RunStatus } from './types';
 
 const TYPED_KEY = /^[a-z'-]$/;
 
@@ -87,18 +36,26 @@ export class Run {
   elapsed = 0;
   lives: number;
   target: Bubble | null = null;
+  /** Endless level (always 1 in challenge mode). */
+  level = 1;
 
   private events: RunEvent[] = [];
   private nextId = 1;
   private spawnIn = 0;
-  private readonly recent: number[] = [];
+  private recent: number[] = [];
+  private items: readonly GameItem[];
   private readonly sides: Record<Side, number> = { left: 0, right: 0 };
   private readonly options: Required<RunOptions>;
 
   constructor(options: RunOptions) {
     if (options.items.length === 0) throw new Error('A run needs at least one item');
-    this.options = { speed: 1, ...options };
+    this.options = { speed: 1, difficulty: 'normal', pools: {}, ...options };
     this.lives = options.config.lives;
+    this.items = options.items;
+  }
+
+  get endless(): boolean {
+    return this.options.mode === 'endless';
   }
 
   /** Seconds left in challenge mode. */
@@ -124,14 +81,46 @@ export class Run {
     }
     if (this.status !== 'playing') return;
 
+    if (this.endless) this.levelUp();
     this.spawnIn -= dt;
     if (this.spawnIn <= 0 && this.bubbles.length < this.options.config.maxBubbles) {
-      if (this.spawn()) this.spawnIn = this.options.config.spawnEvery;
+      if (this.spawn()) this.spawnIn = this.tuning().spawnEvery;
     }
 
-    if (this.options.mode === 'challenge' && this.elapsed >= this.options.config.challengeTime) {
+    if (!this.endless && this.elapsed >= this.options.config.challengeTime) {
       this.end('cleared');
     }
+  }
+
+  /** Spawn interval and speed for the current level. */
+  private tuning(): { crossTimeScale: number; spawnEvery: number } {
+    const { config } = this.options;
+    if (!this.endless) return { crossTimeScale: 1, spawnEvery: config.spawnEvery };
+    return endlessTuning(config, this.level);
+  }
+
+  /** Endless: a level every 2:00; every 2 levels the pool moves to longer items. */
+  private levelUp(): void {
+    const level = endlessLevel(this.elapsed);
+    if (level === this.level) return;
+    this.level = level;
+    const items = this.poolAt(level);
+    if (items !== this.items) {
+      this.items = items;
+      this.recent = [];
+    }
+    this.events.push({ type: 'level', level });
+  }
+
+  /** The pool for a level, or the longest available pool below it. */
+  private poolAt(level: number): readonly GameItem[] {
+    const { difficulty, pools, items } = this.options;
+    const target = DIFFICULTIES.indexOf(endlessPool(difficulty, level));
+    for (let index = target; index > DIFFICULTIES.indexOf(difficulty); index--) {
+      const pool = pools[DIFFICULTIES[index] as Difficulty];
+      if (pool && pool.length > 0) return pool;
+    }
+    return items;
   }
 
   /**
@@ -200,7 +189,8 @@ export class Run {
   private spawn(): boolean {
     const lane = pickLane(LANES, new Set(this.bubbles.map((b) => b.lane)), this.options.random);
     if (lane === null) return false;
-    const { items, config, random, speed } = this.options;
+    const { config, random, speed } = this.options;
+    const items = this.items;
     const item = items[pickItem(items.length, this.recent, random)] ?? items[0];
     if (!item) return false;
     const side = pickSide(this.sides, random);
@@ -211,7 +201,8 @@ export class Run {
       lane,
       side,
       progress: 0,
-      duration: crossTime(config, typingForm(item.reading).length) / speed,
+      duration:
+        (crossTime(config, typingForm(item.reading).length) * this.tuning().crossTimeScale) / speed,
       typed: '',
       kana: 0,
       pending: '',

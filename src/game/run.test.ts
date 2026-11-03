@@ -193,6 +193,50 @@ describe('Run', () => {
   });
 });
 
+describe('Run in endless mode', () => {
+  const easy: GameItem[] = ['あ', 'い', 'う'].map((k) => ({ text: k, reading: k }));
+  const normal: GameItem[] = ['ねこ', 'いぬ', 'やま'].map((w) => ({ text: w, reading: w }));
+  const config = { ...DIFFICULTY.easy, lives: 1000 };
+  const endless = (pools: Record<string, GameItem[]>) =>
+    new Run({
+      config,
+      mode: 'endless',
+      difficulty: 'easy',
+      items: easy,
+      pools,
+      random: seededRandom(2),
+    });
+
+  it('never ends on time and levels up every two minutes', () => {
+    const run = endless({ normal });
+    const events = play(run, 250);
+    expect(run.status).toBe('playing');
+    expect(events.filter((e) => e.type === 'level')).toEqual([
+      { type: 'level', level: 2 },
+      { type: 'level', level: 3 },
+    ]);
+    expect(run.level).toBe(3);
+  });
+
+  it('spawns longer items from level 3 on, faster', () => {
+    const run = endless({ normal });
+    const events = play(run, 245);
+    const spawned = events.flatMap((e) => (e.type === 'spawn' ? [e.bubble] : []));
+    const late = spawned.filter((b) => normal.includes(b.item));
+    expect(late.length).toBeGreaterThan(0);
+    expect(spawned.filter((b) => b.item.text.length === 1).length).toBeGreaterThan(0);
+    const last = late.at(-1);
+    expect(last?.duration).toBeCloseTo(12 * 0.88 ** 2);
+  });
+
+  it('keeps the chosen pool when no longer list exists yet', () => {
+    const run = endless({});
+    const events = play(run, 245);
+    const spawned = events.flatMap((e) => (e.type === 'spawn' ? [e.bubble.item] : []));
+    expect(spawned.every((item) => easy.includes(item))).toBe(true);
+  });
+});
+
 describe('filledChars', () => {
   it('fills kana text kana by kana', () => {
     const item = { text: 'さくら', reading: 'さくら' };
