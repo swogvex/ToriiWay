@@ -46,7 +46,13 @@ describe('matchRomaji', () => {
     ['でんしゃ', 'densya'],
     ['を', 'wo'],
     ['ラーメン', 'ra-men'],
+    ['ラーメン', 'raamen'],
+    ['スーパー', 'su-pa-'],
+    ['スーパー', 'suupaa'],
+    ['スーパー', 'su-paa'],
     ['ティー', 'thi-'],
+    ['ティー', 'thii'],
+    ['キャー', 'kyaa'],
     ['ファン', 'fan'],
   ])('accepts %s typed as %s', (reading, romaji) => {
     expect(accepts(reading, romaji)).toBe(true);
@@ -79,6 +85,13 @@ describe('matchRomaji', () => {
 
   it('compares katakana readings as hiragana and keeps ー', () => {
     expect(typingForm('ラーメン')).toBe('らーめん');
+  });
+
+  it('counts ー as one kana for the fill and only where the reading has it', () => {
+    expect(matchRomaji('ラーメン', 'raam')).toEqual({ status: 'partial', kana: 2, pending: 'm' });
+    expect(matchRomaji('ラーメン', 'ra-')).toEqual({ status: 'partial', kana: 2, pending: '' });
+    expect(matchRomaji('らあめん', 'ra-').status).toBe('miss');
+    expect(matchRomaji('ラーメン', 'ri-').status).toBe('miss');
   });
 });
 
