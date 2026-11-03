@@ -1,7 +1,6 @@
-import { toRomaji } from 'wanakana';
-
 import { CHART, type ChartGeometry, chartGeometry, nearestPoint, renderChart } from './chart';
 import type { GameScript } from './config';
+import { romajiHint } from './romaji';
 import type { Run, RunStatus } from './run';
 import type { PlaySettings } from './settings';
 import {
@@ -237,7 +236,7 @@ export class Results {
         ) as HTMLElement;
         const { item } = word;
         required(li, '[data-word-text]').textContent = item.text;
-        required(li, '[data-word-romaji]').textContent = toRomaji(item.reading);
+        required(li, '[data-word-romaji]').textContent = romajiHint(item.reading);
         const meaning = item[locale] ?? item.en ?? '';
         required(li, '[data-word-meaning]').textContent = meaning;
         const count = word.popped + word.missed;

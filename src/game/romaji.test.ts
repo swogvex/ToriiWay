@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { matchRomaji, typingForm } from './romaji';
+import { matchRomaji, romajiHint, typeable, typingForm } from './romaji';
 import { pickTarget } from './targeting';
 
 /** Types `romaji` key by key and returns the status after each key. */
@@ -119,5 +119,32 @@ describe('pickTarget', () => {
 
   it('returns the match for the fill', () => {
     expect(pickTarget(bubbles, 'sak')?.match).toEqual({ status: 'partial', kana: 1, pending: 'k' });
+  });
+});
+
+describe('romajiHint', () => {
+  it.each([
+    ['さくら', 'sakura'],
+    ['ラーメン', 'raamen'],
+    ['コーヒー', 'koohii'],
+    ['パーティー', 'paathii'],
+    ['ソファー', 'sofaa'],
+    ['ウィンドウ', 'windou'],
+    ['ヴァイオリン', 'vaiorin'],
+    ['ディズニー', 'dhizunii'],
+    ['ウォーター', 'whootaa'],
+    ['スマートフォン', 'sumaatofon'],
+    ['きょうはやすみです', 'kyouhayasumidesu'],
+  ])('%s → %s, and typing it completes the reading', (reading, hint) => {
+    expect(romajiHint(reading)).toBe(hint);
+    expect(matchRomaji(reading, hint)).toEqual({ status: 'done' });
+  });
+});
+
+describe('typeable', () => {
+  it('needs a plain romaji hint that completes the reading', () => {
+    expect(typeable('パーティー')).toBe(true);
+    expect(typeable('ゐる')).toBe(false);
+    expect(typeable('ゎ')).toBe(false);
   });
 });

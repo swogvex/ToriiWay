@@ -186,6 +186,14 @@ describe('gameListSchema', () => {
     expect(issuePaths({ ...list, items: [...items.slice(1), long] })).toEqual(['items.15.reading']);
   });
 
+  it('rejects a reading its own romaji hint cannot complete', () => {
+    const kanji = items.map((item) => ({ ...item, text: '山' + item.text }));
+    const odd = { text: '居る', reading: 'ゐる', en: 'old spelling' };
+    expect(issuePaths({ script: 'kanji', difficulty: 'hard', items: [...kanji, odd] })).toEqual([
+      'items.16.reading',
+    ]);
+  });
+
   it('rejects a text that differs from the reading', () => {
     const wrong = { text: 'さくら', reading: 'さくろ', en: 'x' };
     expect(issuePaths({ ...list, items: [...items.slice(1), wrong] })).toEqual(['items.15.text']);

@@ -1,6 +1,7 @@
 import { z } from 'astro/zod';
 
 import kanjivg from '../../data/kanjivg/kana.json';
+import { romajiHint, typeable } from '../../game/romaji';
 
 // Spanish is optional until the Spanish milestone; missing values fall back to English.
 export const localizedText = z.strictObject({
@@ -322,6 +323,14 @@ export const gameListSchema = z
         });
       }
       seen.add(item.text);
+      // The hint under a bubble must be typeable: typing it completes the reading.
+      if (!typeable(item.reading)) {
+        ctx.addIssue({
+          code: 'custom',
+          message: `"${romajiHint(item.reading)}" does not complete "${item.reading}"`,
+          path: ['items', index, 'reading'],
+        });
+      }
       if (list.script === 'kanji') return;
 
       if (item.text.replace(UNTYPED, '') !== item.reading) {
