@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "vercel-build": "node scripts/db/migrate.ts && astro build",
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "lint": "eslint . --max-warnings=0 && stylelint \"src/**/*.{css,astro}\" --max-warnings=0",
@@ -23,24 +24,30 @@
     "fonts:subset": "node scripts/fonts/subset.ts",
     "brand:outline": "node scripts/brand/outline-wordmark.ts",
     "brand:favicons": "node scripts/brand/favicons.ts",
-    "kanjivg:kana": "node scripts/kanjivg/kana.ts"
+    "kanjivg:kana": "node scripts/kanjivg/kana.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "node scripts/db/migrate.ts --force"
   },
   "dependencies": {
     "@astrojs/preact": "6.1.1",
     "@astrojs/sitemap": "3.7.4",
     "@astrojs/vercel": "11.0.17",
+    "@neondatabase/serverless": "1.2.0",
     "astro": "7.4.4",
     "cuelume": "0.2.8",
+    "drizzle-orm": "0.45.4",
     "preact": "11.1.1",
     "wanakana": "5.3.1"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.12",
+    "@astrojs/node": "11.1.9",
     "@axe-core/playwright": "4.14.0",
     "@fontsource/ibm-plex-mono": "5.3.0",
     "@fontsource/schibsted-grotesk": "5.3.0",
     "@lhci/cli": "0.15.1",
     "@playwright/test": "1.64.1",
+    "drizzle-kit": "0.31.11",
     "eslint": "10.14.0",
     "eslint-plugin-astro": "3.2.1",
     "eslint-plugin-jsx-a11y": "6.10.2",

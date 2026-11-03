@@ -1,13 +1,13 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "pnpm exec astro preview --port 4321",
-      "startServerReadyPattern": "localhost:4321",
+      "startServerCommand": "node scripts/preview/static.ts 4321",
+      "startServerReadyPattern": "static preview on",
       "url": [
         "http://localhost:4321/",
         "http://localhost:4321/learn/hiragana",
         "http://localhost:4321/learn/kana/%E3%81%8B",
-        "http://localhost:4321/404",
+        "http://localhost:4321/404.html",
         "http://localhost:4321/game",
         "http://localhost:4321/game/play"
       ],
@@ -16,7 +16,7 @@
     "assert": {
       "assertMatrix": [
         {
-          "matchingUrlPattern": "^(?!.*/404$)(?!.*/game/play$).*$",
+          "matchingUrlPattern": "^(?!.*/404[.]html$)(?!.*/game/play$).*$",
           "assertions": {
             "categories:performance": [
               "error",
@@ -57,7 +57,7 @@
           }
         },
         {
-          "matchingUrlPattern": "/404$",
+          "matchingUrlPattern": "/404[.]html$",
           "assertions": {
             "categories:performance": [
               "error",

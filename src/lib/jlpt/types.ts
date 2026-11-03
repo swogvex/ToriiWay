@@ -26,6 +26,8 @@ export interface MondaiConfig {
   perPassage: number | null;
   /** Each question needs audio (a file or a TTS script). */
   audio: boolean;
+  /** Choices are only heard, as in the real test; their text is shown after the run. */
+  spokenChoices: boolean;
 }
 
 export interface SectionConfig {
