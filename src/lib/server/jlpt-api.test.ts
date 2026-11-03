@@ -9,6 +9,7 @@ import {
   createRunHandler,
   feedbackHandler,
   getRunHandler,
+  nameHandler,
   paperHandler,
   RUNS_PER_HOUR,
   submitHandler,
@@ -140,6 +141,34 @@ describe('JLPT API', () => {
       ),
     );
     expect(ok.status).toBe(204);
+  });
+
+  it('saves a cleaned report name once the run is finished', async () => {
+    await call(() =>
+      createRunHandler(post('/api/jlpt/runs', { level: 'N5', public: false }), deps),
+    );
+    const early = await call(() =>
+      nameHandler(post(`/api/jlpt/runs/${ID}/name`, { name: 'Ana' }), ID, deps),
+    );
+    expect(early.status).toBe(409);
+    for (const section of [0, 1, 2]) {
+      await answerSection(1);
+      if (section < 2) {
+        clock += TIMING.breakMin * SECOND;
+        await call(() =>
+          continueHandler(
+            post(`/api/jlpt/runs/${ID}/continue`, { section: section + 1 }),
+            ID,
+            deps,
+          ),
+        );
+      }
+    }
+    const saved = await call(() =>
+      nameHandler(post(`/api/jlpt/runs/${ID}/name`, { name: '  Ana María ' }), ID, deps),
+    );
+    expect(saved.status).toBe(204);
+    expect((await deps.store.getRun(ID))?.name).toBe('Ana María');
   });
 
   it('rate-limits new runs per client', async () => {

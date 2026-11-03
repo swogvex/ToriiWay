@@ -1,6 +1,7 @@
 // End of the run: pass or not yet and the scaled scores. The full score report and
 // result page replace this screen later (09-spec-jlpt, artboard 14).
 
+import { saveName } from '../client';
 import type { PublicRunState } from '../run';
 import type { Labels } from './labels';
 
@@ -42,4 +43,15 @@ export function renderDone(root: HTMLElement, state: PublicRunState, t: Labels):
       row(t('jlpt.done.total'), [`${scores.total} / ${scores.max}`, ''], true),
     );
   root.querySelector<HTMLElement>('[data-done-title]')?.focus();
+
+  const form = root.querySelector<HTMLFormElement>('[data-report-form]');
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const name = String(new FormData(form).get('name') ?? '').trim();
+    try {
+      if (name) await saveName(state.id, name);
+    } finally {
+      window.location.assign(`${form.dataset.reportBase ?? '/jlpt/r/'}${state.id}`);
+    }
+  });
 }

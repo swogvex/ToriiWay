@@ -36,7 +36,7 @@ function salt(): string {
   throw new HttpError('unavailable', 503, 'IP_HASH_SALT is not set');
 }
 
-function clientIp(context: APIContext): string {
+function clientIp(context: RequestContext): string {
   try {
     return context.clientAddress;
   } catch {
@@ -44,7 +44,10 @@ function clientIp(context: APIContext): string {
   }
 }
 
-export async function jlptDeps(context: APIContext): Promise<JlptDeps> {
+/** What an API route or a server-rendered page provides. */
+type RequestContext = Pick<APIContext, 'site' | 'request' | 'clientAddress'>;
+
+export async function jlptDeps(context: RequestContext): Promise<JlptDeps> {
   return {
     store: await getStore(),
     bank: await getBank(),

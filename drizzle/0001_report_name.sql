@@ -1,0 +1,1 @@
+ALTER TABLE "jlpt_runs" ADD COLUMN "name" text;

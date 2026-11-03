@@ -1,6 +1,7 @@
 // Persistence behind an interface: Postgres (Drizzle) in production, memory in tests and e2e.
 
 import type { AnswerRow, RunRecord, RunStatus } from './run';
+import type { JlptLevel } from './types';
 
 export type Rating = 'easy' | 'right' | 'hard';
 
@@ -16,6 +17,10 @@ export interface RunStore {
   insertAnswers(runId: string, rows: readonly AnswerRow[]): Promise<void>;
   getAnswers(runId: string): Promise<AnswerRow[]>;
   saveFeedback(runId: string, section: number, rating: Rating): Promise<void>;
+  /** Sets the report name of a finished run. False when the run is not finished. */
+  setName(runId: string, name: string | null): Promise<boolean>;
+  /** Finished runs of a level, and how many of them scored below `total`. */
+  percentile(level: JlptLevel, total: number): Promise<{ runs: number; below: number }>;
   /** Counts a hit in the current fixed window; false once `limit` is exceeded. */
   rateLimit(key: string, limit: number, windowMs: number, now: number): Promise<boolean>;
 }
@@ -52,6 +57,21 @@ export function memoryStore(): RunStore {
     },
     async saveFeedback(runId, section, rating) {
       feedback.set(`${runId}/${section}`, rating);
+    },
+    async setName(runId, name) {
+      const run = runs.get(runId);
+      if (!run || run.status !== 'finished') return false;
+      run.name = name;
+      return true;
+    },
+    async percentile(level, total) {
+      const finished = [...runs.values()].filter(
+        (run) => run.level === level && run.status === 'finished' && run.scores,
+      );
+      return {
+        runs: finished.length,
+        below: finished.filter((run) => (run.scores?.total ?? 0) < total).length,
+      };
     },
     async rateLimit(key, limit, windowMs, now) {
       const bucket = `${key}/${Math.floor(now / windowMs)}`;

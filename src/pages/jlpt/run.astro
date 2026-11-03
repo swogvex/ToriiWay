@@ -4,6 +4,8 @@ import JlptBreak from '../../components/jlpt/JlptBreak.astro';
 import JlptExam from '../../components/jlpt/JlptExam.astro';
 import Button from '../../components/ui/Button.astro';
 import Dialog from '../../components/ui/Dialog.astro';
+import Field from '../../components/ui/Field.astro';
+import Icon from '../../components/ui/Icon.astro';
 import { getLocale, localizePath, useTranslations, type UiKey } from '../../i18n';
 import FocusLayout from '../../layouts/FocusLayout.astro';
 import { JLPT_LEVELS, LEVELS } from '../../lib/jlpt/levels';
@@ -104,10 +106,25 @@ const home = localizePath('/jlpt', locale);
       <table class="done__table">
         <tbody data-done-rows></tbody>
       </table>
+      <form class="done__form" data-report-form data-report-base={localizePath('/jlpt/r/', locale)}>
+        <Field
+          id="jlpt-name"
+          name="name"
+          label={t('jlpt.done.name')}
+          hint={t('jlpt.done.nameHint')}
+          autocomplete="nickname"
+        />
+        <div class="done__actions">
+          <Button variant="accent" type="submit">
+            {t('jlpt.done.see')}
+            <Icon name="arrow-right" size={20} />
+          </Button>
+          <Button href={home} variant="outline">
+            {t('jlpt.done.again')}
+          </Button>
+        </div>
+      </form>
       <p class="done__disclaimer">{t('jlpt.disclaimer')}</p>
-      <Button href={home} variant="accent">
-        {t('jlpt.done.again')}
-      </Button>
     </section>
   </div>
 
@@ -244,6 +261,19 @@ const home = localizePath('/jlpt', locale);
 
   .done__table :global(tr[data-total]) {
     font-weight: 700;
+  }
+
+  .done__form {
+    display: grid;
+    gap: var(--space-4);
+    inline-size: 100%;
+    max-inline-size: 28rem;
+  }
+
+  .done__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
   }
 
   .finalize__note {
