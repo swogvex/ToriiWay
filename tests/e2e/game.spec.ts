@@ -252,3 +252,16 @@ test.describe('Kana Rush in a narrow desktop window', () => {
     await expect(game(page)).toHaveAttribute('data-status', 'countdown');
   });
 });
+
+test.describe('Kana Rush on a laptop screen', () => {
+  test.use({ viewport: { width: 1366, height: 768 } });
+
+  test('the whole game fits the window with no scroll', async ({ page }) => {
+    await startRun(page);
+    await expect(page.locator('.hints')).toBeInViewport({ ratio: 1 });
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollHeight - window.innerHeight,
+    );
+    expect(overflow).toBeLessThanOrEqual(0);
+  });
+});
