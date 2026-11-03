@@ -180,3 +180,35 @@ test.describe('JLPT exam', () => {
     expect([...(await image.body()).subarray(0, 4)]).toEqual([137, 80, 78, 71]);
   });
 });
+
+test.describe('JLPT exam on a phone', () => {
+  test.use({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+
+  test('keeps the top bar and the actions on one row each', async ({ page }) => {
+    await startN5(page);
+    const middle = async (locator: ReturnType<Page['locator']>) => {
+      const box = await locator.boundingBox();
+      return (box?.y ?? 0) + (box?.height ?? 0) / 2;
+    };
+    const current = page.getByRole('list', { name: 'Sections' }).locator('li[aria-current="step"]');
+    await expect(page.getByRole('list', { name: 'Sections' }).locator('li:visible')).toHaveCount(1);
+    const top = await middle(current);
+    expect(Math.abs((await middle(page.getByRole('timer'))) - top)).toBeLessThan(6);
+
+    const actions = [
+      page.getByRole('button', { name: 'Previous question' }),
+      page.getByRole('button', { name: 'Flag for review' }),
+      page.getByRole('button', { name: 'Finish' }),
+      page.getByRole('button', { name: 'Next' }),
+    ];
+    const row = await middle(actions[0] as ReturnType<Page['locator']>);
+    for (const action of actions) {
+      await expect(action).toBeVisible();
+      expect(Math.abs((await middle(action)) - row)).toBeLessThan(4);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+      390,
+    );
+    await expectNoAxeViolations(page);
+  });
+});
