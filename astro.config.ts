@@ -1,3 +1,4 @@
+import node from '@astrojs/node';
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
@@ -20,7 +21,9 @@ export default defineConfig({
     locales: ['en', 'es'],
     routing: { prefixDefaultLocale: false },
   },
-  adapter: vercel(),
+  // Vercel builds set VERCEL=1. Everywhere else (CI, local) the Node adapter keeps
+  // `astro preview` working for e2e and Lighthouse, which the Vercel adapter cannot serve.
+  adapter: process.env.VERCEL ? vercel() : node({ mode: 'standalone' }),
   // Server secrets are read at runtime on Vercel; all are optional so static pages build without them.
   env: {
     schema: {
@@ -42,7 +45,8 @@ export default defineConfig({
     pagefind(),
   ],
   build: {
-    format: 'file',
+    // Both adapters serve /path from path/index.html (Vercel forces this format anyway).
+    format: 'directory',
     // Keep CSS in external files so `style-src 'self'` works without inline hashes.
     inlineStylesheets: 'never',
   },
