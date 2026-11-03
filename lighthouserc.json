@@ -1,8 +1,8 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "pnpm exec astro preview --port 4321",
-      "startServerReadyPattern": "localhost:4321",
+      "startServerCommand": "node scripts/preview/static.ts 4321",
+      "startServerReadyPattern": "static preview on",
       "url": [
         "http://localhost:4321/",
         "http://localhost:4321/learn/hiragana",
