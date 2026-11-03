@@ -6,6 +6,7 @@
 import JlptReportCard from '../../../components/jlpt/JlptReportCard.astro';
 import JlptReview from '../../../components/jlpt/JlptReview.astro';
 import Button from '../../../components/ui/Button.astro';
+import Field from '../../../components/ui/Field.astro';
 import Icon from '../../../components/ui/Icon.astro';
 import { getLocale, localizePath, useTranslations } from '../../../i18n';
 import FocusLayout from '../../../layouts/FocusLayout.astro';
@@ -13,13 +14,25 @@ import { getSiteCopy } from '../../../lib/content/site';
 import { buildReport, nextLevel, percentileOf, type ReportData } from '../../../lib/jlpt/report';
 import type { RunRecord } from '../../../lib/jlpt/run';
 import { jlptDeps } from '../../../lib/server/context';
+import { siteKeyFor } from '../../../lib/server/turnstile';
 
 export const prerender = false;
 
 const DAY = 24 * 60 * 60 * 1000;
+// Real Turnstile keys only on Vercel production (previews use Cloudflare's test keys).
+const siteKey = siteKeyFor(process.env.VERCEL_ENV);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
+const emailMessages = {
+  sending: t('jlpt.email.sending'),
+  sent: t('jlpt.email.sent'),
+  invalid: t('jlpt.email.invalid'),
+  verify: t('jlpt.email.verify'),
+  limit: t('jlpt.email.limit'),
+  check: t('jlpt.email.check'),
+  error: t('jlpt.email.error'),
+};
 const id = Astro.params.id ?? '';
 const now = Date.now();
 
@@ -183,6 +196,31 @@ const typeLabel = (section: string, type: string) =>
         </nav>
       </div>
 
+      <form
+        class="mail"
+        data-email-form
+        data-run={run.id}
+        data-sitekey={siteKey}
+        data-messages={JSON.stringify(emailMessages)}
+        novalidate
+      >
+        <h2 class="mail__title">{t('jlpt.email.title')}</h2>
+        <Field
+          id="jlpt-email-results"
+          name="email"
+          type="email"
+          label={t('jlpt.email.label')}
+          hint={t('jlpt.email.hint')}
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <div class="mail__check" data-email-turnstile></div>
+        <Button variant="accent" type="submit" data-email-send>
+          {t('jlpt.email.send')}
+        </Button>
+        <p class="mail__status" role="status" data-email-status></p>
+      </form>
+
       <JlptReview items={report.mistakes} />
 
       <p class="result__credits">
@@ -221,6 +259,10 @@ const typeLabel = (section: string, type: string) =>
 </FocusLayout>
 
 <script>
+  import { initEmailForm } from '../../../lib/jlpt/email-form';
+
+  initEmailForm();
+
   for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-link]')) {
     button.addEventListener('click', async () => {
       const label = button.querySelector('span');
@@ -404,6 +446,38 @@ const typeLabel = (section: string, type: string) =>
 
   .steps a:hover {
     text-decoration: underline;
+  }
+
+  .mail {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    padding: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .mail > :global(.field) {
+    inline-size: 100%;
+    max-inline-size: 28rem;
+  }
+
+  .mail__title {
+    font-size: var(--text-xl);
+  }
+
+  .mail__check:empty {
+    display: none;
+  }
+
+  .mail__status {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .mail__status:empty {
+    display: none;
   }
 
   .result__state {

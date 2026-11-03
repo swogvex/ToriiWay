@@ -23,6 +23,16 @@ async function startN5(page: Page, options: { public?: boolean } = {}) {
   await expect(page.getByRole('timer')).toBeVisible({ timeout: 10_000 });
 }
 
+/** Stand-in for Cloudflare's Turnstile script: renders nothing and hands back the test token. */
+async function stubTurnstile(page: Page) {
+  await page.route('https://challenges.cloudflare.com/**', (route) =>
+    route.fulfill({
+      contentType: 'text/javascript',
+      body: 'window.turnstile={render:(el,o)=>{setTimeout(()=>o.callback("XXXX.DUMMY.TOKEN.XXXX"));return "w1";},reset:()=>{}};',
+    }),
+  );
+}
+
 const mapItem = (page: Page, number: number) =>
   page.getByRole('navigation', { name: 'Questions' }).getByRole('button', {
     name: new RegExp(`^Question ${number}(,|$)`),
@@ -130,6 +140,7 @@ test.describe('JLPT exam', () => {
   test('a full N5 run reaches the score', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
     test.setTimeout(300_000);
+    await stubTurnstile(page);
     await startN5(page, { public: true });
     for (const [section, count] of [
       ['Vocabulary', 21],
@@ -179,6 +190,11 @@ test.describe('JLPT exam', () => {
     expect(image.status()).toBe(200);
     expect(image.headers()['content-type']).toBe('image/png');
     expect([...(await image.body()).subarray(0, 4)]).toEqual([137, 80, 78, 71]);
+
+    const mail = page.locator('[data-email-form]');
+    await mail.getByLabel('Your email').fill('ana@example.com');
+    await mail.getByRole('button', { name: 'Email my results' }).click();
+    await expect(mail.getByText(/Sent! Check your inbox/)).toBeVisible();
 
     await page.goto('/jlpt');
     const recent = page.getByRole('region', { name: 'Recent runs' });

@@ -18,6 +18,12 @@ export interface Report {
   status: 'open' | 'resolved';
 }
 
+export interface CleanupResult {
+  emails: number;
+  runs: number;
+  limits: number;
+}
+
 export interface RecentRun {
   nickname: string;
   level: JlptLevel;
@@ -45,6 +51,10 @@ export interface RunStore {
   listReports(limit: number): Promise<Report[]>;
   /** Marks a report as resolved; false when it does not exist. */
   resolveReport(id: string): Promise<boolean>;
+  /** Records the results email of a run and when it was sent. */
+  setEmail(runId: string, email: string, sentAt: number): Promise<void>;
+  /** Clears emails sent before `emailsBefore`, deletes runs expired before `now` and old rate limits. */
+  cleanup(now: number, emailsBefore: number, limitsBefore: number): Promise<CleanupResult>;
   /** Latest finished runs that opted in to the public list. */
   recentPublic(limit: number): Promise<RecentRun[]>;
   /** Finished runs of a level, and how many of them scored below `total`. */
@@ -59,8 +69,10 @@ export function memoryStore(): RunStore {
   const runs = new Map<string, RunRecord>();
   const answers = new Map<string, Map<string, AnswerRow>>();
   const feedback = new Map<string, Rating>();
-  const hits = new Map<string, number>();
+  /** Rate-limit buckets: hit count and the start of their window. */
+  const hits = new Map<string, { count: number; start: number }>();
   const reports = new Map<string, Report>();
+  const emails = new Map<string, { email: string; sentAt: number }>();
 
   return {
     async createRun(run) {
@@ -94,6 +106,35 @@ export function memoryStore(): RunStore {
       if (!run || run.status !== 'finished') return false;
       run.name = name;
       return true;
+    },
+    async setEmail(runId, email, sentAt) {
+      emails.set(runId, { email, sentAt });
+    },
+    async cleanup(now, emailsBefore, limitsBefore) {
+      let cleared = 0;
+      for (const [runId, entry] of emails) {
+        if (entry.sentAt < emailsBefore) {
+          emails.delete(runId);
+          cleared += 1;
+        }
+      }
+      let deleted = 0;
+      for (const [runId, run] of runs) {
+        if (run.expiresAt <= now) {
+          runs.delete(runId);
+          answers.delete(runId);
+          emails.delete(runId);
+          deleted += 1;
+        }
+      }
+      let limits = 0;
+      for (const [bucket, entry] of hits) {
+        if (entry.start < limitsBefore) {
+          hits.delete(bucket);
+          limits += 1;
+        }
+      }
+      return { emails: cleared, runs: deleted, limits };
     },
     async createReport(report) {
       reports.set(report.id, { ...report });
@@ -133,12 +174,12 @@ export function memoryStore(): RunStore {
       };
     },
     async peekLimit(key, windowMs, now) {
-      return hits.get(`${key}/${Math.floor(now / windowMs)}`) ?? 0;
+      return hits.get(`${key}/${Math.floor(now / windowMs)}`)?.count ?? 0;
     },
     async rateLimit(key, limit, windowMs, now) {
       const bucket = `${key}/${Math.floor(now / windowMs)}`;
-      const count = (hits.get(bucket) ?? 0) + 1;
-      hits.set(bucket, count);
+      const count = (hits.get(bucket)?.count ?? 0) + 1;
+      hits.set(bucket, { count, start: Math.floor(now / windowMs) * windowMs });
       return count <= limit;
     },
   };

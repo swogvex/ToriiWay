@@ -1,20 +1,8 @@
 // "Report a problem" dialog on /jlpt/run. Cloudflare's Turnstile script loads only when
 // the dialog first opens, so the exam makes no third-party request before that.
 
+import { turnstileWidget, type Widget } from '../../turnstile-client';
 import { loadRun } from '../../progress/jlpt';
-
-const SCRIPT = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
-
-interface Turnstile {
-  render(container: HTMLElement, options: Record<string, unknown>): string;
-  reset(widget?: string): void;
-}
-
-declare global {
-  interface Window {
-    turnstile?: Turnstile;
-  }
-}
 
 interface Messages {
   sending: string;
@@ -23,21 +11,6 @@ interface Messages {
   limit: string;
   check: string;
   generic: string;
-}
-
-let loading: Promise<Turnstile | null> | undefined;
-
-function loadTurnstile(): Promise<Turnstile | null> {
-  loading ??= new Promise((resolve) => {
-    if (window.turnstile) return resolve(window.turnstile);
-    const script = document.createElement('script');
-    script.src = SCRIPT;
-    script.async = true;
-    script.addEventListener('load', () => resolve(window.turnstile ?? null));
-    script.addEventListener('error', () => resolve(null));
-    document.head.append(script);
-  });
-  return loading;
 }
 
 export function initReport(root: HTMLElement): void {
@@ -52,8 +25,7 @@ export function initReport(root: HTMLElement): void {
   const messages = JSON.parse(form.dataset.messages ?? '{}') as Messages;
   const message = form.querySelector<HTMLTextAreaElement>('textarea');
   if (message) message.maxLength = 1000;
-  let token = '';
-  let widget: string | undefined;
+  let widget: Widget | null | undefined;
   let questionId = '';
 
   opener.addEventListener('click', async () => {
@@ -62,30 +34,17 @@ export function initReport(root: HTMLElement): void {
     send.disabled = false;
     dialog.showModal();
     dialog.addEventListener('close', () => opener.focus(), { once: true });
-    const turnstile = await loadTurnstile();
-    if (!turnstile) {
-      status.textContent = messages.generic;
-      return;
-    }
     if (widget === undefined) {
-      widget = turnstile.render(box, {
-        sitekey: form.dataset.sitekey,
-        theme: 'auto',
-        callback: (value: string) => {
-          token = value;
-        },
-        'expired-callback': () => {
-          token = '';
-        },
-      });
+      widget = await turnstileWidget(box, form.dataset.sitekey ?? '');
+      if (!widget) status.textContent = messages.generic;
     } else {
-      token = '';
-      turnstile.reset(widget);
+      widget?.reset();
     }
   });
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    const token = widget?.token() ?? '';
     if (!token) {
       status.textContent = messages.verify;
       return;
@@ -121,7 +80,6 @@ export function initReport(root: HTMLElement): void {
       status.textContent = messages.generic;
     }
     send.disabled = false;
-    token = '';
-    window.turnstile?.reset(widget);
+    widget?.reset();
   });
 }

@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import { and, desc, eq, isNotNull, sql } from 'drizzle-orm';
+import { and, desc, eq, isNotNull, lt, lte, sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/neon-http';
 
 import type { RunRecord } from '../lib/jlpt/run';
@@ -34,7 +34,10 @@ function toRecord(row: RunRow): RunRecord {
 }
 
 /** Every column that a transition can change. */
-function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname' | 'name'> {
+/** Every column that a transition can change (the email columns have their own writer). */
+function runValues(
+  run: RunRecord,
+): Omit<RunRow, 'id' | 'nickname' | 'name' | 'email' | 'emailSentAt'> {
   return {
     level: run.level,
     seed: run.seed,
@@ -54,7 +57,14 @@ function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname' | 'name'> {
 }
 
 function toRow(run: RunRecord): RunRow {
-  return { id: run.id, nickname: run.nickname, name: run.name, ...runValues(run) };
+  return {
+    id: run.id,
+    nickname: run.nickname,
+    name: run.name,
+    email: null,
+    emailSentAt: null,
+    ...runValues(run),
+  };
 }
 
 export function drizzleStore(databaseUrl: string): RunStore {
@@ -116,6 +126,28 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .where(and(eq(jlptRuns.id, runId), eq(jlptRuns.status, 'finished')))
         .returning({ id: jlptRuns.id });
       return updated.length === 1;
+    },
+    async setEmail(runId, email, sentAt) {
+      await db
+        .update(jlptRuns)
+        .set({ email, emailSentAt: new Date(sentAt) })
+        .where(eq(jlptRuns.id, runId));
+    },
+    async cleanup(now, emailsBefore, limitsBefore) {
+      const emails = await db
+        .update(jlptRuns)
+        .set({ email: null })
+        .where(and(isNotNull(jlptRuns.email), lt(jlptRuns.emailSentAt, new Date(emailsBefore))))
+        .returning({ id: jlptRuns.id });
+      const runs = await db
+        .delete(jlptRuns)
+        .where(lte(jlptRuns.expiresAt, new Date(now)))
+        .returning({ id: jlptRuns.id });
+      const limits = await db
+        .delete(rateLimits)
+        .where(lt(rateLimits.windowStart, new Date(limitsBefore)))
+        .returning({ key: rateLimits.key });
+      return { emails: emails.length, runs: runs.length, limits: limits.length };
     },
     async createReport(report) {
       await db.insert(reports).values({ ...report, createdAt: new Date(report.createdAt) });
