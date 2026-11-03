@@ -1,6 +1,8 @@
 /**
- * Builds the Japanese display subset of Zen Kaku Gothic New into public/fonts/.
- * Run with `pnpm fonts:subset` after changing DISPLAY_KANJI; commit the output.
+ * Builds the Japanese display subset of Zen Kaku Gothic New into public/fonts/, and the
+ * TTF subset the server uses for the JLPT report image (Satori reads TTF, not WOFF2)
+ * into src/assets/og/. Run with `pnpm fonts:subset` after changing DISPLAY_KANJI or
+ * OG_KANJI; commit the output.
  *
  * Fontsource only ships this family as unicode-range chunks, so the source TTFs come
  * from the google/fonts repo, pinned to a commit and checked against SHA-256.
@@ -44,16 +46,26 @@ const KANA_RANGES: readonly [number, number][] = [
 ];
 const PUNCTUATION = '、。・ー「」『』〜！？';
 
+// Kanji drawn in the JLPT report image (src/lib/jlpt/og.ts).
+const OG_KANJI = '日本語能力試験模擬合格不合格言語知識文字語彙文法読解聴解総合得点鳥居';
+const OG_PUNCTUATION = '・（）〜';
+
 const CACHE_DIR = join('node_modules', '.cache', 'fonts');
+const OG_DIR = join('src', 'assets', 'og');
 const OUT_DIR = join('public', 'fonts');
 
-function displayText(): string {
-  let text = DISPLAY_KANJI + PUNCTUATION;
-  for (const [start, end] of KANA_RANGES) {
+function withRanges(base: string, ranges: readonly [number, number][]): string {
+  let text = base;
+  for (const [start, end] of ranges) {
     for (let code = start; code <= end; code++) text += String.fromCodePoint(code);
   }
   return text;
 }
+
+const displayText = () => withRanges(DISPLAY_KANJI + PUNCTUATION, KANA_RANGES);
+// Latin too, so names and numbers never fall back to a missing glyph.
+const ogText = () =>
+  withRanges(OG_KANJI + OG_PUNCTUATION + PUNCTUATION, [...KANA_RANGES, [0x20, 0x7e]]);
 
 async function loadSource(file: string, sha256: string): Promise<Buffer> {
   const cached = join(CACHE_DIR, file);
@@ -74,9 +86,15 @@ async function loadSource(file: string, sha256: string): Promise<Buffer> {
 
 const text = displayText();
 await mkdir(OUT_DIR, { recursive: true });
+await mkdir(OG_DIR, { recursive: true });
 for (const { file, sha256, out } of SOURCES) {
-  const subset = await subsetFont(await loadSource(file, sha256), text, { targetFormat: 'woff2' });
+  const source = await loadSource(file, sha256);
+  const subset = await subsetFont(source, text, { targetFormat: 'woff2' });
   await writeFile(join(OUT_DIR, out), subset);
   console.log(`${out}: ${(subset.length / 1024).toFixed(1)} KB`);
+  const og = await subsetFont(source, ogText(), { targetFormat: 'sfnt' });
+  const ogOut = out.replace('display', 'og').replace('.woff2', '.ttf');
+  await writeFile(join(OG_DIR, ogOut), og);
+  console.log(`${ogOut}: ${(og.length / 1024).toFixed(1)} KB`);
 }
 await writeFile(join(OUT_DIR, LICENSE.out), await loadSource(LICENSE.file, LICENSE.sha256));

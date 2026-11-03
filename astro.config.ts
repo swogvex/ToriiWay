@@ -52,5 +52,10 @@ export default defineConfig({
   },
   // Astro inlines scripts smaller than this limit; keep every script external so
   // `script-src 'self'` needs no per-script hashes.
-  vite: { build: { assetsInlineLimit: 0, cssCodeSplit: false } },
+  vite: {
+    build: { assetsInlineLimit: 0, cssCodeSplit: false },
+    // resvg loads a native binary per platform: keep it out of the bundle so the adapter
+    // copies the right package into the function.
+    ssr: { external: ['@resvg/resvg-js'] },
+  },
 });
