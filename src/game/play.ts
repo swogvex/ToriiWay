@@ -6,6 +6,7 @@ import { Hud } from './hud';
 import { VirtualKeyboard } from './keyboard';
 import { loadItems, loadLongerPools } from './load';
 import { runResult } from './result';
+import { Results } from './results';
 import { type GameItem, Run, type RunEvent, type RunStatus } from './run';
 import { modeLabel, readSettings } from './settings';
 import { type Random, seededRandom } from './spawner';
@@ -49,6 +50,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     levelLabel: labels['level'] ?? 'Level {level}',
   });
   const progress = localGameProgress();
+  const results = new Results(required(root, '[data-results]'));
   const field = new Field(
     {
       field: required(root, '[data-field]'),
@@ -191,16 +193,26 @@ export async function initPlay(root: HTMLElement): Promise<void> {
 
   const finish = (status: Exclude<RunStatus, 'playing'>) => {
     stopClock();
-    const newBest = run ? progress.record(runResult(run, settings, status)) : false;
+    if (!run) return;
+    const result = runResult(run, settings, status);
+    const newBest = progress.record(result);
     root.dataset['newBest'] = String(newBest);
-    for (const chip of overlay.querySelectorAll<HTMLElement>('[data-new-best]')) {
-      chip.hidden = !newBest;
-    }
+    results.show({
+      run,
+      settings,
+      status,
+      newBest,
+      modeLabel: modeLabel(settings, labels),
+      setupLabel: `${labels[settings.script] ?? settings.script} ${labels[settings.difficulty] ?? settings.difficulty}`,
+      date: result.date,
+    });
     setState('ended', status);
     stage.classList.remove('is-paused');
-    showPanel(status);
+    showPanel(null);
     focusNote.hidden = true;
-    overlay.querySelector<HTMLElement>(`[data-panel="${status}"] button`)?.focus();
+    window.scrollTo({ top: 0 });
+    // Focus on "Play again" so Enter starts the next run straight away.
+    required<HTMLElement>(root, '[data-again]').focus();
   };
 
   /** Starts when the game is allowed on this device and the tab is visible. */

@@ -1,0 +1,638 @@
+---
+/**
+ * Kana Rush results (artboard 07), shown in place of the game when a run ends. The
+ * markup is static; src/game/results.ts fills it from the finished run.
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import { getKana, kanaHref, scriptHref, SCRIPTS } from '../../lib/kana/data';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const setupHref = localizePath('/game', locale);
+
+const chars = (await Promise.all(SCRIPTS.map((script) => getKana(script))))
+  .flat()
+  .map((kana) => kana.char)
+  .join('');
+const learn = {
+  kana: kanaHref('{kana}', locale),
+  chars,
+  hiragana: scriptHref('hiragana', locale),
+  katakana: scriptHref('katakana', locale),
+};
+
+// Strings results.ts fills in the browser, keyed without the common prefix.
+const keys = [
+  'chart.desc',
+  'chart.empty',
+  'chart.tip',
+  'words.count',
+  'words.all',
+  'words.less',
+  'announce',
+] as const;
+const labels = Object.fromEntries([
+  ['title.cleared', t('game.play.cleared')],
+  ['title.failed', t('game.play.failed')],
+  ['title.quit', t('game.play.quit')],
+  ...keys.map((key) => [key, t(`game.results.${key}`)]),
+  ['share.copied', t('game.share.copied')],
+  ['share.copyFailed', t('game.share.copyFailed')],
+  ['card.alt', t('game.share.alt')],
+  ['card.title', `${t('site.name')} · Kana Rush`],
+  ...(['cleared', 'failed', 'quit'] as const).map((status) => [
+    `card.status.${status}`,
+    t(`game.card.status.${status}`),
+  ]),
+  ...(['wpm', 'acc', 'cons', 'popped', 'time'] as const).map((key) => [`card.${key}`, t(`game.card.${key}`)]),
+]);
+
+const stats = [
+  ['wpm', t('game.hud.wpm')],
+  ['accuracy', t('game.results.accuracy')],
+  ['consistency', t('game.results.consistency')],
+  ['time', t('game.hud.time')],
+  ['popped', t('game.hud.popped')],
+  ['missed', t('game.results.missed')],
+] as const;
+---
+
+<section
+  class="results column"
+  aria-labelledby="results-title"
+  data-results
+  data-labels={JSON.stringify(labels)}
+  data-learn={JSON.stringify(learn)}
+  data-logo="/brand/torii-mark.svg"
+>
+  <p class="visually-hidden" role="status" data-results-announce></p>
+
+  <header class="results__head">
+    <div class="results__heading">
+      <p class="results__kicker" data-results-mode></p>
+      <div class="results__titlebar">
+        <h2 id="results-title" class="results__title" data-results-title>
+          {t('game.play.quit')}
+        </h2>
+        <p class="results__best" data-new-best hidden>
+          <Icon name="check" size={16} />
+          {t('game.play.newBest')}
+        </p>
+      </div>
+    </div>
+    <div class="results__actions">
+      <Button variant="outline" href={setupHref}>
+        {t('game.play.change')}
+      </Button>
+      <Button data-restart data-again>{t('game.play.again')}</Button>
+    </div>
+  </header>
+
+  <div class="results__numbers">
+    <dl class="results__stats">
+      {stats.map(([key, label]) => (
+        <div class:list={['results__stat', `results__stat--${key}`]}>
+          <dt>{label}</dt>
+          <dd data-stat={key}></dd>
+        </div>
+      ))}
+    </dl>
+    <details class="results__more">
+      <summary>{t('game.results.more')}</summary>
+      <dl class="results__extra">
+        <div>
+          <dt>{t('game.results.kpm')}</dt>
+          <dd data-stat="kpm"></dd>
+        </div>
+        <div>
+          <dt>{t('game.results.raw')}</dt>
+          <dd data-stat="raw"></dd>
+        </div>
+      </dl>
+    </details>
+  </div>
+
+  <div class="results__pair">
+    <figure class="results__card chart">
+      <figcaption class="results__cardhead">
+        <span id="chart-title">{t('game.results.chart')}</span>
+        <span class="chart__legend" aria-hidden="true">
+          <span class="chart__key">— {t('game.results.chart.legendWpm')}</span>
+          <span class="chart__key chart__key--error">× {t('game.results.chart.legendError')}</span>
+        </span>
+      </figcaption>
+      <div class="chart__plot">
+        <svg
+          class="chart__svg"
+          role="img"
+          aria-labelledby="chart-title chart-desc"
+          data-chart
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <desc id="chart-desc" data-chart-desc></desc>
+        </svg>
+        <p class="chart__tip" aria-hidden="true" data-chart-tip hidden></p>
+      </div>
+      <p class="chart__axis" aria-hidden="true">
+        <span>0:00</span>
+        <span data-chart-end></span>
+      </p>
+    </figure>
+
+    <section class="results__card words" aria-labelledby="words-title">
+      <div class="results__cardhead">
+        <h3 id="words-title" class="results__cardtitle">
+          {t('game.results.words')} · <span data-words-count></span>
+        </h3>
+        <button class="words__toggle" type="button" aria-controls="words-list" data-words-toggle
+        ></button>
+      </div>
+      <ul id="words-list" class="words__list" data-words></ul>
+      <p class="words__empty" data-words-empty hidden>{t('game.results.words.empty')}</p>
+      <template data-word-template>
+        <li class="word">
+          <span class="word__text" lang="ja" data-word-text></span>
+          <span class="word__romaji" data-word-romaji></span>
+          <span class="word__missed" data-word-missed>{t('game.results.words.missed')}</span>
+          <span class="word__meaning" data-word-meaning></span>
+          <span class="word__count" data-word-count></span>
+        </li>
+      </template>
+      <p class="words__slowest" data-slowest hidden>
+        {t('game.results.slowest')}{' '}
+        <span data-slowest-list></span>{' — '}{t('game.results.slowest.after')}
+      </p>
+    </section>
+  </div>
+
+  <section class="share" aria-labelledby="share-title">
+    <div class="share__form">
+      <h3 id="share-title" class="share__title">{t('game.share.title')}</h3>
+      <p class="share__lead">{t('game.share.lead')}</p>
+      <label class="share__label" for="share-name">{t('game.share.name')}</label>
+      <input
+        id="share-name"
+        class="share__input"
+        type="text"
+        maxlength="24"
+        autocomplete="nickname"
+        spellcheck="false"
+        data-share-name
+      />
+      <Button class="share__button" data-share-download>
+        <Icon name="download" size={18} />
+        {t('game.share.download')}
+      </Button>
+      <Button class="share__button" variant="outline" data-share-copy>
+        <Icon name="copy" size={18} />
+        {t('game.share.copy')}
+      </Button>
+      <p class="share__status" role="status" data-share-status></p>
+    </div>
+    <div class="share__preview" data-theme="dark">
+      <div role="img" data-share-image>
+        <canvas class="share__canvas" width="1200" height="630" aria-hidden="true" data-share-canvas
+        ></canvas>
+      </div>
+      <span class="share__palette" aria-hidden="true">
+        <span data-card-color="bg"></span>
+        <span data-card-color="ink"></span>
+        <span data-card-color="muted"></span>
+        <span data-card-color="line"></span>
+      </span>
+    </div>
+  </section>
+</section>
+
+<style>
+  .results {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-10) var(--space-16);
+  }
+
+  .results__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: end;
+    justify-content: space-between;
+    padding-block-end: var(--space-6);
+    border-block-end: 2px solid var(--ink);
+  }
+
+  .results__kicker,
+  .results__stat dt,
+  .results__cardhead,
+  .chart__axis {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .results__titlebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    margin-block-start: var(--space-2);
+  }
+
+  .results__title {
+    font-size: var(--text-display);
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .results__best {
+    display: inline-flex;
+    gap: var(--space-1);
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+    background: var(--info-soft);
+    border-radius: var(--radius-chip);
+  }
+
+  .results__best[hidden] {
+    display: none;
+  }
+
+  .results__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .results__numbers {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .results__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .results__stat {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    box-shadow: -1px 0 0 var(--line-strong);
+  }
+
+  .results__stat dd {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  .results__more summary {
+    min-block-size: var(--target-min);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    cursor: pointer;
+  }
+
+  .results__extra {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    padding-block-start: var(--space-2);
+  }
+
+  .results__extra dt {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .results__extra dd {
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+  }
+
+  .results__stat--missed.is-bad dd {
+    color: var(--accent);
+  }
+
+  .results__pair {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-5);
+    align-items: start;
+  }
+
+  .results__card {
+    display: grid;
+    gap: var(--space-4);
+    min-inline-size: 0;
+    padding: var(--space-5);
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .results__cardhead {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .results__cardtitle {
+    font-size: inherit;
+    font-weight: 400;
+  }
+
+  .chart__legend {
+    display: flex;
+    gap: var(--space-3);
+    color: var(--ink);
+    text-transform: none;
+  }
+
+  .chart__key--error {
+    color: var(--accent);
+  }
+
+  .chart__plot {
+    position: relative;
+  }
+
+  .chart__svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 640 / 220;
+    touch-action: pan-y;
+  }
+
+  /* Chart nodes are created by src/game/chart.ts, outside Astro's scope. */
+  .chart__svg :global(.chart__grid) {
+    stroke: var(--line-strong);
+    stroke-dasharray: 3 4;
+  }
+
+  .chart__svg :global(.chart__axis) {
+    stroke: var(--line-strong);
+  }
+
+  .chart__svg :global(.chart__label) {
+    fill: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .chart__svg :global(.chart__line) {
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .chart__svg :global(.chart__error line) {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .chart__svg :global(.chart__cross) {
+    stroke: var(--muted);
+    stroke-width: 1;
+  }
+
+  .chart__tip {
+    position: absolute;
+    inset-block-start: 0;
+    padding: var(--space-1) var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+    pointer-events: none;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+    translate: -50% 0;
+  }
+
+  .chart__tip[hidden] {
+    display: none;
+  }
+
+  .chart__axis {
+    display: flex;
+    justify-content: space-between;
+
+    /* Same insets as CHART.left and CHART.right, as shares of the 640 viewBox. */
+    padding-inline: 5.625% 1.25%;
+    text-transform: none;
+  }
+
+  .words__toggle {
+    min-block-size: var(--target-min);
+    padding: 0;
+    color: var(--ink);
+    font: inherit;
+    text-decoration: underline;
+    text-transform: none;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    background: none;
+    border: 0;
+  }
+
+  .words__toggle[hidden] {
+    display: none;
+  }
+
+  .words__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .word {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-2);
+    align-items: baseline;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+  }
+
+  .word[hidden] {
+    display: none;
+  }
+
+  .word.is-missed {
+    border-color: var(--accent);
+    border-style: dashed;
+  }
+
+  .word__text {
+    font-family: var(--font-body-ja);
+    font-size: var(--text-md);
+  }
+
+  .word__romaji,
+  .word__missed,
+  .word__count {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .word__romaji,
+  .word__meaning,
+  .word__count {
+    color: var(--muted);
+  }
+
+  .word__missed {
+    color: var(--accent);
+  }
+
+  .word__missed[hidden] {
+    display: none;
+  }
+
+  .word__meaning {
+    font-size: var(--text-sm);
+  }
+
+  .word__meaning:empty,
+  .word__count:empty {
+    display: none;
+  }
+
+  .words__slowest,
+  .words__empty {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .words__slowest[hidden],
+  .words__empty[hidden] {
+    display: none;
+  }
+
+  .words__slowest a {
+    color: var(--ink);
+    font-family: var(--font-body-ja);
+    font-size: var(--text-md);
+    text-underline-offset: 3px;
+  }
+
+  .share {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: var(--space-8);
+    align-items: start;
+    padding-block-start: var(--space-8);
+    border-block-start: 1px solid var(--line);
+  }
+
+  .share__form {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .share__title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+
+  .share__lead {
+    margin-block-end: var(--space-2);
+    color: var(--muted);
+  }
+
+  .share__label {
+    font-size: var(--text-sm);
+  }
+
+  .share__input {
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    margin-block-end: var(--space-2);
+    color: var(--ink);
+    font: inherit;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
+  .share__input:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .share__form :global(.share__button) {
+    gap: var(--space-2);
+    inline-size: 100%;
+  }
+
+  .share__form :global(.share__button[hidden]) {
+    display: none;
+  }
+
+  .share__status {
+    min-block-size: 1.5em;
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .share__canvas {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  /* Swatches read by results.ts: token colours as resolved in the dark scheme. */
+  .share__palette {
+    display: none;
+  }
+
+  [data-card-color='bg'] {
+    color: var(--bg);
+  }
+
+  [data-card-color='ink'] {
+    color: var(--ink);
+  }
+
+  [data-card-color='muted'] {
+    color: var(--muted);
+  }
+
+  [data-card-color='line'] {
+    color: var(--line);
+  }
+
+  @media (width < 48rem) {
+    .results__pair,
+    .share {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

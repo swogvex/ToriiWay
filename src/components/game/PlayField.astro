@@ -1,7 +1,7 @@
 ---
 /**
  * Kana Rush stage: the field with its bubbles (cloned from the template by
- * src/game/field.ts), the overlay panels (countdown, pause, endings) and the input
+ * src/game/field.ts), the overlay panels (loading, countdown, pause) and the input
  * line. The field is decorative for screen readers: the game is not screen-reader
  * playable (see the accessibility statement).
  */
@@ -12,11 +12,6 @@ import Icon from '../ui/Icon.astro';
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 const setupHref = localizePath('/game', locale);
-const endings = [
-  ['cleared', t('game.play.cleared')],
-  ['failed', t('game.play.failed')],
-  ['quit', t('game.play.quit')],
-] as const;
 ---
 
 <div class="stage">
@@ -60,23 +55,6 @@ const endings = [
         {t('game.play.change')}
       </Button>
     </div>
-    {endings.map(([status, title]) => (
-      <div class="stage__panel" data-panel={status} hidden>
-        <p class="stage__title" role="status">
-          {title}
-        </p>
-        <p class="stage__best" data-new-best hidden>
-          <Icon name="check" size={16} />
-          {t('game.play.newBest')}
-        </p>
-        <div class="stage__actions">
-          <Button variant="outline" href={setupHref}>
-            {t('game.play.change')}
-          </Button>
-          <Button data-restart>{t('game.play.again')}</Button>
-        </div>
-      </div>
-    ))}
   </div>
 </div>
 
@@ -177,24 +155,6 @@ const endings = [
   .stage__actions {
     display: flex;
     gap: var(--space-3);
-  }
-
-  .stage__best {
-    display: inline-flex;
-    gap: var(--space-1);
-    align-items: center;
-    padding: var(--space-1) var(--space-3);
-    color: var(--info);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-    background: var(--info-soft);
-    border-radius: var(--radius-chip);
-  }
-
-  .stage__best[hidden] {
-    display: none;
   }
 
   .stage__level {

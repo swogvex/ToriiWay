@@ -3,6 +3,7 @@ import PlayBlocked from '../../components/game/PlayBlocked.astro';
 import PlayField from '../../components/game/PlayField.astro';
 import PlayHud from '../../components/game/PlayHud.astro';
 import PlayKeyboard from '../../components/game/PlayKeyboard.astro';
+import PlayResults from '../../components/game/PlayResults.astro';
 import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
 import { getLocale, useTranslations } from '../../i18n';
 import FocusLayout from '../../layouts/FocusLayout.astro';
@@ -23,14 +24,13 @@ const labels = Object.fromEntries([
   noindex
 >
   <div class="kana-rush" data-game data-labels={JSON.stringify(labels)}>
-    <section class="play column" aria-labelledby="play-title">
-      <h1 id="play-title" class="visually-hidden">
-        Kana Rush
-      </h1>
+    <h1 class="visually-hidden">Kana Rush</h1>
+    <section class="play column" aria-label={t('game.play.title')}>
       <PlayHud />
       <PlayField />
       <PlayKeyboard />
     </section>
+    <PlayResults />
     <PlayBlocked />
   </div>
 </FocusLayout>
@@ -49,8 +49,19 @@ const labels = Object.fromEntries([
     padding-block: var(--space-4) var(--space-10);
   }
 
-  .kana-rush :global(.blocked) {
+  .kana-rush :global(.blocked),
+  .kana-rush :global(.results) {
     display: none;
+  }
+
+  /* A finished run shows the results in place of the game (same route). */
+  .kana-rush:is([data-status='cleared'], [data-status='failed'], [data-status='quit']) .play {
+    display: none;
+  }
+
+  .kana-rush:is([data-status='cleared'], [data-status='failed'], [data-status='quit'])
+    :global(.results) {
+    display: grid;
   }
 
   /* Same query as BLOCKED in src/game/play.ts; "Play anyway" adds .is-forced. */

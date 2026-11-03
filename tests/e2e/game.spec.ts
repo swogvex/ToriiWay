@@ -84,7 +84,7 @@ test.describe('Kana Rush play', () => {
 
     await page.clock.runFor(30_000);
     await expect(game(page)).toHaveAttribute('data-status', 'failed');
-    await expect(page.getByText('Out of lives')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Out of lives' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Play again' })).toBeFocused();
 
     await page.keyboard.press('Enter');
@@ -116,7 +116,46 @@ test.describe('Kana Rush play', () => {
     await page.getByRole('button', { name: 'Pause' }).click();
     await page.getByRole('button', { name: 'Quit run' }).click();
     await expect(game(page)).toHaveAttribute('data-status', 'quit');
-    await expect(page.getByText('Run ended')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Run ended' })).toBeVisible();
+  });
+
+  test('results show the run with no axe violations and a downloadable card', async ({ page }) => {
+    await startRun(page);
+    await page.clock.runFor(1500);
+    const reading = await bubbles(page)
+      .first()
+      .evaluate((el) => (el as HTMLElement).dataset['reading'] ?? '');
+    await page.keyboard.type('q');
+    await page.keyboard.type(toRomaji(reading));
+    await expect(game(page)).toHaveAttribute('data-popped', '1');
+    await page.clock.runFor(2000);
+    await page.keyboard.press('Escape');
+    await page.getByRole('button', { name: 'Quit run' }).click();
+
+    const results = page.locator('[data-results]');
+    await expect(results.getByRole('heading', { name: 'Run ended' })).toBeVisible();
+    await expect(page.locator('.play')).toBeHidden();
+    await expect(results.locator('[data-stat="popped"]')).toHaveText('1');
+    await expect(results.locator('[data-stat="accuracy"]')).toHaveText(/^\d+%$/);
+    await expect(results.locator('[data-stat="time"]')).toHaveText(/^0:0\d$/);
+    await expect(results.locator('[data-words] li').first()).toContainText(reading);
+    await expect(results.locator('[data-words-count]')).toHaveText('1 popped');
+    await expect(results.locator('[data-chart] .chart__line')).toHaveCount(1);
+    await expect(results.locator('[data-chart] .chart__error')).not.toHaveCount(0);
+    await expect(results.locator('[data-chart-desc]')).toContainText('Seconds with errors: 1');
+    await expect(results.locator('[data-slowest] a').first()).toHaveAttribute(
+      'href',
+      /\/learn\/kana\//,
+    );
+
+    await page.getByLabel('Name on card (optional)').fill('swogvex');
+    await expect(results.locator('[data-share-image]')).toHaveAttribute('aria-label', /swogvex/);
+    const download = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download PNG' }).click();
+    expect((await download).suggestedFilename()).toMatch(/^kana-rush-\d{4}-\d\d-\d\d\.png$/);
+
+    const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
+    expect(axe.violations).toEqual([]);
   });
 
   test('hiding the tab pauses the run', async ({ page }) => {
