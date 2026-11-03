@@ -1,0 +1,15 @@
+---
+import PlayField from '../../components/game/PlayField.astro';
+import { getLocale, useTranslations } from '../../i18n';
+import FocusLayout from '../../layouts/FocusLayout.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<FocusLayout
+  title={`${t('game.play.title')} · ${t('site.name')}`}
+  description={t('game.play.description')}
+  noindex
+>
+  <PlayField />
+</FocusLayout>

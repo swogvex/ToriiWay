@@ -1,0 +1,343 @@
+---
+/**
+ * Kana Rush in play: field, bubbles (cloned from the template by src/game/field.ts),
+ * a minimal status line and the input line. The field is decorative for screen
+ * readers: the game is not screen-reader playable (see the accessibility statement).
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+const endings = [
+  ['cleared', t('game.play.cleared')],
+  ['failed', t('game.play.failed')],
+  ['quit', t('game.play.quit')],
+] as const;
+---
+
+<section class="play column" data-game aria-labelledby="play-title">
+  <h1 id="play-title" class="visually-hidden">
+    Kana Rush
+  </h1>
+
+  <p class="play__status">
+    <span>
+      <span class="play__label">{t('game.hud.lives')}</span> <span data-lives>–</span>
+    </span>
+    <span>
+      <span class="play__label">{t('game.hud.time')}</span> <span data-time>–</span>
+    </span>
+    <span>
+      <span class="play__label">{t('game.hud.popped')}</span> <span data-popped>0</span>
+    </span>
+  </p>
+
+  <div class="play__stage">
+    <div class="field" data-field aria-hidden="true">
+      <template data-bubble-template>
+        <div class="bubble" hidden>
+          <span class="bubble__pill">
+            <span class="bubble__text" lang="ja" data-text></span>
+            <span class="bubble__mark">!</span>
+          </span>
+          <Icon name="arrow-right" size={18} class="bubble__arrow" />
+          <span class="bubble__hint" data-hint></span>
+        </div>
+      </template>
+    </div>
+
+    <div class="play__overlay" data-overlay>
+      <div class="play__panel" data-panel="loading">
+        <p>{t('game.play.loading')}</p>
+      </div>
+      <div class="play__panel" data-panel="start" hidden>
+        <p>{t('game.play.intro')}</p>
+        <Button variant="accent" data-start>
+          {t('game.play.start')}
+        </Button>
+      </div>
+      <div class="play__panel" data-panel="unavailable" hidden>
+        <p>{t('game.play.unavailable')}</p>
+      </div>
+      {endings.map(([status, title]) => (
+        <div class="play__panel" data-panel={status} hidden>
+          <p class="play__end" role="status">
+            {title}
+          </p>
+          <Button data-start>{t('game.play.again')}</Button>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <label class="play__input" for="play-input">
+    <span class="play__label">{t('game.play.input')}</span>
+    <span class="play__typed" aria-hidden="true">
+      <span data-typed></span>
+      <span class="play__wrong" data-wrong></span>
+    </span>
+    <span class="play__kana" lang="ja" aria-hidden="true" data-typed-kana></span>
+    <input
+      id="play-input"
+      class="visually-hidden"
+      type="text"
+      autocomplete="off"
+      autocapitalize="off"
+      autocorrect="off"
+      spellcheck="false"
+      aria-label={t('game.play.inputLabel')}
+      data-input
+    />
+  </label>
+  <p class="play__focus" data-focus-note hidden>
+    {t('game.play.focus')}
+  </p>
+</section>
+
+<script>
+  import { initPlay } from '../../game/play';
+
+  const root = document.querySelector<HTMLElement>('[data-game]');
+  if (root) void initPlay(root);
+</script>
+
+<style>
+  .play {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-6) var(--space-10);
+  }
+
+  .play__status {
+    display: flex;
+    gap: var(--space-6);
+    justify-content: flex-end;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .play__label {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .play__stage {
+    position: relative;
+  }
+
+  .field {
+    position: relative;
+    overflow: hidden;
+    inline-size: 100%;
+    max-block-size: 440px;
+    aspect-ratio: 1000 / 440;
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    border-inline-width: 3px;
+    border-radius: var(--radius-card);
+  }
+
+  .play__overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: var(--space-6);
+    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    border-radius: var(--radius-card);
+  }
+
+  .play__overlay[hidden],
+  .play__panel[hidden] {
+    display: none;
+  }
+
+  .play__panel {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: center;
+    max-inline-size: 46ch;
+    text-align: center;
+  }
+
+  .play__end {
+    font-size: var(--text-xl);
+    font-weight: 700;
+  }
+
+  .play__input {
+    display: flex;
+    gap: var(--space-3);
+    align-items: baseline;
+    justify-content: center;
+    justify-self: center;
+    min-inline-size: min(100%, 500px);
+    min-block-size: var(--target-min);
+    padding-block-end: var(--space-2);
+    border-block-end: 2px solid var(--line-strong);
+    cursor: text;
+  }
+
+  .play__input:focus-within {
+    border-block-end-color: var(--info);
+  }
+
+  .play__typed {
+    min-inline-size: 1ch;
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+  }
+
+  .play__wrong {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .play__kana {
+    color: var(--muted);
+  }
+
+  .play__kana:not(:empty)::before {
+    content: '→ ';
+  }
+
+  .play__focus {
+    color: var(--muted);
+    font-size: var(--text-sm);
+    text-align: center;
+  }
+
+  /* Bubbles are created from the template, outside Astro's scope. */
+  .field :global(.bubble) {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    display: flex;
+    gap: var(--space-1);
+    align-items: center;
+    will-change: transform;
+  }
+
+  .field :global(.bubble[hidden]) {
+    display: none;
+  }
+
+  .field :global(.bubble--right) {
+    flex-direction: row-reverse;
+  }
+
+  .field :global(.bubble--right .bubble__arrow) {
+    transform: scaleX(-1);
+  }
+
+  .field :global(.bubble__arrow) {
+    color: var(--muted);
+  }
+
+  .field :global(.bubble__pill) {
+    position: relative;
+    padding: var(--space-1) var(--space-5);
+    background: var(--bg);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-pill);
+  }
+
+  .field :global(.bubble__text) {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .field :global(.bubble__text .is-filled) {
+    color: var(--info);
+  }
+
+  .field :global(.is-target .bubble__pill) {
+    border-color: var(--info);
+    box-shadow: 0 0 0 4px var(--info-soft);
+  }
+
+  .field :global(.is-danger .bubble__pill) {
+    border-color: var(--accent);
+    border-style: dashed;
+  }
+
+  .field :global(.bubble__mark) {
+    position: absolute;
+    inset-block-start: -10px;
+    inset-inline-end: -6px;
+    display: none;
+    place-items: center;
+    inline-size: 20px;
+    block-size: 20px;
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    background: var(--accent);
+    border-radius: var(--radius-pill);
+  }
+
+  .field :global(.is-danger .bubble__mark) {
+    display: grid;
+  }
+
+  .field :global(.bubble__hint) {
+    position: absolute;
+    inset-block-start: 100%;
+    inset-inline: 0;
+    display: none;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-align: center;
+  }
+
+  .field :global(.is-hinted .bubble__hint) {
+    display: block;
+  }
+
+  .field :global(.is-popping .bubble__pill) {
+    animation: pop 150ms var(--ease) forwards;
+  }
+
+  .field :global(.is-popping .bubble__arrow),
+  .field :global(.is-missed) {
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease);
+  }
+
+  .field :global(.pop-note) {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    pointer-events: none;
+    animation: rise 900ms var(--ease) forwards;
+  }
+
+  @keyframes pop {
+    to {
+      opacity: 0;
+      scale: 1.25;
+    }
+  }
+
+  @keyframes rise {
+    to {
+      opacity: 0;
+      translate: 0 -32px;
+    }
+  }
+</style>

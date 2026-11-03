@@ -1,8 +1,10 @@
 // Kana Rush tuning. Every gameplay number lives here (see the difficulty table in the game spec).
 
+export type GameScript = 'hiragana' | 'katakana' | 'kanji';
 export type Difficulty = 'easy' | 'normal' | 'hard' | 'extreme';
 export type Mode = 'challenge' | 'endless';
 
+export const GAME_SCRIPTS: readonly GameScript[] = ['hiragana', 'katakana', 'kanji'];
 export const DIFFICULTIES: readonly Difficulty[] = ['easy', 'normal', 'hard', 'extreme'];
 export const MODES: readonly Mode[] = ['challenge', 'endless'];
 
@@ -79,6 +81,12 @@ export const REDUCED_MOTION_SPEED = 0.7;
 
 /** Danger state: the last fraction of the path. */
 export const DANGER_FROM = 0.8;
+
+/** Horizontal lanes in the field; one bubble per lane, so no vertical overlap. */
+export const LANES = 6;
+
+/** Longest frame step the simulation accepts, so a stalled tab does not jump ahead. */
+export const MAX_STEP = 0.1;
 
 /** Seconds a bubble with this many kana takes to cross the field. */
 export function crossTime(config: DifficultyConfig, kanaCount: number): number {
