@@ -46,6 +46,7 @@ describe('level structure', () => {
       for (const mondai of section.mondai) {
         if (mondai.perPassage !== null) expect(mondai.count % mondai.perPassage).toBe(0);
         expect(mondai.audio).toBe(section.id === 'listening' || section.id === 'dictation');
+        expect(mondai.spokenChoices).toBe(['utterance', 'quick-response'].includes(mondai.type));
       }
     }
   });

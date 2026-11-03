@@ -1,7 +1,7 @@
 import preact from '@astrojs/preact';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import { pagefind } from './src/integrations/pagefind';
 
@@ -21,6 +21,15 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   adapter: vercel(),
+  // Server secrets are read at runtime on Vercel; all are optional so static pages build without them.
+  env: {
+    schema: {
+      DATABASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
+      IP_HASH_SALT: envField.string({ context: 'server', access: 'secret', optional: true }),
+      /** e2e and local previews: keep JLPT runs in memory instead of Postgres. */
+      JLPT_MEMORY_STORE: envField.boolean({ context: 'server', access: 'secret', default: false }),
+    },
+  },
   integrations: [
     preact(),
     sitemap({

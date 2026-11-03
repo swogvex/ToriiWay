@@ -32,7 +32,9 @@ export const TIMING = {
   countdown: 3,
 } as const;
 
-type MondaiOptions = Partial<Pick<MondaiConfig, 'choices' | 'perPassage' | 'audio'>>;
+type MondaiOptions = Partial<
+  Pick<MondaiConfig, 'choices' | 'perPassage' | 'audio' | 'spokenChoices'>
+>;
 
 function mondai(
   number: number,
@@ -51,10 +53,16 @@ function mondai(
     choices: options.choices ?? 4,
     perPassage: options.perPassage ?? null,
     audio: options.audio ?? false,
+    spokenChoices: options.spokenChoices ?? false,
   };
 }
 
-const listen = (choices: 3 | 4 = 4): MondaiOptions => ({ audio: true, choices });
+// Utterance and quick-response choices are only heard (3 choices in the real test).
+const listen = (choices: 3 | 4 = 4): MondaiOptions => ({
+  audio: true,
+  choices,
+  spokenChoices: choices === 3,
+});
 const passage = (perPassage: number): MondaiOptions => ({ perPassage });
 
 const KANA: LevelConfig = {
