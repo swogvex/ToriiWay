@@ -5,6 +5,14 @@ import type { JlptLevel } from './types';
 
 export type Rating = 'easy' | 'right' | 'hard';
 
+export interface RecentRun {
+  nickname: string;
+  level: JlptLevel;
+  passed: boolean;
+  /** Epoch milliseconds. */
+  finishedAt: number;
+}
+
 export interface RunStore {
   createRun(run: RunRecord): Promise<void>;
   getRun(id: string): Promise<RunRecord | null>;
@@ -19,6 +27,8 @@ export interface RunStore {
   saveFeedback(runId: string, section: number, rating: Rating): Promise<void>;
   /** Sets the report name of a finished run. False when the run is not finished. */
   setName(runId: string, name: string | null): Promise<boolean>;
+  /** Latest finished runs that opted in to the public list. */
+  recentPublic(limit: number): Promise<RecentRun[]>;
   /** Finished runs of a level, and how many of them scored below `total`. */
   percentile(level: JlptLevel, total: number): Promise<{ runs: number; below: number }>;
   /** Counts a hit in the current fixed window; false once `limit` is exceeded. */
@@ -63,6 +73,18 @@ export function memoryStore(): RunStore {
       if (!run || run.status !== 'finished') return false;
       run.name = name;
       return true;
+    },
+    async recentPublic(limit) {
+      return [...runs.values()]
+        .filter((run) => run.isPublic && run.status === 'finished' && run.nickname && run.scores)
+        .sort((a, b) => (b.finishedAt ?? 0) - (a.finishedAt ?? 0))
+        .slice(0, limit)
+        .map((run) => ({
+          nickname: run.nickname ?? '',
+          level: run.level,
+          passed: run.scores?.passed ?? false,
+          finishedAt: run.finishedAt ?? 0,
+        }));
     },
     async percentile(level, total) {
       const finished = [...runs.values()].filter(

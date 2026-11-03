@@ -2,6 +2,7 @@
 // transition with the server clock and saves the result.
 
 import { findMondai, LEVELS, TIMING } from './levels';
+import { nicknameFor } from './nickname';
 import type { BankMondai, BankQuestion, PaperSection } from './paper';
 import { scoreRun, type AnsweredQuestion, type ScoreReport } from './scoring';
 import type { JlptLevel } from './types';
@@ -36,6 +37,8 @@ export interface RunRecord {
   isPublic: boolean;
   /** Name shown on the score report, if the player gave one. */
   name: string | null;
+  /** Public nickname for "recent runs"; only for runs that opted in. */
+  nickname: string | null;
   createdAt: number;
   finishedAt: number | null;
   expiresAt: number;
@@ -95,6 +98,7 @@ export function createRun(options: {
     breakStartedAt: null,
     results: [],
     name: null,
+    nickname: rest.isPublic ? nicknameFor(rest.id) : null,
     createdAt: now,
     finishedAt: null,
     expiresAt: now + RUN_LIFETIME_DAYS * DAY,

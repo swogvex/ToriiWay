@@ -1,5 +1,5 @@
 import { neon } from '@neondatabase/serverless';
-import { and, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, isNotNull, sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/neon-http';
 
 import type { RunRecord } from '../lib/jlpt/run';
@@ -25,6 +25,7 @@ function toRecord(row: RunRow): RunRecord {
     results: row.results,
     isPublic: row.isPublic,
     name: row.name,
+    nickname: row.nickname,
     createdAt: row.createdAt.getTime(),
     finishedAt: ms(row.finishedAt),
     expiresAt: row.expiresAt.getTime(),
@@ -53,7 +54,7 @@ function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname' | 'name'> {
 }
 
 function toRow(run: RunRecord): RunRow {
-  return { id: run.id, nickname: null, name: run.name, ...runValues(run) };
+  return { id: run.id, nickname: run.nickname, name: run.name, ...runValues(run) };
 }
 
 export function drizzleStore(databaseUrl: string): RunStore {
@@ -115,6 +116,31 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .where(and(eq(jlptRuns.id, runId), eq(jlptRuns.status, 'finished')))
         .returning({ id: jlptRuns.id });
       return updated.length === 1;
+    },
+    async recentPublic(limit) {
+      const rows = await db
+        .select({
+          nickname: jlptRuns.nickname,
+          level: jlptRuns.level,
+          passed: jlptRuns.passed,
+          finishedAt: jlptRuns.finishedAt,
+        })
+        .from(jlptRuns)
+        .where(
+          and(
+            eq(jlptRuns.isPublic, true),
+            eq(jlptRuns.status, 'finished'),
+            isNotNull(jlptRuns.nickname),
+          ),
+        )
+        .orderBy(desc(jlptRuns.finishedAt))
+        .limit(limit);
+      return rows.map((row) => ({
+        nickname: row.nickname ?? '',
+        level: row.level as JlptLevel,
+        passed: row.passed ?? false,
+        finishedAt: row.finishedAt?.getTime() ?? 0,
+      }));
     },
     async percentile(level, total) {
       const finished = and(eq(jlptRuns.level, level), eq(jlptRuns.status, 'finished'));

@@ -474,5 +474,8 @@
   "jlpt.type.utterance": "Audio — qué decir",
   "jlpt.type.quick-response": "Audio — respuesta rápida",
   "jlpt.report.review.count": "{count} para repasar",
-  "jlpt.report.download": "Descargar PNG"
+  "jlpt.report.download": "Descargar PNG",
+  "jlpt.recent.title": "Últimos intentos",
+  "jlpt.recent.pass": "Aprobado",
+  "jlpt.recent.notYet": "Todavía no"
 }
