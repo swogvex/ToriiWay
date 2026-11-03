@@ -474,5 +474,6 @@
   "jlpt.type.utterance": "Listening — what to say",
   "jlpt.type.quick-response": "Listening — quick response",
   "jlpt.report.review.count": "{count} to review",
-  "jlpt.report.download": "Download PNG"
+  "jlpt.report.download": "Download PNG",
+  "jlpt.run.finalizeShort": "Finish"
 }
