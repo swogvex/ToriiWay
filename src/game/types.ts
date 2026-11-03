@@ -26,6 +26,29 @@ export interface Bubble {
   pending: string;
   /** Wrong keys while this bubble was the target (the romaji hint shows after the first). */
   misses: number;
+  /** Run time when it appeared. */
+  spawnedAt: number;
+  /** Run time the kana being typed started (for "slowest kana"). */
+  unitFrom: number;
+}
+
+/** Keys typed in one second of the run; the last sample may be shorter. */
+export interface Sample {
+  correct: number;
+  wrong: number;
+  seconds: number;
+}
+
+/** A bubble that left the field, popped or missed. */
+export interface LogEntry {
+  item: GameItem;
+  popped: boolean;
+}
+
+/** Time to type one kana unit (しゃ and っか count as one), from the moment it could start. */
+export interface KanaTime {
+  kana: string;
+  seconds: number;
 }
 
 export type RunStatus = 'playing' | 'cleared' | 'failed' | 'quit';
@@ -46,6 +69,8 @@ export interface RunStats {
   wrongKeys: number;
   popped: number;
   missed: number;
+  /** Kana produced, for KPM. */
+  kana: number;
   combo: number;
   maxCombo: number;
 }

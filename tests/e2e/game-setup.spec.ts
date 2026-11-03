@@ -103,6 +103,7 @@ test.describe('Kana Rush endless', () => {
     test.setTimeout(120_000);
     await page.clock.install();
     await page.goto('/game/play?script=hiragana&difficulty=easy&mode=endless&seed=3');
+    await expect(page.locator('[data-game]')).toHaveAttribute('data-status', 'countdown');
     await page.clock.runFor(3400);
     await expect(page.locator('[data-game]')).toHaveAttribute('data-status', 'playing');
     await expect(page.locator('[data-time]')).toHaveText(/^Level 1 · 00:\d\d$/);
@@ -115,12 +116,13 @@ test.describe('Kana Rush endless', () => {
   test('a finished run is saved as a new best', async ({ page }) => {
     await page.clock.install();
     await page.goto('/game/play?script=hiragana&difficulty=normal&mode=challenge&seed=1');
+    await expect(page.locator('[data-game]')).toHaveAttribute('data-status', 'countdown');
     await page.clock.runFor(3400);
     await expect(page.locator('[data-game]')).toHaveAttribute('data-status', 'playing');
     await page.clock.runFor(30_000);
     await page.clock.runFor(30_000);
     await expect(page.locator('[data-game]')).toHaveAttribute('data-status', 'failed');
-    await expect(page.locator('[data-panel="failed"] [data-new-best]')).toBeVisible();
+    await expect(page.locator('[data-results] [data-new-best]')).toBeVisible();
     await page.getByRole('link', { name: 'Change settings' }).first().click();
     await expect(page).toHaveURL(/\/game$/);
     await expect(page.locator('[data-best]')).toHaveText('0');

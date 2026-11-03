@@ -12,11 +12,33 @@ import {
 import { matchRomaji, typingForm } from './romaji';
 import { pickItem, pickLane, pickSide, type Side } from './spawner';
 import { pickTarget } from './targeting';
-import type { Bubble, GameItem, RunEvent, RunOptions, RunStats, RunStatus } from './types';
+import type {
+  Bubble,
+  GameItem,
+  KanaTime,
+  LogEntry,
+  RunEvent,
+  RunOptions,
+  RunStats,
+  RunStatus,
+  Sample,
+} from './types';
 
-export type { Bubble, GameItem, RunEvent, RunOptions, RunStats, RunStatus } from './types';
+export type {
+  Bubble,
+  GameItem,
+  KanaTime,
+  LogEntry,
+  RunEvent,
+  RunOptions,
+  RunStats,
+  RunStatus,
+  Sample,
+} from './types';
 
 const TYPED_KEY = /^[a-z'-]$/;
+/** A trailing sample shorter than this is rounding noise, not a second of play. */
+const MIN_SAMPLE = 0.05;
 
 /**
  * One game run as a pure simulation: no DOM, no clock. The page calls `step`
@@ -29,6 +51,7 @@ export class Run {
     wrongKeys: 0,
     popped: 0,
     missed: 0,
+    kana: 0,
     combo: 0,
     maxCombo: 0,
   };
@@ -38,7 +61,16 @@ export class Run {
   target: Bubble | null = null;
   /** Endless level (always 1 in challenge mode). */
   level = 1;
+  /** Keys per second of play, for the results chart and consistency. */
+  readonly samples: Sample[] = [];
+  /** Every bubble that left the field, in order. */
+  readonly log: LogEntry[] = [];
+  /** Time per typed kana unit, for "slowest kana". */
+  readonly kanaTimes: KanaTime[] = [];
 
+  private second = { correct: 0, wrong: 0 };
+  /** Run time since the player last had no target. */
+  private freeSince = 0;
   private events: RunEvent[] = [];
   private nextId = 1;
   private spawnIn = 0;
@@ -74,6 +106,7 @@ export class Run {
     if (this.status !== 'playing') return;
     const dt = Math.min(Math.max(seconds, 0), MAX_STEP);
     this.elapsed += dt;
+    while (this.samples.length + 1 <= this.elapsed) this.closeSample(1);
 
     for (const bubble of [...this.bubbles]) {
       bubble.progress = Math.min(1, bubble.progress + dt / bubble.duration);
@@ -155,6 +188,7 @@ export class Run {
     if (!picked || !bubble) return false;
     if (previous) this.release(previous);
     this.target = bubble;
+    bubble.unitFrom = Math.max(bubble.spawnedAt, this.freeSince);
     bubble.typed = typed.slice(0, -1);
     this.correct(typed.slice(-1), bubble, picked.match);
     return true;
@@ -207,6 +241,8 @@ export class Run {
       kana: 0,
       pending: '',
       misses: 0,
+      spawnedAt: this.elapsed,
+      unitFrom: this.elapsed,
     };
     this.bubbles.push(bubble);
     this.events.push({ type: 'spawn', bubble });
@@ -215,9 +251,17 @@ export class Run {
 
   private correct(key: string, bubble: Bubble, match: ReturnType<typeof matchRomaji>): void {
     this.stats.correctKeys += 1;
+    this.second.correct += 1;
     this.stats.combo += 1;
     this.stats.maxCombo = Math.max(this.stats.maxCombo, this.stats.combo);
     bubble.typed += key;
+    const kana =
+      match.status === 'done'
+        ? typingForm(bubble.item.reading).length
+        : match.status === 'partial'
+          ? match.kana
+          : bubble.kana;
+    if (kana > bubble.kana) this.timeKana(bubble, bubble.kana, kana);
     if (match.status === 'partial') {
       bubble.kana = match.kana;
       bubble.pending = match.pending;
@@ -228,6 +272,7 @@ export class Run {
 
   private wrong(key: string): void {
     this.stats.wrongKeys += 1;
+    this.second.wrong += 1;
     this.stats.combo = 0;
     if (this.target) this.target.misses += 1;
     this.events.push({ type: 'key', key, correct: false, bubble: this.target });
@@ -237,6 +282,7 @@ export class Run {
 
   private pop(bubble: Bubble): void {
     this.stats.popped += 1;
+    this.log.push({ item: bubble.item, popped: true });
     bubble.kana = typingForm(bubble.item.reading).length;
     bubble.pending = '';
     this.remove(bubble);
@@ -245,6 +291,7 @@ export class Run {
 
   private miss(bubble: Bubble): void {
     this.stats.missed += 1;
+    this.log.push({ item: bubble.item, popped: false });
     this.remove(bubble);
     this.events.push({ type: 'miss', bubble });
     this.loseLife();
@@ -255,13 +302,30 @@ export class Run {
     bubble.kana = 0;
     bubble.pending = '';
     this.target = null;
+    this.freeSince = this.elapsed;
     this.events.push({ type: 'release', bubble });
   }
 
   private remove(bubble: Bubble): void {
     const index = this.bubbles.indexOf(bubble);
     if (index !== -1) this.bubbles.splice(index, 1);
-    if (this.target === bubble) this.target = null;
+    if (this.target === bubble) {
+      this.target = null;
+      this.freeSince = this.elapsed;
+    }
+  }
+
+  /** Records the kana units from `from` to `to` (one unit per key that completes them). */
+  private timeKana(bubble: Bubble, from: number, to: number): void {
+    const kana = [...bubble.item.reading].slice(from, to).join('');
+    this.stats.kana += to - from;
+    this.kanaTimes.push({ kana, seconds: this.elapsed - bubble.unitFrom });
+    bubble.unitFrom = this.elapsed;
+  }
+
+  private closeSample(seconds: number): void {
+    this.samples.push({ ...this.second, seconds });
+    this.second = { correct: 0, wrong: 0 };
   }
 
   private loseLife(): void {
@@ -274,6 +338,8 @@ export class Run {
   private end(status: Exclude<RunStatus, 'playing'>): void {
     this.status = status;
     this.target = null;
+    const rest = this.elapsed - this.samples.length;
+    if (rest >= MIN_SAMPLE) this.closeSample(rest);
     this.events.push({ type: 'end', status });
   }
 }
