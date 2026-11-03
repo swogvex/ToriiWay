@@ -40,6 +40,11 @@ const RETIRE_MS = { 'is-popping': 200, 'is-missed': 360 } as const;
 const EDGE = 12;
 /** Room between rows, so the danger badge and hint do not touch the next bubble. */
 const ROW_GAP = 8;
+/**
+ * Stacking: older bubbles sit above newer ones (z = TOP − id), the target above all,
+ * so a bubble being typed is never hidden by one that appears later.
+ */
+const TOP = 1_000_000;
 
 /**
  * Draws a run into the field. Bubble elements are pooled and moved with
@@ -104,15 +109,16 @@ export class Field {
 
   /** Moves every live bubble; runs once per frame. */
   render(run: Run): void {
-    const laneHeight = (this.height - 2 * EDGE) / this.lanes;
+    // After a resize to fewer lanes, bubbles already out keep their lane until they leave.
+    const lanes = run.bubbles.reduce((most, bubble) => Math.max(most, bubble.lane + 1), this.lanes);
+    const laneHeight = (this.height - 2 * EDGE) / lanes;
     for (const bubble of run.bubbles) {
       const view = this.views.get(bubble.id);
       if (!view) continue;
       const travel = Math.max(0, this.width - view.width);
       const along = bubble.side === 'left' ? bubble.progress : 1 - bubble.progress;
       view.x = travel * along;
-      const lane = Math.min(bubble.lane, this.lanes - 1);
-      view.y = EDGE + lane * laneHeight + (laneHeight - view.height) / 2;
+      view.y = EDGE + bubble.lane * laneHeight + (laneHeight - view.height) / 2;
       view.el.style.transform = `translate3d(${view.x}px, ${view.y}px, 0)`;
       const danger = Run.inDanger(bubble);
       if (danger !== view.danger) {
@@ -144,8 +150,11 @@ export class Field {
       probe.text.textContent = 'あ';
       probe.el.classList.add('is-probe');
       probe.el.hidden = false;
-      this.row = probe.el.offsetHeight + ROW_GAP;
+      const height = probe.el.offsetHeight;
       probe.el.remove();
+      // A hidden field measures 0: try again on the next resize.
+      if (height === 0) return;
+      this.row = height + ROW_GAP;
     }
     const lanes = fitLanes(this.height - 2 * EDGE, this.row);
     if (lanes === this.lanes) return;
@@ -165,6 +174,7 @@ export class Field {
     view.text.replaceChildren(...view.chars);
     view.hint.textContent = romajiHint(bubble.item.reading);
     view.danger = false;
+    view.el.style.zIndex = String(TOP - bubble.id);
     view.el.hidden = false;
     view.width = view.el.offsetWidth;
     view.height = view.el.offsetHeight;
@@ -192,8 +202,16 @@ export class Field {
   private markTarget(target: Bubble | null): void {
     const id = target?.id ?? null;
     if (id === this.targetId) return;
-    if (this.targetId !== null) this.views.get(this.targetId)?.el.classList.remove('is-target');
-    if (id !== null) this.views.get(id)?.el.classList.add('is-target');
+    const previous = this.targetId === null ? undefined : this.views.get(this.targetId);
+    if (previous && this.targetId !== null) {
+      previous.el.classList.remove('is-target');
+      previous.el.style.zIndex = String(TOP - this.targetId);
+    }
+    const next = id === null ? undefined : this.views.get(id);
+    if (next) {
+      next.el.classList.add('is-target');
+      next.el.style.zIndex = String(TOP + 1);
+    }
     this.targetId = id;
   }
 
@@ -228,6 +246,7 @@ export class Field {
       this.options.locale === 'es' ? (bubble.item.es ?? bubble.item.en) : bubble.item.en;
     if (this.options.meaning && meaning) note.append(` ${meaning}`);
     if (view) note.style.transform = `translate3d(${view.x}px, ${view.y}px, 0)`;
+    note.style.zIndex = String(TOP + 2);
     note.addEventListener('animationend', () => note.remove(), { once: true });
     setTimeout(() => note.remove(), 1500);
     this.els.field.append(note);

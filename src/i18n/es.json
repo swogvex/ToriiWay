@@ -134,7 +134,6 @@
   "game.play.intro": "Escribe la lectura en romaji. La primera burbuja que coincida pasa a ser tu objetivo; Retroceso la suelta.",
   "game.play.loading": "Cargando palabras…",
   "game.play.unavailable": "No se pudo cargar esta lista. Comprueba tu conexión e inténtalo de nuevo.",
-  "game.play.input": "Entrada",
   "game.play.inputLabel": "Escribe el romaji de una burbuja",
   "game.play.focus": "Haz clic aquí para seguir escribiendo",
   "game.play.cleared": "Reto superado",
@@ -248,5 +247,6 @@
   "game.option.size": "Texto de las burbujas",
   "game.size.s": "Pequeño",
   "game.size.m": "Mediano",
-  "game.size.l": "Grande"
+  "game.size.l": "Grande",
+  "game.play.pressKey": "Pulsa cualquier tecla para empezar"
 }

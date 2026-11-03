@@ -39,3 +39,56 @@ describe('GameSound', () => {
     ]);
   });
 });
+
+describe('GameSound countdown', () => {
+  it('needs no key and makes no beep when sound is off', async () => {
+    const sound = new GameSound(false);
+    expect(await sound.ready()).toBe(true);
+    expect(() => sound.beep(true)).not.toThrow();
+  });
+
+  it('asks for a key while the browser blocks audio, then beeps low, low, low, high', async () => {
+    const frequencies: number[] = [];
+    let state = 'suspended';
+    const param = () => ({
+      value: 0,
+      setValueAtTime: vi.fn(),
+      exponentialRampToValueAtTime: vi.fn(),
+    });
+    const node = () => ({ connect: (next: unknown) => next });
+    class FakeContext {
+      currentTime = 0;
+      destination = {};
+      get state() {
+        return state;
+      }
+      resume() {
+        return new Promise<void>(() => undefined);
+      }
+      createOscillator() {
+        const frequency = param();
+        return {
+          ...node(),
+          type: '',
+          frequency,
+          start: () => frequencies.push(frequency.value),
+          stop: vi.fn(),
+        };
+      }
+      createBiquadFilter() {
+        return { ...node(), type: '', frequency: param() };
+      }
+      createGain() {
+        return { ...node(), gain: param() };
+      }
+    }
+    vi.stubGlobal('AudioContext', FakeContext);
+    const sound = new GameSound(true);
+    expect(await sound.ready()).toBe(false);
+    state = 'running';
+    expect(await sound.ready()).toBe(true);
+    [false, false, false, true].forEach((go) => sound.beep(go));
+    expect(frequencies).toEqual([440, 440, 440, 880]);
+    vi.unstubAllGlobals();
+  });
+});

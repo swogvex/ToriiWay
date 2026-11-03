@@ -134,7 +134,6 @@
   "game.play.intro": "Type the reading in romaji. The first bubble that matches becomes your target; Backspace releases it.",
   "game.play.loading": "Loading words…",
   "game.play.unavailable": "This list could not be loaded. Check your connection and try again.",
-  "game.play.input": "Input",
   "game.play.inputLabel": "Type the romaji of a bubble",
   "game.play.focus": "Click here to keep typing",
   "game.play.cleared": "Challenge cleared",
@@ -248,5 +247,6 @@
   "game.option.size": "Bubble text",
   "game.size.s": "Small",
   "game.size.m": "Medium",
-  "game.size.l": "Large"
+  "game.size.l": "Large",
+  "game.play.pressKey": "Press any key to start"
 }

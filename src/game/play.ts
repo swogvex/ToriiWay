@@ -82,6 +82,9 @@ export async function initPlay(root: HTMLElement): Promise<void> {
   let frame = 0;
   let last = 0;
   let timers: number[] = [];
+  /** Bumped by every new run, so a countdown waiting for a key knows it is stale. */
+  let countdownId = 0;
+  const pressKey = required<HTMLElement>(root, '[data-press-key]');
 
   const setState = (next: State, status?: RunStatus | 'unavailable') => {
     state = next;
@@ -183,8 +186,40 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     setState('countdown');
     showPanel('countdown');
     input.focus();
+    void countdown(++countdownId);
+  };
+
+  /** Waits for the next key or click anywhere on the page. */
+  const anyKey = () =>
+    new Promise<void>((resolve) => {
+      const done = () => {
+        document.removeEventListener('keydown', done, true);
+        document.removeEventListener('pointerdown', done, true);
+        resolve();
+      };
+      document.addEventListener('keydown', done, true);
+      document.addEventListener('pointerdown', done, true);
+    });
+
+  /** 3 · 2 · 1 · 始め! with a beep each, then play. With audio blocked, a key starts it. */
+  const countdown = async (id: number) => {
+    count.textContent = '';
+    pressKey.hidden = true;
+    if (!(await sound.ready())) {
+      if (id !== countdownId) return;
+      pressKey.hidden = false;
+      await anyKey();
+      pressKey.hidden = true;
+      await sound.ready();
+    }
+    if (id !== countdownId || state !== 'countdown') return;
     [...COUNTDOWN, GO].forEach((text, index) => {
-      timers.push(window.setTimeout(() => showCount(text), index * STEP_MS));
+      timers.push(
+        window.setTimeout(() => {
+          showCount(text);
+          sound.beep(text === GO);
+        }, index * STEP_MS),
+      );
     });
     timers.push(window.setTimeout(play, COUNTDOWN.length * STEP_MS + GO_MS));
   };
