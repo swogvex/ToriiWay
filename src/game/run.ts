@@ -8,6 +8,7 @@ import {
   endlessTuning,
   LANES,
   MAX_STEP,
+  MIN_LANES,
 } from './config';
 import { matchRomaji, typingForm } from './romaji';
 import { pickItem, pickLane, pickSide, type Side } from './spawner';
@@ -61,6 +62,8 @@ export class Run {
   target: Bubble | null = null;
   /** Endless level (always 1 in challenge mode). */
   level = 1;
+  /** Lanes new bubbles can use; follows the field's height. */
+  lanes: number;
   /** Keys per second of play, for the results chart and consistency. */
   readonly samples: Sample[] = [];
   /** Every bubble that left the field, in order. */
@@ -81,8 +84,9 @@ export class Run {
 
   constructor(options: RunOptions) {
     if (options.items.length === 0) throw new Error('A run needs at least one item');
-    this.options = { speed: 1, difficulty: 'normal', pools: {}, ...options };
+    this.options = { speed: 1, difficulty: 'normal', pools: {}, lanes: LANES, ...options };
     this.lives = options.config.lives;
+    this.lanes = this.options.lanes;
     this.items = options.items;
   }
 
@@ -211,6 +215,11 @@ export class Run {
     this.events.push({ type: 'edit', bubble });
   }
 
+  /** The field changed height: new bubbles use this many lanes. */
+  setLanes(lanes: number): void {
+    this.lanes = Math.min(LANES, Math.max(MIN_LANES, Math.round(lanes)));
+  }
+
   quit(): void {
     if (this.status === 'playing') this.end('quit');
   }
@@ -221,7 +230,11 @@ export class Run {
   }
 
   private spawn(): boolean {
-    const lane = pickLane(LANES, new Set(this.bubbles.map((b) => b.lane)), this.options.random);
+    const lane = pickLane(
+      this.lanes,
+      new Set(this.bubbles.map((b) => b.lane)),
+      this.options.random,
+    );
     if (lane === null) return false;
     const { config, random, speed } = this.options;
     const items = this.items;

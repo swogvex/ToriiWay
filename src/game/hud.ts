@@ -25,6 +25,8 @@ export interface HudOptions {
   challengeTime: number;
   /** "Level {level}", translated. */
   levelLabel: string;
+  /** No shake and no sliding toast (system setting or the game option). */
+  reducedMotion: boolean;
 }
 
 const LEVEL_TOAST: Keyframe[] = [
@@ -104,14 +106,20 @@ export class Hud {
   /** Life lost: the field edges flash in the accent colour; field and life bar shake. */
   damage(): void {
     this.damageLayer.animate(DAMAGE_FLASH, { duration: 500, easing: 'ease-out' });
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (this.options.reducedMotion) return;
     for (const el of [this.field, this.lifeBar]) el.animate(SHAKE, { duration: 300 });
   }
 
   /** Endless: "Level 4" rises and fades over the field. */
   levelUp(level: number): void {
     this.levelToast.textContent = this.level(level);
-    this.levelToast.animate(LEVEL_TOAST, { duration: 1600, easing: 'ease-out' });
+    const frames = this.options.reducedMotion
+      ? LEVEL_TOAST.map(({ opacity, offset }) => ({
+          opacity,
+          ...(offset === undefined ? {} : { offset }),
+        }))
+      : LEVEL_TOAST;
+    this.levelToast.animate(frames, { duration: 1600, easing: 'ease-out' });
   }
 
   private level(level: number): string {

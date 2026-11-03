@@ -1,6 +1,6 @@
 import { toRomaji } from 'wanakana';
 
-import { LANES } from './config';
+import { fitLanes, LANES } from './config';
 import { filledChars } from './fill';
 import { type Bubble, Run, type RunEvent } from './run';
 
@@ -30,6 +30,8 @@ export interface FieldOptions {
   hint: boolean;
   /** Show the meaning in the "+1" note on pop. */
   meaning: boolean;
+  /** Called when a resize changes how many lanes fit. */
+  onLanes?: (lanes: number) => void;
 }
 
 /** How long the pop and miss animations in PlayField.astro last, plus a little slack. */
@@ -37,6 +39,8 @@ const RETIRE_MS = { 'is-popping': 200, 'is-missed': 360 } as const;
 
 /** Space above the top lane and below the bottom one, for the danger badge and the hint. */
 const EDGE = 12;
+/** Room between rows, so the danger badge and hint do not touch the next bubble. */
+const ROW_GAP = 8;
 
 /**
  * Draws a run into the field. Bubble elements are pooled and moved with
@@ -47,6 +51,9 @@ export class Field {
   private readonly free: View[] = [];
   private width = 0;
   private height = 0;
+  private row = 0;
+  /** Lanes that fit the field at the current size and text size. */
+  lanes = LANES;
   private targetId: number | null = null;
   private readonly resize: ResizeObserver;
 
@@ -58,6 +65,7 @@ export class Field {
       if (!entry) return;
       this.width = entry.contentRect.width;
       this.height = entry.contentRect.height;
+      this.fit();
     });
     this.resize.observe(els.field);
   }
@@ -97,14 +105,15 @@ export class Field {
 
   /** Moves every live bubble; runs once per frame. */
   render(run: Run): void {
-    const laneHeight = (this.height - 2 * EDGE) / LANES;
+    const laneHeight = (this.height - 2 * EDGE) / this.lanes;
     for (const bubble of run.bubbles) {
       const view = this.views.get(bubble.id);
       if (!view) continue;
       const travel = Math.max(0, this.width - view.width);
       const along = bubble.side === 'left' ? bubble.progress : 1 - bubble.progress;
       view.x = travel * along;
-      view.y = EDGE + bubble.lane * laneHeight + (laneHeight - view.height) / 2;
+      const lane = Math.min(bubble.lane, this.lanes - 1);
+      view.y = EDGE + lane * laneHeight + (laneHeight - view.height) / 2;
       view.el.style.transform = `translate3d(${view.x}px, ${view.y}px, 0)`;
       const danger = Run.inDanger(bubble);
       if (danger !== view.danger) {
@@ -127,6 +136,22 @@ export class Field {
 
   destroy(): void {
     this.resize.disconnect();
+  }
+
+  /** Measures one bubble row (once per size change) and recounts the lanes. */
+  private fit(): void {
+    if (this.row === 0) {
+      const probe = this.create();
+      probe.text.textContent = 'あ';
+      probe.el.classList.add('is-probe');
+      probe.el.hidden = false;
+      this.row = probe.el.offsetHeight + ROW_GAP;
+      probe.el.remove();
+    }
+    const lanes = fitLanes(this.height - 2 * EDGE, this.row);
+    if (lanes === this.lanes) return;
+    this.lanes = lanes;
+    this.options.onLanes?.(lanes);
   }
 
   private spawn(bubble: Bubble): void {

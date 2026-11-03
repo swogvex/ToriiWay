@@ -87,6 +87,25 @@ const ansi = new Set(KEY_ROWS.ansi.flat());
     position: relative;
   }
 
+  /* Colour-blind cues: the flash also shows ✓ or ✗, so colour is never the only sign. */
+  :global(.has-cues) .key__flash::after {
+    position: absolute;
+    inset-block-start: 1px;
+    inset-inline-end: 3px;
+    color: var(--on-accent);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  :global(.has-cues) .key[data-state='correct'] .key__flash::after {
+    content: '✓';
+  }
+
+  :global(.has-cues) .key[data-state='wrong'] .key__flash::after {
+    content: '✗';
+  }
+
   .hints {
     display: flex;
     flex-wrap: wrap;

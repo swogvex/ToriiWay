@@ -238,5 +238,15 @@
   "game.card.acc": "prec",
   "game.card.cons": "const",
   "game.card.popped": "explotadas",
-  "game.card.time": "tiempo"
+  "game.card.time": "tiempo",
+  "game.step.options": "4 · Sonido y accesibilidad",
+  "game.option.sound": "Efectos de sonido",
+  "game.option.reduce": "Reducir movimiento",
+  "game.option.reduce.note": "Burbujas más lentas y sin sacudidas. Activado por defecto si tu sistema pide menos movimiento.",
+  "game.option.cues": "Señales para daltonismo",
+  "game.option.cues.note": "Añade formas a los colores: kana subrayados y teclas marcadas.",
+  "game.option.size": "Texto de las burbujas",
+  "game.size.s": "Pequeño",
+  "game.size.m": "Mediano",
+  "game.size.l": "Grande"
 }

@@ -8,6 +8,10 @@ export const GAME_SCRIPTS: readonly GameScript[] = ['hiragana', 'katakana', 'kan
 export const DIFFICULTIES: readonly Difficulty[] = ['easy', 'normal', 'hard', 'extreme'];
 export const MODES: readonly Mode[] = ['challenge', 'endless'];
 
+/** Bubble text size option. */
+export type TextSize = 's' | 'm' | 'l';
+export const TEXT_SIZES: readonly TextSize[] = ['s', 'm', 'l'];
+
 export interface DifficultyConfig {
   lives: number;
   /** Time to survive in challenge mode, in seconds. */
@@ -84,6 +88,14 @@ export const DANGER_FROM = 0.8;
 
 /** Horizontal lanes in the field; one bubble per lane, so no vertical overlap. */
 export const LANES = 6;
+/** Fewest lanes on a short field (the field keeps at least 200px). */
+export const MIN_LANES = 3;
+
+/** Lanes that fit `space` pixels when one bubble row needs `row` pixels. */
+export function fitLanes(space: number, row: number): number {
+  if (row <= 0) return LANES;
+  return Math.min(LANES, Math.max(MIN_LANES, Math.floor(space / row)));
+}
 
 /** Longest frame step the simulation accepts, so a stalled tab does not jump ahead. */
 export const MAX_STEP = 0.1;

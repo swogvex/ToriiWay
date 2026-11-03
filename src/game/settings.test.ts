@@ -11,13 +11,18 @@ describe('play settings', () => {
       layout: 'ansi',
       hint: true,
       meaning: true,
+      sound: false,
+      reduce: null,
+      cues: false,
+      size: 'm',
       seed: null,
     });
   });
 
   it('reads what the setup form sends', () => {
     const query =
-      '?script=katakana&difficulty=hard&mode=endless&hint=0&meaning=0&meaning=1&layout=iso-es&seed=7';
+      '?script=katakana&difficulty=hard&mode=endless&hint=0&meaning=0&meaning=1&layout=iso-es' +
+      '&sound=0&sound=1&reduce=0&cues=0&size=l&seed=7';
     expect(readSettings(query)).toEqual({
       script: 'katakana',
       difficulty: 'hard',
@@ -25,6 +30,10 @@ describe('play settings', () => {
       layout: 'iso-es',
       hint: false,
       meaning: true,
+      sound: true,
+      reduce: false,
+      cues: false,
+      size: 'l',
       seed: 7,
     });
   });

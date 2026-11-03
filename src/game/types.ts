@@ -83,6 +83,8 @@ export interface RunOptions {
   random: Random;
   /** Speed multiplier (reduced motion uses 0.7). */
   speed?: number;
+  /** Lanes that fit the field (see fitLanes); 6 by default. */
+  lanes?: number;
   /** Endless: the chosen difficulty and the longer pools it moves on to. */
   difficulty?: Difficulty;
   pools?: Partial<Record<Difficulty, readonly GameItem[]>>;

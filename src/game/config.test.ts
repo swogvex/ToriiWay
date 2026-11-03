@@ -8,6 +8,9 @@ import {
   endlessLevel,
   endlessPool,
   endlessTuning,
+  fitLanes,
+  LANES,
+  MIN_LANES,
 } from './config';
 
 describe('difficulty config', () => {
@@ -59,5 +62,15 @@ describe('endless progression', () => {
     expect(endlessPool('easy', 5)).toBe('hard');
     expect(endlessPool('hard', 5)).toBe('extreme');
     expect(endlessPool('easy', 15)).toBe('extreme');
+  });
+});
+
+describe('lanes', () => {
+  it('fits as many rows as the field holds, between 3 and 6', () => {
+    expect(fitLanes(416, 62)).toBe(LANES);
+    expect(fitLanes(240, 62)).toBe(3);
+    expect(fitLanes(300, 62)).toBe(4);
+    expect(fitLanes(100, 62)).toBe(MIN_LANES);
+    expect(fitLanes(300, 0)).toBe(LANES);
   });
 });

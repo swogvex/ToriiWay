@@ -264,4 +264,23 @@ test.describe('Kana Rush on a laptop screen', () => {
     );
     expect(overflow).toBeLessThanOrEqual(0);
   });
+
+  test('large bubbles never overlap on a short field', async ({ page }) => {
+    await startRun(page, `${PLAY}&size=l`);
+    await page.clock.runFor(12_000);
+    const pills = await page
+      .locator('.bubble:not([hidden]):not(.is-popping):not(.is-missed) .bubble__pill')
+      .evaluateAll((els) =>
+        els.map((el) => {
+          const { top, bottom } = el.getBoundingClientRect();
+          return { top, bottom };
+        }),
+      );
+    expect(pills.length).toBeGreaterThan(1);
+    for (const [i, a] of pills.entries()) {
+      for (const b of pills.slice(i + 1)) {
+        expect(a.bottom <= b.top || b.bottom <= a.top).toBe(true);
+      }
+    }
+  });
 });

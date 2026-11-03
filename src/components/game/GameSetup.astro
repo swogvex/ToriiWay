@@ -4,7 +4,7 @@
  * JavaScript; src/game/setup.ts restores the last setup, shows bests and cleared
  * challenges, and keeps the Start label in sync.
  */
-import { DIFFICULTIES, DIFFICULTY, GAME_SCRIPTS, MODES } from '../../game/config';
+import { DIFFICULTIES, DIFFICULTY, GAME_SCRIPTS, MODES, TEXT_SIZES } from '../../game/config';
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
@@ -121,6 +121,49 @@ const labels = Object.fromEntries([
         </div>
       </fieldset>
     </div>
+
+    <fieldset class="setup__group">
+      <legend class="setup__legend">{t('game.step.options')}</legend>
+      <div class="setup__access">
+        <input type="hidden" name="sound" value="0" />
+        <label class="check">
+          <input type="checkbox" name="sound" value="1" data-sound />
+          {t('game.option.sound')}
+        </label>
+        <div class="setup__check-note">
+          <input type="hidden" name="reduce" value="0" />
+          <label class="check">
+            <input
+              type="checkbox"
+              name="reduce"
+              value="1"
+              aria-describedby="reduce-note"
+              data-reduce
+            />
+            {t('game.option.reduce')}
+          </label>
+          <p id="reduce-note" class="setup__note-small">
+            {t('game.option.reduce.note')}
+          </p>
+        </div>
+        <div class="setup__check-note">
+          <input type="hidden" name="cues" value="0" />
+          <label class="check">
+            <input type="checkbox" name="cues" value="1" aria-describedby="cues-note" />
+            {t('game.option.cues')}
+          </label>
+          <p id="cues-note" class="setup__note-small">
+            {t('game.option.cues.note')}
+          </p>
+        </div>
+        <Segmented
+          name="size"
+          legend={t('game.option.size')}
+          value="m"
+          options={TEXT_SIZES.map((value) => ({ value, label: t(`game.size.${value}`) }))}
+        />
+      </div>
+    </fieldset>
 
     <section class="setup__group" aria-labelledby="challenges-title">
       <h2 id="challenges-title" class="setup__legend">
@@ -426,6 +469,25 @@ const labels = Object.fromEntries([
     flex-wrap: wrap;
     gap: var(--space-8);
     align-items: center;
+  }
+
+  .setup__access {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--space-4) var(--space-8);
+    align-items: start;
+  }
+
+  .setup__check-note {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  .setup__note-small {
+    max-inline-size: 32ch;
+    padding-inline-start: calc(20px + var(--space-3));
+    color: var(--muted);
+    font-size: var(--text-sm);
   }
 
   /* The two checkboxes stack, so options and Start share one row in both languages. */

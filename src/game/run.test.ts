@@ -311,3 +311,22 @@ function romajiOf(reading: string): string {
   };
   return table[reading] ?? '';
 }
+
+describe('Run lanes', () => {
+  it('spawns only into the lanes that fit and follows a resize', () => {
+    const run = new Run({
+      config: DIFFICULTY.easy,
+      mode: 'challenge',
+      items: words,
+      random: seededRandom(2),
+      lanes: 3,
+    });
+    play(run, 20);
+    expect(run.bubbles.length).toBeLessThanOrEqual(3);
+    run.bubbles.forEach((bubble) => expect(bubble.lane).toBeLessThan(3));
+    run.setLanes(9);
+    expect(run.lanes).toBe(LANES);
+    run.setLanes(1);
+    expect(run.lanes).toBe(3);
+  });
+});
