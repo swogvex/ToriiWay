@@ -1,0 +1,97 @@
+---
+/**
+ * How to get a Japanese text-to-speech voice, per system. Used by the dialog on the JLPT
+ * pages and by /help/japanese-voice. The visitor's system opens first.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+const systems = ['windows', 'mac', 'android', 'ios', 'linux'] as const;
+---
+
+<div class="voice-help">
+  <p>{t('voice.help.intro')}</p>
+  <p class="voice-help__quick">{t('voice.help.quick')}</p>
+  <div class="voice-help__systems" data-voice-help>
+    {systems.map((system) => (
+      <details data-system={system}>
+        <summary>
+          {t(`voice.help.${system}`)}
+          <span class="voice-help__yours" hidden>
+            {t('voice.help.yours')}
+          </span>
+        </summary>
+        <ol>
+          <li>{t(`voice.help.${system}.1`)}</li>
+          <li>{t(`voice.help.${system}.2`)}</li>
+          {system !== 'linux' && <li>{t(`voice.help.${system}.3`)}</li>}
+        </ol>
+      </details>
+    ))}
+  </div>
+</div>
+
+<script>
+  import { detectSystem } from '../../lib/audio/system';
+
+  const system = detectSystem(navigator.userAgent);
+  const details = document.querySelector<HTMLDetailsElement>(
+    `[data-voice-help] [data-system="${system}"]`,
+  );
+  if (details) {
+    details.open = true;
+    details.querySelector<HTMLElement>('.voice-help__yours')?.removeAttribute('hidden');
+  }
+</script>
+
+<style>
+  .voice-help {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .voice-help__quick {
+    padding: var(--space-3) var(--space-4);
+    background: var(--info-soft);
+    border-radius: var(--radius-control);
+  }
+
+  .voice-help__systems {
+    border-block-start: 1px solid var(--line);
+  }
+
+  .voice-help details {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .voice-help summary {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    min-block-size: var(--target-min);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .voice-help__yours {
+    padding: 0 var(--space-2);
+    color: var(--info);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 400;
+    text-transform: uppercase;
+    background: var(--info-soft);
+    border-radius: var(--radius-chip);
+  }
+
+  .voice-help__yours[hidden] {
+    display: none;
+  }
+
+  .voice-help ol {
+    display: grid;
+    gap: var(--space-2);
+    padding-inline-start: var(--space-6);
+    margin-block-end: var(--space-4);
+  }
+</style>

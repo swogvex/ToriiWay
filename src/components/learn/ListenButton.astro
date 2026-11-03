@@ -6,6 +6,7 @@
  */
 import { getLocale, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
+import VoiceHelpLink from '../audio/VoiceHelpLink.astro';
 import Icon from '../ui/Icon.astro';
 
 interface Props {
@@ -23,6 +24,7 @@ const t = useTranslations(getLocale(Astro.url.pathname));
 </Button>
 <p class="listen-note" data-listen-note hidden>
   {t('learn.noVoice')}
+  <VoiceHelpLink page />
 </p>
 
 <style>
