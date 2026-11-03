@@ -56,6 +56,8 @@ Astro.response.headers.set(
 const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(localizePath(`/jlpt/r/${id}`, locale), site);
 const discord = (await getSiteCopy(locale)).social.discord;
+const imageUrl = new URL(`/api/og/jlpt/${id}.png`, site);
+const imageName = run ? `nihongo-no-torii-${run.level.toLowerCase()}-report.png` : '';
 const levelLabel = (level: string) => (level === 'kana' ? t('jlpt.level.kana') : level);
 const next = run ? nextLevel(run.level) : null;
 const date = run ? new Date(run.finishedAt ?? run.createdAt).toISOString().slice(0, 10) : '';
@@ -70,9 +72,14 @@ const typeLabel = (section: string, type: string) =>
   title={`${t('jlpt.report.title')} · ${t('site.name')}`}
   description={t('jlpt.report.description')}
   noindex
+  image={view === 'report' ? imageUrl.href : undefined}
 >
   {view === 'report' && (
     <div slot="header" class="actions">
+      <a class="actions__download" href={imageUrl.pathname} download={imageName}>
+        <Icon name="download" size={18} />
+        {t('jlpt.report.download')}
+      </a>
       <button
         type="button"
         class="actions__copy"
@@ -228,6 +235,25 @@ const typeLabel = (section: string, type: string) =>
 </script>
 
 <style>
+  .actions {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .actions__download {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-block-size: 40px;
+    padding-inline: var(--space-4);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
   .actions__copy {
     display: inline-flex;
     gap: var(--space-2);

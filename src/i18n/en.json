@@ -473,5 +473,6 @@
   "jlpt.type.summary": "Listening — summary",
   "jlpt.type.utterance": "Listening — what to say",
   "jlpt.type.quick-response": "Listening — quick response",
-  "jlpt.report.review.count": "{count} to review"
+  "jlpt.report.review.count": "{count} to review",
+  "jlpt.report.download": "Download PNG"
 }

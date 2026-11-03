@@ -473,5 +473,6 @@
   "jlpt.type.summary": "Audio — idea general",
   "jlpt.type.utterance": "Audio — qué decir",
   "jlpt.type.quick-response": "Audio — respuesta rápida",
-  "jlpt.report.review.count": "{count} para repasar"
+  "jlpt.report.review.count": "{count} para repasar",
+  "jlpt.report.download": "Descargar PNG"
 }

@@ -11,9 +11,18 @@ interface Props {
   jsonLd?: Record<string, unknown> | undefined;
   /** Canonical path when this page duplicates another one; defaults to its own path. */
   canonical?: string | undefined;
+  /** Absolute URL of a 1200×630 share image; adds Open Graph and Twitter card tags. */
+  image?: string | undefined;
 }
 
-const { title, description, noindex = false, jsonLd, canonical: canonicalPath } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  jsonLd,
+  canonical: canonicalPath,
+  image,
+} = Astro.props;
 const pathname = canonicalPath ?? Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site);
 const alternates = PUBLISHED_LOCALES.map((locale) => ({
@@ -28,6 +37,17 @@ const xDefault = new URL(localizePath(pathname, DEFAULT_LOCALE), Astro.site).hre
 <script is:inline set:html={THEME_PREPAINT_SCRIPT} />
 <title>{title}</title>
 <meta name="description" content={description} />
+{image && (
+  <>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </>
+)}
 {noindex && <meta name="robots" content="noindex" />}
 {!noindex && (
   <>

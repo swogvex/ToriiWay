@@ -33,10 +33,12 @@
     "@astrojs/sitemap": "3.7.4",
     "@astrojs/vercel": "11.0.17",
     "@neondatabase/serverless": "1.2.0",
+    "@resvg/resvg-js": "2.6.2",
     "astro": "7.4.4",
     "cuelume": "0.2.8",
     "drizzle-orm": "0.45.4",
     "preact": "11.1.1",
+    "satori": "0.63.2",
     "wanakana": "5.3.1"
   },
   "devDependencies": {

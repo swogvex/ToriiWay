@@ -10,9 +10,11 @@ interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  /** Absolute URL of a share image (see Head). */
+  image?: string | undefined;
 }
 
-const { title, description, noindex } = Astro.props;
+const { title, description, noindex, image } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 ---
@@ -20,7 +22,7 @@ const t = useTranslations(locale);
 <!doctype html>
 <html lang={locale}>
   <head>
-    <Head title={title} description={description} noindex={noindex} />
+    <Head title={title} description={description} noindex={noindex} image={image} />
   </head>
   <body>
     <a class="skip-link" href="#main">

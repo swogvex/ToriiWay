@@ -169,5 +169,14 @@ test.describe('JLPT exam', () => {
     await expect(page.getByRole('heading', { name: 'Breakdown by question type' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Review your mistakes' })).toBeVisible();
     await expectNoAxeViolations(page);
+
+    const download = page.getByRole('link', { name: 'Download PNG' });
+    const imagePath = await download.getAttribute('href');
+    expect(imagePath).toMatch(/^\/api\/og\/jlpt\/[0-9a-f-]{36}\.png$/);
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\.png$/);
+    const image = await page.request.get(imagePath ?? '');
+    expect(image.status()).toBe(200);
+    expect(image.headers()['content-type']).toBe('image/png');
+    expect([...(await image.body()).subarray(0, 4)]).toEqual([137, 80, 78, 71]);
   });
 });
