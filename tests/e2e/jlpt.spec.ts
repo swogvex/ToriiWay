@@ -50,11 +50,34 @@ test.describe('JLPT start page', () => {
     await expect(page.getByText(/Kana is a site-only level/)).toBeVisible();
   });
 
+  test('without a Japanese voice, Test audio explains how to add one', async ({ page }) => {
+    // Headless Chromium has no Japanese voice.
+    await page.goto('/jlpt');
+    await page.getByRole('button', { name: 'Test audio' }).click();
+    await expect(page.getByText(/This browser has no Japanese voice/)).toBeVisible();
+    await page.getByRole('button', { name: 'How to add a Japanese voice' }).click();
+    const help = page.getByRole('dialog', { name: 'Add a Japanese voice' });
+    await expect(help).toBeVisible();
+    await expect(
+      help.getByText('Your system', { exact: true }).filter({ visible: true }),
+    ).toHaveCount(1);
+    await expect(help.getByText(/Quickest fix/)).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
   test('the run page without a run points back to the start page', async ({ page }) => {
     await page.goto('/jlpt/run');
     await expect(page.getByRole('heading', { name: 'No simulation in progress' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Go to the JLPT page' })).toBeVisible();
   });
+});
+
+test('the Japanese voice help page has no axe violations', async ({ page }) => {
+  await page.goto('/help/japanese-voice');
+  await expect(page.getByRole('heading', { level: 1, name: 'Add a Japanese voice' })).toBeVisible();
+  await page.getByText('macOS').click();
+  await expect(page.getByText(/Manage Voices…/)).toBeVisible();
+  await expectNoAxeViolations(page);
 });
 
 test.describe('JLPT exam', () => {

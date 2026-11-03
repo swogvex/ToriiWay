@@ -7,6 +7,8 @@
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import { JLPT_LEVELS, LEVELS, totalMinutes } from '../../lib/jlpt/levels';
 import type { JlptLevel } from '../../lib/jlpt/types';
+import VoiceHelpDialog from '../audio/VoiceHelpDialog.astro';
+import VoiceHelpLink from '../audio/VoiceHelpLink.astro';
 import Button from '../ui/Button.astro';
 import Dialog from '../ui/Dialog.astro';
 import Field from '../ui/Field.astro';
@@ -105,6 +107,9 @@ const messages = {
             {t('jlpt.testAudio')}
           </button>
           <span class="rules__note" data-audio-note role="status"></span>
+          <span class="rules__help" data-voice-help-link hidden>
+            <VoiceHelpLink />
+          </span>
         </li>
         <li class="rules__kana" data-for="kana">
           {t('jlpt.rule.kana')}
@@ -154,6 +159,8 @@ const messages = {
 
   <p class="start__disclaimer">{t('jlpt.disclaimer')}</p>
 </div>
+
+<VoiceHelpDialog />
 
 <Dialog id="jlpt-tips" title={t('jlpt.tips.title')}>
   <ol class="tips">
@@ -348,8 +355,14 @@ const messages = {
     font-size: var(--text-sm);
   }
 
-  .rules__note:empty {
+  .rules__note:empty,
+  .rules__help[hidden] {
     display: none;
+  }
+
+  .rules__help {
+    grid-column: 2;
+    font-size: var(--text-sm);
   }
 
   .card {

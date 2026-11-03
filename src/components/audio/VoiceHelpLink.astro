@@ -1,0 +1,38 @@
+---
+/**
+ * Opens <VoiceHelpDialog /> (which the page must include once), or links to the help
+ * page when `page` is set: pages with a tight HTML budget (kana charts) use the link.
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+
+interface Props {
+  page?: boolean;
+}
+
+const { page = false } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+{page ? (
+  <a class="voice-link" href={localizePath('/help/japanese-voice', locale)}>
+    {t('voice.help.open')}
+  </a>
+) : (
+  <button type="button" class="voice-link" data-dialog-open="voice-help">
+    {t('voice.help.open')}
+  </button>
+)}
+
+<style>
+  .voice-link {
+    padding: 0;
+    color: var(--accent-ink);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+</style>

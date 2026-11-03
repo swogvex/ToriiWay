@@ -5,6 +5,7 @@
  * fills it; question text is set with textContent, never as HTML.
  */
 import { getLocale, useTranslations } from '../../i18n';
+import VoiceHelpLink from '../audio/VoiceHelpLink.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import IconButton from '../ui/IconButton.astro';
@@ -43,6 +44,7 @@ const t = useTranslations(getLocale(Astro.url.pathname));
         <span class="listen__note">{t('jlpt.run.synthetic')}</span>
         <p class="listen__warning" data-no-voice hidden>
           {t('jlpt.run.noVoice')}
+          <VoiceHelpLink />
         </p>
       </div>
 

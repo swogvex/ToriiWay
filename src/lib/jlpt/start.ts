@@ -110,8 +110,10 @@ export function initStart(root: HTMLElement): void {
 
   const audio = root.querySelector<HTMLButtonElement>('[data-test-audio]');
   const note = root.querySelector<HTMLElement>('[data-audio-note]');
+  const help = root.querySelector<HTMLElement>('[data-voice-help-link]');
   audio?.addEventListener('click', async () => {
     const voice = 'speechSynthesis' in window ? pickJapaneseVoice(await loadVoices()) : undefined;
+    if (help) help.hidden = Boolean(voice);
     if (!voice) {
       if (note) note.textContent = messages.noVoice;
       return;

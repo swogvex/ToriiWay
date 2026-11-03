@@ -1,4 +1,5 @@
 ---
+import VoiceHelpDialog from '../../components/audio/VoiceHelpDialog.astro';
 import JlptBreak from '../../components/jlpt/JlptBreak.astro';
 import JlptExam from '../../components/jlpt/JlptExam.astro';
 import Button from '../../components/ui/Button.astro';
@@ -109,6 +110,8 @@ const home = localizePath('/jlpt', locale);
       </Button>
     </section>
   </div>
+
+  <VoiceHelpDialog />
 
   <Dialog id="jlpt-finalize" title={t('jlpt.run.finalize.title')}>
     <p data-finalize-text></p>

@@ -1,0 +1,12 @@
+---
+/** The voice instructions in a dialog. Include once per page; open it with <VoiceHelpLink />. */
+import { getLocale, useTranslations } from '../../i18n';
+import Dialog from '../ui/Dialog.astro';
+import VoiceHelpContent from './VoiceHelpContent.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<Dialog id="voice-help" title={t('voice.help.title')}>
+  <VoiceHelpContent />
+</Dialog>
