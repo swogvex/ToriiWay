@@ -46,7 +46,10 @@ const labels = Object.fromEntries([
     `card.status.${status}`,
     t(`game.card.status.${status}`),
   ]),
-  ...(['wpm', 'acc', 'cons', 'popped', 'time'] as const).map((key) => [`card.${key}`, t(`game.card.${key}`)]),
+  ...(['wpm', 'acc', 'cons', 'popped', 'time'] as const).map((key) => [
+    `card.${key}`,
+    t(`game.card.${key}`),
+  ]),
 ]);
 
 const stats = [
@@ -86,7 +89,9 @@ const stats = [
       <Button variant="outline" href={setupHref}>
         {t('game.play.change')}
       </Button>
-      <Button data-restart data-again>{t('game.play.again')}</Button>
+      <Button data-restart data-again>
+        {t('game.play.again')}
+      </Button>
     </div>
   </header>
 
@@ -146,32 +151,45 @@ const stats = [
         <h3 id="words-title" class="results__cardtitle">
           {t('game.results.words')} · <span data-words-count></span>
         </h3>
-        <button class="words__toggle" type="button" aria-controls="words-list" data-words-toggle
+        <button
+          class="words__toggle"
+          type="button"
+          aria-controls="words-list"
+          data-words-toggle
         ></button>
       </div>
       <ul id="words-list" class="words__list" data-words></ul>
-      <p class="words__empty" data-words-empty hidden>{t('game.results.words.empty')}</p>
+      <p class="words__empty" data-words-empty hidden>
+        {t('game.results.words.empty')}
+      </p>
       <template data-word-template>
         <li class="word">
           <span class="word__text" lang="ja" data-word-text></span>
           <span class="word__romaji" data-word-romaji></span>
-          <span class="word__missed" data-word-missed>{t('game.results.words.missed')}</span>
+          <span class="word__missed" data-word-missed>
+            {t('game.results.words.missed')}
+          </span>
           <span class="word__meaning" data-word-meaning></span>
           <span class="word__count" data-word-count></span>
         </li>
       </template>
       <p class="words__slowest" data-slowest hidden>
-        {t('game.results.slowest')}{' '}
-        <span data-slowest-list></span>{' — '}{t('game.results.slowest.after')}
+        {t('game.results.slowest')} <span data-slowest-list></span>
+        {' — '}
+        {t('game.results.slowest.after')}
       </p>
     </section>
   </div>
 
   <section class="share" aria-labelledby="share-title">
     <div class="share__form">
-      <h3 id="share-title" class="share__title">{t('game.share.title')}</h3>
+      <h3 id="share-title" class="share__title">
+        {t('game.share.title')}
+      </h3>
       <p class="share__lead">{t('game.share.lead')}</p>
-      <label class="share__label" for="share-name">{t('game.share.name')}</label>
+      <label class="share__label" for="share-name">
+        {t('game.share.name')}
+      </label>
       <input
         id="share-name"
         class="share__input"
@@ -193,7 +211,12 @@ const stats = [
     </div>
     <div class="share__preview" data-theme="dark">
       <div role="img" data-share-image>
-        <canvas class="share__canvas" width="1200" height="630" aria-hidden="true" data-share-canvas
+        <canvas
+          class="share__canvas"
+          width="1200"
+          height="630"
+          aria-hidden="true"
+          data-share-canvas
         ></canvas>
       </div>
       <span class="share__palette" aria-hidden="true">

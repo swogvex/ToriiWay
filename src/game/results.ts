@@ -169,7 +169,9 @@ export class Results {
     for (const el of this.root.querySelectorAll<HTMLElement>('[data-stat]')) {
       el.textContent = values[el.dataset['stat'] ?? ''] ?? '';
     }
-    this.root.querySelector('.results__stat--missed')?.classList.toggle('is-bad', summary.missed > 0);
+    this.root
+      .querySelector('.results__stat--missed')
+      ?.classList.toggle('is-bad', summary.missed > 0);
   }
 
   private fillChart(run: Run, summary: RunSummary): void {
@@ -230,7 +232,9 @@ export class Results {
     const words = wordList(run.log);
     list.replaceChildren(
       ...words.map((word, index) => {
-        const li = (template.content.firstElementChild as HTMLElement).cloneNode(true) as HTMLElement;
+        const li = (template.content.firstElementChild as HTMLElement).cloneNode(
+          true,
+        ) as HTMLElement;
         const { item } = word;
         required(li, '[data-word-text]').textContent = item.text;
         required(li, '[data-word-romaji]').textContent = toRomaji(item.reading);
@@ -278,7 +282,9 @@ export class Results {
     });
     const list = required(this.root, '[data-slowest-list]');
     list.replaceChildren(
-      ...links.flatMap((link, index) => (index === 0 ? [link] : [document.createTextNode(', '), link])),
+      ...links.flatMap((link, index) =>
+        index === 0 ? [link] : [document.createTextNode(', '), link],
+      ),
     );
   }
 

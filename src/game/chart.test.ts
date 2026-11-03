@@ -15,7 +15,9 @@ describe('chart geometry', () => {
     expect(last?.x).toBe(CHART.width - CHART.right);
     expect(last?.y).toBe(geometry.grid[1]?.y);
     expect(geometry.grid.map((line) => line.value)).toEqual([20, 40]);
-    expect(geometry.errors[0]).toBeCloseTo(CHART.left + (CHART.width - CHART.left - CHART.right) / 4);
+    expect(geometry.errors[0]).toBeCloseTo(
+      CHART.left + (CHART.width - CHART.left - CHART.right) / 4,
+    );
   });
 
   it('finds the nearest point to the pointer', () => {

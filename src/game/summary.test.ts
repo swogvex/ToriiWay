@@ -43,7 +43,9 @@ describe('summarize', () => {
 
 describe('chart series', () => {
   it('is the WPM so far at the end of each second', () => {
-    expect(wpmSeries([sample(5), sample(15), sample(1, 0, 0.5)]).map(Math.round)).toEqual([60, 120, 101]);
+    expect(wpmSeries([sample(5), sample(15), sample(1, 0, 0.5)]).map(Math.round)).toEqual([
+      60, 120, 101,
+    ]);
   });
 
   it('marks seconds with wrong keys', () => {
