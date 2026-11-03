@@ -1,0 +1,433 @@
+---
+/**
+ * Exam screen (artboard 12): section steps and timer, the question map grouped by
+ * もんだい, one question with its choices, and the action bar. src/lib/jlpt/exam/exam.ts
+ * fills it; question text is set with textContent, never as HTML.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+import IconButton from '../ui/IconButton.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<section class="exam" data-exam hidden>
+  <div class="exam__top">
+    <header class="exam__bar column">
+      <ol class="steps" aria-label={t('jlpt.run.sections')} data-steps></ol>
+      <p class="exam__level" data-level></p>
+      <p class="timer" role="timer" aria-label={t('jlpt.run.timeLeft')} data-timer>
+        --:--
+      </p>
+    </header>
+
+    <nav class="map column" aria-label={t('jlpt.run.map')} data-map></nav>
+  </div>
+
+  <div class="exam__body">
+    <div class="question column">
+      <p class="question__instruction">
+        <strong lang="ja" data-mondai></strong>
+        <span data-instruction></span>
+      </p>
+
+      <div class="question__passage" lang="ja" data-passage hidden></div>
+
+      <div class="listen" data-listen hidden>
+        <Button variant="outline" size={40} data-play>
+          <Icon name="volume-2" size={20} />
+          <span data-play-label>{t('jlpt.run.play')}</span>
+        </Button>
+        <span class="listen__note" data-plays-left></span>
+        <span class="listen__note">{t('jlpt.run.synthetic')}</span>
+        <p class="listen__warning" data-no-voice hidden>
+          {t('jlpt.run.noVoice')}
+        </p>
+      </div>
+
+      <fieldset class="question__set">
+        <legend class="question__stem" tabindex="-1" data-stem>
+          <span class="question__number" data-number></span>
+          <span class="question__text" lang="ja" data-stem-text></span>
+        </legend>
+        <div class="choices" data-choices></div>
+      </fieldset>
+
+      <p class="question__keys" aria-hidden="true">
+        {t('jlpt.run.keys')}
+      </p>
+    </div>
+  </div>
+
+  <footer class="exam__actions">
+    <div class="exam__inner column">
+      <div class="exam__group">
+        <IconButton icon="arrow-left" label={t('jlpt.run.previous')} size={48} data-prev />
+        <Button variant="outline" aria-pressed="false" data-flag>
+          <Icon name="flag" size={20} />
+          {t('jlpt.run.flag')}
+        </Button>
+      </div>
+      <div class="exam__group">
+        <Button variant="outline" data-finalize>
+          {t('jlpt.run.finalize')}
+        </Button>
+        <Button variant="primary" data-next>
+          {t('jlpt.run.next')}
+          <Icon name="arrow-right" size={20} />
+        </Button>
+      </div>
+    </div>
+  </footer>
+  <p class="visually-hidden" aria-live="polite" data-announce></p>
+</section>
+
+<style>
+  .exam {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    /* The question map scrolls inside its strip instead of widening the page. */
+    grid-template-columns: minmax(0, 1fr);
+    min-block-size: calc(100svh - 56px);
+  }
+
+  .exam[hidden] {
+    display: none;
+  }
+
+  .exam__bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+    align-items: center;
+    padding-block-start: var(--space-3);
+  }
+
+  .exam__top {
+    border-block-end: 1px solid var(--line);
+  }
+
+  .steps {
+    display: flex;
+    flex: 1;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  @media (width < 48rem) {
+    .steps {
+      flex-basis: 100%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .steps :global(li) {
+      flex: none;
+    }
+  }
+
+  .steps :global(li) {
+    display: flex;
+    gap: var(--space-2);
+    align-items: baseline;
+    padding: var(--space-2) var(--space-3);
+    color: var(--muted);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
+  .steps :global(li[aria-current='step']) {
+    color: var(--bg);
+    font-weight: 700;
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .steps :global(li[data-done]) {
+    text-decoration: line-through;
+  }
+
+  .steps :global(.steps__meta) {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .exam__level {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .timer {
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-pill);
+  }
+
+  .timer[data-low] {
+    color: var(--accent-ink);
+    border-color: var(--accent);
+  }
+
+  /* One scrollable strip on narrow screens, wrapped rows on wide ones. */
+  .map {
+    display: flex;
+    gap: var(--space-3) var(--space-5);
+    padding-block: var(--space-3);
+    overflow-x: auto;
+  }
+
+  @media (width >= 64rem) {
+    .map {
+      flex-wrap: wrap;
+    }
+  }
+
+  .map :global(.map__group) {
+    display: flex;
+    flex: none;
+    gap: var(--space-1);
+    align-items: center;
+  }
+
+  .map :global(.map__label) {
+    margin-inline-end: var(--space-1);
+    color: var(--muted);
+    font-family: var(--font-body-ja);
+    font-size: var(--text-xs);
+  }
+
+  .map :global(.map__item) {
+    min-inline-size: 36px;
+    block-size: 36px;
+    padding-inline: var(--space-1);
+    color: var(--ink);
+    font: inherit;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    cursor: pointer;
+  }
+
+  .map :global(.map__item[data-answered]) {
+    color: var(--info);
+    background: var(--info-soft);
+    border-color: transparent;
+  }
+
+  .map :global(.map__item[data-flagged]) {
+    border: 1px dashed var(--accent);
+  }
+
+  .map :global(.map__item[aria-current='true']) {
+    color: var(--bg);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .exam__body {
+    padding-block: var(--space-8);
+    background: var(--bg);
+  }
+
+  .question {
+    display: grid;
+    align-content: start;
+    gap: var(--space-6);
+  }
+
+  .question__instruction {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: baseline;
+    padding-block-end: var(--space-4);
+    color: var(--muted);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .question__instruction strong {
+    color: var(--ink);
+  }
+
+  .question__passage {
+    padding: var(--space-5);
+    font-family: var(--font-body-ja);
+    font-size: var(--text-md);
+    line-height: var(--leading-ja);
+    white-space: pre-line;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+  }
+
+  .listen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+
+  .listen[hidden],
+  .question__passage[hidden] {
+    display: none;
+  }
+
+  .listen__note {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .listen__warning {
+    flex-basis: 100%;
+    color: var(--accent-ink);
+    font-size: var(--text-sm);
+  }
+
+  .question__set {
+    display: grid;
+    gap: var(--space-6);
+    min-inline-size: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .question__stem {
+    display: flex;
+    margin-block-end: var(--space-2);
+    gap: var(--space-4);
+    align-items: start;
+    padding: 0;
+  }
+
+  .question__stem:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
+
+  .question__number {
+    display: grid;
+    flex: none;
+    place-items: center;
+    min-inline-size: 44px;
+    block-size: 44px;
+    font-family: var(--font-mono);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-control);
+  }
+
+  .question__text {
+    font-family: var(--font-body-ja);
+    font-size: var(--text-2xl);
+    line-height: var(--leading-ja);
+    white-space: pre-line;
+  }
+
+  .question__text :global(u) {
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+
+  .question__text :global(.question__star) {
+    color: var(--accent);
+  }
+
+  .choices {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (width >= 48rem) {
+    .choices {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      padding-inline-start: calc(44px + var(--space-4));
+    }
+  }
+
+  .choices :global(.choice) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    min-block-size: 64px;
+    padding: var(--space-3) var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    cursor: pointer;
+  }
+
+  .choices :global(.choice:has(input:checked)) {
+    border-color: var(--ink);
+    box-shadow: inset 0 0 0 1px var(--ink);
+  }
+
+  .choices :global(.choice:has(input:focus-visible)) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .choices :global(.choice input) {
+    flex: none;
+    inline-size: 20px;
+    block-size: 20px;
+    margin: 0;
+    accent-color: var(--ink);
+  }
+
+  .choices :global(.choice__number) {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .choices :global(.choice__text) {
+    font-family: var(--font-body-ja);
+    font-size: var(--text-xl);
+  }
+
+  .question__keys {
+    padding-inline-start: calc(44px + var(--space-4));
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  @media (pointer: coarse) {
+    .question__keys {
+      display: none;
+    }
+  }
+
+  .exam__actions {
+    position: sticky;
+    inset-block-end: 0;
+    padding-block: var(--space-3);
+    background: var(--surface);
+    border-block-start: 1px solid var(--line);
+  }
+
+  .exam__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: space-between;
+  }
+
+  .exam__group {
+    display: flex;
+    gap: var(--space-3);
+  }
+</style>

@@ -1,0 +1,257 @@
+---
+import JlptBreak from '../../components/jlpt/JlptBreak.astro';
+import JlptExam from '../../components/jlpt/JlptExam.astro';
+import Button from '../../components/ui/Button.astro';
+import Dialog from '../../components/ui/Dialog.astro';
+import { getLocale, localizePath, useTranslations, type UiKey } from '../../i18n';
+import FocusLayout from '../../layouts/FocusLayout.astro';
+import { JLPT_LEVELS, LEVELS } from '../../lib/jlpt/levels';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+
+// Templates keep their {placeholders}; src/lib/jlpt/exam/labels.ts fills them.
+const keys = [
+  'jlpt.run.error',
+  'jlpt.run.announce',
+  'jlpt.run.announceLast',
+  'jlpt.run.mondai',
+  'jlpt.run.question',
+  'jlpt.run.mapState.answered',
+  'jlpt.run.mapState.flagged',
+  'jlpt.run.spoken',
+  'jlpt.run.play',
+  'jlpt.run.playing',
+  'jlpt.run.playsLeft',
+  'jlpt.run.finalize.both',
+  'jlpt.run.finalize.unanswered',
+  'jlpt.run.finalize.time',
+  'jlpt.run.saving',
+  'jlpt.break.kicker',
+  'jlpt.break.title',
+  'jlpt.break.text',
+  'jlpt.break.of',
+  'jlpt.break.continueIn',
+  'jlpt.break.continue',
+  'jlpt.break.rest',
+  'jlpt.break.thanks',
+  'jlpt.break.next',
+  'jlpt.break.done',
+  'jlpt.done.kicker',
+  'jlpt.done.passed',
+  'jlpt.done.notYet',
+  'jlpt.done.total',
+  'jlpt.done.passMark',
+  'jlpt.done.minimum',
+] as const satisfies readonly UiKey[];
+const labels: Record<string, string> = Object.fromEntries(keys.map((key) => [key, t(key)]));
+for (const level of JLPT_LEVELS) {
+  labels[`level.${level}`] = level === 'kana' ? t('jlpt.level.kana') : level;
+  for (const section of LEVELS[level].sections) {
+    labels[`section.${section.id}`] = t(`jlpt.section.${section.id}`);
+  }
+  for (const scoring of LEVELS[level].scoring) {
+    labels[`scoring.${scoring.id}`] = t(`jlpt.done.scoring.${scoring.id}`);
+  }
+}
+const home = localizePath('/jlpt', locale);
+---
+
+<FocusLayout
+  title={`${t('jlpt.run.title')} · ${t('site.name')}`}
+  description={t('jlpt.run.description')}
+  noindex
+>
+  <div class="run" data-jlpt-run data-status="loading" data-labels={JSON.stringify(labels)}>
+    <p class="run__state column" data-for="loading" role="status">
+      {t('jlpt.run.loading')}
+    </p>
+
+    <section class="run__state column" data-for="missing" aria-labelledby="jlpt-missing">
+      <h1 id="jlpt-missing">{t('jlpt.run.missing.title')}</h1>
+      <p>{t('jlpt.run.missing.text')}</p>
+      <Button href={home}>{t('jlpt.run.missing.link')}</Button>
+    </section>
+
+    <div class="run__error column" role="alert" data-error hidden>
+      <p data-error-text></p>
+      <Button variant="outline" size={40} data-retry>
+        {t('jlpt.run.retry')}
+      </Button>
+    </div>
+
+    <div class="countdown" data-countdown hidden>
+      <p class="countdown__section" data-countdown-section></p>
+      <p class="countdown__number" aria-live="assertive" data-countdown-number>
+        3
+      </p>
+      <p class="countdown__ready">{t('jlpt.run.countdown')}</p>
+    </div>
+
+    <h1 class="visually-hidden" data-exam-title>
+      {t('jlpt.run.title')}
+    </h1>
+    <JlptExam />
+    <JlptBreak />
+
+    <section class="done column" aria-labelledby="jlpt-done-title" data-run-done hidden>
+      <p class="done__kicker" data-done-kicker></p>
+      <h1 class="done__title" id="jlpt-done-title" tabindex="-1" data-done-title>
+        {t('jlpt.title')}
+      </h1>
+      <p class="done__mark" data-done-mark></p>
+      <table class="done__table">
+        <tbody data-done-rows></tbody>
+      </table>
+      <p class="done__disclaimer">{t('jlpt.disclaimer')}</p>
+      <Button href={home} variant="accent">
+        {t('jlpt.done.again')}
+      </Button>
+    </section>
+  </div>
+
+  <Dialog id="jlpt-finalize" title={t('jlpt.run.finalize.title')}>
+    <p data-finalize-text></p>
+    <p class="finalize__note">{t('jlpt.run.finalize.note')}</p>
+    <div slot="footer" class="finalize__actions">
+      <form method="dialog">
+        <Button variant="outline" type="submit">
+          {t('jlpt.run.finalize.keep')}
+        </Button>
+      </form>
+      <Button variant="accent" data-finalize-go>
+        {t('jlpt.run.finalize.go')}
+      </Button>
+    </div>
+  </Dialog>
+</FocusLayout>
+
+<script>
+  import { initRun } from '../../lib/jlpt/exam/flow';
+
+  const root = document.querySelector<HTMLElement>('[data-jlpt-run]');
+  if (root) void initRun(root);
+</script>
+
+<style>
+  .run__state {
+    display: none;
+    gap: var(--space-4);
+    justify-items: start;
+    padding-block: var(--space-16);
+  }
+
+  .run[data-status='loading'] [data-for='loading'],
+  .run[data-status='missing'] [data-for='missing'] {
+    display: grid;
+  }
+
+  .run__error {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    padding-block: var(--space-4);
+    color: var(--accent-ink);
+  }
+
+  .run__error[hidden] {
+    display: none;
+  }
+
+  .countdown {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-content: center;
+    gap: var(--space-4);
+    color: var(--bg);
+    text-align: center;
+    background: var(--ink);
+  }
+
+  .countdown[hidden] {
+    display: none;
+  }
+
+  .countdown__section {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .countdown__number {
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .done {
+    display: grid;
+    gap: var(--space-5);
+    justify-items: start;
+    padding-block: var(--space-12);
+  }
+
+  .done[hidden] {
+    display: none;
+  }
+
+  .done__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .done__title {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+  }
+
+  .done__title:focus {
+    outline: none;
+  }
+
+  .done__mark,
+  .done__disclaimer {
+    color: var(--muted);
+  }
+
+  .done__table {
+    inline-size: 100%;
+    max-inline-size: 36rem;
+    border-collapse: collapse;
+  }
+
+  .done__table :global(th),
+  .done__table :global(td) {
+    padding: var(--space-3) var(--space-4);
+    text-align: start;
+    border-block-end: 1px solid var(--line);
+  }
+
+  .done__table :global(td) {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .done__table :global(tr[data-total]) {
+    font-weight: 700;
+  }
+
+  .finalize__note {
+    margin-block-start: var(--space-3);
+    color: var(--muted);
+  }
+
+  .finalize__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: end;
+  }
+</style>

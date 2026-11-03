@@ -18,6 +18,8 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm exec astro preview --port ${port}`,
+    // JLPT runs live in memory, so e2e needs no database.
+    env: { JLPT_MEMORY_STORE: 'true' },
     port,
     reuseExistingServer: !process.env.CI,
   },

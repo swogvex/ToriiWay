@@ -124,5 +124,6 @@ describe('scoring a finished run', () => {
     const state = publicState(start(), T0);
     expect(Object.keys(state)).not.toContain('seed');
     expect(state.breakEndsAt).toBeNull();
+    expect(state.scores).toBeNull();
   });
 });

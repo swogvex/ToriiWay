@@ -195,6 +195,8 @@ export function publicState(run: RunRecord, now: number) {
     breakMinEndsAt: breakStartedAt === null ? null : breakStartedAt + TIMING.breakMin * SECOND,
     breakEndsAt: breakStartedAt === null ? null : breakStartedAt + TIMING.breakMax * SECOND,
     results: run.results,
+    /** Only once the run is over: no answer can change any more. */
+    scores: run.status === 'finished' ? run.scores : null,
     serverNow: now,
   };
 }
