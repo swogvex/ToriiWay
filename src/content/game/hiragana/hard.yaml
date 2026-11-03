@@ -1,0 +1,44 @@
+# Hiragana Hard: words with dakuten, yōon (きゃ), small っ and long vowels.
+script: hiragana
+difficulty: hard
+items:
+  - { text: がっこう, reading: がっこう, en: school, es: escuela }
+  - { text: でんしゃ, reading: でんしゃ, en: train, es: tren }
+  - { text: きっぷ, reading: きっぷ, en: ticket, es: billete }
+  - { text: しゃしん, reading: しゃしん, en: photo, es: foto }
+  - { text: じしょ, reading: じしょ, en: dictionary, es: diccionario }
+  - { text: ぎゅうにゅう, reading: ぎゅうにゅう, en: milk, es: leche }
+  - { text: りょこう, reading: りょこう, en: trip, es: viaje }
+  - { text: びょういん, reading: びょういん, en: hospital, es: hospital }
+  - { text: きょうしつ, reading: きょうしつ, en: classroom, es: aula }
+  - { text: しゅくだい, reading: しゅくだい, en: homework, es: deberes }
+  - { text: ともだち, reading: ともだち, en: friend, es: amigo }
+  - { text: ざっし, reading: ざっし, en: magazine, es: revista }
+  - { text: にっき, reading: にっき, en: diary, es: diario }
+  - { text: きって, reading: きって, en: stamp, es: sello }
+  - { text: ちょっと, reading: ちょっと, en: a little, es: un poco }
+  - { text: いっしょ, reading: いっしょ, en: together, es: juntos }
+  - { text: みず, reading: みず, en: water, es: agua }
+  - { text: かぜ, reading: かぜ, en: wind, es: viento }
+  - { text: どうぶつ, reading: どうぶつ, en: animal, es: animal }
+  - { text: おじいさん, reading: おじいさん, en: grandfather, es: abuelo }
+  - { text: おばあさん, reading: おばあさん, en: grandmother, es: abuela }
+  - { text: おかあさん, reading: おかあさん, en: mother, es: madre }
+  - { text: おとうさん, reading: おとうさん, en: father, es: padre }
+  - { text: せんせい, reading: せんせい, en: teacher, es: profesor }
+  - { text: がくせい, reading: がくせい, en: student, es: estudiante }
+  - { text: ぎんこう, reading: ぎんこう, en: bank, es: banco }
+  - { text: じてんしゃ, reading: じてんしゃ, en: bicycle, es: bicicleta }
+  - { text: ひこうき, reading: ひこうき, en: aeroplane, es: avión }
+  - { text: しんぶん, reading: しんぶん, en: newspaper, es: periódico }
+  - { text: べんきょう, reading: べんきょう, en: study, es: estudio }
+  - { text: りょうり, reading: りょうり, en: cooking, es: cocina }
+  - { text: ちゃわん, reading: ちゃわん, en: rice bowl, es: cuenco de arroz }
+  - { text: ぎょうざ, reading: ぎょうざ, en: gyoza dumplings, es: gyozas }
+  - { text: ごはん, reading: ごはん, en: rice; meal, es: arroz; comida }
+  - { text: えんぴつ, reading: えんぴつ, en: pencil, es: lápiz }
+  - { text: かばん, reading: かばん, en: bag, es: bolso }
+  - { text: でぐち, reading: でぐち, en: exit, es: salida }
+  - { text: いりぐち, reading: いりぐち, en: entrance, es: entrada }
+  - { text: しゅみ, reading: しゅみ, en: hobby, es: afición }
+  - { text: ゆうびんきょく, reading: ゆうびんきょく, en: post office, es: oficina de correos }

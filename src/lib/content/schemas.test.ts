@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
 import {
+  gameListSchema,
   jlptMondaiSchema,
   kanaSchema,
   kanaScriptSchema,
@@ -147,5 +148,65 @@ describe('kanaScriptSchema', () => {
     expect(result).toContain('キ is not hiragana');
     expect(result).toContain('expected 46 gojuon kana, found 3');
     expect(result).toContain('expected 33 yoon kana, found 0');
+  });
+});
+
+describe('gameListSchema', () => {
+  const words = ['さくら', 'ねこ', 'いぬ', 'やま', 'かわ', 'うみ', 'そら', 'はな'];
+  const items = [...words, ...words.map((word) => word + 'た')].map((word) => ({
+    text: word,
+    reading: word,
+    en: 'meaning',
+  }));
+  const list = { script: 'hiragana', difficulty: 'normal', items };
+  const issuePaths = (input: unknown) =>
+    gameListSchema.safeParse(input).error?.issues.map((issue) => issue.path.join('.'));
+
+  it('accepts a valid kana list', () => {
+    expect(gameListSchema.safeParse(list).success).toBe(true);
+  });
+
+  it('needs more items than the repeat window', () => {
+    expect(gameListSchema.safeParse({ ...list, items: items.slice(1) }).success).toBe(false);
+  });
+
+  it('allows spaces and punctuation in the text only', () => {
+    const sentences = items.map((item) => ({
+      text: `きょうは ${item.text}。`,
+      reading: `きょうは${item.reading}`,
+      en: 'Today…',
+    }));
+    expect(
+      gameListSchema.safeParse({ ...list, difficulty: 'extreme', items: sentences }).success,
+    ).toBe(true);
+  });
+
+  it('checks the kana length per difficulty', () => {
+    const long = { text: 'ありがとう', reading: 'ありがとう', en: 'thanks' };
+    expect(issuePaths({ ...list, items: [...items.slice(1), long] })).toEqual(['items.15.reading']);
+  });
+
+  it('rejects a text that differs from the reading', () => {
+    const wrong = { text: 'さくら', reading: 'さくろ', en: 'x' };
+    expect(issuePaths({ ...list, items: [...items.slice(1), wrong] })).toEqual(['items.15.text']);
+  });
+
+  it('rejects duplicates, katakana in hiragana lists and Easy kana files', () => {
+    expect(issuePaths({ ...list, items: [...items.slice(1), items[0], items[0]] })).toEqual([
+      'items.16',
+    ]);
+    const katakana = { text: 'ネコ', reading: 'ネコ', en: 'cat' };
+    expect(issuePaths({ ...list, items: [...items.slice(1), katakana] })).toEqual([
+      'items.15.reading',
+    ]);
+    expect(issuePaths({ ...list, difficulty: 'easy' })).toEqual(['difficulty']);
+  });
+
+  it('only accepts kana readings, also for kanji lists', () => {
+    const kanji = items.map((item) => ({ ...item, text: '桜' }));
+    kanji.forEach((item, index) => (item.text = `桜${index}`));
+    expect(gameListSchema.safeParse({ ...list, script: 'kanji', items: kanji }).success).toBe(true);
+    const romaji = [...kanji.slice(1), { text: '桜', reading: 'sakura', en: 'x' }];
+    expect(issuePaths({ ...list, script: 'kanji', items: romaji })).toEqual(['items.15.reading']);
   });
 });

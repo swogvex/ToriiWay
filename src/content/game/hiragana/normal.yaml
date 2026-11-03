@@ -1,0 +1,83 @@
+# Hiragana Normal: everyday words of 2–4 basic kana (no dakuten, yōon or small っ).
+# The bubble shows `text`; the player types the romaji of `reading`.
+script: hiragana
+difficulty: normal
+items:
+  - { text: さくら, reading: さくら, en: cherry blossom, es: flor de cerezo }
+  - { text: ねこ, reading: ねこ, en: cat, es: gato }
+  - { text: いぬ, reading: いぬ, en: dog, es: perro }
+  - { text: やま, reading: やま, en: mountain, es: montaña }
+  - { text: かわ, reading: かわ, en: river, es: río }
+  - { text: うみ, reading: うみ, en: sea, es: mar }
+  - { text: そら, reading: そら, en: sky, es: cielo }
+  - { text: はな, reading: はな, en: flower, es: flor }
+  - { text: あめ, reading: あめ, en: rain, es: lluvia }
+  - { text: ゆき, reading: ゆき, en: snow, es: nieve }
+  - { text: あさ, reading: あさ, en: morning, es: mañana }
+  - { text: よる, reading: よる, en: night, es: noche }
+  - { text: ひる, reading: ひる, en: noon, es: mediodía }
+  - { text: くも, reading: くも, en: cloud, es: nube }
+  - { text: つき, reading: つき, en: moon, es: luna }
+  - { text: ほし, reading: ほし, en: star, es: estrella }
+  - { text: もり, reading: もり, en: forest, es: bosque }
+  - { text: いけ, reading: いけ, en: pond, es: estanque }
+  - { text: しま, reading: しま, en: island, es: isla }
+  - { text: いえ, reading: いえ, en: house, es: casa }
+  - { text: へや, reading: へや, en: room, es: habitación }
+  - { text: あし, reading: あし, en: foot; leg, es: pie; pierna }
+  - { text: くち, reading: くち, en: mouth, es: boca }
+  - { text: みみ, reading: みみ, en: ear, es: oreja }
+  - { text: かお, reading: かお, en: face, es: cara }
+  - { text: あたま, reading: あたま, en: head, es: cabeza }
+  - { text: おなか, reading: おなか, en: belly, es: barriga }
+  - { text: こころ, reading: こころ, en: heart; mind, es: corazón; mente }
+  - { text: なまえ, reading: なまえ, en: name, es: nombre }
+  - { text: ひと, reading: ひと, en: person, es: persona }
+  - { text: おとこ, reading: おとこ, en: man, es: hombre }
+  - { text: おんな, reading: おんな, en: woman, es: mujer }
+  - { text: はは, reading: はは, en: (my) mother, es: (mi) madre }
+  - { text: ちち, reading: ちち, en: (my) father, es: (mi) padre }
+  - { text: あに, reading: あに, en: (my) older brother, es: (mi) hermano mayor }
+  - { text: あね, reading: あね, en: (my) older sister, es: (mi) hermana mayor }
+  - { text: いもうと, reading: いもうと, en: younger sister, es: hermana menor }
+  - { text: おとうと, reading: おとうと, en: younger brother, es: hermano menor }
+  - { text: さかな, reading: さかな, en: fish, es: pez; pescado }
+  - { text: とり, reading: とり, en: bird, es: pájaro }
+  - { text: うし, reading: うし, en: cow, es: vaca }
+  - { text: うま, reading: うま, en: horse, es: caballo }
+  - { text: さる, reading: さる, en: monkey, es: mono }
+  - { text: くま, reading: くま, en: bear, es: oso }
+  - { text: たこ, reading: たこ, en: octopus, es: pulpo }
+  - { text: すし, reading: すし, en: sushi, es: sushi }
+  - { text: もち, reading: もち, en: rice cake, es: pastel de arroz }
+  - { text: みそ, reading: みそ, en: miso, es: miso }
+  - { text: しお, reading: しお, en: salt, es: sal }
+  - { text: あか, reading: あか, en: red, es: rojo }
+  - { text: あお, reading: あお, en: blue, es: azul }
+  - { text: しろ, reading: しろ, en: white, es: blanco }
+  - { text: くろ, reading: くろ, en: black, es: negro }
+  - { text: きいろ, reading: きいろ, en: yellow, es: amarillo }
+  - { text: いろ, reading: いろ, en: colour, es: color }
+  - { text: はる, reading: はる, en: spring, es: primavera }
+  - { text: なつ, reading: なつ, en: summer, es: verano }
+  - { text: あき, reading: あき, en: autumn, es: otoño }
+  - { text: ふゆ, reading: ふゆ, en: winter, es: invierno }
+  - { text: きた, reading: きた, en: north, es: norte }
+  - { text: みなみ, reading: みなみ, en: south, es: sur }
+  - { text: にし, reading: にし, en: west, es: oeste }
+  - { text: うえ, reading: うえ, en: up; above, es: arriba; encima }
+  - { text: した, reading: した, en: down; below, es: abajo; debajo }
+  - { text: まえ, reading: まえ, en: front; before, es: delante; antes }
+  - { text: うしろ, reading: うしろ, en: behind, es: detrás }
+  - { text: ほん, reading: ほん, en: book, es: libro }
+  - { text: かさ, reading: かさ, en: umbrella, es: paraguas }
+  - { text: いす, reading: いす, en: chair, es: silla }
+  - { text: つくえ, reading: つくえ, en: desk, es: escritorio }
+  - { text: えき, reading: えき, en: station, es: estación }
+  - { text: みせ, reading: みせ, en: shop, es: tienda }
+  - { text: まち, reading: まち, en: town, es: ciudad }
+  - { text: むら, reading: むら, en: village, es: pueblo }
+  - { text: くに, reading: くに, en: country, es: país }
+  - { text: ふね, reading: ふね, en: boat, es: barco }
+  - { text: くるま, reading: くるま, en: car, es: coche }
+  - { text: はし, reading: はし, en: chopsticks; bridge, es: palillos; puente }
