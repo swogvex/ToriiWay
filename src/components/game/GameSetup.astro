@@ -166,16 +166,18 @@ const labels = Object.fromEntries([
 
     <div class="setup__footer">
       <div class="setup__options">
-        <input type="hidden" name="hint" value="0" />
-        <label class="check">
-          <input type="checkbox" name="hint" value="1" checked />
-          {t('game.option.hint')}
-        </label>
-        <input type="hidden" name="meaning" value="0" />
-        <label class="check">
-          <input type="checkbox" name="meaning" value="1" checked />
-          {t('game.option.meaning')}
-        </label>
+        <div class="setup__checks">
+          <input type="hidden" name="hint" value="0" />
+          <label class="check">
+            <input type="checkbox" name="hint" value="1" checked />
+            {t('game.option.hint')}
+          </label>
+          <input type="hidden" name="meaning" value="0" />
+          <label class="check">
+            <input type="checkbox" name="meaning" value="1" checked />
+            {t('game.option.meaning')}
+          </label>
+        </div>
         <Segmented
           name="layout"
           legend={t('game.option.layout')}
@@ -422,8 +424,13 @@ const labels = Object.fromEntries([
   .setup__options {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-6);
+    gap: var(--space-8);
     align-items: center;
+  }
+
+  /* The two checkboxes stack, so options and Start share one row in both languages. */
+  .setup__checks {
+    display: grid;
   }
 
   .check {
