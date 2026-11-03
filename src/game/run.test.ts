@@ -255,3 +255,59 @@ describe('filledChars', () => {
     expect([0, 1, 2, 3].map((k) => filledChars(item, k))).toEqual([0, 0, 1, 2]);
   });
 });
+
+describe('Run results data', () => {
+  it('samples keys per second and closes a partial last second', () => {
+    const run = newRun();
+    run.step(0.01);
+    const first = run.bubbles[0];
+    if (!first) throw new Error('no bubble');
+    run.type('q');
+    for (const key of romajiOf(first.item.reading)) run.type(key);
+    play(run, 1.5);
+    run.quit();
+    expect(run.samples.length).toBe(2);
+    expect(run.samples[0]?.wrong).toBe(1);
+    expect(run.samples[0]?.seconds).toBe(1);
+    expect(run.samples[1]?.seconds).toBeCloseTo(0.51, 1);
+    expect(run.samples.reduce((sum, s) => sum + s.correct, 0)).toBe(run.stats.correctKeys);
+  });
+
+  it('logs popped and missed items in order', () => {
+    const run = newRun();
+    run.step(0.01);
+    const first = run.bubbles[0];
+    if (!first) throw new Error('no bubble');
+    for (const key of romajiOf(first.item.reading)) run.type(key);
+    play(run, 25);
+    expect(run.log[0]).toEqual({ item: first.item, popped: true });
+    expect(run.log.some((entry) => !entry.popped)).toBe(true);
+    expect(run.log.filter((entry) => entry.popped)).toHaveLength(run.stats.popped);
+  });
+
+  it('times each kana unit from when it could start and counts kana', () => {
+    const items: GameItem[] = [{ text: 'しゃしん', reading: 'しゃしん' }];
+    const run = newRun(items);
+    run.step(0.01);
+    play(run, 0.4);
+    for (const key of 'sha') run.type(key);
+    play(run, 0.2);
+    for (const key of 'shin') run.type(key);
+    expect(run.kanaTimes.map((time) => time.kana)).toEqual(['しゃ', 'し', 'ん']);
+    expect(run.kanaTimes[0]?.seconds).toBeCloseTo(0.4, 1);
+    expect(run.kanaTimes[1]?.seconds).toBeCloseTo(0.2, 1);
+    expect(run.stats.kana).toBe(4);
+  });
+});
+
+/** Hepburn romaji for the test words. */
+function romajiOf(reading: string): string {
+  const table: Record<string, string> = {
+    さくら: 'sakura',
+    ねこ: 'neko',
+    いぬ: 'inu',
+    やま: 'yama',
+    かわ: 'kawa',
+  };
+  return table[reading] ?? '';
+}

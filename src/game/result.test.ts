@@ -9,6 +9,7 @@ describe('runResult', () => {
       wrongKeys: 17,
       popped: 41,
       missed: 3,
+      kana: 120,
       combo: 0,
       maxCombo: 30,
     };
