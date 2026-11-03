@@ -1,59 +1,25 @@
-import {
-  DIFFICULTIES,
-  DIFFICULTY,
-  type Difficulty,
-  GAME_SCRIPTS,
-  type GameScript,
-  type Mode,
-  MODES,
-  REDUCED_MOTION_SPEED,
-} from './config';
+import { DIFFICULTY, REDUCED_MOTION_SPEED } from './config';
 import { Field } from './field';
-import { type GameItem, Run, type RunStatus } from './run';
+import { Hud } from './hud';
+import { VirtualKeyboard } from './keyboard';
+import { type GameItem, Run, type RunEvent, type RunStatus } from './run';
+import { modeLabel, type PlaySettings, readSettings } from './settings';
 import { type Random, seededRandom } from './spawner';
 
-export interface PlaySettings {
-  script: GameScript;
-  difficulty: Difficulty;
-  mode: Mode;
-  /** Fixed seed for reproducible runs (tests); random otherwise. */
-  seed: number | null;
-}
+type State = 'loading' | 'blocked' | 'countdown' | 'playing' | 'paused' | 'ended';
 
-function oneOf<T extends string>(value: string | null, allowed: readonly T[], fallback: T): T {
-  return allowed.find((item) => item === value) ?? fallback;
-}
+const COUNTDOWN = ['3', '2', '1'];
+const GO = '始め!';
+const STEP_MS = 1000;
+const GO_MS = 300;
 
-/** Settings from `?script=hiragana&difficulty=normal&mode=challenge&seed=1`. */
-export function readSettings(search: string): PlaySettings {
-  const params = new URLSearchParams(search);
-  const seed = Number.parseInt(params.get('seed') ?? '', 10);
-  return {
-    script: oneOf(params.get('script'), GAME_SCRIPTS, 'hiragana'),
-    difficulty: oneOf(params.get('difficulty'), DIFFICULTIES, 'normal'),
-    mode: oneOf(params.get('mode'), MODES, 'challenge'),
-    seed: Number.isFinite(seed) ? seed : null,
-  };
-}
-
-export function formatTime(seconds: number): string {
-  const whole = Math.ceil(seconds);
-  return `${Math.floor(whole / 60)}:${String(whole % 60).padStart(2, '0')}`;
-}
+/** Narrow screens and devices without a fine pointer get the blocked screen (CSS too). */
+const BLOCKED = '(width < 1024px), not (pointer: fine)';
 
 function required<T extends Element>(root: ParentNode, selector: string): T {
   const el = root.querySelector<T>(selector);
   if (!el) throw new Error(`Missing ${selector}`);
   return el;
-}
-
-/** Shows exactly one overlay panel (`[data-panel=name]`), or none. */
-function showPanel(root: HTMLElement, name: string | null): void {
-  const overlay = required<HTMLElement>(root, '[data-overlay]');
-  overlay.hidden = name === null;
-  for (const panel of overlay.querySelectorAll<HTMLElement>('[data-panel]')) {
-    panel.hidden = panel.dataset['panel'] !== name;
-  }
 }
 
 async function loadItems(settings: PlaySettings): Promise<GameItem[]> {
@@ -62,16 +28,27 @@ async function loadItems(settings: PlaySettings): Promise<GameItem[]> {
   return (await response.json()) as GameItem[];
 }
 
+const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 export async function initPlay(root: HTMLElement): Promise<void> {
   const settings = readSettings(location.search);
   const config = DIFFICULTY[settings.difficulty];
   const input = required<HTMLInputElement>(root, '[data-input]');
+  const stage = required<HTMLElement>(root, '.stage');
+  const overlay = required<HTMLElement>(root, '[data-overlay]');
+  const count = required<HTMLElement>(root, '[data-count]');
   const focusNote = required<HTMLElement>(root, '[data-focus-note]');
-  const hud = {
-    lives: required<HTMLElement>(root, '[data-lives]'),
-    time: required<HTMLElement>(root, '[data-time]'),
-    popped: required<HTMLElement>(root, '[data-popped]'),
-  };
+  const keyboardEl = required<HTMLElement>(root, '[data-keyboard]');
+  const labels = JSON.parse(root.dataset['labels'] ?? '{}') as Record<string, string>;
+  required<HTMLElement>(root, '[data-mode-label]').textContent = modeLabel(settings, labels);
+  keyboardEl.dataset['layout'] = settings.layout;
+
+  const keyboard = new VirtualKeyboard(keyboardEl);
+  const hud = new Hud(root, {
+    lives: config.lives,
+    mode: settings.mode,
+    challengeTime: config.challengeTime,
+  });
   const field = new Field(
     {
       field: required(root, '[data-field]'),
@@ -82,80 +59,151 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     },
     { locale: document.documentElement.lang, hint: true, meaning: true },
   );
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const blocked = matchMedia(BLOCKED);
+  let forced = false;
 
-  const items = await loadItems(settings).catch(() => []);
-  if (items.length === 0) {
-    showPanel(root, 'unavailable');
-    return;
-  }
-
+  let state: State = 'loading';
   let run: Run | null = null;
+  let items: GameItem[] = [];
   let frame = 0;
   let last = 0;
-  let shownTime = '';
+  let timers: number[] = [];
 
-  const setStatus = (status: RunStatus | 'ready') => (root.dataset['status'] = status);
+  const setState = (next: State, status?: RunStatus | 'unavailable') => {
+    state = next;
+    root.dataset['status'] = status ?? next;
+  };
 
-  const updateHud = (current: Run) => {
-    hud.lives.textContent = `${current.lives}/${config.lives}`;
-    hud.popped.textContent = String(current.stats.popped);
+  const showPanel = (name: string | null) => {
+    overlay.hidden = name === null;
+    for (const panel of overlay.querySelectorAll<HTMLElement>('[data-panel]')) {
+      panel.hidden = panel.dataset['panel'] !== name;
+    }
+  };
+
+  const sync = (current: Run) => {
+    hud.update(current);
     root.dataset['lives'] = String(current.lives);
     root.dataset['popped'] = String(current.stats.popped);
     root.dataset['missed'] = String(current.stats.missed);
-    const time = formatTime(settings.mode === 'challenge' ? current.remaining : current.elapsed);
-    if (time !== shownTime) hud.time.textContent = shownTime = time;
+  };
+
+  const react = (events: readonly RunEvent[]) => {
+    for (const event of events) {
+      if (event.type === 'key') keyboard.flash(event.key, event.correct);
+      else if (event.type === 'life') hud.damage();
+      else if (event.type === 'end') finish(event.status);
+    }
   };
 
   const flush = (current: Run) => {
     const events = current.drain();
     if (events.length === 0) return;
     field.handle(events, current);
-    updateHud(current);
-    const end = events.find((event) => event.type === 'end');
-    if (end) finish(end.status);
+    sync(current);
+    react(events);
   };
 
   const tick = (now: number) => {
-    if (!run) return;
+    if (!run || state !== 'playing') return;
     run.step((now - last) / 1000);
     last = now;
     flush(run);
     field.render(run);
-    updateHud(run);
-    if (run.status === 'playing') frame = requestAnimationFrame(tick);
+    sync(run);
+    if (state === 'playing') frame = requestAnimationFrame(tick);
   };
 
-  const finish = (status: Exclude<RunStatus, 'playing'>) => {
+  const stopClock = () => {
     cancelAnimationFrame(frame);
-    setStatus(status);
-    showPanel(root, status);
-    focusNote.hidden = true;
-    root.querySelector<HTMLElement>(`[data-panel="${status}"] button`)?.focus();
+    timers.forEach((timer) => clearTimeout(timer));
+    timers = [];
   };
 
-  const start = () => {
-    const random: Random =
-      settings.seed === null ? Math.random.bind(Math) : seededRandom(settings.seed);
-    field.clear();
-    run = new Run({
-      config,
-      mode: settings.mode,
-      items,
-      random,
-      speed: reducedMotion.matches ? REDUCED_MOTION_SPEED : 1,
-    });
-    shownTime = '';
-    updateHud(run);
-    setStatus('playing');
-    showPanel(root, null);
+  const play = () => {
+    setState('playing');
+    stage.classList.remove('is-paused');
+    showPanel(null);
     input.focus();
     last = performance.now();
     frame = requestAnimationFrame(tick);
   };
 
+  const showCount = (text: string) => {
+    count.textContent = text;
+    if (!reducedMotion()) {
+      count.animate(
+        [
+          { opacity: 0, scale: 1.4 },
+          { opacity: 1, scale: 1 },
+        ],
+        {
+          duration: 250,
+          easing: 'ease-out',
+        },
+      );
+    }
+  };
+
+  /** New run: fresh field and HUD, then 3 · 2 · 1 · 始め! and play. */
+  const begin = () => {
+    stopClock();
+    const random: Random =
+      settings.seed === null ? Math.random.bind(Math) : seededRandom(settings.seed);
+    run = new Run({
+      config,
+      mode: settings.mode,
+      items,
+      random,
+      speed: reducedMotion() ? REDUCED_MOTION_SPEED : 1,
+    });
+    field.clear();
+    sync(run);
+    focusNote.hidden = true;
+    stage.classList.remove('is-paused');
+    setState('countdown');
+    showPanel('countdown');
+    input.focus();
+    [...COUNTDOWN, GO].forEach((text, index) => {
+      timers.push(window.setTimeout(() => showCount(text), index * STEP_MS));
+    });
+    timers.push(window.setTimeout(play, COUNTDOWN.length * STEP_MS + GO_MS));
+  };
+
+  const pause = () => {
+    if (state !== 'playing') return;
+    stopClock();
+    setState('paused');
+    stage.classList.add('is-paused');
+    showPanel('paused');
+    required<HTMLElement>(overlay, '[data-resume]').focus();
+  };
+
+  const quit = () => {
+    if (state !== 'paused' || !run) return;
+    run.quit();
+    flush(run);
+  };
+
+  const finish = (status: Exclude<RunStatus, 'playing'>) => {
+    stopClock();
+    setState('ended', status);
+    stage.classList.remove('is-paused');
+    showPanel(status);
+    focusNote.hidden = true;
+    overlay.querySelector<HTMLElement>(`[data-panel="${status}"] button`)?.focus();
+  };
+
+  /** Starts when the game is allowed on this device and the tab is visible. */
+  const ready = () => {
+    if (items.length === 0) return;
+    if (blocked.matches && !forced) setState('blocked');
+    else if (document.hidden) setState('loading');
+    else begin();
+  };
+
   input.addEventListener('keydown', (event) => {
-    if (!run || run.status !== 'playing') return;
+    if (!run || state !== 'playing') return;
     if (event.isComposing || event.ctrlKey || event.metaKey || event.altKey) return;
     if (event.key === 'Backspace') run.backspace();
     else if (event.key.length === 1) run.type(event.key);
@@ -164,18 +212,77 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     flush(run);
   });
 
-  input.addEventListener('blur', () => {
-    focusNote.hidden = run?.status !== 'playing';
-  });
-  input.addEventListener('focus', () => (focusNote.hidden = true));
-  // Clicking anywhere in the game puts the caret back in the hidden input.
-  root.addEventListener('pointerup', () => {
-    if (run?.status === 'playing') input.focus();
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (state === 'playing') pause();
+    else if (state === 'paused') play();
+    else return;
+    event.preventDefault();
   });
 
-  for (const button of root.querySelectorAll('[data-start]')) {
-    button.addEventListener('click', start);
+  input.addEventListener('blur', () => (focusNote.hidden = state !== 'playing'));
+  input.addEventListener('focus', () => (focusNote.hidden = true));
+  // Clicking anywhere in the game puts the caret back in the hidden input.
+  stage.addEventListener('pointerup', () => {
+    if (state === 'playing') input.focus();
+  });
+
+  required<HTMLElement>(root, '[data-pause]').addEventListener('click', () =>
+    state === 'paused' ? play() : pause(),
+  );
+  required<HTMLElement>(overlay, '[data-resume]').addEventListener('click', play);
+  required<HTMLElement>(overlay, '[data-quit]').addEventListener('click', quit);
+  for (const button of root.querySelectorAll('[data-restart]')) {
+    button.addEventListener('click', () => {
+      if (state !== 'loading' && state !== 'blocked') begin();
+    });
   }
-  setStatus('ready');
-  showPanel(root, 'start');
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && state === 'playing') pause();
+    else if (document.hidden && state === 'countdown') {
+      stopClock();
+      setState('loading');
+    } else if (!document.hidden && state === 'loading') ready();
+  });
+
+  blocked.addEventListener('change', () => {
+    if (blocked.matches && !forced) pause();
+    else if (state === 'blocked') ready();
+  });
+  initBlocked(root, () => {
+    forced = true;
+    root.classList.add('is-forced');
+    ready();
+  });
+
+  items = await loadItems(settings).catch(() => []);
+  if (items.length === 0) {
+    setState('ended', 'unavailable');
+    showPanel('unavailable');
+    return;
+  }
+  ready();
+}
+
+/** Blocked screen: copy the link, and "Play anyway" once a keyboard is likely. */
+function initBlocked(root: HTMLElement, playAnyway: () => void): void {
+  const anyway = required<HTMLElement>(root, '[data-play-anyway]');
+  const copy = required<HTMLElement>(root, '[data-copy-link]');
+  const copyLabel = required<HTMLElement>(copy, '[data-copy-label]');
+  const status = required<HTMLElement>(root, '[data-copy-status]');
+  // A fine pointer on a narrow screen is a laptop window; a keydown means a keyboard.
+  anyway.hidden = !matchMedia('(pointer: fine)').matches;
+  document.addEventListener('keydown', () => (anyway.hidden = false), { once: true });
+  anyway.addEventListener('click', playAnyway);
+
+  const original = copyLabel.textContent;
+  copy.addEventListener('click', () => {
+    void navigator.clipboard.writeText(location.href).then(() => {
+      const copied = copy.dataset['copiedLabel'] ?? '';
+      copyLabel.textContent = copied;
+      status.textContent = copied;
+      setTimeout(() => (copyLabel.textContent = original), 2000);
+    });
+  });
 }

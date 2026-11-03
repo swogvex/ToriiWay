@@ -32,7 +32,11 @@ export interface FieldOptions {
   meaning: boolean;
 }
 
-const FADE_MS = 200;
+/** How long the pop and miss animations in PlayField.astro last, plus a little slack. */
+const RETIRE_MS = { 'is-popping': 200, 'is-missed': 360 } as const;
+
+/** Space above the top lane and below the bottom one, for the danger badge and the hint. */
+const EDGE = 12;
 
 /**
  * Draws a run into the field. Bubble elements are pooled and moved with
@@ -93,14 +97,14 @@ export class Field {
 
   /** Moves every live bubble; runs once per frame. */
   render(run: Run): void {
-    const laneHeight = this.height / LANES;
+    const laneHeight = (this.height - 2 * EDGE) / LANES;
     for (const bubble of run.bubbles) {
       const view = this.views.get(bubble.id);
       if (!view) continue;
       const travel = Math.max(0, this.width - view.width);
       const along = bubble.side === 'left' ? bubble.progress : 1 - bubble.progress;
       view.x = travel * along;
-      view.y = bubble.lane * laneHeight + (laneHeight - view.height) / 2;
+      view.y = EDGE + bubble.lane * laneHeight + (laneHeight - view.height) / 2;
       view.el.style.transform = `translate3d(${view.x}px, ${view.y}px, 0)`;
       const danger = Run.inDanger(bubble);
       if (danger !== view.danger) {
@@ -170,13 +174,14 @@ export class Field {
   }
 
   /** Plays the pop or miss animation, then returns the element to the pool. */
-  private retire(bubble: Bubble, className: string): void {
+  private retire(bubble: Bubble, className: keyof typeof RETIRE_MS): void {
     const view = this.views.get(bubble.id);
     if (!view) return;
     this.views.delete(bubble.id);
     if (this.targetId === bubble.id) this.targetId = null;
+    view.el.classList.remove('is-target');
     view.el.classList.add(className);
-    setTimeout(() => this.recycle(view), FADE_MS);
+    setTimeout(() => this.recycle(view), RETIRE_MS[className]);
   }
 
   private recycle(view: View): void {
