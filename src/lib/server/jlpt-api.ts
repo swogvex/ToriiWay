@@ -242,3 +242,23 @@ export async function nameHandler(request: Request, id: string, deps: JlptDeps):
   }
   return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
 }
+
+/** Number of runs in the public "recent runs" list. */
+export const RECENT_RUNS = 8;
+
+/** Latest public runs: date, nickname, level and result only. Cached briefly. */
+export async function recentHandler(deps: JlptDeps): Promise<Response> {
+  const runs = await deps.store.recentPublic(RECENT_RUNS);
+  const body = runs.map((run) => ({
+    date: new Date(run.finishedAt).toISOString().slice(0, 10),
+    nickname: run.nickname,
+    level: run.level,
+    passed: run.passed,
+  }));
+  return new Response(JSON.stringify(body), {
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': 'public, max-age=60, s-maxage=60',
+    },
+  });
+}

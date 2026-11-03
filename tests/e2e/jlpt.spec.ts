@@ -12,8 +12,9 @@ async function expectNoAxeViolations(page: Page) {
 }
 
 /** Starts an N5 run from the start page and waits for the first question. */
-async function startN5(page: Page) {
+async function startN5(page: Page, options: { public?: boolean } = {}) {
   await page.goto('/jlpt');
+  if (options.public) await page.getByLabel(/Show my nickname and level/).check();
   await page.getByRole('button', { name: /Start N5 simulation/ }).click();
   const tips = page.getByRole('dialog', { name: 'Before you start' });
   await expect(tips).toBeVisible();
@@ -129,7 +130,7 @@ test.describe('JLPT exam', () => {
   test('a full N5 run reaches the score', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
     test.setTimeout(300_000);
-    await startN5(page);
+    await startN5(page, { public: true });
     for (const [section, count] of [
       ['Vocabulary', 21],
       ['Grammar · Reading', 22],
@@ -178,6 +179,14 @@ test.describe('JLPT exam', () => {
     expect(image.status()).toBe(200);
     expect(image.headers()['content-type']).toBe('image/png');
     expect([...(await image.body()).subarray(0, 4)]).toEqual([137, 80, 78, 71]);
+
+    await page.goto('/jlpt');
+    const recent = page.getByRole('region', { name: 'Recent runs' });
+    await expect(recent.getByRole('listitem').first()).toContainText(
+      /\d\d\/\d\d · [A-Z][a-z]+[A-Z][a-z]+/,
+    );
+    await expect(recent.getByRole('listitem').first()).toContainText(/N5 (Pass|Not yet)/);
+    await expectNoAxeViolations(page);
   });
 });
 

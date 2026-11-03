@@ -8,6 +8,8 @@ import { JLPT_LEVELS } from './levels';
 import type { JlptLevel } from './types';
 
 interface Messages {
+  pass: string;
+  notYet: string;
   starting: string;
   limit: string;
   unavailable: string;
@@ -45,6 +47,44 @@ async function showResume(root: HTMLElement, messages: Messages, template: strin
   } catch (error) {
     if (error instanceof ApiError && (error.status === 404 || error.status === 410)) clearRun();
   }
+}
+
+interface RecentRun {
+  date: string;
+  nickname: string;
+  level: JlptLevel;
+  passed: boolean;
+}
+
+/** Fills "Recent runs" from the API; the section stays hidden while it is empty. */
+async function showRecent(root: HTMLElement, messages: Messages) {
+  const section = root.querySelector<HTMLElement>('[data-recent]');
+  const list = root.querySelector<HTMLElement>('[data-recent-list]');
+  if (!section || !list) return;
+  let runs: RecentRun[] = [];
+  try {
+    const response = await fetch('/api/jlpt/recent');
+    if (response.ok) runs = (await response.json()) as RecentRun[];
+  } catch {
+    return;
+  }
+  list.replaceChildren(
+    ...runs.map((run) => {
+      const item = document.createElement('li');
+      const who = document.createElement('span');
+      const date = document.createElement('span');
+      date.className = 'recent__date';
+      date.textContent = `${run.date.slice(5, 7)}/${run.date.slice(8, 10)}`;
+      who.append(date, ` · ${run.nickname}`);
+      const badge = document.createElement('span');
+      badge.className = 'recent__badge';
+      if (run.passed) badge.dataset.passed = '';
+      badge.textContent = `${messages.levels[run.level]} ${run.passed ? messages.pass : messages.notYet}`;
+      item.append(who, badge);
+      return item;
+    }),
+  );
+  section.hidden = runs.length === 0;
 }
 
 export function initStart(root: HTMLElement): void {
@@ -124,4 +164,5 @@ export function initStart(root: HTMLElement): void {
 
   const resume = root.querySelector<HTMLElement>('[data-resume-text]');
   void showResume(root, messages, resume?.dataset.template ?? '');
+  void showRecent(root, messages);
 }

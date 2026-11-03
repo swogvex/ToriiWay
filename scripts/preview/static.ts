@@ -48,8 +48,21 @@ async function locate(pathname: string): Promise<string | null> {
   return null;
 }
 
+/**
+ * API routes that audited pages call on load. There is no server here, so they answer as
+ * production does with an empty database (a 404 would be a console error in Lighthouse).
+ */
+const API_FIXTURES: Record<string, string> = {
+  '/api/jlpt/recent': '[]',
+};
+
 createServer(async (request, response) => {
   const url = new URL(request.url ?? '/', 'http://localhost');
+  const fixture = API_FIXTURES[url.pathname];
+  if (fixture !== undefined) {
+    response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' }).end(fixture);
+    return;
+  }
   if (url.pathname.length > 1 && url.pathname.endsWith('/')) {
     response.writeHead(308, { Location: url.pathname.slice(0, -1) + url.search }).end();
     return;

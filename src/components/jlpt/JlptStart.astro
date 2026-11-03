@@ -28,6 +28,8 @@ const label = (level: JlptLevel) => (level === 'kana' ? t('jlpt.level.kana') : l
 const mark = (level: JlptLevel) => (level === 'kana' ? 'かな' : level);
 const initial: JlptLevel = 'N5';
 const messages = {
+  pass: t('jlpt.recent.pass'),
+  notYet: t('jlpt.recent.notYet'),
   starting: t('jlpt.start.starting'),
   limit: t('jlpt.start.error.limit'),
   unavailable: t('jlpt.start.error.unavailable'),
@@ -117,44 +119,52 @@ const messages = {
       </ol>
     </div>
 
-    <form class="card" data-start-form novalidate>
-      <p class="start__label">
-        {JLPT_LEVELS.map((level) => (
-          <span data-for={level}>
-            {t('jlpt.start.kicker', { level: label(level), minutes: totalMinutes(level) })}
-          </span>
-        ))}
-      </p>
-      <Field
-        id="jlpt-email"
-        name="email"
-        type="email"
-        label={t('jlpt.start.email')}
-        hint={t('jlpt.start.emailHint')}
-        placeholder="you@example.com"
-        autocomplete="email"
-      />
-      <label class="card__check">
-        <input type="checkbox" name="public" />
-        <span>{t('jlpt.start.public')}</span>
-      </label>
-      <Button variant="accent" size={52} type="submit" class="card__go" data-start-button>
-        {JLPT_LEVELS.map((level) => (
-          <span data-for={level}>{t('jlpt.start.button', { level: label(level) })}</span>
-        ))}
-        <Icon name="arrow-right" size={20} />
-      </Button>
-      {JLPT_LEVELS.filter((level) => !available.includes(level)).map((level) => (
-        <p class="card__note" data-for={level}>
-          {t('jlpt.start.soon', { level: label(level) })}
+    <div class="start__side">
+      <form class="card" data-start-form novalidate>
+        <p class="start__label">
+          {JLPT_LEVELS.map((level) => (
+            <span data-for={level}>
+              {t('jlpt.start.kicker', { level: label(level), minutes: totalMinutes(level) })}
+            </span>
+          ))}
         </p>
-      ))}
-      <p class="card__error" role="alert" data-start-error></p>
-      <noscript>
-        <p class="card__note">{t('jlpt.start.noscript')}</p>
-      </noscript>
-      <p class="card__note card__mobile">{t('jlpt.start.mobile')}</p>
-    </form>
+        <Field
+          id="jlpt-email"
+          name="email"
+          type="email"
+          label={t('jlpt.start.email')}
+          hint={t('jlpt.start.emailHint')}
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <label class="card__check">
+          <input type="checkbox" name="public" />
+          <span>{t('jlpt.start.public')}</span>
+        </label>
+        <Button variant="accent" size={52} type="submit" class="card__go" data-start-button>
+          {JLPT_LEVELS.map((level) => (
+            <span data-for={level}>{t('jlpt.start.button', { level: label(level) })}</span>
+          ))}
+          <Icon name="arrow-right" size={20} />
+        </Button>
+        {JLPT_LEVELS.filter((level) => !available.includes(level)).map((level) => (
+          <p class="card__note" data-for={level}>
+            {t('jlpt.start.soon', { level: label(level) })}
+          </p>
+        ))}
+        <p class="card__error" role="alert" data-start-error></p>
+        <noscript>
+          <p class="card__note">{t('jlpt.start.noscript')}</p>
+        </noscript>
+        <p class="card__note card__mobile">{t('jlpt.start.mobile')}</p>
+      </form>
+      <section class="recent" aria-labelledby="jlpt-recent" data-recent hidden>
+        <h2 class="start__label" id="jlpt-recent">
+          {t('jlpt.recent.title')}
+        </h2>
+        <ol class="recent__list" data-recent-list></ol>
+      </section>
+    </div>
   </div>
 
   <p class="start__disclaimer">{t('jlpt.disclaimer')}</p>
@@ -363,6 +373,61 @@ const messages = {
   .rules__help {
     grid-column: 2;
     font-size: var(--text-sm);
+  }
+
+  .start__side {
+    display: grid;
+    gap: var(--space-8);
+    align-content: start;
+  }
+
+  .recent {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .recent[hidden] {
+    display: none;
+  }
+
+  .recent__list {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .recent__list :global(li) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface);
+    border-radius: var(--radius-control);
+  }
+
+  .recent__list :global(.recent__date) {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .recent__list :global(.recent__badge) {
+    flex: none;
+    padding: var(--space-1) var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+  }
+
+  .recent__list :global(.recent__badge[data-passed]) {
+    color: var(--info);
+    background: var(--info-soft);
+    border-color: transparent;
   }
 
   .card {

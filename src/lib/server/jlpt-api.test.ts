@@ -10,6 +10,7 @@ import {
   feedbackHandler,
   getRunHandler,
   nameHandler,
+  recentHandler,
   paperHandler,
   RUNS_PER_HOUR,
   submitHandler,
@@ -17,6 +18,15 @@ import {
 } from './jlpt-api';
 
 const SECOND = 1000;
+const emptyScores = {
+  level: 'N5' as const,
+  sections: [],
+  total: 0,
+  max: 180,
+  passMark: 80,
+  passed: false,
+  grades: {},
+};
 const ID = '6f1c2f9e-3b5a-4d8e-9c1a-2b3c4d5e6f70';
 let clock = Date.UTC(2026, 10, 3, 9);
 let deps: JlptDeps;
@@ -169,6 +179,42 @@ describe('JLPT API', () => {
     );
     expect(saved.status).toBe(204);
     expect((await deps.store.getRun(ID))?.name).toBe('Ana María');
+  });
+
+  it('lists only finished public runs, newest first, without names', async () => {
+    const finish = async (isPublic: boolean) => {
+      const id = crypto.randomUUID();
+      deps.newId = () => id;
+      await call(() =>
+        createRunHandler(post('/api/jlpt/runs', { level: 'N5', public: isPublic }), deps),
+      );
+      const run = await deps.store.getRun(id);
+      if (!run) throw new Error('no run');
+      await deps.store.saveRun(
+        { ...run, status: 'finished', finishedAt: clock, scores: { ...emptyScores, passed: true } },
+        { status: run.status, section: run.section },
+      );
+      clock += 1000;
+      return id;
+    };
+    await finish(true);
+    await finish(false);
+    const last = await finish(true);
+    const open = crypto.randomUUID();
+    deps.newId = () => open;
+    await call(() => createRunHandler(post('/api/jlpt/runs', { level: 'N5', public: true }), deps));
+
+    const response = await recentHandler(deps);
+    expect(response.headers.get('cache-control')).toContain('max-age=60');
+    const body = (await response.json()) as Record<string, unknown>[];
+    expect(body).toHaveLength(2);
+    expect(body[0]).toEqual({
+      date: '2026-11-03',
+      nickname: (await deps.store.getRun(last))?.nickname,
+      level: 'N5',
+      passed: true,
+    });
+    expect(Object.keys(body[0] ?? {}).sort()).toEqual(['date', 'level', 'nickname', 'passed']);
   });
 
   it('rate-limits new runs per client', async () => {
