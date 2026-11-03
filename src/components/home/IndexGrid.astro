@@ -216,12 +216,11 @@ const large = new Set<SectionId>(['game', 'learn']);
     }
 
     /*
-     * The ink card already has an ink border, so hover draws a ring around it with a
-     * gap of page background: same signal as the other cards in both themes.
+     * The ink card's border has its own colour, so hover draws one line in the page
+     * colour just inside the edge: light on the dark card, dark on the light one.
      */
     .index-card--game:hover {
-      outline: 1px solid var(--ink);
-      outline-offset: 3px;
+      box-shadow: inset 0 0 0 1px var(--bg);
     }
   }
 </style>
