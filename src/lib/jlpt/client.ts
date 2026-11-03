@@ -72,5 +72,8 @@ export const submitSection = (
 export const continueRun = (id: string, section: number) =>
   post<PublicRunState>(`/api/jlpt/runs/${id}/continue`, { section });
 
+export const saveName = (id: string, name: string) =>
+  post<undefined>(`/api/jlpt/runs/${id}/name`, { name });
+
 export const sendFeedback = (id: string, section: number, rating: 'easy' | 'right' | 'hard') =>
   post<undefined>(`/api/jlpt/runs/${id}/feedback`, { section, rating });

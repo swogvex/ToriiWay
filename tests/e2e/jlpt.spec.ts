@@ -65,6 +65,14 @@ test.describe('JLPT start page', () => {
     await expectNoAxeViolations(page);
   });
 
+  test('an unknown result answers 404 with a way back', async ({ page }) => {
+    const response = await page.goto('/jlpt/r/6f1c2f9e-3b5a-4d8e-9c1a-2b3c4d5e6f70');
+    expect(response?.status()).toBe(404);
+    expect(response?.headers()['x-robots-tag']).toBe('noindex, nofollow');
+    await expect(page.getByRole('heading', { level: 1, name: 'Result not found' })).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
   test('the run page without a run points back to the start page', async ({ page }) => {
     await page.goto('/jlpt/run');
     await expect(page.getByRole('heading', { name: 'No simulation in progress' })).toBeVisible();
@@ -149,6 +157,17 @@ test.describe('JLPT exam', () => {
     await expect(page.getByText('N5 · Simulation complete')).toBeVisible();
     await expect(page.getByRole('rowheader', { name: 'Total' })).toBeVisible();
     await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
+    await expectNoAxeViolations(page);
+
+    await page.getByLabel('Name on your report (optional)').fill('  Ana  ');
+    await page.getByRole('button', { name: 'See my score report' }).click();
+    await expect(page).toHaveURL(/\/jlpt\/r\/[0-9a-f-]{36}$/);
+    await expect(page.getByRole('heading', { level: 1, name: 'Well done, Ana.' })).toBeVisible();
+    const card = page.getByRole('article', { name: '日本語能力試験 模擬テスト' });
+    await expect(card.getByText('Not enough data yet')).toBeVisible();
+    await expect(card.getByRole('columnheader', { name: /Total/ })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Breakdown by question type' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Review your mistakes' })).toBeVisible();
     await expectNoAxeViolations(page);
   });
 });

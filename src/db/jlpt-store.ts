@@ -24,6 +24,7 @@ function toRecord(row: RunRow): RunRecord {
     breakStartedAt: ms(row.breakStartedAt),
     results: row.results,
     isPublic: row.isPublic,
+    name: row.name,
     createdAt: row.createdAt.getTime(),
     finishedAt: ms(row.finishedAt),
     expiresAt: row.expiresAt.getTime(),
@@ -32,7 +33,7 @@ function toRecord(row: RunRow): RunRecord {
 }
 
 /** Every column that a transition can change. */
-function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname'> {
+function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname' | 'name'> {
   return {
     level: run.level,
     seed: run.seed,
@@ -52,7 +53,7 @@ function runValues(run: RunRecord): Omit<RunRow, 'id' | 'nickname'> {
 }
 
 function toRow(run: RunRecord): RunRow {
-  return { id: run.id, nickname: null, ...runValues(run) };
+  return { id: run.id, nickname: null, name: run.name, ...runValues(run) };
 }
 
 export function drizzleStore(databaseUrl: string): RunStore {
@@ -106,6 +107,25 @@ export function drizzleStore(databaseUrl: string): RunStore {
           target: [jlptFeedback.runId, jlptFeedback.section],
           set: { rating },
         });
+    },
+    async setName(runId, name) {
+      const updated = await db
+        .update(jlptRuns)
+        .set({ name })
+        .where(and(eq(jlptRuns.id, runId), eq(jlptRuns.status, 'finished')))
+        .returning({ id: jlptRuns.id });
+      return updated.length === 1;
+    },
+    async percentile(level, total) {
+      const finished = and(eq(jlptRuns.level, level), eq(jlptRuns.status, 'finished'));
+      const [row] = await db
+        .select({
+          runs: sql<number>`count(*)::int`,
+          below: sql<number>`count(*) filter (where (${jlptRuns.scores}->>'total')::int < ${total})::int`,
+        })
+        .from(jlptRuns)
+        .where(finished);
+      return { runs: row?.runs ?? 0, below: row?.below ?? 0 };
     },
     async rateLimit(key, limit, windowMs, now) {
       const windowStart = new Date(Math.floor(now / windowMs) * windowMs);

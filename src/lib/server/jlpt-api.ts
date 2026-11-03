@@ -4,6 +4,7 @@ import { z } from 'astro/zod';
 
 import { findMondai, JLPT_LEVELS, LEVELS } from '../jlpt/levels';
 import { BankError, buildPaper, indexBank, type BankMondai } from '../jlpt/paper';
+import { cleanName } from '../jlpt/report';
 import {
   advance,
   continueRun,
@@ -58,6 +59,8 @@ const feedbackBody = z.strictObject({
   section: z.number().int().min(0).max(9),
   rating: z.enum(['easy', 'right', 'hard']),
 });
+
+const nameBody = z.strictObject({ name: z.string().max(200) });
 
 const RUN_ERRORS: Record<string, number> = {
   'not-in-section': 409,
@@ -226,5 +229,16 @@ export async function feedbackHandler(
     throw new HttpError('conflict', 409, 'section not finished');
   }
   await deps.store.saveFeedback(run.id, body.section, body.rating);
+  return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
+}
+
+/** Name for the score report; only once the run is finished. */
+export async function nameHandler(request: Request, id: string, deps: JlptDeps): Promise<Response> {
+  assertSameOrigin(request, deps.site);
+  const body = await readJson(request, nameBody);
+  const run = await loadRun(id, deps);
+  if (!(await deps.store.setName(run.id, cleanName(body.name)))) {
+    throw new HttpError('conflict', 409, 'run not finished');
+  }
   return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
 }

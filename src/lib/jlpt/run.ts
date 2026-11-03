@@ -34,6 +34,8 @@ export interface RunRecord {
   breakStartedAt: number | null;
   results: SectionResult[];
   isPublic: boolean;
+  /** Name shown on the score report, if the player gave one. */
+  name: string | null;
   createdAt: number;
   finishedAt: number | null;
   expiresAt: number;
@@ -92,6 +94,7 @@ export function createRun(options: {
     deadline: now,
     breakStartedAt: null,
     results: [],
+    name: null,
     createdAt: now,
     finishedAt: null,
     expiresAt: now + RUN_LIFETIME_DAYS * DAY,

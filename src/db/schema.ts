@@ -32,6 +32,8 @@ export const jlptRuns = pgTable(
     results: jsonb('results').$type<SectionResult[]>().notNull(),
     isPublic: boolean('is_public').notNull(),
     nickname: text('nickname'),
+    /** Optional name the player chose for the score report. */
+    name: text('name'),
     createdAt: time('created_at').notNull(),
     finishedAt: time('finished_at'),
     expiresAt: time('expires_at').notNull(),
