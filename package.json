@@ -26,7 +26,8 @@
     "brand:favicons": "node scripts/brand/favicons.ts",
     "kanjivg:kana": "node scripts/kanjivg/kana.ts",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "node scripts/db/migrate.ts --force"
+    "db:migrate": "node scripts/db/migrate.ts --force",
+    "admin:hash": "node scripts/admin/hash.ts"
   },
   "dependencies": {
     "@astrojs/preact": "6.1.1",

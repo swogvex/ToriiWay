@@ -5,6 +5,19 @@ import type { JlptLevel } from './types';
 
 export type Rating = 'easy' | 'right' | 'hard';
 
+export type ReportCategory = 'typo' | 'answer' | 'audio' | 'other';
+
+export interface Report {
+  id: string;
+  questionId: string;
+  runId: string | null;
+  category: ReportCategory;
+  message: string;
+  /** Epoch milliseconds. */
+  createdAt: number;
+  status: 'open' | 'resolved';
+}
+
 export interface RecentRun {
   nickname: string;
   level: JlptLevel;
@@ -27,10 +40,17 @@ export interface RunStore {
   saveFeedback(runId: string, section: number, rating: Rating): Promise<void>;
   /** Sets the report name of a finished run. False when the run is not finished. */
   setName(runId: string, name: string | null): Promise<boolean>;
+  createReport(report: Report): Promise<void>;
+  /** Open reports first, newest first. */
+  listReports(limit: number): Promise<Report[]>;
+  /** Marks a report as resolved; false when it does not exist. */
+  resolveReport(id: string): Promise<boolean>;
   /** Latest finished runs that opted in to the public list. */
   recentPublic(limit: number): Promise<RecentRun[]>;
   /** Finished runs of a level, and how many of them scored below `total`. */
   percentile(level: JlptLevel, total: number): Promise<{ runs: number; below: number }>;
+  /** Hits counted so far in the current window, without adding one. */
+  peekLimit(key: string, windowMs: number, now: number): Promise<number>;
   /** Counts a hit in the current fixed window; false once `limit` is exceeded. */
   rateLimit(key: string, limit: number, windowMs: number, now: number): Promise<boolean>;
 }
@@ -40,6 +60,7 @@ export function memoryStore(): RunStore {
   const answers = new Map<string, Map<string, AnswerRow>>();
   const feedback = new Map<string, Rating>();
   const hits = new Map<string, number>();
+  const reports = new Map<string, Report>();
 
   return {
     async createRun(run) {
@@ -74,6 +95,22 @@ export function memoryStore(): RunStore {
       run.name = name;
       return true;
     },
+    async createReport(report) {
+      reports.set(report.id, { ...report });
+    },
+    async listReports(limit) {
+      return [...reports.values()]
+        .sort((a, b) =>
+          a.status === b.status ? b.createdAt - a.createdAt : a.status === 'open' ? -1 : 1,
+        )
+        .slice(0, limit);
+    },
+    async resolveReport(id) {
+      const report = reports.get(id);
+      if (!report) return false;
+      report.status = 'resolved';
+      return true;
+    },
     async recentPublic(limit) {
       return [...runs.values()]
         .filter((run) => run.isPublic && run.status === 'finished' && run.nickname && run.scores)
@@ -94,6 +131,9 @@ export function memoryStore(): RunStore {
         runs: finished.length,
         below: finished.filter((run) => (run.scores?.total ?? 0) < total).length,
       };
+    },
+    async peekLimit(key, windowMs, now) {
+      return hits.get(`${key}/${Math.floor(now / windowMs)}`) ?? 0;
     },
     async rateLimit(key, limit, windowMs, now) {
       const bucket = `${key}/${Math.floor(now / windowMs)}`;

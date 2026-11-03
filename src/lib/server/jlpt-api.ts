@@ -27,6 +27,8 @@ export interface JlptDeps {
   clientKey: () => Promise<string>;
   newId: () => string;
   newSeed: () => number;
+  /** Checks a Turnstile token for this request. */
+  verifyHuman: (token: string) => Promise<boolean>;
 }
 
 const HOUR = 60 * 60 * 1000;

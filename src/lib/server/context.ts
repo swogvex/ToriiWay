@@ -2,11 +2,17 @@
 
 import type { APIContext } from 'astro';
 import { getCollection } from 'astro:content';
-import { DATABASE_URL, IP_HASH_SALT, JLPT_MEMORY_STORE } from 'astro:env/server';
+import {
+  DATABASE_URL,
+  IP_HASH_SALT,
+  JLPT_MEMORY_STORE,
+  TURNSTILE_SECRET_KEY,
+} from 'astro:env/server';
 
 import type { BankMondai } from '../jlpt/paper';
 import { memoryStore, type RunStore } from '../jlpt/store';
 import { hashIp, HttpError } from './http';
+import { secretFor, verifyTurnstile } from './turnstile';
 import type { JlptDeps } from './jlpt-api';
 
 let store: RunStore | undefined;
@@ -56,5 +62,11 @@ export async function jlptDeps(context: RequestContext): Promise<JlptDeps> {
     clientKey: () => hashIp(clientIp(context), salt()),
     newId: () => crypto.randomUUID(),
     newSeed: () => crypto.getRandomValues(new Int32Array(1))[0] ?? 0,
+    verifyHuman: (token) =>
+      verifyTurnstile(
+        token,
+        secretFor(process.env.VERCEL_ENV, TURNSTILE_SECRET_KEY),
+        clientIp(context),
+      ),
   };
 }

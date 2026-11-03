@@ -1,0 +1,107 @@
+---
+/** Reports from "Report a problem" (13-security: admin page). Basic auth in middleware. */
+import BareLayout from '../../layouts/BareLayout.astro';
+import { indexBank } from '../../lib/jlpt/paper';
+import type { Report } from '../../lib/jlpt/store';
+import { jlptDeps } from '../../lib/server/context';
+
+export const prerender = false;
+
+const deps = await jlptDeps(Astro);
+const reports: Report[] = await deps.store.listReports(200);
+const questions = new Map(
+  (['kana', 'N5', 'N4', 'N3'] as const).flatMap((level) => [...indexBank(level, deps.bank)]),
+);
+const open = reports.filter((report) => report.status === 'open').length;
+const when = (ms: number) => new Date(ms).toISOString().slice(0, 16).replace('T', ' ');
+---
+
+<BareLayout title="Reports · Admin" description="Question reports." noindex>
+  <main class="admin column">
+    <h1>Reports</h1>
+    <p>
+      {open} open · {reports.length - open} resolved
+    </p>
+    {reports.length === 0 && <p>No reports yet.</p>}
+    <ol class="admin__list">
+      {reports.map((report) => {
+        const question = questions.get(report.questionId)?.question;
+        return (
+          <li class:list={['admin__item', { 'admin__item--done': report.status === 'resolved' }]}>
+            <p class="admin__meta">
+              {when(report.createdAt)} · {report.category} · <code>{report.questionId}</code>
+              {report.runId && (
+                <>
+                  {' · '}
+                  <a href={`/jlpt/r/${report.runId}`}>run</a>
+                </>
+              )}
+            </p>
+            {question && (
+              <p class="admin__stem" lang="ja">
+                {question.stem} → {question.answer}. {question.choices[question.answer - 1]}
+              </p>
+            )}
+            <p class="admin__message">{report.message || '(no message)'}</p>
+            {report.status === 'open' ? (
+              <form method="post" action={`/api/admin/reports/${report.id}`}>
+                <button type="submit">Mark resolved</button>
+              </form>
+            ) : (
+              <p class="admin__meta">Resolved</p>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </main>
+</BareLayout>
+
+<style>
+  .admin {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-10);
+  }
+
+  .admin__list {
+    display: grid;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .admin__item {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .admin__item--done {
+    opacity: 0.6;
+  }
+
+  .admin__meta {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .admin__stem {
+    font-family: var(--font-body-ja);
+  }
+
+  .admin__message {
+    white-space: pre-wrap;
+  }
+
+  .admin button {
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-4);
+    font: inherit;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+</style>

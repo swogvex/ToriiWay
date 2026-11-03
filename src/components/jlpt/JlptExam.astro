@@ -56,9 +56,14 @@ const t = useTranslations(getLocale(Astro.url.pathname));
         <div class="choices" data-choices></div>
       </fieldset>
 
-      <p class="question__keys" aria-hidden="true">
-        {t('jlpt.run.keys')}
-      </p>
+      <div class="question__foot">
+        <p class="question__keys" aria-hidden="true">
+          {t('jlpt.run.keys')}
+        </p>
+        <button type="button" class="question__report" data-report-open>
+          {t('jlpt.problem.open')}
+        </button>
+      </div>
     </div>
   </div>
 
@@ -426,8 +431,34 @@ const t = useTranslations(getLocale(Astro.url.pathname));
     font-size: var(--text-xl);
   }
 
+  .question__foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  @media (width >= 48rem) {
+    .question__foot {
+      padding-inline-start: calc(44px + var(--space-4));
+    }
+  }
+
+  .question__report {
+    margin-inline-start: auto;
+    padding: 0;
+    color: var(--muted);
+    font: inherit;
+    font-size: var(--text-sm);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
   .question__keys {
-    padding-inline-start: calc(44px + var(--space-4));
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);

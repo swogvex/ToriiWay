@@ -297,6 +297,8 @@ export class Exam {
         return label;
       }),
     );
+    // The report dialog reads which question is on screen.
+    this.options.root.dataset.question = question.id;
     const previous = this.$<HTMLButtonElement>('[data-prev]');
     if (previous) previous.disabled = this.index === 0;
     this.renderFlag();

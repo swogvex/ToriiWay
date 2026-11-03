@@ -29,6 +29,13 @@ export default defineConfig({
     schema: {
       DATABASE_URL: envField.string({ context: 'server', access: 'secret', optional: true }),
       IP_HASH_SALT: envField.string({ context: 'server', access: 'secret', optional: true }),
+      TURNSTILE_SECRET_KEY: envField.string({
+        context: 'server',
+        access: 'secret',
+        optional: true,
+      }),
+      ADMIN_USER: envField.string({ context: 'server', access: 'secret', optional: true }),
+      ADMIN_PASSWORD_HASH: envField.string({ context: 'server', access: 'secret', optional: true }),
       /** e2e and local previews: keep JLPT runs in memory instead of Postgres. */
       JLPT_MEMORY_STORE: envField.boolean({ context: 'server', access: 'secret', default: false }),
     },

@@ -83,3 +83,18 @@ export const rateLimits = pgTable(
   },
   (table) => [primaryKey({ columns: [table.key, table.windowStart] })],
 );
+
+/** "Report a problem" submissions, reviewed on /admin. */
+export const reports = pgTable(
+  'reports',
+  {
+    id: uuid('id').primaryKey(),
+    questionId: text('question_id').notNull(),
+    runId: uuid('run_id').references(() => jlptRuns.id, { onDelete: 'set null' }),
+    category: text('category').notNull(),
+    message: text('message').notNull(),
+    createdAt: time('created_at').notNull(),
+    status: text('status').notNull(),
+  },
+  (table) => [index('reports_status_created_idx').on(table.status, table.createdAt)],
+);
