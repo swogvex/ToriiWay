@@ -1,0 +1,135 @@
+# N5 · Vocabulary · Mondai 4 — paraphrases
+# Original questions written for Nihongo No Torii.
+level: N5
+section: vocabulary
+mondai: 4
+instruction:
+  en: 'Choose the sentence that means almost the same as the underlined sentence.'
+  ja: '＿＿＿の ぶんと だいたい おなじ いみの ぶんを えらんで ください。'
+questions:
+  - id: n5-voc-4-0001
+    stem: '__きょうは　いそがしく　ありません。__'
+    choices:
+      [
+        'きょうは　しごとが　たくさん　あります。',
+        'きょうは　いそがしいです。',
+        'きょうは　やすみでは　ありません。',
+        'きょうは　ひまです。',
+      ]
+    answer: 4
+    explanation:
+      en: '"Not busy" means "free" (ひま).'
+      es: '"No estar ocupado" equivale a "tener tiempo libre" (ひま).'
+    author: claude
+  - id: n5-voc-4-0002
+    stem: '__この　へやは　くらいです。__'
+    choices:
+      [
+        'この　へやは　あかるく　ありません。',
+        'この　へやは　ひろく　ありません。',
+        'この　へやは　あかるいです。',
+        'この　へやは　しずかです。',
+      ]
+    answer: 1
+    explanation:
+      en: 'Dark (くらい) is the same as "not bright" (あかるくない).'
+      es: 'Oscuro (くらい) es lo mismo que "no luminoso" (あかるくない).'
+    author: claude
+  - id: n5-voc-4-0003
+    stem: '__あには　わたしより　二さい　上です。__'
+    choices:
+      [
+        'あには　わたしより　二さい　わかいです。',
+        'わたしは　あにより　二さい　わかいです。',
+        'あには　二さいです。',
+        'わたしと　あには　おなじ　としです。',
+      ]
+    answer: 2
+    explanation:
+      en: 'If my brother is two years older, I am two years younger.'
+      es: 'Si mi hermano es dos años mayor, yo soy dos años menor.'
+    author: claude
+  - id: n5-voc-4-0004
+    stem: '__けさ　びょういんに　いきました。__'
+    choices:
+      [
+        'きょうの　よる　びょういんに　いきました。',
+        'きのうの　あさ　びょういんに　いきました。',
+        'きょうの　あさ　びょういんに　いきました。',
+        'あしたの　あさ　びょういんに　いきます。',
+      ]
+    answer: 3
+    explanation:
+      en: 'けさ means "this morning" (きょうの あさ).'
+      es: 'けさ significa "esta mañana" (きょうの あさ).'
+    author: claude
+  - id: n5-voc-4-0005
+    stem: '__おととい　ともだちに　あいました。__'
+    choices:
+      [
+        'きのう　ともだちに　あいました。',
+        'みっか　まえに　ともだちに　あいました。',
+        'あさって　ともだちに　あいます。',
+        'ふつか　まえに　ともだちに　あいました。',
+      ]
+    answer: 4
+    explanation:
+      en: 'おととい is "the day before yesterday", two days ago.'
+      es: 'おととい es "anteayer", hace dos días.'
+    author: claude
+  - id: n5-voc-4-0006
+    stem: '__ちちは　先生です。__'
+    choices:
+      [
+        'ちちは　がっこうで　おしえて　います。',
+        'ちちは　がっこうで　べんきょうして　います。',
+        'ちちは　びょういんで　はたらいて　います。',
+        'ちちは　がくせいです。',
+      ]
+    answer: 1
+    explanation:
+      en: 'A teacher teaches (おしえる) at a school.'
+      es: 'Un profesor enseña (おしえる) en una escuela.'
+    author: claude
+  - id: n5-voc-4-0007
+    stem: '__この　みちは　せまいです。__'
+    choices:
+      [
+        'この　みちは　あぶなく　ありません。',
+        'この　みちは　ひろく　ありません。',
+        'この　みちは　ひろいです。',
+        'この　みちは　ながく　ありません。',
+      ]
+    answer: 2
+    explanation:
+      en: 'Narrow (せまい) means "not wide" (ひろくない).'
+      es: 'Estrecho (せまい) significa "no ancho" (ひろくない).'
+    author: claude
+  - id: n5-voc-4-0008
+    stem: '__わたしは　りょうりが　じょうずでは　ありません。__'
+    choices:
+      [
+        'わたしは　りょうりを　しません。',
+        'わたしは　りょうりが　すきです。',
+        'わたしは　りょうりが　へたです。',
+        'わたしは　りょうりが　じょうずです。',
+      ]
+    answer: 3
+    explanation:
+      en: 'Not good at (じょうずではない) is the same as bad at (へた).'
+      es: 'No ser bueno (じょうずではない) es lo mismo que ser malo (へた).'
+    author: claude
+  - id: n5-voc-4-0009
+    stem: '__まいばん　ふろに　はいります。__'
+    choices:
+      [
+        'よるは　いつも　ふろに　はいります。',
+        'ひるは　いつも　ふろに　はいります。',
+        'あさは　いつも　ふろに　はいります。',
+        'よるは　ときどき　ふろに　はいります。',
+      ]
+    answer: 1
+    explanation:
+      en: 'まいばん, "every night", means "always at night".'
+      es: 'まいばん, "todas las noches", significa "siempre por la noche".'
+    author: claude

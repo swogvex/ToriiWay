@@ -1,0 +1,339 @@
+# Kana · Dictation · Mondai 1 — hear a kana
+# Original questions written for Nihongo No Torii.
+level: kana
+section: dictation
+mondai: 1
+instruction:
+  en: 'Listen and choose the sound you hear.'
+  ja: 'きいて、きこえた　おとを　えらんで　ください。'
+questions:
+  - id: kana-dict-1-0001
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['か', 'こ', 'た', 'が']
+    answer: 1
+    explanation:
+      en: 'You heard か. Compare: が, こ, た.'
+      es: 'Has oído か. Compara: が, こ, た.'
+    author: claude
+    tts:
+      script: 'N: か。もう　いちど。か。'
+      voices: ['narrator']
+  - id: kana-dict-1-0002
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['じ', 'ぎ', 'に', 'き']
+    answer: 2
+    explanation:
+      en: 'You heard ぎ. Compare: き, じ, に.'
+      es: 'Has oído ぎ. Compara: き, じ, に.'
+    author: claude
+    tts:
+      script: 'N: ぎ。もう　いちど。ぎ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0003
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ず', 'ち', 'す', 'つ']
+    answer: 4
+    explanation:
+      en: 'You heard つ. Compare: す, ち, ず.'
+      es: 'Has oído つ. Compara: す, ち, ず.'
+    author: claude
+    tts:
+      script: 'N: つ。もう　いちど。つ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0004
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ちゃ', 'しや', 'しゃ', 'さ']
+    answer: 3
+    explanation:
+      en: 'You heard しゃ. Compare: しや, さ, ちゃ.'
+      es: 'Has oído しゃ. Compara: しや, さ, ちゃ.'
+    author: claude
+    tts:
+      script: 'N: しゃ。もう　いちど。しゃ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0005
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぎょ', 'きょ', 'きよ', 'きゅ']
+    answer: 2
+    explanation:
+      en: 'You heard きょ. Compare: きよ, きゅ, ぎょ.'
+      es: 'Has oído きょ. Compara: きよ, きゅ, ぎょ.'
+    author: claude
+    tts:
+      script: 'N: きょ。もう　いちど。きょ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0006
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぞ', 'す', 'じ', 'ず']
+    answer: 4
+    explanation:
+      en: 'You heard ず. Compare: す, じ, ぞ.'
+      es: 'Has oído ず. Compara: す, じ, ぞ.'
+    author: claude
+    tts:
+      script: 'N: ず。もう　いちど。ず。'
+      voices: ['narrator']
+  - id: kana-dict-1-0007
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぱ', 'ぽ', 'は', 'ば']
+    answer: 1
+    explanation:
+      en: 'You heard ぱ. Compare: ば, は, ぽ.'
+      es: 'Has oído ぱ. Compara: ば, は, ぽ.'
+    author: claude
+    tts:
+      script: 'N: ぱ。もう　いちど。ぱ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0008
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぷ', 'ひ', 'ふ', 'ほ']
+    answer: 3
+    explanation:
+      en: 'You heard ふ. Compare: ほ, ひ, ぷ.'
+      es: 'Has oído ふ. Compara: ほ, ひ, ぷ.'
+    author: claude
+    tts:
+      script: 'N: ふ。もう　いちど。ふ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0009
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['りゅ', 'ゆ', 'りょ', 'ぎゅ']
+    answer: 1
+    explanation:
+      en: 'You heard りゅ. Compare: りょ, ゆ, ぎゅ.'
+      es: 'Has oído りゅ. Compara: りょ, ゆ, ぎゅ.'
+    author: claude
+    tts:
+      script: 'N: りゅ。もう　いちど。りゅ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0010
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['む', 'の', 'ん', 'ぬ']
+    answer: 3
+    explanation:
+      en: 'You heard ん. Compare: む, ぬ, の.'
+      es: 'Has oído ん. Compara: む, ぬ, の.'
+    author: claude
+    tts:
+      script: 'N: ん。もう　いちど。ん。'
+      voices: ['narrator']
+  - id: kana-dict-1-0011
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['びゃ', 'ぴゃ', 'ぴゅ', 'ひゃ']
+    answer: 2
+    explanation:
+      en: 'You heard ぴゃ. Compare: びゃ, ひゃ, ぴゅ.'
+      es: 'Has oído ぴゃ. Compara: びゃ, ひゃ, ぴゅ.'
+    author: claude
+    tts:
+      script: 'N: ぴゃ。もう　いちど。ぴゃ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0012
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ど', 'て', 'れ', 'で']
+    answer: 4
+    explanation:
+      en: 'You heard で. Compare: て, ど, れ.'
+      es: 'Has oído で. Compara: て, ど, れ.'
+    author: claude
+    tts:
+      script: 'N: で。もう　いちど。で。'
+      voices: ['narrator']
+  - id: kana-dict-1-0013
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ちゅ', 'ちょ', 'しょ', 'じょ']
+    answer: 2
+    explanation:
+      en: 'You heard ちょ. Compare: しょ, ちゅ, じょ.'
+      es: 'Has oído ちょ. Compara: しょ, ちゅ, じょ.'
+    author: claude
+    tts:
+      script: 'N: ちょ。もう　いちど。ちょ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0014
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ろ', 'ど', 'る', 'よ']
+    answer: 1
+    explanation:
+      en: 'You heard ろ. Compare: よ, る, ど.'
+      es: 'Has oído ろ. Compara: よ, る, ど.'
+    author: claude
+    tts:
+      script: 'N: ろ。もう　いちど。ろ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0015
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['び', 'め', 'み', 'に']
+    answer: 3
+    explanation:
+      en: 'You heard み. Compare: に, び, め.'
+      es: 'Has oído み. Compara: に, び, め.'
+    author: claude
+    tts:
+      script: 'N: み。もう　いちど。み。'
+      voices: ['narrator']
+  - id: kana-dict-1-0016
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['じょ', 'そ', 'ず', 'ぞ']
+    answer: 4
+    explanation:
+      en: 'You heard ぞ. Compare: そ, じょ, ず.'
+      es: 'Has oído ぞ. Compara: そ, じょ, ず.'
+    author: claude
+    tts:
+      script: 'N: ぞ。もう　いちど。ぞ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0017
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['にゃ', 'にょ', 'にや', 'みゃ']
+    answer: 1
+    explanation:
+      en: 'You heard にゃ. Compare: にや, にょ, みゃ.'
+      es: 'Has oído にゃ. Compara: にや, にょ, みゃ.'
+    author: claude
+    tts:
+      script: 'N: にゃ。もう　いちど。にゃ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0018
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['べ', 'え', 'せ', 'へ']
+    answer: 4
+    explanation:
+      en: 'You heard へ. Compare: え, べ, せ.'
+      es: 'Has oído へ. Compara: え, べ, せ.'
+    author: claude
+    tts:
+      script: 'N: へ。もう　いちど。へ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0019
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぶ', 'く', 'ぐ', 'ご']
+    answer: 3
+    explanation:
+      en: 'You heard ぐ. Compare: く, ご, ぶ.'
+      es: 'Has oído ぐ. Compara: く, ご, ぶ.'
+    author: claude
+    tts:
+      script: 'N: ぐ。もう　いちど。ぐ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0020
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ば', 'わ', 'ら', 'や']
+    answer: 2
+    explanation:
+      en: 'You heard わ. Compare: ば, や, ら.'
+      es: 'Has oído わ. Compara: ば, や, ら.'
+    author: claude
+    tts:
+      script: 'N: わ。もう　いちど。わ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0021
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['じゅ', 'しゅ', 'じょ', 'ちゅ']
+    answer: 1
+    explanation:
+      en: 'You heard じゅ. Compare: しゅ, ちゅ, じょ.'
+      es: 'Has oído じゅ. Compara: しゅ, ちゅ, じょ.'
+    author: claude
+    tts:
+      script: 'N: じゅ。もう　いちど。じゅ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0022
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['べ', 'み', 'ね', 'め']
+    answer: 4
+    explanation:
+      en: 'You heard め. Compare: ね, べ, み.'
+      es: 'Has oído め. Compara: ね, べ, み.'
+    author: claude
+    tts:
+      script: 'N: め。もう　いちど。め。'
+      voices: ['narrator']
+  - id: kana-dict-1-0023
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ざ', 'さ', 'しゃ', 'ちゃ']
+    answer: 2
+    explanation:
+      en: 'You heard さ. Compare: ざ, しゃ, ちゃ.'
+      es: 'Has oído さ. Compara: ざ, しゃ, ちゃ.'
+    author: claude
+    tts:
+      script: 'N: さ。もう　いちど。さ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0024
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['しょ', 'ひよ', 'ひょ', 'びょ']
+    answer: 3
+    explanation:
+      en: 'You heard ひょ. Compare: ひよ, びょ, しょ.'
+      es: 'Has oído ひょ. Compara: ひよ, びょ, しょ.'
+    author: claude
+    tts:
+      script: 'N: ひょ。もう　いちど。ひょ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0025
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['そ', 'と', 'こ', 'ど']
+    answer: 2
+    explanation:
+      en: 'You heard と. Compare: ど, そ, こ.'
+      es: 'Has oído と. Compara: ど, そ, こ.'
+    author: claude
+    tts:
+      script: 'N: と。もう　いちど。と。'
+      voices: ['narrator']
+  - id: kana-dict-1-0026
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぷ', 'む', 'ぶ', 'ふ']
+    answer: 3
+    explanation:
+      en: 'You heard ぶ. Compare: ぷ, ふ, む.'
+      es: 'Has oído ぶ. Compara: ぷ, ふ, む.'
+    author: claude
+    tts:
+      script: 'N: ぶ。もう　いちど。ぶ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0027
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ひ', 'ち', 'ぎ', 'き']
+    answer: 4
+    explanation:
+      en: 'You heard き. Compare: ち, ぎ, ひ.'
+      es: 'Has oído き. Compara: ち, ぎ, ひ.'
+    author: claude
+    tts:
+      script: 'N: き。もう　いちど。き。'
+      voices: ['narrator']
+  - id: kana-dict-1-0028
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ちゃ', 'しゃ', 'じゃ', 'ちょ']
+    answer: 1
+    explanation:
+      en: 'You heard ちゃ. Compare: じゃ, ちょ, しゃ.'
+      es: 'Has oído ちゃ. Compara: じゃ, ちょ, しゃ.'
+    author: claude
+    tts:
+      script: 'N: ちゃ。もう　いちど。ちゃ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0029
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぬ', 'の', 'む', 'る']
+    answer: 1
+    explanation:
+      en: 'You heard ぬ. Compare: む, る, の.'
+      es: 'Has oído ぬ. Compara: む, る, の.'
+    author: claude
+    tts:
+      script: 'N: ぬ。もう　いちど。ぬ。'
+      voices: ['narrator']
+  - id: kana-dict-1-0030
+    stem: 'きこえた　おとを　えらんで　ください。'
+    choices: ['ぴょ', 'びょ', 'ひょ', 'ぎょ']
+    answer: 2
+    explanation:
+      en: 'You heard びょ. Compare: ぴょ, ひょ, ぎょ.'
+      es: 'Has oído びょ. Compara: ぴょ, ひょ, ぎょ.'
+    author: claude
+    tts:
+      script: 'N: びょ。もう　いちど。びょ。'
+      voices: ['narrator']

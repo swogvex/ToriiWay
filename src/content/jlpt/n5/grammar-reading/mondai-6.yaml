@@ -1,0 +1,49 @@
+# N5 · Grammar · Reading · Mondai 6 — information retrieval
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 6
+instruction:
+  en: 'Look at the information and answer the question.'
+  ja: 'あんないを 見て、しつもんに こたえて ください。'
+passages:
+  - id: pool
+    text: "みどりプール\n月よう日　　　　　　　やすみ\n火・水・木よう日　ごご　一時～よる　八時\n金よう日　　　　　　　あさ　十時～よる　九時\n土・日よう日　　　あさ　九時～ごご　五時\n＊十二さいまでの　こどもは　ごご　六時までです。"
+  - id: bus
+    text: "えき　→　だいがく（バス）\nあさ　　七時十分　七時四十分　八時十分　八時四十分\nひる　　十二時十分　一時十分\n＊だいがくまで　二十分　かかります。"
+  - id: cooking
+    text: "りょうりきょうしつ\n日にち：六月十日（土）\nじかん：あさ　十時～十二時\nばしょ：さくらホール　二かい\nおかね：五百円\nもって　くる　もの：エプロン\n＊きょうしつに　きたい　ひとは、九日までに　でんわで　おしえて　ください。"
+questions:
+  - id: n5-grm-6-0001
+    passage: pool
+    stem: '十さいの　ゆうたくんは　金よう日に　プールへ　いきます。なん時まで　プールに　いても　いいですか。'
+    choices: ['よる　八時まで', 'ごご　五時まで', 'よる　九時まで', 'ごご　六時まで']
+    answer: 4
+    explanation:
+      en: 'Friday is open until nine, but children may only stay until six.'
+      es: 'El viernes abre hasta las nueve, pero los niños solo hasta las seis.'
+    author: claude
+  - id: n5-grm-6-0002
+    passage: bus
+    stem: 'ミンさんは　九時十分から　じゅぎょうが　あります。いちばん　おそい　バスは　どれですか。'
+    choices: ['八時十分', '十二時十分', '八時四十分', '七時四十分']
+    answer: 3
+    explanation:
+      en: 'The 8:40 bus arrives at 9:00 (20 minutes), before the 9:10 class.'
+      es: 'El bus de las 8:40 llega a las 9:00 (20 minutos), antes de la clase de las 9:10.'
+    author: claude
+  - id: n5-grm-6-0003
+    passage: cooking
+    stem: 'この　きょうしつに　いきたい　ひとは、まず　なにを　しますか。'
+    choices:
+      [
+        '十日に　さくらホールで　なまえを　かきます',
+        '九日までに　でんわを　します',
+        '九日に　エプロンを　かいに　いきます',
+        '十日の　十二時に　でんわを　します',
+      ]
+    answer: 2
+    explanation:
+      en: 'You must call by the 9th to sign up.'
+      es: 'Hay que llamar antes del día 9 para apuntarse.'
+    author: claude

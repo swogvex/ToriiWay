@@ -1,0 +1,201 @@
+# Kana · Katakana · Mondai 2 — writing
+# Original questions written for Nihongo No Torii.
+level: kana
+section: katakana
+mondai: 2
+instruction:
+  en: 'Choose the kana for the romaji.'
+  ja: 'ローマじに　あう　かなを　えらんで　ください。'
+questions:
+  - id: kana-kata-2-0001
+    stem: 'shi'
+    choices: ['ン', 'シ', 'ソ', 'ツ']
+    answer: 2
+    explanation:
+      en: '"shi" is written シ. The others: ツ (tsu), ン (n), ソ (so).'
+      es: '"shi" se escribe シ. Las otras: ツ (tsu), ン (n), ソ (so).'
+    author: claude
+  - id: kana-kata-2-0002
+    stem: 'tsu'
+    choices: ['シ', 'ソ', 'ン', 'ツ']
+    answer: 4
+    explanation:
+      en: '"tsu" is written ツ. The others: シ (shi), ソ (so), ン (n).'
+      es: '"tsu" se escribe ツ. Las otras: シ (shi), ソ (so), ン (n).'
+    author: claude
+  - id: kana-kata-2-0003
+    stem: 'so'
+    choices: ['シ', 'ン', 'ソ', 'リ']
+    answer: 3
+    explanation:
+      en: '"so" is written ソ. The others: ン (n), シ (shi), リ (ri).'
+      es: '"so" se escribe ソ. Las otras: ン (n), シ (shi), リ (ri).'
+    author: claude
+  - id: kana-kata-2-0004
+    stem: 'n'
+    choices: ['ン', 'ソ', 'シ', 'ツ']
+    answer: 1
+    explanation:
+      en: '"n" is written ン. The others: ソ (so), シ (shi), ツ (tsu).'
+      es: '"n" se escribe ン. Las otras: ソ (so), シ (shi), ツ (tsu).'
+    author: claude
+  - id: kana-kata-2-0005
+    stem: 'ku'
+    choices: ['ケ', 'ク', 'タ', 'ワ']
+    answer: 2
+    explanation:
+      en: '"ku" is written ク. The others: ケ (ke), タ (ta), ワ (wa).'
+      es: '"ku" se escribe ク. Las otras: ケ (ke), タ (ta), ワ (wa).'
+    author: claude
+  - id: kana-kata-2-0006
+    stem: 'ke'
+    choices: ['タ', 'ナ', 'ク', 'ケ']
+    answer: 4
+    explanation:
+      en: '"ke" is written ケ. The others: ク (ku), タ (ta), ナ (na).'
+      es: '"ke" se escribe ケ. Las otras: ク (ku), タ (ta), ナ (na).'
+    author: claude
+  - id: kana-kata-2-0007
+    stem: 'ta'
+    choices: ['ク', 'ケ', 'タ', 'ヌ']
+    answer: 3
+    explanation:
+      en: '"ta" is written タ. The others: ク (ku), ヌ (nu), ケ (ke).'
+      es: '"ta" se escribe タ. Las otras: ク (ku), ヌ (nu), ケ (ke).'
+    author: claude
+  - id: kana-kata-2-0008
+    stem: 'wa'
+    choices: ['ワ', 'ウ', 'フ', 'ク']
+    answer: 1
+    explanation:
+      en: '"wa" is written ワ. The others: ウ (u), フ (fu), ク (ku).'
+      es: '"wa" se escribe ワ. Las otras: ウ (u), フ (fu), ク (ku).'
+    author: claude
+  - id: kana-kata-2-0009
+    stem: 'u'
+    choices: ['ウ', 'ラ', 'フ', 'ワ']
+    answer: 1
+    explanation:
+      en: '"u" is written ウ. The others: ワ (wa), ラ (ra), フ (fu).'
+      es: '"u" se escribe ウ. Las otras: ワ (wa), ラ (ra), フ (fu).'
+    author: claude
+  - id: kana-kata-2-0010
+    stem: 'fu'
+    choices: ['ス', 'フ', 'ワ', 'ヌ']
+    answer: 2
+    explanation:
+      en: '"fu" is written フ. The others: ヌ (nu), ス (su), ワ (wa).'
+      es: '"fu" se escribe フ. Las otras: ヌ (nu), ス (su), ワ (wa).'
+    author: claude
+  - id: kana-kata-2-0011
+    stem: 'nu'
+    choices: ['メ', 'ス', 'ヌ', 'フ']
+    answer: 3
+    explanation:
+      en: '"nu" is written ヌ. The others: ス (su), メ (me), フ (fu).'
+      es: '"nu" se escribe ヌ. Las otras: ス (su), メ (me), フ (fu).'
+    author: claude
+  - id: kana-kata-2-0012
+    stem: 'su'
+    choices: ['フ', 'ヌ', 'ヲ', 'ス']
+    answer: 4
+    explanation:
+      en: '"su" is written ス. The others: ヌ (nu), ヲ (wo), フ (fu).'
+      es: '"su" se escribe ス. Las otras: ヌ (nu), ヲ (wo), フ (fu).'
+    author: claude
+  - id: kana-kata-2-0013
+    stem: 'ko'
+    choices: ['コ', 'ロ', 'ユ', 'エ']
+    answer: 1
+    explanation:
+      en: '"ko" is written コ. The others: ユ (yu), ロ (ro), エ (e).'
+      es: '"ko" se escribe コ. Las otras: ユ (yu), ロ (ro), エ (e).'
+    author: claude
+  - id: kana-kata-2-0014
+    stem: 'yu'
+    choices: ['ヨ', 'ユ', 'エ', 'コ']
+    answer: 2
+    explanation:
+      en: '"yu" is written ユ. The others: コ (ko), ヨ (yo), エ (e).'
+      es: '"yu" se escribe ユ. Las otras: コ (ko), ヨ (yo), エ (e).'
+    author: claude
+  - id: kana-kata-2-0015
+    stem: 'chi'
+    choices: ['テ', 'ナ', 'チ', 'キ']
+    answer: 3
+    explanation:
+      en: '"chi" is written チ. The others: テ (te), ナ (na), キ (ki).'
+      es: '"chi" se escribe チ. Las otras: テ (te), ナ (na), キ (ki).'
+    author: claude
+  - id: kana-kata-2-0016
+    stem: 'te'
+    choices: ['チ', 'ラ', 'ナ', 'テ']
+    answer: 4
+    explanation:
+      en: '"te" is written テ. The others: チ (chi), ナ (na), ラ (ra).'
+      es: '"te" se escribe テ. Las otras: チ (chi), ナ (na), ラ (ra).'
+    author: claude
+  - id: kana-kata-2-0017
+    stem: 'me'
+    choices: ['メ', 'ナ', 'ノ', 'ヌ']
+    answer: 1
+    explanation:
+      en: '"me" is written メ. The others: ナ (na), ヌ (nu), ノ (no).'
+      es: '"me" se escribe メ. Las otras: ナ (na), ヌ (nu), ノ (no).'
+    author: claude
+  - id: kana-kata-2-0018
+    stem: 'ru'
+    choices: ['ノ', 'ル', 'ハ', 'レ']
+    answer: 2
+    explanation:
+      en: '"ru" is written ル. The others: レ (re), ノ (no), ハ (ha).'
+      es: '"ru" se escribe ル. Las otras: レ (re), ノ (no), ハ (ha).'
+    author: claude
+  - id: kana-kata-2-0019
+    stem: 'ma'
+    choices: ['ア', 'ヤ', 'マ', 'ム']
+    answer: 3
+    explanation:
+      en: '"ma" is written マ. The others: ア (a), ム (mu), ヤ (ya).'
+      es: '"ma" se escribe マ. Las otras: ア (a), ム (mu), ヤ (ya).'
+    author: claude
+  - id: kana-kata-2-0020
+    stem: 'a'
+    choices: ['ラ', 'ヤ', 'マ', 'ア']
+    answer: 4
+    explanation:
+      en: '"a" is written ア. The others: マ (ma), ヤ (ya), ラ (ra).'
+      es: '"a" se escribe ア. Las otras: マ (ma), ヤ (ya), ラ (ra).'
+    author: claude
+  - id: kana-kata-2-0021
+    stem: 'se'
+    choices: ['セ', 'サ', 'ヒ', 'ヤ']
+    answer: 1
+    explanation:
+      en: '"se" is written セ. The others: サ (sa), ヤ (ya), ヒ (hi).'
+      es: '"se" se escribe セ. Las otras: サ (sa), ヤ (ya), ヒ (hi).'
+    author: claude
+  - id: kana-kata-2-0022
+    stem: 'ki'
+    choices: ['サ', 'キ', 'モ', 'チ']
+    answer: 2
+    explanation:
+      en: '"ki" is written キ. The others: モ (mo), チ (chi), サ (sa).'
+      es: '"ki" se escribe キ. Las otras: モ (mo), チ (chi), サ (sa).'
+    author: claude
+  - id: kana-kata-2-0023
+    stem: 'ho'
+    choices: ['ネ', 'ハ', 'オ', 'ホ']
+    answer: 4
+    explanation:
+      en: '"ho" is written ホ. The others: ハ (ha), ネ (ne), オ (o).'
+      es: '"ho" se escribe ホ. Las otras: ハ (ha), ネ (ne), オ (o).'
+    author: claude
+  - id: kana-kata-2-0024
+    stem: 'ne'
+    choices: ['オ', 'ス', 'ネ', 'ホ']
+    answer: 3
+    explanation:
+      en: '"ne" is written ネ. The others: ホ (ho), オ (o), ス (su).'
+      es: '"ne" se escribe ネ. Las otras: ホ (ho), オ (o), ス (su).'
+    author: claude

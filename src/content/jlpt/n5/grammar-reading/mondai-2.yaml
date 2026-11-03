@@ -1,0 +1,105 @@
+# N5 · Grammar · Reading · Mondai 2 — sentence composition
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 2
+instruction:
+  en: 'Put the four parts in order. Which part goes in ★?'
+  ja: '★に はいる ものは どれですか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n5-grm-2-0001
+    stem: 'つくえの　＿＿＿　＿＿＿　★　＿＿＿　です。'
+    choices: ['うえに', 'ある', 'わたしの', 'ほんは']
+    answer: 4
+    explanation:
+      en: 'つくえの うえに ある ほんは わたしの です: "The book on the desk is mine."'
+      es: 'つくえの うえに ある ほんは わたしの です: "El libro de la mesa es mío."'
+    author: claude
+  - id: n5-grm-2-0002
+    stem: 'きのう　＿＿＿　＿＿＿　★　＿＿＿　かいました。'
+    choices: ['セーターを', 'あかい', 'デパートで', 'ともだちと']
+    answer: 2
+    explanation:
+      en: 'きのう ともだちと デパートで あかい セーターを かいました. あかい always comes just before セーターを.'
+      es: 'きのう ともだちと デパートで あかい セーターを かいました. あかい va justo antes de セーターを.'
+    author: claude
+  - id: n5-grm-2-0003
+    stem: 'あそこで　＿＿＿　＿＿＿　★　＿＿＿　ちちです。'
+    choices: ['ひとが', 'しんぶんを', 'いる', 'よんで']
+    answer: 3
+    explanation:
+      en: 'あそこで しんぶんを よんで いる ひとが ちちです: "The person reading a newspaper there is my father."'
+      es: 'あそこで しんぶんを よんで いる ひとが ちちです: "La persona que lee el periódico allí es mi padre."'
+    author: claude
+  - id: n5-grm-2-0004
+    stem: 'わたしは　＿＿＿　★　＿＿＿　＿＿＿　すきです。'
+    choices: ['えいがを', 'のが', 'みる', 'にほんの']
+    answer: 1
+    explanation:
+      en: 'わたしは にほんの えいがを みる のが すきです: "I like watching Japanese films."'
+      es: 'わたしは にほんの えいがを みる のが すきです: "Me gusta ver películas japonesas."'
+    author: claude
+  - id: n5-grm-2-0005
+    stem: 'この　＿＿＿　★　＿＿＿　＿＿＿　ください。'
+    choices: ['いって', 'てがみを', 'もって', 'ゆうびんきょくへ']
+    answer: 4
+    explanation:
+      en: 'この てがみを ゆうびんきょくへ もって いって ください: "Please take this letter to the post office."'
+      es: 'この てがみを ゆうびんきょくへ もって いって ください: "Lleva esta carta a correos, por favor."'
+    author: claude
+  - id: n5-grm-2-0006
+    stem: '＿＿＿　＿＿＿　★　＿＿＿　あります。'
+    choices: ['みっつ', 'りんごが', 'うえに', 'テーブルの']
+    answer: 2
+    explanation:
+      en: 'テーブルの うえに りんごが みっつ あります: "There are three apples on the table."'
+      es: 'テーブルの うえに りんごが みっつ あります: "Hay tres manzanas en la mesa."'
+    author: claude
+  - id: n5-grm-2-0007
+    stem: "A「＿＿＿　＿＿＿　★　＿＿＿　か。」\nB「らいしゅうの　月よう日です。」"
+    choices: ['つぎの', 'です', 'いつ', 'テストは']
+    answer: 3
+    explanation:
+      en: 'つぎの テストは いつ です か: "When is the next test?"'
+      es: 'つぎの テストは いつ です か: "¿Cuándo es el próximo examen?"'
+    author: claude
+  - id: n5-grm-2-0008
+    stem: 'きのうは　＿＿＿　＿＿＿　★　＿＿＿　ねました。'
+    choices: ['ので', 'いたかった', 'はやく', 'あたまが']
+    answer: 1
+    explanation:
+      en: 'きのうは あたまが いたかった ので はやく ねました: "I had a headache, so I went to bed early."'
+      es: 'きのうは あたまが いたかった ので はやく ねました: "Me dolía la cabeza, así que me acosté pronto."'
+    author: claude
+  - id: n5-grm-2-0009
+    stem: 'まいばん　＿＿＿　★　＿＿＿　＿＿＿　ねます。'
+    choices: ['シャワーを', 'あびて', 'よんでから', 'ほんを']
+    answer: 2
+    explanation:
+      en: 'まいばん シャワーを あびて ほんを よんでから ねます: "Every night I shower and read before sleeping."'
+      es: 'まいばん シャワーを あびて ほんを よんでから ねます: "Cada noche me ducho y leo antes de dormir."'
+    author: claude
+  - id: n5-grm-2-0010
+    stem: 'ここは　＿＿＿　＿＿＿　★　＿＿＿　です。'
+    choices: ['よく', 'わたしが', 'いく', 'きっさてん']
+    answer: 3
+    explanation:
+      en: 'ここは わたしが よく いく きっさてん です: "This is the café I often go to."'
+      es: 'ここは わたしが よく いく きっさてん です: "Este es el café al que voy a menudo."'
+    author: claude
+  - id: n5-grm-2-0011
+    stem: 'えきの　＿＿＿　★　＿＿＿　＿＿＿　あります。'
+    choices: ['やすくて', 'ちかくに', 'みせが', 'おいしい']
+    answer: 1
+    explanation:
+      en: 'えきの ちかくに やすくて おいしい みせが あります: "Near the station there is a cheap, tasty restaurant."'
+      es: 'えきの ちかくに やすくて おいしい みせが あります: "Cerca de la estación hay un sitio barato y rico."'
+    author: claude
+  - id: n5-grm-2-0012
+    stem: 'ははは　＿＿＿　＿＿＿　★　＿＿＿　います。'
+    choices: ['だいどころで', 'いま', 'つくって', 'ばんごはんを']
+    answer: 4
+    explanation:
+      en: 'ははは いま だいどころで ばんごはんを つくって います: "My mother is cooking dinner in the kitchen now."'
+      es: 'ははは いま だいどころで ばんごはんを つくって います: "Mi madre está haciendo la cena en la cocina."'
+    author: claude

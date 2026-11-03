@@ -1,0 +1,129 @@
+# Kana · Hiragana · Mondai 3 — word spelling
+# Original questions written for Nihongo No Torii.
+level: kana
+section: hiragana
+mondai: 3
+instruction:
+  en: 'Choose the correct hiragana spelling of the word.'
+  ja: 'ことばの　ただしい　かきかたを　えらんで　ください。'
+questions:
+  - id: kana-hira-3-0001
+    stem: 'gakkō — school'
+    choices: ['かっこう', 'がっこ', 'がっこう', 'がこう']
+    answer: 3
+    explanation:
+      en: 'School is written がっこう. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"escuela" se escribe がっこう. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0002
+    stem: 'kitte — stamp'
+    choices: ['きって', 'きて', 'きっで', 'ぎって']
+    answer: 1
+    explanation:
+      en: 'Stamp is written きって. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"sello" se escribe きって. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0003
+    stem: 'okāsan — mother'
+    choices: ['おかーさん', 'おかあさん', 'おがあさん', 'おかさん']
+    answer: 2
+    explanation:
+      en: 'Mother is written おかあさん. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"madre" se escribe おかあさん. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0004
+    stem: 'ryokō — trip'
+    choices: ['りょこ', 'りよこう', 'りゅこう', 'りょこう']
+    answer: 4
+    explanation:
+      en: 'Trip is written りょこう. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"viaje" se escribe りょこう. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0005
+    stem: 'densha — train'
+    choices: ['でんしゃ', 'でんしや', 'でんしょ', 'てんしゃ']
+    answer: 1
+    explanation:
+      en: 'Train is written でんしゃ. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"tren" se escribe でんしゃ. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0006
+    stem: 'kyō — today'
+    choices: ['ぎょう', 'きゅう', 'きょ', 'きょう']
+    answer: 4
+    explanation:
+      en: 'Today is written きょう. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"hoy" se escribe きょう. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0007
+    stem: 'ōkii — big'
+    choices: ['おきい', 'おおきい', 'おおぎい', 'おうきい']
+    answer: 2
+    explanation:
+      en: 'Big is written おおきい. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"grande" se escribe おおきい. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0008
+    stem: 'hikōki — airplane'
+    choices: ['ひこき', 'びこうき', 'ひこうき', 'ひこおき']
+    answer: 3
+    explanation:
+      en: 'Airplane is written ひこうき. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"avión" se escribe ひこうき. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0009
+    stem: 'zasshi — magazine'
+    choices: ['ざっじ', 'ざっし', 'ざし', 'さっし']
+    answer: 2
+    explanation:
+      en: 'Magazine is written ざっし. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"revista" se escribe ざっし. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0010
+    stem: 'shashin — photo'
+    choices: ['しやしん', 'さしん', 'しゃじん', 'しゃしん']
+    answer: 4
+    explanation:
+      en: 'Photo is written しゃしん. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"foto" se escribe しゃしん. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0011
+    stem: 'tokei — clock'
+    choices: ['とけえ', 'とっけい', 'とけい', 'どけい']
+    answer: 3
+    explanation:
+      en: 'Clock is written とけい. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"reloj" se escribe とけい. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0012
+    stem: 'byōin — hospital'
+    choices: ['びょういん', 'びよういん', 'びょいん', 'ひょういん']
+    answer: 1
+    explanation:
+      en: 'Hospital is written びょういん. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"hospital" se escribe びょういん. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0013
+    stem: 'kippu — ticket'
+    choices: ['きっぷ', 'ぎっぷ', 'きっぶ', 'きぷ']
+    answer: 1
+    explanation:
+      en: 'Ticket is written きっぷ. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"billete" se escribe きっぷ. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0014
+    stem: 'onēsan — older sister'
+    choices: ['おねーさん', 'おねいさん', 'おねさん', 'おねえさん']
+    answer: 4
+    explanation:
+      en: 'Older sister is written おねえさん. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"hermana mayor" se escribe おねえさん. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
+  - id: kana-hira-3-0015
+    stem: 'benkyō — study'
+    choices: ['へんきょう', 'べんぎょう', 'べんきょう', 'べんきょ']
+    answer: 3
+    explanation:
+      en: 'Study is written べんきょう. Watch dakuten, small っ / ゃゅょ and long vowels.'
+      es: '"estudio" se escribe べんきょう. Fíjate en el dakuten, las pequeñas っ / ゃゅょ y las vocales largas.'
+    author: claude
