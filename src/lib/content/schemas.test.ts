@@ -47,35 +47,99 @@ describe('librarySchema', () => {
 });
 
 describe('jlptMondaiSchema', () => {
+  const question = {
+    id: 'n5-voc-2-0001',
+    stem: 'きのう　__ともだち__と　えいがを　みました。',
+    choices: ['友逹', '友達', '支達', '反達'],
+    answer: 2,
+    explanation: { en: 'Because b.', es: 'Porque b.' },
+    author: 'claude',
+  };
   const mondai = {
     level: 'N5',
     section: 'vocabulary',
     mondai: 2,
     instruction: { en: 'Choose the best answer.', ja: 'いちばん いい ものを えらんで ください。' },
-    subArea: 'vocabulary',
-    questions: [
-      {
-        id: 'n5-voc-2-0001',
-        stem: 'Example stem',
-        choices: ['a', 'b', 'c'],
-        answer: 2,
-        explanation: { en: 'Because b.' },
-        author: 'claude',
-      },
-    ],
+    questions: [question],
   };
+
+  const issues = (entry: unknown) =>
+    jlptMondaiSchema
+      .safeParse(entry)
+      .error?.issues.map((issue) => `${issue.path.join('.')}: ${issue.message}`) ?? [];
 
   it('accepts a valid mondai and fills defaults', () => {
     const result = jlptMondaiSchema.parse(mondai);
     expect(result.questions[0]?.tags).toEqual([]);
     expect(result.questions[0]?.audio).toBeNull();
+    expect(result.passages).toEqual([]);
   });
 
-  it('rejects an answer beyond the number of choices', () => {
-    const question = { ...mondai.questions[0], answer: 4 };
-    const result = jlptMondaiSchema.safeParse({ ...mondai, questions: [question] });
-    expect(result.success).toBe(false);
-    expect(result.error?.issues[0]?.path).toEqual(['questions', 0, 'answer']);
+  it('rejects a mondai the level does not have', () => {
+    expect(issues({ ...mondai, mondai: 5 })).toEqual(['mondai: N5 vocabulary has no mondai 5']);
+    expect(issues({ ...mondai, section: 'hiragana' })[0]).toMatch(/^mondai:/);
+  });
+
+  it('checks IDs, choices and the answer', () => {
+    const bad = [
+      { ...question, id: 'n5-voc-3-0001' },
+      { ...question, id: 'n5-voc-2-0002', choices: ['a', 'b', 'c'] },
+      { ...question, id: 'n5-voc-2-0003', choices: ['a', 'b', 'a ', 'c'] },
+      { ...question, id: 'n5-voc-2-0004', answer: 4, choices: ['a', 'b', 'c'] },
+    ];
+    expect(issues({ ...mondai, questions: bad })).toEqual([
+      'questions.0.id: ID must start with n5-voc-2-',
+      'questions.1.choices: orthography needs 4 choices',
+      'questions.2.choices: Choices must differ',
+      'questions.3.choices: orthography needs 4 choices',
+      'questions.3.answer: answer 4 is out of range for 3 choices',
+    ]);
+    expect(issues({ ...mondai, questions: [question, question] })).toEqual([
+      'questions.1.id: Duplicate ID n5-voc-2-0001',
+    ]);
+  });
+
+  it('requires a Spanish explanation', () => {
+    const entry = { ...mondai, questions: [{ ...question, explanation: { en: 'Because b.' } }] };
+    expect(issues(entry)[0]).toMatch(/^questions\.0\.explanation\.es:/);
+  });
+
+  it('requires audio on listening questions only', () => {
+    const tts = { script: 'おとこのひと：こんにちは。', voices: ['male'] };
+    const listening = {
+      ...mondai,
+      section: 'listening',
+      mondai: 3,
+      questions: [{ ...question, id: 'n5-lis-3-0001', choices: ['a', 'b', 'c'] }],
+    };
+    expect(issues(listening)).toEqual(['questions.0.tts: Listening questions need audio or tts']);
+    const withTts = { ...listening, questions: [{ ...listening.questions[0], tts }] };
+    expect(issues(withTts)).toEqual([]);
+    expect(issues({ ...mondai, questions: [{ ...question, tts }] })).toEqual([
+      'questions.0.tts: orthography questions have no audio',
+    ]);
+  });
+
+  it('links reading questions to passages of the right size', () => {
+    const reading = (id: string) => ({ ...question, id, passage: 'park' });
+    const entry = {
+      ...mondai,
+      section: 'grammar-reading',
+      mondai: 5,
+      passages: [{ id: 'park', text: 'こうえんに いきました。' }],
+      questions: [reading('n5-grm-5-0001'), reading('n5-grm-5-0002')],
+    };
+    expect(issues(entry)).toEqual([]);
+    expect(issues({ ...entry, questions: [reading('n5-grm-5-0001')] })).toEqual([
+      'passages.0: passage park has 1 questions; mid-passage needs 2',
+    ]);
+    const lost = { ...entry.questions[1], passage: 'lake' };
+    expect(issues({ ...entry, questions: [entry.questions[0], lost] })).toContain(
+      'questions.1.passage: Expected the ID of a passage in this file',
+    );
+    expect(issues({ ...mondai, questions: [{ ...question, passage: 'park' }] })).toEqual([
+      'questions.0.passage: orthography questions do not use passages',
+    ]);
   });
 });
 

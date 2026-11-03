@@ -2,6 +2,8 @@ import { z } from 'astro/zod';
 
 import kanjivg from '../../data/kanjivg/kana.json';
 import { romajiHint, typeable } from '../../game/romaji';
+import { findMondai, idPrefix, JLPT_LEVELS, SECTION_CODE } from '../jlpt/levels';
+import type { JlptLevel, SectionId } from '../jlpt/types';
 
 // Spanish is optional until the Spanish milestone; missing values fall back to English.
 export const localizedText = z.strictObject({
@@ -241,41 +243,99 @@ const ttsScript = z.strictObject({
 
 const jlptQuestion = z.strictObject({
   id: z.string().regex(/^(kana|n[1-5])-[a-z]+-\d+-\d{4}$/, 'Expected an ID like n5-voc-2-0001'),
+  /** ID of a passage of this mondai (reading and text grammar). */
+  passage: kebabId.optional(),
   stem: z.string().min(1),
-  passage: z.string().min(1).optional(),
-  choices: z.array(z.string().min(1)).min(2).max(4),
+  choices: z.array(z.string().min(1)).min(3).max(4),
   answer: z.number().int().min(1).max(4),
-  explanation: localizedText,
+  // Every question explains its answer in English and Spanish.
+  explanation: z.strictObject({ en: z.string().min(1), es: z.string().min(1) }),
   author: z.enum(['claude', 'owner', 'community']),
   audio: z.url().nullable().default(null),
   tts: ttsScript.nullable().default(null),
   tags: z.array(kebabId).default([]),
 });
 
+const jlptPassage = z.strictObject({
+  id: kebabId,
+  text: z.string().min(1),
+});
+
+type JlptMondai = {
+  level: JlptLevel;
+  section: SectionId;
+  mondai: number;
+  passages: { id: string }[];
+  questions: z.infer<typeof jlptQuestion>[];
+};
+
+/** Content lint: the file matches the level structure and every question is well formed. */
+function lintMondai(file: JlptMondai, ctx: z.RefinementCtx) {
+  const issue = (message: string, path: (string | number)[]) =>
+    ctx.addIssue({ code: 'custom', message, path });
+  const config = findMondai(file.level, file.section, file.mondai);
+  if (!config) {
+    issue(`${file.level} ${file.section} has no mondai ${file.mondai}`, ['mondai']);
+    return;
+  }
+  const prefix = idPrefix(file.level, file.section, file.mondai);
+  const passageIds = new Set(file.passages.map((entry) => entry.id));
+  if (config.perPassage === null && file.passages.length > 0) {
+    issue(`${config.type} questions do not use passages`, ['passages']);
+  }
+  const seen = new Set<string>();
+  file.questions.forEach((question, index) => {
+    const at = (field: string) => ['questions', index, field];
+    if (!question.id.startsWith(prefix)) issue(`ID must start with ${prefix}`, at('id'));
+    if (seen.has(question.id)) issue(`Duplicate ID ${question.id}`, at('id'));
+    seen.add(question.id);
+    if (question.choices.length !== config.choices) {
+      issue(`${config.type} needs ${config.choices} choices`, at('choices'));
+    }
+    const choices = question.choices.map((choice) => choice.trim());
+    if (new Set(choices).size !== choices.length) issue('Choices must differ', at('choices'));
+    if (question.answer > question.choices.length) {
+      issue(
+        `answer ${question.answer} is out of range for ${question.choices.length} choices`,
+        at('answer'),
+      );
+    }
+    const hasAudio = question.audio !== null || question.tts !== null;
+    if (config.audio && !hasAudio) issue('Listening questions need audio or tts', at('tts'));
+    if (!config.audio && hasAudio) issue(`${config.type} questions have no audio`, at('tts'));
+    if (config.perPassage === null) {
+      if (question.passage) issue(`${config.type} questions do not use passages`, at('passage'));
+    } else if (!question.passage || !passageIds.has(question.passage)) {
+      issue('Expected the ID of a passage in this file', at('passage'));
+    }
+  });
+  if (config.perPassage !== null) {
+    file.passages.forEach((entry, index) => {
+      const used = file.questions.filter((question) => question.passage === entry.id).length;
+      if (used !== config.perPassage) {
+        issue(
+          `passage ${entry.id} has ${used} questions; ${config.type} needs ${config.perPassage}`,
+          ['passages', index],
+        );
+      }
+    });
+  }
+}
+
 export const jlptMondaiSchema = z
   .strictObject({
-    level: z.enum(['kana', 'N5', 'N4', 'N3']),
-    section: z.enum(['vocabulary', 'grammar-reading', 'listening', 'language', 'reading']),
+    level: z.enum(JLPT_LEVELS),
+    section: z.enum(Object.keys(SECTION_CODE) as [SectionId, ...SectionId[]]),
     mondai: z.number().int().positive(),
     instruction: z.strictObject({
       en: z.string().min(1),
       ja: z.string().min(1),
       es: z.string().min(1).optional(),
     }),
-    subArea: z.enum(['vocabulary', 'grammar', 'reading', 'listening']),
+    passages: z.array(jlptPassage).default([]),
     questions: z.array(jlptQuestion).min(1),
   })
-  .superRefine((mondai, ctx) => {
-    mondai.questions.forEach((question, index) => {
-      if (question.answer > question.choices.length) {
-        ctx.addIssue({
-          code: 'custom',
-          message: `answer ${question.answer} is out of range for ${question.choices.length} choices`,
-          path: ['questions', index, 'answer'],
-        });
-      }
-    });
-  });
+  .superRefine(lintMondai);
 
 const gameItem = z.strictObject({
   /** What the bubble shows; for kana lists, the reading plus optional spaces and punctuation. */
