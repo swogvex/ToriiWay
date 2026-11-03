@@ -221,3 +221,46 @@ test.describe('JLPT exam on a phone', () => {
     await expectNoAxeViolations(page);
   });
 });
+
+test.describe('JLPT problem reports', () => {
+  test('a report goes through Turnstile and appears on the admin page', async ({
+    page,
+    browser,
+  }, testInfo) => {
+    const note = `Choice 2 also fits (${testInfo.project.name}).`;
+    // Stand-in for Cloudflare's script: renders nothing and hands back the test token.
+    await page.route('https://challenges.cloudflare.com/**', (route) =>
+      route.fulfill({
+        contentType: 'text/javascript',
+        body: 'window.turnstile={render:(el,o)=>{setTimeout(()=>o.callback("XXXX.DUMMY.TOKEN.XXXX"));return "w1";},reset:()=>{}};',
+      }),
+    );
+    await startN5(page);
+    await page.getByRole('button', { name: 'Report a problem' }).click();
+    const dialog = page.getByRole('dialog', { name: 'Report a problem with this question' });
+    await expect(dialog).toBeVisible();
+    await dialog.getByRole('radio', { name: 'Wrong answer' }).check();
+    await dialog.getByLabel('Details (optional)').fill(note);
+    await expectNoAxeViolations(page);
+    await dialog.getByRole('button', { name: 'Send report' }).click();
+    await expect(dialog.getByText("Thanks! We'll review it.")).toBeVisible();
+
+    const anonymous = await page.request.get('/admin');
+    expect(anonymous.status()).toBe(401);
+    expect(anonymous.headers()['www-authenticate']).toContain('Basic');
+
+    const admin = await browser.newContext({
+      httpCredentials: { username: 'e2e-admin', password: 'e2e-admin-password' },
+    });
+    const adminPage = await admin.newPage();
+    const response = await adminPage.goto('/admin');
+    expect(response?.headers()['x-robots-tag']).toBe('noindex, nofollow');
+    const item = adminPage.getByRole('listitem').filter({ hasText: note });
+    await expect(item).toContainText('answer · ');
+    await item.getByRole('button', { name: 'Mark resolved' }).click();
+    await expect(adminPage.getByRole('listitem').filter({ hasText: note })).toContainText(
+      'Resolved',
+    );
+    await admin.close();
+  });
+});

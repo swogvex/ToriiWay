@@ -9,6 +9,7 @@ import Icon from '../../components/ui/Icon.astro';
 import { getLocale, localizePath, useTranslations, type UiKey } from '../../i18n';
 import FocusLayout from '../../layouts/FocusLayout.astro';
 import { JLPT_LEVELS, LEVELS } from '../../lib/jlpt/levels';
+import { siteKeyFor } from '../../lib/server/turnstile';
 
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -58,6 +59,17 @@ for (const level of JLPT_LEVELS) {
   }
 }
 const home = localizePath('/jlpt', locale);
+// Real Turnstile keys only on Vercel production; previews and local builds use test keys.
+const siteKey = siteKeyFor(process.env.VERCEL_ENV);
+const problemMessages = {
+  sending: t('jlpt.problem.sending'),
+  thanks: t('jlpt.problem.thanks'),
+  verify: t('jlpt.problem.verify'),
+  limit: t('jlpt.problem.error.limit'),
+  check: t('jlpt.problem.error.check'),
+  generic: t('jlpt.problem.error.generic'),
+};
+const categories = ['typo', 'answer', 'audio', 'other'] as const;
 ---
 
 <FocusLayout
@@ -130,6 +142,46 @@ const home = localizePath('/jlpt', locale);
 
   <VoiceHelpDialog />
 
+  <Dialog id="jlpt-report" title={t('jlpt.problem.title')}>
+    <form
+      class="problem"
+      id="jlpt-report-form"
+      data-report-form-problem
+      data-sitekey={siteKey}
+      data-messages={JSON.stringify(problemMessages)}
+      novalidate
+    >
+      <fieldset class="problem__kinds">
+        <legend>{t('jlpt.problem.category')}</legend>
+        {categories.map((category, index) => (
+          <label>
+            <input type="radio" name="category" value={category} checked={index === 0} />
+            {t(`jlpt.problem.${category}`)}
+          </label>
+        ))}
+      </fieldset>
+      <Field
+        id="jlpt-report-message"
+        name="message"
+        as="textarea"
+        label={t('jlpt.problem.message')}
+        hint={t('jlpt.problem.hint')}
+      />
+      <div class="problem__check" data-turnstile></div>
+      <p class="problem__status" role="status" data-report-status></p>
+    </form>
+    <div slot="footer" class="finalize__actions">
+      <form method="dialog">
+        <Button variant="outline" type="submit">
+          {t('jlpt.problem.cancel')}
+        </Button>
+      </form>
+      <Button variant="accent" type="submit" form="jlpt-report-form" data-report-send>
+        {t('jlpt.problem.send')}
+      </Button>
+    </div>
+  </Dialog>
+
   <Dialog id="jlpt-finalize" title={t('jlpt.run.finalize.title')}>
     <p data-finalize-text></p>
     <p class="finalize__note">{t('jlpt.run.finalize.note')}</p>
@@ -148,9 +200,13 @@ const home = localizePath('/jlpt', locale);
 
 <script>
   import { initRun } from '../../lib/jlpt/exam/flow';
+  import { initReport } from '../../lib/jlpt/exam/report';
 
   const root = document.querySelector<HTMLElement>('[data-jlpt-run]');
-  if (root) void initRun(root);
+  if (root) {
+    void initRun(root);
+    initReport(root);
+  }
 </script>
 
 <style>
@@ -274,6 +330,54 @@ const home = localizePath('/jlpt', locale);
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
+  }
+
+  .problem {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .problem__kinds {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-5);
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .problem__kinds legend {
+    margin-block-end: var(--space-2);
+    padding: 0;
+    font-weight: 700;
+  }
+
+  .problem__kinds label {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-block-size: var(--target-min);
+    cursor: pointer;
+  }
+
+  .problem__kinds input {
+    inline-size: 20px;
+    block-size: 20px;
+    margin: 0;
+    accent-color: var(--ink);
+  }
+
+  .problem__check {
+    min-block-size: 65px;
+  }
+
+  .problem__status {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .problem__status:empty {
+    display: none;
   }
 
   .finalize__note {

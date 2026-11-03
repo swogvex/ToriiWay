@@ -3,9 +3,9 @@ import { and, desc, eq, isNotNull, sql } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/neon-http';
 
 import type { RunRecord } from '../lib/jlpt/run';
-import type { RunStore } from '../lib/jlpt/store';
+import type { Report, RunStore } from '../lib/jlpt/store';
 import type { JlptLevel } from '../lib/jlpt/types';
-import { jlptAnswers, jlptFeedback, jlptRuns, rateLimits } from './schema';
+import { jlptAnswers, jlptFeedback, jlptRuns, rateLimits, reports } from './schema';
 
 type RunRow = typeof jlptRuns.$inferSelect;
 
@@ -117,6 +117,30 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .returning({ id: jlptRuns.id });
       return updated.length === 1;
     },
+    async createReport(report) {
+      await db.insert(reports).values({ ...report, createdAt: new Date(report.createdAt) });
+    },
+    async listReports(limit) {
+      const rows = await db
+        .select()
+        .from(reports)
+        .orderBy(sql`${reports.status} = 'resolved'`, desc(reports.createdAt))
+        .limit(limit);
+      return rows.map((row) => ({
+        ...row,
+        category: row.category as Report['category'],
+        status: row.status as Report['status'],
+        createdAt: row.createdAt.getTime(),
+      }));
+    },
+    async resolveReport(id) {
+      const updated = await db
+        .update(reports)
+        .set({ status: 'resolved' })
+        .where(eq(reports.id, id))
+        .returning({ id: reports.id });
+      return updated.length === 1;
+    },
     async recentPublic(limit) {
       const rows = await db
         .select({
@@ -152,6 +176,15 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .from(jlptRuns)
         .where(finished);
       return { runs: row?.runs ?? 0, below: row?.below ?? 0 };
+    },
+    async peekLimit(key, windowMs, now) {
+      const windowStart = new Date(Math.floor(now / windowMs) * windowMs);
+      const [row] = await db
+        .select({ count: rateLimits.count })
+        .from(rateLimits)
+        .where(and(eq(rateLimits.key, key), eq(rateLimits.windowStart, windowStart)))
+        .limit(1);
+      return row?.count ?? 0;
     },
     async rateLimit(key, limit, windowMs, now) {
       const windowStart = new Date(Math.floor(now / windowMs) * windowMs);

@@ -18,8 +18,14 @@ export default defineConfig({
   ],
   webServer: {
     command: `pnpm exec astro preview --port ${port}`,
-    // JLPT runs live in memory, so e2e needs no database.
-    env: { JLPT_MEMORY_STORE: 'true' },
+    // JLPT runs live in memory, so e2e needs no database. The admin login below is a
+    // test-only account (password "e2e-admin-password"), never used anywhere else.
+    env: {
+      JLPT_MEMORY_STORE: 'true',
+      ADMIN_USER: 'e2e-admin',
+      ADMIN_PASSWORD_HASH:
+        'scrypt$16384$8$1$Kb5L2DjKOdgQyFFB9PMWUw==$M2McMOsPYICk4Xg5sxRNSAAQ6vQB5FwFRnRuRxH4oL8=',
+    },
     port,
     reuseExistingServer: !process.env.CI,
   },
