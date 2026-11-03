@@ -23,7 +23,7 @@ test.describe('Kana Rush setup', () => {
     expect(results.violations).toEqual([]);
   });
 
-  test('follows the choice and blocks lists that are not ready', async ({ page }) => {
+  test('follows the choice for every script', async ({ page }) => {
     await page.goto('/game');
     await page.getByRole('radio', { name: 'Hard' }).check();
     await expect(page.locator('.choice__note[data-note="hard"]')).toHaveText(
@@ -32,11 +32,12 @@ test.describe('Kana Rush setup', () => {
     await expect(page.locator('.choice__note[data-note="hard"]')).toBeVisible();
     await expect(page.getByText('Normal: words of 2–4 kana')).toBeHidden();
     await page.getByRole('radio', { name: /Katakana/ }).check();
-    await expect(start(page)).toBeDisabled();
-    await expect(page.getByText('Coming soon', { exact: true }).first()).toBeVisible();
-    await page.getByRole('radio', { name: 'Easy' }).check();
     await expect(start(page)).toBeEnabled();
-    await expect(start(page)).toHaveText(/Start · Katakana Easy/);
+    await expect(start(page)).toHaveText(/Start · Katakana Hard/);
+    await page.getByRole('radio', { name: /Kanji/ }).check();
+    await page.getByRole('radio', { name: 'Easy' }).check();
+    await expect(start(page)).toHaveText(/Start · Kanji Easy/);
+    await expect(page.locator('[data-challenge="kanji/extreme"]')).toHaveText(/Not yet/);
   });
 
   test('starts the chosen run and remembers the setup', async ({ page }) => {

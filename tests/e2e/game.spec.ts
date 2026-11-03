@@ -184,9 +184,10 @@ test.describe('Kana Rush play', () => {
     await expect(page.locator('[data-key="ñ"]')).toBeHidden();
   });
 
-  test('a list that does not exist yet says so', async ({ page }) => {
+  test('a list that cannot be loaded says so', async ({ page }) => {
+    await page.route('**/data/game/kanji/extreme.json', (route) => route.fulfill({ status: 404 }));
     await page.goto('/game/play?script=kanji&difficulty=extreme');
-    await expect(page.getByText('This list is not ready yet.')).toBeVisible();
+    await expect(page.getByText('This list could not be loaded.')).toBeVisible();
     await expect(game(page)).toHaveAttribute('data-status', 'unavailable');
   });
 
@@ -283,4 +284,20 @@ test.describe('Kana Rush on a laptop screen', () => {
       }
     }
   });
+});
+
+test.describe('Kana Rush lists', () => {
+  test.use({ viewport: { width: 1440, height: 1000 } });
+
+  for (const script of ['katakana', 'kanji']) {
+    test(`${script} bubbles pop when their hint is typed`, async ({ page }) => {
+      await startRun(page, `/game/play?script=${script}&difficulty=hard&mode=challenge&seed=5`);
+      await page.clock.runFor(1500);
+      // The hint is in the DOM before it shows; typing it must pop the bubble.
+      const hint = await bubbles(page).first().locator('[data-hint]').textContent();
+      expect(hint).toMatch(/^[a-z'-]+$/);
+      await page.keyboard.type(hint ?? '');
+      await expect(game(page)).toHaveAttribute('data-popped', '1');
+    });
+  }
 });

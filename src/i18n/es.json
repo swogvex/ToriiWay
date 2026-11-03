@@ -133,7 +133,7 @@
   "game.play.description": "Escribe en romaji cada burbuja de kana antes de que cruce el campo.",
   "game.play.intro": "Escribe la lectura en romaji. La primera burbuja que coincida pasa a ser tu objetivo; Retroceso la suelta.",
   "game.play.loading": "Cargando palabras…",
-  "game.play.unavailable": "Esta lista aún no está lista. Ya puedes jugar con hiragana.",
+  "game.play.unavailable": "No se pudo cargar esta lista. Comprueba tu conexión e inténtalo de nuevo.",
   "game.play.input": "Entrada",
   "game.play.inputLabel": "Escribe el romaji de una burbuja",
   "game.play.focus": "Haz clic aquí para seguir escribiendo",
