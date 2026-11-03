@@ -128,5 +128,21 @@
   "practice.perfect": "No mistakes. Well done!",
   "practice.misses": "To review",
   "practice.again": "Practise again",
-  "practice.change": "Change rows"
+  "practice.change": "Change rows",
+  "game.play.title": "Play Kana Rush",
+  "game.play.description": "Type the romaji of each kana bubble before it crosses the field.",
+  "game.play.start": "Start",
+  "game.play.intro": "Type the reading in romaji. The first bubble that matches becomes your target; Backspace releases it.",
+  "game.play.loading": "Loading words…",
+  "game.play.unavailable": "This list is not ready yet. Hiragana is available now.",
+  "game.play.input": "Input",
+  "game.play.inputLabel": "Type the romaji of a bubble",
+  "game.play.focus": "Click here to keep typing",
+  "game.play.cleared": "Challenge cleared",
+  "game.play.failed": "Out of lives",
+  "game.play.quit": "Run ended",
+  "game.play.again": "Play again",
+  "game.hud.lives": "Lives",
+  "game.hud.time": "Time",
+  "game.hud.popped": "Popped"
 }

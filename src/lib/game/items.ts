@@ -1,17 +1,8 @@
 import { getCollection } from 'astro:content';
 
-import type { Difficulty } from '../../game/config';
+import type { Difficulty, GameScript } from '../../game/config';
+import type { GameItem } from '../../game/run';
 import { getKana } from '../kana/data';
-
-export type GameScript = 'hiragana' | 'katakana' | 'kanji';
-
-/** One bubble's content. Single kana have no meaning to show on pop. */
-export interface GameItem {
-  text: string;
-  reading: string;
-  en?: string;
-  es?: string;
-}
 
 /**
  * Items for a script and difficulty, or an empty list when none exist yet.

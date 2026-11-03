@@ -128,5 +128,21 @@
   "practice.perfect": "Sin fallos. ¡Muy bien!",
   "practice.misses": "Para repasar",
   "practice.again": "Practicar otra vez",
-  "practice.change": "Cambiar filas"
+  "practice.change": "Cambiar filas",
+  "game.play.title": "Jugar a Kana Rush",
+  "game.play.description": "Escribe en romaji cada burbuja de kana antes de que cruce el campo.",
+  "game.play.start": "Empezar",
+  "game.play.intro": "Escribe la lectura en romaji. La primera burbuja que coincida pasa a ser tu objetivo; Retroceso la suelta.",
+  "game.play.loading": "Cargando palabras…",
+  "game.play.unavailable": "Esta lista aún no está lista. Ya puedes jugar con hiragana.",
+  "game.play.input": "Entrada",
+  "game.play.inputLabel": "Escribe el romaji de una burbuja",
+  "game.play.focus": "Haz clic aquí para seguir escribiendo",
+  "game.play.cleared": "Reto superado",
+  "game.play.failed": "Sin vidas",
+  "game.play.quit": "Partida terminada",
+  "game.play.again": "Jugar otra vez",
+  "game.hud.lives": "Vidas",
+  "game.hud.time": "Tiempo",
+  "game.hud.popped": "Explotadas"
 }
