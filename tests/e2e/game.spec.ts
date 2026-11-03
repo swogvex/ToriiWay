@@ -94,6 +94,19 @@ test.describe('Kana Rush play', () => {
     await expect(game(page)).toHaveAttribute('data-lives', '5');
   });
 
+  test('with sound on, the countdown starts (after a key if audio is blocked)', async ({
+    page,
+  }) => {
+    await page.clock.install();
+    await page.goto(`${PLAY}&sound=1`);
+    await expect(game(page)).toHaveAttribute('data-status', 'countdown');
+    await page.clock.runFor(500);
+    const press = page.locator('[data-press-key]');
+    if (await press.isVisible()) await page.keyboard.press('Space');
+    await page.clock.runFor(COUNTDOWN_MS + 500);
+    await expect(game(page)).toHaveAttribute('data-status', 'playing');
+  });
+
   test('Escape pauses with the field blurred and the timer stopped', async ({ page }) => {
     await startRun(page);
     await page.keyboard.press('Escape');
@@ -141,6 +154,9 @@ test.describe('Kana Rush play', () => {
     await expect(results.locator('[data-words] li').first()).toContainText(reading);
     await expect(results.locator('[data-words-count]')).toHaveText('1 popped');
     await expect(results.locator('[data-chart] .chart__line')).toHaveCount(1);
+    const chartBox = await results.locator('.chart').boundingBox();
+    const wordsBox = await results.locator('.words').boundingBox();
+    expect(Math.abs((chartBox?.height ?? 0) - (wordsBox?.height ?? 0))).toBeLessThan(2);
     await expect(results.locator('[data-chart] .chart__error')).not.toHaveCount(0);
     await expect(results.locator('[data-chart-desc]')).toContainText('Seconds with errors: 1');
     await expect(results.locator('[data-slowest] a').first()).toHaveAttribute(

@@ -23,8 +23,10 @@ import {
 
 type Ending = Exclude<RunStatus, 'playing'>;
 
-/** Words shown before "Show all". */
+/** Words shown before "Show all" when the words card sits under the chart. */
 const WORDS_SHOWN = 12;
+/** Same breakpoint as PlayResults.astro: chart and words side by side. */
+const SIDE_BY_SIDE = '(width >= 48rem)';
 const GLYPHS: Record<GameScript, string> = { hiragana: 'あ', katakana: 'ア', kanji: '字' };
 const KATAKANA = /[ァ-ヺ]/u;
 
@@ -119,11 +121,11 @@ export class Results {
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') !== 'true';
       toggle.setAttribute('aria-expanded', String(expanded));
-      toggle.textContent = this.wordsToggleLabel(expanded);
-      for (const [index, item] of [...root.querySelectorAll('[data-words] li')].entries()) {
-        (item as HTMLElement).hidden = !expanded && index >= WORDS_SHOWN;
-      }
+      required(root, '.words').classList.toggle('is-expanded', expanded);
+      this.fitWords();
     });
+    // The list's height comes from the chart beside it; refit when it changes.
+    new ResizeObserver(() => this.fitWords()).observe(required(root, '[data-words]'));
 
     this.svg.addEventListener('pointermove', (event) => this.hover(event));
     this.svg.addEventListener('pointerleave', () => this.hideTip());
@@ -230,7 +232,7 @@ export class Results {
     const locale = document.documentElement.lang === 'es' ? 'es' : 'en';
     const words = wordList(run.log);
     list.replaceChildren(
-      ...words.map((word, index) => {
+      ...words.map((word) => {
         const li = (template.content.firstElementChild as HTMLElement).cloneNode(
           true,
         ) as HTMLElement;
@@ -243,23 +245,42 @@ export class Results {
         required(li, '[data-word-count]').textContent = count > 1 ? `×${count}` : '';
         required<HTMLElement>(li, '[data-word-missed]').hidden = word.missed === 0;
         li.classList.toggle('is-missed', word.missed > 0);
-        li.hidden = index >= WORDS_SHOWN;
         return li;
       }),
     );
     required(this.root, '[data-words-count]').textContent = this.label('words.count', {
       count: summary.popped,
     });
-    const toggle = required<HTMLButtonElement>(this.root, '[data-words-toggle]');
-    toggle.hidden = words.length <= WORDS_SHOWN;
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.textContent = this.wordsToggleLabel(false);
+    required(this.root, '[data-words-toggle]').setAttribute('aria-expanded', 'false');
+    required(this.root, '.words').classList.remove('is-expanded');
     required<HTMLElement>(this.root, '[data-words-empty]').hidden = words.length > 0;
+    this.fitWords();
   }
 
-  private wordsToggleLabel(expanded: boolean): string {
-    const total = this.root.querySelectorAll('[data-words] li').length;
-    return expanded ? this.label('words.less') : this.label('words.all', { count: total });
+  /**
+   * Folded, the words card is as tall as the chart beside it and shows the words that
+   * fit; stacked under the chart (narrow screens) it shows the first 12.
+   */
+  private fitWords(): void {
+    const list = required<HTMLElement>(this.root, '[data-words]');
+    const toggle = required<HTMLButtonElement>(this.root, '[data-words-toggle]');
+    const items = [...list.children] as HTMLElement[];
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    for (const item of items) item.hidden = false;
+    let shown = items.length;
+    if (!expanded && matchMedia(SIDE_BY_SIDE).matches) {
+      const overflow = items.findIndex(
+        (item) => item.offsetTop + item.offsetHeight > list.clientHeight,
+      );
+      if (overflow !== -1) shown = overflow;
+    } else if (!expanded) {
+      shown = Math.min(WORDS_SHOWN, items.length);
+    }
+    items.forEach((item, index) => (item.hidden = index >= shown));
+    toggle.hidden = !expanded && shown >= items.length;
+    toggle.textContent = expanded
+      ? this.label('words.less')
+      : this.label('words.all', { count: items.length });
   }
 
   private fillSlowest(run: Run): void {

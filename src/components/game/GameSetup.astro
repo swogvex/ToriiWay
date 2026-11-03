@@ -67,21 +67,23 @@ const labels = Object.fromEntries([
     method="get"
     data-setup-form
   >
-    <fieldset class="setup__group">
-      <legend class="setup__legend">{t('game.step.script')}</legend>
-      <div class="setup__cards setup__cards--3">
-        {GAME_SCRIPTS.map((script) => (
-          <label class="choice">
-            <input type="radio" name="script" value={script} checked={script === 'hiragana'} />
-            <span class="choice__glyph" lang="ja" aria-hidden="true">
-              {glyphs[script]}
-            </span>
-            <span class="choice__name">{t(`game.script.${script}`)}</span>
-            <span class="choice__note">{t(`game.script.${script}.note`)}</span>
-          </label>
-        ))}
-      </div>
-    </fieldset>
+    <div class="setup__section">
+      <fieldset class="setup__group">
+        <legend class="setup__legend">{t('game.step.script')}</legend>
+        <div class="setup__cards setup__cards--3">
+          {GAME_SCRIPTS.map((script) => (
+            <label class="choice">
+              <input type="radio" name="script" value={script} checked={script === 'hiragana'} />
+              <span class="choice__glyph" lang="ja" aria-hidden="true">
+                {glyphs[script]}
+              </span>
+              <span class="choice__name">{t(`game.script.${script}`)}</span>
+              <span class="choice__note">{t(`game.script.${script}.note`)}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    </div>
 
     <div class="setup__pair">
       <div class="setup__group">
@@ -122,48 +124,50 @@ const labels = Object.fromEntries([
       </fieldset>
     </div>
 
-    <fieldset class="setup__group">
-      <legend class="setup__legend">{t('game.step.options')}</legend>
-      <div class="setup__access">
-        <input type="hidden" name="sound" value="0" />
-        <label class="check">
-          <input type="checkbox" name="sound" value="1" data-sound />
-          {t('game.option.sound')}
-        </label>
-        <div class="setup__check-note">
-          <input type="hidden" name="reduce" value="0" />
+    <div class="setup__section">
+      <fieldset class="setup__group">
+        <legend class="setup__legend">{t('game.step.options')}</legend>
+        <div class="setup__access">
+          <input type="hidden" name="sound" value="0" />
           <label class="check">
-            <input
-              type="checkbox"
-              name="reduce"
-              value="1"
-              aria-describedby="reduce-note"
-              data-reduce
-            />
-            {t('game.option.reduce')}
+            <input type="checkbox" name="sound" value="1" data-sound />
+            {t('game.option.sound')}
           </label>
-          <p id="reduce-note" class="setup__note-small">
-            {t('game.option.reduce.note')}
-          </p>
+          <div class="setup__check-note">
+            <input type="hidden" name="reduce" value="0" />
+            <label class="check">
+              <input
+                type="checkbox"
+                name="reduce"
+                value="1"
+                aria-describedby="reduce-note"
+                data-reduce
+              />
+              {t('game.option.reduce')}
+            </label>
+            <p id="reduce-note" class="setup__note-small">
+              {t('game.option.reduce.note')}
+            </p>
+          </div>
+          <div class="setup__check-note">
+            <input type="hidden" name="cues" value="0" />
+            <label class="check">
+              <input type="checkbox" name="cues" value="1" aria-describedby="cues-note" />
+              {t('game.option.cues')}
+            </label>
+            <p id="cues-note" class="setup__note-small">
+              {t('game.option.cues.note')}
+            </p>
+          </div>
+          <Segmented
+            name="size"
+            legend={t('game.option.size')}
+            value="m"
+            options={TEXT_SIZES.map((value) => ({ value, label: t(`game.size.${value}`) }))}
+          />
         </div>
-        <div class="setup__check-note">
-          <input type="hidden" name="cues" value="0" />
-          <label class="check">
-            <input type="checkbox" name="cues" value="1" aria-describedby="cues-note" />
-            {t('game.option.cues')}
-          </label>
-          <p id="cues-note" class="setup__note-small">
-            {t('game.option.cues.note')}
-          </p>
-        </div>
-        <Segmented
-          name="size"
-          legend={t('game.option.size')}
-          value="m"
-          options={TEXT_SIZES.map((value) => ({ value, label: t(`game.size.${value}`) }))}
-        />
-      </div>
-    </fieldset>
+      </fieldset>
+    </div>
 
     <section class="setup__group" aria-labelledby="challenges-title">
       <h2 id="challenges-title" class="setup__legend">
@@ -255,7 +259,7 @@ const labels = Object.fromEntries([
 <style>
   .setup {
     display: grid;
-    gap: var(--space-10);
+    gap: var(--space-8);
     padding-block: var(--space-10) var(--space-16);
   }
 
@@ -294,9 +298,18 @@ const labels = Object.fromEntries([
     font-variant-numeric: tabular-nums;
   }
 
+  /*
+   * One compact column: sections are split by a hairline on their wrappers (a
+   * fieldset's legend would sit on its own border), and no side borders.
+   */
   .setup__form {
     display: grid;
-    gap: var(--space-10);
+  }
+
+  .setup__form > * + * {
+    padding-block-start: var(--space-6);
+    margin-block-start: var(--space-6);
+    background: linear-gradient(var(--line), var(--line)) top / 100% 1px no-repeat;
   }
 
   .setup__group {
@@ -328,8 +341,20 @@ const labels = Object.fromEntries([
 
   .setup__pair {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    gap: var(--space-8);
+    gap: var(--space-6);
+  }
+
+  /* Difficulty and mode side by side, with a line between them. */
+  @media (width >= 48rem) {
+    .setup__pair {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: var(--space-8);
+    }
+
+    .setup__pair > :first-child {
+      padding-inline-end: var(--space-8);
+      border-inline-end: 1px solid var(--line);
+    }
   }
 
   .choice {
@@ -337,7 +362,7 @@ const labels = Object.fromEntries([
     display: grid;
     align-content: start;
     gap: var(--space-1);
-    padding: var(--space-5);
+    padding: var(--space-4) var(--space-5);
     background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: var(--radius-card);
@@ -356,7 +381,7 @@ const labels = Object.fromEntries([
 
   .choice input {
     position: absolute;
-    inset-block-start: var(--space-5);
+    inset-block-start: var(--space-4);
     inset-inline-end: var(--space-5);
     inline-size: 20px;
     block-size: 20px;
@@ -365,9 +390,9 @@ const labels = Object.fromEntries([
   }
 
   .choice__glyph {
-    margin-block-end: var(--space-4);
+    margin-block-end: var(--space-2);
     font-family: var(--font-display-ja);
-    font-size: var(--text-display);
+    font-size: var(--text-3xl);
     font-weight: 700;
     line-height: 1;
   }
@@ -419,7 +444,7 @@ const labels = Object.fromEntries([
 
   .grid th,
   .grid td {
-    padding: var(--space-4) var(--space-5);
+    padding: var(--space-3) var(--space-5);
     text-align: start;
     border-block-start: 1px solid var(--line);
   }
@@ -460,8 +485,6 @@ const labels = Object.fromEntries([
     gap: var(--space-6);
     align-items: center;
     justify-content: space-between;
-    padding-block-start: var(--space-8);
-    border-block-start: 1px solid var(--line);
   }
 
   .setup__options {
@@ -473,9 +496,15 @@ const labels = Object.fromEntries([
 
   .setup__access {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     gap: var(--space-4) var(--space-8);
     align-items: start;
+  }
+
+  /* Three options in a row, bubble text size under the first. */
+  @media (width >= 48rem) {
+    .setup__access {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   .setup__check-note {

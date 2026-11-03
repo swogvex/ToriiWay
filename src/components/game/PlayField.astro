@@ -36,6 +36,9 @@ const setupHref = localizePath('/game', locale);
     </div>
     <div class="stage__panel" data-panel="countdown" hidden>
       <p class="stage__count" lang="ja" aria-hidden="true" data-count></p>
+      <p class="stage__title" data-press-key hidden>
+        {t('game.play.pressKey')}
+      </p>
       <p class="stage__intro">{t('game.play.intro')}</p>
     </div>
     <div class="stage__panel" data-panel="paused" hidden>
@@ -59,7 +62,6 @@ const setupHref = localizePath('/game', locale);
 </div>
 
 <label class="entry" for="play-input">
-  <span class="entry__label">{t('game.play.input')}</span>
   <span class="entry__typed" aria-hidden="true">
     <span data-typed></span>
     <span class="entry__wrong" data-wrong></span>
@@ -92,6 +94,7 @@ const setupHref = localizePath('/game', locale);
 
   .field {
     position: relative;
+    isolation: isolate;
     overflow: hidden;
     flex: 1;
     inline-size: 100%;
@@ -195,14 +198,6 @@ const setupHref = localizePath('/game', locale);
     border-block-end-color: var(--info);
   }
 
-  .entry__label {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-  }
-
   .entry__typed {
     display: inline-flex;
     min-inline-size: 1ch;
@@ -263,7 +258,9 @@ const setupHref = localizePath('/game', locale);
     padding: var(--space-1) var(--space-5);
     background: var(--bg);
     border: 2px solid var(--ink);
-    border-radius: var(--radius-pill);
+
+    /* Soft corners, not a pill; they scale with the text size below. */
+    border-radius: var(--radius-card);
   }
 
   .field :global(.bubble__text) {
@@ -285,6 +282,14 @@ const setupHref = localizePath('/game', locale);
 
   :global([data-size='l']) .field :global(.bubble__text) {
     font-size: var(--text-2xl);
+  }
+
+  :global([data-size='s']) .field :global(.bubble__pill) {
+    border-radius: var(--radius-control);
+  }
+
+  :global([data-size='l']) .field :global(.bubble__pill) {
+    border-radius: calc(var(--radius-card) + 4px);
   }
 
   /* Measures a bubble row once (src/game/field.ts); never seen. */

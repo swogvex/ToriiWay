@@ -355,7 +355,6 @@ const stats = [
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: var(--space-5);
-    align-items: start;
   }
 
   .results__card {
@@ -483,9 +482,29 @@ const stats = [
     display: none;
   }
 
+  /*
+   * Folded, the words card takes the chart's height (contain: size keeps its own content
+   * out of the row height) and src/game/results.ts hides the words that do not fit.
+   */
+  @media (width >= 48rem) {
+    .words:not(.is-expanded) {
+      contain: size;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .words:not(.is-expanded) .words__list {
+      flex: 1 1 auto;
+      min-block-size: 0;
+      overflow: hidden;
+    }
+  }
+
   .words__list {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+    align-content: flex-start;
     gap: var(--space-2);
     padding: 0;
     margin: 0;
