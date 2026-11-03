@@ -36,15 +36,18 @@ const ansi = new Set(KEY_ROWS.ansi.flat());
 </div>
 
 <style>
+  /* Keys scale with the window height (32–48px) so the game fits without scrolling. */
   .keyboard {
+    --key-size: clamp(32px, 5svh, 48px);
+
     display: grid;
-    gap: var(--space-2);
+    gap: calc(var(--key-size) / 6);
     justify-items: center;
   }
 
   .keyboard__row {
     display: flex;
-    gap: var(--space-2);
+    gap: calc(var(--key-size) / 6);
   }
 
   .key {
@@ -52,8 +55,8 @@ const ansi = new Set(KEY_ROWS.ansi.flat());
     display: grid;
     place-items: center;
     overflow: hidden;
-    inline-size: 48px;
-    block-size: 48px;
+    inline-size: var(--key-size);
+    block-size: var(--key-size);
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-md);
@@ -66,7 +69,7 @@ const ansi = new Set(KEY_ROWS.ansi.flat());
   }
 
   .key--space {
-    inline-size: 296px;
+    inline-size: calc(var(--key-size) * 6.2);
   }
 
   .key__flash {

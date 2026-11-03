@@ -82,16 +82,19 @@ const setupHref = localizePath('/game', locale);
 </p>
 
 <style>
+  /* Up to 440px tall; on short windows it gives up height so the page needs no scroll. */
   .stage {
     position: relative;
+    display: flex;
+    flex: 0 1 440px;
+    min-block-size: 200px;
   }
 
   .field {
     position: relative;
     overflow: hidden;
+    flex: 1;
     inline-size: 100%;
-    max-block-size: min(440px, 48svh);
-    aspect-ratio: 1000 / 440;
     background: var(--bg);
     border: 1px solid var(--line-strong);
     border-inline-width: 3px;
@@ -174,8 +177,8 @@ const setupHref = localizePath('/game', locale);
     display: flex;
     gap: var(--space-3);
     align-items: baseline;
+    align-self: center;
     justify-content: center;
-    justify-self: center;
     min-inline-size: min(100%, 500px);
     min-block-size: var(--target-min);
     padding-block-end: var(--space-2);
