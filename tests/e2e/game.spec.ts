@@ -157,6 +157,19 @@ test.describe('Kana Rush play', () => {
     const chartBox = await results.locator('.chart').boundingBox();
     const wordsBox = await results.locator('.words').boundingBox();
     expect(Math.abs((chartBox?.height ?? 0) - (wordsBox?.height ?? 0))).toBeLessThan(2);
+    // A long list, expanded, grows the words card only; the chart keeps its height.
+    await results.locator('.words').evaluate((card) => {
+      const list = card.querySelector('[data-words]');
+      for (let index = 0; index < 60; index += 1) {
+        list?.append(Object.assign(document.createElement('li'), { textContent: `word ${index}` }));
+      }
+      card.classList.add('is-expanded');
+    });
+    const expandedChart = await results.locator('.chart').boundingBox();
+    const expandedWords = await results.locator('.words').boundingBox();
+    expect(expandedWords?.height ?? 0).toBeGreaterThan((chartBox?.height ?? 0) + 50);
+    expect(Math.abs((expandedChart?.height ?? 0) - (chartBox?.height ?? 0))).toBeLessThan(2);
+    await results.locator('.words').evaluate((card) => card.classList.remove('is-expanded'));
     await expect(results.locator('[data-chart] .chart__error')).not.toHaveCount(0);
     await expect(results.locator('[data-chart-desc]')).toContainText('Seconds with errors: 1');
     await expect(results.locator('[data-slowest] a').first()).toHaveAttribute(

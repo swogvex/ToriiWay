@@ -214,5 +214,14 @@ const large = new Set<SectionId>(['game', 'learn']);
     .index-card--game .index-card__glyph {
       color: var(--accent);
     }
+
+    /*
+     * The ink card already has an ink border, so hover draws a ring around it with a
+     * gap of page background: same signal as the other cards in both themes.
+     */
+    .index-card--game:hover {
+      outline: 1px solid var(--ink);
+      outline-offset: 3px;
+    }
   }
 </style>

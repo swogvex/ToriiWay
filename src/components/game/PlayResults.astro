@@ -357,6 +357,11 @@ const stats = [
     gap: var(--space-5);
   }
 
+  /* Expanded, the words card grows down on its own; the chart keeps its height. */
+  .results__pair:has(.words.is-expanded) {
+    align-items: start;
+  }
+
   .results__card {
     display: grid;
     gap: var(--space-4);
