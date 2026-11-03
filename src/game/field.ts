@@ -1,7 +1,6 @@
-import { toRomaji } from 'wanakana';
-
 import { fitLanes, LANES } from './config';
 import { filledChars } from './fill';
+import { romajiHint } from './romaji';
 import { type Bubble, Run, type RunEvent } from './run';
 
 interface View {
@@ -164,7 +163,7 @@ export class Field {
       return span;
     });
     view.text.replaceChildren(...view.chars);
-    view.hint.textContent = toRomaji(bubble.item.reading);
+    view.hint.textContent = romajiHint(bubble.item.reading);
     view.danger = false;
     view.el.hidden = false;
     view.width = view.el.offsetWidth;

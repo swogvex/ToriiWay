@@ -89,3 +89,69 @@ function canComplete(pending: string, rest: string): boolean {
     return kana !== '' && !LATIN.test(kana) && rest.startsWith(kana);
   });
 }
+
+/**
+ * Kana WanaKana's toRomaji spells in a way the converter would not accept back
+ * ("ティ" → "tei"), with the romaji to type instead. Keys are hiragana.
+ */
+const EXTENDED: Readonly<Record<string, string>> = {
+  てぃ: 'thi',
+  でぃ: 'dhi',
+  でゅ: 'dhu',
+  とぅ: 'twu',
+  どぅ: 'dwu',
+  ふぁ: 'fa',
+  ふぃ: 'fi',
+  ふぇ: 'fe',
+  ふぉ: 'fo',
+  うぃ: 'wi',
+  うぇ: 'we',
+  うぉ: 'who',
+  ゔぁ: 'va',
+  ゔぃ: 'vi',
+  ゔぇ: 've',
+  ゔぉ: 'vo',
+  ゔ: 'vu',
+  つぁ: 'tsa',
+};
+
+/**
+ * The romaji shown as a hint (under a bubble, in the results): what the player can
+ * type to complete the reading. ー repeats the vowel before it ("raamen").
+ */
+export function romajiHint(reading: string): string {
+  const kana = typingForm(reading);
+  let out = '';
+  let plain = '';
+  const flush = () => {
+    if (plain) out += toRomaji(plain);
+    plain = '';
+  };
+  for (let index = 0; index < kana.length; index++) {
+    const pair = kana.slice(index, index + 2);
+    const char = kana.charAt(index);
+    const extended = EXTENDED[pair] ?? EXTENDED[char];
+    if (extended) {
+      // っ before an extended kana doubles its first consonant ("ッフィ" → "ffi").
+      const doubled = plain.endsWith('っ');
+      if (doubled) plain = plain.slice(0, -1);
+      flush();
+      out += (doubled ? extended.charAt(0) : '') + extended;
+      if (EXTENDED[pair]) index += 1;
+    } else if (char === 'ー') {
+      flush();
+      const last = out.slice(-1);
+      out += VOWELS.includes(last) ? last : '-';
+    } else {
+      plain += char;
+    }
+  }
+  flush();
+  return out;
+}
+
+/** True when the hint is plain romaji and typing it completes the reading. */
+export function typeable(reading: string): boolean {
+  const hint = romajiHint(reading);
+  return /^[a-z'-]+$/.test(hint) && matchRomaji(reading, hint).status === 'done';
+}
