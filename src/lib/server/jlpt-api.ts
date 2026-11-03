@@ -16,6 +16,7 @@ import {
   type RunRecord,
 } from '../jlpt/run';
 import type { RunStore } from '../jlpt/store';
+import type { EmailMessage } from './email';
 import { assertSameOrigin, HttpError, json, readJson } from './http';
 
 export interface JlptDeps {
@@ -29,6 +30,8 @@ export interface JlptDeps {
   newSeed: () => number;
   /** Checks a Turnstile token for this request. */
   verifyHuman: (token: string) => Promise<boolean>;
+  /** Sends an email; false when it could not be sent. */
+  sendEmail: (message: EmailMessage) => Promise<boolean>;
 }
 
 const HOUR = 60 * 60 * 1000;

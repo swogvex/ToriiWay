@@ -34,6 +34,9 @@ export const jlptRuns = pgTable(
     nickname: text('nickname'),
     /** Optional name the player chose for the score report. */
     name: text('name'),
+    /** Only after the player asks for the results email; cleared 30 days after sending. */
+    email: text('email'),
+    emailSentAt: time('email_sent_at'),
     createdAt: time('created_at').notNull(),
     finishedAt: time('finished_at'),
     expiresAt: time('expires_at').notNull(),

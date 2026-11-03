@@ -36,6 +36,8 @@ export default defineConfig({
       }),
       ADMIN_USER: envField.string({ context: 'server', access: 'secret', optional: true }),
       ADMIN_PASSWORD_HASH: envField.string({ context: 'server', access: 'secret', optional: true }),
+      RESEND_API_KEY: envField.string({ context: 'server', access: 'secret', optional: true }),
+      CRON_SECRET: envField.string({ context: 'server', access: 'secret', optional: true }),
       /** e2e and local previews: keep JLPT runs in memory instead of Postgres. */
       JLPT_MEMORY_STORE: envField.boolean({ context: 'server', access: 'secret', default: false }),
     },

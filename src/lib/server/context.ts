@@ -6,11 +6,13 @@ import {
   DATABASE_URL,
   IP_HASH_SALT,
   JLPT_MEMORY_STORE,
+  RESEND_API_KEY,
   TURNSTILE_SECRET_KEY,
 } from 'astro:env/server';
 
 import type { BankMondai } from '../jlpt/paper';
 import { memoryStore, type RunStore } from '../jlpt/store';
+import { sendWithResend, type EmailMessage } from './email';
 import { hashIp, HttpError } from './http';
 import { secretFor, verifyTurnstile } from './turnstile';
 import type { JlptDeps } from './jlpt-api';
@@ -53,6 +55,18 @@ function clientIp(context: RequestContext): string {
 /** What an API route or a server-rendered page provides. */
 type RequestContext = Pick<APIContext, 'site' | 'request' | 'clientAddress'>;
 
+/** Resend in production; elsewhere without a key, the email is only logged. */
+async function sendEmail(message: EmailMessage): Promise<boolean> {
+  if (RESEND_API_KEY) return sendWithResend(RESEND_API_KEY, message);
+  if (import.meta.env.DEV || JLPT_MEMORY_STORE) {
+    console.info(
+      `[email] (not sent, no RESEND_API_KEY) to=${message.to} subject=${message.subject}`,
+    );
+    return true;
+  }
+  return false;
+}
+
 export async function jlptDeps(context: RequestContext): Promise<JlptDeps> {
   return {
     store: await getStore(),
@@ -68,5 +82,6 @@ export async function jlptDeps(context: RequestContext): Promise<JlptDeps> {
         secretFor(process.env.VERCEL_ENV, TURNSTILE_SECRET_KEY),
         clientIp(context),
       ),
+    sendEmail,
   };
 }

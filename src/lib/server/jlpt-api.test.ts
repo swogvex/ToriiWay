@@ -44,6 +44,7 @@ beforeEach(() => {
     newId: () => (ids++ === 0 ? ID : crypto.randomUUID()),
     newSeed: () => 1234,
     verifyHuman: async (token) => token === 'human',
+    sendEmail: async () => true,
   };
 });
 
