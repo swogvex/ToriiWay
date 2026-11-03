@@ -87,7 +87,7 @@ describe('JLPT API', () => {
       clock += 5 * 60 * SECOND;
       const submitted = await answerSection(1);
       expect(submitted.status).toBe(200);
-      const state = (await submitted.json()) as { status: string };
+      const state = (await submitted.json()) as { status: string; scores: unknown };
       if (section < 2) {
         expect(state.status).toBe('break');
         clock += TIMING.breakMin * SECOND;
@@ -100,7 +100,7 @@ describe('JLPT API', () => {
         );
         expect(next.status).toBe(200);
       } else {
-        expect(state.status).toBe('finished');
+        expect(state).toMatchObject({ status: 'finished', scores: { total: 180, passed: true } });
       }
     }
     const stored = await deps.store.getRun(ID);

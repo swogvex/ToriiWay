@@ -1,0 +1,273 @@
+---
+/**
+ * Break between sections (artboard 13): a mandatory minute shown as a ring, an optional
+ * rest up to 15 minutes, the section summary and a "how did it feel" question.
+ * src/lib/jlpt/exam/break.ts drives it.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+const ratings = ['easy', 'right', 'hard'] as const;
+---
+
+<section class="pause column" aria-labelledby="jlpt-break-title" data-break hidden>
+  <div class="pause__main">
+    <p class="pause__kicker" data-break-kicker></p>
+    <h1 class="pause__title" id="jlpt-break-title" tabindex="-1" data-break-title>
+      {t('jlpt.title')}
+    </h1>
+    <p class="pause__text" data-break-text></p>
+
+    <div class="pause__timer">
+      <div class="ring">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle class="ring__track" cx="50" cy="50" r="46"></circle>
+          <circle class="ring__bar" cx="50" cy="50" r="46" pathLength="1" data-ring></circle>
+        </svg>
+        <p class="ring__time">
+          <span data-ring-time>1:00</span>
+          <span class="ring__of" data-ring-of></span>
+        </p>
+      </div>
+      <div class="pause__go">
+        <Button variant="primary" size={52} disabled data-continue>
+          <span data-continue-label></span>
+          <Icon name="arrow-right" size={20} />
+        </Button>
+        <p class="pause__rest" data-rest></p>
+      </div>
+    </div>
+
+    <form class="feel" data-feel>
+      <fieldset>
+        <legend class="feel__title">{t('jlpt.break.feel')}</legend>
+        <div class="feel__options">
+          {ratings.map((rating) => (
+            <button type="button" class="feel__option" aria-pressed="false" data-rating={rating}>
+              {t(`jlpt.break.${rating}`)}
+            </button>
+          ))}
+        </div>
+      </fieldset>
+      <p class="feel__thanks" role="status" data-feel-thanks></p>
+    </form>
+  </div>
+
+  <ol class="summary" data-summary></ol>
+</section>
+
+<style>
+  .pause {
+    display: grid;
+    gap: var(--space-10);
+    align-content: start;
+    padding-block: var(--space-12);
+  }
+
+  .pause[hidden] {
+    display: none;
+  }
+
+  @media (width >= 60rem) {
+    .pause {
+      grid-template-columns: minmax(0, 1fr) 20rem;
+    }
+  }
+
+  .pause__main {
+    display: grid;
+    gap: var(--space-6);
+    align-content: start;
+  }
+
+  .pause__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .pause__title {
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+  }
+
+  .pause__title:focus {
+    outline: none;
+  }
+
+  .pause__text {
+    max-inline-size: 52ch;
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+
+  .pause__timer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .ring {
+    position: relative;
+    inline-size: 160px;
+    block-size: 160px;
+  }
+
+  .ring svg {
+    inline-size: 100%;
+    block-size: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring circle {
+    fill: none;
+    stroke-width: 6;
+  }
+
+  .ring__track {
+    stroke: var(--line);
+  }
+
+  .ring__bar {
+    stroke: var(--ink);
+    stroke-dasharray: 1;
+    stroke-dashoffset: calc(1 - var(--progress, 0));
+    stroke-linecap: round;
+  }
+
+  .ring__time {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+
+  .ring__of {
+    color: var(--muted);
+    font-size: var(--text-xs);
+  }
+
+  .pause__go {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .pause__rest {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .feel {
+    padding: var(--space-5) var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .feel fieldset {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .feel__title {
+    padding: 0;
+    margin-block-end: var(--space-3);
+    font-weight: 700;
+  }
+
+  .feel__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .feel__option {
+    min-block-size: var(--target-min);
+    padding: var(--space-2) var(--space-5);
+    color: var(--ink);
+    font: inherit;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    cursor: pointer;
+  }
+
+  .feel__option[aria-pressed='true'] {
+    color: var(--bg);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .feel__thanks {
+    margin-block-start: var(--space-3);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .feel__thanks:empty {
+    display: none;
+  }
+
+  .summary {
+    align-self: start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .summary :global(li) {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5);
+    color: var(--muted);
+  }
+
+  .summary :global(li + li) {
+    border-block-start: 1px solid var(--line);
+  }
+
+  .summary :global(li[data-done]) {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .summary :global(li[data-next]) {
+    color: var(--ink);
+    font-weight: 700;
+    background: var(--bg);
+  }
+
+  .summary :global(.summary__meta) {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 400;
+  }
+
+  .summary :global(li[data-next] .summary__meta) {
+    flex: none;
+    color: var(--accent-ink);
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ring__bar {
+      transition: stroke-dashoffset 1s linear;
+    }
+  }
+</style>

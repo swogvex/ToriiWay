@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+import JlptStart from '../../components/jlpt/JlptStart.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { JLPT_LEVELS } from '../../lib/jlpt/levels';
+import { BankError, buildPaper } from '../../lib/jlpt/paper';
+import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+
+// A level is offered once its bank can build a full paper.
+const bank = (await getCollection('jlpt')).map((entry) => entry.data);
+const available = JLPT_LEVELS.filter((level) => {
+  try {
+    buildPaper(level, 1, bank);
+    return true;
+  } catch (error) {
+    if (error instanceof BankError) return false;
+    throw error;
+  }
+});
+
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('nav.jlpt') },
+];
+const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pathname, site)));
+---
+
+<BaseLayout
+  title={`${t('jlpt.title')} · ${t('site.name')}`}
+  description={t('jlpt.description')}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+>
+  <JlptStart available={available} />
+</BaseLayout>
