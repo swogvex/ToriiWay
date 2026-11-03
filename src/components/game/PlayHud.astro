@@ -1,0 +1,153 @@
+---
+/**
+ * Kana Rush HUD (artboard 06): pause, mode label, live stats, timer pill, life bar and
+ * time bar. src/game/hud.ts fills the values and builds one life segment per life.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import IconButton from '../ui/IconButton.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<div class="hud">
+  <div class="hud__top">
+    <IconButton icon="pause" label={t('game.pause')} variant="outline" size={48} data-pause />
+    <p class="hud__mode" data-mode-label></p>
+    <dl class="hud__stats">
+      <div>
+        <dt>{t('game.hud.wpm')}</dt>
+        <dd data-wpm>0</dd>
+      </div>
+      <div>
+        <dt>{t('game.hud.acc')}</dt>
+        <dd data-acc>100%</dd>
+      </div>
+      <div>
+        <dt>{t('game.hud.popped')}</dt>
+        <dd data-hud-popped>0</dd>
+      </div>
+    </dl>
+    <p class="hud__timer">
+      <span class="visually-hidden">{t('game.hud.time')}</span>
+      <span data-time>00:00</span>
+    </p>
+  </div>
+
+  <div class="hud__row">
+    <span class="hud__label" aria-hidden="true">
+      {t('game.hud.life')}
+    </span>
+    <div class="hud__life" data-life-bar aria-hidden="true"></div>
+    <span class="hud__count">
+      <span class="visually-hidden">{t('game.hud.life')}</span>
+      <span data-hud-lives>–</span>
+    </span>
+  </div>
+  <div class="hud__row" aria-hidden="true">
+    <span class="hud__label">{t('game.hud.time')}</span>
+    <div class="hud__progress">
+      <span class="hud__progress-fill" data-progress></span>
+    </div>
+    <span class="hud__count" data-progress-label>
+      0%
+    </span>
+  </div>
+</div>
+
+<style>
+  .hud {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .hud__top {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .hud__mode,
+  .hud__label,
+  .hud__stats dt {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .hud__mode {
+    flex: 1;
+  }
+
+  .hud__stats {
+    display: flex;
+    gap: var(--space-8);
+    text-align: center;
+  }
+
+  .hud__stats dt {
+    font-size: var(--text-xs);
+  }
+
+  .hud__stats dd {
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hud__timer {
+    padding: var(--space-2) var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-pill);
+  }
+
+  .hud__row {
+    display: grid;
+    grid-template-columns: 5rem 1fr 3.5rem;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .hud__count {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    text-align: end;
+  }
+
+  .hud__life {
+    display: flex;
+    gap: var(--space-1);
+  }
+
+  .hud__life :global(span) {
+    flex: 1;
+    block-size: 8px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
+  .hud__life :global(span.is-lost) {
+    background: var(--line-strong);
+  }
+
+  .hud__progress {
+    overflow: hidden;
+    block-size: 4px;
+    background: var(--line-strong);
+    border-radius: 2px;
+  }
+
+  .hud__progress-fill {
+    display: block;
+    block-size: 100%;
+    background: var(--info);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+</style>

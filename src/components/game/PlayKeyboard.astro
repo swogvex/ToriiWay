@@ -1,0 +1,97 @@
+---
+/**
+ * Monkeytype-style keyboard that lights the pressed key (src/game/keyboard.ts).
+ * Decorative for screen readers: the real input is the hidden field.
+ * Rendered as ISO-ES; ANSI hides the ñ key.
+ */
+import { KEY_ROWS } from '../../game/keyboard';
+import { getLocale, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+const ansi = new Set(KEY_ROWS.ansi.flat());
+---
+
+<div class="keyboard" data-keyboard data-layout="ansi" aria-hidden="true">
+  {KEY_ROWS['iso-es'].map((row) => (
+    <div class="keyboard__row">
+      {row.map((key) => (
+        <span class="key" data-key={key} data-iso={ansi.has(key) ? undefined : ''}>
+          <span class="key__flash" data-flash />
+          <span class="key__label">{key}</span>
+        </span>
+      ))}
+    </div>
+  ))}
+  <div class="keyboard__row">
+    <span class="key key--space"></span>
+  </div>
+</div>
+
+<div class="hints">
+  <p>{[t('game.hint.pause'), t('game.hint.restart'), t('game.hint.backspace')].join(' · ')}</p>
+  <Button variant="ghost" size={40} data-restart>
+    {t('game.restart')}
+  </Button>
+</div>
+
+<style>
+  .keyboard {
+    display: grid;
+    gap: var(--space-2);
+    justify-items: center;
+  }
+
+  .keyboard__row {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .key {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    inline-size: 48px;
+    block-size: 48px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    background: var(--key);
+    border-radius: var(--radius-control);
+  }
+
+  .keyboard[data-layout='ansi'] [data-iso] {
+    display: none;
+  }
+
+  .key--space {
+    inline-size: 296px;
+  }
+
+  .key__flash {
+    position: absolute;
+    inset: 0;
+    background: var(--info);
+    opacity: 0;
+  }
+
+  .key[data-state='wrong'] .key__flash {
+    background: var(--accent);
+  }
+
+  .key__label {
+    position: relative;
+  }
+
+  .hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+</style>

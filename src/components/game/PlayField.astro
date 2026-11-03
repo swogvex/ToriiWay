@@ -1,8 +1,9 @@
 ---
 /**
- * Kana Rush in play: field, bubbles (cloned from the template by src/game/field.ts),
- * a minimal status line and the input line. The field is decorative for screen
- * readers: the game is not screen-reader playable (see the accessibility statement).
+ * Kana Rush stage: the field with its bubbles (cloned from the template by
+ * src/game/field.ts), the overlay panels (countdown, pause, endings) and the input
+ * line. The field is decorative for screen readers: the game is not screen-reader
+ * playable (see the accessibility statement).
  */
 import { getLocale, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
@@ -16,116 +17,79 @@ const endings = [
 ] as const;
 ---
 
-<section class="play column" data-game aria-labelledby="play-title">
-  <h1 id="play-title" class="visually-hidden">
-    Kana Rush
-  </h1>
-
-  <p class="play__status">
-    <span>
-      <span class="play__label">{t('game.hud.lives')}</span> <span data-lives>–</span>
-    </span>
-    <span>
-      <span class="play__label">{t('game.hud.time')}</span> <span data-time>–</span>
-    </span>
-    <span>
-      <span class="play__label">{t('game.hud.popped')}</span> <span data-popped>0</span>
-    </span>
-  </p>
-
-  <div class="play__stage">
-    <div class="field" data-field aria-hidden="true">
-      <template data-bubble-template>
-        <div class="bubble" hidden>
-          <span class="bubble__pill">
-            <span class="bubble__text" lang="ja" data-text></span>
-            <span class="bubble__mark">!</span>
-          </span>
-          <Icon name="arrow-right" size={18} class="bubble__arrow" />
-          <span class="bubble__hint" data-hint></span>
-        </div>
-      </template>
-    </div>
-
-    <div class="play__overlay" data-overlay>
-      <div class="play__panel" data-panel="loading">
-        <p>{t('game.play.loading')}</p>
+<div class="stage">
+  <div class="field" data-field aria-hidden="true">
+    <template data-bubble-template>
+      <div class="bubble" hidden>
+        <span class="bubble__pill">
+          <span class="bubble__text" lang="ja" data-text></span>
+          <span class="bubble__mark">!</span>
+        </span>
+        <Icon name="arrow-right" size={18} class="bubble__arrow" />
+        <span class="bubble__hint" data-hint></span>
       </div>
-      <div class="play__panel" data-panel="start" hidden>
-        <p>{t('game.play.intro')}</p>
-        <Button variant="accent" data-start>
-          {t('game.play.start')}
+    </template>
+  </div>
+  <div class="stage__damage" data-damage aria-hidden="true"></div>
+
+  <div class="stage__overlay" data-overlay>
+    <div class="stage__panel" data-panel="loading">
+      <p>{t('game.play.loading')}</p>
+    </div>
+    <div class="stage__panel" data-panel="countdown" hidden>
+      <p class="stage__count" lang="ja" aria-hidden="true" data-count></p>
+      <p class="stage__intro">{t('game.play.intro')}</p>
+    </div>
+    <div class="stage__panel" data-panel="paused" hidden>
+      <p class="stage__title" role="status">
+        {t('game.paused')}
+      </p>
+      <div class="stage__actions">
+        <Button data-resume>{t('game.resume')}</Button>
+        <Button variant="outline" data-quit>
+          {t('game.quitRun')}
         </Button>
       </div>
-      <div class="play__panel" data-panel="unavailable" hidden>
-        <p>{t('game.play.unavailable')}</p>
-      </div>
-      {endings.map(([status, title]) => (
-        <div class="play__panel" data-panel={status} hidden>
-          <p class="play__end" role="status">
-            {title}
-          </p>
-          <Button data-start>{t('game.play.again')}</Button>
-        </div>
-      ))}
     </div>
+    <div class="stage__panel" data-panel="unavailable" hidden>
+      <p>{t('game.play.unavailable')}</p>
+    </div>
+    {endings.map(([status, title]) => (
+      <div class="stage__panel" data-panel={status} hidden>
+        <p class="stage__title" role="status">
+          {title}
+        </p>
+        <Button data-restart>{t('game.play.again')}</Button>
+      </div>
+    ))}
   </div>
+</div>
 
-  <label class="play__input" for="play-input">
-    <span class="play__label">{t('game.play.input')}</span>
-    <span class="play__typed" aria-hidden="true">
-      <span data-typed></span>
-      <span class="play__wrong" data-wrong></span>
-    </span>
-    <span class="play__kana" lang="ja" aria-hidden="true" data-typed-kana></span>
-    <input
-      id="play-input"
-      class="visually-hidden"
-      type="text"
-      autocomplete="off"
-      autocapitalize="off"
-      autocorrect="off"
-      spellcheck="false"
-      aria-label={t('game.play.inputLabel')}
-      data-input
-    />
-  </label>
-  <p class="play__focus" data-focus-note hidden>
-    {t('game.play.focus')}
-  </p>
-</section>
-
-<script>
-  import { initPlay } from '../../game/play';
-
-  const root = document.querySelector<HTMLElement>('[data-game]');
-  if (root) void initPlay(root);
-</script>
+<label class="entry" for="play-input">
+  <span class="entry__label">{t('game.play.input')}</span>
+  <span class="entry__typed" aria-hidden="true">
+    <span data-typed></span>
+    <span class="entry__wrong" data-wrong></span>
+  </span>
+  <span class="entry__kana" lang="ja" aria-hidden="true" data-typed-kana></span>
+  <input
+    id="play-input"
+    class="visually-hidden"
+    type="text"
+    autocomplete="off"
+    autocapitalize="off"
+    autocorrect="off"
+    spellcheck="false"
+    aria-label={t('game.play.inputLabel')}
+    data-input
+  />
+</label>
+<p class="entry__focus" data-focus-note hidden>
+  {t('game.play.focus')}
+</p>
 
 <style>
-  .play {
-    display: grid;
-    gap: var(--space-4);
-    padding-block: var(--space-6) var(--space-10);
-  }
-
-  .play__status {
-    display: flex;
-    gap: var(--space-6);
-    justify-content: flex-end;
-    font-family: var(--font-mono);
-    font-variant-numeric: tabular-nums;
-  }
-
-  .play__label {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-  }
-
-  .play__stage {
+  .stage {
     position: relative;
   }
 
@@ -133,30 +97,45 @@ const endings = [
     position: relative;
     overflow: hidden;
     inline-size: 100%;
-    max-block-size: 440px;
+    max-block-size: min(440px, 48svh);
     aspect-ratio: 1000 / 440;
     background: var(--bg);
     border: 1px solid var(--line-strong);
     border-inline-width: 3px;
     border-radius: var(--radius-card);
+    transition: filter var(--duration-base) var(--ease);
   }
 
-  .play__overlay {
+  .stage.is-paused .field {
+    filter: blur(12px);
+  }
+
+  /* Damage: accent vignette on the field edges, faded in and out by src/game/hud.ts. */
+  .stage__damage {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: var(--radius-card);
+    box-shadow: inset 0 0 64px 8px var(--accent);
+    opacity: 0;
+  }
+
+  .stage__overlay {
     position: absolute;
     inset: 0;
     display: grid;
     place-items: center;
     padding: var(--space-6);
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
     border-radius: var(--radius-card);
   }
 
-  .play__overlay[hidden],
-  .play__panel[hidden] {
+  .stage__overlay[hidden],
+  .stage__panel[hidden] {
     display: none;
   }
 
-  .play__panel {
+  .stage__panel {
     display: grid;
     gap: var(--space-4);
     justify-items: center;
@@ -164,12 +143,28 @@ const endings = [
     text-align: center;
   }
 
-  .play__end {
+  .stage__title {
     font-size: var(--text-xl);
     font-weight: 700;
   }
 
-  .play__input {
+  .stage__count {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .stage__intro {
+    color: var(--muted);
+  }
+
+  .stage__actions {
+    display: flex;
+    gap: var(--space-3);
+  }
+
+  .entry {
     display: flex;
     gap: var(--space-3);
     align-items: baseline;
@@ -182,32 +177,41 @@ const endings = [
     cursor: text;
   }
 
-  .play__input:focus-within {
+  .entry:focus-within {
     border-block-end-color: var(--info);
   }
 
-  .play__typed {
+  .entry__label {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .entry__typed {
+    display: inline-flex;
     min-inline-size: 1ch;
     color: var(--info);
     font-family: var(--font-mono);
     font-size: var(--text-lg);
   }
 
-  .play__wrong {
+  .entry__wrong {
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 4px;
   }
 
-  .play__kana {
+  .entry__kana {
     color: var(--muted);
   }
 
-  .play__kana:not(:empty)::before {
+  .entry__kana:not(:empty)::before {
     content: '→ ';
   }
 
-  .play__focus {
+  .entry__focus {
     color: var(--muted);
     font-size: var(--text-sm);
     text-align: center;
@@ -309,10 +313,18 @@ const endings = [
     animation: pop 150ms var(--ease) forwards;
   }
 
+  /* A bubble that reaches the far edge breaks in the accent colour. */
+  .field :global(.is-missed .bubble__pill) {
+    color: var(--accent);
+    border-color: var(--accent);
+    border-style: solid;
+    animation: shatter 320ms var(--ease) forwards;
+  }
+
   .field :global(.is-popping .bubble__arrow),
-  .field :global(.is-missed) {
+  .field :global(.is-missed .bubble__arrow),
+  .field :global(.is-missed .bubble__mark) {
     opacity: 0;
-    transition: opacity var(--duration-base) var(--ease);
   }
 
   .field :global(.pop-note) {
@@ -331,6 +343,17 @@ const endings = [
     to {
       opacity: 0;
       scale: 1.25;
+    }
+  }
+
+  @keyframes shatter {
+    30% {
+      scale: 1.08;
+    }
+
+    100% {
+      opacity: 0;
+      scale: 0.6;
     }
   }
 
