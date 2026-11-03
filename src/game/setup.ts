@@ -1,14 +1,29 @@
 import { challengeKey, type GameSetup, localGameProgress } from '../lib/progress/game';
-import { DIFFICULTIES, type Difficulty, GAME_SCRIPTS, type Mode, MODES } from './config';
+import {
+  DIFFICULTIES,
+  type Difficulty,
+  GAME_SCRIPTS,
+  type Mode,
+  MODES,
+  TEXT_SIZES,
+  type TextSize,
+} from './config';
 import { KEYBOARD_LAYOUTS, type KeyboardLayout } from './keyboard';
+import { loadCuelume } from './sound';
+
+const systemReduced = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function pick<T extends string>(value: FormDataEntryValue | null, allowed: readonly T[]): T {
   return allowed.find((item) => item === value) ?? (allowed[0] as T);
 }
 
-/** The setup the form currently shows. */
-function readForm(form: HTMLFormElement): GameSetup {
+/**
+ * The setup the form currently shows. Reduced motion stays "follow the system" (null)
+ * until the player picks something other than what the system asks for.
+ */
+function readForm(form: HTMLFormElement, stored: GameSetup): GameSetup {
   const data = new FormData(form);
+  const reduce = data.getAll('reduce').includes('1');
   return {
     script: pick(data.get('script'), GAME_SCRIPTS),
     difficulty: pick<Difficulty>(data.get('difficulty'), DIFFICULTIES),
@@ -16,19 +31,24 @@ function readForm(form: HTMLFormElement): GameSetup {
     layout: pick<KeyboardLayout>(data.get('layout'), KEYBOARD_LAYOUTS),
     hint: data.getAll('hint').includes('1'),
     meaning: data.getAll('meaning').includes('1'),
+    sound: data.getAll('sound').includes('1'),
+    reduce: stored.reduce === null && reduce === systemReduced() ? null : reduce,
+    cues: data.getAll('cues').includes('1'),
+    size: pick<TextSize>(data.get('size'), TEXT_SIZES),
   };
 }
 
 function writeForm(form: HTMLFormElement, setup: GameSetup): void {
-  for (const name of ['script', 'difficulty', 'mode', 'layout'] as const) {
+  for (const name of ['script', 'difficulty', 'mode', 'layout', 'size'] as const) {
     const input = form.querySelector<HTMLInputElement>(
       `input[name="${name}"][value="${setup[name]}"]`,
     );
     if (input) input.checked = true;
   }
-  for (const name of ['hint', 'meaning'] as const) {
+  const boxes = { ...setup, reduce: setup.reduce ?? systemReduced() };
+  for (const name of ['hint', 'meaning', 'sound', 'reduce', 'cues'] as const) {
     const box = form.querySelector<HTMLInputElement>(`input[type="checkbox"][name="${name}"]`);
-    if (box) box.checked = setup[name];
+    if (box) box.checked = boxes[name];
   }
 }
 
@@ -61,8 +81,10 @@ export function initSetup(root: HTMLElement): void {
   const clearedCount = root.querySelector<HTMLElement>('[data-cleared-count]');
   if (clearedCount) clearedCount.textContent = String(count);
 
+  let stored = progress.setup();
   const update = () => {
-    const setup = readForm(form);
+    const setup = readForm(form, stored);
+    stored = setup;
     const record = progress.best(setup.script, setup.difficulty, setup.mode);
     best.textContent = record ? String(record.wpm) : '[–]';
     bestLabel.textContent = record ? `${record.wpm} WPM` : noBest;
@@ -74,7 +96,17 @@ export function initSetup(root: HTMLElement): void {
     progress.saveSetup(setup);
   };
 
-  writeForm(form, progress.setup());
+  writeForm(form, stored);
   update();
   form.addEventListener('change', update);
+
+  // Turning sound on plays a short cue, so the player hears what they chose.
+  const soundBox = form.querySelector<HTMLInputElement>('[data-sound]');
+  soundBox?.addEventListener('change', () => {
+    if (!soundBox.checked) return;
+    void loadCuelume().then(async (lib) => {
+      await lib.unlock();
+      lib.play('toggle');
+    });
+  });
 }

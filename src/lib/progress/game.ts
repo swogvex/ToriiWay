@@ -10,6 +10,8 @@ import {
   type GameScript,
   type Mode,
   MODES,
+  TEXT_SIZES,
+  type TextSize,
 } from '../../game/config';
 import { KEYBOARD_LAYOUTS, type KeyboardLayout } from '../../game/keyboard';
 
@@ -39,6 +41,11 @@ export interface GameSetup {
   hint: boolean;
   meaning: boolean;
   layout: KeyboardLayout;
+  sound: boolean;
+  /** null follows the system's reduced-motion setting. */
+  reduce: boolean | null;
+  cues: boolean;
+  size: TextSize;
 }
 
 export const DEFAULT_SETUP: GameSetup = {
@@ -48,6 +55,10 @@ export const DEFAULT_SETUP: GameSetup = {
   hint: true,
   meaning: true,
   layout: 'ansi',
+  sound: false,
+  reduce: null,
+  cues: false,
+  size: 'm',
 };
 
 export interface GameProgress {
@@ -106,6 +117,10 @@ function parseSetup(value: unknown): GameSetup {
     hint: typeof setup.hint === 'boolean' ? setup.hint : DEFAULT_SETUP.hint,
     meaning: typeof setup.meaning === 'boolean' ? setup.meaning : DEFAULT_SETUP.meaning,
     layout: oneOf(setup.layout, KEYBOARD_LAYOUTS, DEFAULT_SETUP.layout),
+    sound: typeof setup.sound === 'boolean' ? setup.sound : DEFAULT_SETUP.sound,
+    reduce: typeof setup.reduce === 'boolean' ? setup.reduce : DEFAULT_SETUP.reduce,
+    cues: typeof setup.cues === 'boolean' ? setup.cues : DEFAULT_SETUP.cues,
+    size: oneOf(setup.size, TEXT_SIZES, DEFAULT_SETUP.size),
   };
 }
 

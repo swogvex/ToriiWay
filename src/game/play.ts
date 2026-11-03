@@ -9,6 +9,7 @@ import { runResult } from './result';
 import { Results } from './results';
 import { type GameItem, Run, type RunEvent, type RunStatus } from './run';
 import { modeLabel, readSettings } from './settings';
+import { GameSound } from './sound';
 import { type Random, seededRandom } from './spawner';
 
 type State = 'loading' | 'blocked' | 'countdown' | 'playing' | 'paused' | 'ended';
@@ -27,8 +28,6 @@ function required<T extends Element>(root: ParentNode, selector: string): T {
   return el;
 }
 
-const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
-
 export async function initPlay(root: HTMLElement): Promise<void> {
   const settings = readSettings(location.search);
   const config = DIFFICULTY[settings.difficulty];
@@ -41,6 +40,12 @@ export async function initPlay(root: HTMLElement): Promise<void> {
   const labels = JSON.parse(root.dataset['labels'] ?? '{}') as Record<string, string>;
   required<HTMLElement>(root, '[data-mode-label]').textContent = modeLabel(settings, labels);
   keyboardEl.dataset['layout'] = settings.layout;
+  // The game option wins; without one, the system setting decides.
+  const reducedMotion = settings.reduce ?? matchMedia('(prefers-reduced-motion: reduce)').matches;
+  root.classList.toggle('is-reduced', reducedMotion);
+  root.classList.toggle('has-cues', settings.cues);
+  root.dataset['size'] = settings.size;
+  const sound = new GameSound(settings.sound);
 
   const keyboard = new VirtualKeyboard(keyboardEl);
   const hud = new Hud(root, {
@@ -48,6 +53,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     mode: settings.mode,
     challengeTime: config.challengeTime,
     levelLabel: labels['level'] ?? 'Level {level}',
+    reducedMotion,
   });
   const progress = localGameProgress();
   const results = new Results(required(root, '[data-results]'));
@@ -59,7 +65,12 @@ export async function initPlay(root: HTMLElement): Promise<void> {
       wrong: required(root, '[data-wrong]'),
       kana: required(root, '[data-typed-kana]'),
     },
-    { locale: document.documentElement.lang, hint: settings.hint, meaning: settings.meaning },
+    {
+      locale: document.documentElement.lang,
+      hint: settings.hint,
+      meaning: settings.meaning,
+      onLanes: (lanes) => run?.setLanes(lanes),
+    },
   );
   const blocked = matchMedia(BLOCKED);
   let forced = false;
@@ -93,6 +104,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
 
   const react = (events: readonly RunEvent[]) => {
     for (const event of events) {
+      sound.react(event);
       if (event.type === 'key') keyboard.flash(event.key, event.correct);
       else if (event.type === 'life') hud.damage();
       else if (event.type === 'level') hud.levelUp(event.level);
@@ -135,7 +147,7 @@ export async function initPlay(root: HTMLElement): Promise<void> {
 
   const showCount = (text: string) => {
     count.textContent = text;
-    if (!reducedMotion()) {
+    if (!reducedMotion) {
       count.animate(
         [
           { opacity: 0, scale: 1.4 },
@@ -161,7 +173,8 @@ export async function initPlay(root: HTMLElement): Promise<void> {
       items,
       pools,
       random,
-      speed: reducedMotion() ? REDUCED_MOTION_SPEED : 1,
+      speed: reducedMotion ? REDUCED_MOTION_SPEED : 1,
+      lanes: field.lanes,
     });
     field.clear();
     sync(run);
@@ -222,6 +235,11 @@ export async function initPlay(root: HTMLElement): Promise<void> {
     else if (document.hidden) setState('loading');
     else begin();
   };
+
+  // Browsers start audio only from a key or click.
+  for (const type of ['keydown', 'pointerdown'] as const) {
+    root.addEventListener(type, () => sound.unlock());
+  }
 
   input.addEventListener('keydown', (event) => {
     if (!run || state !== 'playing') return;

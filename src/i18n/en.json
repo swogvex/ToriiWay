@@ -238,5 +238,15 @@
   "game.card.acc": "acc",
   "game.card.cons": "cons",
   "game.card.popped": "popped",
-  "game.card.time": "time"
+  "game.card.time": "time",
+  "game.step.options": "4 · Sound and accessibility",
+  "game.option.sound": "Sound effects",
+  "game.option.reduce": "Reduce motion",
+  "game.option.reduce.note": "Slower bubbles, no shake. On by default when your system asks for less motion.",
+  "game.option.cues": "Colour-blind cues",
+  "game.option.cues.note": "Adds shapes to colours: underlined kana, marked keys.",
+  "game.option.size": "Bubble text",
+  "game.size.s": "Small",
+  "game.size.m": "Medium",
+  "game.size.l": "Large"
 }

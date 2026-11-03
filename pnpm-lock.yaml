@@ -183,6 +183,9 @@ importers:
       astro:
         specifier: 7.4.4
         version: 7.4.4(@types/node@24.19.2)(@vercel/functions@3.10.5(ws@8.22.1))(yaml@2.9.1)
+      cuelume:
+        specifier: 0.2.8
+        version: 0.2.8
       preact:
         specifier: 11.1.1
         version: 11.1.1(preact-render-to-string@6.8.2)
@@ -1916,6 +1919,9 @@ packages:
   csso@5.0.5:
     resolution: {integrity: sha512-0LrrStPOdJj+SPCCrGhzryycLjwcgUSHBtxNA8aIDxf0GLsRh1cKYhB00Gd1lDOS4yGH69+SNn13+TWbVHETFQ==}
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0, npm: '>=7.0.0'}
+
+  cuelume@0.2.8:
+    resolution: {integrity: sha512-jnwAdMMUK4emaUWRd9l2RjpfixAMFOFrVkjoVK59FIfk7D3Vuvt+vBBJvU/J+2EiXrDlduialwDKJZorS5Nxqg==}
 
   damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==}
@@ -6437,6 +6443,8 @@ snapshots:
   csso@5.0.5:
     dependencies:
       css-tree: 2.2.1
+
+  cuelume@0.2.8: {}
 
   damerau-levenshtein@1.0.8: {}
 

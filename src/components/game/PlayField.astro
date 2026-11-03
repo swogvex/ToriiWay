@@ -102,6 +102,11 @@ const setupHref = localizePath('/game', locale);
     transition: filter var(--duration-base) var(--ease);
   }
 
+  /* Reduced motion: the pause blur is instant. */
+  :global(.is-reduced) .field {
+    transition: none;
+  }
+
   .stage.is-paused .field {
     filter: blur(12px);
   }
@@ -273,6 +278,31 @@ const setupHref = localizePath('/game', locale);
     color: var(--info);
   }
 
+  /* Text size option (src/game/play.ts sets data-size on the game root). */
+  :global([data-size='s']) .field :global(.bubble__text) {
+    font-size: var(--text-lg);
+  }
+
+  :global([data-size='l']) .field :global(.bubble__text) {
+    font-size: var(--text-2xl);
+  }
+
+  /* Measures a bubble row once (src/game/field.ts); never seen. */
+  .field :global(.is-probe) {
+    visibility: hidden;
+  }
+
+  /* Colour-blind cues: typed kana are also underlined, a pop note gets a check. */
+  :global(.has-cues) .field :global(.bubble__text .is-filled) {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+
+  :global(.has-cues) .field :global(.pop-note)::before {
+    content: '✓ ';
+  }
+
   .field :global(.is-target .bubble__pill) {
     border-color: var(--info);
     box-shadow: 0 0 0 4px var(--info-soft);
@@ -346,6 +376,17 @@ const setupHref = localizePath('/game', locale);
     white-space: nowrap;
     pointer-events: none;
     animation: rise 900ms var(--ease) forwards;
+  }
+
+  /* Reduced motion (option or system): no pop or break animation. */
+  :global(.is-reduced) .field :global(.is-popping .bubble__pill),
+  :global(.is-reduced) .field :global(.is-missed .bubble__pill) {
+    opacity: 0;
+    animation: none;
+  }
+
+  :global(.is-reduced) .field :global(.pop-note) {
+    animation: none;
   }
 
   @keyframes pop {

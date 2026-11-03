@@ -54,7 +54,16 @@ describe('localGameProgress', () => {
   it('remembers the last setup', () => {
     const storage = memoryStorage();
     expect(localGameProgress(storage).setup()).toEqual(DEFAULT_SETUP);
-    const setup = { ...DEFAULT_SETUP, script: 'katakana', hint: false, layout: 'iso-es' } as const;
+    const setup = {
+      ...DEFAULT_SETUP,
+      script: 'katakana',
+      hint: false,
+      layout: 'iso-es',
+      sound: true,
+      reduce: false,
+      cues: true,
+      size: 'l',
+    } as const;
     localGameProgress(storage).saveSetup(setup);
     expect(localGameProgress(storage).setup()).toEqual(setup);
     expect(storage.data.has(GAME_STORAGE_KEY)).toBe(true);
@@ -81,11 +90,11 @@ describe('parseGame', () => {
       JSON.stringify({
         bests: { ok: { ...result }, bad: { wpm: 'fast' } },
         cleared: ['hiragana/easy', 3],
-        setup: { script: 'cyrillic', hint: false },
+        setup: { script: 'cyrillic', hint: false, reduce: 'yes', size: 'xl', sound: true },
       }),
     );
     expect(Object.keys(parsed.bests)).toEqual(['ok']);
     expect(parsed.cleared).toEqual(['hiragana/easy']);
-    expect(parsed.setup).toEqual({ ...DEFAULT_SETUP, hint: false });
+    expect(parsed.setup).toEqual({ ...DEFAULT_SETUP, hint: false, sound: true });
   });
 });

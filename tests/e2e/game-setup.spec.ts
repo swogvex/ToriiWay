@@ -60,6 +60,31 @@ test.describe('Kana Rush setup', () => {
     await expect(page.getByLabel('Show romaji hint on first miss')).not.toBeChecked();
   });
 
+  test('sends sound and accessibility options and remembers them', async ({ page }) => {
+    await page.goto('/game');
+    await expect(page.getByLabel('Sound effects')).not.toBeChecked();
+    await page.getByLabel('Sound effects').check();
+    await page.getByLabel('Reduce motion').check();
+    await page.getByLabel('Colour-blind cues').check();
+    await page.getByRole('radio', { name: 'Large' }).check();
+    await start(page).click();
+    await expect(page).toHaveURL(/\/game\/play\?/);
+    const params = new URL(page.url()).searchParams;
+    expect(params.getAll('sound').at(-1)).toBe('1');
+    expect(params.getAll('reduce').at(-1)).toBe('1');
+    expect(params.getAll('cues').at(-1)).toBe('1');
+    expect(params.get('size')).toBe('l');
+    const root = page.locator('[data-game]');
+    await expect(root).toHaveAttribute('data-size', 'l');
+    await expect(root).toHaveClass(/is-reduced/);
+    await expect(root).toHaveClass(/has-cues/);
+
+    await page.goto('/game');
+    await expect(page.getByLabel('Sound effects')).toBeChecked();
+    await expect(page.getByLabel('Reduce motion')).toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Large' })).toBeChecked();
+  });
+
   test('shows bests and cleared challenges from this browser', async ({ page }) => {
     await page.addInitScript((key) => {
       localStorage.setItem(
