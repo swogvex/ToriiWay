@@ -1,0 +1,129 @@
+# N5 · Vocabulary · Mondai 2 — orthography
+# Original questions written for Nihongo No Torii.
+level: N5
+section: vocabulary
+mondai: 2
+instruction:
+  en: 'How is the underlined word written? Choose the best answer.'
+  ja: '＿＿＿の ことばは どう かきますか。'
+questions:
+  - id: n5-voc-2-0001
+    stem: 'ははに　__てがみ__を　かきました。'
+    choices: ['毛紙', '手絵', '手紙', '手氏']
+    answer: 3
+    explanation:
+      en: 'てがみ, "letter", is 手紙. 毛 looks like 手 but means "hair".'
+      es: 'てがみ, "carta", es 手紙. 毛 se parece a 手 pero significa "pelo".'
+    author: claude
+  - id: n5-voc-2-0002
+    stem: 'よる、__てれび__を　みます。'
+    choices: ['デレビ', 'テレビ', 'テレヒ', 'テレビー']
+    answer: 2
+    explanation:
+      en: 'てれび, "TV", is the loanword テレビ: テ without dakuten, ビ with it.'
+      es: 'てれび, "televisión", es el préstamo テレビ: テ sin dakuten y ビ con él.'
+    author: claude
+  - id: n5-voc-2-0003
+    stem: 'あしたは　がっこうが　__やすみ__です。'
+    choices: ['休み', '木み', '体み', '本み']
+    answer: 1
+    explanation:
+      en: 'やすみ, "day off", is 休み. 体 (body) is very similar.'
+      es: 'やすみ, "día libre", es 休み. 体 (cuerpo) es muy parecido.'
+    author: claude
+  - id: n5-voc-2-0004
+    stem: '__みみ__が　いたいです。'
+    choices: ['目', '首', '自', '耳']
+    answer: 4
+    explanation:
+      en: 'みみ, "ear", is 耳. 目 is eye and 首 is neck.'
+      es: 'みみ, "oreja", es 耳. 目 es ojo y 首 es cuello.'
+    author: claude
+  - id: n5-voc-2-0005
+    stem: 'まいあさ　__ろく__じに　おきます。'
+    choices: ['六', '文', '穴', '大']
+    answer: 1
+    explanation:
+      en: 'ろく, "six", is 六.'
+      es: 'ろく, "seis", es 六.'
+    author: claude
+  - id: n5-voc-2-0006
+    stem: '__おおきい__　いえに　すんで　います。'
+    choices: ['犬きい', '大きい', '天きい', '太きい']
+    answer: 2
+    explanation:
+      en: 'おおきい, "big", is 大きい. 犬 (dog) and 太 add a dot.'
+      es: 'おおきい, "grande", es 大きい. 犬 (perro) y 太 añaden un punto.'
+    author: claude
+  - id: n5-voc-2-0007
+    stem: 'あさ　__こーひー__を　のみます。'
+    choices: ['コーピー', 'コーヒ', 'ユーヒー', 'コーヒー']
+    answer: 4
+    explanation:
+      en: 'こーひー is コーヒー, with two long-vowel marks.'
+      es: 'こーひー es コーヒー, con dos marcas de vocal larga.'
+    author: claude
+  - id: n5-voc-2-0008
+    stem: 'わからない　ことは　__せんせい__に　ききます。'
+    choices: ['失生', '先主', '先生', '洗生']
+    answer: 3
+    explanation:
+      en: 'せんせい, "teacher", is 先生.'
+      es: 'せんせい, "profesor", es 先生.'
+    author: claude
+  - id: n5-voc-2-0009
+    stem: 'つめたい　__みず__を　ください。'
+    choices: ['水', '永', '氷', '木']
+    answer: 1
+    explanation:
+      en: 'みず, "water", is 水. 氷 (ice) has one extra dot.'
+      es: 'みず, "agua", es 水. 氷 (hielo) tiene un punto más.'
+    author: claude
+  - id: n5-voc-2-0010
+    stem: 'えきから　__ばす__で　いきます。'
+    choices: ['ベス', 'パス', 'バス', 'バヌ']
+    answer: 3
+    explanation:
+      en: 'ばす, "bus", is バス with dakuten ゛, not the circle ゜ of パス.'
+      es: 'ばす, "autobús", es バス con dakuten ゛, no el círculo ゜ de パス.'
+    author: claude
+  - id: n5-voc-2-0011
+    stem: '__しろい__　ねこが　います。'
+    choices: ['日い', '白い', '百い', '自い']
+    answer: 2
+    explanation:
+      en: 'しろい, "white", is 白い. 百 is "hundred".'
+      es: 'しろい, "blanco", es 白い. 百 es "cien".'
+    author: claude
+  - id: n5-voc-2-0012
+    stem: 'この　レストランは　__ゆうめい__です。'
+    choices: ['有各', '友名', '右名', '有名']
+    answer: 4
+    explanation:
+      en: 'ゆうめい, "famous", is 有名.'
+      es: 'ゆうめい, "famoso", es 有名.'
+    author: claude
+  - id: n5-voc-2-0013
+    stem: 'まいにち　__にほんご__を　べんきょうします。'
+    choices: ['目本語', '日本語', '日木語', '日本話']
+    answer: 2
+    explanation:
+      en: 'にほんご, "Japanese language", is 日本語. 木 lacks the bottom line of 本.'
+      es: 'にほんご, "idioma japonés", es 日本語. A 木 le falta la raya inferior de 本.'
+    author: claude
+  - id: n5-voc-2-0014
+    stem: 'デパートへ　__かいもの__に　いきます。'
+    choices: ['買い物', '買い牛', '員い物', '貝い物']
+    answer: 1
+    explanation:
+      en: 'かいもの, "shopping", is 買い物.'
+      es: 'かいもの, "compras", es 買い物.'
+    author: claude
+  - id: n5-voc-2-0015
+    stem: 'あおい　__しゃつ__を　かいました。'
+    choices: ['シャソ', 'ツャツ', 'シヤツ', 'シャツ']
+    answer: 4
+    explanation:
+      en: 'しゃつ, "shirt", is シャツ: small ャ, and ツ (not ソ) at the end.'
+      es: 'しゃつ, "camisa", es シャツ: ャ pequeña y ツ (no ソ) al final.'
+    author: claude

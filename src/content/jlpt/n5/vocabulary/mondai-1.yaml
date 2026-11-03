@@ -1,0 +1,177 @@
+# N5 · Vocabulary · Mondai 1 — kanji reading
+# Original questions written for Nihongo No Torii.
+level: N5
+section: vocabulary
+mondai: 1
+instruction:
+  en: 'Choose the reading of the underlined word.'
+  ja: '＿＿＿の ことばの よみかたを えらんで ください。'
+questions:
+  - id: n5-voc-1-0001
+    stem: '__毎朝__　コーヒーを　のみます。'
+    choices: ['まいにち', 'めいあさ', 'まいあさ', 'まいちょう']
+    answer: 3
+    explanation:
+      en: '毎朝 is read まいあさ, "every morning". まいにち is 毎日, "every day".'
+      es: '毎朝 se lee まいあさ, "cada mañana". まいにち es 毎日, "cada día".'
+    author: claude
+  - id: n5-voc-1-0002
+    stem: 'えきの　__北__に　ぎんこうが　あります。'
+    choices: ['ひがし', 'きた', 'みなみ', 'にし']
+    answer: 2
+    explanation:
+      en: '北 is きた, "north". The others are south (南), east (東) and west (西).'
+      es: '北 es きた, "norte". Las otras son sur (南), este (東) y oeste (西).'
+    author: claude
+  - id: n5-voc-1-0003
+    stem: 'この　__花__は　きれいですね。'
+    choices: ['はな', 'ばな', 'ほな', 'はね']
+    answer: 1
+    explanation:
+      en: '花 on its own is read はな, "flower". ばな only appears inside compounds.'
+      es: '花 solo se lee はな, "flor". ばな solo aparece dentro de compuestos.'
+    author: claude
+  - id: n5-voc-1-0004
+    stem: '__先週__　ともだちと　うみに　いきました。'
+    choices: ['せんしゅ', 'せんじゅう', 'さきしゅう', 'せんしゅう']
+    answer: 4
+    explanation:
+      en: '先週 is せんしゅう, "last week", with a long う at the end.'
+      es: '先週 es せんしゅう, "la semana pasada", con う larga al final.'
+    author: claude
+  - id: n5-voc-1-0005
+    stem: 'へやに　いすが　__六つ__　あります。'
+    choices: ['ろくつ', 'むっつ', 'むつ', 'みっつ']
+    answer: 2
+    explanation:
+      en: '六つ is むっつ, "six (things)", with a small っ. みっつ is 三つ.'
+      es: '六つ es むっつ, "seis (cosas)", con っ pequeña. みっつ es 三つ.'
+    author: claude
+  - id: n5-voc-1-0006
+    stem: '__電気__を　けして　ください。'
+    choices: ['でっき', 'てんき', 'でんぎ', 'でんき']
+    answer: 4
+    explanation:
+      en: '電気 is でんき, "light / electricity". てんき is 天気, "weather".'
+      es: '電気 es でんき, "luz / electricidad". てんき es 天気, "el tiempo".'
+    author: claude
+  - id: n5-voc-1-0007
+    stem: 'この　みちを　__右__に　まがって　ください。'
+    choices: ['うえ', 'した', 'みぎ', 'ひだり']
+    answer: 3
+    explanation:
+      en: '右 is みぎ, "right". ひだり is 左, "left".'
+      es: '右 es みぎ, "derecha". ひだり es 左, "izquierda".'
+    author: claude
+  - id: n5-voc-1-0008
+    stem: '__午後__　三時に　あいましょう。'
+    choices: ['ごご', 'ごうご', 'ごぜん', 'ごごう']
+    answer: 1
+    explanation:
+      en: '午後 is ごご, "afternoon / p.m.". ごぜん is 午前, "a.m.".'
+      es: '午後 es ごご, "por la tarde / p. m.". ごぜん es 午前, "a. m.".'
+    author: claude
+  - id: n5-voc-1-0009
+    stem: 'あには　__会社__で　はたらいて　います。'
+    choices: ['かいしや', 'がいしゃ', 'かいじゃ', 'かいしゃ']
+    answer: 4
+    explanation:
+      en: '会社 is かいしゃ, "company", with a small ゃ and no dakuten.'
+      es: '会社 es かいしゃ, "empresa", con ゃ pequeña y sin dakuten.'
+    author: claude
+  - id: n5-voc-1-0010
+    stem: '__外国__に　すんで　みたいです。'
+    choices: ['そとくに', 'かいこく', 'がいこく', 'がいごく']
+    answer: 3
+    explanation:
+      en: '外国 is がいこく, "foreign country". The first kana has dakuten, the third does not.'
+      es: '外国 es がいこく, "país extranjero". La primera kana lleva dakuten; la tercera no.'
+    author: claude
+  - id: n5-voc-1-0011
+    stem: 'すこし　__休み__ましょう。'
+    choices: ['やつみ', 'やすみ', 'いすみ', 'よすみ']
+    answer: 2
+    explanation:
+      en: '休み is やすみ; やすみましょう means "let''s rest".'
+      es: '休み es やすみ; やすみましょう significa "descansemos".'
+    author: claude
+  - id: n5-voc-1-0012
+    stem: '__新しい__　くつを　かいました。'
+    choices: ['あたらしい', 'あらたしい', 'あたしらい', 'あだらしい']
+    answer: 1
+    explanation:
+      en: '新しい is あたらしい, "new". Watch the order た–ら.'
+      es: '新しい es あたらしい, "nuevo". Ojo al orden た–ら.'
+    author: claude
+  - id: n5-voc-1-0013
+    stem: '日よう日に　__山__に　のぼりました。'
+    choices: ['うみ', 'いけ', 'やま', 'かわ']
+    answer: 3
+    explanation:
+      en: '山 is やま, "mountain". かわ is river, いけ pond, うみ sea.'
+      es: '山 es やま, "montaña". かわ es río, いけ estanque, うみ mar.'
+    author: claude
+  - id: n5-voc-1-0014
+    stem: 'かばんの　__中__に　ほんが　あります。'
+    choices: ['まえ', 'なか', 'した', 'そと']
+    answer: 2
+    explanation:
+      en: '中 is なか, "inside". そと is 外, "outside".'
+      es: '中 es なか, "dentro". そと es 外, "fuera".'
+    author: claude
+  - id: n5-voc-1-0015
+    stem: 'ここに　__名前__を　かいて　ください。'
+    choices: ['ながまえ', 'なめえ', 'なまい', 'なまえ']
+    answer: 4
+    explanation:
+      en: '名前 is なまえ, "name".'
+      es: '名前 es なまえ, "nombre".'
+    author: claude
+  - id: n5-voc-1-0016
+    stem: 'まいにち　__学校__へ　いきます。'
+    choices: ['がっこう', 'がっこ', 'がこう', 'かっこう']
+    answer: 1
+    explanation:
+      en: '学校 is がっこう, "school": small っ and a long う.'
+      es: '学校 es がっこう, "escuela": っ pequeña y う larga.'
+    author: claude
+  - id: n5-voc-1-0017
+    stem: '__白い__　シャツを　きて　います。'
+    choices: ['くろい', 'しろい', 'あおい', 'あかい']
+    answer: 2
+    explanation:
+      en: '白い is しろい, "white". くろい is black, あおい blue, あかい red.'
+      es: '白い es しろい, "blanco". くろい es negro, あおい azul, あかい rojo.'
+    author: claude
+  - id: n5-voc-1-0018
+    stem: 'きょうは　__天気__が　いいです。'
+    choices: ['てんけ', 'てんぎ', 'でんき', 'てんき']
+    answer: 4
+    explanation:
+      en: '天気 is てんき, "weather". でんき is 電気, "electricity".'
+      es: '天気 es てんき, "el tiempo". でんき es 電気, "electricidad".'
+    author: claude
+  - id: n5-voc-1-0019
+    stem: '__父__は　りょうりが　じょうずです。'
+    choices: ['ちち', 'はは', 'あね', 'あに']
+    answer: 1
+    explanation:
+      en: '父 is ちち, "(my) father". はは is mother, あに older brother, あね older sister.'
+      es: '父 es ちち, "(mi) padre". はは es madre, あに hermano mayor, あね hermana mayor.'
+    author: claude
+  - id: n5-voc-1-0020
+    stem: 'この　__店__は　よる　十時まで　あいて　います。'
+    choices: ['へや', 'いえ', 'みせ', 'みず']
+    answer: 3
+    explanation:
+      en: '店 is みせ, "shop".'
+      es: '店 es みせ, "tienda".'
+    author: claude
+  - id: n5-voc-1-0021
+    stem: 'そとは　__雨__が　ふって　います。'
+    choices: ['あめ', 'かぜ', 'ゆき', 'あま']
+    answer: 1
+    explanation:
+      en: '雨 alone is あめ, "rain". あま is only used inside some compounds.'
+      es: '雨 solo se lee あめ, "lluvia". あま solo se usa dentro de algunos compuestos.'
+    author: claude

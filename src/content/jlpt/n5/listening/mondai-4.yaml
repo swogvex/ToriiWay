@@ -1,0 +1,207 @@
+# N5 · Listening · Mondai 4 — quick response
+# Original questions written for Nihongo No Torii.
+level: N5
+section: listening
+mondai: 4
+instruction:
+  en: 'Listen to the sentence and the three replies. Choose the best reply.'
+  ja: 'ぶんを きいて、１から３の 中から、いちばん いい へんじを えらんで ください。'
+questions:
+  - id: n5-lis-4-0001
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['はい、げんきです', 'いいえ、どう　いたしまして', 'はい、おげんきです']
+    answer: 1
+    explanation:
+      en: 'You do not use お about yourself: はい、げんきです.'
+      es: 'No se usa お para uno mismo: はい、げんきです.'
+    author: claude
+    tts:
+      script: "M: おげんきですか。\nF: 1　はい、げんきです\nF: 2　いいえ、どう　いたしまして\nF: 3　はい、おげんきです"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0002
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['あかい　かさです', 'わたしのです', 'あそこに　あります']
+    answer: 2
+    explanation:
+      en: 'だれの asks whose it is.'
+      es: 'だれの pregunta de quién es.'
+    author: claude
+    tts:
+      script: "F: これは　だれの　かさですか。\nM: 1　あかい　かさです\nM: 2　わたしのです\nM: 3　あそこに　あります"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0003
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['あした　いきます', 'バスで　いきました', 'としょかんへ　いきました']
+    answer: 3
+    explanation:
+      en: 'どこへ asks where; the answer is a place.'
+      es: 'どこへ pregunta adónde; la respuesta es un lugar.'
+    author: claude
+    tts:
+      script: "M: きのう　どこへ　いきましたか。\nF: 1　あした　いきます\nF: 2　バスで　いきました\nF: 3　としょかんへ　いきました"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0004
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['はい、コーヒーです', 'ありがとう　ございます。いただきます', 'いいえ、のみました']
+    answer: 2
+    explanation:
+      en: 'いかがですか offers something; you accept politely.'
+      es: 'いかがですか ofrece algo; aceptas con cortesía.'
+    author: claude
+    tts:
+      script: "F: コーヒーは　いかがですか。\nM: 1　はい、コーヒーです\nM: 2　ありがとう　ございます。いただきます\nM: 3　いいえ、のみました"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0005
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['六時間　ねます', '六時に　ねます', '六時に　おきます']
+    answer: 3
+    explanation:
+      en: 'The question is about getting up, at a time.'
+      es: 'La pregunta es a qué hora te levantas.'
+    author: claude
+    tts:
+      script: "M: まいあさ　なん時に　おきますか。\nF: 1　六時間　ねます\nF: 2　六時に　ねます\nF: 3　六時に　おきます"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0006
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['はい、どうぞ', 'いいえ、かりません', 'はい、かしました']
+    answer: 1
+    explanation:
+      en: 'はい、どうぞ hands something over.'
+      es: 'はい、どうぞ se dice al dar algo.'
+    author: claude
+    tts:
+      script: "F: その　ペン、ちょっと　かして　ください。\nM: 1　はい、どうぞ\nM: 2　いいえ、かりません\nM: 3　はい、かしました"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0007
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['いいえ、まだです', 'はい、まだです', 'いいえ、もうです']
+    answer: 1
+    explanation:
+      en: 'いいえ、まだです means "no, not yet".'
+      es: 'いいえ、まだです significa "no, todavía no".'
+    author: claude
+    tts:
+      script: "M: しゅくだいは　もう　おわりましたか。\nF: 1　いいえ、まだです\nF: 2　はい、まだです\nF: 3　いいえ、もうです"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0008
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['十時ごろです', 'バスです', '十分ぐらいです']
+    answer: 3
+    explanation:
+      en: 'どのぐらい かかりますか asks how long it takes.'
+      es: 'どのぐらい かかりますか pregunta cuánto se tarda.'
+    author: claude
+    tts:
+      script: "F: えきまで　どのぐらい　かかりますか。\nM: 1　十時ごろです\nM: 2　バスです\nM: 3　十分ぐらいです"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0009
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['いいえ、たべました', 'ええ、たべましょう', 'はい、たべません']
+    answer: 2
+    explanation:
+      en: 'You accept the invitation with 〜ましょう.'
+      es: 'Aceptas la invitación con 〜ましょう.'
+    author: claude
+    tts:
+      script: "M: いっしょに　ひるごはんを　たべませんか。\nF: 1　いいえ、たべました\nF: 2　ええ、たべましょう\nF: 3　はい、たべません"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0010
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['どう　いたしまして', 'こちらこそ', 'いただきます']
+    answer: 2
+    explanation:
+      en: 'こちらこそ (likewise) answers よろしく おねがいします.'
+      es: 'こちらこそ (igualmente) responde a よろしく おねがいします.'
+    author: claude
+    tts:
+      script: "F: どうぞ　よろしく　おねがいします。\nM: 1　どう　いたしまして\nM: 2　こちらこそ\nM: 3　いただきます"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0011
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['一つ　百円です', '三つ　あります', 'あかい　りんごです']
+    answer: 1
+    explanation:
+      en: 'いくら asks the price.'
+      es: 'いくら pregunta el precio.'
+    author: claude
+    tts:
+      script: "M: この　りんごは　いくらですか。\nF: 1　一つ　百円です\nF: 2　三つ　あります\nF: 3　あかい　りんごです"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0012
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['二十さいです', 'かんこくから　きました', 'キムです']
+    answer: 3
+    explanation:
+      en: 'The question asks your name.'
+      es: 'Te preguntan el nombre.'
+    author: claude
+    tts:
+      script: "F: おなまえは？\nM: 1　二十さいです\nM: 2　かんこくから　きました\nM: 3　キムです"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0013
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['トイレです', 'はい、どうぞ', 'あちらです']
+    answer: 3
+    explanation:
+      en: 'あちらです points to where it is.'
+      es: 'あちらです indica dónde está.'
+    author: claude
+    tts:
+      script: "M: すみません、トイレは　どこですか。\nF: 1　トイレです\nF: 2　はい、どうぞ\nF: 3　あちらです"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0014
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['ともだちと　テニスを　しました', 'はい、しました', 'らいしゅう　します']
+    answer: 1
+    explanation:
+      en: 'The question is about the past weekend.'
+      es: 'La pregunta es sobre el fin de semana pasado.'
+    author: claude
+    tts:
+      script: "F: しゅうまつは　なにを　しましたか。\nM: 1　ともだちと　テニスを　しました\nM: 2　はい、しました\nM: 3　らいしゅう　します"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0015
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['いいえ、ふって　います', 'ええ、ふるでしょう', 'はい、ふりました']
+    answer: 2
+    explanation:
+      en: 'A guess about tomorrow: ふるでしょう.'
+      es: 'Una suposición sobre mañana: ふるでしょう.'
+    author: claude
+    tts:
+      script: "M: あしたは　雨でしょうか。\nF: 1　いいえ、ふって　います\nF: 2　ええ、ふるでしょう\nF: 3　はい、ふりました"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0016
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['おかえりなさい', 'いってきます', 'いってらっしゃい']
+    answer: 3
+    explanation:
+      en: 'いってらっしゃい answers いってきます.'
+      es: 'いってらっしゃい responde a いってきます.'
+    author: claude
+    tts:
+      script: "F: いってきます。\nM: 1　おかえりなさい\nM: 2　いってきます\nM: 3　いってらっしゃい"
+      voices: ['woman', 'man']
+  - id: n5-lis-4-0017
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['あした　やすみます', 'ねつが　ありましたから', 'がっこうで　やすみました']
+    answer: 2
+    explanation:
+      en: 'どうして asks for a reason: 〜から.'
+      es: 'どうして pide un motivo: 〜から.'
+    author: claude
+    tts:
+      script: "M: どうして　きのう　がっこうを　やすみましたか。\nF: 1　あした　やすみます\nF: 2　ねつが　ありましたから\nF: 3　がっこうで　やすみました"
+      voices: ['man', 'woman']
+  - id: n5-lis-4-0018
+    stem: 'いちばん　いい　へんじを　えらんで　ください。'
+    choices: ['まどを　しめましょうか', 'はい、あついです', 'いいえ、さむかったです']
+    answer: 1
+    explanation:
+      en: 'Offering to close the window answers the complaint.'
+      es: 'Ofrecerse a cerrar la ventana responde a la queja.'
+    author: claude
+    tts:
+      script: "F: この　へや、ちょっと　さむいですね。\nM: 1　まどを　しめましょうか\nM: 2　はい、あついです\nM: 3　いいえ、さむかったです"
+      voices: ['woman', 'man']

@@ -1,0 +1,129 @@
+# Kana · Katakana & numbers · Mondai 3 — numbers
+# Original questions written for Nihongo No Torii.
+level: kana
+section: katakana
+mondai: 3
+instruction:
+  en: 'Choose the reading of the number.'
+  ja: 'すうじの　よみかたを　えらんで　ください。'
+questions:
+  - id: kana-kata-3-0001
+    stem: '300'
+    choices: ['さんぴゃく', 'さんひゃく', 'さんびゃく', 'さんはく']
+    answer: 3
+    explanation:
+      en: '300 is read さんびゃく. After 3, ひゃく becomes びゃく.'
+      es: '300 se lee さんびゃく. Tras 3, ひゃく pasa a びゃく.'
+    author: claude
+  - id: kana-kata-3-0002
+    stem: '600'
+    choices: ['ろっぴゃく', 'ろくひゃく', 'ろくぴゃく', 'ろっひゃく']
+    answer: 1
+    explanation:
+      en: '600 is read ろっぴゃく. 6 + 100 shortens to ろっぴゃく.'
+      es: '600 se lee ろっぴゃく. 6 + 100 se acorta en ろっぴゃく.'
+    author: claude
+  - id: kana-kata-3-0003
+    stem: '800'
+    choices: ['はちひゃく', 'はっひゃく', 'はちびゃく', 'はっぴゃく']
+    answer: 4
+    explanation:
+      en: '800 is read はっぴゃく. 8 + 100 shortens to はっぴゃく.'
+      es: '800 se lee はっぴゃく. 8 + 100 se acorta en はっぴゃく.'
+    author: claude
+  - id: kana-kata-3-0004
+    stem: '3000'
+    choices: ['みせん', 'さんぜん', 'さんせん', 'さんぜえん']
+    answer: 2
+    explanation:
+      en: '3000 is read さんぜん. After 3, せん becomes ぜん.'
+      es: '3000 se lee さんぜん. Tras 3, せん pasa a ぜん.'
+    author: claude
+  - id: kana-kata-3-0005
+    stem: '8000'
+    choices: ['はちぜん', 'はっせん', 'はっぜん', 'はつせん']
+    answer: 2
+    explanation:
+      en: '8000 is read はっせん. 8 + 1000 shortens to はっせん.'
+      es: '8000 se lee はっせん. 8 + 1000 se acorta en はっせん.'
+    author: claude
+  - id: kana-kata-3-0006
+    stem: '4時'
+    choices: ['よっじ', 'よんじ', 'しじ', 'よじ']
+    answer: 4
+    explanation:
+      en: "4時 is read よじ. 4 o'clock is よじ."
+      es: '4時 se lee よじ. Las 4 en punto es よじ.'
+    author: claude
+  - id: kana-kata-3-0007
+    stem: '9時'
+    choices: ['くうじ', 'きゅうじ', 'くじ', 'きゅじ']
+    answer: 3
+    explanation:
+      en: "9時 is read くじ. 9 o'clock is くじ."
+      es: '9時 se lee くじ. Las 9 en punto es くじ.'
+    author: claude
+  - id: kana-kata-3-0008
+    stem: '4月1日'
+    choices: ['しがつ　ついたち', 'しがつ　いちにち', 'よんがつ　いちにち', 'よんがつ　ついたち']
+    answer: 1
+    explanation:
+      en: '4月1日 is read しがつ　ついたち. April is しがつ; the 1st of the month is ついたち.'
+      es: '4月1日 se lee しがつ　ついたち. Abril es しがつ; el día 1 es ついたち.'
+    author: claude
+  - id: kana-kata-3-0009
+    stem: '5月20日'
+    choices: ['ごがつ　にじゅうにち', 'ごがつ　にじゅうか', 'ごがつ　はつにち', 'ごがつ　はつか']
+    answer: 4
+    explanation:
+      en: '5月20日 is read ごがつ　はつか. The 20th of the month is はつか.'
+      es: '5月20日 se lee ごがつ　はつか. El día 20 es はつか.'
+    author: claude
+  - id: kana-kata-3-0010
+    stem: '3人'
+    choices: ['さんにん', 'みっつにん', 'さんじん', 'みにん']
+    answer: 1
+    explanation:
+      en: '3人 is read さんにん. People are counted with にん from three.'
+      es: '3人 se lee さんにん. Las personas se cuentan con にん a partir de tres.'
+    author: claude
+  - id: kana-kata-3-0011
+    stem: '1人'
+    choices: ['いちり', 'ひとり', 'ひとにん', 'いちにん']
+    answer: 2
+    explanation:
+      en: '1人 is read ひとり. One person is ひとり.'
+      es: '1人 se lee ひとり. Una persona es ひとり.'
+    author: claude
+  - id: kana-kata-3-0012
+    stem: '2つ'
+    choices: ['ふたっつ', 'につ', 'ふたつ', 'ふつ']
+    answer: 3
+    explanation:
+      en: '2つ is read ふたつ. Two things is ふたつ.'
+      es: '2つ se lee ふたつ. Dos cosas es ふたつ.'
+    author: claude
+  - id: kana-kata-3-0013
+    stem: '10分'
+    choices: ['とおふん', 'じゅっぷん', 'じゅうふん', 'じゅぶん']
+    answer: 2
+    explanation:
+      en: '10分 is read じゅっぷん. 10 minutes is じゅっぷん.'
+      es: '10分 se lee じゅっぷん. 10 minutos es じゅっぷん.'
+    author: claude
+  - id: kana-kata-3-0014
+    stem: '6分'
+    choices: ['ろっぷん', 'ろくふん', 'ろっふん', 'ろくぷん']
+    answer: 1
+    explanation:
+      en: '6分 is read ろっぷん. 6 minutes is ろっぷん.'
+      es: '6分 se lee ろっぷん. 6 minutos es ろっぷん.'
+    author: claude
+  - id: kana-kata-3-0015
+    stem: '100円'
+    choices: ['いちひゃくえん', 'びゃくえん', 'ひゃっえん', 'ひゃくえん']
+    answer: 4
+    explanation:
+      en: '100円 is read ひゃくえん. 100 is just ひゃく, without いち.'
+      es: '100円 se lee ひゃくえん. 100 es solo ひゃく, sin いち.'
+    author: claude

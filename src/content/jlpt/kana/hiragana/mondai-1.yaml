@@ -1,0 +1,249 @@
+# Kana · Hiragana · Mondai 1 — reading
+# Original questions written for Nihongo No Torii.
+level: kana
+section: hiragana
+mondai: 1
+instruction:
+  en: 'Choose the romaji for the kana.'
+  ja: 'かなの　よみかたを　えらんで　ください。'
+questions:
+  - id: kana-hira-1-0001
+    stem: 'ぬ'
+    choices: ['a', 'ne', 'nu', 'me']
+    answer: 3
+    explanation:
+      en: 'ぬ is "nu". Similar shapes: め (me), ね (ne), あ (a).'
+      es: 'ぬ se lee "nu". Formas parecidas: め (me), ね (ne), あ (a).'
+    author: claude
+  - id: kana-hira-1-0002
+    stem: 'め'
+    choices: ['nu', 'no', 'a', 'me']
+    answer: 4
+    explanation:
+      en: 'め is "me". Similar shapes: ぬ (nu), あ (a), の (no).'
+      es: 'め se lee "me". Formas parecidas: ぬ (nu), あ (a), の (no).'
+    author: claude
+  - id: kana-hira-1-0003
+    stem: 'ね'
+    choices: ['re', 'ne', 'nu', 'wa']
+    answer: 2
+    explanation:
+      en: 'ね is "ne". Similar shapes: れ (re), わ (wa), ぬ (nu).'
+      es: 'ね se lee "ne". Formas parecidas: れ (re), わ (wa), ぬ (nu).'
+    author: claude
+  - id: kana-hira-1-0004
+    stem: 'れ'
+    choices: ['re', 'ne', 'ru', 'wa']
+    answer: 1
+    explanation:
+      en: 'れ is "re". Similar shapes: ね (ne), わ (wa), る (ru).'
+      es: 'れ se lee "re". Formas parecidas: ね (ne), わ (wa), る (ru).'
+    author: claude
+  - id: kana-hira-1-0005
+    stem: 'わ'
+    choices: ['wa', 'ne', 're', 'me']
+    answer: 1
+    explanation:
+      en: 'わ is "wa". Similar shapes: ね (ne), れ (re), め (me).'
+      es: 'わ se lee "wa". Formas parecidas: ね (ne), れ (re), め (me).'
+    author: claude
+  - id: kana-hira-1-0006
+    stem: 'る'
+    choices: ['u', 'ru', 'ra', 'ro']
+    answer: 2
+    explanation:
+      en: 'る is "ru". Similar shapes: ろ (ro), ら (ra), う (u).'
+      es: 'る se lee "ru". Formas parecidas: ろ (ro), ら (ra), う (u).'
+    author: claude
+  - id: kana-hira-1-0007
+    stem: 'ろ'
+    choices: ['tsu', 'ra', 'ro', 'ru']
+    answer: 3
+    explanation:
+      en: 'ろ is "ro". Similar shapes: る (ru), ら (ra), つ (tsu).'
+      es: 'ろ se lee "ro". Formas parecidas: る (ru), ら (ra), つ (tsu).'
+    author: claude
+  - id: kana-hira-1-0008
+    stem: 'さ'
+    choices: ['chi', 'so', 'ki', 'sa']
+    answer: 4
+    explanation:
+      en: 'さ is "sa". Similar shapes: ち (chi), き (ki), そ (so).'
+      es: 'さ se lee "sa". Formas parecidas: ち (chi), き (ki), そ (so).'
+    author: claude
+  - id: kana-hira-1-0009
+    stem: 'ち'
+    choices: ['chi', 'ra', 'sa', 'ki']
+    answer: 1
+    explanation:
+      en: 'ち is "chi". Similar shapes: さ (sa), ら (ra), き (ki).'
+      es: 'ち se lee "chi". Formas parecidas: さ (sa), ら (ra), き (ki).'
+    author: claude
+  - id: kana-hira-1-0010
+    stem: 'き'
+    choices: ['sa', 'ma', 'chi', 'ki']
+    answer: 4
+    explanation:
+      en: 'き is "ki". Similar shapes: さ (sa), ま (ma), ち (chi).'
+      es: 'き se lee "ki". Formas parecidas: さ (sa), ま (ma), ち (chi).'
+    author: claude
+  - id: kana-hira-1-0011
+    stem: 'い'
+    choices: ['ri', 'ni', 'i', 'ko']
+    answer: 3
+    explanation:
+      en: 'い is "i". Similar shapes: り (ri), こ (ko), に (ni).'
+      es: 'い se lee "i". Formas parecidas: り (ri), こ (ko), に (ni).'
+    author: claude
+  - id: kana-hira-1-0012
+    stem: 'り'
+    choices: ['ni', 'ri', 'ke', 'i']
+    answer: 2
+    explanation:
+      en: 'り is "ri". Similar shapes: い (i), け (ke), に (ni).'
+      es: 'り se lee "ri". Formas parecidas: い (i), け (ke), に (ni).'
+    author: claude
+  - id: kana-hira-1-0013
+    stem: 'は'
+    choices: ['ha', 'yo', 'ke', 'ho']
+    answer: 1
+    explanation:
+      en: 'は is "ha". Similar shapes: ほ (ho), け (ke), よ (yo).'
+      es: 'は se lee "ha". Formas parecidas: ほ (ho), け (ke), よ (yo).'
+    author: claude
+  - id: kana-hira-1-0014
+    stem: 'ほ'
+    choices: ['ha', 'ma', 'ke', 'ho']
+    answer: 4
+    explanation:
+      en: 'ほ is "ho". Similar shapes: は (ha), ま (ma), け (ke).'
+      es: 'ほ se lee "ho". Formas parecidas: は (ha), ま (ma), け (ke).'
+    author: claude
+  - id: kana-hira-1-0015
+    stem: 'け'
+    choices: ['i', 'ri', 'ke', 'ha']
+    answer: 3
+    explanation:
+      en: 'け is "ke". Similar shapes: は (ha), い (i), り (ri).'
+      es: 'け se lee "ke". Formas parecidas: は (ha), い (i), り (ri).'
+    author: claude
+  - id: kana-hira-1-0016
+    stem: 'た'
+    choices: ['ni', 'ta', 'na', 'ko']
+    answer: 2
+    explanation:
+      en: 'た is "ta". Similar shapes: な (na), に (ni), こ (ko).'
+      es: 'た se lee "ta". Formas parecidas: な (na), に (ni), こ (ko).'
+    author: claude
+  - id: kana-hira-1-0017
+    stem: 'な'
+    choices: ['ma', 'na', 'ta', 'ha']
+    answer: 2
+    explanation:
+      en: 'な is "na". Similar shapes: た (ta), は (ha), ま (ma).'
+      es: 'な se lee "na". Formas parecidas: た (ta), は (ha), ま (ma).'
+    author: claude
+  - id: kana-hira-1-0018
+    stem: 'ま'
+    choices: ['yo', 'ho', 'ma', 'mo']
+    answer: 3
+    explanation:
+      en: 'ま is "ma". Similar shapes: も (mo), よ (yo), ほ (ho).'
+      es: 'ま se lee "ma". Formas parecidas: も (mo), よ (yo), ほ (ho).'
+    author: claude
+  - id: kana-hira-1-0019
+    stem: 'も'
+    choices: ['mo', 'yo', 'shi', 'ma']
+    answer: 1
+    explanation:
+      en: 'も is "mo". Similar shapes: ま (ma), し (shi), よ (yo).'
+      es: 'も se lee "mo". Formas parecidas: ま (ma), し (shi), よ (yo).'
+    author: claude
+  - id: kana-hira-1-0020
+    stem: 'ゆ'
+    choices: ['yo', 'ya', 'nu', 'yu']
+    answer: 4
+    explanation:
+      en: 'ゆ is "yu". Similar shapes: や (ya), ぬ (nu), よ (yo).'
+      es: 'ゆ se lee "yu". Formas parecidas: や (ya), ぬ (nu), よ (yo).'
+    author: claude
+  - id: kana-hira-1-0021
+    stem: 'そ'
+    choices: ['te', 'so', 'ro', 'wo']
+    answer: 2
+    explanation:
+      en: 'そ is "so". Similar shapes: て (te), ろ (ro), を (wo).'
+      es: 'そ se lee "so". Formas parecidas: て (te), ろ (ro), を (wo).'
+    author: claude
+  - id: kana-hira-1-0022
+    stem: 'し'
+    choices: ['ku', 'tsu', 'mo', 'shi']
+    answer: 4
+    explanation:
+      en: 'し is "shi". Similar shapes: つ (tsu), く (ku), も (mo).'
+      es: 'し se lee "shi". Formas parecidas: つ (tsu), く (ku), も (mo).'
+    author: claude
+  - id: kana-hira-1-0023
+    stem: 'つ'
+    choices: ['tsu', 'u', 'shi', 'so']
+    answer: 1
+    explanation:
+      en: 'つ is "tsu". Similar shapes: し (shi), う (u), そ (so).'
+      es: 'つ se lee "tsu". Formas parecidas: し (shi), う (u), そ (so).'
+    author: claude
+  - id: kana-hira-1-0024
+    stem: 'う'
+    choices: ['tsu', 'ra', 'u', 'fu']
+    answer: 3
+    explanation:
+      en: 'う is "u". Similar shapes: つ (tsu), ら (ra), ふ (fu).'
+      es: 'う se lee "u". Formas parecidas: つ (tsu), ら (ra), ふ (fu).'
+    author: claude
+  - id: kana-hira-1-0025
+    stem: 'ふ'
+    choices: ['ra', 'fu', 'ro', 'u']
+    answer: 2
+    explanation:
+      en: 'ふ is "fu". Similar shapes: う (u), ろ (ro), ら (ra).'
+      es: 'ふ se lee "fu". Formas parecidas: う (u), ろ (ro), ら (ra).'
+    author: claude
+  - id: kana-hira-1-0026
+    stem: 'ば'
+    choices: ['ba', 'ha', 'ho', 'pa']
+    answer: 1
+    explanation:
+      en: 'ば is "ba". Similar shapes: ぱ (pa), は (ha), ほ (ho).'
+      es: 'ば se lee "ba". Formas parecidas: ぱ (pa), は (ha), ほ (ho).'
+    author: claude
+  - id: kana-hira-1-0027
+    stem: 'ぴ'
+    choices: ['bi', 'po', 'hi', 'pi']
+    answer: 4
+    explanation:
+      en: 'ぴ is "pi". Similar shapes: び (bi), ひ (hi), ぽ (po).'
+      es: 'ぴ se lee "pi". Formas parecidas: び (bi), ひ (hi), ぽ (po).'
+    author: claude
+  - id: kana-hira-1-0028
+    stem: 'ず'
+    choices: ['bu', 'su', 'zu', 'zo']
+    answer: 3
+    explanation:
+      en: 'ず is "zu". Similar shapes: す (su), ぞ (zo), ぶ (bu).'
+      es: 'ず se lee "zu". Formas parecidas: す (su), ぞ (zo), ぶ (bu).'
+    author: claude
+  - id: kana-hira-1-0029
+    stem: 'じゃ'
+    choices: ['gyu', 'sha', 'ja', 'cha']
+    answer: 3
+    explanation:
+      en: 'じゃ is "ja". Similar shapes: しゃ (sha), ちゃ (cha), ぎゅ (gyu).'
+      es: 'じゃ se lee "ja". Formas parecidas: しゃ (sha), ちゃ (cha), ぎゅ (gyu).'
+    author: claude
+  - id: kana-hira-1-0030
+    stem: 'きょ'
+    choices: ['sho', 'kyo', 'kyu', 'gyo']
+    answer: 2
+    explanation:
+      en: 'きょ is "kyo". Similar shapes: きゅ (kyu), ぎょ (gyo), しょ (sho).'
+      es: 'きょ se lee "kyo". Formas parecidas: きゅ (kyu), ぎょ (gyo), しょ (sho).'
+    author: claude

@@ -1,0 +1,266 @@
+# N5 · Listening · Mondai 1 — task-based comprehension
+# Original questions written for Nihongo No Torii.
+level: N5
+section: listening
+mondai: 1
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'はじめに しつもんを きいて ください。それから はなしを きいて、いちばん いい ものを えらんで ください。'
+questions:
+  - id: n5-lis-1-0001
+    stem: 'おとこの　ひとは　なにを　かいますか。'
+    choices: ['たまごと　パン', 'ぎゅうにゅうと　パン', 'たまごだけ', 'たまごと　ぎゅうにゅう']
+    answer: 1
+    explanation:
+      en: 'Eggs, and bread was added at the end; there is still milk.'
+      es: 'Huevos, y al final añade pan; todavía hay leche.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　なにを　かいますか。\nF: スーパーへ　いきますか。じゃ、たまごを　かって　きて　ください。\nM: たまごですね。ぎゅうにゅうは？\nF: ぎゅうにゅうは　まだ　ありますから、いいです。あ、パンも　おねがいします。\nM: わかりました。\nN: おとこの　ひとは　なにを　かいますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0002
+    stem: 'ふたりは　どこで　あいますか。'
+    choices: ['えきの　中', 'えきの　まえ', 'えきの　となりの　きっさてん', 'ほんや']
+    answer: 3
+    explanation:
+      en: 'They change from the station front to the café next to it.'
+      es: 'Cambian la entrada de la estación por la cafetería de al lado.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　どこで　あいますか。\nF: あしたは　えきの　まえで　あいましょうか。\nM: えきの　まえは　ひとが　おおいですから、えきの　となりの　きっさてんは　どうですか。\nF: いいですね。そう　しましょう。\nN: ふたりは　どこで　あいますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0003
+    stem: 'ふたりは　なん時に　あいますか。'
+    choices: ['二時', '十二時', '一時半', '一時']
+    answer: 2
+    explanation:
+      en: 'They decide to have lunch first, so they meet at twelve.'
+      es: 'Deciden comer antes, así que quedan a las doce.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　なん時に　あいますか。\nM: あしたの　えいがは　二時からです。\nF: じゃ、一時半に　あいましょう。\nM: ひるごはんも　いっしょに　たべませんか。\nF: いいですね。じゃ、十二時に　しましょう。\nN: ふたりは　なん時に　あいますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0004
+    stem: 'がくせいは　あした　なにを　もって　いきますか。'
+    choices:
+      ['えんぴつと　かみ', 'おべんとうと　えんぴつ', 'のみものと　かみ', 'おべんとうと　のみもの']
+    answer: 4
+    explanation:
+      en: 'Pencils and paper are at school; bring lunch and a drink.'
+      es: 'Lápices y papel están en la escuela; hay que llevar comida y bebida.'
+    author: claude
+    tts:
+      script: "N: せんせいが　はなして　います。がくせいは　あした　なにを　もって　いきますか。\nF: あしたは　こうえんで　えを　かきます。えんぴつと　かみは　がっこうに　ありますから、いりません。おべんとうと　のみものを　もって　きて　ください。\nN: がくせいは　あした　なにを　もって　いきますか。"
+      voices: ['narrator', 'woman']
+  - id: n5-lis-1-0005
+    stem: 'おとこの　ひとは　なんばんの　バスに　のりますか。'
+    choices: ['八ばん', '十五ばん', '五ばん', '三ばん']
+    answer: 3
+    explanation:
+      en: 'Bus 3 is not running now, so he takes bus 5.'
+      es: 'El 3 no pasa ahora, así que coge el 5.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　なんばんの　バスに　のりますか。\nM: すみません、びじゅつかんへ　いきたいです。なんばんの　バスですか。\nF: 三ばんです。あ、でも　三ばんは　いま　きません。五ばんに　のって、さくらえきで　おりて　ください。そこから　あるいて　五分です。\nM: ありがとう　ございます。\nN: おとこの　ひとは　なんばんの　バスに　のりますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0006
+    stem: 'おとこの　ひとは　はじめに　なにを　しますか。'
+    choices: ['コピーを　します', 'でんわを　します', 'かいぎに　でます', 'てがみを　だします']
+    answer: 1
+    explanation:
+      en: 'She corrects herself: the copies come first.'
+      es: 'Se corrige: primero las copias.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　はじめに　なにを　しますか。\nF: かいぎの　まえに、この　てがみを　だして　ください。それから　コピーを　二十まい　おねがいします。\nM: はい。\nF: あ、すみません、コピーが　さきです。かいぎは　十時からですから。\nN: おとこの　ひとは　はじめに　なにを　しますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0007
+    stem: 'おとこの　がくせいは　どの　きょうしつへ　いきますか。'
+    choices: ['二〇一', '三〇一', '三〇二', '一〇一']
+    answer: 2
+    explanation:
+      en: 'Today the class is in 301 because 201 has a test.'
+      es: 'Hoy la clase es en el 301 porque en el 201 hay examen.'
+    author: claude
+    tts:
+      script: "N: おとこの　がくせいと　おんなの　がくせいが　はなして　います。おとこの　がくせいは　どの　きょうしつへ　いきますか。\nM: 日本語の　じゅぎょうは　二〇一きょうしつですか。\nF: きょうは　三〇一です。二〇一は　テストを　して　いますから。\nM: そうですか。ありがとう。\nN: おとこの　がくせいは　どの　きょうしつへ　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0008
+    stem: 'おとこの　ひとは　あした　なにを　きますか。'
+    choices:
+      [
+        'くろい　シャツと　しろい　ズボン',
+        'しろい　シャツと　しろい　ズボン',
+        'しろい　シャツと　くろい　ズボン',
+        'くろい　シャツと　くろい　ズボン',
+      ]
+    answer: 4
+    explanation:
+      en: 'Because of the rain he changes to black trousers too.'
+      es: 'Por la lluvia cambia también a pantalón negro.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　あした　なにを　きますか。\nF: あしたの　パーティー、なにを　きますか。\nM: くろい　シャツと　しろい　ズボンです。\nF: あしたは　雨ですよ。しろい　ズボンは……。\nM: そうですね。じゃ、ズボンも　くろいのに　します。\nN: おとこの　ひとは　あした　なにを　きますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0009
+    stem: 'おんなの　ひとは　なにを　のみますか。'
+    choices: ['こうちゃ', 'みず', 'コーヒー', 'ジュース']
+    answer: 1
+    explanation:
+      en: 'She asks for tea; the coffee is for the man.'
+      es: 'Ella pide té; el café es para él.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにを　のみますか。\nM: なにを　たべますか。\nF: カレーが　いいです。\nM: ぼくも　カレーに　します。のみものは？\nF: こうちゃを　おねがいします。\nM: じゃ、カレー　ふたつと、こうちゃ　ひとつと、コーヒー　ひとつ　ください。\nN: おんなの　ひとは　なにを　のみますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0010
+    stem: 'おんなの　ひとは　なんかいへ　いきますか。'
+    choices: ['二かい', '五かい', '一かい', '三かい']
+    answer: 4
+    explanation:
+      en: "Children's shoes are on the third floor."
+      es: 'Los zapatos de niño están en la tercera planta.'
+    author: claude
+    tts:
+      script: "N: デパートで　おんなの　ひとと　みせの　ひとが　はなして　います。おんなの　ひとは　なんかいへ　いきますか。\nF: すみません、くつは　なんかいですか。\nM: こどもの　くつは　三かい、おとなの　くつは　五かいです。\nF: こどもの　くつを　かいたいです。\nM: じゃ、三かいへ　どうぞ。\nN: おんなの　ひとは　なんかいへ　いきますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0011
+    stem: 'ふたりは　なんようびに　テニスを　しますか。'
+    choices: ['月よう日', '火よう日', '木よう日', '水よう日']
+    answer: 3
+    explanation:
+      en: 'Monday and Tuesday she works, Wednesday is not good; they choose Thursday.'
+      es: 'Lunes y martes trabaja y el miércoles no puede; eligen el jueves.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　なんようびに　テニスを　しますか。\nM: らいしゅう、いっしょに　テニスを　しませんか。\nF: いいですね。月よう日と　火よう日は　アルバイトが　あります。\nM: 水よう日は　どうですか。\nF: 水よう日は　ちょっと……。木よう日は　どうですか。\nM: いいですよ。\nN: ふたりは　なんようびに　テニスを　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0012
+    stem: 'がくせいは　どこを　しゅくだいに　しますか。'
+    choices:
+      [
+        '二十ページと　二十一ページ',
+        '二十ページと　二十二ページ',
+        '二十一ページと　二十二ページ',
+        '二十二ページだけ',
+      ]
+    answer: 2
+    explanation:
+      en: 'Page 21 is done in class next week, so the homework is pages 20 and 22.'
+      es: 'La página 21 se hará en clase, así que los deberes son las páginas 20 y 22.'
+    author: claude
+    tts:
+      script: "N: せんせいが　はなして　います。がくせいは　どこを　しゅくだいに　しますか。\nF: きょうの　しゅくだいは　二十ページと　二十一ページです。あ、二十一ページは　らいしゅう　じゅぎょうで　やりますから、二十ページと　二十二ページを　して　ください。\nN: がくせいは　どこを　しゅくだいに　しますか。"
+      voices: ['narrator', 'woman']
+  - id: n5-lis-1-0013
+    stem: 'おんなの　ひとは　なにで　レストランへ　いきますか。'
+    choices: ['でんしゃ', 'タクシー', 'じてんしゃ', 'バス']
+    answer: 1
+    explanation:
+      en: "She goes by train; the bicycle is the man's."
+      es: 'Ella va en tren; la bici es de él.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにで　レストランへ　いきますか。\nM: あしたの　パーティーの　レストランまで　どうやって　いきますか。\nF: でんしゃで　いきます。タクシーは　たかいですから。\nM: ぼくは　じてんしゃで　いきます。\nF: ちかいですか。\nM: ええ、うちから　十分ぐらいです。\nN: おんなの　ひとは　なにで　レストランへ　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0014
+    stem: 'おとこの　ひとは　きっぷを　なんまい　かいますか。'
+    choices:
+      [
+        'おとな　二まいと　こども　一まい',
+        'おとな　二まいと　こども　二まい',
+        'おとな　一まいと　こども　二まい',
+        'おとな　三まい',
+      ]
+    answer: 2
+    explanation:
+      en: "He corrects the number of children's tickets to two."
+      es: 'Corrige las entradas de niño: son dos.'
+    author: claude
+    tts:
+      script: "N: えいがかんで　おとこの　ひとが　きっぷを　かって　います。おとこの　ひとは　きっぷを　なんまい　かいますか。\nM: おとな　二まいと　こども　一まい　ください。\nF: はい。\nM: あ、すみません。こどもは　二まいです。\nN: おとこの　ひとは　きっぷを　なんまい　かいますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0015
+    stem: 'おとこの　がくせいは　なにを　しますか。'
+    choices:
+      ['ごみを　すてます', 'まどを　ふきます', 'やまださんを　よびます', 'つくえを　ならべます']
+    answer: 4
+    explanation:
+      en: 'She cleans the windows and Yamada takes the rubbish; Tanaka arranges the desks.'
+      es: 'Ella limpia las ventanas y Yamada tira la basura; Tanaka ordena las mesas.'
+    author: claude
+    tts:
+      script: "N: せんせいと　おとこの　がくせいが　はなして　います。おとこの　がくせいは　なにを　しますか。\nF: たなかくん、そうじを　てつだって　ください。\nM: はい。なにを　しましょうか。\nF: まどは　わたしが　ふきます。たなかくんは　つくえを　ならべて　ください。\nM: わかりました。ごみは？\nF: ごみは　あとで　やまださんが　すてます。\nN: おとこの　がくせいは　なにを　しますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0016
+    stem: 'おんなの　ひとの　でんわばんごうは　なんばんですか。'
+    choices: ['090-3456-8721', '090-3456-7812', '090-3456-7821', '090-3465-7821']
+    answer: 3
+    explanation:
+      en: 'She repeats the last part: 7821.'
+      es: 'Repite la última parte: 7821.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとの　でんわばんごうは　なんばんですか。\nM: でんわばんごうを　おしえて　ください。\nF: ゼロきゅうゼロの　さんよんごろくの　ななはちにいちです。\nM: ななはちいちにですね。\nF: いいえ、ななはちにいちです。\nN: おんなの　ひとの　でんわばんごうは　なんばんですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0017
+    stem: 'おとこの　ひとは　おかあさんに　なにを　あげますか。'
+    choices: ['かばん', 'ハンカチ', 'ケーキ', 'はな']
+    answer: 2
+    explanation:
+      en: 'Flowers were last year and a bag is expensive; he chooses a handkerchief.'
+      es: 'Flores ya regaló y el bolso es caro; elige un pañuelo.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　おかあさんに　なにを　あげますか。\nM: ははの　たんじょうびに　なにを　あげましょうか。\nF: はなは　どうですか。\nM: はなは　きょねん　あげました。\nF: じゃ、かばんは？\nM: かばんは　たかいですね。\nF: じゃ、ハンカチは？\nM: いいですね。そう　します。\nN: おとこの　ひとは　おかあさんに　なにを　あげますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n5-lis-1-0018
+    stem: 'おとこの　ひとは　あした　なん時に　かいしゃへ　いきますか。'
+    choices: ['九時半', '八時', '八時半', '九時']
+    answer: 3
+    explanation:
+      en: 'Thirty minutes before nine is half past eight.'
+      es: 'Treinta minutos antes de las nueve son las ocho y media.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　あした　なん時に　かいしゃへ　いきますか。\nF: あしたは　九時から　かいぎです。三十分　まえに　きて　ください。\nM: 八時半ですね。\nF: ええ、おねがいします。\nN: おとこの　ひとは　あした　なん時に　かいしゃへ　いきますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0019
+    stem: 'ふたりは　こんばん　なにを　たべますか。'
+    choices: ['にくと　やさい', 'さかなと　やさい', 'さかなだけ', 'にくだけ']
+    answer: 1
+    explanation:
+      en: 'Meat, with lots of vegetables; fish was yesterday.'
+      es: 'Carne con muchas verduras; el pescado fue ayer.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　こんばん　なにを　たべますか。\nF: こんばん　なにを　つくりましょうか。\nM: さかなは　どうですか。\nF: さかなは　きのう　たべましたよ。\nM: そうでしたね。じゃ、にくに　しましょう。\nF: ええ。やさいも　たくさん　いれましょう。\nN: ふたりは　こんばん　なにを　たべますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0020
+    stem: 'おんなの　ひとは　どの　でぐちから　でますか。'
+    choices: ['きたぐち', 'ひがしぐち', 'みなみぐち', 'にしぐち']
+    answer: 4
+    explanation:
+      en: 'The man corrects himself: the bank is at the west exit.'
+      es: 'El hombre se corrige: el banco está en la salida oeste.'
+    author: claude
+    tts:
+      script: "N: えきで　おんなの　ひとと　おとこの　ひとが　はなして　います。おんなの　ひとは　どの　でぐちから　でますか。\nF: すみません、ぎんこうは　どの　でぐちですか。\nM: ひがしぐちです。ひがしぐちを　でて、まっすぐ　いって　ください。\nF: ひがしぐちですね。\nM: あ、すみません。ぎんこうは　にしぐちでした。\nN: おんなの　ひとは　どの　でぐちから　でますか。"
+      voices: ['narrator', 'woman', 'man']
+  - id: n5-lis-1-0021
+    stem: 'おとこの　ひとは　どの　かさを　もって　いきますか。'
+    choices:
+      [
+        'ちいさい　あおい　かさ',
+        '大きい　あおい　かさ',
+        'ちいさい　くろい　かさ',
+        '大きい　くろい　かさ',
+      ]
+    answer: 4
+    explanation:
+      en: 'The blue one is small, so he takes the big black one.'
+      es: 'El azul es pequeño, así que coge el grande negro.'
+    author: claude
+    tts:
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　どの　かさを　もって　いきますか。\nM: いってきます。\nF: かさを　もって　いきますか。きょうは　ごごから　雨ですよ。\nM: そうですか。じゃ、この　あおい　かさを　もって　いきます。\nF: その　かさは　ちいさいですよ。大きい　くろいのを　もって　いって　ください。\nM: はい。\nN: おとこの　ひとは　どの　かさを　もって　いきますか。"
+      voices: ['narrator', 'man', 'woman']

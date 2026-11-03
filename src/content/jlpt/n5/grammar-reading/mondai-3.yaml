@@ -1,0 +1,124 @@
+# N5 · Grammar · Reading · Mondai 3 — text grammar
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 3
+instruction:
+  en: 'Read the text and choose the best answer for each blank.'
+  ja: 'ぶんしょうを よんで、（１）から（４）に はいる いちばん いい ものを えらんで ください。'
+passages:
+  - id: park
+    text: "「わたしの　しゅうまつ」　マリア\n　わたしは　しゅうまつ、よく　こうえんへ　いきます。うちから　こうえん（１）　あるいて　十五分ぐらいです。こうえんには　大きい　いけが　あります。（２）、いけの　まわりを　さんぽします。\n　先週の　日よう日は　ともだちと　いっしょに　いきました。ふたりで　おべんとうを　（３）。とても　たのしかったです。こんどは　いけの　とりの　しゃしんを　（４）。"
+  - id: family
+    text: "「わたしの　かぞく」　リン\n　わたしの　かぞくは　四人です。ちちと　ははと　あにと　わたしです。ちちは　ぎんこうで　はたらいて　います。ははは　りょうりが　じょうずです。ははの　カレーは　とても　（１）。\n　あには　だいがくせいです。あには　スポーツが　すきです。（２）、まいあさ　はしって　います。\n　わたしは　いま　日本に　すんで　いますから、かぞく（３）　あえません。ときどき　でんわで　はなします。なつやすみに　くにへ　（４）。"
+  - id: rain
+    text: "「雨の　日」　トム\n　きのうは　あさから　雨が　ふって　いました。わたしは　かさ（１）　もって　でかけました。でも、えきで　かさを　わすれました。かえりも　雨が　（２）　ふって　いました。こまりました。\n　そのとき、おなじ　クラスの　さとうさんが　「いっしょに　かえりましょう」と　いいました。さとうさんの　かさは　大きかったです（３）、ふたりで　はいる　ことが　できました。きょう、わたしは　さとうさんに　おかしを　（４）。"
+questions:
+  - id: n5-grm-3-0001
+    passage: park
+    stem: '（１）'
+    choices: ['から', 'まで', 'を', 'で']
+    answer: 2
+    explanation:
+      en: 'うちから こうえんまで: "from home to the park".'
+      es: 'うちから こうえんまで: "de casa al parque".'
+    author: claude
+  - id: n5-grm-3-0002
+    passage: park
+    stem: '（２）'
+    choices: ['もう', 'ぜんぜん', 'まだ', 'いつも']
+    answer: 4
+    explanation:
+      en: 'いつも, "always": a habit, matching よく in the first line.'
+      es: 'いつも, "siempre": un hábito, como よく en la primera línea.'
+    author: claude
+  - id: n5-grm-3-0003
+    passage: park
+    stem: '（３）'
+    choices: ['たべました', 'たべましょう', 'たべます', 'たべません']
+    answer: 1
+    explanation:
+      en: 'The story is about last Sunday, so the past form.'
+      es: 'Habla del domingo pasado, así que va en pasado.'
+    author: claude
+  - id: n5-grm-3-0004
+    passage: park
+    stem: '（４）'
+    choices: ['とって　いました', 'とりました', 'とりたいです', 'とりませんでした']
+    answer: 3
+    explanation:
+      en: 'こんどは, "next time", points to a wish: とりたいです.'
+      es: 'こんどは, "la próxima vez", indica un deseo: とりたいです.'
+    author: claude
+  - id: n5-grm-3-0005
+    passage: family
+    stem: '（１）'
+    choices: ['いそがしいです', 'へたです', 'おいしいです', 'しずかです']
+    answer: 3
+    explanation:
+      en: 'Her mother is a good cook, so the curry is tasty.'
+      es: 'Su madre cocina bien, así que el curry está rico.'
+    author: claude
+  - id: n5-grm-3-0006
+    passage: family
+    stem: '（２）'
+    choices: ['じゃ', 'それとも', 'でも', 'ですから']
+    answer: 4
+    explanation:
+      en: 'ですから, "so": he likes sports, so he runs.'
+      es: 'ですから, "por eso": le gusta el deporte, por eso corre.'
+    author: claude
+  - id: n5-grm-3-0007
+    passage: family
+    stem: '（３）'
+    choices: ['で', 'に', 'が', 'を']
+    answer: 2
+    explanation:
+      en: 'あう takes に: かぞくに あえません.'
+      es: 'あう lleva に: かぞくに あえません.'
+    author: claude
+  - id: n5-grm-3-0008
+    passage: family
+    stem: '（４）'
+    choices: ['かえります', 'かえりません', 'かえって　いました', 'かえりました']
+    answer: 1
+    explanation:
+      en: 'A future plan for the summer holidays: かえります.'
+      es: 'Un plan futuro para las vacaciones: かえります.'
+    author: claude
+  - id: n5-grm-3-0009
+    passage: rain
+    stem: '（１）'
+    choices: ['が', 'で', 'に', 'を']
+    answer: 4
+    explanation:
+      en: 'かさを もって: the umbrella is the object.'
+      es: 'かさを もって: el paraguas es el objeto.'
+    author: claude
+  - id: n5-grm-3-0010
+    passage: rain
+    stem: '（２）'
+    choices: ['ぜんぜん', 'まだ', 'ちょうど', 'あまり']
+    answer: 2
+    explanation:
+      en: 'It rained from the morning and was still (まだ) raining. ぜんぜん and あまり need a negative.'
+      es: 'Llovía desde la mañana y todavía (まだ) llovía. ぜんぜん y あまり piden negación.'
+    author: claude
+  - id: n5-grm-3-0011
+    passage: rain
+    stem: '（３）'
+    choices: ['が', 'と', 'から', 'や']
+    answer: 3
+    explanation:
+      en: 'The umbrella was big, so (から) both fitted.'
+      es: 'El paraguas era grande, así que (から) cabían los dos.'
+    author: claude
+  - id: n5-grm-3-0012
+    passage: rain
+    stem: '（４）'
+    choices: ['あげました', 'かりました', 'くれました', 'なりました']
+    answer: 1
+    explanation:
+      en: 'わたしは 〜に あげます: I give to someone else. くれる is used when someone gives to me.'
+      es: 'わたしは 〜に あげます: yo doy a otra persona. くれる se usa cuando alguien me da a mí.'
+    author: claude

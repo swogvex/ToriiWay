@@ -1,0 +1,225 @@
+# N5 · Grammar · Reading · Mondai 1 — grammar form
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 1
+instruction:
+  en: 'Choose the word that best fills the blank (　).'
+  ja: '（　）に なにを いれますか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n5-grm-1-0001
+    stem: 'わたしは　まいあさ　パン（　）　たべます。'
+    choices: ['に', 'が', 'で', 'を']
+    answer: 4
+    explanation:
+      en: 'を marks the object of たべる.'
+      es: 'を marca el objeto de たべる.'
+    author: claude
+  - id: n5-grm-1-0002
+    stem: 'としょかん（　）　しゅくだいを　します。'
+    choices: ['に', 'へ', 'で', 'を']
+    answer: 3
+    explanation:
+      en: 'で marks the place where an action happens.'
+      es: 'で marca el lugar donde ocurre una acción.'
+    author: claude
+  - id: n5-grm-1-0003
+    stem: 'あした　ともだち（　）　いっしょに　えいがを　みます。'
+    choices: ['で', 'と', 'に', 'を']
+    answer: 2
+    explanation:
+      en: '〜と いっしょに means "together with ~".'
+      es: '〜と いっしょに significa "junto con ~".'
+    author: claude
+  - id: n5-grm-1-0004
+    stem: 'この　かばんは　だれ（　）　ですか。'
+    choices: ['の', 'が', 'を', 'に']
+    answer: 1
+    explanation:
+      en: 'だれの means "whose".'
+      es: 'だれの significa "de quién".'
+    author: claude
+  - id: n5-grm-1-0005
+    stem: 'つくえの　上に　ねこ（　）　います。'
+    choices: ['を', 'で', 'が', 'へ']
+    answer: 3
+    explanation:
+      en: 'With いる / ある, what exists is marked with が.'
+      es: 'Con いる / ある, lo que existe se marca con が.'
+    author: claude
+  - id: n5-grm-1-0006
+    stem: 'うちから　えきまで　バス（　）　十分です。'
+    choices: ['へ', 'で', 'を', 'が']
+    answer: 2
+    explanation:
+      en: 'で marks the means of transport.'
+      es: 'で marca el medio de transporte.'
+    author: claude
+  - id: n5-grm-1-0007
+    stem: "A「コーヒーと　こうちゃと、どちら（　）　すきですか。」\nB「コーヒーの　ほうが　すきです。」"
+    choices: ['が', 'を', 'に', 'で']
+    answer: 1
+    explanation:
+      en: 'すき takes が: どちらが すきですか.'
+      es: 'すき lleva が: どちらが すきですか.'
+    author: claude
+  - id: n5-grm-1-0008
+    stem: 'きのうは　とても　（　）。'
+    choices: ['さむいです', 'さむかったでした', 'さむいでした', 'さむかったです']
+    answer: 4
+    explanation:
+      en: 'The past of an い-adjective is 〜かったです.'
+      es: 'El pasado de un adjetivo -い es 〜かったです.'
+    author: claude
+  - id: n5-grm-1-0009
+    stem: 'この　へやは　あまり　（　）。'
+    choices: ['しずかでは　ありません', 'しずかく　ありません', 'しずかないです', 'しずかでした']
+    answer: 1
+    explanation:
+      en: 'あまり needs a negative; しずか is a な-adjective, so 〜では ありません.'
+      es: 'あまり exige negación; しずか es adjetivo -な, así que 〜では ありません.'
+    author: claude
+  - id: n5-grm-1-0010
+    stem: 'すみません、ちょっと　まって　（　）。'
+    choices: ['ましょう', 'ください', 'ません', 'です']
+    answer: 2
+    explanation:
+      en: '〜て ください is a polite request.'
+      es: '〜て ください es una petición cortés.'
+    author: claude
+  - id: n5-grm-1-0011
+    stem: 'あついですね。まどを　（　）も　いいですか。'
+    choices: ['あけ', 'あける', 'あけた', 'あけて']
+    answer: 4
+    explanation:
+      en: 'Asking permission uses the て-form: 〜ても いいですか.'
+      es: 'Para pedir permiso se usa la forma -て: 〜ても いいですか.'
+    author: claude
+  - id: n5-grm-1-0012
+    stem: 'ここで　しゃしんを　（　）　ください。'
+    choices: ['とらなくて', 'とらない', 'とらないで', 'とらず']
+    answer: 3
+    explanation:
+      en: '"Please don''t ~" is 〜ないで ください.'
+      es: '"Por favor, no ~" es 〜ないで ください.'
+    author: claude
+  - id: n5-grm-1-0013
+    stem: 'わたしは　およぐ（　）が　すきです。'
+    choices: ['で', 'に', 'の', 'を']
+    answer: 3
+    explanation:
+      en: 'の turns a verb into a noun: およぐのが すきです.'
+      es: 'の convierte el verbo en sustantivo: およぐのが すきです.'
+    author: claude
+  - id: n5-grm-1-0014
+    stem: 'きのう　デパートへ　くつを　（　）に　いきました。'
+    choices: ['かって', 'かい', 'かった', 'かう']
+    answer: 2
+    explanation:
+      en: 'Purpose of going: masu-stem + に いく (かいに いく).'
+      es: 'Ir a hacer algo: raíz -masu + に いく (かいに いく).'
+    author: claude
+  - id: n5-grm-1-0015
+    stem: 'ばんごはんを　たべた　（　）、テレビを　みます。'
+    choices: ['あとで', 'ながら', 'まえに', 'までに']
+    answer: 1
+    explanation:
+      en: 'た-form + あとで means "after ~". まえに needs the dictionary form.'
+      es: 'Forma -た + あとで significa "después de ~". まえに pide la forma de diccionario.'
+    author: claude
+  - id: n5-grm-1-0016
+    stem: 'ねる　（　）、はを　みがきます。'
+    choices: ['あとで', 'ながら', 'てから', 'まえに']
+    answer: 4
+    explanation:
+      en: 'Dictionary form + まえに means "before ~".'
+      es: 'Forma de diccionario + まえに significa "antes de ~".'
+    author: claude
+  - id: n5-grm-1-0017
+    stem: 'おんがくを　（　）ながら　べんきょうします。'
+    choices: ['きいて', 'きいた', 'きく', 'きき']
+    answer: 4
+    explanation:
+      en: 'ながら follows the masu-stem: ききながら.'
+      es: 'ながら va tras la raíz -masu: ききながら.'
+    author: claude
+  - id: n5-grm-1-0018
+    stem: 'わたしは　あたらしい　くるまが　（　）です。'
+    choices: ['たい', 'ほしく', 'ほしい', 'ほしがり']
+    answer: 3
+    explanation:
+      en: 'Wanting a thing: 〜が ほしいです.'
+      es: 'Querer una cosa: 〜が ほしいです.'
+    author: claude
+  - id: n5-grm-1-0019
+    stem: 'なつやすみに　うみへ　（　）たいです。'
+    choices: ['いき', 'いって', 'いった', 'いく']
+    answer: 1
+    explanation:
+      en: 'たい follows the masu-stem: いきたいです.'
+      es: 'たい va tras la raíz -masu: いきたいです.'
+    author: claude
+  - id: n5-grm-1-0020
+    stem: '「いっしょに　ひるごはんを　たべ（　）か。」「ええ、たべましょう。」'
+    choices: ['たい', 'ません', 'ました', 'ない']
+    answer: 2
+    explanation:
+      en: '〜ませんか is an invitation: "won''t you ~?".'
+      es: '〜ませんか es una invitación: "¿por qué no ~?".'
+    author: claude
+  - id: n5-grm-1-0021
+    stem: 'あには　わたし（　）　せが　たかいです。'
+    choices: ['から', 'より', 'ほど', 'まで']
+    answer: 2
+    explanation:
+      en: 'A は B より ~ means "A is more ~ than B". ほど needs a negative.'
+      es: 'A は B より ~ significa "A es más ~ que B". ほど exige negación.'
+    author: claude
+  - id: n5-grm-1-0022
+    stem: 'この　りんごは　一つ　百円です。三つ（　）　三百円です。'
+    choices: ['が', 'を', 'で', 'に']
+    answer: 3
+    explanation:
+      en: 'で after a quantity means "for / in total".'
+      es: 'で tras una cantidad significa "en total / por".'
+    author: claude
+  - id: n5-grm-1-0023
+    stem: 'まいにち　七時間（　）　ねます。'
+    choices: ['ごろ', 'まで', 'から', 'ぐらい']
+    answer: 4
+    explanation:
+      en: 'ぐらい gives an approximate amount; ごろ is for points in time.'
+      es: 'ぐらい indica cantidad aproximada; ごろ es para momentos concretos.'
+    author: claude
+  - id: n5-grm-1-0024
+    stem: '十時（　）　えきで　あいましょう。'
+    choices: ['に', 'が', 'を', 'で']
+    answer: 1
+    explanation:
+      en: 'Clock times take に.'
+      es: 'Las horas llevan に.'
+    author: claude
+  - id: n5-grm-1-0025
+    stem: 'へやに　だれ（　）　いません。'
+    choices: ['も', 'で', 'が', 'を']
+    answer: 1
+    explanation:
+      en: 'だれも + negative means "nobody".'
+      es: 'だれも + negación significa "nadie".'
+    author: claude
+  - id: n5-grm-1-0026
+    stem: "A「なにか　たべましたか。」\nB「いいえ、なに（　）　たべませんでした。」"
+    choices: ['が', 'か', 'を', 'も']
+    answer: 4
+    explanation:
+      en: 'なにも + negative means "nothing".'
+      es: 'なにも + negación significa "nada".'
+    author: claude
+  - id: n5-grm-1-0027
+    stem: "A「もう　しゅくだいを　しましたか。」\nB「いいえ、（　）です。」"
+    choices: ['いつも', 'もう', 'まだ', 'すぐ']
+    answer: 3
+    explanation:
+      en: 'いいえ、まだです means "No, not yet".'
+      es: 'いいえ、まだです significa "No, todavía no".'
+    author: claude

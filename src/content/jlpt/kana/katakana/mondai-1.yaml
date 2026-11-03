@@ -1,0 +1,249 @@
+# Kana · Katakana · Mondai 1 — reading
+# Original questions written for Nihongo No Torii.
+level: kana
+section: katakana
+mondai: 1
+instruction:
+  en: 'Choose the romaji for the kana.'
+  ja: 'かなの　よみかたを　えらんで　ください。'
+questions:
+  - id: kana-kata-1-0001
+    stem: 'シ'
+    choices: ['so', 'tsu', 'shi', 'n']
+    answer: 3
+    explanation:
+      en: 'シ is "shi". Similar shapes: ツ (tsu), ン (n), ソ (so).'
+      es: 'シ se lee "shi". Formas parecidas: ツ (tsu), ン (n), ソ (so).'
+    author: claude
+  - id: kana-kata-1-0002
+    stem: 'ツ'
+    choices: ['shi', 'n', 'so', 'tsu']
+    answer: 4
+    explanation:
+      en: 'ツ is "tsu". Similar shapes: シ (shi), ソ (so), ン (n).'
+      es: 'ツ se lee "tsu". Formas parecidas: シ (shi), ソ (so), ン (n).'
+    author: claude
+  - id: kana-kata-1-0003
+    stem: 'ソ'
+    choices: ['so', 'ri', 'shi', 'n']
+    answer: 1
+    explanation:
+      en: 'ソ is "so". Similar shapes: ン (n), シ (shi), リ (ri).'
+      es: 'ソ se lee "so". Formas parecidas: ン (n), シ (shi), リ (ri).'
+    author: claude
+  - id: kana-kata-1-0004
+    stem: 'ン'
+    choices: ['so', 'n', 'tsu', 'shi']
+    answer: 2
+    explanation:
+      en: 'ン is "n". Similar shapes: ソ (so), シ (shi), ツ (tsu).'
+      es: 'ン se lee "n". Formas parecidas: ソ (so), シ (shi), ツ (tsu).'
+    author: claude
+  - id: kana-kata-1-0005
+    stem: 'ク'
+    choices: ['ta', 'ku', 'ke', 'wa']
+    answer: 2
+    explanation:
+      en: 'ク is "ku". Similar shapes: ケ (ke), タ (ta), ワ (wa).'
+      es: 'ク se lee "ku". Formas parecidas: ケ (ke), タ (ta), ワ (wa).'
+    author: claude
+  - id: kana-kata-1-0006
+    stem: 'ケ'
+    choices: ['te', 'ta', 'ku', 'ke']
+    answer: 4
+    explanation:
+      en: 'ケ is "ke". Similar shapes: ク (ku), タ (ta), テ (te).'
+      es: 'ケ se lee "ke". Formas parecidas: ク (ku), タ (ta), テ (te).'
+    author: claude
+  - id: kana-kata-1-0007
+    stem: 'タ'
+    choices: ['nu', 'ke', 'ta', 'ku']
+    answer: 3
+    explanation:
+      en: 'タ is "ta". Similar shapes: ク (ku), ヌ (nu), ケ (ke).'
+      es: 'タ se lee "ta". Formas parecidas: ク (ku), ヌ (nu), ケ (ke).'
+    author: claude
+  - id: kana-kata-1-0008
+    stem: 'ワ'
+    choices: ['wa', 'u', 'ku', 'fu']
+    answer: 1
+    explanation:
+      en: 'ワ is "wa". Similar shapes: ウ (u), フ (fu), ク (ku).'
+      es: 'ワ se lee "wa". Formas parecidas: ウ (u), フ (fu), ク (ku).'
+    author: claude
+  - id: kana-kata-1-0009
+    stem: 'ウ'
+    choices: ['fu', 'wa', 'ra', 'u']
+    answer: 4
+    explanation:
+      en: 'ウ is "u". Similar shapes: ワ (wa), ラ (ra), フ (fu).'
+      es: 'ウ se lee "u". Formas parecidas: ワ (wa), ラ (ra), フ (fu).'
+    author: claude
+  - id: kana-kata-1-0010
+    stem: 'フ'
+    choices: ['fu', 'wa', 'su', 'nu']
+    answer: 1
+    explanation:
+      en: 'フ is "fu". Similar shapes: ヌ (nu), ス (su), ワ (wa).'
+      es: 'フ se lee "fu". Formas parecidas: ヌ (nu), ス (su), ワ (wa).'
+    author: claude
+  - id: kana-kata-1-0011
+    stem: 'ヌ'
+    choices: ['me', 'su', 'nu', 'fu']
+    answer: 3
+    explanation:
+      en: 'ヌ is "nu". Similar shapes: ス (su), メ (me), フ (fu).'
+      es: 'ヌ se lee "nu". Formas parecidas: ス (su), メ (me), フ (fu).'
+    author: claude
+  - id: kana-kata-1-0012
+    stem: 'ス'
+    choices: ['wo', 'su', 'fu', 'nu']
+    answer: 2
+    explanation:
+      en: 'ス is "su". Similar shapes: ヌ (nu), ヲ (wo), フ (fu).'
+      es: 'ス se lee "su". Formas parecidas: ヌ (nu), ヲ (wo), フ (fu).'
+    author: claude
+  - id: kana-kata-1-0013
+    stem: 'ヲ'
+    choices: ['su', 'ra', 'yo', 'wo']
+    answer: 4
+    explanation:
+      en: 'ヲ is "wo". Similar shapes: ス (su), ヨ (yo), ラ (ra).'
+      es: 'ヲ se lee "wo". Formas parecidas: ス (su), ヨ (yo), ラ (ra).'
+    author: claude
+  - id: kana-kata-1-0014
+    stem: 'コ'
+    choices: ['e', 'yu', 'ko', 'ro']
+    answer: 3
+    explanation:
+      en: 'コ is "ko". Similar shapes: ユ (yu), ロ (ro), エ (e).'
+      es: 'コ se lee "ko". Formas parecidas: ユ (yu), ロ (ro), エ (e).'
+    author: claude
+  - id: kana-kata-1-0015
+    stem: 'ユ'
+    choices: ['yo', 'yu', 'ko', 'e']
+    answer: 2
+    explanation:
+      en: 'ユ is "yu". Similar shapes: コ (ko), ヨ (yo), エ (e).'
+      es: 'ユ se lee "yu". Formas parecidas: コ (ko), ヨ (yo), エ (e).'
+    author: claude
+  - id: kana-kata-1-0016
+    stem: 'ロ'
+    choices: ['ro', 'yu', 'ko', 'yo']
+    answer: 1
+    explanation:
+      en: 'ロ is "ro". Similar shapes: コ (ko), ユ (yu), ヨ (yo).'
+      es: 'ロ se lee "ro". Formas parecidas: コ (ko), ユ (yu), ヨ (yo).'
+    author: claude
+  - id: kana-kata-1-0017
+    stem: 'チ'
+    choices: ['na', 'te', 'chi', 'ki']
+    answer: 3
+    explanation:
+      en: 'チ is "chi". Similar shapes: テ (te), ナ (na), キ (ki).'
+      es: 'チ se lee "chi". Formas parecidas: テ (te), ナ (na), キ (ki).'
+    author: claude
+  - id: kana-kata-1-0018
+    stem: 'テ'
+    choices: ['te', 'chi', 'na', 'ra']
+    answer: 1
+    explanation:
+      en: 'テ is "te". Similar shapes: チ (chi), ナ (na), ラ (ra).'
+      es: 'テ se lee "te". Formas parecidas: チ (chi), ナ (na), ラ (ra).'
+    author: claude
+  - id: kana-kata-1-0019
+    stem: 'ナ'
+    choices: ['ya', 'chi', 'me', 'na']
+    answer: 4
+    explanation:
+      en: 'ナ is "na". Similar shapes: メ (me), チ (chi), ヤ (ya).'
+      es: 'ナ se lee "na". Formas parecidas: メ (me), チ (chi), ヤ (ya).'
+    author: claude
+  - id: kana-kata-1-0020
+    stem: 'メ'
+    choices: ['no', 'me', 'nu', 'na']
+    answer: 2
+    explanation:
+      en: 'メ is "me". Similar shapes: ナ (na), ヌ (nu), ノ (no).'
+      es: 'メ se lee "me". Formas parecidas: ナ (na), ヌ (nu), ノ (no).'
+    author: claude
+  - id: kana-kata-1-0021
+    stem: 'ル'
+    choices: ['ha', 're', 'ru', 'no']
+    answer: 3
+    explanation:
+      en: 'ル is "ru". Similar shapes: レ (re), ノ (no), ハ (ha).'
+      es: 'ル se lee "ru". Formas parecidas: レ (re), ノ (no), ハ (ha).'
+    author: claude
+  - id: kana-kata-1-0022
+    stem: 'レ'
+    choices: ['re', 'no', 'mu', 'ru']
+    answer: 1
+    explanation:
+      en: 'レ is "re". Similar shapes: ル (ru), ノ (no), ム (mu).'
+      es: 'レ se lee "re". Formas parecidas: ル (ru), ノ (no), ム (mu).'
+    author: claude
+  - id: kana-kata-1-0023
+    stem: 'ノ'
+    choices: ['n', 'no', 'so', 'me']
+    answer: 2
+    explanation:
+      en: 'ノ is "no". Similar shapes: メ (me), ソ (so), ン (n).'
+      es: 'ノ se lee "no". Formas parecidas: メ (me), ソ (so), ン (n).'
+    author: claude
+  - id: kana-kata-1-0024
+    stem: 'マ'
+    choices: ['mu', 'a', 'ya', 'ma']
+    answer: 4
+    explanation:
+      en: 'マ is "ma". Similar shapes: ア (a), ム (mu), ヤ (ya).'
+      es: 'マ se lee "ma". Formas parecidas: ア (a), ム (mu), ヤ (ya).'
+    author: claude
+  - id: kana-kata-1-0025
+    stem: 'ア'
+    choices: ['ya', 'ma', 'ra', 'a']
+    answer: 4
+    explanation:
+      en: 'ア is "a". Similar shapes: マ (ma), ヤ (ya), ラ (ra).'
+      es: 'ア se lee "a". Formas parecidas: マ (ma), ヤ (ya), ラ (ra).'
+    author: claude
+  - id: kana-kata-1-0026
+    stem: 'ム'
+    choices: ['su', 'ya', 'mu', 'ma']
+    answer: 3
+    explanation:
+      en: 'ム is "mu". Similar shapes: マ (ma), ス (su), ヤ (ya).'
+      es: 'ム se lee "mu". Formas parecidas: マ (ma), ス (su), ヤ (ya).'
+    author: claude
+  - id: kana-kata-1-0027
+    stem: 'セ'
+    choices: ['sa', 'se', 'ya', 'hi']
+    answer: 2
+    explanation:
+      en: 'セ is "se". Similar shapes: サ (sa), ヤ (ya), ヒ (hi).'
+      es: 'セ se lee "se". Formas parecidas: サ (sa), ヤ (ya), ヒ (hi).'
+    author: claude
+  - id: kana-kata-1-0028
+    stem: 'ヤ'
+    choices: ['ya', 'ma', 'na', 'se']
+    answer: 1
+    explanation:
+      en: 'ヤ is "ya". Similar shapes: セ (se), マ (ma), ナ (na).'
+      es: 'ヤ se lee "ya". Formas parecidas: セ (se), マ (ma), ナ (na).'
+    author: claude
+  - id: kana-kata-1-0029
+    stem: 'キ'
+    choices: ['mo', 'ki', 'chi', 'sa']
+    answer: 2
+    explanation:
+      en: 'キ is "ki". Similar shapes: モ (mo), チ (chi), サ (sa).'
+      es: 'キ se lee "ki". Formas parecidas: モ (mo), チ (chi), サ (sa).'
+    author: claude
+  - id: kana-kata-1-0030
+    stem: 'モ'
+    choices: ['mi', 'ki', 'e', 'mo']
+    answer: 4
+    explanation:
+      en: 'モ is "mo". Similar shapes: キ (ki), エ (e), ミ (mi).'
+      es: 'モ se lee "mo". Formas parecidas: キ (ki), エ (e), ミ (mi).'
+    author: claude

@@ -1,0 +1,153 @@
+# N5 · Vocabulary · Mondai 3 — words in context
+# Original questions written for Nihongo No Torii.
+level: N5
+section: vocabulary
+mondai: 3
+instruction:
+  en: 'Choose the word that best fills the blank (　).'
+  ja: '（　）に なにを いれますか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n5-voc-3-0001
+    stem: 'さむいですから、まどを　（　）　ください。'
+    choices: ['しめて', 'あけて', 'つけて', 'ぬいで']
+    answer: 1
+    explanation:
+      en: 'It is cold, so "please close (しめて) the window".'
+      es: 'Hace frío, así que "cierra (しめて) la ventana, por favor".'
+    author: claude
+  - id: n5-voc-3-0002
+    stem: 'きのうは　あたまが　（　）、がっこうを　やすみました。'
+    choices: ['ながくて', 'たかくて', 'いたくて', 'ひろくて']
+    answer: 3
+    explanation:
+      en: 'あたまが いたい means "to have a headache", a reason to miss school.'
+      es: 'あたまが いたい significa "doler la cabeza", motivo para faltar a clase.'
+    author: claude
+  - id: n5-voc-3-0003
+    stem: '雨が　ふって　いますから、（　）を　もって　いきましょう。'
+    choices: ['とけい', 'かさ', 'ぼうし', 'くつ']
+    answer: 2
+    explanation:
+      en: 'When it rains you take an umbrella (かさ).'
+      es: 'Cuando llueve se lleva paraguas (かさ).'
+    author: claude
+  - id: n5-voc-3-0004
+    stem: 'としょかんで　本を　三さつ　（　）。'
+    choices: ['うたいました', 'およぎました', 'おしえました', 'かりました']
+    answer: 4
+    explanation:
+      en: 'At a library you borrow (かりる) books.'
+      es: 'En una biblioteca se toman prestados (かりる) libros.'
+    author: claude
+  - id: n5-voc-3-0005
+    stem: 'わたしの　へやは　（　）ですから、ともだちが　たくさん　きても　だいじょうぶです。'
+    choices: ['ひろい', 'くらい', 'ふるい', 'せまい']
+    answer: 1
+    explanation:
+      en: 'Many friends can come because the room is big (ひろい).'
+      es: 'Pueden venir muchos amigos porque la habitación es amplia (ひろい).'
+    author: claude
+  - id: n5-voc-3-0006
+    stem: 'のどが　（　）から、みずを　のみたいです。'
+    choices: ['ふりました', 'なりました', 'すきました', 'かわきました']
+    answer: 4
+    explanation:
+      en: 'のどが かわく is "to be thirsty". おなかが すく is "to be hungry".'
+      es: 'のどが かわく es "tener sed". おなかが すく es "tener hambre".'
+    author: claude
+  - id: n5-voc-3-0007
+    stem: 'えきまで　（　）で　十分ぐらい　かかります。'
+    choices: ['まって', 'あるいて', 'すわって', 'ねて']
+    answer: 2
+    explanation:
+      en: 'あるいて, "on foot", is how you get to the station in ten minutes.'
+      es: 'あるいて, "a pie", es como se llega a la estación en diez minutos.'
+    author: claude
+  - id: n5-voc-3-0008
+    stem: 'あさ　七時に　（　）、かおを　あらいます。'
+    choices: ['ねて', 'すんで', 'おきて', 'しんで']
+    answer: 3
+    explanation:
+      en: 'You get up (おきる) at seven and wash your face.'
+      es: 'Te levantas (おきる) a las siete y te lavas la cara.'
+    author: claude
+  - id: n5-voc-3-0009
+    stem: 'この　みせの　ケーキは　とても　（　）です。'
+    choices: ['いそがしい', 'じょうぶ', 'わかい', 'おいしい']
+    answer: 4
+    explanation:
+      en: 'Cake can be delicious (おいしい); it cannot be busy or young.'
+      es: 'Un pastel puede estar rico (おいしい); no puede estar ocupado ni ser joven.'
+    author: claude
+  - id: n5-voc-3-0010
+    stem: 'きょうは　日よう日です。あしたは　（　）です。'
+    choices: ['どようび', 'かようび', 'げつようび', 'すいようび']
+    answer: 3
+    explanation:
+      en: 'The day after Sunday is Monday (げつようび).'
+      es: 'El día después del domingo es el lunes (げつようび).'
+    author: claude
+  - id: n5-voc-3-0011
+    stem: 'へやが　くらいですから、でんきを　（　）　ください。'
+    choices: ['けして', 'つけて', 'とって', 'しめて']
+    answer: 2
+    explanation:
+      en: 'The room is dark, so "turn on (つけて) the light".'
+      es: 'La habitación está oscura: "enciende (つけて) la luz".'
+    author: claude
+  - id: n5-voc-3-0012
+    stem: 'ふゆは　さむいですから、あつい　（　）を　きます。'
+    choices: ['コート', 'テープ', 'ノート', 'プール']
+    answer: 1
+    explanation:
+      en: 'You wear a thick coat (コート) in winter.'
+      es: 'En invierno te pones un abrigo (コート) grueso.'
+    author: claude
+  - id: n5-voc-3-0013
+    stem: 'ちちは　（　）を　すいません。'
+    choices: ['ほん', 'みず', 'たばこ', 'うた']
+    answer: 3
+    explanation:
+      en: 'たばこを すう is "to smoke". すう does not go with the others.'
+      es: 'たばこを すう es "fumar". すう no va con las otras palabras.'
+    author: claude
+  - id: n5-voc-3-0014
+    stem: 'この　にもつは　とても　（　）です。ひとりで　もてません。'
+    choices: ['おもい', 'やすい', 'ちいさい', 'かるい']
+    answer: 1
+    explanation:
+      en: 'You cannot carry it alone because it is heavy (おもい).'
+      es: 'No puedes llevarlo solo porque pesa mucho (おもい).'
+    author: claude
+  - id: n5-voc-3-0015
+    stem: 'きっぷを　（　）、でんしゃに　のります。'
+    choices: ['うって', 'かけて', 'はいて', 'かって']
+    answer: 4
+    explanation:
+      en: 'You buy (かう) a ticket, then get on the train.'
+      es: 'Compras (かう) el billete y luego subes al tren.'
+    author: claude
+  - id: n5-voc-3-0016
+    stem: 'わたしの　いえには　ねこが　二（　）　います。'
+    choices: ['まい', 'ひき', 'ほん', 'だい']
+    answer: 2
+    explanation:
+      en: 'Small animals are counted with ひき (二ひき).'
+      es: 'Los animales pequeños se cuentan con ひき (二ひき).'
+    author: claude
+  - id: n5-voc-3-0017
+    stem: 'つくえの　上に　えんぴつが　三（　）　あります。'
+    choices: ['ぼん', 'ひき', 'さつ', 'まい']
+    answer: 1
+    explanation:
+      en: 'Long thin things use ほん; after 三 it becomes ぼん.'
+      es: 'Los objetos largos y finos usan ほん; tras 三 se convierte en ぼん.'
+    author: claude
+  - id: n5-voc-3-0018
+    stem: 'すみません、かみを　五（　）　ください。'
+    choices: ['さつ', 'ひき', 'まい', 'だい']
+    answer: 3
+    explanation:
+      en: 'Flat things like paper are counted with まい.'
+      es: 'Las cosas planas como el papel se cuentan con まい.'
+    author: claude

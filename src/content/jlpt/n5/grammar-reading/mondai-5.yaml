@@ -1,0 +1,106 @@
+# N5 · Grammar · Reading · Mondai 5 — mid-size passages
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 5
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: 'つぎの ぶんしょうを よんで、しつもんに こたえて ください。'
+passages:
+  - id: anna
+    text: "「はじめての　日本」　アンナ\n　わたしは　きょねんの　四月に　日本へ　きました。はじめは　日本語が　ぜんぜん　わかりませんでした。えきの　なまえも　よめませんでした。それで、まいにち　でんしゃの　中で　かんじを　ひとつずつ　おぼえました。いまは　えきの　なまえが　よめます。\n　日本の　たべものも　はじめは　すこし　こわかったです。くにでは　さかなを　あまり　たべませんでしたから。でも、ともだちの　おかあさんが　つくった　すしを　たべて、とても　おいしかったです。いまは　すしが　いちばん　すきです。"
+  - id: jose
+    text: "「わたしの　しごと」　ホセ\n　わたしは　レストランで　はたらいて　います。しごとは　ごご　四時から　よる　十一時までです。ですから、あさは　ゆっくり　ねます。\n　レストランには　いろいろな　くにの　おきゃくさんが　きます。わたしは　スペイン語と　英語と　すこし　日本語が　できますから、よく　おきゃくさんと　はなします。きのうは　メキシコから　きた　かぞくが　きました。こどもが　「おいしい！」と　日本語で　いいました。わたしは　とても　うれしかったです。"
+  - id: ken
+    text: "「わたしの　すきな　ところ」　ケン\n　うちの　ちかくに　ちいさい　としょかんが　あります。日よう日は　ひとが　すくなくて、とても　しずかです。わたしは　まいしゅう　日よう日に　そこで　本を　よみます。\n　としょかんの　ひとは　とても　しんせつです。わたしが　日本の　むかしばなしの　本を　さがして　いた　とき、いっしょに　さがして　くれました。いまは　まいしゅう　一さつずつ　かりて、うちでも　よみます。らいげつは　英語の　本も　よんで　みたいです。"
+questions:
+  - id: n5-grm-5-0001
+    passage: anna
+    stem: 'アンナさんは　どうやって　かんじを　おぼえましたか。'
+    choices:
+      [
+        'がっこうで　まいにち　たくさん',
+        'ともだちの　おかあさんに　ならって',
+        'えきの　なまえを　ノートに　かいて',
+        'でんしゃの　中で　まいにち　すこしずつ',
+      ]
+    answer: 4
+    explanation:
+      en: 'She learned one kanji at a time on the train every day.'
+      es: 'Aprendía un kanji cada día en el tren.'
+    author: claude
+  - id: n5-grm-5-0002
+    passage: anna
+    stem: 'アンナさんに　ついて　ただしい　ものは　どれですか。'
+    choices:
+      [
+        'いまも　さかなが　きらいです',
+        '日本へ　きた　とき、日本語が　すこし　わかりました',
+        'いまは　すしが　いちばん　すきです',
+        'ともだちの　おかあさんと　すしを　つくりました',
+      ]
+    answer: 3
+    explanation:
+      en: 'The last line says sushi is now her favourite.'
+      es: 'La última línea dice que ahora el sushi es lo que más le gusta.'
+    author: claude
+  - id: n5-grm-5-0003
+    passage: jose
+    stem: 'ホセさんは　どうして　あさ　ゆっくり　ねますか。'
+    choices:
+      [
+        'しごとが　よる　おそく　おわるから',
+        'しごとが　あさ　はじまるから',
+        'レストランが　とおいから',
+        'あさ　べんきょうするから',
+      ]
+    answer: 1
+    explanation:
+      en: 'He works from 4 p.m. to 11 p.m. (ですから links the two).'
+      es: 'Trabaja de 16:00 a 23:00 (ですから une las dos ideas).'
+    author: claude
+  - id: n5-grm-5-0004
+    passage: jose
+    stem: 'ホセさんは　どうして　うれしかったですか。'
+    choices:
+      [
+        'メキシコの　かぞくが　スペイン語で　はなしたから',
+        'こどもが　日本語で　「おいしい」と　いったから',
+        'おきゃくさんが　たくさん　きたから',
+        '日本語が　じょうずに　なったから',
+      ]
+    answer: 2
+    explanation:
+      en: 'A child from Mexico said おいしい in Japanese, and that made him happy.'
+      es: 'Un niño de México dijo おいしい en japonés y eso le alegró.'
+    author: claude
+  - id: n5-grm-5-0005
+    passage: ken
+    stem: 'ケンさんは　どうして　日よう日に　としょかんへ　いきますか。'
+    choices:
+      [
+        'としょかんの　ひとに　あいたいから',
+        '日よう日だけ　あいて　いるから',
+        'ひとが　すくなくて　しずかだから',
+        'うちが　うるさいから',
+      ]
+    answer: 3
+    explanation:
+      en: 'On Sundays there are few people and it is quiet.'
+      es: 'Los domingos hay poca gente y está tranquilo.'
+    author: claude
+  - id: n5-grm-5-0006
+    passage: ken
+    stem: 'としょかんの　ひとは　なにを　しましたか。'
+    choices:
+      [
+        'ケンさんに　むかしばなしを　よみました',
+        'ケンさんに　えいごを　おしえました',
+        'ケンさんに　本を　あげました',
+        'ケンさんと　いっしょに　本を　さがしました',
+      ]
+    answer: 4
+    explanation:
+      en: 'The librarian helped him look for a book of old tales.'
+      es: 'El bibliotecario le ayudó a buscar un libro de cuentos.'
+    author: claude

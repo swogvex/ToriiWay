@@ -1,0 +1,175 @@
+# N5 · Listening · Mondai 3 — verbal expressions
+# Original questions written for Nihongo No Torii.
+level: N5
+section: listening
+mondai: 3
+instruction:
+  en: 'Read the situation and listen. What do you say? Choose 1, 2 or 3.'
+  ja: 'ぶんを よんで、きいて ください。なんと いいますか。１から３の 中から、いちばん いい ものを えらんで ください。'
+questions:
+  - id: n5-lis-3-0001
+    stem: 'せんせいの　へやに　はいります。なんと　いいますか。'
+    choices: ['ただいま', 'しつれいします', 'いってきます']
+    answer: 2
+    explanation:
+      en: "しつれいします is said when entering someone's office."
+      es: 'しつれいします se dice al entrar en el despacho de alguien.'
+    author: claude
+    tts:
+      script: "N: せんせいの　へやに　はいります。なんと　いいますか。\nN: 1　ただいま\nN: 2　しつれいします\nN: 3　いってきます"
+      voices: ['narrator']
+  - id: n5-lis-3-0002
+    stem: 'ともだちの　ペンを　つかいたいです。なんと　いいますか。'
+    choices: ['ペンを　かりて　ください', 'ペンを　あげましょうか', 'ペンを　かして　ください']
+    answer: 3
+    explanation:
+      en: 'かして ください asks someone to lend you something.'
+      es: 'かして ください pide que te presten algo.'
+    author: claude
+    tts:
+      script: "N: ともだちの　ペンを　つかいたいです。なんと　いいますか。\nN: 1　ペンを　かりて　ください\nN: 2　ペンを　あげましょうか\nN: 3　ペンを　かして　ください"
+      voices: ['narrator']
+  - id: n5-lis-3-0003
+    stem: 'ごはんを　たべる　まえです。なんと　いいますか。'
+    choices: ['いただきます', 'おやすみなさい', 'ごちそうさまでした']
+    answer: 1
+    explanation:
+      en: 'いただきます is said before eating; ごちそうさまでした after.'
+      es: 'いただきます se dice antes de comer; ごちそうさまでした después.'
+    author: claude
+    tts:
+      script: "N: ごはんを　たべる　まえです。なんと　いいますか。\nN: 1　いただきます\nN: 2　おやすみなさい\nN: 3　ごちそうさまでした"
+      voices: ['narrator']
+  - id: n5-lis-3-0004
+    stem: 'ともだちの　うちから　かえります。なんと　いいますか。'
+    choices: ['おじゃましました', 'いらっしゃい', 'おかえりなさい']
+    answer: 1
+    explanation:
+      en: "おじゃましました is said when leaving someone's home."
+      es: 'おじゃましました se dice al salir de casa de alguien.'
+    author: claude
+    tts:
+      script: "N: ともだちの　うちから　かえります。なんと　いいますか。\nN: 1　おじゃましました\nN: 2　いらっしゃい\nN: 3　おかえりなさい"
+      voices: ['narrator']
+  - id: n5-lis-3-0005
+    stem: 'やくそくの　じかんに　おくれました。なんと　いいますか。'
+    choices: ['はやく　きて　ください', 'おそく　なって　すみません', 'どう　いたしまして']
+    answer: 2
+    explanation:
+      en: 'You apologise for being late.'
+      es: 'Te disculpas por llegar tarde.'
+    author: claude
+    tts:
+      script: "N: やくそくの　じかんに　おくれました。なんと　いいますか。\nN: 1　はやく　きて　ください\nN: 2　おそく　なって　すみません\nN: 3　どう　いたしまして"
+      voices: ['narrator']
+  - id: n5-lis-3-0006
+    stem: 'あさ、がっこうで　ともだちに　あいました。なんと　いいますか。'
+    choices: ['さようなら', 'こんばんは', 'おはよう　ございます']
+    answer: 3
+    explanation:
+      en: 'おはよう ございます is the morning greeting.'
+      es: 'おはよう ございます es el saludo de la mañana.'
+    author: claude
+    tts:
+      script: "N: あさ、がっこうで　ともだちに　あいました。なんと　いいますか。\nN: 1　さようなら\nN: 2　こんばんは\nN: 3　おはよう　ございます"
+      voices: ['narrator']
+  - id: n5-lis-3-0007
+    stem: 'ともだちが　プレゼントを　くれました。なんと　いいますか。'
+    choices: ['いただきます', 'ありがとう', 'どう　いたしまして']
+    answer: 2
+    explanation:
+      en: 'You thank your friend for the present.'
+      es: 'Agradeces el regalo a tu amigo.'
+    author: claude
+    tts:
+      script: "N: ともだちが　プレゼントを　くれました。なんと　いいますか。\nN: 1　いただきます\nN: 2　ありがとう\nN: 3　どう　いたしまして"
+      voices: ['narrator']
+  - id: n5-lis-3-0008
+    stem: 'レストランで　みずが　ほしいです。なんと　いいますか。'
+    choices: ['すみません、みずを　ください', 'みずは　いかがですか', 'みずを　どうぞ']
+    answer: 1
+    explanation:
+      en: 'すみません + 〜を ください asks for something.'
+      es: 'すみません + 〜を ください sirve para pedir algo.'
+    author: claude
+    tts:
+      script: "N: レストランで　みずが　ほしいです。なんと　いいますか。\nN: 1　すみません、みずを　ください\nN: 2　みずは　いかがですか\nN: 3　みずを　どうぞ"
+      voices: ['narrator']
+  - id: n5-lis-3-0009
+    stem: 'がっこうから　うちへ　かえりました。なんと　いいますか。'
+    choices: ['いってらっしゃい', 'おかえりなさい', 'ただいま']
+    answer: 3
+    explanation:
+      en: 'ただいま is said when you come home.'
+      es: 'ただいま se dice al llegar a casa.'
+    author: claude
+    tts:
+      script: "N: がっこうから　うちへ　かえりました。なんと　いいますか。\nN: 1　いってらっしゃい\nN: 2　おかえりなさい\nN: 3　ただいま"
+      voices: ['narrator']
+  - id: n5-lis-3-0010
+    stem: 'ともだちと　いっしょに　えいがを　見たいです。なんと　いいますか。'
+    choices:
+      ['えいがを　見ましたか', 'いっしょに　えいがを　見ませんか', 'えいがを　見て　いますか']
+    answer: 2
+    explanation:
+      en: '〜ませんか invites someone.'
+      es: '〜ませんか sirve para invitar.'
+    author: claude
+    tts:
+      script: "N: ともだちと　いっしょに　えいがを　見たいです。なんと　いいますか。\nN: 1　えいがを　見ましたか\nN: 2　いっしょに　えいがを　見ませんか\nN: 3　えいがを　見て　いますか"
+      voices: ['narrator']
+  - id: n5-lis-3-0011
+    stem: 'ねる　まえに　かぞくに　いいます。なんと　いいますか。'
+    choices: ['おはよう　ございます', 'いってきます', 'おやすみなさい']
+    answer: 3
+    explanation:
+      en: 'おやすみなさい means "good night".'
+      es: 'おやすみなさい significa "buenas noches".'
+    author: claude
+    tts:
+      script: "N: ねる　まえに　かぞくに　いいます。なんと　いいますか。\nN: 1　おはよう　ございます\nN: 2　いってきます\nN: 3　おやすみなさい"
+      voices: ['narrator']
+  - id: n5-lis-3-0012
+    stem: 'えきへ　いきたいですが、みちが　わかりません。なんと　いいますか。'
+    choices: ['すみません、えきは　どこですか', 'えきは　あそこですよ', 'えきへ　いきましょう']
+    answer: 1
+    explanation:
+      en: 'You ask where the station is.'
+      es: 'Preguntas dónde está la estación.'
+    author: claude
+    tts:
+      script: "N: えきへ　いきたいですが、みちが　わかりません。なんと　いいますか。\nN: 1　すみません、えきは　どこですか\nN: 2　えきは　あそこですよ\nN: 3　えきへ　いきましょう"
+      voices: ['narrator']
+  - id: n5-lis-3-0013
+    stem: 'まどを　あけたいです。せんせいに　なんと　いいますか。'
+    choices: ['まどを　あけましたか', 'まどを　あけても　いいですか', 'まどを　あけて　ください']
+    answer: 2
+    explanation:
+      en: '〜ても いいですか asks for permission to do it yourself.'
+      es: '〜ても いいですか pide permiso para hacerlo tú.'
+    author: claude
+    tts:
+      script: "N: まどを　あけたいです。せんせいに　なんと　いいますか。\nN: 1　まどを　あけましたか\nN: 2　まどを　あけても　いいですか\nN: 3　まどを　あけて　ください"
+      voices: ['narrator']
+  - id: n5-lis-3-0014
+    stem: 'ともだちが　かぜを　ひいて　います。なんと　いいますか。'
+    choices: ['いただきます', 'おめでとう　ございます', 'だいじょうぶですか']
+    answer: 3
+    explanation:
+      en: 'だいじょうぶですか asks if someone is all right.'
+      es: 'だいじょうぶですか pregunta si alguien está bien.'
+    author: claude
+    tts:
+      script: "N: ともだちが　かぜを　ひいて　います。なんと　いいますか。\nN: 1　いただきます\nN: 2　おめでとう　ございます\nN: 3　だいじょうぶですか"
+      voices: ['narrator']
+  - id: n5-lis-3-0015
+    stem: 'ともだちが　しゅくだいを　てつだいました。なんと　いいますか。'
+    choices: ['ありがとう　ございました', 'どう　いたしまして', 'すみません、てつだって　ください']
+    answer: 1
+    explanation:
+      en: 'You thank them for help already given.'
+      es: 'Agradeces una ayuda que ya te han dado.'
+    author: claude
+    tts:
+      script: "N: ともだちが　しゅくだいを　てつだいました。なんと　いいますか。\nN: 1　ありがとう　ございました\nN: 2　どう　いたしまして\nN: 3　すみません、てつだって　ください"
+      voices: ['narrator']

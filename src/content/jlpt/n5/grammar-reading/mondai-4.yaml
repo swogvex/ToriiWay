@@ -1,0 +1,88 @@
+# N5 · Grammar · Reading · Mondai 4 — short passages
+# Original questions written for Nihongo No Torii.
+level: N5
+section: grammar-reading
+mondai: 4
+instruction:
+  en: 'Read the text and answer the question.'
+  ja: 'つぎの ぶんしょうを よんで、しつもんに こたえて ください。'
+passages:
+  - id: tennis
+    text: "リーさんへ\n　あした　いっしょに　テニスを　しましょう。十時に　こうえんの　まえで　まって　います。ラケットは　わたしが　ふたつ　もって　いきますから、リーさんは　ボールを　もって　きて　ください。\nやまだ"
+  - id: school
+    text: "がくせいの　みなさんへ\n　あしたは　十二時に　じゅぎょうが　おわります。ひるごはんは　がっこうで　たべないで、うちで　たべて　ください。あさっては　いつもと　おなじです。"
+  - id: dog
+    text: '　わたしは　まいあさ　六時に　おきます。そして、いぬと　さんぽに　いきます。でも、きょうは　雨でしたから、さんぽに　いきませんでした。いぬは　いちにち　うちで　ねて　いました。'
+  - id: meeting
+    text: "たなかさん\n　きょうの　かいぎは　三時からでしたが、四時からに　なりました。ばしょは　おなじです。よろしく　おねがいします。\nキム"
+  - id: room
+    text: '　わたしの　へやには　ベッドと　つくえが　あります。テレビは　ありません。ほんだなは　ありますが、本は　すくないです。まどから　山が　見えます。'
+  - id: bakery
+    text: "パンや「さくら」\n　月よう日は　やすみです。\n　火よう日から　日よう日までは　あさ　七時から　ごご　六時までです。\n　土よう日と　日よう日は　ケーキも　うって　います。"
+questions:
+  - id: n5-grm-4-0001
+    passage: tennis
+    stem: 'リーさんは　あした　なにを　もって　いきますか。'
+    choices: ['なにも　もって　いきません', 'ラケットと　ボール', 'ボールだけ', 'ラケットだけ']
+    answer: 3
+    explanation:
+      en: 'Yamada brings the rackets; Lee is asked to bring the balls.'
+      es: 'Yamada lleva las raquetas; a Lee le piden las pelotas.'
+    author: claude
+  - id: n5-grm-4-0002
+    passage: school
+    stem: 'あした、がくせいは　どこで　ひるごはんを　たべますか。'
+    choices: ['こうえんで', 'がっこうで', 'しょくどうで', 'うちで']
+    answer: 4
+    explanation:
+      en: 'Classes end at twelve and students should eat at home.'
+      es: 'Las clases acaban a las doce y deben comer en casa.'
+    author: claude
+  - id: n5-grm-4-0003
+    passage: dog
+    stem: 'きょう、いぬは　なにを　しましたか。'
+    choices:
+      [
+        'うちで　ねて　いました',
+        '雨の　中で　あそびました',
+        '六時に　おきました',
+        'さんぽに　いきました',
+      ]
+    answer: 1
+    explanation:
+      en: 'Because of the rain there was no walk; the dog slept at home all day.'
+      es: 'Por la lluvia no hubo paseo; el perro durmió en casa todo el día.'
+    author: claude
+  - id: n5-grm-4-0004
+    passage: meeting
+    stem: 'かいぎは　なん時からですか。'
+    choices: ['三時から', '四時から', '三時半から', '二時から']
+    answer: 2
+    explanation:
+      en: 'The meeting moved from three to four; the room stays the same.'
+      es: 'La reunión pasó de las tres a las cuatro; la sala es la misma.'
+    author: claude
+  - id: n5-grm-4-0005
+    passage: room
+    stem: 'この　へやに　ない　ものは　どれですか。'
+    choices: ['テレビ', 'ほんだな', 'つくえ', 'ベッド']
+    answer: 1
+    explanation:
+      en: 'The text says there is no TV (テレビは ありません).'
+      es: 'El texto dice que no hay tele (テレビは ありません).'
+    author: claude
+  - id: n5-grm-4-0006
+    passage: bakery
+    stem: 'ケーキを　かいたいです。いつ　いきますか。'
+    choices:
+      [
+        '月よう日の　ごご　三時',
+        '日よう日の　よる　七時',
+        '水よう日の　あさ　八時',
+        '土よう日の　ごご　三時',
+      ]
+    answer: 4
+    explanation:
+      en: 'Cakes are sold on Saturday and Sunday, and the shop is open until six.'
+      es: 'Las tartas se venden sábado y domingo, y la tienda abre hasta las seis.'
+    author: claude

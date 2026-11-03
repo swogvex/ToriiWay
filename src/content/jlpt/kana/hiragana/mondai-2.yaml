@@ -1,0 +1,249 @@
+# Kana · Hiragana · Mondai 2 — writing
+# Original questions written for Nihongo No Torii.
+level: kana
+section: hiragana
+mondai: 2
+instruction:
+  en: 'Choose the kana for the romaji.'
+  ja: 'ローマじに　あう　かなを　えらんで　ください。'
+questions:
+  - id: kana-hira-2-0001
+    stem: 'a'
+    choices: ['め', 'あ', 'お', 'ぬ']
+    answer: 2
+    explanation:
+      en: '"a" is written あ. The others: お (o), め (me), ぬ (nu).'
+      es: '"a" se escribe あ. Las otras: お (o), め (me), ぬ (nu).'
+    author: claude
+  - id: kana-hira-2-0002
+    stem: 'o'
+    choices: ['ぬ', 'す', 'あ', 'お']
+    answer: 4
+    explanation:
+      en: '"o" is written お. The others: あ (a), ぬ (nu), す (su).'
+      es: '"o" se escribe お. Las otras: あ (a), ぬ (nu), す (su).'
+    author: claude
+  - id: kana-hira-2-0003
+    stem: 'ko'
+    choices: ['こ', 'た', 'に', 'い']
+    answer: 1
+    explanation:
+      en: '"ko" is written こ. The others: に (ni), い (i), た (ta).'
+      es: '"ko" se escribe こ. Las otras: に (ni), い (i), た (ta).'
+    author: claude
+  - id: kana-hira-2-0004
+    stem: 'ni'
+    choices: ['こ', 'た', 'に', 'け']
+    answer: 3
+    explanation:
+      en: '"ni" is written に. The others: こ (ko), た (ta), け (ke).'
+      es: '"ni" se escribe に. Las otras: こ (ko), た (ta), け (ke).'
+    author: claude
+  - id: kana-hira-2-0005
+    stem: 'ka'
+    choices: ['や', 'か', 'が', 'わ']
+    answer: 2
+    explanation:
+      en: '"ka" is written か. The others: や (ya), わ (wa), が (ga).'
+      es: '"ka" se escribe か. Las otras: や (ya), わ (wa), が (ga).'
+    author: claude
+  - id: kana-hira-2-0006
+    stem: 'ya'
+    choices: ['や', 'ゆ', 'せ', 'か']
+    answer: 1
+    explanation:
+      en: '"ya" is written や. The others: か (ka), ゆ (yu), せ (se).'
+      es: '"ya" se escribe や. Las otras: か (ka), ゆ (yu), せ (se).'
+    author: claude
+  - id: kana-hira-2-0007
+    stem: 'yo'
+    choices: ['ま', 'ほ', 'よ', 'は']
+    answer: 3
+    explanation:
+      en: '"yo" is written よ. The others: ま (ma), は (ha), ほ (ho).'
+      es: '"yo" se escribe よ. Las otras: ま (ma), は (ha), ほ (ho).'
+    author: claude
+  - id: kana-hira-2-0008
+    stem: 'mi'
+    choices: ['る', 'ゆ', 'め', 'み']
+    answer: 4
+    explanation:
+      en: '"mi" is written み. The others: め (me), ゆ (yu), る (ru).'
+      es: '"mi" se escribe み. Las otras: め (me), ゆ (yu), る (ru).'
+    author: claude
+  - id: kana-hira-2-0009
+    stem: 'te'
+    choices: ['へ', 'ろ', 'そ', 'て']
+    answer: 4
+    explanation:
+      en: '"te" is written て. The others: そ (so), ろ (ro), へ (he).'
+      es: '"te" se escribe て. Las otras: そ (so), ろ (ro), へ (he).'
+    author: claude
+  - id: kana-hira-2-0010
+    stem: 'he'
+    choices: ['つ', 'へ', 'て', 'く']
+    answer: 2
+    explanation:
+      en: '"he" is written へ. The others: く (ku), て (te), つ (tsu).'
+      es: '"he" se escribe へ. Las otras: く (ku), て (te), つ (tsu).'
+    author: claude
+  - id: kana-hira-2-0011
+    stem: 'ku'
+    choices: ['し', 'へ', 'く', 'ぐ']
+    answer: 3
+    explanation:
+      en: '"ku" is written く. The others: へ (he), し (shi), ぐ (gu).'
+      es: '"ku" se escribe く. Las otras: へ (he), し (shi), ぐ (gu).'
+    author: claude
+  - id: kana-hira-2-0012
+    stem: 'se'
+    choices: ['せ', 'さ', 'や', 'ぜ']
+    answer: 1
+    explanation:
+      en: '"se" is written せ. The others: や (ya), さ (sa), ぜ (ze).'
+      es: '"se" se escribe せ. Las otras: や (ya), さ (sa), ぜ (ze).'
+    author: claude
+  - id: kana-hira-2-0013
+    stem: 'no'
+    choices: ['あ', 'め', 'の', 'ぬ']
+    answer: 3
+    explanation:
+      en: '"no" is written の. The others: め (me), あ (a), ぬ (nu).'
+      es: '"no" se escribe の. Las otras: め (me), あ (a), ぬ (nu).'
+    author: claude
+  - id: kana-hira-2-0014
+    stem: 'su'
+    choices: ['お', 'む', 'ず', 'す']
+    answer: 4
+    explanation:
+      en: '"su" is written す. The others: む (mu), お (o), ず (zu).'
+      es: '"su" se escribe す. Las otras: む (mu), お (o), ず (zu).'
+    author: claude
+  - id: kana-hira-2-0015
+    stem: 'mu'
+    choices: ['む', 'す', 'ね', 'お']
+    answer: 1
+    explanation:
+      en: '"mu" is written む. The others: す (su), お (o), ね (ne).'
+      es: '"mu" se escribe む. Las otras: す (su), お (o), ね (ne).'
+    author: claude
+  - id: kana-hira-2-0016
+    stem: 'n'
+    choices: ['ろ', 'ん', 'し', 'そ']
+    answer: 2
+    explanation:
+      en: '"n" is written ん. The others: そ (so), し (shi), ろ (ro).'
+      es: '"n" se escribe ん. Las otras: そ (so), し (shi), ろ (ro).'
+    author: claude
+  - id: kana-hira-2-0017
+    stem: 'ra'
+    choices: ['ろ', 'う', 'ち', 'ら']
+    answer: 4
+    explanation:
+      en: '"ra" is written ら. The others: う (u), ち (chi), ろ (ro).'
+      es: '"ra" se escribe ら. Las otras: う (u), ち (chi), ろ (ro).'
+    author: claude
+  - id: kana-hira-2-0018
+    stem: 'ro'
+    choices: ['る', 'ら', 'ろ', 'ち']
+    answer: 3
+    explanation:
+      en: '"ro" is written ろ. The others: る (ru), ら (ra), ち (chi).'
+      es: '"ro" se escribe ろ. Las otras: る (ru), ら (ra), ち (chi).'
+    author: claude
+  - id: kana-hira-2-0019
+    stem: 'shi'
+    choices: ['じ', 'し', 'つ', 'も']
+    answer: 2
+    explanation:
+      en: '"shi" is written し. The others: つ (tsu), も (mo), じ (ji).'
+      es: '"shi" se escribe し. Las otras: つ (tsu), も (mo), じ (ji).'
+    author: claude
+  - id: kana-hira-2-0020
+    stem: 'tsu'
+    choices: ['つ', 'う', 'ず', 'し']
+    answer: 1
+    explanation:
+      en: '"tsu" is written つ. The others: し (shi), う (u), ず (zu).'
+      es: '"tsu" se escribe つ. Las otras: し (shi), う (u), ず (zu).'
+    author: claude
+  - id: kana-hira-2-0021
+    stem: 'chi'
+    choices: ['ち', 'さ', 'き', 'ら']
+    answer: 1
+    explanation:
+      en: '"chi" is written ち. The others: さ (sa), ら (ra), き (ki).'
+      es: '"chi" se escribe ち. Las otras: さ (sa), ら (ra), き (ki).'
+    author: claude
+  - id: kana-hira-2-0022
+    stem: 'fu'
+    choices: ['う', 'ぶ', 'す', 'ふ']
+    answer: 4
+    explanation:
+      en: '"fu" is written ふ. The others: ぶ (bu), う (u), す (su).'
+      es: '"fu" se escribe ふ. Las otras: ぶ (bu), う (u), す (su).'
+    author: claude
+  - id: kana-hira-2-0023
+    stem: 'hi'
+    choices: ['ぴ', 'ひ', 'び', 'い']
+    answer: 2
+    explanation:
+      en: '"hi" is written ひ. The others: び (bi), ぴ (pi), い (i).'
+      es: '"hi" se escribe ひ. Las otras: び (bi), ぴ (pi), い (i).'
+    author: claude
+  - id: kana-hira-2-0024
+    stem: 'po'
+    choices: ['ほ', 'ぼ', 'ぽ', 'ぱ']
+    answer: 3
+    explanation:
+      en: '"po" is written ぽ. The others: ぼ (bo), ほ (ho), ぱ (pa).'
+      es: '"po" se escribe ぽ. Las otras: ぼ (bo), ほ (ho), ぱ (pa).'
+    author: claude
+  - id: kana-hira-2-0025
+    stem: 'gi'
+    choices: ['ざ', 'さ', 'き', 'ぎ']
+    answer: 4
+    explanation:
+      en: '"gi" is written ぎ. The others: き (ki), さ (sa), ざ (za).'
+      es: '"gi" se escribe ぎ. Las otras: き (ki), さ (sa), ざ (za).'
+    author: claude
+  - id: kana-hira-2-0026
+    stem: 'da'
+    choices: ['だ', 'な', 'ば', 'た']
+    answer: 1
+    explanation:
+      en: '"da" is written だ. The others: た (ta), ば (ba), な (na).'
+      es: '"da" se escribe だ. Las otras: た (ta), ば (ba), な (na).'
+    author: claude
+  - id: kana-hira-2-0027
+    stem: 'sha'
+    choices: ['ちゃ', 'しや', 'しゃ', 'じゃ']
+    answer: 3
+    explanation:
+      en: '"sha" is written しゃ. The others: しや (shiya), ちゃ (cha), じゃ (ja).'
+      es: '"sha" se escribe しゃ. Las otras: しや (shiya), ちゃ (cha), じゃ (ja).'
+    author: claude
+  - id: kana-hira-2-0028
+    stem: 'ryo'
+    choices: ['りよ', 'りょ', 'りゅ', 'にょ']
+    answer: 2
+    explanation:
+      en: '"ryo" is written りょ. The others: りよ (riyo), りゅ (ryu), にょ (nyo).'
+      es: '"ryo" se escribe りょ. Las otras: りよ (riyo), りゅ (ryu), にょ (nyo).'
+    author: claude
+  - id: kana-hira-2-0029
+    stem: 'kyu'
+    choices: ['きょ', 'きゅ', 'ぎゅ', 'きゆ']
+    answer: 2
+    explanation:
+      en: '"kyu" is written きゅ. The others: きょ (kyo), ぎゅ (gyu), きゆ (kiyu).'
+      es: '"kyu" se escribe きゅ. Las otras: きょ (kyo), ぎゅ (gyu), きゆ (kiyu).'
+    author: claude
+  - id: kana-hira-2-0030
+    stem: 'nyo'
+    choices: ['にゅ', 'みょ', 'によ', 'にょ']
+    answer: 4
+    explanation:
+      en: '"nyo" is written にょ. The others: にゅ (nyu), によ (niyo), みょ (myo).'
+      es: '"nyo" se escribe にょ. Las otras: にゅ (nyu), によ (niyo), みょ (myo).'
+    author: claude
