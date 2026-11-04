@@ -14,7 +14,7 @@
         "http://localhost:4321/jlpt/run",
         "http://localhost:4321/help/japanese-voice"
       ],
-      "numberOfRuns": 3
+      "numberOfRuns": 5
     },
     "assert": {
       "assertMatrix": [
