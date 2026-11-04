@@ -88,7 +88,7 @@ questions:
       en: 'Today the class is in 301 because 201 has a test.'
       es: 'Hoy la clase es en el 301 porque en el 201 hay examen.'
     author: claude
-    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0007-0ecaafd5dbe4.mp3'
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0007-4cbf192871dd.mp3'
     tts:
       script: "N: おとこの　がくせいと　おんなの　がくせいが　はなして　います。おとこの　がくせいは　どの　きょうしつへ　いきますか。\nM: 日本語の　じゅぎょうは　にまるいち　きょうしつですか。\nF: きょうは　さんまるいちです。にまるいちは　テストを　して　いますから。\nM: そうですか。ありがとう。\nN: おとこの　がくせいは　どの　きょうしつへ　いきますか。"
       voices: ['narrator', 'man', 'woman']
@@ -172,7 +172,7 @@ questions:
       en: "She goes by train; the bicycle is the man's."
       es: 'Ella va en tren; la bici es de él.'
     author: claude
-    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0013-855813f08b22.mp3'
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0013-7670411104f1.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにで　レストランへ　いきますか。\nM: あしたの　パーティーの　レストランまで　どうやって　いきますか。\nF: でんしゃで　いきます。タクシーは　たかいですから。\nM: ぼくは　じてんしゃで　いきます。\nF: ちかいですか。\nM: ええ、うちから　じゅっぷんぐらいです。\nN: おんなの　ひとは　なにで　レストランへ　いきますか。"
       voices: ['narrator', 'man', 'woman']

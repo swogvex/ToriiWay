@@ -99,7 +99,7 @@ questions:
       en: 'どのぐらい かかりますか asks how long it takes.'
       es: 'どのぐらい かかりますか pregunta cuánto se tarda.'
     author: claude
-    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0008-29ff5492ec42.mp3'
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0008-3c62ef2e1275.mp3'
     tts:
       script: "F: えきまで　どのぐらい　かかりますか。\nM: 1　十時ごろです\nM: 2　バスです\nM: 3　じゅっぷんぐらいです"
       voices: ['woman', 'man']
