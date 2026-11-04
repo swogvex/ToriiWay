@@ -6,7 +6,7 @@
 import { JLPT_LEVELS } from '../jlpt/levels';
 import type { JlptLevel } from '../jlpt/types';
 
-export const JLPT_KEY = 'nnt:v1:jlpt';
+export const JLPT_KEY = 'tw:v1:jlpt';
 
 export interface StoredAnswer {
   choice: number | null;

@@ -11,7 +11,7 @@ import { close, createIndex } from 'pagefind';
  */
 export function pagefind(): AstroIntegration {
   return {
-    name: 'nnt:pagefind',
+    name: 'tw:pagefind',
     hooks: {
       'astro:build:done': async ({ dir, logger }) => {
         const outDir = fileURLToPath(dir);

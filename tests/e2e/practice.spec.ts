@@ -127,7 +127,7 @@ test.describe('practice', () => {
     await expect(dialog.getByText('10 of 10 correct')).toBeVisible();
     await expect(dialog.getByText('No mistakes. Well done!')).toBeVisible();
     const stored = await page.evaluate(() =>
-      JSON.parse(localStorage.getItem('nnt:v1:kana') ?? '{}'),
+      JSON.parse(localStorage.getItem('tw:v1:kana') ?? '{}'),
     );
     expect(stored.results).toEqual([
       expect.objectContaining({

@@ -1,6 +1,6 @@
 import { loadVoices, pickJapaneseVoice, speak } from './speech';
 
-const NOTICE_KEY = 'nnt:v1:no-ja-voice';
+const NOTICE_KEY = 'tw:v1:no-ja-voice';
 
 function noticeShown(): boolean {
   try {

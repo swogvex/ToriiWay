@@ -71,7 +71,7 @@ export interface GameProgress {
   saveSetup(setup: GameSetup): void;
 }
 
-export const GAME_STORAGE_KEY = 'nnt:v1:game';
+export const GAME_STORAGE_KEY = 'tw:v1:game';
 
 interface StoredGame {
   bests: Record<string, GameBest>;

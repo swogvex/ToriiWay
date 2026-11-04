@@ -36,7 +36,7 @@ index:
 
 # Until the channel feed is wired up, this card links to the YouTube channel.
 video:
-  kicker: YouTube · @nihongonotorii
+  kicker: YouTube · @swogvex
   title: Video lessons on the channel
   text: Short lessons on kana, grammar and the JLPT.
 
@@ -51,6 +51,6 @@ footer:
 
 social:
   discord: https://discord.gg/PkQt42bDtk
-  youtube: https://www.youtube.com/@nihongonotorii
+  youtube: https://www.youtube.com/@swogvex
   x: https://x.com/swogvex
   github: https://github.com/swogvex

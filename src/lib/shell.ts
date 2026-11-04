@@ -9,7 +9,7 @@ import { isTypingTarget, shortcutFor } from './shortcuts';
 import { syncThemeToggles, toggleTheme } from './theme/theme';
 import { showToast } from './ui/toast';
 
-const LANG_STORAGE_KEY = 'nnt:v1:lang';
+const LANG_STORAGE_KEY = 'tw:v1:lang';
 
 function store(key: string, value: string): void {
   try {
