@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 3 — word formation
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 3
+instruction:
+  en: 'Choose the best word part for the blank (　).'
+  ja: '（　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-3-0001
+    stem: 'あの　人の　行動は　（　）常識だ。'
+    choices:
+      - '不'
+      - '非'
+      - '未'
+      - '無'
+    answer: 2
+    explanation:
+      en: '非常識, "lacking common sense".'
+      es: '非常識, "falto de sentido común".'
+    author: claude
+  - id: n2-lr-3-0002
+    stem: 'この　仕事は　（　）経験の　人でも　できます。'
+    choices:
+      - '不'
+      - '非'
+      - '無'
+      - '未'
+    answer: 4
+    explanation:
+      en: '未経験, "without experience (yet)".'
+      es: '未経験, "sin experiencia (todavía)".'
+    author: claude
+  - id: n2-lr-3-0003
+    stem: '約束を　守らないなんて、（　）責任だ。'
+    choices:
+      - '非'
+      - '不'
+      - '無'
+      - '未'
+    answer: 3
+    explanation:
+      en: '無責任, "irresponsible".'
+      es: '無責任, "irresponsable".'
+    author: claude
+  - id: n2-lr-3-0004
+    stem: 'その　事件は　まだ　（　）解決だ。'
+    choices:
+      - '未'
+      - '不'
+      - '非'
+      - '無'
+    answer: 1
+    explanation:
+      en: '未解決, "not yet solved".'
+      es: '未解決, "sin resolver".'
+    author: claude
+  - id: n2-lr-3-0005
+    stem: '駅から　遠くて、交通の　（　）便な　場所だ。'
+    choices:
+      - '不'
+      - '未'
+      - '非'
+      - '無'
+    answer: 1
+    explanation:
+      en: '不便, "inconvenient".'
+      es: '不便, "poco práctico".'
+    author: claude
+  - id: n2-lr-3-0006
+    stem: '来週から　（　）年度が　始まる。'
+    choices:
+      - '旧'
+      - '元'
+      - '初'
+      - '新'
+    answer: 4
+    explanation:
+      en: '新年度, "the new (fiscal) year".'
+      es: '新年度, "el nuevo año fiscal".'
+    author: claude
+  - id: n2-lr-3-0007
+    stem: '大学（　）向けの　説明会が　ある。'
+    choices:
+      - '者'
+      - '生'
+      - '人'
+      - '員'
+    answer: 2
+    explanation:
+      en: '大学生, "university students".'
+      es: '大学生, "universitarios".'
+    author: claude
+  - id: n2-lr-3-0008
+    stem: '車の　安全（　）を　高める　研究を　して　いる。'
+    choices:
+      - '化'
+      - '的'
+      - '性'
+      - '式'
+    answer: 3
+    explanation:
+      en: '安全性, "safety (as a property)".'
+      es: '安全性, "seguridad (como cualidad)".'
+    author: claude
+  - id: n2-lr-3-0009
+    stem: '物価が　上がって、生活（　）が　増えた。'
+    choices:
+      - '料'
+      - '費'
+      - '賃'
+      - '代'
+    answer: 2
+    explanation:
+      en: '生活費, "living expenses".'
+      es: '生活費, "gastos de manutención".'
+    author: claude
+  - id: n2-lr-3-0010
+    stem: '書類に　間違いが　あったので、（　）提出した。'
+    choices:
+      - '復'
+      - '改'
+      - '返'
+      - '再'
+    answer: 4
+    explanation:
+      en: '再提出, "resubmission".'
+      es: '再提出, "nueva entrega".'
+    author: claude
+  - id: n2-lr-3-0011
+    stem: '企業の　国際（　）が　進んで　いる。'
+    choices:
+      - '性'
+      - '的'
+      - '化'
+      - '風'
+    answer: 3
+    explanation:
+      en: '国際化, "internationalisation".'
+      es: '国際化, "internacionalización".'
+    author: claude
+  - id: n2-lr-3-0012
+    stem: '駅（　）の　スーパーは　夜　遅くまで　開いて　いる。'
+    choices:
+      - '前'
+      - '元'
+      - '頭'
+      - '側'
+    answer: 1
+    explanation:
+      en: '駅前, "in front of the station".'
+      es: '駅前, "delante de la estación".'
+    author: claude
+  - id: n2-lr-3-0013
+    stem: '新しい　ビルは　来月（　）に　完成する　予定だ。'
+    choices:
+      - '際'
+      - '時'
+      - '間'
+      - '中'
+    answer: 4
+    explanation:
+      en: '来月中に, "sometime next month".'
+      es: '来月中に, "en algún momento del mes que viene".'
+    author: claude
+  - id: n2-lr-3-0014
+    stem: 'この　薬は　（　）作用が　少ない。'
+    choices:
+      - '副'
+      - '反'
+      - '二'
+      - '逆'
+    answer: 1
+    explanation:
+      en: '副作用, "side effect".'
+      es: '副作用, "efecto secundario".'
+    author: claude
+  - id: n2-lr-3-0015
+    stem: '世界（　）から　選手が　集まった。'
+    choices:
+      - '内'
+      - '中'
+      - '上'
+      - '間'
+    answer: 2
+    explanation:
+      en: '世界中, "all over the world".'
+      es: '世界中, "de todo el mundo".'
+    author: claude

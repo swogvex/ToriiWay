@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 5 — paraphrase
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 5
+instruction:
+  en: 'Choose the answer closest in meaning to the underlined part.'
+  ja: '＿＿＿の 言葉に 意味が 最も 近い ものを えらんで ください。'
+questions:
+  - id: n2-lr-5-0001
+    stem: '彼は　__たびたび__　遅刻する。'
+    choices:
+      - 'ずっと'
+      - '何度も'
+      - '必ず'
+      - '一度も'
+    answer: 2
+    explanation:
+      en: 'たびたび ≈ 何度も, "often, repeatedly".'
+      es: 'たびたび ≈ 何度も, "a menudo".'
+    author: claude
+  - id: n2-lr-5-0002
+    stem: '準備は　__ほぼ__　終わった。'
+    choices:
+      - 'まったく'
+      - 'まだ'
+      - 'だいたい'
+      - 'すっかり'
+    answer: 3
+    explanation:
+      en: 'ほぼ ≈ だいたい, "almost".'
+      es: 'ほぼ ≈ だいたい, "casi".'
+    author: claude
+  - id: n2-lr-5-0003
+    stem: 'その　映画は　__つまらなかった__。'
+    choices:
+      - 'おもしろくなかった'
+      - 'わかりにくかった'
+      - '長かった'
+      - '悲しかった'
+    answer: 1
+    explanation:
+      en: 'つまらない ≈ not interesting.'
+      es: 'つまらない ≈ aburrido.'
+    author: claude
+  - id: n2-lr-5-0004
+    stem: '出かけようと　したら、__あいにく__　雨が　降って　きた。'
+    choices:
+      - '少しずつ'
+      - 'やっと'
+      - '急に'
+      - '運悪く'
+    answer: 4
+    explanation:
+      en: 'あいにく ≈ unfortunately.'
+      es: 'あいにく ≈ por desgracia.'
+    author: claude
+  - id: n2-lr-5-0005
+    stem: '会議が　__延期された__。'
+    choices:
+      - '早く　終わった'
+      - '予定どおり　行われた'
+      - 'あとの　日に　変わった'
+      - '中止された'
+    answer: 3
+    explanation:
+      en: '延期 ≈ moved to a later date.'
+      es: '延期 ≈ pasado a otra fecha.'
+    author: claude
+  - id: n2-lr-5-0006
+    stem: '彼女は　__控えめな__　人だ。'
+    choices:
+      - '忙しい'
+      - '目立とうと　しない'
+      - '厳しい'
+      - '明るい'
+    answer: 2
+    explanation:
+      en: '控えめ ≈ modest, not pushy.'
+      es: '控えめ ≈ discreto.'
+    author: claude
+  - id: n2-lr-5-0007
+    stem: 'この　仕事は　__手間が　かかる__。'
+    choices:
+      - '時間や　労力が　必要だ'
+      - '簡単だ'
+      - '危険だ'
+      - 'お金が　かかる'
+    answer: 1
+    explanation:
+      en: '手間が かかる ≈ takes time and effort.'
+      es: '手間が かかる ≈ lleva tiempo y esfuerzo.'
+    author: claude
+  - id: n2-lr-5-0008
+    stem: 'その　工事は　__とっくに__　終わって　いる。'
+    choices:
+      - 'もうすぐ'
+      - 'いつか'
+      - 'ちょうど　今'
+      - 'ずっと　前に'
+    answer: 4
+    explanation:
+      en: 'とっくに ≈ long ago.'
+      es: 'とっくに ≈ hace mucho.'
+    author: claude
+  - id: n2-lr-5-0009
+    stem: '彼は　__うつむいて__　いた。'
+    choices:
+      - '上を　見て'
+      - '下を　向いて'
+      - '目を　閉じて'
+      - '横を　向いて'
+    answer: 2
+    explanation:
+      en: 'うつむく ≈ look down.'
+      es: 'うつむく ≈ mirar hacia abajo.'
+    author: claude
+  - id: n2-lr-5-0010
+    stem: '雨なので、出発を　__見合わせる__　ことに　した。'
+    choices:
+      - '新しく　決める'
+      - '二人で　考える'
+      - 'しばらく　やめる'
+      - '急いで　進める'
+    answer: 3
+    explanation:
+      en: '見合わせる ≈ put on hold.'
+      es: '見合わせる ≈ dejar en suspenso.'
+    author: claude
+  - id: n2-lr-5-0011
+    stem: '電車に　__ぎりぎり__　間に合った。'
+    choices:
+      - '余裕が　なく'
+      - '友だちと'
+      - '余裕を　持って'
+      - '早めに'
+    answer: 1
+    explanation:
+      en: 'ぎりぎり ≈ with no time to spare.'
+      es: 'ぎりぎり ≈ sin margen.'
+    author: claude
+  - id: n2-lr-5-0012
+    stem: '彼の　意見は　__もっともだ__。'
+    choices:
+      - '意外だ'
+      - '間違いだ'
+      - '古い'
+      - '当然だ'
+    answer: 4
+    explanation:
+      en: 'もっともだ ≈ reasonable, natural.'
+      es: 'もっともだ ≈ razonable.'
+    author: claude
+  - id: n2-lr-5-0013
+    stem: 'あの　店は　__評判が　いい__。'
+    choices:
+      - 'みんなに　よく　言われて　いる'
+      - '値段が　安い'
+      - '店が　広い'
+      - '新しい'
+    answer: 1
+    explanation:
+      en: '評判が いい ≈ well spoken of.'
+      es: '評判が いい ≈ tener buena fama.'
+    author: claude
+  - id: n2-lr-5-0014
+    stem: '引っ越しの　あと、部屋は　__がらんとして__　いた。'
+    choices:
+      - 'とても　暗かった'
+      - '人が　たくさん　いた'
+      - '何も　なくて　広く　感じられた'
+      - 'とても　汚れて　いた'
+    answer: 3
+    explanation:
+      en: 'がらんと ≈ empty and bare.'
+      es: 'がらんと ≈ vacío.'
+    author: claude
+  - id: n2-lr-5-0015
+    stem: '彼女は　__そっけなく__　答えた。'
+    choices:
+      - '早口で'
+      - '冷たく'
+      - '大きな　声で'
+      - '優しく'
+    answer: 2
+    explanation:
+      en: 'そっけない ≈ curt, cold.'
+      es: 'そっけない ≈ seco, frío.'
+    author: claude

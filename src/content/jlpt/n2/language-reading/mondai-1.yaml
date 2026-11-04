@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 1 — kanji reading
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 1
+instruction:
+  en: 'Choose the reading of the underlined word.'
+  ja: '＿＿＿の 言葉の 読み方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-1-0001
+    stem: '彼の　__態度__は　とても　失礼だった。'
+    choices:
+      - 'ていど'
+      - 'だいど'
+      - 'たいど'
+      - 'たいどう'
+    answer: 3
+    explanation:
+      en: '態度 is read たいど, "attitude".'
+      es: '態度 se lee たいど, "actitud".'
+    author: claude
+  - id: n2-lr-1-0002
+    stem: '来月から　新しい　計画を　__実施__する。'
+    choices:
+      - 'しっし'
+      - 'じっせ'
+      - 'じつし'
+      - 'じっし'
+    answer: 4
+    explanation:
+      en: '実施 is read じっし, "carrying out".'
+      es: '実施 se lee じっし, "puesta en marcha".'
+    author: claude
+  - id: n2-lr-1-0003
+    stem: '事故の　せいで　道路が　__渋滞__して　いる。'
+    choices:
+      - 'じゅうだい'
+      - 'じゅうたい'
+      - 'じゅたい'
+      - 'しゅうたい'
+    answer: 2
+    explanation:
+      en: '渋滞 is read じゅうたい, "traffic jam".'
+      es: '渋滞 se lee じゅうたい, "atasco".'
+    author: claude
+  - id: n2-lr-1-0004
+    stem: '会社は　新しい　制度を　__導入__した。'
+    choices:
+      - 'どうにゅう'
+      - 'どうにゅ'
+      - 'どうにょう'
+      - 'とうにゅう'
+    answer: 1
+    explanation:
+      en: '導入 is read どうにゅう, "introduction".'
+      es: '導入 se lee どうにゅう, "introducción".'
+    author: claude
+  - id: n2-lr-1-0005
+    stem: '彼女は　とても　__穏やか__な　性格だ。'
+    choices:
+      - 'おごそか'
+      - 'おだやか'
+      - 'すこやか'
+      - 'なごやか'
+    answer: 2
+    explanation:
+      en: '穏やか is read おだやか, "calm, gentle".'
+      es: '穏やか se lee おだやか, "tranquilo".'
+    author: claude
+  - id: n2-lr-1-0006
+    stem: 'けがを　したら、すぐに　傷口を　__消毒__して　ください。'
+    choices:
+      - 'しょうどう'
+      - 'しょどく'
+      - 'しょうとく'
+      - 'しょうどく'
+    answer: 4
+    explanation:
+      en: '消毒 is read しょうどく, "disinfection".'
+      es: '消毒 se lee しょうどく, "desinfección".'
+    author: claude
+  - id: n2-lr-1-0007
+    stem: '調査の　__範囲__を　広げる　ことに　した。'
+    choices:
+      - 'はんかい'
+      - 'はんえ'
+      - 'はんい'
+      - 'ばんい'
+    answer: 3
+    explanation:
+      en: '範囲 is read はんい, "scope, range".'
+      es: '範囲 se lee はんい, "alcance".'
+    author: claude
+  - id: n2-lr-1-0008
+    stem: '出張の　__日程__が　決まった。'
+    choices:
+      - 'にってい'
+      - 'にってん'
+      - 'にちてい'
+      - 'ひてい'
+    answer: 1
+    explanation:
+      en: '日程 is read にってい, "schedule".'
+      es: '日程 se lee にってい, "calendario".'
+    author: claude
+  - id: n2-lr-1-0009
+    stem: '雨が　続いて、部屋の　空気が　__湿って__いる。'
+    choices:
+      - 'うるおって'
+      - 'ひえって'
+      - 'しぼって'
+      - 'しめって'
+    answer: 4
+    explanation:
+      en: '湿って is read しめって, "damp". 潤う (うるおう) uses another kanji.'
+      es: '湿って se lee しめって, "húmedo". 潤う (うるおう) usa otro kanji.'
+    author: claude
+  - id: n2-lr-1-0010
+    stem: 'その　問題は　__慎重__に　検討する　必要が　ある。'
+    choices:
+      - 'しんちょう'
+      - 'じんちょう'
+      - 'しんちょ'
+      - 'しんじゅう'
+    answer: 1
+    explanation:
+      en: '慎重 is read しんちょう, "careful".'
+      es: '慎重 se lee しんちょう, "prudente".'
+    author: claude
+  - id: n2-lr-1-0011
+    stem: '田中さんは　__頼もしい__　先輩だ。'
+    choices:
+      - 'らいもしい'
+      - 'たのしい'
+      - 'たのもしい'
+      - 'たよもしい'
+    answer: 3
+    explanation:
+      en: '頼もしい is read たのもしい, "reliable".'
+      es: '頼もしい se lee たのもしい, "de confianza".'
+    author: claude
+  - id: n2-lr-1-0012
+    stem: '三年前に　__郊外__に　家を　買った。'
+    choices:
+      - 'こうかい'
+      - 'こうがい'
+      - 'こうそと'
+      - 'ごうがい'
+    answer: 2
+    explanation:
+      en: '郊外 is read こうがい, "suburbs".'
+      es: '郊外 se lee こうがい, "afueras".'
+    author: claude
+  - id: n2-lr-1-0013
+    stem: 'この　町の　人口は　毎年　__減少__して　いる。'
+    choices:
+      - 'へんしょう'
+      - 'げんしょ'
+      - 'けんしょう'
+      - 'げんしょう'
+    answer: 4
+    explanation:
+      en: '減少 is read げんしょう, "decrease".'
+      es: '減少 se lee げんしょう, "disminución".'
+    author: claude
+  - id: n2-lr-1-0014
+    stem: 'お礼の　手紙を　__添えて__　贈り物を　した。'
+    choices:
+      - 'そえて'
+      - 'くわえて'
+      - 'そめて'
+      - 'たえて'
+    answer: 1
+    explanation:
+      en: '添えて is read そえて, "attaching". くわえる is written 加える.'
+      es: '添えて se lee そえて, "adjuntando". くわえる se escribe 加える.'
+    author: claude
+  - id: n2-lr-1-0015
+    stem: '大きな　地震で　古い　建物が　__崩れた__。'
+    choices:
+      - 'こわれた'
+      - 'くずれた'
+      - 'たおれた'
+      - 'ほうれた'
+    answer: 2
+    explanation:
+      en: '崩れた is read くずれた, "collapsed". こわれる is 壊れる, たおれる is 倒れる.'
+      es: '崩れた se lee くずれた, "se derrumbó". こわれる es 壊れる y たおれる es 倒れる.'
+    author: claude

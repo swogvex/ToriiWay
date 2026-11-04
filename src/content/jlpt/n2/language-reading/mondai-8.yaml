@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 8 — sentence composition
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 8
+instruction:
+  en: 'Put the four parts in order. Which part goes in ★?'
+  ja: 'つぎの 文の ★ に 入る 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-8-0001
+    stem: 'この　仕事は　＿＿＿　＿＿＿　★　＿＿＿　終わらない。'
+    choices:
+      - 'ところで'
+      - '今日中には'
+      - '急いだ'
+      - 'どんなに'
+    answer: 1
+    explanation:
+      en: 'どんなに 急いだ ところで 今日中には 終わらない.'
+      es: 'どんなに 急いだ ところで 今日中には 終わらない: "Por mucha prisa que me dé, hoy no se acaba."'
+    author: claude
+  - id: n2-lr-8-0002
+    stem: '一度　＿＿＿　＿＿＿　★　＿＿＿　守るべきだ。'
+    choices:
+      - 'した'
+      - '約束'
+      - '最後まで'
+      - '以上は'
+    answer: 4
+    explanation:
+      en: '一度 約束 した 以上は 最後まで 守るべきだ.'
+      es: '一度 約束 した 以上は 最後まで 守るべきだ: "Una promesa hecha hay que cumplirla hasta el final."'
+    author: claude
+  - id: n2-lr-8-0003
+    stem: '雨が　＿＿＿　＿＿＿　★　＿＿＿　行われる。'
+    choices:
+      - '試合は'
+      - '降ろうと'
+      - '明日の'
+      - '降るまいと'
+    answer: 3
+    explanation:
+      en: '雨が 降ろうと 降るまいと 明日の 試合は 行われる.'
+      es: '雨が 降ろうと 降るまいと 明日の 試合は 行われる: "Llueva o no, el partido de mañana se juega."'
+    author: claude
+  - id: n2-lr-8-0004
+    stem: '彼の　＿＿＿　★　＿＿＿　＿＿＿　知らない。'
+    choices:
+      - 'だれも'
+      - 'どこまで'
+      - '話が'
+      - '本当なのか'
+    answer: 2
+    explanation:
+      en: '彼の 話が どこまで 本当なのか だれも 知らない.'
+      es: '彼の 話が どこまで 本当なのか だれも 知らない: "Nadie sabe cuánto hay de verdad en lo que dice."'
+    author: claude
+  - id: n2-lr-8-0005
+    stem: '新しい　＿＿＿　＿＿＿　★　＿＿＿　意見が　分かれた。'
+    choices:
+      - '建設を'
+      - '駅の'
+      - 'めぐって'
+      - '住民の'
+    answer: 3
+    explanation:
+      en: '新しい 駅の 建設を めぐって 住民の 意見が 分かれた.'
+      es: '新しい 駅の 建設を めぐって 住民の 意見が 分かれた: "La nueva estación divide a los vecinos."'
+    author: claude
+  - id: n2-lr-8-0006
+    stem: '先生の　＿＿＿　★　＿＿＿　＿＿＿　合格できた。'
+    choices:
+      - 'アドバイスが'
+      - 'あった'
+      - 'からこそ'
+      - '試験に'
+    answer: 2
+    explanation:
+      en: '先生の アドバイスが あった からこそ 試験に 合格できた.'
+      es: '先生の アドバイスが あった からこそ 試験に 合格できた: "Aprobé precisamente gracias al consejo del profesor."'
+    author: claude
+  - id: n2-lr-8-0007
+    stem: '彼女は　＿＿＿　＿＿＿　★　＿＿＿　泣き出した。'
+    choices:
+      - '合格の'
+      - 'うれしさのあまり'
+      - '知らせを'
+      - '聞いて'
+    answer: 4
+    explanation:
+      en: '彼女は 合格の 知らせを 聞いて うれしさのあまり 泣き出した.'
+      es: '彼女は 合格の 知らせを 聞いて うれしさのあまり 泣き出した: "Al saber que había aprobado, rompió a llorar de alegría."'
+    author: claude
+  - id: n2-lr-8-0008
+    stem: '努力する　＿＿＿　＿＿＿　★　＿＿＿　ない。'
+    choices:
+      - 'ことは'
+      - 'でき'
+      - 'ことなしに'
+      - '成功する'
+    answer: 1
+    explanation:
+      en: '努力する ことなしに 成功する ことは でき ない.'
+      es: '努力する ことなしに 成功する ことは でき ない: "Sin esfuerzo no se puede triunfar."'
+    author: claude
+  - id: n2-lr-8-0009
+    stem: '年齢や　＿＿＿　＿＿＿　★　＿＿＿　参加できます。'
+    choices:
+      - '経験'
+      - 'を'
+      - '問わず'
+      - 'だれでも'
+    answer: 3
+    explanation:
+      en: '年齢や 経験 を 問わず だれでも 参加できます.'
+      es: '年齢や 経験 を 問わず だれでも 参加できます: "Puede participar cualquiera, sin importar edad ni experiencia."'
+    author: claude
+  - id: n2-lr-8-0010
+    stem: 'もう　少し　＿＿＿　★　＿＿＿　＿＿＿　間に合ったのに。'
+    choices:
+      - '出発して'
+      - '電車に'
+      - 'いれば'
+      - '早く'
+    answer: 1
+    explanation:
+      en: 'もう 少し 早く 出発して いれば 電車に 間に合ったのに.'
+      es: 'もう 少し 早く 出発して いれば 電車に 間に合ったのに: "Si hubiera salido un poco antes, habría cogido el tren."'
+    author: claude
+  - id: n2-lr-8-0011
+    stem: 'この　レストランは　＿＿＿　＿＿＿　★　＿＿＿　手頃だ。'
+    choices:
+      - '値段も'
+      - 'もちろん'
+      - '味'
+      - 'は'
+    answer: 2
+    explanation:
+      en: 'この レストランは 味 は もちろん 値段も 手頃だ.'
+      es: 'この レストランは 味 は もちろん 値段も 手頃だ: "En este restaurante no solo está bien el sabor, también el precio."'
+    author: claude
+  - id: n2-lr-8-0012
+    stem: '日本に　＿＿＿　＿＿＿　★　＿＿＿　勉強したい。'
+    choices:
+      - '文化も'
+      - 'からには'
+      - '留学した'
+      - '日本の'
+    answer: 4
+    explanation:
+      en: '日本に 留学した からには 日本の 文化も 勉強したい.'
+      es: '日本に 留学した からには 日本の 文化も 勉強したい: "Ya que estudio en Japón, quiero aprender también su cultura."'
+    author: claude
+  - id: n2-lr-8-0013
+    stem: '彼は　＿＿＿　★　＿＿＿　＿＿＿　謝りも　しなかった。'
+    choices:
+      - '友だちに'
+      - 'ばかりか'
+      - '約束に'
+      - '遅刻した'
+    answer: 4
+    explanation:
+      en: '彼は 約束に 遅刻した ばかりか 友だちに 謝りも しなかった.'
+      es: '彼は 約束に 遅刻した ばかりか 友だちに 謝りも しなかった: "No solo llegó tarde, sino que ni se disculpó."'
+    author: claude
+  - id: n2-lr-8-0014
+    stem: '彼女は　＿＿＿　＿＿＿　★　＿＿＿　新しい　服を　着て　いる。'
+    choices:
+      - 'たびに'
+      - '会う'
+      - 'わたしと'
+      - '違う'
+    answer: 1
+    explanation:
+      en: '彼女は わたしと 会う たびに 違う 新しい 服を 着て いる.'
+      es: '彼女は わたしと 会う たびに 違う 新しい 服を 着て いる: "Cada vez que la veo lleva ropa nueva distinta."'
+    author: claude
+  - id: n2-lr-8-0015
+    stem: '台風が　＿＿＿　＿＿＿　★　＿＿＿　が　あるそうだ。'
+    choices:
+      - '止まるおそれ'
+      - '電車が'
+      - 'いて'
+      - '近づいて'
+    answer: 2
+    explanation:
+      en: '台風が 近づいて いて 電車が 止まるおそれ が あるそうだ.'
+      es: '台風が 近づいて いて 電車が 止まるおそれ が あるそうだ: "Se acerca un tifón y podrían parar los trenes."'
+    author: claude

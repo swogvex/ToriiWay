@@ -1,0 +1,235 @@
+# N2 · Language knowledge · Reading · Mondai 10 — short passages
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 10
+instruction:
+  en: 'Read the text and answer the question.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: delivery
+    text: "株式会社みどり商事　営業部　山田様\n　いつもお世話になっております。先日ご注文いただいた事務用いすの件ですが、工場の都合により、お届けが当初の予定より一週間遅れ、十月二十日になる見込みです。ご迷惑をおかけして申し訳ございません。\n　なお、お急ぎの場合は、在庫のある別の色の商品でしたら、予定どおり十月十三日にお届けできます。ご希望をお知らせください。\nさくら家具　佐藤"
+  - id: failure
+    text: '　失敗を恐れて何もしない人は、確かに失敗はしない。しかし、それは成長の機会も失っているということだ。新しいことに挑戦すれば、うまくいかないこともある。だが、そこから何が足りなかったのかを考えることで、人は次に進むことができる。失敗とは、終わりではなく、次への出発点なのである。'
+  - id: bulky
+    text: "粗大ごみの出し方が変わります\n　四月一日から、粗大ごみを出すには事前の申し込みが必要になります。申し込みは、出す日の一週間前までに、電話かインターネットで行ってください。申し込みの際に伝えられる受付番号を紙に書いてごみに貼り、指定された日の朝八時までに出してください。"
+  - id: cooking
+    text: '　忙しい現代人にとって、料理は面倒な家事の一つかもしれない。しかし、わたしは料理をしている時間が好きだ。野菜を切ったり、鍋の様子を見たりしている間は、仕事のことを忘れられるからだ。料理は、単に食事を作るための作業ではなく、心を休める時間にもなるのである。'
+  - id: printing
+    text: "社員各位\n　来月から、コピー用紙の使用量を減らすため、カラー印刷は事前に部長の許可を得た場合のみ可能とします。また、会議資料はできるだけ電子データで共有し、やむを得ず印刷する場合は両面印刷をお願いします。ご協力をお願いいたします。\n総務部"
+  - id: memory
+    text: '　スマートフォンがあれば、知りたいことはすぐに調べられる。そのため、何かを覚えておく必要がなくなったと考える人もいる。しかし、知識が頭の中にあるからこそ、別の知識と結びつけて新しい考えを生み出すことができる。調べればわかることでも、自分の中に蓄えておくことには意味があるのだ。'
+  - id: hotel
+    text: "お客様各位\n　当ホテルでは、十一月一日より、館内レストランの営業時間を変更いたします。朝食は六時半から十時まで、夕食は十七時から二十一時までとなります。なお、昼食の営業は当面休止いたしますが、ルームサービスは引き続き二十四時間ご利用いただけます。"
+  - id: gift
+    text: '　人に物を贈るとき、わたしたちはつい値段の高い物を選ぼうとしてしまう。しかし、贈り物で大切なのは値段ではない。相手が何を好むかを考え、その人のために時間をかけて選んだという気持ちこそが、相手の心に残るのではないだろうか。'
+  - id: sports
+    text: "保護者の皆様へ\n　来週土曜日の運動会は、雨天の場合、翌日の日曜日に延期します。日曜日も雨の場合は中止とし、競技の一部は後日、授業の中で行います。実施するかどうかは、当日の朝六時に学校のホームページでお知らせします。お弁当は、実施する日にご用意ください。"
+  - id: walking
+    text: '　車が便利になって、人はあまり歩かなくなった。だが、歩くことの価値は、健康のためだけではない。ゆっくり歩くと、車からは見えなかった小さな店や、季節ごとに変わる花に気づく。歩くことは、身近な町を新しく発見することでもあるのだ。'
+  - id: library
+    text: "市立図書館からのお知らせ\n　館内の工事のため、三月一日から三十一日まで、二階の学習室を閉鎖します。この期間も、一階の閲覧席は通常どおりご利用いただけます。本の予約・貸し出し・返却も通常どおり行いますが、雑誌のバックナンバーはご覧いただけません。"
+  - id: compare
+    text: '　人はつい、自分と他人を比べてしまう。友人が自分より先に昇進したり、成功したりすると、落ち込むこともあるだろう。しかし、比べるべき相手は他人ではなく、昨日の自分である。少しでも前に進めていれば、それで十分なのだ。'
+  - id: returns
+    text: "みどりショップをご利用いただき、ありがとうございます。\n　商品がお手元に届いてから七日以内であれば、返品を受け付けております。ただし、一度使用された商品や、セール期間中に購入された商品は返品できませんので、ご了承ください。返品の際は、事前にメールでご連絡ください。"
+  - id: silence
+    text: '　会話の途中で沈黙が続くと、何か話さなければと焦ってしまう人は多い。しかし、親しい人との間では、沈黙は気まずいものではない。言葉がなくても安心していられるのは、相手との間に信頼があるからだ。無理に話題を探す必要はないのである。'
+  - id: class
+    text: "みどり公民館　料理講座のご案内\n日時：六月八日（土）十時～十三時\n内容：季節の野菜を使った和食\n定員：二十名（先着順）\n参加費：一,五〇〇円（材料費を含む）\n申し込み：五月三十一日までに公民館の窓口で。電話での申し込みはできません。"
+questions:
+  - id: n2-lr-10-0001
+    passage: delivery
+    stem: 'この　メールで　最も　伝えたい　ことは　何か。'
+    choices:
+      - '注文の　品の　到着は　遅れるが、別の　色なら　予定どおり　届けられる'
+      - '注文の　品は　十月十三日に　届く'
+      - '別の　色の　商品は　在庫が　ない'
+      - '注文を　取り消して　ほしい'
+    answer: 1
+    explanation:
+      en: 'The order is a week late; another colour can still arrive on the original date.'
+      es: 'El pedido llega una semana tarde; otro color podría llegar en la fecha prevista.'
+    author: claude
+  - id: n2-lr-10-0002
+    passage: failure
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '失敗した　人は　新しい　ことに　挑戦しない　ほうが　いい'
+      - '失敗しないように　慎重に　行動すべきだ'
+      - '失敗から　学ぶ　ことで　人は　成長できる'
+      - '挑戦しても　成長できない　人も　いる'
+    answer: 3
+    explanation:
+      en: 'Failure is a starting point, not an end.'
+      es: 'El fracaso es un punto de partida, no un final.'
+    author: claude
+  - id: n2-lr-10-0003
+    passage: bulky
+    stem: '四月以降に　粗大ごみを　出したい　人は、まず　何を　しなければ　ならないか。'
+    choices:
+      - '受付番号を　紙に　書いて　貼る'
+      - '指定された　日の　朝　八時までに　出す'
+      - '市役所に　直接　持って　行く'
+      - '一週間前までに　電話か　インターネットで　申し込む'
+    answer: 4
+    explanation:
+      en: 'Applying comes first; the number and the date come after.'
+      es: 'Primero hay que solicitarlo; el número y la fecha vienen después.'
+    author: claude
+  - id: n2-lr-10-0004
+    passage: cooking
+    stem: '筆者に　とって　料理とは　どのような　ものか。'
+    choices:
+      - '健康の　ために　必要な　作業'
+      - '心を　休める　ことが　できる　時間'
+      - 'できるだけ　短く　したい　家事'
+      - '仕事の　ことを　考える　時間'
+    answer: 2
+    explanation:
+      en: 'Cooking lets the writer forget work and rest.'
+      es: 'Cocinar le permite olvidar el trabajo y descansar.'
+    author: claude
+  - id: n2-lr-10-0005
+    passage: printing
+    stem: 'この　文書の　内容と　合うのは　どれか。'
+    choices:
+      - 'カラー印刷を　するには　部長の　許可が　必要に　なる'
+      - '両面印刷は　禁止に　なる'
+      - 'コピー用紙は　自分で　買わなければ　ならない'
+      - '会議資料は　必ず　印刷しなければ　ならない'
+    answer: 1
+    explanation:
+      en: "Colour printing needs the manager's approval."
+      es: 'Imprimir en color requiere permiso del jefe.'
+    author: claude
+  - id: n2-lr-10-0006
+    passage: memory
+    stem: '筆者は　知識を　覚えて　おく　ことに　ついて、どう　考えて　いるか。'
+    choices:
+      - 'スマートフォンが　あれば　必要ない'
+      - '試験の　ためにだけ　必要だ'
+      - '調べる　時間を　減らす　ために　必要だ'
+      - '新しい　考えを　生み出す　ために　意味が　ある'
+    answer: 4
+    explanation:
+      en: 'Stored knowledge can be combined into new ideas.'
+      es: 'El conocimiento guardado se combina en ideas nuevas.'
+    author: claude
+  - id: n2-lr-10-0007
+    passage: hotel
+    stem: '十一月一日以降に　ついて　正しいのは　どれか。'
+    choices:
+      - '朝食は　十時以降も　食べられる'
+      - 'ルームサービスは　夜だけ　使える'
+      - '昼食は　レストランでは　食べられないが、ルームサービスは　使える'
+      - 'レストランで　昼食が　食べられる'
+    answer: 3
+    explanation:
+      en: 'Lunch is suspended; room service stays 24 hours.'
+      es: 'El almuerzo se suspende; el servicio de habitaciones sigue 24 horas.'
+    author: claude
+  - id: n2-lr-10-0008
+    passage: gift
+    stem: '筆者は　贈り物に　ついて、何が　大切だと　述べて　いるか。'
+    choices:
+      - '早く　贈る　こと'
+      - '相手の　ことを　考えて　選ぶ　気持ち'
+      - '珍しい　物を　贈る　こと'
+      - '値段の　高い　物を　選ぶ　こと'
+    answer: 2
+    explanation:
+      en: 'What stays with people is the care in choosing.'
+      es: 'Lo que queda es el cuidado al elegir.'
+    author: claude
+  - id: n2-lr-10-0009
+    passage: sports
+    stem: '土曜日が　雨だった　場合、運動会は　どう　なるか。'
+    choices:
+      - '中止に　なる'
+      - '土曜日の　午後に　行われる'
+      - '日曜日に　延期される'
+      - '授業の　中で　全部の　競技を　行う'
+    answer: 3
+    explanation:
+      en: 'Rain on Saturday moves it to Sunday.'
+      es: 'Si llueve el sábado, pasa al domingo.'
+    author: claude
+  - id: n2-lr-10-0010
+    passage: walking
+    stem: '筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '歩くと　身近な　町の　新しい　魅力に　気づける'
+      - '車は　不便な　乗り物だ'
+      - '花を　育てる　ことは　楽しい'
+      - '健康の　ために　毎日　歩くべきだ'
+    answer: 1
+    explanation:
+      en: 'Walking helps you rediscover your own town.'
+      es: 'Caminar ayuda a redescubrir tu barrio.'
+    author: claude
+  - id: n2-lr-10-0011
+    passage: library
+    stem: '三月中に　図書館で　できない　ことは　どれか。'
+    choices:
+      - '一階の　席で　読書する　こと'
+      - '雑誌の　バックナンバーを　読む　こと'
+      - '本を　予約する　こと'
+      - '本を　借りる　こと'
+    answer: 2
+    explanation:
+      en: 'Only back issues of magazines are unavailable.'
+      es: 'Solo no se pueden consultar los números atrasados de revistas.'
+    author: claude
+  - id: n2-lr-10-0012
+    passage: compare
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '昇進しないと　意味が　ない'
+      - '友人より　先に　成功するべきだ'
+      - '他人と　比べる　ことで　成長できる'
+      - '他人では　なく　過去の　自分と　比べれば　いい'
+    answer: 4
+    explanation:
+      en: "Compare yourself with yesterday's you."
+      es: 'Compárate con quien eras ayer.'
+    author: claude
+  - id: n2-lr-10-0013
+    passage: returns
+    stem: '返品できるのは　どれか。'
+    choices:
+      - '一度　使った　商品を　返す　場合'
+      - 'セールで　買った　商品を　返す　場合'
+      - '届いて　十日後に　返す　場合'
+      - '届いて　三日後に、使って　いない　通常価格の　商品を　返す　場合'
+    answer: 4
+    explanation:
+      en: 'Within seven days, unused and not bought on sale.'
+      es: 'En siete días, sin usar y no comprado en rebajas.'
+    author: claude
+  - id: n2-lr-10-0014
+    passage: silence
+    stem: '筆者は　親しい　人との　沈黙に　ついて、どう　考えて　いるか。'
+    choices:
+      - '信頼が　あるので　気に　しなくて　いい'
+      - 'すぐに　話題を　探すべきだ'
+      - '相手を　不安に　させる'
+      - '関係が　悪い　証拠だ'
+    answer: 1
+    explanation:
+      en: 'Silence among close people shows trust.'
+      es: 'El silencio entre personas cercanas muestra confianza.'
+    author: claude
+  - id: n2-lr-10-0015
+    passage: class
+    stem: 'この　講座に　参加したい　人は、どう　しなければ　ならないか。'
+    choices:
+      - '六月八日までに　お金を　振り込む'
+      - '当日　公民館に　行く'
+      - '五月三十一日までに　公民館の　窓口で　申し込む'
+      - '電話で　申し込む'
+    answer: 3
+    explanation:
+      en: 'Only in person at the counter, by 31 May.'
+      es: 'Solo en persona en la ventanilla, antes del 31 de mayo.'
+    author: claude

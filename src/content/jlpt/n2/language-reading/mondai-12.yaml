@@ -1,0 +1,94 @@
+# N2 · Language knowledge · Reading · Mondai 12 — integrated comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 12
+instruction:
+  en: 'Read texts A and B and answer the questions.'
+  ja: 'つぎの ＡとＢの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: phones
+    text: "Ａ\n　小学生にスマートフォンを持たせることには賛成だ。共働きの家庭が増え、子どもが一人で過ごす時間も長くなっている。何かあったときにすぐ連絡が取れることは、親にとっても子どもにとっても大きな安心になる。使う時間や見てもよいサイトについて、家庭でルールを決めておけば問題は少ないだろう。\nＢ\n　小学生にスマートフォンはまだ早いと思う。確かに連絡が取れるのは便利だが、それなら通話だけができる簡単な携帯電話で十分だ。スマートフォンを持つと、ゲームや動画に夢中になり、勉強や睡眠の時間が減ってしまう心配がある。ルールを決めても、子どもがそれを守るのは簡単ではない。"
+  - id: office
+    text: "Ａ\n　在宅勤務は、働く人にとって利点が多い。通勤の時間がなくなる分、家族と過ごしたり、自分の勉強をしたりする時間が増える。集中したい作業も、静かな家の方がはかどることがある。会社にとっても、事務所の費用を減らせるという利点がある。\nＢ\n　在宅勤務には便利な面もあるが、すべての仕事を家ですればいいとは思わない。同じ場所で働くからこそ、ちょっとした会話から新しいアイデアが生まれることもある。特に新人は、先輩の仕事の様子を近くで見ることで学ぶことが多い。会社に集まる日と在宅の日を組み合わせるのが良いのではないか。"
+  - id: uniform
+    text: "Ａ\n　学校の制服は必要だと考える。毎朝何を着るか悩まなくてすむし、家庭による服の差が目立たない。また、制服を着ることで、学校の一員としての意識が生まれる。行事などで外に出たときも、どの学校の生徒かすぐにわかり、安全の面でも役に立つ。\nＢ\n　制服は必ずしも必要ではないと思う。服は自分を表現する手段の一つであり、何を着るかを自分で決めることも大切な経験だ。また、制服は意外と高く、成長に合わせて買い直すと家庭の負担も大きい。着たい人だけが着る「自由な制服」という選択肢もあってよいのではないか。"
+questions:
+  - id: n2-lr-12-0001
+    passage: phones
+    stem: 'ＡとＢの　どちらも　述べて　いる　ことは　何か。'
+    choices:
+      - 'スマートフォンは　勉強に　役立つ'
+      - '家庭の　ルールを　子どもは　必ず　守る'
+      - '小学生には　携帯電話も　必要ない'
+      - 'すぐに　連絡が　取れる　ことは　便利だ'
+    answer: 4
+    explanation:
+      en: 'Both accept that being able to call is useful.'
+      es: 'Ambos aceptan que poder llamar es útil.'
+    author: claude
+  - id: n2-lr-12-0002
+    passage: phones
+    stem: 'ＡとＢの　考えに　ついて　正しいのは　どれか。'
+    choices:
+      - 'ＡもＢも　スマートフォンに　賛成して　いる'
+      - 'Ａは　ゲームが　心配だと　考え、Ｂは　連絡が　心配だと　考えて　いる'
+      - 'Ａは　ルールを　決めれば　よいと　考え、Ｂは　通話だけの　電話で　十分だと　考えて　いる'
+      - 'ＡもＢも　ルールを　決めても　意味が　ないと　考えて　いる'
+    answer: 3
+    explanation:
+      en: 'A: rules solve it. B: a call-only phone is enough.'
+      es: 'A: con reglas basta. B: basta un teléfono solo para llamar.'
+    author: claude
+  - id: n2-lr-12-0003
+    passage: office
+    stem: 'ＡとＢの　どちらも　触れて　いる　ことは　何か。'
+    choices:
+      - '会社に　集まる　必要は　ない'
+      - '在宅勤務には　よい　面が　ある'
+      - '新人は　家で　学ぶ　ことが　多い'
+      - '事務所の　費用を　減らせる'
+    answer: 2
+    explanation:
+      en: 'A praises it; B grants it is convenient.'
+      es: 'A lo elogia; B admite que es cómodo.'
+    author: claude
+  - id: n2-lr-12-0004
+    passage: office
+    stem: 'Ｂは　どのような　働き方が　よいと　考えて　いるか。'
+    choices:
+      - '会社に　集まる　日と　在宅の　日を　組み合わせる'
+      - '新人だけ　家で　働く'
+      - 'すべての　仕事を　家で　する'
+      - '毎日　会社に　集まる'
+    answer: 1
+    explanation:
+      en: 'B suggests mixing office and home days.'
+      es: 'B propone combinar días en la oficina y en casa.'
+    author: claude
+  - id: n2-lr-12-0005
+    passage: uniform
+    stem: 'Ｂが　制服を　必要ないと　考える　理由として　挙げて　いるのは　どれか。'
+    choices:
+      - '制服は　安全の　面で　役に　立たない　こと'
+      - '毎朝　着る　服に　悩む　こと'
+      - '服で　自分を　表現できない　ことと、家庭の　費用の　負担'
+      - '制服を　着ると　成績が　下がる　こと'
+    answer: 3
+    explanation:
+      en: 'B cites self-expression and the cost to families.'
+      es: 'B menciona la expresión personal y el coste para las familias.'
+    author: claude
+  - id: n2-lr-12-0006
+    passage: uniform
+    stem: 'ＡとＢの　考えに　ついて　正しいのは　どれか。'
+    choices:
+      - 'Ａは　制服が　必要だと　考え、Ｂは　着るか　どうかを　選べても　よいと　考えて　いる'
+      - 'ＡもＢも　制服は　安いと　考えて　いる'
+      - 'Ａは　自由な　服が　よいと　考え、Ｂは　制服が　よいと　考えて　いる'
+      - 'ＡもＢも　制服は　必要ないと　考えて　いる'
+    answer: 1
+    explanation:
+      en: 'A: necessary. B: let students choose.'
+      es: 'A: necesario. B: que se pueda elegir.'
+    author: claude

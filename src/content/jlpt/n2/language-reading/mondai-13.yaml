@@ -1,0 +1,133 @@
+# N2 · Language knowledge · Reading · Mondai 13 — thematic comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 13
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: waste
+    text: "　効率がよいことは、現代の社会で高く評価される。短い時間で多くの仕事をこなす人は「仕事ができる」と言われ、無駄を省くことが良いことだとされる。確かに、限られた時間の中で成果を出すためには、効率を考えることは欠かせない。\n　しかし、一見無駄に見える時間が、実は大きな意味を持つこともある。例えば、目的もなく町を歩いているときに、ふと新しい考えが浮かぶことがある。同僚との何気ない雑談から、仕事の問題を解決するヒントが見つかることもある。すべてを効率で判断していると、こうした偶然の出会いを失ってしまうだろう。\n　また、効率ばかりを求めると、人は結果だけを見るようになる。どれだけ早く終わったか、どれだけ多くできたかが大切になり、その過程で何を感じ、何を学んだかは軽く見られがちだ。しかし、人を成長させるのは、むしろ回り道や失敗の経験なのではないだろうか。\n　効率を大切にしながらも、あえて無駄を楽しむ余裕を持つこと。それが、豊かに生きるために必要なことだとわたしは考える。"
+  - id: amateur
+    text: "　何か問題が起きたとき、わたしたちは専門家の意見を求める。専門家は長い時間をかけて知識を積み重ねてきた人であり、その意見が信頼されるのは当然だろう。\n　ただ、専門家の考えにも限界がある。一つの分野に詳しい人ほど、その分野の常識にとらわれやすいからだ。新しい発想は、むしろその分野に詳しくない人から生まれることがある。ある会社では、商品の使いにくさを調べるために、あえて専門の知識のない人たちに試してもらったところ、専門家が気づかなかった問題がいくつも見つかったという。\n　もちろん、素人の意見がいつも正しいわけではない。知識がないために、間違った判断をすることもある。大切なのは、専門家と素人のどちらかを選ぶことではなく、両方の視点を組み合わせることだ。専門家の知識と、素人の素朴な疑問。この二つが合わさったとき、より良い答えが見つかるのではないだろうか。"
+  - id: convenience
+    text: "　わたしたちの生活は、年々便利になっている。地図を持たなくても、スマートフォンが目的地まで案内してくれる。料理の手順も、動画を見ればすぐにわかる。わからないことがあれば、調べるのに数秒もかからない。\n　便利になることは、悪いことではない。しかし、その一方で、わたしたちは自分で考える機会を失ってはいないだろうか。道に迷いながら目的地を探すとき、人は周りの景色を観察し、方向を考える。料理の失敗を重ねるうちに、なぜうまくいかないのかを理解していく。こうした経験の中で、考える力は少しずつ育っていくのである。\n　便利な道具に頼るほど、考えずに済む場面は増える。それ自体は時間の節約になるが、すべてを道具に任せてしまえば、道具がないときに何もできない人になってしまうかもしれない。\n　便利さを手放す必要はない。ただ、ときには道具を使わずに、自分の頭で考えてみる時間を持つべきだ。そうすることで、便利さの価値も、より深く理解できるようになるだろう。"
+questions:
+  - id: n2-lr-13-0001
+    passage: waste
+    stem: '筆者は　一見　無駄に　見える　時間に　ついて、どう　考えて　いるか。'
+    choices:
+      - '仕事の　効率を　上げる'
+      - 'できるだけ　なくすべきだ'
+      - '新しい　考えや　ヒントが　生まれる　ことが　ある'
+      - '人を　疲れさせる'
+    answer: 3
+    explanation:
+      en: 'Aimless walks and chats can spark ideas.'
+      es: 'Pasear sin rumbo o charlar puede dar ideas.'
+    author: claude
+  - id: n2-lr-13-0002
+    passage: waste
+    stem: '効率ばかりを　求めると、どう　なると　筆者は　述べて　いるか。'
+    choices:
+      - '人と　話す　時間が　増える'
+      - '結果だけを　見て、過程で　学んだ　ことを　軽く　見るように　なる'
+      - '失敗が　増える'
+      - '仕事が　遅く　なる'
+    answer: 2
+    explanation:
+      en: 'Only results count and the process is ignored.'
+      es: 'Solo cuenta el resultado y se olvida el proceso.'
+    author: claude
+  - id: n2-lr-13-0003
+    passage: waste
+    stem: 'この　文章で　筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '効率を　大切に　しながらも、無駄を　楽しむ　余裕を　持つべきだ'
+      - '回り道は　できるだけ　避けるべきだ'
+      - '効率よりも　無駄の　ほうが　大切だ'
+      - 'すべての　仕事で　効率を　考えるべきだ'
+    answer: 1
+    explanation:
+      en: 'Value efficiency, but leave room for "waste".'
+      es: 'Valorar la eficiencia, pero dejar sitio para lo "inútil".'
+    author: claude
+  - id: n2-lr-13-0004
+    passage: amateur
+    stem: '筆者に　よると、専門家の　考えの　限界とは　何か。'
+    choices:
+      - '新しい　情報を　知らない　こと'
+      - '意見を　言いたがらない　こと'
+      - '知識が　足りない　こと'
+      - 'その　分野の　常識に　とらわれやすい　こと'
+    answer: 4
+    explanation:
+      en: "Deep experts can be bound by their field's common sense."
+      es: 'Los expertos pueden quedar atados a lo habitual de su campo.'
+    author: claude
+  - id: n2-lr-13-0005
+    passage: amateur
+    stem: 'ある　会社の　例は、何を　示して　いるか。'
+    choices:
+      - '専門の　知識が　ない　人が、専門家の　気づかない　問題を　見つける　ことが　ある'
+      - '素人に　商品を　作らせるべきだ'
+      - '専門家の　意見は　いつも　正しい'
+      - '商品の　問題は　見つからない'
+    answer: 1
+    explanation:
+      en: 'Non-experts spotted problems experts missed.'
+      es: 'Los no expertos detectaron fallos que los expertos no vieron.'
+    author: claude
+  - id: n2-lr-13-0006
+    passage: amateur
+    stem: '筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '専門家より　素人を　信じるべきだ'
+      - '素人の　意見は　聞くべきでは　ない'
+      - '専門家に　なるには　長い　時間が　必要だ'
+      - '専門家と　素人の　両方の　視点を　組み合わせる　ことが　大切だ'
+    answer: 4
+    explanation:
+      en: 'Combine expert knowledge and simple questions.'
+      es: 'Combinar el saber experto y las preguntas sencillas.'
+    author: claude
+  - id: n2-lr-13-0007
+    passage: convenience
+    stem: '筆者に　よると、考える　力は　どのように　育つか。'
+    choices:
+      - 'スマートフォンで　調べる　ことで　育つ'
+      - '道に　迷ったり、失敗したり　する　経験の　中で　育つ'
+      - '動画を　たくさん　見る　ことで　育つ'
+      - '便利な　道具を　使う　ことで　育つ'
+    answer: 2
+    explanation:
+      en: 'Getting lost and failing build thinking skills.'
+      es: 'Perderse y equivocarse desarrolla la capacidad de pensar.'
+    author: claude
+  - id: n2-lr-13-0008
+    passage: convenience
+    stem: 'すべてを　道具に　任せると、どう　なる　おそれが　あるか。'
+    choices:
+      - '時間が　足りなく　なる'
+      - 'お金が　かかるように　なる'
+      - '道具が　ない　ときに　何も　できなく　なる'
+      - '道具が　壊れやすく　なる'
+    answer: 3
+    explanation:
+      en: 'Without tools you might be helpless.'
+      es: 'Sin herramientas uno podría quedarse sin saber qué hacer.'
+    author: claude
+  - id: n2-lr-13-0009
+    passage: convenience
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '便利さを　手放さず、ときには　自分の　頭で　考える　時間を　持つべきだ'
+      - '考える　ことより　時間の　節約が　大切だ'
+      - '便利な　道具は　使うべきでは　ない'
+      - 'すべて　道具に　任せた　ほうが　よい'
+    answer: 1
+    explanation:
+      en: 'Keep the convenience, but think for yourself sometimes.'
+      es: 'Mantener la comodidad, pero pensar por uno mismo a veces.'
+    author: claude

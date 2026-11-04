@@ -1,0 +1,261 @@
+# N2 · Language knowledge · Reading · Mondai 4 — contextual meaning
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 4
+instruction:
+  en: 'Choose the best word for the blank (　).'
+  ja: '（　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-4-0001
+    stem: '彼の　説明は　（　）で、よく　わからなかった。'
+    choices:
+      - '正直'
+      - 'あいまい'
+      - '明確'
+      - '新鮮'
+    answer: 2
+    explanation:
+      en: 'あいまい: vague, so hard to follow.'
+      es: 'あいまい: vago, por eso costaba entenderlo.'
+    author: claude
+  - id: n2-lr-4-0002
+    stem: '試合に　負けて、みんな　（　）した。'
+    choices:
+      - 'うっかり'
+      - 'ほっと'
+      - 'すっきり'
+      - 'がっかり'
+    answer: 4
+    explanation:
+      en: 'がっかり: disappointed.'
+      es: 'がっかり: decepcionado.'
+    author: claude
+  - id: n2-lr-4-0003
+    stem: '締め切りに　（　）間に合った。'
+    choices:
+      - 'せっかく'
+      - 'いったん'
+      - 'かろうじて'
+      - 'わざわざ'
+    answer: 3
+    explanation:
+      en: 'かろうじて: only just.'
+      es: 'かろうじて: por muy poco.'
+    author: claude
+  - id: n2-lr-4-0004
+    stem: '会議の　内容を　（　）に　まとめて　ください。'
+    choices:
+      - '簡潔'
+      - '複雑'
+      - '豊富'
+      - '潔白'
+    answer: 1
+    explanation:
+      en: '簡潔: brief and to the point.'
+      es: '簡潔: breve y conciso.'
+    author: claude
+  - id: n2-lr-4-0005
+    stem: '駅前の　新しい　店は　（　）オープンする　予定だ。'
+    choices:
+      - '時々'
+      - '近々'
+      - '次々'
+      - '別々'
+    answer: 2
+    explanation:
+      en: '近々: soon.'
+      es: '近々: próximamente.'
+    author: claude
+  - id: n2-lr-4-0006
+    stem: '彼は　（　）な　性格で、だれとでも　すぐ　仲良く　なる。'
+    choices:
+      - '内向的'
+      - '消極的'
+      - '否定的'
+      - '社交的'
+    answer: 4
+    explanation:
+      en: '社交的: sociable.'
+      es: '社交的: sociable.'
+    author: claude
+  - id: n2-lr-4-0007
+    stem: 'この　地域の　気候は　米作りに　（　）。'
+    choices:
+      - '適して　いる'
+      - '似合って　いる'
+      - '間に合って　いる'
+      - '慣れて　いる'
+    answer: 1
+    explanation:
+      en: '〜に 適して いる: suited to.'
+      es: '〜に 適して いる: adecuado para.'
+    author: claude
+  - id: n2-lr-4-0008
+    stem: '夢を　（　）する　ために、毎日　努力して　いる。'
+    choices:
+      - '実在'
+      - '実感'
+      - '実現'
+      - '実用'
+    answer: 3
+    explanation:
+      en: '夢を 実現する: make a dream come true.'
+      es: '夢を 実現する: hacer realidad un sueño.'
+    author: claude
+  - id: n2-lr-4-0009
+    stem: '彼女は　（　）努力を　続けて、夢を　かなえた。'
+    choices:
+      - 'ぐずぐず'
+      - 'こつこつ'
+      - 'ぶらぶら'
+      - 'いらいら'
+    answer: 2
+    explanation:
+      en: 'こつこつ: steadily, bit by bit.'
+      es: 'こつこつ: poco a poco, con constancia.'
+    author: claude
+  - id: n2-lr-4-0010
+    stem: '警察が　事故の　（　）を　調べて　いる。'
+    choices:
+      - '原料'
+      - '原則'
+      - '原因'
+      - '原作'
+    answer: 3
+    explanation:
+      en: 'The police look into the cause (原因).'
+      es: 'La policía investiga la causa (原因).'
+    author: claude
+  - id: n2-lr-4-0011
+    stem: '予算が　（　）ので、計画を　見直した。'
+    choices:
+      - '不足した'
+      - '不便だった'
+      - '不安だった'
+      - '不満だった'
+    answer: 1
+    explanation:
+      en: 'The budget fell short: 不足する.'
+      es: 'Faltaba presupuesto: 不足する.'
+    author: claude
+  - id: n2-lr-4-0012
+    stem: '話し合いは　（　）続いたが、結論は　出なかった。'
+    choices:
+      - '黙々と'
+      - '着々と'
+      - '堂々と'
+      - '延々と'
+    answer: 4
+    explanation:
+      en: '延々と: on and on.'
+      es: '延々と: sin fin.'
+    author: claude
+  - id: n2-lr-4-0013
+    stem: '彼の　意見に　（　）する　人は　多かった。'
+    choices:
+      - '感謝'
+      - '感覚'
+      - '共通'
+      - '共感'
+    answer: 4
+    explanation:
+      en: '共感する: to agree with and feel the same.'
+      es: '共感する: compartir una opinión.'
+    author: claude
+  - id: n2-lr-4-0014
+    stem: '子どもが　（　）飲まないように、薬は　高い　所に　置いて　ください。'
+    choices:
+      - '改めて'
+      - '初めて'
+      - '誤って'
+      - '決して'
+    answer: 3
+    explanation:
+      en: '誤って: by mistake.'
+      es: '誤って: por error.'
+    author: claude
+  - id: n2-lr-4-0015
+    stem: '新しい　環境に　（　）のに　時間が　かかった。'
+    choices:
+      - 'かなう'
+      - 'なじむ'
+      - 'なつく'
+      - 'ゆずる'
+    answer: 2
+    explanation:
+      en: '環境に なじむ: to settle into a new place.'
+      es: '環境に なじむ: adaptarse a un lugar nuevo.'
+    author: claude
+  - id: n2-lr-4-0016
+    stem: 'この　本は　時間を　かけて　（　）読む　価値が　ある。'
+    choices:
+      - 'じっくり'
+      - 'びっしょり'
+      - 'うっかり'
+      - 'ぐったり'
+    answer: 1
+    explanation:
+      en: 'じっくり: carefully, taking time.'
+      es: 'じっくり: con calma y atención.'
+    author: claude
+  - id: n2-lr-4-0017
+    stem: '急に　雨が　降って　きて、服が　（　）ぬれた。'
+    choices:
+      - 'ぼんやり'
+      - 'ぐっすり'
+      - 'びっしょり'
+      - 'がっかり'
+    answer: 3
+    explanation:
+      en: 'びっしょり ぬれる: soaked.'
+      es: 'びっしょり ぬれる: empapado.'
+    author: claude
+  - id: n2-lr-4-0018
+    stem: '社員の　安全　（　）を　高める　ため、研修を　行う。'
+    choices:
+      - '意外'
+      - '意識'
+      - '意地'
+      - '意味'
+    answer: 2
+    explanation:
+      en: '安全意識: awareness of safety.'
+      es: '安全意識: conciencia de la seguridad.'
+    author: claude
+  - id: n2-lr-4-0019
+    stem: '彼は　約束を　（　）守る　人だ。'
+    choices:
+      - 'きちんと'
+      - 'ちゃっかり'
+      - 'ぼんやり'
+      - 'ふんわり'
+    answer: 1
+    explanation:
+      en: 'きちんと: properly, reliably.'
+      es: 'きちんと: como es debido.'
+    author: claude
+  - id: n2-lr-4-0020
+    stem: '新しい　商品の　（　）が　好調だ。'
+    choices:
+      - '行き先'
+      - '行き来'
+      - '行き止まり'
+      - '売れ行き'
+    answer: 4
+    explanation:
+      en: '売れ行き: sales.'
+      es: '売れ行き: ventas.'
+    author: claude
+  - id: n2-lr-4-0021
+    stem: '引っ越しの　前に、使わない　家具を　（　）した。'
+    choices:
+      - '分析'
+      - '配分'
+      - '分類'
+      - '処分'
+    answer: 4
+    explanation:
+      en: '処分する: to get rid of.'
+      es: '処分する: deshacerse de algo.'
+    author: claude
