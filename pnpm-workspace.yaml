@@ -11,6 +11,16 @@ overrides:
   '@vercel/nft>glob': ^14.0.2
   # satori pins fflate 0.7.x; 0.7.5 fixes GHSA-px8p-9vwx-vf98 (ZIP64 infinite loop).
   'fflate@>=0.7.0 <0.7.5': 0.7.5
+  # Dev tools only (pnpm audit): patched versions within the API each parent already uses.
+  '@esbuild-kit/core-utils>esbuild': 0.25.12
+  'tmp@<0.2.6': 0.2.7
+  '@lhci/cli>uuid': 11.1.1
+  'get-uri>basic-ftp': 6.2.3
+  'chromium-bidi>zod': 4.6.7
+  # extract-zip has no fixed release; @puppeteer/browsers 3 no longer depends on it.
+  'puppeteer-core>@puppeteer/browsers': 3.2.5
+  # ...which needs proxy-agent 8 as a peer (lhci uses the same ProxyAgent class).
+  proxy-agent: 8.0.2
 
 # esbuild ships its binary as an optional package; its install script is not needed.
 allowBuilds:
