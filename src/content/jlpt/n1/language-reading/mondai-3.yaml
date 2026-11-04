@@ -1,0 +1,225 @@
+# N1 · Language knowledge · Reading · Mondai 3 — paraphrase
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 3
+instruction:
+  en: 'Choose the answer closest in meaning to the underlined part.'
+  ja: '＿＿＿の 言葉に 意味が 最も 近い ものを えらんで ください。'
+questions:
+  - id: n1-lr-3-0001
+    stem: '彼の　話は　__つじつまが　合わない__。'
+    choices:
+      - '筋が　通らない'
+      - '時間が　長い'
+      - '声が　小さい'
+      - '内容が　古い'
+    answer: 1
+    explanation:
+      en: 'つじつまが 合わない: it does not add up.'
+      es: 'つじつまが 合わない: no tiene lógica.'
+    author: claude
+  - id: n1-lr-3-0002
+    stem: '準備は　__おおむね__　終わった。'
+    choices:
+      - 'すっかり'
+      - 'だいたい'
+      - 'ようやく'
+      - 'わずかに'
+    answer: 2
+    explanation:
+      en: 'おおむね: mostly.'
+      es: 'おおむね: en su mayor parte.'
+    author: claude
+  - id: n1-lr-3-0003
+    stem: '彼は　__ひたすら__　練習を　続けた。'
+    choices:
+      - '仕方なく'
+      - 'ときどき'
+      - 'ただ　それだけを'
+      - '友人と'
+    answer: 3
+    explanation:
+      en: 'ひたすら: single-mindedly.'
+      es: 'ひたすら: sin parar, solo eso.'
+    author: claude
+  - id: n1-lr-3-0004
+    stem: 'その　知らせを　聞いて　__愕然と　した__。'
+    choices:
+      - '腹を　立てた'
+      - 'とても　喜んだ'
+      - 'ほっと　した'
+      - 'ひどく　驚いた'
+    answer: 4
+    explanation:
+      en: '愕然と する: to be stunned.'
+      es: '愕然と する: quedarse atónito.'
+    author: claude
+  - id: n1-lr-3-0005
+    stem: '今日の　会議は　__ひとまず__　ここで　終わりに　しよう。'
+    choices:
+      - 'とりあえず'
+      - '完全に'
+      - 'すぐに'
+      - 'もう一度'
+    answer: 1
+    explanation:
+      en: 'ひとまず: for now.'
+      es: 'ひとまず: por ahora.'
+    author: claude
+  - id: n1-lr-3-0006
+    stem: '優勝候補の　チームが　__あっけなく__　負けた。'
+    choices:
+      - '最後に'
+      - '悔しそうに'
+      - 'わざと'
+      - '予想外に　簡単に'
+    answer: 4
+    explanation:
+      en: 'あっけなく: surprisingly easily.'
+      es: 'あっけなく: con una facilidad inesperada.'
+    author: claude
+  - id: n1-lr-3-0007
+    stem: 'この　仕事は　彼に　__うってつけだ__。'
+    choices:
+      - 'つまらない'
+      - '難しすぎる'
+      - 'ぴったりだ'
+      - '急ぎだ'
+    answer: 3
+    explanation:
+      en: 'うってつけ: just right.'
+      es: 'うってつけ: ideal.'
+    author: claude
+  - id: n1-lr-3-0008
+    stem: '彼は　__むやみに__　お金を　使う。'
+    choices:
+      - '楽しそうに'
+      - 'よく　考えずに'
+      - '少しずつ'
+      - 'こっそり'
+    answer: 2
+    explanation:
+      en: 'むやみに: thoughtlessly.'
+      es: 'むやみに: sin pensar.'
+    author: claude
+  - id: n1-lr-3-0009
+    stem: '社長は　その　案を　__一蹴した__。'
+    choices:
+      - 'すぐに　断った'
+      - '少し　直した'
+      - 'すぐに　採用した'
+      - 'よく　検討した'
+    answer: 1
+    explanation:
+      en: '一蹴する: to reject flatly.'
+      es: '一蹴する: rechazar de plano.'
+    author: claude
+  - id: n1-lr-3-0010
+    stem: 'ビザの　手続きは　__煩雑だ__。'
+    choices:
+      - '時間が　かからない'
+      - '複雑で　面倒だ'
+      - '簡単だ'
+      - '新しく　なった'
+    answer: 2
+    explanation:
+      en: '煩雑: complicated and troublesome.'
+      es: '煩雑: complicado y engorroso.'
+    author: claude
+  - id: n1-lr-3-0011
+    stem: '彼は　__しきりに__　時計を　見て　いた。'
+    choices:
+      - '一度だけ'
+      - 'じっと'
+      - '何度も'
+      - 'ぼんやり'
+    answer: 3
+    explanation:
+      en: 'しきりに: repeatedly.'
+      es: 'しきりに: una y otra vez.'
+    author: claude
+  - id: n1-lr-3-0012
+    stem: '彼女の　話には　__誇張__が　ある。'
+    choices:
+      - 'おもしろい　ところ'
+      - '難しい　ところ'
+      - '間違った　ところ'
+      - '大げさな　ところ'
+    answer: 4
+    explanation:
+      en: '誇張: exaggeration.'
+      es: '誇張: exageración.'
+    author: claude
+  - id: n1-lr-3-0013
+    stem: '予算が　つかず、計画は　__白紙に　戻った__。'
+    choices:
+      - '少し　変わった'
+      - '完成した'
+      - 'なかった　ことに　なった'
+      - '一年　延びた'
+    answer: 3
+    explanation:
+      en: '白紙に 戻る: to go back to square one.'
+      es: '白紙に 戻る: volver a empezar de cero.'
+    author: claude
+  - id: n1-lr-3-0014
+    stem: '彼は　事故の　様子を　__ありのままに__　話した。'
+    choices:
+      - '少しだけ'
+      - '事実を　そのまま'
+      - '大きな　声で'
+      - 'うそを　まぜて'
+    answer: 2
+    explanation:
+      en: 'ありのまま: as it is.'
+      es: 'ありのまま: tal como fue.'
+    author: claude
+  - id: n1-lr-3-0015
+    stem: '雨が　強いので、今日の　登山は　__見合わせる__　ことに　した。'
+    choices:
+      - 'やめて　おく'
+      - '早めに　終える'
+      - '急いで　始める'
+      - '最後まで　続ける'
+    answer: 1
+    explanation:
+      en: '見合わせる: to hold off.'
+      es: '見合わせる: aplazar, suspender.'
+    author: claude
+  - id: n1-lr-3-0016
+    stem: '部長は　__たちどころに__　問題を　解決した。'
+    choices:
+      - '一人で'
+      - '苦労して'
+      - '時間を　かけて'
+      - 'すぐに'
+    answer: 4
+    explanation:
+      en: 'たちどころに: at once.'
+      es: 'たちどころに: al instante.'
+    author: claude
+  - id: n1-lr-3-0017
+    stem: 'あの　店員の　態度は　__横柄だ__。'
+    choices:
+      - '暗い'
+      - '丁寧だ'
+      - '落ち着いて　いる'
+      - '偉そうだ'
+    answer: 4
+    explanation:
+      en: '横柄: arrogant.'
+      es: '横柄: arrogante.'
+    author: claude
+  - id: n1-lr-3-0018
+    stem: '二人の　実力は　__拮抗して　いる__。'
+    choices:
+      - '上がって　いる'
+      - '大きく　違う'
+      - 'ほぼ　同じだ'
+      - 'まだ　わからない'
+    answer: 3
+    explanation:
+      en: '拮抗する: to be evenly matched.'
+      es: '拮抗する: estar igualados.'
+    author: claude

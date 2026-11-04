@@ -1,0 +1,172 @@
+# N1 · Language knowledge · Reading · Mondai 12 — thematic comprehension
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 12
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: clarity
+    text: "　「わかりやすい説明」がもてはやされている。テレビでは、複雑な社会問題が数分で解説され、書店には「一冊でわかる」と銘打った本が並ぶ。忙しい現代人にとって、短い時間で要点をつかめることはありがたい。わたし自身、そうした恩恵を受けていることは否定しない。\n　だが、わかりやすさには落とし穴がある。物事を単純にするためには、どうしても細部を切り捨てなければならない。そして、切り捨てられた細部の中にこそ、問題の本質が潜んでいることが少なくないのだ。たとえば、ある政策の是非を「賛成か反対か」の二択で説明すれば、確かにわかりやすい。しかし現実には、条件次第で賛成とも反対とも言える場合や、どちらの立場にも一理ある場合がほとんどだ。二択に整理された時点で、そうした複雑さは見えなくなってしまう。\n　さらに問題なのは、わかりやすい説明に慣れると、わかりにくいものに向き合う力が衰えることである。すぐに答えが示されないと不安になり、白黒のはっきりした意見ばかりを求めるようになる。結論を急ぐあまり、立ち止まって考えることをしなくなるのだ。\n　本当に理解するとは、物事の複雑さを複雑なまま受け止めることではないだろうか。すぐにはわからないことに耐え、さまざまな角度から考え続ける。その過程は時間がかかり、決して楽ではない。しかし、そうして得た理解こそが、安易な答えに流されない判断力を育てるのである。わかりやすさは入り口としては有用だが、そこで考えるのをやめてはならない。"
+  - id: tradition
+    text: "　伝統と聞くと、昔から変わらずに受け継がれてきたものを思い浮かべる人が多いだろう。そして、伝統を守るとは、その形をそのまま次の世代に引き渡すことだと考えられがちだ。\n　しかし、長く続いてきた伝統の多くは、実は時代に合わせて少しずつ姿を変えてきた。たとえば、ある地方の祭りでは、かつて夜通し行われていた行事が、住民の生活の変化に合わせて夕方までに短縮された。担い手の減少を受けて、昔は男性だけに限られていた役目を、女性や地域外の若者も務めるようになった。当初は「伝統が崩れる」と反対する声もあったという。だが、もし形を変えなければ、祭りそのものが途絶えていたかもしれない。\n　もちろん、何でも変えてよいわけではない。変えてはならない核の部分を見極めることが重要だ。その祭りの場合、それは豊作を祈り、地域の人々が一つになるという精神であった。時間や担い手は変わっても、その精神が受け継がれている限り、祭りは祭りであり続ける。\n　形だけを守ろうとすれば、時代とのずれが大きくなり、いずれ人々の暮らしから切り離されてしまう。反対に、核を見失ったまま変化を重ねれば、それはもはや伝統とは呼べない。伝統とは、守るべきものを見極めながら、変えるべきものを変えていく、絶え間ない営みなのである。"
+  - id: breadth
+    text: "　学問が進歩するにつれ、研究の分野はますます細かく分かれていった。一人の研究者が扱える範囲は狭くなり、隣の分野で何が行われているのかさえ知らないということも珍しくない。専門を深く掘り下げることで、人類の知識は大きく広がった。その功績は計り知れない。\n　だが、現代社会が直面している問題の多くは、一つの専門分野だけでは解決できない。たとえば、気候の変化について考えるには、気象学の知識だけでなく、経済、政治、さらには人々の暮らし方に関する理解が必要になる。それぞれの専門家が自分の分野の言葉でしか語らなければ、議論はかみ合わず、全体像は見えてこない。\n　ここで求められるのが、いわゆる教養である。教養とは、単に多くの知識を持っていることではない。自分の専門の外にある考え方に関心を持ち、異なる分野の人と対話する力のことだ。自分の専門が全体の中でどのような位置にあるのかを知っていれば、ほかの分野の人に向けて、わかる言葉で語ることもできる。\n　近年、大学で教養教育を見直す動きがあるのは、こうした危機感の表れだろう。専門性と教養は対立するものではない。深い専門性を持つ人が、同時に広い視野を持つことで初めて、複雑な問題に立ち向かうことができるのである。"
+questions:
+  - id: n1-lr-12-0001
+    passage: clarity
+    stem: '筆者は、わかりやすい　説明に　ついて、まず　どう　述べて　いるか。'
+    choices:
+      - 'テレビでしか　見られない'
+      - '忙しい　人には　ありがたい　ものだ'
+      - 'すべて　間違って　いる'
+      - 'わかりにくい　説明より　劣る'
+    answer: 2
+    explanation:
+      en: 'The writer first grants that it helps busy people.'
+      es: 'Primero reconoce que ayuda a la gente ocupada.'
+    author: claude
+  - id: n1-lr-12-0002
+    passage: clarity
+    stem: '「わかりやすさには　落とし穴が　ある」とは　どう　いう　ことか。'
+    choices:
+      - 'わかりやすい　本は　値段が　高い'
+      - 'わかりやすい　説明は　時間が　かかる'
+      - '説明する　人が　間違える　ことが　多い'
+      - '単純に　する　ことで　大切な　部分が　失われる'
+    answer: 4
+    explanation:
+      en: 'Simplifying cuts the details where the core often lies.'
+      es: 'Simplificar recorta los detalles donde suele estar lo esencial.'
+    author: claude
+  - id: n1-lr-12-0003
+    passage: clarity
+    stem: 'わかりやすい　説明に　慣れると　どう　なると　筆者は　言って　いるか。'
+    choices:
+      - '複雑な　ものに　向き合う　力が　弱く　なる'
+      - '説明が　上手に　なる'
+      - '本を　読む　量が　増える'
+      - '賛成と　反対が　はっきり　する'
+    answer: 1
+    explanation:
+      en: 'People lose the strength to face what is hard to grasp.'
+      es: 'Se pierde la capacidad de afrontar lo difícil.'
+    author: claude
+  - id: n1-lr-12-0004
+    passage: clarity
+    stem: 'この　文章で　筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '結論は　できるだけ　早く　出すべきだ'
+      - '政策は　二択で　説明すべきだ'
+      - 'わかりやすさに　頼らず、複雑な　ことを　考え続けるべきだ'
+      - 'わかりやすい　説明は　やめるべきだ'
+    answer: 3
+    explanation:
+      en: 'Clarity is an entrance; keep thinking past it.'
+      es: 'La claridad es una entrada; hay que seguir pensando.'
+    author: claude
+  - id: n1-lr-12-0005
+    passage: tradition
+    stem: '筆者に　よると、一般に　伝統を　守るとは　どう　考えられて　いるか。'
+    choices:
+      - '若者に　役目を　任せる　こと'
+      - '形を　変えずに　次の　世代に　渡す　こと'
+      - '時代に　合わせて　変える　こと'
+      - '新しい　祭りを　作る　こと'
+    answer: 2
+    explanation:
+      en: 'Commonly: hand it on unchanged.'
+      es: 'Lo habitual: transmitirla sin cambios.'
+    author: claude
+  - id: n1-lr-12-0006
+    passage: tradition
+    stem: 'ある　地方の　祭りの　例で、筆者が　言いたい　ことは　何か。'
+    choices:
+      - '行事を　短く　して　人が　減った'
+      - '反対の　声で　変化が　止まった'
+      - '形を　変えた　ことで　祭りが　続いた'
+      - '女性が　参加して　祭りが　崩れた'
+    answer: 3
+    explanation:
+      en: 'Changing the form kept the festival alive.'
+      es: 'Cambiar la forma mantuvo viva la fiesta.'
+    author: claude
+  - id: n1-lr-12-0007
+    passage: tradition
+    stem: 'その　祭りで　「変えては　ならない　核」とは　何か。'
+    choices:
+      - '豊作を　祈り、地域が　一つに　なる　精神'
+      - '夜通し　行われる　行事'
+      - '昔から　決まって　いる　時間'
+      - '男性だけが　務める　役目'
+    answer: 1
+    explanation:
+      en: 'The spirit of praying for harvest and unity.'
+      es: 'El espíritu de rezar por la cosecha y unirse.'
+    author: claude
+  - id: n1-lr-12-0008
+    passage: tradition
+    stem: 'この　文章で　筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '伝統は　昔の　形の　まま　守るべきだ'
+      - '伝統は　時代に　合わせて　すべて　変えるべきだ'
+      - '伝統は　いずれ　なくなる　ものだ'
+      - '伝統は、核を　守りつつ　変えるべき　ものを　変えて　続いて　いく'
+    answer: 4
+    explanation:
+      en: 'Keep the core, change the rest.'
+      es: 'Mantener el núcleo y cambiar lo demás.'
+    author: claude
+  - id: n1-lr-12-0009
+    passage: breadth
+    stem: '筆者は、学問の　分野が　細かく　分かれた　ことを　どう　評価して　いるか。'
+    choices:
+      - '知識を　大きく　広げる　功績が　あった'
+      - 'すぐに　やめるべきだ'
+      - '教養を　育てる　ために　役立った'
+      - '研究者を　孤立させただけだった'
+    answer: 1
+    explanation:
+      en: 'Its achievement was immense (計り知れない).'
+      es: 'Su logro fue inmenso (計り知れない).'
+    author: claude
+  - id: n1-lr-12-0010
+    passage: breadth
+    stem: '気候の　変化の　例は　何を　示して　いるか。'
+    choices:
+      - '気象学が　最も　重要な　学問で　ある　こと'
+      - '経済の　専門家は　気候に　関心が　ない　こと'
+      - '人々の　暮らし方は　変えられない　こと'
+      - '一つの　分野だけでは　解決できない　問題が　ある　こと'
+    answer: 4
+    explanation:
+      en: 'Some problems need several fields at once.'
+      es: 'Hay problemas que necesitan varias disciplinas.'
+    author: claude
+  - id: n1-lr-12-0011
+    passage: breadth
+    stem: '筆者の　言う　「教養」とは　何か。'
+    choices:
+      - '一つの　専門を　深く　掘り下げる　こと'
+      - '専門外の　考え方に　関心を　持ち、対話する　力'
+      - 'できるだけ　多くの　知識を　覚える　こと'
+      - '大学で　学ぶ　すべての　科目'
+    answer: 2
+    explanation:
+      en: 'Not more facts: interest in and dialogue with other fields.'
+      es: 'No más datos: interés y diálogo con otras áreas.'
+    author: claude
+  - id: n1-lr-12-0012
+    passage: breadth
+    stem: '筆者の　考えに　最も　近いのは　どれか。'
+    choices:
+      - '専門性より　教養の　ほうが　大切だ'
+      - '大学は　専門教育を　やめるべきだ'
+      - '専門性と　広い　視野の　両方が　必要だ'
+      - '専門家は　ほかの　分野を　学ぶ　必要は　ない'
+    answer: 3
+    explanation:
+      en: 'Depth and breadth are not opposed; both are needed.'
+      es: 'Profundidad y amplitud no se oponen; hacen falta las dos.'
+    author: claude

@@ -1,0 +1,94 @@
+# N1 · Language knowledge · Reading · Mondai 13 — information retrieval
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 13
+instruction:
+  en: 'Look at the information and answer the questions.'
+  ja: '右の ページは 案内です。これを 読んで、下の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: gym
+    text: "みどり市民体育館　個人利用のご案内\n施設　　　　　　利用時間　　　　料金（一回）\nトレーニング室　九時～二十一時　一般　四〇〇円／六十五歳以上　二〇〇円\nプール　　　　　十時～二十時　　一般　六〇〇円／六十五歳以上　三〇〇円\n卓球室　　　　　九時～十七時　　一般　三〇〇円（一時間）\n・中学生以下は、すべての施設が一般料金の半額です（卓球室を除く）。\n・トレーニング室を初めて利用する方は、利用講習（三十分、無料）を受けてください。講習は毎日十時と十八時に始まります。\n・回数券（十一回分）は十回分の料金でお求めいただけます。\n・毎月第三月曜日は休館日です。"
+  - id: course
+    text: "さくら国際交流協会　日本語教室（後期）\nクラス　　　　曜日・時間　　　　　　対象　　　　　　　　受講料\nＡ　入門　　　月　十九時～二十時半　初めて学ぶ方　　　　三，〇〇〇円\nＢ　初級　　　水　十九時～二十時半　ひらがなが読める方　三，〇〇〇円\nＣ　中級　　　土　十時～十二時　　　日常会話ができる方　四，〇〇〇円\nＤ　ビジネス　土　十三時～十五時　　Ｃ修了程度の方　　　五，〇〇〇円\n・受講料は全十回分です。協会の会員は二割引きになります。\n・申し込みは九月十日までに、窓口またはウェブサイトで。\n・Ｃ・Ｄクラスを希望する方は、九月十五日のレベルチェック（無料）を受けてください。\n・二つ以上のクラスを同時に受講することはできません。"
+  - id: exhibition
+    text: "みどり美術館　秋の特別展「海を描く」\n期間：十月一日～十一月三十日（月曜休館。祝日の場合は翌日休館）\n開館時間：九時半～十七時（金曜は二十時まで）※入館は閉館の三十分前まで\n観覧料：一般　一，二〇〇円／大学生　八〇〇円／高校生以下　無料\n・二十名以上の団体は、各料金から二百円引き。\n・前売り券（一般のみ）は一，〇〇〇円。九月三十日まで美術館の窓口で販売。\n・特別展の観覧券で、常設展もご覧いただけます。"
+questions:
+  - id: n1-lr-13-0001
+    passage: gym
+    stem: '四十歳の　会社員が　初めて　トレーニング室を　使う。平日は　仕事が　あり、体育館に　着けるのは　十七時半ごろだ。どう　すれば　よいか。'
+    choices:
+      - '講習は　受けずに　卓球室を　利用する'
+      - '着いて　すぐに　利用する'
+      - '十八時の　講習を　受けてから　利用する'
+      - '十時の　講習を　受けてから　利用する'
+    answer: 3
+    explanation:
+      en: 'First-timers need the course; the 18:00 one fits after work.'
+      es: 'Hay que hacer el curso; el de las 18:00 encaja tras el trabajo.'
+    author: claude
+  - id: n1-lr-13-0002
+    passage: gym
+    stem: '七十歳の　祖母と　十二歳の　孫が　一緒に　プールを　一回　利用する。料金は　合わせて　いくらか。'
+    choices:
+      - '六〇〇円'
+      - '九〇〇円'
+      - '三〇〇円'
+      - '四五〇円'
+    answer: 1
+    explanation:
+      en: 'Grandmother 300 yen + child half of 600 = 300 yen: 600 yen.'
+      es: 'Abuela 300 yenes + niño la mitad de 600 = 300: 600 yenes.'
+    author: claude
+  - id: n1-lr-13-0003
+    passage: course
+    stem: '日常会話が　できる　チャンさんは、土曜日の　午前の　クラスに　出たい。何を　しなければ　ならないか。'
+    choices:
+      - '九月十五日までに　申し込むだけで　よい'
+      - '九月十日までに　申し込み、十五日の　レベルチェックを　受ける'
+      - 'レベルチェックの　料金を　払う'
+      - 'Ｂクラスと　一緒に　申し込む'
+    answer: 2
+    explanation:
+      en: 'Class C: apply by 10 Sept and take the free level check on the 15th.'
+      es: 'Clase C: inscribirse antes del 10 y hacer la prueba gratuita del 15.'
+    author: claude
+  - id: n1-lr-13-0004
+    passage: course
+    stem: 'Ｄクラスを　受講する　会員が　払う　受講料は　いくらか。'
+    choices:
+      - '一，〇〇〇円'
+      - '三，〇〇〇円'
+      - '五，〇〇〇円'
+      - '四，〇〇〇円'
+    answer: 4
+    explanation:
+      en: '5,000 yen minus 20% for members = 4,000 yen.'
+      es: '5000 yenes menos un 20 % para socios = 4000 yenes.'
+    author: claude
+  - id: n1-lr-13-0005
+    passage: exhibition
+    stem: '大学生の　リーさんは、金曜日の　授業の　後に　行く　つもりだ。何時までに　入館すれば　よいか。'
+    choices:
+      - '十六時半'
+      - '十七時'
+      - '十九時半'
+      - '二十時'
+    answer: 3
+    explanation:
+      en: 'Fridays close at 20:00; entry ends 30 minutes earlier.'
+      es: 'Los viernes cierra a las 20:00; se entra hasta 30 minutos antes.'
+    author: claude
+  - id: n1-lr-13-0006
+    passage: exhibition
+    stem: '十月に　一般の　大人　二十五人の　団体で　行く。観覧料は　全部で　いくらか。'
+    choices:
+      - '二万四千円'
+      - '三万円'
+      - '二万円'
+      - '二万五千円'
+    answer: 4
+    explanation:
+      en: 'Group price 1,200 − 200 = 1,000 yen × 25 = 25,000 yen.'
+      es: 'Precio de grupo 1200 − 200 = 1000 yenes × 25 = 25 000 yenes.'
+    author: claude

@@ -1,0 +1,189 @@
+# N1 · Language knowledge · Reading · Mondai 6 — sentence composition
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 6
+instruction:
+  en: 'Put the four parts in order. Which part goes in ★?'
+  ja: 'つぎの 文の ★ に 入る 最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lr-6-0001
+    stem: '彼は　＿＿＿　＿＿＿　★　＿＿＿　出場した。'
+    choices:
+      - 'けがを'
+      - 'ものともせず'
+      - '足の'
+      - '決勝に'
+    answer: 2
+    explanation:
+      en: '足の けがを ものともせず 決勝に 出場した.'
+      es: '足の けがを ものともせず 決勝に 出場した: "Salió a la final pese a la lesión."'
+    author: claude
+  - id: n1-lr-6-0002
+    stem: 'この　店の　＿＿＿　★　＿＿＿　＿＿＿　味だ。'
+    choices:
+      - 'ならではの'
+      - '料理は'
+      - '深い'
+      - '老舗'
+    answer: 4
+    explanation:
+      en: 'この店の 料理は 老舗 ならではの 深い 味だ.'
+      es: 'この店の 料理は 老舗 ならではの 深い 味だ: "Un sabor profundo propio de una casa con solera."'
+    author: claude
+  - id: n1-lr-6-0003
+    stem: '彼女は　＿＿＿　＿＿＿　＿＿＿　★　いる。'
+    choices:
+      - '小説を　書いて'
+      - 'かたわら'
+      - '会社に'
+      - '勤める'
+    answer: 1
+    explanation:
+      en: '会社に 勤める かたわら 小説を 書いて いる.'
+      es: '会社に 勤める かたわら 小説を 書いて いる: "Escribe novelas además de trabajar en la empresa."'
+    author: claude
+  - id: n1-lr-6-0004
+    stem: 'ベルが　＿＿＿　★　＿＿＿　＿＿＿　飛び出した。'
+    choices:
+      - '教室を'
+      - '鳴る'
+      - 'が早いか'
+      - '生徒たちは'
+    answer: 3
+    explanation:
+      en: 'ベルが 鳴る が早いか 生徒たちは 教室を 飛び出した.'
+      es: 'ベルが 鳴る が早いか 生徒たちは 教室を 飛び出した: "Nada más sonar el timbre, salieron corriendo."'
+    author: claude
+  - id: n1-lr-6-0005
+    stem: '彼は　一度　＿＿＿　＿＿＿　★　＿＿＿　起きない。'
+    choices:
+      - 'あっても'
+      - '何が'
+      - '寝た'
+      - 'が最後'
+    answer: 2
+    explanation:
+      en: '一度 寝た が最後 何が あっても 起きない.'
+      es: '一度 寝た が最後 何が あっても 起きない: "Una vez dormido, no se despierta pase lo que pase."'
+    author: claude
+  - id: n1-lr-6-0006
+    stem: '＿＿＿　★　＿＿＿　＿＿＿　規則は　守るべきだ。'
+    choices:
+      - 'いえども'
+      - 'たとえ'
+      - '子ども'
+      - 'と'
+    answer: 3
+    explanation:
+      en: 'たとえ 子ども と いえども 規則は 守るべきだ.'
+      es: 'たとえ 子ども と いえども 規則は 守るべきだ: "Aunque sea un niño, debe cumplir las normas."'
+    author: claude
+  - id: n1-lr-6-0007
+    stem: '彼の　＿＿＿　＿＿＿　★　＿＿＿　かたくない。'
+    choices:
+      - '深いかは'
+      - '想像に'
+      - 'どれほど'
+      - '悲しみが'
+    answer: 1
+    explanation:
+      en: '彼の 悲しみが どれほど 深いかは 想像に かたくない.'
+      es: '彼の 悲しみが どれほど 深いかは 想像に かたくない: "No cuesta imaginar lo profunda que es su tristeza."'
+    author: claude
+  - id: n1-lr-6-0008
+    stem: '忙しくて　★　＿＿＿　＿＿＿　＿＿＿　だった。'
+    choices:
+      - '見ずじまい'
+      - 'あの'
+      - '映画は'
+      - '結局'
+    answer: 4
+    explanation:
+      en: '忙しくて 結局 あの 映画は 見ずじまい だった.'
+      es: '忙しくて 結局 あの 映画は 見ずじまい だった: "Con tanto trabajo, al final no vi esa película."'
+    author: claude
+  - id: n1-lr-6-0009
+    stem: '彼は　＿＿＿　＿＿＿　★　＿＿＿　努力を　続けて　いる。'
+    choices:
+      - 'ため'
+      - 'せんが'
+      - '実現'
+      - '夢を'
+    answer: 2
+    explanation:
+      en: '夢を 実現 せんが ため 努力を 続けて いる.'
+      es: '夢を 実現 せんが ため 努力を 続けて いる: "Se esfuerza para hacer realidad su sueño."'
+    author: claude
+  - id: n1-lr-6-0010
+    stem: '社長の　＿＿＿　★　＿＿＿　＿＿＿　者は　いなかった。'
+    choices:
+      - 'やり方に'
+      - '唱える'
+      - '異を'
+      - '強引な'
+    answer: 1
+    explanation:
+      en: '社長の 強引な やり方に 異を 唱える 者は いなかった.'
+      es: '社長の 強引な やり方に 異を 唱える 者は いなかった: "Nadie se opuso a los métodos del presidente."'
+    author: claude
+  - id: n1-lr-6-0011
+    stem: '彼は　＿＿＿　＿＿＿　＿＿＿　★　はばからない。'
+    choices:
+      - '自分こそ'
+      - '画家だと'
+      - '最高の'
+      - '言って'
+    answer: 4
+    explanation:
+      en: '自分こそ 最高の 画家だと 言って はばからない.'
+      es: '自分こそ 最高の 画家だと 言って はばからない: "Dice sin reparos que es el mejor pintor."'
+    author: claude
+  - id: n1-lr-6-0012
+    stem: '兄が　＿＿＿　★　＿＿＿　＿＿＿　遊んでばかりだ。'
+    choices:
+      - 'まじめな'
+      - '弟は'
+      - 'のに'
+      - 'ひきかえ'
+    answer: 3
+    explanation:
+      en: '兄が まじめな のに ひきかえ 弟は 遊んでばかりだ.'
+      es: '兄が まじめな のに ひきかえ 弟は 遊んでばかりだ: "Al contrario que el hermano mayor, el menor solo juega."'
+    author: claude
+  - id: n1-lr-6-0013
+    stem: '★　＿＿＿　＿＿＿　＿＿＿　全国を　回る。'
+    choices:
+      - '東京'
+      - '来月から'
+      - '公演を'
+      - '皮切りに'
+    answer: 1
+    explanation:
+      en: '東京 公演を 皮切りに 来月から 全国を 回る.'
+      es: '東京 公演を 皮切りに 来月から 全国を 回る: "Empezando en Tokio, recorrerá el país."'
+    author: claude
+  - id: n1-lr-6-0014
+    stem: 'この　仕事を　＿＿＿　＿＿＿　★　＿＿＿　いない。'
+    choices:
+      - '任せられる'
+      - 'のは'
+      - 'おいて'
+      - '彼を'
+    answer: 4
+    explanation:
+      en: 'この仕事を 任せられる のは 彼を おいて いない.'
+      es: 'この仕事を 任せられる のは 彼を おいて いない: "Solo a él se le puede confiar este trabajo."'
+    author: claude
+  - id: n1-lr-6-0015
+    stem: '電車が　＿＿＿　＿＿＿　★　＿＿＿　までだ。'
+    choices:
+      - '駅から'
+      - 'ないなら'
+      - '歩いて'
+      - '帰る'
+    answer: 3
+    explanation:
+      en: '電車が ないなら 駅から 歩いて 帰る までだ.'
+      es: '電車が ないなら 駅から 歩いて 帰る までだ: "Si no hay tren, volveré andando y ya está."'
+    author: claude

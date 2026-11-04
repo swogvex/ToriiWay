@@ -1,0 +1,225 @@
+# N1 · Language knowledge · Reading · Mondai 4 — usage
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 4
+instruction:
+  en: 'Choose the sentence that uses the word correctly.'
+  ja: 'つぎの 言葉の 使い方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lr-4-0001
+    stem: '__手分け__'
+    choices:
+      - '母が　作った　ケーキを　手分けして　食べた。'
+      - 'みんなで　手分けして　部屋を　片付けた。'
+      - '長く　なった　髪を　手分けして　結んだ。'
+      - '一人で　手分けして　全部　終わらせた。'
+    answer: 2
+    explanation:
+      en: '手分けする: to divide the work among people.'
+      es: '手分けする: repartirse el trabajo.'
+    author: claude
+  - id: n1-lr-4-0002
+    stem: '__めど__'
+    choices:
+      - '大雨の　めどで　試合が　中止に　なった。'
+      - '彼の　めどは　医者に　なる　ことだ。'
+      - '工事が　来月　終わる　めどが　立った。'
+      - 'この　店の　めどは　値段の　安さだ。'
+    answer: 3
+    explanation:
+      en: 'めどが 立つ: the outlook becomes clear.'
+      es: 'めどが 立つ: verse una perspectiva clara.'
+    author: claude
+  - id: n1-lr-4-0003
+    stem: '__打ち明ける__'
+    choices:
+      - '長年の　悩みを　親友に　打ち明けた。'
+      - '箱を　打ち明けて　中を　見た。'
+      - '会議の　日程を　全員に　打ち明けた。'
+      - '窓を　打ち明けて　空気を　入れた。'
+    answer: 1
+    explanation:
+      en: '打ち明ける: to confide a secret or worry.'
+      es: '打ち明ける: confesar algo íntimo.'
+    author: claude
+  - id: n1-lr-4-0004
+    stem: '__未練__'
+    choices:
+      - '昨日の　試験の　未練に　合格した。'
+      - '彼は　毎日　未練に　仕事を　続けた。'
+      - 'まだ　未練なので　上手に　できない。'
+      - '別れた　恋人に　まだ　未練が　ある。'
+    answer: 4
+    explanation:
+      en: '未練: lingering attachment.'
+      es: '未練: apego que no se olvida.'
+    author: claude
+  - id: n1-lr-4-0005
+    stem: '__心当たり__'
+    choices:
+      - '心当たりを　込めて　手紙を　書いた。'
+      - '友人の　心当たりで　とても　助かった。'
+      - 'その　名前には　まったく　心当たりが　ない。'
+      - '明日は　心当たりに　晴れるだろう。'
+    answer: 3
+    explanation:
+      en: '心当たり: an idea of who or what it might be.'
+      es: '心当たり: tener idea de quién o qué puede ser.'
+    author: claude
+  - id: n1-lr-4-0006
+    stem: '__一律__'
+    choices:
+      - '全員の　給料を　一律に　三パーセント　上げた。'
+      - '彼女は　一律な　性格で　嘘を　つかない。'
+      - '彼は　一律に　走って　一位に　なった。'
+      - '朝から　一律の　雨が　降り続いた。'
+    answer: 1
+    explanation:
+      en: '一律: uniformly, across the board.'
+      es: '一律: por igual, para todos.'
+    author: claude
+  - id: n1-lr-4-0007
+    stem: '__はかどる__'
+    choices:
+      - '息子の　身長が　どんどん　はかどった。'
+      - '体調が　はかどって　元気に　なった。'
+      - '雨が　はかどって　川が　あふれた。'
+      - '静かな　部屋だと　勉強が　はかどる。'
+    answer: 4
+    explanation:
+      en: 'はかどる: work makes good progress.'
+      es: 'はかどる: avanzar bien (un trabajo).'
+    author: claude
+  - id: n1-lr-4-0008
+    stem: '__見落とす__'
+    choices:
+      - '山の　上から　町を　見落とした。'
+      - '大事な　メールを　見落として　いた。'
+      - '彼の　才能を　見落として　ほめた。'
+      - '駅で　友達を　見落として　から　帰った。'
+    answer: 2
+    explanation:
+      en: '見落とす: to overlook.'
+      es: '見落とす: pasar por alto.'
+    author: claude
+  - id: n1-lr-4-0009
+    stem: '__根回し__'
+    choices:
+      - '会議の　前に　関係者に　根回しを　して　おいた。'
+      - '毎朝　根回しを　して　体を　ほぐす。'
+      - '彼は　根回しが　悪くて　すぐ　怒る。'
+      - '料理の　根回しに　塩を　入れた。'
+    answer: 1
+    explanation:
+      en: '根回し: laying the groundwork with people in advance.'
+      es: '根回し: preparar el terreno hablando antes con los implicados.'
+    author: claude
+  - id: n1-lr-4-0010
+    stem: '__臨機応変__'
+    choices:
+      - '臨機応変な　山道を　ゆっくり　登った。'
+      - '一週間　臨機応変の　天気が　続いた。'
+      - '彼は　臨機応変に　毎日　同じ　ことを　する。'
+      - '予定が　変わっても　臨機応変に　対応した。'
+    answer: 4
+    explanation:
+      en: '臨機応変: adapting to the situation.'
+      es: '臨機応変: adaptarse a la situación.'
+    author: claude
+  - id: n1-lr-4-0011
+    stem: '__ぎこちない__'
+    choices:
+      - '彼は　ぎこちない　ほど　お金持ちだ。'
+      - '空が　ぎこちなく　晴れて　いる。'
+      - '緊張して　ぎこちない　あいさつに　なった。'
+      - 'この　シャツは　ぎこちなくて　暖かい。'
+    answer: 3
+    explanation:
+      en: 'ぎこちない: awkward, stiff.'
+      es: 'ぎこちない: torpe, forzado.'
+    author: claude
+  - id: n1-lr-4-0012
+    stem: '__仕組み__'
+    choices:
+      - '今日の　夕飯の　仕組みは　カレーだ。'
+      - 'この　機械の　仕組みを　説明して　ください。'
+      - '彼は　仕組みが　よくて　皆に　好かれる。'
+      - '旅行の　仕組みを　かばんに　入れた。'
+    answer: 2
+    explanation:
+      en: '仕組み: how something works.'
+      es: '仕組み: funcionamiento, mecanismo.'
+    author: claude
+  - id: n1-lr-4-0013
+    stem: '__打開__'
+    choices:
+      - '箱を　打開して　中身を　出した。'
+      - '行き詰まった　状況を　打開する　ため、新しい　案を　出した。'
+      - '彼は　友人に　秘密を　打開した。'
+      - 'この　店は　朝　九時に　打開する。'
+    answer: 2
+    explanation:
+      en: '打開する: to break a deadlock.'
+      es: '打開する: salir de un punto muerto.'
+    author: claude
+  - id: n1-lr-4-0014
+    stem: '__ことごとく__'
+    choices:
+      - 'ことごとく　お待ち　ください。'
+      - '午後は　ことごとく　雨が　降るかもしれない。'
+      - '彼は　ことごとく　一回だけ　来た。'
+      - '彼の　予想は　ことごとく　外れた。'
+    answer: 4
+    explanation:
+      en: 'ことごとく: every single one.'
+      es: 'ことごとく: todos sin excepción.'
+    author: claude
+  - id: n1-lr-4-0015
+    stem: '__着手__'
+    choices:
+      - '彼女は　着手が　速くて　すぐ　覚える。'
+      - '新しい　服に　着手して　出かけた。'
+      - '市は　新しい　橋の　建設に　着手した。'
+      - '空港に　飛行機が　着手した。'
+    answer: 3
+    explanation:
+      en: '着手する: to start work on.'
+      es: '着手する: emprender, comenzar.'
+    author: claude
+  - id: n1-lr-4-0016
+    stem: '__手際__'
+    choices:
+      - '彼女は　手際よく　料理を　作った。'
+      - 'この　本は　手際が　厚い。'
+      - '手際を　洗ってから　食べよう。'
+      - '手際の　悪い　天気が　続いて　いる。'
+    answer: 1
+    explanation:
+      en: '手際: skill in handling a task.'
+      es: '手際: destreza, habilidad.'
+    author: claude
+  - id: n1-lr-4-0017
+    stem: '__寄与__'
+    choices:
+      - '毎月　親に　お金を　寄与して　もらう。'
+      - '彼の　研究は　医学の　発展に　大きく　寄与した。'
+      - '彼は　会議で　自分の　意見を　寄与した。'
+      - '帰りに　友人の　家に　寄与した。'
+    answer: 2
+    explanation:
+      en: '寄与する: to contribute to.'
+      es: '寄与する: contribuir a.'
+    author: claude
+  - id: n1-lr-4-0018
+    stem: '__腕を　振るう__'
+    choices:
+      - '重い　荷物を　腕を　振るって　運んだ。'
+      - '試合に　負けて　悔しくて　腕を　振るった。'
+      - '今夜は　父が　料理の　腕を　振るった。'
+      - '駅で　友達に　会って　腕を　振るった。'
+    answer: 3
+    explanation:
+      en: '腕を 振るう: to show one''s skill.'
+      es: '腕を 振るう: lucir su habilidad.'
+    author: claude

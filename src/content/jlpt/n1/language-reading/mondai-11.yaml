@@ -1,0 +1,133 @@
+# N1 · Language knowledge · Reading · Mondai 11 — integrated comprehension
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 11
+instruction:
+  en: 'Read texts A and B and answer the questions.'
+  ja: 'つぎの ＡとＢの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: fourday
+    text: "Ａ\n　週休三日制を導入する企業が増えている。休みが一日増えれば、家族と過ごす時間や趣味、学び直しに充てる時間が生まれる。心身の疲れが取れることで、働く日の集中力も高まるだろう。実際、導入した企業の中には、生産性が上がったという例もある。人材を確保するうえでも、働きやすい環境は大きな魅力になるはずだ。\nＢ\n　週休三日制には魅力がある一方、課題も多い。休みが増えた分、一日の労働時間が長くなれば、かえって疲れがたまる。また、給与が減る形で導入されれば、生活が苦しくなる人も出てくる。接客や医療のように、常に人手が必要な仕事では、導入そのものが難しい。制度だけを取り入れるのではなく、業務のあり方を見直すことが先決だろう。"
+  - id: tourism
+    text: "Ａ\n　観光客が大勢訪れるようになり、わたしたちの町は活気を取り戻した。閉まっていた店が再び開き、若者が地元で働けるようになった。観光の収入は、古い町並みを修理する費用にもなっている。多少の混雑はあっても、町を元気にしてくれる観光客は歓迎すべきだと思う。\nＢ\n　観光客が増えたことで、住民の暮らしには影響が出ている。バスは観光客で満員になり、通院する高齢者が乗れないこともある。家の前で写真を撮る人や、ごみを捨てていく人もいる。観光で町が潤うことは否定しないが、住民の生活を守るための決まりを作らなければ、町の魅力そのものが失われかねない。"
+  - id: cashless
+    text: "Ａ\n　現金を使わない支払いは、もっと広がるべきだ。小銭を数える手間がなく、店の側も釣り銭の用意やお金の管理にかかる時間を減らせる。支払いの記録が残るので、家計の管理もしやすい。紛失や盗難のときも、現金より被害を抑えやすい。\nＢ\n　現金を使わない支払いの便利さは認めるが、現金がまったく使えなくなるのは困る。機械の操作が苦手な高齢者もいるし、災害で停電すれば、電子的な支払いは使えなくなる。また、使っている実感がないため、つい使いすぎてしまうという声も聞く。どちらも選べる状態を保つことが大切だ。"
+questions:
+  - id: n1-lr-11-0001
+    passage: fourday
+    stem: 'ＡとＢの　どちらにも　述べられて　いる　ことは　何か。'
+    choices:
+      - '給与が　減る　おそれが　ある'
+      - '人材を　確保しやすく　なる'
+      - '医療の　仕事では　導入が　難しい'
+      - '週休三日制には　よい　点が　ある'
+    answer: 4
+    explanation:
+      en: 'Both admit the system has merits (B: 魅力がある一方).'
+      es: 'Ambos reconocen ventajas (B: 魅力がある一方).'
+    author: claude
+  - id: n1-lr-11-0002
+    passage: fourday
+    stem: 'Ｂの　筆者が　心配して　いる　ことは　何か。'
+    choices:
+      - '一日の　労働時間が　長く　なり　疲れる　こと'
+      - '趣味の　時間が　なくなる　こと'
+      - '生産性が　上がりすぎる　こと'
+      - '家族と　過ごす　時間が　減る　こと'
+    answer: 1
+    explanation:
+      en: 'Longer days could make people more tired.'
+      es: 'Jornadas más largas podrían cansar más.'
+    author: claude
+  - id: n1-lr-11-0003
+    passage: fourday
+    stem: '週休三日制に　ついて、ＡとＢの　筆者は　どう　考えて　いるか。'
+    choices:
+      - 'Ａも　Ｂも　すぐに　導入すべきだと　考えて　いる'
+      - 'Ａは　積極的に　評価し、Ｂは　導入の　前に　見直すべき　ことが　あると　考えて　いる'
+      - 'Ａも　Ｂも　導入すべきでは　ないと　考えて　いる'
+      - 'Ａは　反対し、Ｂは　賛成して　いる'
+    answer: 2
+    explanation:
+      en: 'A is in favour; B wants work itself reviewed first.'
+      es: 'A está a favor; B quiere revisar antes el trabajo.'
+    author: claude
+  - id: n1-lr-11-0004
+    passage: tourism
+    stem: 'ＡとＢで　共通して　述べられて　いる　ことは　何か。'
+    choices:
+      - 'バスが　混んで　いる'
+      - 'ごみの　問題が　ある'
+      - '観光は　町に　経済的な　利益を　もたらして　いる'
+      - '若者が　町に　戻って　きた'
+    answer: 3
+    explanation:
+      en: 'A cites income; B says the town 潤う.'
+      es: 'A habla de ingresos; B dice que el pueblo 潤う.'
+    author: claude
+  - id: n1-lr-11-0005
+    passage: tourism
+    stem: 'Ｂの　筆者が　求めて　いる　ことは　何か。'
+    choices:
+      - '古い　町並みの　修理'
+      - '観光客の　受け入れの　中止'
+      - '住民の　生活を　守る　ための　決まり'
+      - 'バスの　料金の　値上げ'
+    answer: 3
+    explanation:
+      en: 'B asks for rules that protect residents.'
+      es: 'B pide normas que protejan a los vecinos.'
+    author: claude
+  - id: n1-lr-11-0006
+    passage: tourism
+    stem: '観光客の　増加に　ついて、ＡとＢの　立場は　どう　違うか。'
+    choices:
+      - 'Ａも　Ｂも　問題は　ないと　考えて　いる'
+      - 'Ａは　歓迎して　おり、Ｂは　対策が　必要だと　考えて　いる'
+      - 'Ａも　Ｂも　観光客を　減らすべきだと　考えて　いる'
+      - 'Ａは　対策を　求め、Ｂは　歓迎して　いる'
+    answer: 2
+    explanation:
+      en: 'A welcomes tourists; B wants measures.'
+      es: 'A da la bienvenida; B pide medidas.'
+    author: claude
+  - id: n1-lr-11-0007
+    passage: cashless
+    stem: '現金を　使わない　支払いに　ついて、ＡとＢの　どちらも　認めて　いる　ことは　何か。'
+    choices:
+      - '便利で　ある　こと'
+      - '災害の　ときに　役に　立つ　こと'
+      - '使いすぎる　おそれが　ある　こと'
+      - '家計の　管理が　しやすい　こと'
+    answer: 1
+    explanation:
+      en: 'B too grants its convenience (便利さは認める).'
+      es: 'B también reconoce la comodidad (便利さは認める).'
+    author: claude
+  - id: n1-lr-11-0008
+    passage: cashless
+    stem: 'ＡとＢで　意見が　分かれて　いるのは　どの　点か。'
+    choices:
+      - '小銭を　数える　手間が　あるか　どうか'
+      - '現金を　なくすべきか　どうか'
+      - '停電の　ときに　使えるか　どうか'
+      - 'お金の　管理に　役立つか　どうか'
+    answer: 4
+    explanation:
+      en: 'A: easier budgeting. B: people overspend.'
+      es: 'A: controlar mejor el gasto. B: se gasta de más.'
+    author: claude
+  - id: n1-lr-11-0009
+    passage: cashless
+    stem: 'Ｂの　筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '現金と　電子的な　支払いの　両方を　選べる　ほうが　よい'
+      - '高齢者は　現金を　使うべきでは　ない'
+      - '現金だけを　使うべきだ'
+      - '電子的な　支払いを　やめるべきだ'
+    answer: 1
+    explanation:
+      en: 'B wants both options kept.'
+      es: 'B quiere mantener las dos opciones.'
+    author: claude

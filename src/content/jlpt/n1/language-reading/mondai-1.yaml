@@ -1,0 +1,225 @@
+# N1 · Language knowledge · Reading · Mondai 1 — kanji reading
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 1
+instruction:
+  en: 'Choose the reading of the underlined word.'
+  ja: '＿＿＿の 言葉の 読み方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lr-1-0001
+    stem: '彼の　__潔い__　態度に　皆が　感心した。'
+    choices:
+      - 'こころよい'
+      - 'いさぎよい'
+      - 'いさましい'
+      - 'いちじるしい'
+    answer: 2
+    explanation:
+      en: '潔い is read いさぎよい, "gracious, manly".'
+      es: '潔い se lee いさぎよい, "digno, honesto".'
+    author: claude
+  - id: n1-lr-1-0002
+    stem: '両国の　交渉は　__円滑__に　進んで　いる。'
+    choices:
+      - 'えんがつ'
+      - 'えんこつ'
+      - 'えんかつ'
+      - 'えんかち'
+    answer: 3
+    explanation:
+      en: '円滑 is read えんかつ, "smoothly".'
+      es: '円滑 se lee えんかつ, "sin problemas".'
+    author: claude
+  - id: n1-lr-1-0003
+    stem: '資金不足で　計画が　__頓挫__した。'
+    choices:
+      - 'とんしゃ'
+      - 'どんざ'
+      - 'とんさ'
+      - 'とんざ'
+    answer: 4
+    explanation:
+      en: '頓挫 is read とんざ, "a setback, stalling".'
+      es: '頓挫 se lee とんざ, "estancamiento".'
+    author: claude
+  - id: n1-lr-1-0004
+    stem: '彼は　どうしても　証言を　__拒んだ__。'
+    choices:
+      - 'こばんだ'
+      - 'はばんだ'
+      - 'いなんだ'
+      - 'ふさんだ'
+    answer: 1
+    explanation:
+      en: '拒んだ is read こばんだ, "refused". はばむ is written 阻む.'
+      es: '拒んだ se lee こばんだ, "se negó". はばむ se escribe 阻む.'
+    author: claude
+  - id: n1-lr-1-0005
+    stem: '決勝の　前は　__緊迫__した　空気が　流れた。'
+    choices:
+      - 'きんばく'
+      - 'きんはく'
+      - 'きんぱく'
+      - 'けんぱく'
+    answer: 3
+    explanation:
+      en: '緊迫 is read きんぱく, "tension".'
+      es: '緊迫 se lee きんぱく, "tensión".'
+    author: claude
+  - id: n1-lr-1-0006
+    stem: '経理の　担当者が　会社の　金を　__着服__して　いた。'
+    choices:
+      - 'ちゃっぷく'
+      - 'ちゃくふく'
+      - 'きふく'
+      - 'ちゃくぶく'
+    answer: 2
+    explanation:
+      en: '着服 is read ちゃくふく, "embezzlement".'
+      es: '着服 se lee ちゃくふく, "malversación".'
+    author: claude
+  - id: n1-lr-1-0007
+    stem: '長年の　努力が　ようやく　__報われた__。'
+    choices:
+      - 'むくわれた'
+      - 'うるわれた'
+      - 'ほうわれた'
+      - 'つぐなわれた'
+    answer: 1
+    explanation:
+      en: '報われた is read むくわれた, "was rewarded". つぐなう is written 償う.'
+      es: '報われた se lee むくわれた, "fue recompensado". つぐなう se escribe 償う.'
+    author: claude
+  - id: n1-lr-1-0008
+    stem: 'この　辺りは　__閑静__な　住宅地だ。'
+    choices:
+      - 'かんじょう'
+      - 'けんせい'
+      - 'かんしょう'
+      - 'かんせい'
+    answer: 4
+    explanation:
+      en: '閑静 is read かんせい, "quiet, peaceful".'
+      es: '閑静 se lee かんせい, "tranquilo".'
+    author: claude
+  - id: n1-lr-1-0009
+    stem: '昔の　習慣が　すっかり　__廃れて__　しまった。'
+    choices:
+      - 'すたれて'
+      - 'かすれて'
+      - 'くたれて'
+      - 'はいれて'
+    answer: 1
+    explanation:
+      en: '廃れて is read すたれて, "fell out of use". かすれる is written 掠れる.'
+      es: '廃れて se lee すたれて, "cayó en desuso". かすれる se escribe 掠れる.'
+    author: claude
+  - id: n1-lr-1-0010
+    stem: '彼の　説明は　__曖昧__で　よく　わからない。'
+    choices:
+      - 'あいばい'
+      - 'あいまい'
+      - 'あいみ'
+      - 'えいまい'
+    answer: 2
+    explanation:
+      en: '曖昧 is read あいまい, "vague".'
+      es: '曖昧 se lee あいまい, "ambiguo".'
+    author: claude
+  - id: n1-lr-1-0011
+    stem: '景気回復の　__兆し__が　見えて　きた。'
+    choices:
+      - 'けはし'
+      - 'ちょうし'
+      - 'しるし'
+      - 'きざし'
+    answer: 4
+    explanation:
+      en: '兆し is read きざし, "sign". しるし is written 印.'
+      es: '兆し se lee きざし, "indicio". しるし se escribe 印.'
+    author: claude
+  - id: n1-lr-1-0012
+    stem: '議会で　その　法案は　__否決__された。'
+    choices:
+      - 'ひげつ'
+      - 'いなけつ'
+      - 'ひけつ'
+      - 'ふけつ'
+    answer: 3
+    explanation:
+      en: '否決 is read ひけつ, "rejection (of a bill)".'
+      es: '否決 se lee ひけつ, "rechazo (de una ley)".'
+    author: claude
+  - id: n1-lr-1-0013
+    stem: 'まずは　被害の　状況を　__把握__する　ことが　大切だ。'
+    choices:
+      - 'ばあく'
+      - 'はやく'
+      - 'はおく'
+      - 'はあく'
+    answer: 4
+    explanation:
+      en: '把握 is read はあく, "grasp, understanding".'
+      es: '把握 se lee はあく, "comprensión".'
+    author: claude
+  - id: n1-lr-1-0014
+    stem: '祖母は　いつも　__朗らか__に　笑って　いる。'
+    choices:
+      - 'ほがらか'
+      - 'うららか'
+      - 'なだらか'
+      - 'あきらか'
+    answer: 1
+    explanation:
+      en: '朗らか is read ほがらか, "cheerful". あきらか is written 明らか.'
+      es: '朗らか se lee ほがらか, "alegre". あきらか se escribe 明らか.'
+    author: claude
+  - id: n1-lr-1-0015
+    stem: '不用意な　発言は　誤解を　__招く__。'
+    choices:
+      - 'みちびく'
+      - 'ひらく'
+      - 'まねく'
+      - 'まぬく'
+    answer: 3
+    explanation:
+      en: '招く is read まねく, "invites". みちびく is written 導く.'
+      es: '招く se lee まねく, "provoca". みちびく se escribe 導く.'
+    author: claude
+  - id: n1-lr-1-0016
+    stem: '与えられた　任務を　最後まで　__遂行__した。'
+    choices:
+      - 'すいぎょう'
+      - 'すいこう'
+      - 'つこう'
+      - 'ついこう'
+    answer: 2
+    explanation:
+      en: '遂行 is read すいこう, "accomplishment".'
+      es: '遂行 se lee すいこう, "ejecución".'
+    author: claude
+  - id: n1-lr-1-0017
+    stem: '自分の　失敗を　人の　せいに　するのは　__卑怯__だ。'
+    choices:
+      - 'ひこう'
+      - 'ひぎょう'
+      - 'へきょう'
+      - 'ひきょう'
+    answer: 4
+    explanation:
+      en: '卑怯 is read ひきょう, "cowardly, unfair".'
+      es: '卑怯 se lee ひきょう, "cobarde".'
+    author: claude
+  - id: n1-lr-1-0018
+    stem: '山の　__麓__に　小さな　村が　ある。'
+    choices:
+      - 'ふもど'
+      - 'ふもと'
+      - 'みね'
+      - 'いただき'
+    answer: 2
+    explanation:
+      en: '麓 is read ふもと, "foot of a mountain". いただき is 頂 and みね is 峰.'
+      es: '麓 se lee ふもと, "falda de la montaña". いただき es 頂 y みね es 峰.'
+    author: claude
