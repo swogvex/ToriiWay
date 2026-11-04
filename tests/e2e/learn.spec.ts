@@ -68,6 +68,14 @@ test.describe('kana chart', () => {
     await page.getByRole('button', { name: 'ん n' }).click();
     await expect(page.locator('#kana-panel')).toContainText('ん');
     await expect(page.locator('#kana-panel')).toBeInViewport({ ratio: 0.9 });
+    // The details never scroll on their own and never cover the guide below the chart.
+    await page.setViewportSize({ width: 1440, height: 760 });
+    await page.goto('/learn/katakana');
+    const detail = page.getByRole('complementary', { name: 'Character details' });
+    expect(await detail.evaluate((el) => el.scrollHeight <= el.clientHeight)).toBe(true);
+    const guide = await page.locator('.learn-intro').boundingBox();
+    const side = await detail.boundingBox();
+    expect(guide && side && guide.x + guide.width <= side.x).toBe(true);
   });
 
   test('on a phone a tap brings the panel under the chart into view', async ({ page }) => {
