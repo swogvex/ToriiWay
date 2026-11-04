@@ -318,25 +318,32 @@ export class Exam {
     box.hidden = !item.question.tts;
     if (!item.question.tts) return;
     const left = this.playsLeft(item.question.id);
+    const playable = this.canPlay(item.question);
     const button = this.$<HTMLButtonElement>('[data-play]');
-    if (button) button.disabled = left === 0 || !this.options.player;
+    if (button) button.disabled = left === 0 || !playable;
     const note = this.$('[data-plays-left]');
     if (note) note.textContent = this.options.t('jlpt.run.playsLeft', { count: left });
     const warning = this.$('[data-no-voice]');
-    if (warning) warning.hidden = Boolean(this.options.player);
+    if (warning) warning.hidden = playable;
+  }
+
+  private canPlay(question: { audio: string | null }): boolean {
+    const { player } = this.options;
+    return Boolean(player && (question.audio || player.canSpeak));
   }
 
   private async play(): Promise<void> {
     const item = this.items[this.index];
     const { player, run, save, t } = this.options;
-    if (!item?.question.tts || !player || this.playsLeft(item.question.id) === 0) return;
+    if (!item?.question.tts || !player || !this.canPlay(item.question)) return;
+    if (this.playsLeft(item.question.id) === 0) return;
     run.plays = { ...run.plays, [item.question.id]: (run.plays?.[item.question.id] ?? 0) + 1 };
     save();
     const button = this.$<HTMLButtonElement>('[data-play]');
     const label = this.$('[data-play-label]');
     if (button) button.disabled = true;
     if (label) label.textContent = t('jlpt.run.playing');
-    await player.play(parseScript(item.question.tts.script));
+    await player.play(parseScript(item.question.tts.script), item.question.audio);
     if (label) label.textContent = t('jlpt.run.play');
     if (this.items[this.index] === item) this.renderListen();
   }

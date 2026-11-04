@@ -5,6 +5,7 @@
  * starts the run on the server and tests the Japanese voice.
  */
 import { getLocale, localizePath, useTranslations } from '../../i18n';
+import testAudio from '../../data/jlpt/test-audio.json';
 import { JLPT_LEVELS, LEVELS, totalMinutes } from '../../lib/jlpt/levels';
 import type { JlptLevel } from '../../lib/jlpt/types';
 import VoiceHelpDialog from '../audio/VoiceHelpDialog.astro';
@@ -105,7 +106,7 @@ const messages = {
         <li>{t('jlpt.rule.3')}</li>
         <li>
           {t('jlpt.rule.4')}
-          <button type="button" class="rules__audio" data-test-audio>
+          <button type="button" class="rules__audio" data-test-audio data-src={testAudio.url}>
             {t('jlpt.testAudio')}
           </button>
           <span class="rules__note" data-audio-note role="status"></span>

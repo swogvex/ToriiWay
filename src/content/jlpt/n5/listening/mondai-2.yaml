@@ -21,6 +21,7 @@ questions:
       en: 'Because of the rain she read at home in the afternoon. Cleaning was in the morning.'
       es: 'Por la lluvia leyó en casa por la tarde. La limpieza fue por la mañana.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0001-3a0b3030ddc2.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　きのうの　ごご　なにを　しましたか。\nM: きのうは　なにを　しましたか。\nF: あさは　そうじを　しました。ごごは　ともだちと　こうえんへ　いきたかったですが、雨でしたから、うちで　本を　よみました。\nN: おんなの　ひとは　きのうの　ごご　なにを　しましたか。"
       voices: ['narrator', 'man', 'woman']
@@ -38,6 +39,7 @@ questions:
       en: 'He went home for his wallet; the train was fine.'
       es: 'Volvió a casa por la cartera; el tren iba bien.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0002-07a5b61c0bcf.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　どうして　おそく　なりましたか。\nF: おそかったですね。\nM: すみません。でんしゃは　だいじょうぶでしたが、えきで　さいふが　ありませんでした。それで、うちへ　とりに　かえりました。\nN: おとこの　ひとは　どうして　おそく　なりましたか。"
       voices: ['narrator', 'woman', 'man']
@@ -49,6 +51,7 @@ questions:
       en: 'Her room is on the fifth floor; the second floor was her old room.'
       es: 'Su habitación está en el quinto; el segundo era la de antes.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0003-f32c4080cccb.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとの　へやは　なんがいですか。\nM: やまださんの　へやは　なんがいですか。\nF: 五かいです。エレベーターが　ありませんから、たいへんです。まえの　へやは　二かいでした。\nN: おんなの　ひとの　へやは　なんがいですか。"
       voices: ['narrator', 'man', 'woman']
@@ -60,6 +63,7 @@ questions:
       en: 'He likes tennis and football, but baseball most.'
       es: 'Le gustan el tenis y el fútbol, pero sobre todo el béisbol.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0004-89eceed97654.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　どの　スポーツが　いちばん　すきですか。\nF: どんな　スポーツが　すきですか。\nM: テニスも　サッカーも　すきですが、いちばん　すきなのは　やきゅうです。\nN: おとこの　ひとは　どの　スポーツが　いちばん　すきですか。"
       voices: ['narrator', 'woman', 'man']
@@ -71,8 +75,9 @@ questions:
       en: 'Ten minutes before three is 2:50.'
       es: 'Diez minutos antes de las tres son las 2:50.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0005-0544c0ad3a2b.mp3'
     tts:
-      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。いま　なん時ですか。\nM: すみません、いま　なん時ですか。\nF: 三時十分まえです。\nM: え、三時十分ですか。\nF: いいえ、三時の　十分まえです。\nN: いま　なん時ですか。"
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。いま　なん時ですか。\nM: すみません、いま　なん時ですか。\nF: 三時じゅっぷんまえです。\nM: え、三時じゅっぷんですか。\nF: いいえ、三時の　じゅっぷんまえです。\nN: いま　なん時ですか。"
       voices: ['narrator', 'man', 'woman']
   - id: n5-lis-2-0006
     stem: 'おんなの　ひとは　なん人で　りょこうに　いきますか。'
@@ -82,6 +87,7 @@ questions:
       en: 'Father, mother, sister and herself: four. Her brother cannot go.'
       es: 'Padre, madre, hermana y ella: cuatro. Su hermano no puede ir.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0006-5b725493cf74.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なん人で　りょこうに　いきますか。\nM: なつやすみに　りょこうに　いきますか。\nF: はい、かぞくと　いきます。ちちと　ははと　あねと　わたしです。あにも　いきたかったですが、しごとが　ありますから。\nN: おんなの　ひとは　なん人で　りょこうに　いきますか。"
       voices: ['narrator', 'man', 'woman']
@@ -93,6 +99,7 @@ questions:
       en: 'He used to take the train; now he cycles.'
       es: 'Antes iba en tren; ahora va en bici.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0007-bb9328907723.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　いま　なにで　かいしゃへ　きますか。\nF: まいにち　でんしゃで　きますか。\nM: まえは　でんしゃでしたが、いまは　じてんしゃです。からだに　いいですから。\nN: おとこの　ひとは　いま　なにで　かいしゃへ　きますか。"
       voices: ['narrator', 'woman', 'man']
@@ -110,6 +117,7 @@ questions:
       en: 'The main reason is studying at a Japanese university; anime is secondary.'
       es: 'El motivo principal es estudiar en una universidad japonesa; el anime es secundario.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0008-090b02384868.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　どうして　日本語を　べんきょうして　いますか。\nM: どうして　日本語を　べんきょうして　いますか。\nF: アニメも　すきですが、らいねん　日本の　だいがくで　べんきょうしたいからです。\nN: おんなの　ひとは　どうして　日本語を　べんきょうして　いますか。"
       voices: ['narrator', 'man', 'woman']
@@ -127,6 +135,7 @@ questions:
       en: 'The park is next to the bank.'
       es: 'El parque está al lado del banco.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0009-501f1a5b133f.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。こうえんは　どこに　ありますか。\nM: この　ちかくに　こうえんが　ありますか。\nF: ええ、ぎんこうの　となりに　あります。\nM: ぎんこうは　ゆうびんきょくの　まえですね。\nF: いいえ、ぎんこうは　ゆうびんきょくの　うしろです。\nN: こうえんは　どこに　ありますか。"
       voices: ['narrator', 'man', 'woman']
@@ -138,6 +147,7 @@ questions:
       en: 'Two hours plus three hours is five.'
       es: 'Dos horas más tres son cinco.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0010-880fe857b62b.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　きのう　なん時間　べんきょうしましたか。\nF: きのうは　よく　べんきょうしましたか。\nM: ええ、ごぜんに　二時間、ごごに　三時間　しました。\nN: おとこの　ひとは　きのう　なん時間　べんきょうしましたか。"
       voices: ['narrator', 'woman', 'man']
@@ -149,6 +159,7 @@ questions:
       en: 'Size does not matter; it must be close to the station.'
       es: 'El tamaño da igual; tiene que estar cerca de la estación.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0011-b8e68606000a.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　どんな　へやが　いいですか。\nM: どんな　へやを　さがして　いますか。\nF: ちいさくても　いいです。でも、えきから　ちかい　へやが　いいです。\nN: おんなの　ひとは　どんな　へやが　いいですか。"
       voices: ['narrator', 'man', 'woman']
@@ -160,6 +171,7 @@ questions:
       en: 'It is hot, so he accepts a cold juice.'
       es: 'Hace calor, así que acepta un zumo frío.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0012-0d0e871dc494.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　なにを　のみますか。\nF: コーヒーと　こうちゃと、どちらが　いいですか。\nM: きょうは　あついですから、つめたい　ものが　いいです。\nF: じゃ、つめたい　ジュースは？\nM: ありがとう　ございます。\nN: おとこの　ひとは　なにを　のみますか。"
       voices: ['narrator', 'woman', 'man']
@@ -171,6 +183,7 @@ questions:
       en: 'ようか is the 8th; よっか would be the 4th.'
       es: 'ようか es el día 8; よっか sería el 4.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0013-0d3d65c3df4c.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとの　たんじょうびは　いつですか。\nM: たんじょうびは　いつですか。\nF: 四月ようかです。\nM: 四月よっかですか。\nF: いいえ、ようかです。\nN: おんなの　ひとの　たんじょうびは　いつですか。"
       voices: ['narrator', 'man', 'woman']
@@ -182,6 +195,7 @@ questions:
       en: 'It was cold, so he went to the museum instead of the sea.'
       es: 'Hacía frío, así que fue al museo en vez de a la playa.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0014-8098979559f1.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　しゅうまつ　どこへ　いきましたか。\nF: しゅうまつは　どこかへ　いきましたか。\nM: うみへ　いきたかったですが、さむかったですから、びじゅつかんへ　いきました。\nN: おとこの　ひとは　しゅうまつ　どこへ　いきましたか。"
       voices: ['narrator', 'woman', 'man']
@@ -193,6 +207,7 @@ questions:
       en: 'Three cats; the one is a dog.'
       es: 'Tres gatos; el uno es un perro.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0015-480314aa9e05.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとの　うちに　ねこが　なんびき　いますか。\nM: ねこが　すきですか。\nF: ええ、うちに　三びき　います。いぬも　一ぴき　います。\nN: おんなの　ひとの　うちに　ねこが　なんびき　いますか。"
       voices: ['narrator', 'man', 'woman']
@@ -204,6 +219,7 @@ questions:
       en: 'Vocabulary was easy; grammar was hard.'
       es: 'El vocabulario fue fácil; la gramática, difícil.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0016-575882e3b906.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　テストの　なにが　むずかしかったですか。\nM: テストは　どうでしたか。\nF: ことばの　もんだいは　やさしかったです。でも、ぶんぽうは　むずかしかったです。\nN: おんなの　ひとは　テストの　なにが　むずかしかったですか。"
       voices: ['narrator', 'man', 'woman']
@@ -215,6 +231,7 @@ questions:
       en: 'On foot it takes fifteen minutes; five is by bus.'
       es: 'A pie son quince minutos; cinco es en autobús.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0017-fc3b581bf55e.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとの　うちから　えきまで　あるいて　なん分　かかりますか。\nF: えきから　ちかいですか。\nM: あるいて　十五分です。バスで　五分です。\nN: おとこの　ひとの　うちから　えきまで　あるいて　なん分　かかりますか。"
       voices: ['narrator', 'woman', 'man']
@@ -226,6 +243,7 @@ questions:
       en: 'Before the department store she goes to the hospital.'
       es: 'Antes de los grandes almacenes va al hospital.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0018-2b882e378ca9.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　あした　はじめに　どこへ　いきますか。\nM: あしたは　しごとですか。\nF: いいえ、やすみです。ははと　デパートへ　いきます。\nM: いいですね。\nF: でも、その　まえに　びょういんへ　いきます。\nN: おんなの　ひとは　あした　はじめに　どこへ　いきますか。"
       voices: ['narrator', 'man', 'woman']

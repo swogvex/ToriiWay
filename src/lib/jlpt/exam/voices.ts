@@ -1,6 +1,6 @@
-// Plays a listening script with the browser's Japanese voices (09-spec-jlpt: TTS
-// fallback until pre-generated audio exists). Each role gets its own voice when the
-// browser has several; otherwise the pitch tells the speakers apart.
+// Plays a listening question: its pre-generated file (scripts/jlpt/audio.ts), or the
+// browser's Japanese voices as the fallback (09-spec-jlpt). Each role gets its own voice
+// when the browser has several; otherwise the pitch tells the speakers apart.
 
 import { loadVoices, pickJapaneseVoice, type VoiceInfo } from '../../kana/speech';
 import type { Role, ScriptLine } from './format';
@@ -20,18 +20,42 @@ export function castVoices<T extends VoiceInfo>(voices: readonly T[]): Record<Ro
 }
 
 export interface Player {
-  play(lines: readonly ScriptLine[]): Promise<void>;
+  /** False without a Japanese voice: only questions with an audio file can play. */
+  canSpeak: boolean;
+  /** Plays the file when there is one; the browser voice reads the script otherwise or if it fails. */
+  play(lines: readonly ScriptLine[], audio?: string | null): Promise<void>;
   stop(): void;
 }
 
-/** Null when this browser has no Japanese voice. */
-export async function createPlayer(): Promise<Player | null> {
+/** Resolves true when the file played to the end (or was stopped), false when it failed. */
+function playFile(element: HTMLAudioElement): Promise<boolean> {
+  return new Promise((resolve) => {
+    element.addEventListener('pause', () => resolve(true), { once: true });
+    element.addEventListener('error', () => resolve(false), { once: true });
+    element.play().catch(() => resolve(false));
+  });
+}
+
+export async function createPlayer(): Promise<Player> {
   const cast = castVoices(await loadVoices());
-  if (!cast) return null;
+  let file: HTMLAudioElement | null = null;
+  const stop = () => {
+    file?.pause();
+    file = null;
+    if (cast) speechSynthesis.cancel();
+  };
   return {
-    stop: () => speechSynthesis.cancel(),
-    play(lines) {
-      speechSynthesis.cancel();
+    canSpeak: cast !== null,
+    stop,
+    async play(lines, audio) {
+      stop();
+      if (audio) {
+        const element = new Audio(audio);
+        file = element;
+        if (await playFile(element)) return;
+        if (file !== element) return; // stopped while it was loading
+      }
+      if (!cast) return;
       return new Promise((resolve) => {
         let remaining = lines.length;
         if (remaining === 0) resolve();

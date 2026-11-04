@@ -33,6 +33,27 @@ async function stubTurnstile(page: Page) {
   );
 }
 
+/** Serves 0.1 s of silence (WAV) for every listening clip on Vercel Blob. */
+async function stubBlobAudio(page: Page) {
+  const samples = 2205;
+  const wav = Buffer.alloc(44 + samples * 2);
+  wav.write('RIFF', 0);
+  wav.writeUInt32LE(36 + samples * 2, 4);
+  wav.write('WAVEfmt ', 8);
+  wav.writeUInt32LE(16, 16);
+  wav.writeUInt16LE(1, 20);
+  wav.writeUInt16LE(1, 22);
+  wav.writeUInt32LE(22050, 24);
+  wav.writeUInt32LE(44100, 28);
+  wav.writeUInt16LE(2, 32);
+  wav.writeUInt16LE(16, 34);
+  wav.write('data', 36);
+  wav.writeUInt32LE(samples * 2, 40);
+  await page.route('**/*.public.blob.vercel-storage.com/**', (route) =>
+    route.fulfill({ body: wav, contentType: 'audio/wav' }),
+  );
+}
+
 const mapItem = (page: Page, number: number) =>
   page.getByRole('navigation', { name: 'Questions' }).getByRole('button', {
     name: new RegExp(`^Question ${number}(,|$)`),
@@ -61,8 +82,25 @@ test.describe('JLPT start page', () => {
     await expect(page.getByText(/Kana is a site-only level/)).toBeVisible();
   });
 
+  test('Test audio plays the pre-generated clip even without a Japanese voice', async ({
+    page,
+  }) => {
+    await stubBlobAudio(page);
+    await page.addInitScript(() => {
+      const play = HTMLMediaElement.prototype.play;
+      HTMLMediaElement.prototype.play = function () {
+        return play.call(this).then(() => document.documentElement.setAttribute('data-played', ''));
+      };
+    });
+    await page.goto('/jlpt');
+    await page.getByRole('button', { name: 'Test audio' }).click();
+    await expect(page.locator('html[data-played]')).toHaveCount(1);
+    await expect(page.getByText(/This browser has no Japanese voice/)).toBeHidden();
+  });
+
   test('without a Japanese voice, Test audio explains how to add one', async ({ page }) => {
-    // Headless Chromium has no Japanese voice.
+    // Headless Chromium has no Japanese voice, and here the clip on Blob fails too.
+    await page.route('**/*.public.blob.vercel-storage.com/**', (route) => route.abort());
     await page.goto('/jlpt');
     await page.getByRole('button', { name: 'Test audio' }).click();
     await expect(page.getByText(/This browser has no Japanese voice/)).toBeVisible();
@@ -141,6 +179,7 @@ test.describe('JLPT exam', () => {
     test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
     test.setTimeout(300_000);
     await stubTurnstile(page);
+    await stubBlobAudio(page);
     await startN5(page, { public: true });
     for (const [section, count] of [
       ['Vocabulary', 21],
@@ -148,6 +187,13 @@ test.describe('JLPT exam', () => {
       ['Listening', 24],
     ] as const) {
       await expect(page.getByRole('timer')).toBeVisible({ timeout: 15_000 });
+      if (section === 'Listening') {
+        // Headless Chromium has no Japanese voice: only the file on Blob can play.
+        await expect(page.getByText(/This browser has no Japanese voice/)).toBeHidden();
+        await page.getByRole('button', { name: 'Play audio' }).click();
+        await expect(page.getByText('Plays left: 0')).toBeVisible();
+        await expect(page.getByRole('button', { name: 'Play audio' })).toBeDisabled();
+      }
       for (let index = 0; index < count; index += 1) {
         await page.keyboard.press('1');
         if (index < count - 1) await page.keyboard.press('ArrowRight');

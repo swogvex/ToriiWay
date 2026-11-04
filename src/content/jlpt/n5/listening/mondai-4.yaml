@@ -15,6 +15,7 @@ questions:
       en: 'You do not use お about yourself: はい、げんきです.'
       es: 'No se usa お para uno mismo: はい、げんきです.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0001-0f7a961709a2.mp3'
     tts:
       script: "M: おげんきですか。\nF: 1　はい、げんきです\nF: 2　いいえ、どう　いたしまして\nF: 3　はい、おげんきです"
       voices: ['man', 'woman']
@@ -26,6 +27,7 @@ questions:
       en: 'だれの asks whose it is.'
       es: 'だれの pregunta de quién es.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0002-c91a4de0fdc7.mp3'
     tts:
       script: "F: これは　だれの　かさですか。\nM: 1　あかい　かさです\nM: 2　わたしのです\nM: 3　あそこに　あります"
       voices: ['woman', 'man']
@@ -37,6 +39,7 @@ questions:
       en: 'どこへ asks where; the answer is a place.'
       es: 'どこへ pregunta adónde; la respuesta es un lugar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0003-26d708071970.mp3'
     tts:
       script: "M: きのう　どこへ　いきましたか。\nF: 1　あした　いきます\nF: 2　バスで　いきました\nF: 3　としょかんへ　いきました"
       voices: ['man', 'woman']
@@ -48,6 +51,7 @@ questions:
       en: 'いかがですか offers something; you accept politely.'
       es: 'いかがですか ofrece algo; aceptas con cortesía.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0004-9d85000ed8a5.mp3'
     tts:
       script: "F: コーヒーは　いかがですか。\nM: 1　はい、コーヒーです\nM: 2　ありがとう　ございます。いただきます\nM: 3　いいえ、のみました"
       voices: ['woman', 'man']
@@ -59,6 +63,7 @@ questions:
       en: 'The question is about getting up, at a time.'
       es: 'La pregunta es a qué hora te levantas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0005-4c82fa7bfd8a.mp3'
     tts:
       script: "M: まいあさ　なん時に　おきますか。\nF: 1　六時間　ねます\nF: 2　六時に　ねます\nF: 3　六時に　おきます"
       voices: ['man', 'woman']
@@ -70,6 +75,7 @@ questions:
       en: 'はい、どうぞ hands something over.'
       es: 'はい、どうぞ se dice al dar algo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0006-32a945e0a1ab.mp3'
     tts:
       script: "F: その　ペン、ちょっと　かして　ください。\nM: 1　はい、どうぞ\nM: 2　いいえ、かりません\nM: 3　はい、かしました"
       voices: ['woman', 'man']
@@ -81,6 +87,7 @@ questions:
       en: 'いいえ、まだです means "no, not yet".'
       es: 'いいえ、まだです significa "no, todavía no".'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0007-f7dddd2f6015.mp3'
     tts:
       script: "M: しゅくだいは　もう　おわりましたか。\nF: 1　いいえ、まだです\nF: 2　はい、まだです\nF: 3　いいえ、もうです"
       voices: ['man', 'woman']
@@ -92,8 +99,9 @@ questions:
       en: 'どのぐらい かかりますか asks how long it takes.'
       es: 'どのぐらい かかりますか pregunta cuánto se tarda.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0008-29ff5492ec42.mp3'
     tts:
-      script: "F: えきまで　どのぐらい　かかりますか。\nM: 1　十時ごろです\nM: 2　バスです\nM: 3　十分ぐらいです"
+      script: "F: えきまで　どのぐらい　かかりますか。\nM: 1　十時ごろです\nM: 2　バスです\nM: 3　じゅっぷんぐらいです"
       voices: ['woman', 'man']
   - id: n5-lis-4-0009
     stem: 'いちばん　いい　へんじを　えらんで　ください。'
@@ -103,6 +111,7 @@ questions:
       en: 'You accept the invitation with 〜ましょう.'
       es: 'Aceptas la invitación con 〜ましょう.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0009-51cac3bfd059.mp3'
     tts:
       script: "M: いっしょに　ひるごはんを　たべませんか。\nF: 1　いいえ、たべました\nF: 2　ええ、たべましょう\nF: 3　はい、たべません"
       voices: ['man', 'woman']
@@ -114,6 +123,7 @@ questions:
       en: 'こちらこそ (likewise) answers よろしく おねがいします.'
       es: 'こちらこそ (igualmente) responde a よろしく おねがいします.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0010-3bcfdc733e8c.mp3'
     tts:
       script: "F: どうぞ　よろしく　おねがいします。\nM: 1　どう　いたしまして\nM: 2　こちらこそ\nM: 3　いただきます"
       voices: ['woman', 'man']
@@ -125,6 +135,7 @@ questions:
       en: 'いくら asks the price.'
       es: 'いくら pregunta el precio.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0011-1b780e250e46.mp3'
     tts:
       script: "M: この　りんごは　いくらですか。\nF: 1　一つ　百円です\nF: 2　三つ　あります\nF: 3　あかい　りんごです"
       voices: ['man', 'woman']
@@ -136,6 +147,7 @@ questions:
       en: 'The question asks your name.'
       es: 'Te preguntan el nombre.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0012-98d223828afd.mp3'
     tts:
       script: "F: おなまえは？\nM: 1　二十さいです\nM: 2　かんこくから　きました\nM: 3　キムです"
       voices: ['woman', 'man']
@@ -147,6 +159,7 @@ questions:
       en: 'あちらです points to where it is.'
       es: 'あちらです indica dónde está.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0013-42f938222f0f.mp3'
     tts:
       script: "M: すみません、トイレは　どこですか。\nF: 1　トイレです\nF: 2　はい、どうぞ\nF: 3　あちらです"
       voices: ['man', 'woman']
@@ -158,6 +171,7 @@ questions:
       en: 'The question is about the past weekend.'
       es: 'La pregunta es sobre el fin de semana pasado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0014-520c50bb8c27.mp3'
     tts:
       script: "F: しゅうまつは　なにを　しましたか。\nM: 1　ともだちと　テニスを　しました\nM: 2　はい、しました\nM: 3　らいしゅう　します"
       voices: ['woman', 'man']
@@ -169,6 +183,7 @@ questions:
       en: 'A guess about tomorrow: ふるでしょう.'
       es: 'Una suposición sobre mañana: ふるでしょう.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0015-4ceb04017c49.mp3'
     tts:
       script: "M: あしたは　雨でしょうか。\nF: 1　いいえ、ふって　います\nF: 2　ええ、ふるでしょう\nF: 3　はい、ふりました"
       voices: ['man', 'woman']
@@ -180,6 +195,7 @@ questions:
       en: 'いってらっしゃい answers いってきます.'
       es: 'いってらっしゃい responde a いってきます.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0016-63b75d719ae6.mp3'
     tts:
       script: "F: いってきます。\nM: 1　おかえりなさい\nM: 2　いってきます\nM: 3　いってらっしゃい"
       voices: ['woman', 'man']
@@ -191,6 +207,7 @@ questions:
       en: 'どうして asks for a reason: 〜から.'
       es: 'どうして pide un motivo: 〜から.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0017-08fef9d1669b.mp3'
     tts:
       script: "M: どうして　きのう　がっこうを　やすみましたか。\nF: 1　あした　やすみます\nF: 2　ねつが　ありましたから\nF: 3　がっこうで　やすみました"
       voices: ['man', 'woman']
@@ -202,6 +219,7 @@ questions:
       en: 'Offering to close the window answers the complaint.'
       es: 'Ofrecerse a cerrar la ventana responde a la queja.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-4-0018-5d1ce58c1706.mp3'
     tts:
       script: "F: この　へや、ちょっと　さむいですね。\nM: 1　まどを　しめましょうか\nM: 2　はい、あついです\nM: 3　いいえ、さむかったです"
       voices: ['woman', 'man']

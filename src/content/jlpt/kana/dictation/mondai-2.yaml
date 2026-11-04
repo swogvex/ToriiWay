@@ -15,6 +15,7 @@ questions:
       en: 'You heard おばあさん. Compare: おばさん, おはあさん, おぱあさん.'
       es: 'Has oído おばあさん. Compara: おばさん, おはあさん, おぱあさん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0001-2e0ea13becf7.mp3'
     tts:
       script: 'N: おばあさん。もう　いちど。おばあさん。'
       voices: ['narrator']
@@ -26,6 +27,7 @@ questions:
       en: 'You heard きって. Compare: きて, きいて, ぎって.'
       es: 'Has oído きって. Compara: きて, きいて, ぎって.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0002-e2a2bd992c92.mp3'
     tts:
       script: 'N: きって。もう　いちど。きって。'
       voices: ['narrator']
@@ -37,6 +39,7 @@ questions:
       en: 'You heard ビール. Compare: ビル, ピール, ヒール.'
       es: 'Has oído ビール. Compara: ビル, ピール, ヒール.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0003-13d99ab6c807.mp3'
     tts:
       script: 'N: ビール。もう　いちど。ビール。'
       voices: ['narrator']
@@ -48,6 +51,7 @@ questions:
       en: 'You heard とうきょう. Compare: ときょう, とうきょ, ときょ.'
       es: 'Has oído とうきょう. Compara: ときょう, とうきょ, ときょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0004-994f62815284.mp3'
     tts:
       script: 'N: とうきょう。もう　いちど。とうきょう。'
       voices: ['narrator']
@@ -59,6 +63,7 @@ questions:
       en: 'You heard ゆき. Compare: ゆうき, ゆっき, ゆぎ.'
       es: 'Has oído ゆき. Compara: ゆうき, ゆっき, ゆぎ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0005-4d526e9aae22.mp3'
     tts:
       script: 'N: ゆき。もう　いちど。ゆき。'
       voices: ['narrator']
@@ -70,6 +75,7 @@ questions:
       en: 'You heard こども. Compare: ことも, ごども, こどもう.'
       es: 'Has oído こども. Compara: ことも, ごども, こどもう.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0006-560c829ff19a.mp3'
     tts:
       script: 'N: こども。もう　いちど。こども。'
       voices: ['narrator']
@@ -81,6 +87,7 @@ questions:
       en: 'You heard がっこう. Compare: がこう, かっこう, がっこ.'
       es: 'Has oído がっこう. Compara: がこう, かっこう, がっこ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0007-1b1b52915360.mp3'
     tts:
       script: 'N: がっこう。もう　いちど。がっこう。'
       voices: ['narrator']
@@ -92,6 +99,7 @@ questions:
       en: 'You heard ちず. Compare: ちすう, ちじ, じず.'
       es: 'Has oído ちず. Compara: ちすう, ちじ, じず.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0008-7e0eb02907a8.mp3'
     tts:
       script: 'N: ちず。もう　いちど。ちず。'
       voices: ['narrator']
@@ -103,6 +111,7 @@ questions:
       en: 'You heard ほん. Compare: ぼん, ぽん, ほうん.'
       es: 'Has oído ほん. Compara: ぼん, ぽん, ほうん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0009-1caa142c227d.mp3'
     tts:
       script: 'N: ほん。もう　いちど。ほん。'
       voices: ['narrator']
@@ -114,6 +123,7 @@ questions:
       en: 'You heard にっき. Compare: にき, にっぎ, にいき.'
       es: 'Has oído にっき. Compara: にき, にっぎ, にいき.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0010-98e8f3a9eced.mp3'
     tts:
       script: 'N: にっき。もう　いちど。にっき。'
       voices: ['narrator']
@@ -125,6 +135,7 @@ questions:
       en: 'You heard せんせい. Compare: せんせ, せんぜい, ぜんせい.'
       es: 'Has oído せんせい. Compara: せんせ, せんぜい, ぜんせい.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0011-c007f1883bbe.mp3'
     tts:
       script: 'N: せんせい。もう　いちど。せんせい。'
       voices: ['narrator']
@@ -136,6 +147,7 @@ questions:
       en: 'You heard びょういん. Compare: びよういん, ぴょういん, びょいん.'
       es: 'Has oído びょういん. Compara: びよういん, ぴょういん, びょいん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0012-6d95353b0f66.mp3'
     tts:
       script: 'N: びょういん。もう　いちど。びょういん。'
       voices: ['narrator']
@@ -147,6 +159,7 @@ questions:
       en: 'You heard カメラ. Compare: カメラー, ガメラ, カメヤ.'
       es: 'Has oído カメラ. Compara: カメラー, ガメラ, カメヤ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0013-533c96fd1d17.mp3'
     tts:
       script: 'N: カメラ。もう　いちど。カメラ。'
       voices: ['narrator']
@@ -158,6 +171,7 @@ questions:
       en: 'You heard おじいさん. Compare: おじさん, おしいさん, おじいざん.'
       es: 'Has oído おじいさん. Compara: おじさん, おしいさん, おじいざん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0014-405ada088f35.mp3'
     tts:
       script: 'N: おじいさん。もう　いちど。おじいさん。'
       voices: ['narrator']
@@ -169,6 +183,7 @@ questions:
       en: 'You heard いっぷん. Compare: いぷん, いっぶん, いちぷん.'
       es: 'Has oído いっぷん. Compara: いぷん, いっぶん, いちぷん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0015-7a12c65c1b7b.mp3'
     tts:
       script: 'N: いっぷん。もう　いちど。いっぷん。'
       voices: ['narrator']
@@ -180,6 +195,7 @@ questions:
       en: 'You heard しゅくだい. Compare: しゅうくだい, しゅくたい, じゅくだい.'
       es: 'Has oído しゅくだい. Compara: しゅうくだい, しゅくたい, じゅくだい.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0016-029406914ed7.mp3'
     tts:
       script: 'N: しゅくだい。もう　いちど。しゅくだい。'
       voices: ['narrator']
@@ -191,6 +207,7 @@ questions:
       en: 'You heard ノート. Compare: ノト, ノード, ノーツ.'
       es: 'Has oído ノート. Compara: ノト, ノード, ノーツ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0017-311cda2cef20.mp3'
     tts:
       script: 'N: ノート。もう　いちど。ノート。'
       voices: ['narrator']
@@ -202,6 +219,7 @@ questions:
       en: 'You heard ざっし. Compare: ざし, さっし, ざっじ.'
       es: 'Has oído ざっし. Compara: ざし, さっし, ざっじ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0018-f02663cd4da1.mp3'
     tts:
       script: 'N: ざっし。もう　いちど。ざっし。'
       voices: ['narrator']
@@ -213,6 +231,7 @@ questions:
       en: 'You heard おとうと. Compare: おとと, おとうど, おどうと.'
       es: 'Has oído おとうと. Compara: おとと, おとうど, おどうと.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0019-c423e7895cb8.mp3'
     tts:
       script: 'N: おとうと。もう　いちど。おとうと。'
       voices: ['narrator']
@@ -224,6 +243,7 @@ questions:
       en: 'You heard きょうしつ. Compare: きょしつ, きょうじつ, ぎょうしつ.'
       es: 'Has oído きょうしつ. Compara: きょしつ, きょうじつ, ぎょうしつ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0020-eb60b77e977d.mp3'
     tts:
       script: 'N: きょうしつ。もう　いちど。きょうしつ。'
       voices: ['narrator']
@@ -235,6 +255,7 @@ questions:
       en: 'You heard さんぽ. Compare: さんぼ, さんほ, さっぽ.'
       es: 'Has oído さんぽ. Compara: さんぼ, さんほ, さっぽ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0021-fed8a2b44479.mp3'
     tts:
       script: 'N: さんぽ。もう　いちど。さんぽ。'
       voices: ['narrator']
@@ -246,6 +267,7 @@ questions:
       en: 'You heard ケーキ. Compare: ケキ, ゲーキ, ケーギ.'
       es: 'Has oído ケーキ. Compara: ケキ, ゲーキ, ケーギ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0022-e8ff366c85d4.mp3'
     tts:
       script: 'N: ケーキ。もう　いちど。ケーキ。'
       voices: ['narrator']
@@ -257,6 +279,7 @@ questions:
       en: 'You heard じてんしゃ. Compare: じでんしゃ, してんしゃ, じてんしや.'
       es: 'Has oído じてんしゃ. Compara: じでんしゃ, してんしゃ, じてんしや.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0023-9f48141ce0fa.mp3'
     tts:
       script: 'N: じてんしゃ。もう　いちど。じてんしゃ。'
       voices: ['narrator']
@@ -268,6 +291,7 @@ questions:
       en: 'You heard まって. Compare: まて, まっで, まあて.'
       es: 'Has oído まって. Compara: まて, まっで, まあて.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0024-6b15e43d2183.mp3'
     tts:
       script: 'N: まって。もう　いちど。まって。'
       voices: ['narrator']
@@ -279,6 +303,7 @@ questions:
       en: 'You heard りょうり. Compare: りより, りょり, りょうりい.'
       es: 'Has oído りょうり. Compara: りより, りょり, りょうりい.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0025-834b5f85d73c.mp3'
     tts:
       script: 'N: りょうり。もう　いちど。りょうり。'
       voices: ['narrator']
@@ -290,6 +315,7 @@ questions:
       en: 'You heard コーヒー. Compare: コヒー, コーヒ, ゴーヒー.'
       es: 'Has oído コーヒー. Compara: コヒー, コーヒ, ゴーヒー.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0026-dcf2aec858d2.mp3'
     tts:
       script: 'N: コーヒー。もう　いちど。コーヒー。'
       voices: ['narrator']
@@ -301,6 +327,7 @@ questions:
       en: 'You heard ぎんこう. Compare: きんこう, ぎんごう, ぎんこ.'
       es: 'Has oído ぎんこう. Compara: きんこう, ぎんごう, ぎんこ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0027-cb64661c850e.mp3'
     tts:
       script: 'N: ぎんこう。もう　いちど。ぎんこう。'
       voices: ['narrator']
@@ -312,6 +339,7 @@ questions:
       en: 'You heard ゆうびんきょく. Compare: ゆびんきょく, ゆうびんきょうく, ゆうひんきょく.'
       es: 'Has oído ゆうびんきょく. Compara: ゆびんきょく, ゆうびんきょうく, ゆうひんきょく.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0028-996149a9dafe.mp3'
     tts:
       script: 'N: ゆうびんきょく。もう　いちど。ゆうびんきょく。'
       voices: ['narrator']
@@ -323,6 +351,7 @@ questions:
       en: 'You heard パン. Compare: バン, ハン, パーン.'
       es: 'Has oído パン. Compara: バン, ハン, パーン.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0029-f74554bbe0ca.mp3'
     tts:
       script: 'N: パン。もう　いちど。パン。'
       voices: ['narrator']
@@ -334,6 +363,7 @@ questions:
       en: 'You heard しゃしん. Compare: しやしん, しゃじん, さしん.'
       es: 'Has oído しゃしん. Compara: しやしん, しゃじん, さしん.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-2-0030-b5e1a11d8591.mp3'
     tts:
       script: 'N: しゃしん。もう　いちど。しゃしん。'
       voices: ['narrator']

@@ -15,6 +15,7 @@ questions:
       en: 'Eggs, and bread was added at the end; there is still milk.'
       es: 'Huevos, y al final añade pan; todavía hay leche.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0001-5012d9b4e179.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　なにを　かいますか。\nF: スーパーへ　いきますか。じゃ、たまごを　かって　きて　ください。\nM: たまごですね。ぎゅうにゅうは？\nF: ぎゅうにゅうは　まだ　ありますから、いいです。あ、パンも　おねがいします。\nM: わかりました。\nN: おとこの　ひとは　なにを　かいますか。"
       voices: ['narrator', 'woman', 'man']
@@ -26,6 +27,7 @@ questions:
       en: 'They change from the station front to the café next to it.'
       es: 'Cambian la entrada de la estación por la cafetería de al lado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0002-60f413ef0ab2.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　どこで　あいますか。\nF: あしたは　えきの　まえで　あいましょうか。\nM: えきの　まえは　ひとが　おおいですから、えきの　となりの　きっさてんは　どうですか。\nF: いいですね。そう　しましょう。\nN: ふたりは　どこで　あいますか。"
       voices: ['narrator', 'woman', 'man']
@@ -37,6 +39,7 @@ questions:
       en: 'They decide to have lunch first, so they meet at twelve.'
       es: 'Deciden comer antes, así que quedan a las doce.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0003-42eef666e32b.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　なん時に　あいますか。\nM: あしたの　えいがは　二時からです。\nF: じゃ、一時半に　あいましょう。\nM: ひるごはんも　いっしょに　たべませんか。\nF: いいですね。じゃ、十二時に　しましょう。\nN: ふたりは　なん時に　あいますか。"
       voices: ['narrator', 'man', 'woman']
@@ -49,6 +52,7 @@ questions:
       en: 'Pencils and paper are at school; bring lunch and a drink.'
       es: 'Lápices y papel están en la escuela; hay que llevar comida y bebida.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0004-b7f6d999e73e.mp3'
     tts:
       script: "N: せんせいが　はなして　います。がくせいは　あした　なにを　もって　いきますか。\nF: あしたは　こうえんで　えを　かきます。えんぴつと　かみは　がっこうに　ありますから、いりません。おべんとうと　のみものを　もって　きて　ください。\nN: がくせいは　あした　なにを　もって　いきますか。"
       voices: ['narrator', 'woman']
@@ -60,6 +64,7 @@ questions:
       en: 'Bus 3 is not running now, so he takes bus 5.'
       es: 'El 3 no pasa ahora, así que coge el 5.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0005-3435c0741107.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　なんばんの　バスに　のりますか。\nM: すみません、びじゅつかんへ　いきたいです。なんばんの　バスですか。\nF: 三ばんです。あ、でも　三ばんは　いま　きません。五ばんに　のって、さくらえきで　おりて　ください。そこから　あるいて　五分です。\nM: ありがとう　ございます。\nN: おとこの　ひとは　なんばんの　バスに　のりますか。"
       voices: ['narrator', 'man', 'woman']
@@ -71,6 +76,7 @@ questions:
       en: 'She corrects herself: the copies come first.'
       es: 'Se corrige: primero las copias.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0006-ac108e314ac1.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　はじめに　なにを　しますか。\nF: かいぎの　まえに、この　てがみを　だして　ください。それから　コピーを　二十まい　おねがいします。\nM: はい。\nF: あ、すみません、コピーが　さきです。かいぎは　十時からですから。\nN: おとこの　ひとは　はじめに　なにを　しますか。"
       voices: ['narrator', 'woman', 'man']
@@ -82,8 +88,9 @@ questions:
       en: 'Today the class is in 301 because 201 has a test.'
       es: 'Hoy la clase es en el 301 porque en el 201 hay examen.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0007-0ecaafd5dbe4.mp3'
     tts:
-      script: "N: おとこの　がくせいと　おんなの　がくせいが　はなして　います。おとこの　がくせいは　どの　きょうしつへ　いきますか。\nM: 日本語の　じゅぎょうは　二〇一きょうしつですか。\nF: きょうは　三〇一です。二〇一は　テストを　して　いますから。\nM: そうですか。ありがとう。\nN: おとこの　がくせいは　どの　きょうしつへ　いきますか。"
+      script: "N: おとこの　がくせいと　おんなの　がくせいが　はなして　います。おとこの　がくせいは　どの　きょうしつへ　いきますか。\nM: 日本語の　じゅぎょうは　にまるいち　きょうしつですか。\nF: きょうは　さんまるいちです。にまるいちは　テストを　して　いますから。\nM: そうですか。ありがとう。\nN: おとこの　がくせいは　どの　きょうしつへ　いきますか。"
       voices: ['narrator', 'man', 'woman']
   - id: n5-lis-1-0008
     stem: 'おとこの　ひとは　あした　なにを　きますか。'
@@ -99,6 +106,7 @@ questions:
       en: 'Because of the rain he changes to black trousers too.'
       es: 'Por la lluvia cambia también a pantalón negro.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0008-6fe9991a551e.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　あした　なにを　きますか。\nF: あしたの　パーティー、なにを　きますか。\nM: くろい　シャツと　しろい　ズボンです。\nF: あしたは　雨ですよ。しろい　ズボンは……。\nM: そうですね。じゃ、ズボンも　くろいのに　します。\nN: おとこの　ひとは　あした　なにを　きますか。"
       voices: ['narrator', 'woman', 'man']
@@ -110,6 +118,7 @@ questions:
       en: 'She asks for tea; the coffee is for the man.'
       es: 'Ella pide té; el café es para él.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0009-91a708bc6d96.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにを　のみますか。\nM: なにを　たべますか。\nF: カレーが　いいです。\nM: ぼくも　カレーに　します。のみものは？\nF: こうちゃを　おねがいします。\nM: じゃ、カレー　ふたつと、こうちゃ　ひとつと、コーヒー　ひとつ　ください。\nN: おんなの　ひとは　なにを　のみますか。"
       voices: ['narrator', 'man', 'woman']
@@ -121,6 +130,7 @@ questions:
       en: "Children's shoes are on the third floor."
       es: 'Los zapatos de niño están en la tercera planta.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0010-26d52df294dd.mp3'
     tts:
       script: "N: デパートで　おんなの　ひとと　みせの　ひとが　はなして　います。おんなの　ひとは　なんかいへ　いきますか。\nF: すみません、くつは　なんかいですか。\nM: こどもの　くつは　三かい、おとなの　くつは　五かいです。\nF: こどもの　くつを　かいたいです。\nM: じゃ、三かいへ　どうぞ。\nN: おんなの　ひとは　なんかいへ　いきますか。"
       voices: ['narrator', 'woman', 'man']
@@ -132,6 +142,7 @@ questions:
       en: 'Monday and Tuesday she works, Wednesday is not good; they choose Thursday.'
       es: 'Lunes y martes trabaja y el miércoles no puede; eligen el jueves.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0011-8cdad8c9192a.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　なんようびに　テニスを　しますか。\nM: らいしゅう、いっしょに　テニスを　しませんか。\nF: いいですね。月よう日と　火よう日は　アルバイトが　あります。\nM: 水よう日は　どうですか。\nF: 水よう日は　ちょっと……。木よう日は　どうですか。\nM: いいですよ。\nN: ふたりは　なんようびに　テニスを　しますか。"
       voices: ['narrator', 'man', 'woman']
@@ -149,6 +160,7 @@ questions:
       en: 'Page 21 is done in class next week, so the homework is pages 20 and 22.'
       es: 'La página 21 se hará en clase, así que los deberes son las páginas 20 y 22.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0012-db6ecc2b5377.mp3'
     tts:
       script: "N: せんせいが　はなして　います。がくせいは　どこを　しゅくだいに　しますか。\nF: きょうの　しゅくだいは　二十ページと　二十一ページです。あ、二十一ページは　らいしゅう　じゅぎょうで　やりますから、二十ページと　二十二ページを　して　ください。\nN: がくせいは　どこを　しゅくだいに　しますか。"
       voices: ['narrator', 'woman']
@@ -160,8 +172,9 @@ questions:
       en: "She goes by train; the bicycle is the man's."
       es: 'Ella va en tren; la bici es de él.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0013-855813f08b22.mp3'
     tts:
-      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにで　レストランへ　いきますか。\nM: あしたの　パーティーの　レストランまで　どうやって　いきますか。\nF: でんしゃで　いきます。タクシーは　たかいですから。\nM: ぼくは　じてんしゃで　いきます。\nF: ちかいですか。\nM: ええ、うちから　十分ぐらいです。\nN: おんなの　ひとは　なにで　レストランへ　いきますか。"
+      script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとは　なにで　レストランへ　いきますか。\nM: あしたの　パーティーの　レストランまで　どうやって　いきますか。\nF: でんしゃで　いきます。タクシーは　たかいですから。\nM: ぼくは　じてんしゃで　いきます。\nF: ちかいですか。\nM: ええ、うちから　じゅっぷんぐらいです。\nN: おんなの　ひとは　なにで　レストランへ　いきますか。"
       voices: ['narrator', 'man', 'woman']
   - id: n5-lis-1-0014
     stem: 'おとこの　ひとは　きっぷを　なんまい　かいますか。'
@@ -177,6 +190,7 @@ questions:
       en: "He corrects the number of children's tickets to two."
       es: 'Corrige las entradas de niño: son dos.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0014-06e7f25113a1.mp3'
     tts:
       script: "N: えいがかんで　おとこの　ひとが　きっぷを　かって　います。おとこの　ひとは　きっぷを　なんまい　かいますか。\nM: おとな　二まいと　こども　一まい　ください。\nF: はい。\nM: あ、すみません。こどもは　二まいです。\nN: おとこの　ひとは　きっぷを　なんまい　かいますか。"
       voices: ['narrator', 'man', 'woman']
@@ -189,6 +203,7 @@ questions:
       en: 'She cleans the windows and Yamada takes the rubbish; Tanaka arranges the desks.'
       es: 'Ella limpia las ventanas y Yamada tira la basura; Tanaka ordena las mesas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0015-93bd43b4137e.mp3'
     tts:
       script: "N: せんせいと　おとこの　がくせいが　はなして　います。おとこの　がくせいは　なにを　しますか。\nF: たなかくん、そうじを　てつだって　ください。\nM: はい。なにを　しましょうか。\nF: まどは　わたしが　ふきます。たなかくんは　つくえを　ならべて　ください。\nM: わかりました。ごみは？\nF: ごみは　あとで　やまださんが　すてます。\nN: おとこの　がくせいは　なにを　しますか。"
       voices: ['narrator', 'woman', 'man']
@@ -200,6 +215,7 @@ questions:
       en: 'She repeats the last part: 7821.'
       es: 'Repite la última parte: 7821.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0016-f50d09c1e672.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おんなの　ひとの　でんわばんごうは　なんばんですか。\nM: でんわばんごうを　おしえて　ください。\nF: ゼロきゅうゼロの　さんよんごろくの　ななはちにいちです。\nM: ななはちいちにですね。\nF: いいえ、ななはちにいちです。\nN: おんなの　ひとの　でんわばんごうは　なんばんですか。"
       voices: ['narrator', 'man', 'woman']
@@ -211,6 +227,7 @@ questions:
       en: 'Flowers were last year and a bag is expensive; he chooses a handkerchief.'
       es: 'Flores ya regaló y el bolso es caro; elige un pañuelo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0017-89d0ca4e57fa.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　おかあさんに　なにを　あげますか。\nM: ははの　たんじょうびに　なにを　あげましょうか。\nF: はなは　どうですか。\nM: はなは　きょねん　あげました。\nF: じゃ、かばんは？\nM: かばんは　たかいですね。\nF: じゃ、ハンカチは？\nM: いいですね。そう　します。\nN: おとこの　ひとは　おかあさんに　なにを　あげますか。"
       voices: ['narrator', 'man', 'woman']
@@ -222,6 +239,7 @@ questions:
       en: 'Thirty minutes before nine is half past eight.'
       es: 'Treinta minutos antes de las nueve son las ocho y media.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0018-eac2a28a1913.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　あした　なん時に　かいしゃへ　いきますか。\nF: あしたは　九時から　かいぎです。三十分　まえに　きて　ください。\nM: 八時半ですね。\nF: ええ、おねがいします。\nN: おとこの　ひとは　あした　なん時に　かいしゃへ　いきますか。"
       voices: ['narrator', 'woman', 'man']
@@ -233,6 +251,7 @@ questions:
       en: 'Meat, with lots of vegetables; fish was yesterday.'
       es: 'Carne con muchas verduras; el pescado fue ayer.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0019-62d2ebe71c77.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。ふたりは　こんばん　なにを　たべますか。\nF: こんばん　なにを　つくりましょうか。\nM: さかなは　どうですか。\nF: さかなは　きのう　たべましたよ。\nM: そうでしたね。じゃ、にくに　しましょう。\nF: ええ。やさいも　たくさん　いれましょう。\nN: ふたりは　こんばん　なにを　たべますか。"
       voices: ['narrator', 'woman', 'man']
@@ -244,6 +263,7 @@ questions:
       en: 'The man corrects himself: the bank is at the west exit.'
       es: 'El hombre se corrige: el banco está en la salida oeste.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0020-eeea08ef07df.mp3'
     tts:
       script: "N: えきで　おんなの　ひとと　おとこの　ひとが　はなして　います。おんなの　ひとは　どの　でぐちから　でますか。\nF: すみません、ぎんこうは　どの　でぐちですか。\nM: ひがしぐちです。ひがしぐちを　でて、まっすぐ　いって　ください。\nF: ひがしぐちですね。\nM: あ、すみません。ぎんこうは　にしぐちでした。\nN: おんなの　ひとは　どの　でぐちから　でますか。"
       voices: ['narrator', 'woman', 'man']
@@ -261,6 +281,7 @@ questions:
       en: 'The blue one is small, so he takes the big black one.'
       es: 'El azul es pequeño, así que coge el grande negro.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-1-0021-190383f9f693.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。おとこの　ひとは　どの　かさを　もって　いきますか。\nM: いってきます。\nF: かさを　もって　いきますか。きょうは　ごごから　雨ですよ。\nM: そうですか。じゃ、この　あおい　かさを　もって　いきます。\nF: その　かさは　ちいさいですよ。大きい　くろいのを　もって　いって　ください。\nM: はい。\nN: おとこの　ひとは　どの　かさを　もって　いきますか。"
       voices: ['narrator', 'man', 'woman']
