@@ -1,0 +1,297 @@
+# N4 · Vocabulary · Mondai 3 — contextual meaning
+# Original questions written for ToriiWay.
+level: N4
+section: vocabulary
+mondai: 3
+instruction:
+  en: 'Choose the word that best fills the blank (　).'
+  ja: '（　）に なにを いれますか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-voc-3-0001
+    stem: 'かぜを　ひいたので、くすりを　（　）から　ねました。'
+    choices:
+      - 'かけて'
+      - 'たべて'
+      - 'とって'
+      - 'のんで'
+    answer: 4
+    explanation:
+      en: 'You "drink" medicine in Japanese: くすりを のむ.'
+      es: 'En japonés la medicina se "bebe": くすりを のむ.'
+    author: claude
+  - id: n4-voc-3-0002
+    stem: 'へやが　くらいので、電気を　（　）　ください。'
+    choices:
+      - 'けして'
+      - 'しめて'
+      - 'つけて'
+      - 'あけて'
+    answer: 3
+    explanation:
+      en: 'The room is dark, so you turn on (つける) the light.'
+      es: 'La habitación está oscura, así que se enciende (つける) la luz.'
+    author: claude
+  - id: n4-voc-3-0003
+    stem: 'この　かばんは　（　）ので、もちやすいです。'
+    choices:
+      - 'かるい'
+      - 'ふかい'
+      - 'おもい'
+      - 'ひくい'
+    answer: 1
+    explanation:
+      en: 'A bag is easy to carry because it is light (かるい).'
+      es: 'Una bolsa es fácil de llevar porque es ligera (かるい).'
+    author: claude
+  - id: n4-voc-3-0004
+    stem: 'となりの　人に　じしょを　（　）もらいました。'
+    choices:
+      - 'かえして'
+      - 'かして'
+      - 'かりて'
+      - 'あげて'
+    answer: 2
+    explanation:
+      en: 'Someone lends (かす) it to you: かして もらう.'
+      es: 'Alguien te lo presta (かす): かして もらう.'
+    author: claude
+  - id: n4-voc-3-0005
+    stem: '雨が　ふって　きたので、かさを　（　）。'
+    choices:
+      - 'かぶりました'
+      - 'しめました'
+      - 'さしました'
+      - 'はきました'
+    answer: 3
+    explanation:
+      en: 'You open and hold an umbrella with さす.'
+      es: 'Abrir y llevar un paraguas se dice さす.'
+    author: claude
+  - id: n4-voc-3-0006
+    stem: '友だちが　来るので、へやを　（　）しました。'
+    choices:
+      - 'げんきに'
+      - 'きれいに'
+      - 'にぎやかに'
+      - 'しずかに'
+    answer: 2
+    explanation:
+      en: 'Before a visit you tidy up: へやを きれいに する.'
+      es: 'Antes de una visita se ordena: へやを きれいに する.'
+    author: claude
+  - id: n4-voc-3-0007
+    stem: '（　）に　おくれないように、早く　家を　出ました。'
+    choices:
+      - 'しゅみ'
+      - 'けいけん'
+      - 'せつめい'
+      - 'やくそく'
+    answer: 4
+    explanation:
+      en: 'You can be late for an appointment (やくそく).'
+      es: 'Se puede llegar tarde a una cita (やくそく).'
+    author: claude
+  - id: n4-voc-3-0008
+    stem: 'この　道は　車が　多いので、（　）です。'
+    choices:
+      - 'あぶない'
+      - 'あんぜん'
+      - 'しずか'
+      - 'ひま'
+    answer: 1
+    explanation:
+      en: 'Many cars make the road dangerous (あぶない).'
+      es: 'Con muchos coches la calle es peligrosa (あぶない).'
+    author: claude
+  - id: n4-voc-3-0009
+    stem: 'にもつが　おもいので、（　）くれませんか。'
+    choices:
+      - 'あつめて'
+      - 'てつだって'
+      - 'しらべて'
+      - 'つたえて'
+    answer: 2
+    explanation:
+      en: 'You ask for help (てつだう) with heavy luggage.'
+      es: 'Se pide ayuda (てつだう) con el equipaje pesado.'
+    author: claude
+  - id: n4-voc-3-0010
+    stem: '駅で　友だちを　三十分も　（　）。'
+    choices:
+      - 'とまりました'
+      - 'すみました'
+      - 'まちました'
+      - 'さがりました'
+    answer: 3
+    explanation:
+      en: '"I waited (まつ) thirty minutes for my friend."'
+      es: '"Esperé (まつ) a mi amigo treinta minutos."'
+    author: claude
+  - id: n4-voc-3-0011
+    stem: 'わからない　ことばは　じしょで　（　）　ください。'
+    choices:
+      - 'しらべて'
+      - 'おしえて'
+      - 'ならって'
+      - 'おぼえて'
+    answer: 1
+    explanation:
+      en: 'You look words up (しらべる) in a dictionary.'
+      es: 'Las palabras se buscan (しらべる) en el diccionario.'
+    author: claude
+  - id: n4-voc-3-0012
+    stem: '日本の　（　）は　あついですが、冬は　さむいです。'
+    choices:
+      - 'あき'
+      - 'はる'
+      - 'ふゆ'
+      - 'なつ'
+    answer: 4
+    explanation:
+      en: 'The contrast with winter points to summer (なつ).'
+      es: 'El contraste con el invierno indica el verano (なつ).'
+    author: claude
+  - id: n4-voc-3-0013
+    stem: 'この　シャツは　（　）が　小さいので、大きいのを　ください。'
+    choices:
+      - 'デザイン'
+      - 'いろ'
+      - 'ねだん'
+      - 'サイズ'
+    answer: 4
+    explanation:
+      en: 'Asking for a bigger one is about size (サイズ).'
+      es: 'Pedir una más grande tiene que ver con la talla (サイズ).'
+    author: claude
+  - id: n4-voc-3-0014
+    stem: 'ねつが　あるので、きょうは　かいしゃを　（　）。'
+    choices:
+      - 'まけます'
+      - 'やすみます'
+      - 'やめます'
+      - 'おわります'
+    answer: 2
+    explanation:
+      en: 'With a fever you take the day off (やすむ). やめる would mean quitting the job.'
+      es: 'Con fiebre se falta al trabajo (やすむ). やめる sería dejar el trabajo.'
+    author: claude
+  - id: n4-voc-3-0015
+    stem: 'りょこうの　（　）を　友だちに　見せました。'
+    choices:
+      - 'しゃしん'
+      - 'おと'
+      - 'こえ'
+      - 'でんわ'
+    answer: 1
+    explanation:
+      en: 'You show photos (しゃしん) of a trip.'
+      es: 'Se enseñan las fotos (しゃしん) de un viaje.'
+    author: claude
+  - id: n4-voc-3-0016
+    stem: 'いそがしくて、本を　読む　（　）が　ありません。'
+    choices:
+      - 'じぶん'
+      - 'じだい'
+      - 'じかん'
+      - 'じこく'
+    answer: 3
+    explanation:
+      en: 'No time (じかん) to read. じこく is a point in time, like a timetable.'
+      es: 'No hay tiempo (じかん) para leer. じこく es una hora concreta, como en un horario.'
+    author: claude
+  - id: n4-voc-3-0017
+    stem: 'しょくじの　まえに　手を　（　）　ください。'
+    choices:
+      - 'みがいて'
+      - 'ぬいで'
+      - 'あびて'
+      - 'あらって'
+    answer: 4
+    explanation:
+      en: 'You wash (あらう) your hands. みがく is for teeth.'
+      es: 'Las manos se lavan (あらう). みがく es para los dientes.'
+    author: claude
+  - id: n4-voc-3-0018
+    stem: 'この　くすりは　（　）ですから、子どもが　飲んでも　だいじょうぶです。'
+    choices:
+      - 'きけん'
+      - 'あんぜん'
+      - 'ざんねん'
+      - 'ふべん'
+    answer: 2
+    explanation:
+      en: 'Children can take it because it is safe (あんぜん).'
+      es: 'Los niños pueden tomarla porque es segura (あんぜん).'
+    author: claude
+  - id: n4-voc-3-0019
+    stem: 'ゆうびんきょくで　手紙を　（　）。'
+    choices:
+      - 'うけました'
+      - 'かけました'
+      - 'だしました'
+      - 'つけました'
+    answer: 3
+    explanation:
+      en: 'You send a letter with だす.'
+      es: 'Una carta se envía con だす.'
+    author: claude
+  - id: n4-voc-3-0020
+    stem: 'この　店は　いつも　人が　多くて　（　）です。'
+    choices:
+      - 'にぎやか'
+      - 'まじめ'
+      - 'しずか'
+      - 'ひま'
+    answer: 1
+    explanation:
+      en: 'Many people make a place lively (にぎやか).'
+      es: 'Mucha gente hace un lugar animado (にぎやか).'
+    author: claude
+  - id: n4-voc-3-0021
+    stem: '電車の　中で　さいふを　（　）しまいました。'
+    choices:
+      - 'ひろって'
+      - 'たおして'
+      - 'おとして'
+      - 'おちて'
+    answer: 3
+    explanation:
+      en: 'You drop (おとす) your wallet. おちる has no を.'
+      es: 'Se te cae la cartera: おとす. おちる no lleva を.'
+    author: claude
+  - id: n4-voc-3-0022
+    stem: 'あついので、まどを　（　）も　いいですか。'
+    choices:
+      - 'しめて'
+      - 'つけて'
+      - 'けして'
+      - 'あけて'
+    answer: 4
+    explanation:
+      en: 'When it is hot you open (あける) the window.'
+      es: 'Cuando hace calor se abre (あける) la ventana.'
+    author: claude
+  - id: n4-voc-3-0023
+    stem: 'としょかんでは　（　）に　して　ください。'
+    choices:
+      - 'しずか'
+      - 'げんき'
+      - 'じょうぶ'
+      - 'にぎやか'
+    answer: 1
+    explanation:
+      en: 'In a library you keep quiet: しずかに する.'
+      es: 'En la biblioteca hay que estar callado: しずかに する.'
+    author: claude
+  - id: n4-voc-3-0024
+    stem: 'あした　テストが　ある　ことを　（　）いました。'
+    choices:
+      - 'なくして'
+      - 'わすれて'
+      - 'おとして'
+      - 'こわして'
+    answer: 2
+    explanation:
+      en: 'You forget (わすれる) a fact; なくす is for losing things.'
+      es: 'Un dato se olvida (わすれる); なくす es para perder cosas.'
+    author: claude

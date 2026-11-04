@@ -1,0 +1,153 @@
+# N4 · Vocabulary · Mondai 4 — paraphrase
+# Original questions written for ToriiWay.
+level: N4
+section: vocabulary
+mondai: 4
+instruction:
+  en: 'Choose the sentence that means almost the same as the underlined sentence.'
+  ja: '＿＿＿の ぶんと だいたい おなじ いみの ぶんを えらんで ください。'
+questions:
+  - id: n4-voc-4-0001
+    stem: '__この　へやは　せまいです。__'
+    choices:
+      - 'この　へやは　ひろく　ありません。'
+      - 'この　へやは　しずかです。'
+      - 'この　へやは　あかるく　ありません。'
+      - 'この　へやは　大きいです。'
+    answer: 1
+    explanation:
+      en: 'せまい "small, cramped" = ひろくない "not spacious".'
+      es: 'せまい "estrecho" = ひろくない "no espacioso".'
+    author: claude
+  - id: n4-voc-4-0002
+    stem: '__兄は　ちょっと　出かけて　います。__'
+    choices:
+      - '兄は　もうすぐ　出かけます。'
+      - '兄は　いま　家に　いません。'
+      - '兄は　いま　家に　います。'
+      - '兄は　ずっと　家に　いました。'
+    answer: 2
+    explanation:
+      en: '出かけて いる means he has gone out, so he is not home now.'
+      es: '出かけて いる significa que ha salido, así que ahora no está en casa.'
+    author: claude
+  - id: n4-voc-4-0003
+    stem: '__きのうは　ひまでした。__'
+    choices:
+      - 'きのうは　つかれました。'
+      - 'きのうは　やすみでは　ありませんでした。'
+      - 'きのうは　いそがしく　ありませんでした。'
+      - 'きのうは　いそがしかったです。'
+    answer: 3
+    explanation:
+      en: 'ひま "free" = not busy.'
+      es: 'ひま "libre" = no ocupado.'
+    author: claude
+  - id: n4-voc-4-0004
+    stem: '__父は　さかなが　きらいです。__'
+    choices:
+      - '父は　さかなを　売って　います。'
+      - '父は　さかなを　よく　食べます。'
+      - '父は　さかなが　大すきです。'
+      - '父は　さかなが　すきでは　ありません。'
+    answer: 4
+    explanation:
+      en: 'きらい "dislike" = すきではない.'
+      es: 'きらい "no gustar" = すきではない.'
+    author: claude
+  - id: n4-voc-4-0005
+    stem: '__この　店は　十時に　しまります。__'
+    choices:
+      - 'この　店は　十時に　あきます。'
+      - 'この　店は　十時まで　あいて　います。'
+      - 'この　店は　十時から　あいて　います。'
+      - 'この　店は　十時ごろ　すいて　います。'
+    answer: 2
+    explanation:
+      en: 'Closing at ten = open until ten (十時まで).'
+      es: 'Cerrar a las diez = abierto hasta las diez (十時まで).'
+    author: claude
+  - id: n4-voc-4-0006
+    stem: '__もう　少し　ゆっくり　話して　ください。__'
+    choices:
+      - 'もう　少し　おそく　話して　ください。'
+      - 'もう　少し　大きい　こえで　話して　ください。'
+      - 'もう　少し　みじかく　話して　ください。'
+      - 'もう　少し　はやく　話して　ください。'
+    answer: 1
+    explanation:
+      en: 'ゆっくり "slowly" = おそく.'
+      es: 'ゆっくり "despacio" = おそく.'
+    author: claude
+  - id: n4-voc-4-0007
+    stem: '__わたしは　毎朝　ジョギングを　して　います。__'
+    choices:
+      - 'わたしは　毎朝　あるいて　います。'
+      - 'わたしは　毎朝　ねて　います。'
+      - 'わたしは　毎朝　はしって　います。'
+      - 'わたしは　毎朝　およいで　います。'
+    answer: 3
+    explanation:
+      en: 'Jogging is running (はしる).'
+      es: 'Hacer jogging es correr (はしる).'
+    author: claude
+  - id: n4-voc-4-0008
+    stem: '__あしたは　かならず　来て　ください。__'
+    choices:
+      - 'あしたは　たぶん　来ます。'
+      - 'あしたは　なるべく　来て　ください。'
+      - 'あしたは　来なくても　いいです。'
+      - 'あしたは　ぜったいに　来て　ください。'
+    answer: 4
+    explanation:
+      en: 'かならず "without fail" = ぜったいに. なるべく is only "if possible".'
+      es: 'かならず "sin falta" = ぜったいに. なるべく es solo "si es posible".'
+    author: claude
+  - id: n4-voc-4-0009
+    stem: '__この　問題は　やさしいです。__'
+    choices:
+      - 'この　問題は　ながいです。'
+      - 'この　問題は　おもしろいです。'
+      - 'この　問題は　かんたんです。'
+      - 'この　問題は　むずかしいです。'
+    answer: 3
+    explanation:
+      en: 'やさしい "easy" = かんたん.'
+      es: 'やさしい "fácil" = かんたん.'
+    author: claude
+  - id: n4-voc-4-0010
+    stem: '__田中さんは　森さんに　本を　かしました。__'
+    choices:
+      - '森さんは　田中さんに　本を　かしました。'
+      - '森さんは　田中さんに　本を　かりました。'
+      - '森さんは　田中さんに　本を　あげました。'
+      - '田中さんは　森さんに　本を　かりました。'
+    answer: 2
+    explanation:
+      en: 'Tanaka lent it, so Mori borrowed it from Tanaka (かりる).'
+      es: 'Tanaka lo prestó, así que Mori lo tomó prestado de Tanaka (かりる).'
+    author: claude
+  - id: n4-voc-4-0011
+    stem: '__駅の　近くに　住んで　います。__'
+    choices:
+      - '駅から　とおくない　ところに　住んで　います。'
+      - '駅から　とおい　ところに　住んで　います。'
+      - '駅の　中で　はたらいて　います。'
+      - '駅の　近くで　あそんで　います。'
+    answer: 1
+    explanation:
+      en: '近く "near" = not far (とおくない).'
+      es: '近く "cerca" = no lejos (とおくない).'
+    author: claude
+  - id: n4-voc-4-0012
+    stem: '__ことしの　なつは　きょねんより　あつかったです。__'
+    choices:
+      - 'きょねんの　なつは　ことしより　あつかったです。'
+      - 'ことしの　なつは　きょねんと　同じでした。'
+      - 'ことしの　なつは　きょねんより　すずしかったです。'
+      - 'きょねんの　なつは　ことしより　すずしかったです。'
+    answer: 4
+    explanation:
+      en: 'This summer was hotter, so last summer was cooler.'
+      es: 'Este verano fue más caluroso, así que el anterior fue más fresco.'
+    author: claude
