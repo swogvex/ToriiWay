@@ -1,0 +1,297 @@
+# N3 · Listening · Mondai 1 — task-based comprehension
+# Original questions written for ToriiWay.
+level: N3
+section: listening
+mondai: 1
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'はじめに 質問を 聞いて ください。それから 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n3-lis-1-0001
+    stem: '男の　人は　このあと　まず　何を　しなければ　なりませんか。'
+    choices:
+      - '部長に　資料を　見て　もらう'
+      - 'グラフを　入れる'
+      - '発表の　練習を　する'
+      - '資料を　作り直す'
+    answer: 1
+    explanation:
+      en: 'The manager checks it before the graphs go in.'
+      es: 'El jefe lo revisa antes de añadir los gráficos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0001-c20d7a4f85c5.mp3'
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　まず　何を　しなければ　なりませんか。\nF: 木村さん、来週の　発表の　資料、もう　できた？\nM: はい、だいたい　できました。あとは　グラフを　入れるだけです。\nF: そう。じゃあ、グラフを　入れる　前に、一度　部長に　見て　もらって。内容を　変える　ことに　なったら、グラフも　作り直さなきゃ　いけないから。\nM: わかりました。すぐ　お願いして　きます。\nN: 男の　人は　このあと　まず　何を　しなければ　なりませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0002
+    stem: '男の　学生は　このあと　まず　何を　しますか。'
+    choices:
+      - '本を　カウンターに　返す'
+      - '本を　予約する'
+      - '本の　貸し出しを　延長する'
+      - '二階で　本の　コピーを　とる'
+    answer: 4
+    explanation:
+      en: 'He cannot renew it, so he copies the pages first and then returns it.'
+      es: 'No puede renovarlo, así que primero fotocopia las páginas y luego lo devuelve.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0002-fccc6190ce52.mp3'
+    tts:
+      script: "N: 大学の　図書館で　男の　学生と　係の　人が　話して　います。男の　学生は　このあと　まず　何を　しますか。\nM: すみません、この　本、もう　一週間　借りたいんですが。\nF: その　本は　次に　予約して　いる　人が　いるので、延長できないんです。今日　返して　いただけますか。\nM: そうですか。じゃあ、必要な　ページだけ　コピーしても　いいですか。\nF: はい、コピー機は　二階に　あります。コピーが　終わったら、こちらに　返して　ください。\nN: 男の　学生は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0003
+    stem: '女の　人は　何を　買いに　行きますか。'
+    choices:
+      - 'ジュースと　紙コップ'
+      - '紙コップと　氷'
+      - 'お茶と　氷'
+      - 'お茶と　紙コップ'
+    answer: 2
+    explanation:
+      en: 'Tanaka already bought tea; cups are short and she adds ice.'
+      es: 'Tanaka ya compró té; faltan vasos y ella añade hielo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0003-c5f879d25642.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　パーティーの　準備に　ついて　話して　います。女の　人は　何を　買いに　行きますか。\nM: 飲み物は　足りる？\nF: ジュースは　たくさん　あるけど、お茶が　ないね。\nM: お茶は　さっき　田中さんが　買って　きて　くれたよ。それより、紙コップが　足りないと　思う。\nF: あ、ほんとだ。じゃあ、それと、氷も　買って　くる。\nN: 女の　人は　何を　買いに　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0004
+    stem: '男の　人は　次に　来る　とき、何を　持って　来なければ　なりませんか。'
+    choices:
+      - '検査の　結果と　薬'
+      - '薬と　薬の　説明の　紙'
+      - '保険証と　今　飲んで　いる　薬'
+      - '保険証と　薬の　説明の　紙'
+    answer: 3
+    explanation:
+      en: 'Insurance card and the medicine; the leaflet is not needed.'
+      es: 'La tarjeta del seguro y la medicina; el prospecto no hace falta.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0004-1d8472de3ae0.mp3'
+    tts:
+      script: "N: 病院で　医者と　男の　人が　話して　います。男の　人は　次に　来る　とき、何を　持って　来なければ　なりませんか。\nF: 今日の　検査の　結果は　来週　わかります。次に　来る　ときは、保険証と、今　飲んで　いる　薬を　持って　きて　ください。\nM: 薬の　説明の　紙も　必要ですか。\nF: 薬が　あれば、紙は　いりません。\nN: 男の　人は　次に　来る　とき、何を　持って　来なければ　なりませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0005
+    stem: '男の　人は　あした　何時に　朝ごはんを　食べに　行きますか。'
+    choices:
+      - '七時'
+      - '六時'
+      - '九時'
+      - '六時半'
+    answer: 4
+    explanation:
+      en: 'He goes as soon as it opens at 6:30.'
+      es: 'Va en cuanto abre, a las 6:30.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0005-99fc32c33012.mp3'
+    tts:
+      script: "N: ホテルで　男の　人と　受付の　人が　話して　います。男の　人は　あした　何時に　朝ごはんを　食べに　行きますか。\nM: あしたの　朝ごはんは　何時からですか。\nF: 六時半から　九時までです。\nM: 七時の　バスに　乗りたいんですが、間に合いますか。\nF: 会場が　混むので、少し　早めに　いらっしゃる　ほうが　いいですよ。\nM: じゃあ、始まったら　すぐ　行きます。\nN: 男の　人は　あした　何時に　朝ごはんを　食べに　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0006
+    stem: '女の　学生は　レポートの　どこを　直しますか。'
+    choices:
+      - '参考に　した　本の　名前を　書く'
+      - '字数を　減らす'
+      - '内容を　書き直す'
+      - 'タイトルを　変える'
+    answer: 1
+    explanation:
+      en: 'Only the book sources are missing; the length is fine.'
+      es: 'Solo faltan las fuentes; la extensión está bien.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0006-524209aa50f9.mp3'
+    tts:
+      script: "N: 大学で　先生と　女の　学生が　話して　います。女の　学生は　レポートの　どこを　直しますか。\nM: レポート、読みましたよ。内容は　よく　書けて　いますね。\nF: ありがとうございます。\nM: ただ、参考に　した　本の　名前が　書いて　ありませんね。それは　必ず　入れて　ください。字数は　少し　多いですが、これぐらいなら　大丈夫です。\nF: わかりました。\nN: 女の　学生は　レポートの　どこを　直しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0007
+    stem: '男の　人は　まず　何を　しますか。'
+    choices:
+      - '本を　箱に　入れる'
+      - '服を　箱に　入れる'
+      - 'ガスや　電気の　申し込みを　する'
+      - '台所の　物を　箱に　入れる'
+    answer: 3
+    explanation:
+      en: 'Utilities can take time, so he applies first.'
+      es: 'Los suministros pueden tardar, así que los pide primero.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0007-9c2cdc988760.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　引っ越しに　ついて　話して　います。男の　人は　まず　何を　しますか。\nF: 引っ越しまで　あと　一週間だね。荷物の　準備は？\nM: 本は　もう　箱に　入れたよ。あとは　台所の　物と　服かな。\nF: 新しい　部屋の　ガスや　電気の　申し込みは　した？\nM: あ、まだだ。\nF: それは　時間が　かかる　ことも　あるから、先に　やった　ほうが　いいよ。\nM: そうだね。今日　電話する。\nN: 男の　人は　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0008
+    stem: '二人は　どうやって　会場まで　行きますか。'
+    choices:
+      - 'タクシーで　行く'
+      - 'バスで　行く'
+      - '歩いて　行く'
+      - '電車が　動くのを　待つ'
+    answer: 2
+    explanation:
+      en: 'The bus has its own lane, so it is faster.'
+      es: 'El autobús tiene carril propio, así que es más rápido.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0008-60e1c9f218dd.mp3'
+    tts:
+      script: "N: 駅で　男の　人と　女の　人が　話して　います。二人は　どうやって　会場まで　行きますか。\nM: 事故で　電車が　止まって　いるみたい。\nF: え、どうしよう。タクシーで　行く？\nM: この　時間は　道が　混んで　いるから、タクシーも　時間が　かかるよ。バスなら　専用の　道を　走るから、早いと　思う。\nF: じゃあ、そう　しよう。\nN: 二人は　どうやって　会場まで　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0009
+    stem: '後輩は　あしたの　練習に　何を　持って　いきますか。'
+    choices:
+      - '体育館用の　くつと　ラケット'
+      - '体育館用の　くつと　タオルと　水'
+      - 'ラケットと　タオルと　水'
+      - '外の　くつと　タオルと　水'
+    answer: 2
+    explanation:
+      en: 'Indoor shoes, a towel and water; rackets are lent by the club.'
+      es: 'Zapatillas de interior, toalla y agua; las raquetas las presta el club.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0009-dbd2d3f92449.mp3'
+    tts:
+      script: "N: テニス部の　先輩と　後輩が　話して　います。後輩は　あしたの　練習に　何を　持って　いきますか。\nM: あしたの　練習は　体育館で　やるから、外の　くつじゃ　だめだよ。\nF: 体育館用の　くつですね。ラケットは？\nM: ラケットは　部のを　使えば　いいよ。あ、タオルと　水は　自分で　持って　きてね。\nF: わかりました。\nN: 後輩は　あしたの　練習に　何を　持って　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0010
+    stem: '女の　人は　このあと　何を　しますか。'
+    choices:
+      - 'メールの　番号を　調べる'
+      - 'コンビニで　お金を　払う'
+      - 'カードを　作る'
+      - 'ネットで　本を　注文する'
+    answer: 4
+    explanation:
+      en: 'She orders first; the payment number arrives afterwards.'
+      es: 'Primero hace el pedido; el número de pago llega después.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0010-7a0bd478aa4a.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。女の　人は　このあと　何を　しますか。\nF: ネットで　この　本を　注文したいんだけど、カードを　持って　いないの。\nM: それなら、コンビニで　払う　方法も　あるよ。注文した　あとで　番号が　メールで　来るから、それを　持って　コンビニに　行けば　いい。\nF: そうなんだ。じゃあ、まず　注文して　みる。\nN: 女の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0011
+    stem: '女の　人は　このあと　どこへ　行きますか。'
+    choices:
+      - '三階'
+      - '修理の　会社'
+      - '一階'
+      - '会議室'
+    answer: 1
+    explanation:
+      en: 'The third-floor copier works; he handles the repair.'
+      es: 'La fotocopiadora del tercer piso funciona; él se ocupa de la reparación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0011-31faeb01ef1a.mp3'
+    tts:
+      script: "N: 会社で　男の　人と　女の　人が　話して　います。女の　人は　このあと　どこへ　行きますか。\nM: コピー機が　壊れて　いるみたいですね。\nF: 困りました。会議まで　あと　じゅっぷんしか　ないんです。\nM: 三階の　コピー機は　使えますよ。修理の　連絡は　僕が　して　おきます。\nF: ありがとうございます。\nN: 女の　人は　このあと　どこへ　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0012
+    stem: '男の　人は　古い　雑誌を　いつ　出しますか。'
+    choices:
+      - '来月の　第一水曜日'
+      - '来月の　第三水曜日'
+      - '今週の　金曜日'
+      - '来週の　金曜日'
+    answer: 3
+    explanation:
+      en: 'The old Friday collection still applies this week.'
+      es: 'Esta semana aún vale la recogida del viernes.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0012-48456e9d3dc5.mp3'
+    tts:
+      script: "N: アパートで　男の　人と　女の　人が　話して　います。男の　人は　古い　雑誌を　いつ　出しますか。\nF: 古い　雑誌や　新聞は、来月から　第一と　第三水曜日に　なるんですよ。\nM: え、今まで　金曜日でしたよね。\nF: ええ、今週の　金曜日までは　今までどおりです。\nM: そうですか。じゃあ、今週の　金曜日に　出します。\nN: 男の　人は　古い　雑誌を　いつ　出しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0013
+    stem: '生徒は　このあと　まず　何を　しますか。'
+    choices:
+      - '玉ねぎを　切る'
+      - '肉を　いためる'
+      - 'じゃがいもを　切る'
+      - '野菜を　洗う'
+    answer: 1
+    explanation:
+      en: 'The vegetables are washed; onions come first.'
+      es: 'La verdura ya está lavada; primero va la cebolla.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0013-78a5515f913a.mp3'
+    tts:
+      script: "N: 料理教室で　先生が　話して　います。生徒は　このあと　まず　何を　しますか。\nF: では、カレーを　作りましょう。野菜は　もう　洗って　ありますね。まず、玉ねぎを　切って　ください。肉は　玉ねぎを　いためてから　入れます。じゃがいもと　にんじんは　その　あとで　切りましょう。\nN: 生徒は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'woman']
+  - id: n3-lis-1-0014
+    stem: '女の　人は　どの　ホテルに　しますか。'
+    choices:
+      - '駅から　遠くて、朝ごはんが　ない　ホテル'
+      - '駅に　近くて、朝ごはんが　ある　ホテル'
+      - '駅に　近くて、朝ごはんが　ない　ホテル'
+      - '駅から　遠くて、朝ごはんが　ある　ホテル'
+    answer: 3
+    explanation:
+      en: 'She leaves early and needs no breakfast, so the hotel near the station.'
+      es: 'Sale temprano y no necesita desayuno, así que el hotel junto a la estación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0014-d2533d0c5e61.mp3'
+    tts:
+      script: "N: 旅行会社で　女の　人と　男の　人が　話して　います。女の　人は　どの　ホテルに　しますか。\nM: こちらの　ホテルは　駅から　近くて　便利ですよ。\nF: 夜　遅く　着くので、駅に　近いのは　いいですね。でも、朝ごはんは　つきますか。\nM: こちらは　つきません。朝ごはん付きなら、駅から　バスで　じゅっぷんの　ホテルが　あります。\nF: 朝は　早く　出るので、朝ごはんは　いらないです。駅に　近い　ほうで。\nN: 女の　人は　どの　ホテルに　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0015
+    stem: '男の　人は　どこで　バスを　おりますか。'
+    choices:
+      - '市民病院前'
+      - '中央公園'
+      - '駅前'
+      - '終点'
+    answer: 2
+    explanation:
+      en: 'This bus does not stop at the hospital; he gets off at Chuo Park.'
+      es: 'Este autobús no para en el hospital; se baja en Chuo Park.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0015-4218eddb6692.mp3'
+    tts:
+      script: "N: バスの　中で　男の　人と　運転手が　話して　います。男の　人は　どこで　バスを　おりますか。\nM: すみません、市民病院へ　行きたいんですが。\nF: 市民病院前には　この　バスは　止まらないんです。次の　中央公園で　おりて、歩いて　五分ぐらいですよ。\nM: わかりました。ありがとうございます。\nN: 男の　人は　どこで　バスを　おりますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0016
+    stem: '二人は　何曜日に　集まりますか。'
+    choices:
+      - '月曜日'
+      - '金曜日'
+      - '水曜日'
+      - '木曜日'
+    answer: 4
+    explanation:
+      en: 'Monday and Wednesday are taken; Thursday works.'
+      es: 'El lunes y el miércoles están ocupados; el jueves les va bien.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0016-8ef42c671065.mp3'
+    tts:
+      script: "N: 男の　学生と　女の　学生が　話して　います。二人は　何曜日に　集まりますか。\nM: 発表の　準備、いつ　集まろうか。月曜日は　どう？\nF: 月曜日は　アルバイトが　あるの。水曜日は？\nM: 水曜日は　授業が　夜まで　あるんだ。木曜日の　午後なら　あいてるけど。\nF: 木曜日は　大丈夫。じゃあ、木曜日に　しよう。\nN: 二人は　何曜日に　集まりますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0017
+    stem: '女の　人は　このあと　何を　しますか。'
+    choices:
+      - 'レシートを　持って　もう　一度　店に　来る'
+      - '別の　シャツを　買う'
+      - 'お金を　返して　もらう'
+      - 'すぐに　シャツを　交換する'
+    answer: 1
+    explanation:
+      en: 'Without the receipt she must come back with it.'
+      es: 'Sin el tique tiene que volver con él.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0017-bd2e3c447198.mp3'
+    tts:
+      script: "N: 店で　女の　人と　店員が　話して　います。女の　人は　このあと　何を　しますか。\nF: きのう　買った　シャツ、サイズが　合わなかったので、交換したいんですが。\nM: レシートは　お持ちですか。\nF: あ、家に　忘れて　しまいました。\nM: 申し訳ありません。交換には　レシートが　必要なんです。一週間以内なら　大丈夫ですので。\nF: わかりました。じゃあ、また　来ます。\nN: 女の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n3-lis-1-0018
+    stem: '学生は　来週の　試験に　何を　持って　いかなければ　なりませんか。'
+    choices:
+      - 'えんぴつと　消しゴムと　時計'
+      - 'えんぴつと　消しゴムと　学生証'
+      - '辞書と　えんぴつと　学生証'
+      - '辞書と　学生証と　時計'
+    answer: 2
+    explanation:
+      en: 'No dictionary and no watch; pencil, eraser and student card.'
+      es: 'Ni diccionario ni reloj; lápiz, goma y carné.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-1-0018-cf1de2a97e85.mp3'
+    tts:
+      script: "N: 先生が　話して　います。学生は　来週の　試験に　何を　持って　いかなければ　なりませんか。\nF: 来週の　試験では、辞書は　使えません。えんぴつと　消しゴムを　忘れないで　ください。それから、学生証も　必ず　持って　きて　ください。時計は　教室に　ありますから、いりません。\nN: 学生は　来週の　試験に　何を　持って　いかなければ　なりませんか。"
+      voices: ['narrator', 'woman']

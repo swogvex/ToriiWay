@@ -12,7 +12,7 @@ async function expectNoAxeViolations(page: Page) {
 }
 
 /** Starts a run of the level from the start page and waits for the first question. */
-async function startRun(page: Page, level: 'N5' | 'N4', options: { public?: boolean } = {}) {
+async function startRun(page: Page, level: 'N5' | 'N4' | 'N3', options: { public?: boolean } = {}) {
   await page.goto('/jlpt');
   await page.getByRole('radio', { name: level }).check();
   if (options.public) await page.getByLabel(/Show my nickname and level/).check();
@@ -106,12 +106,15 @@ test.describe('JLPT start page', () => {
     await expectNoAxeViolations(page);
   });
 
-  test('levels without a question bank cannot start yet', async ({ page }) => {
+  test('every level with a full bank can start', async ({ page }) => {
     await page.goto('/jlpt');
-    await page.getByRole('radio', { name: 'N3' }).check();
-    await expect(page.getByRole('heading', { name: 'N3 sections' })).toBeVisible();
-    await expect(page.getByRole('button', { name: /Start N3 simulation/ })).toBeDisabled();
-    await expect(page.getByText(/N3 question bank is being written/)).toBeVisible();
+    for (const level of ['N4', 'N3'] as const) {
+      await page.getByRole('radio', { name: level }).check();
+      await expect(page.getByRole('heading', { name: `${level} sections` })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }),
+      ).toBeEnabled();
+    }
     await page.getByRole('radio', { name: 'Kana' }).check();
     await expect(page.getByRole('button', { name: /Start Kana simulation/ })).toBeEnabled();
     await expect(page.getByText(/Kana is a site-only level/)).toBeVisible();
@@ -207,6 +210,21 @@ test.describe('JLPT exam', () => {
     await expect(page.locator('[data-summary]').getByText(/^1\/21 · /)).toBeVisible();
     await page.getByRole('button', { name: 'Hard' }).click();
     await expect(page.getByText('Thanks, noted.')).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
+  test('a full N3 run reaches the score', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
+    test.setTimeout(300_000);
+    await stubBlobAudio(page);
+    await startRun(page, 'N3');
+    await answerEverySection(page, [
+      ['Vocabulary', 35],
+      ['Grammar · Reading', 39],
+      ['Listening', 28],
+    ]);
+    await expect(page.getByText('N3 · Simulation complete')).toBeVisible();
+    await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
     await expectNoAxeViolations(page);
   });
 
