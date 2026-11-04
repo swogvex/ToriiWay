@@ -1,0 +1,189 @@
+# N3 · Vocabulary · Mondai 4 — paraphrase
+# Original questions written for ToriiWay.
+level: N3
+section: vocabulary
+mondai: 4
+instruction:
+  en: 'Choose the answer closest in meaning to the underlined part.'
+  ja: '＿＿＿に 意味が 最も 近い ものを えらんで ください。'
+questions:
+  - id: n3-voc-4-0001
+    stem: 'この　問題は　__ややこしい__。'
+    choices:
+      - '簡単だ'
+      - '新しい'
+      - '複雑だ'
+      - '大切だ'
+    answer: 3
+    explanation:
+      en: 'ややこしい ≈ 複雑だ, "complicated".'
+      es: 'ややこしい ≈ 複雑だ, "complicado".'
+    author: claude
+  - id: n3-voc-4-0002
+    stem: '会議は　__たちまち__　終わった。'
+    choices:
+      - 'すぐに'
+      - 'やっと'
+      - 'ゆっくり'
+      - 'ずっと'
+    answer: 1
+    explanation:
+      en: 'たちまち ≈ すぐに, "in no time".'
+      es: 'たちまち ≈ すぐに, "en un momento".'
+    author: claude
+  - id: n3-voc-4-0003
+    stem: '兄は　__くたくた__に　なって　帰って　きた。'
+    choices:
+      - 'とても　喜んで'
+      - 'とても　疲れて'
+      - 'とても　怒って'
+      - 'とても　おなかが　すいて'
+    answer: 2
+    explanation:
+      en: 'くたくた ≈ worn out.'
+      es: 'くたくた ≈ agotado.'
+    author: claude
+  - id: n3-voc-4-0004
+    stem: '__あらゆる__　方法を　試した。'
+    choices:
+      - '少しの'
+      - '新しい'
+      - '正しい'
+      - 'すべての'
+    answer: 4
+    explanation:
+      en: 'あらゆる ≈ すべての, "every".'
+      es: 'あらゆる ≈ すべての, "todos".'
+    author: claude
+  - id: n3-voc-4-0005
+    stem: '弟の　部屋は　いつも　__散らかって__　いる。'
+    choices:
+      - 'きれいに　片付いて'
+      - '物が　あちこちに　置いて　ある'
+      - '人が　たくさん　いて'
+      - 'とても　せまくて'
+    answer: 2
+    explanation:
+      en: '散らかる: things are left everywhere.'
+      es: '散らかる: las cosas están tiradas por todas partes.'
+    author: claude
+  - id: n3-voc-4-0006
+    stem: 'かれは　__そっくり__　父親に　似て　いる。'
+    choices:
+      - 'ときどき'
+      - 'ぜんぜん'
+      - '少しだけ'
+      - 'とても　よく'
+    answer: 4
+    explanation:
+      en: 'そっくり 似る ≈ look exactly alike.'
+      es: 'そっくり 似る ≈ parecerse muchísimo.'
+    author: claude
+  - id: n3-voc-4-0007
+    stem: '旅行の　__予定__を　立てる。'
+    choices:
+      - 'チケット'
+      - 'ガイド'
+      - 'スケジュール'
+      - 'レポート'
+    answer: 3
+    explanation:
+      en: '予定 ≈ スケジュール, "plan".'
+      es: '予定 ≈ スケジュール, "planes".'
+    author: claude
+  - id: n3-voc-4-0008
+    stem: '__たまたま__　駅で　先生に　会った。'
+    choices:
+      - 'ぐうぜん'
+      - '毎日'
+      - '約束して'
+      - '久しぶりに'
+    answer: 1
+    explanation:
+      en: 'たまたま ≈ ぐうぜん, "by chance".'
+      es: 'たまたま ≈ ぐうぜん, "por casualidad".'
+    author: claude
+  - id: n3-voc-4-0009
+    stem: 'この　かばんは　__じょうぶ__だ。'
+    choices:
+      - '新しい'
+      - '高い'
+      - '壊れにくい'
+      - '軽い'
+    answer: 3
+    explanation:
+      en: 'じょうぶ ≈ hard to break.'
+      es: 'じょうぶ ≈ difícil de romper.'
+    author: claude
+  - id: n3-voc-4-0010
+    stem: 'かれの　話は　いつも　__おおげさ__だ。'
+    choices:
+      - 'とても　つまらない'
+      - '本当より　大きく　言う'
+      - '短くて　わかりやすい'
+      - '声が　大きい'
+    answer: 2
+    explanation:
+      en: 'おおげさ: exaggerated.'
+      es: 'おおげさ: exagerado.'
+    author: claude
+  - id: n3-voc-4-0011
+    stem: '__しばらく__　お待ちください。'
+    choices:
+      - 'ずっと'
+      - 'あとで'
+      - 'いつでも'
+      - '少しの　あいだ'
+    answer: 4
+    explanation:
+      en: 'しばらく ≈ for a little while.'
+      es: 'しばらく ≈ un rato.'
+    author: claude
+  - id: n3-voc-4-0012
+    stem: '雨なので　計画を　__中止した__。'
+    choices:
+      - 'やめた'
+      - '続けた'
+      - '変えた'
+      - '始めた'
+    answer: 1
+    explanation:
+      en: '中止する ≈ やめる, "call off".'
+      es: '中止する ≈ やめる, "cancelar".'
+    author: claude
+  - id: n3-voc-4-0013
+    stem: '彼女は　ずっと　__にこにこして__　いた。'
+    choices:
+      - '泣いて'
+      - '笑って'
+      - '怒って'
+      - '黙って'
+    answer: 2
+    explanation:
+      en: 'にこにこ ≈ smiling.'
+      es: 'にこにこ ≈ sonriendo.'
+    author: claude
+  - id: n3-voc-4-0014
+    stem: '今の　仕事は　__きつい__。'
+    choices:
+      - '楽しい'
+      - '楽だ'
+      - '短い'
+      - '大変だ'
+    answer: 4
+    explanation:
+      en: 'きつい ≈ 大変だ, "hard, tough".'
+      es: 'きつい ≈ 大変だ, "duro".'
+    author: claude
+  - id: n3-voc-4-0015
+    stem: 'この　店は　__いつも__　込んで　いる。'
+    choices:
+      - 'まれに'
+      - 'ときどき'
+      - 'つねに'
+      - 'たまに'
+    answer: 3
+    explanation:
+      en: 'いつも ≈ つねに, "always".'
+      es: 'いつも ≈ つねに, "siempre".'
+    author: claude

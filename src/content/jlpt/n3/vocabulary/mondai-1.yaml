@@ -1,0 +1,297 @@
+# N3 · Vocabulary · Mondai 1 — kanji reading
+# Original questions written for ToriiWay.
+level: N3
+section: vocabulary
+mondai: 1
+instruction:
+  en: 'Choose the reading of the underlined word.'
+  ja: '＿＿＿の 言葉の 読み方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-voc-1-0001
+    stem: 'この　町は　__交通__が　便利です。'
+    choices:
+      - 'こうつう'
+      - 'こうづう'
+      - 'きょうつう'
+      - 'こうとう'
+    answer: 1
+    explanation:
+      en: '交通 is read こうつう, "traffic, transport".'
+      es: '交通 se lee こうつう, "transporte".'
+    author: claude
+  - id: n3-voc-1-0002
+    stem: '__最近__、よく　眠れません。'
+    choices:
+      - 'さきん'
+      - 'さいきん'
+      - 'さいちか'
+      - 'さいこん'
+    answer: 2
+    explanation:
+      en: '最近 is read さいきん, "recently".'
+      es: '最近 se lee さいきん, "últimamente".'
+    author: claude
+  - id: n3-voc-1-0003
+    stem: '駅の　__周り__には　店が　多い。'
+    choices:
+      - 'まがり'
+      - 'まいり'
+      - 'めぐり'
+      - 'まわり'
+    answer: 4
+    explanation:
+      en: '周り is read まわり, "surroundings".'
+      es: '周り se lee まわり, "alrededores".'
+    author: claude
+  - id: n3-voc-1-0004
+    stem: '飛行機の　__到着__が　三十分　遅れた。'
+    choices:
+      - 'どうちゃく'
+      - 'とちゃく'
+      - 'とうちゃく'
+      - 'とうちゅく'
+    answer: 3
+    explanation:
+      en: '到着 is read とうちゃく, "arrival".'
+      es: '到着 se lee とうちゃく, "llegada".'
+    author: claude
+  - id: n3-voc-1-0005
+    stem: '父は　__若い__　ころ、外国に　住んで　いた。'
+    choices:
+      - 'にがい'
+      - 'うすい'
+      - 'わかい'
+      - 'あさい'
+    answer: 3
+    explanation:
+      en: '若い is read わかい, "young".'
+      es: '若い se lee わかい, "joven".'
+    author: claude
+  - id: n3-voc-1-0006
+    stem: '__資料__を　会議の　前に　配った。'
+    choices:
+      - 'しりょう'
+      - 'しりょく'
+      - 'じりょう'
+      - 'しりょ'
+    answer: 1
+    explanation:
+      en: '資料 is read しりょう, "materials, documents".'
+      es: '資料 se lee しりょう, "documentos".'
+    author: claude
+  - id: n3-voc-1-0007
+    stem: 'ほかの　店との　__競争__に　負けないように　がんばる。'
+    choices:
+      - 'きょそう'
+      - 'けいそう'
+      - 'きょうぞう'
+      - 'きょうそう'
+    answer: 4
+    explanation:
+      en: '競争 is read きょうそう, "competition".'
+      es: '競争 se lee きょうそう, "competencia".'
+    author: claude
+  - id: n3-voc-1-0008
+    stem: 'この　__機械__は　もう　古い。'
+    choices:
+      - 'ぎかい'
+      - 'きかい'
+      - 'きがい'
+      - 'きけい'
+    answer: 2
+    explanation:
+      en: '機械 is read きかい, "machine".'
+      es: '機械 se lee きかい, "máquina".'
+    author: claude
+  - id: n3-voc-1-0009
+    stem: '荷物を　駅に　__預けて__から　買い物に　行った。'
+    choices:
+      - 'あずけて'
+      - 'あづけて'
+      - 'あずかって'
+      - 'よけて'
+    answer: 1
+    explanation:
+      en: '預けて is read あずけて, "to leave in someone''s care". あずかって is 預かる, "to look after".'
+      es: '預けて se lee あずけて, "dejar en custodia". あずかって es 預かる, "guardar algo de otro".'
+    author: claude
+  - id: n3-voc-1-0010
+    stem: '夜に　なって　__温度__が　急に　下がった。'
+    choices:
+      - 'ねつど'
+      - 'おんどう'
+      - 'うんど'
+      - 'おんど'
+    answer: 4
+    explanation:
+      en: '温度 is read おんど, "temperature".'
+      es: '温度 se lee おんど, "temperatura".'
+    author: claude
+  - id: n3-voc-1-0011
+    stem: '__努力__すれば、きっと　できるように　なる。'
+    choices:
+      - 'どりき'
+      - 'どりょく'
+      - 'とりょく'
+      - 'どうりょく'
+    answer: 2
+    explanation:
+      en: '努力 is read どりょく, "effort". どうりょく is 動力, "power".'
+      es: '努力 se lee どりょく, "esfuerzo". どうりょく es 動力, "energía motriz".'
+    author: claude
+  - id: n3-voc-1-0012
+    stem: 'これは　とても　__複雑__な　問題だ。'
+    choices:
+      - 'ふくさつ'
+      - 'ふくじゅう'
+      - 'ふくざつ'
+      - 'ふくそう'
+    answer: 3
+    explanation:
+      en: '複雑 is read ふくざつ, "complicated".'
+      es: '複雑 se lee ふくざつ, "complicado".'
+    author: claude
+  - id: n3-voc-1-0013
+    stem: '寒いので、部屋を　__暖かく__　して　ください。'
+    choices:
+      - 'あたたかく'
+      - 'あったかく'
+      - 'やわらかく'
+      - 'ぬくく'
+    answer: 1
+    explanation:
+      en: '暖かく is read あたたかく, "warm".'
+      es: '暖かく se lee あたたかく, "cálido".'
+    author: claude
+  - id: n3-voc-1-0014
+    stem: '駅の　近くに　新しい　店が　__増えた__。'
+    choices:
+      - 'ぞうえた'
+      - 'まえた'
+      - 'ふえた'
+      - 'ふやえた'
+    answer: 3
+    explanation:
+      en: '増えた is read ふえた, "increased".'
+      es: '増えた se lee ふえた, "aumentó".'
+    author: claude
+  - id: n3-voc-1-0015
+    stem: '四月から　__給料__が　上がった。'
+    choices:
+      - 'きゅりょう'
+      - 'きゅうりょう'
+      - 'きょうりょう'
+      - 'きゅうりょ'
+    answer: 2
+    explanation:
+      en: '給料 is read きゅうりょう, "salary".'
+      es: '給料 se lee きゅうりょう, "sueldo".'
+    author: claude
+  - id: n3-voc-1-0016
+    stem: '__横断__歩道を　渡って　ください。'
+    choices:
+      - 'よこだん'
+      - 'おうたん'
+      - 'こうだん'
+      - 'おうだん'
+    answer: 4
+    explanation:
+      en: '横断 is read おうだん, "crossing".'
+      es: '横断 se lee おうだん, "cruce".'
+    author: claude
+  - id: n3-voc-1-0017
+    stem: '__郵便__を　出しに　行って　きます。'
+    choices:
+      - 'ゆうべん'
+      - 'ゆうびん'
+      - 'ゆびん'
+      - 'ゆうひん'
+    answer: 2
+    explanation:
+      en: '郵便 is read ゆうびん, "mail".'
+      es: '郵便 se lee ゆうびん, "correo".'
+    author: claude
+  - id: n3-voc-1-0018
+    stem: 'お茶が　__冷めない__　うちに　飲んで　ください。'
+    choices:
+      - 'ひめない'
+      - 'つめない'
+      - 'ひえない'
+      - 'さめない'
+    answer: 4
+    explanation:
+      en: '冷めない is read さめない, from 冷める "to get cold". 冷える would be written 冷えない.'
+      es: '冷めない se lee さめない, de 冷める "enfriarse". 冷える se escribiría 冷えない.'
+    author: claude
+  - id: n3-voc-1-0019
+    stem: '__残念__ですが、パーティーには　行けません。'
+    choices:
+      - 'ざんねん'
+      - 'ざんえん'
+      - 'ぜんねん'
+      - 'さんねん'
+    answer: 1
+    explanation:
+      en: '残念 is read ざんねん, "regrettable".'
+      es: '残念 se lee ざんねん, "una pena".'
+    author: claude
+  - id: n3-voc-1-0020
+    stem: '紙の　__裏__に　名前を　書いて　ください。'
+    choices:
+      - 'はし'
+      - 'おもて'
+      - 'うら'
+      - 'なか'
+    answer: 3
+    explanation:
+      en: '裏 is read うら, "back side".'
+      es: '裏 se lee うら, "reverso".'
+    author: claude
+  - id: n3-voc-1-0021
+    stem: '料理の　__材料__を　そろえる。'
+    choices:
+      - 'ざいりょ'
+      - 'ざいりょう'
+      - 'さいりょう'
+      - 'ざいりょく'
+    answer: 2
+    explanation:
+      en: '材料 is read ざいりょう, "ingredients".'
+      es: '材料 se lee ざいりょう, "ingredientes".'
+    author: claude
+  - id: n3-voc-1-0022
+    stem: '子どもの　__成長__が　楽しみだ。'
+    choices:
+      - 'じょうちょう'
+      - 'せちょう'
+      - 'せいちょ'
+      - 'せいちょう'
+    answer: 4
+    explanation:
+      en: '成長 is read せいちょう, "growth".'
+      es: '成長 se lee せいちょう, "crecimiento".'
+    author: claude
+  - id: n3-voc-1-0023
+    stem: '急行ではなく、__普通__の　電車に　乗った。'
+    choices:
+      - 'ふずう'
+      - 'ふつ'
+      - 'ふつう'
+      - 'ぶつう'
+    answer: 3
+    explanation:
+      en: '普通 is read ふつう, "local (train), ordinary".'
+      es: '普通 se lee ふつう, "normal, tren local".'
+    author: claude
+  - id: n3-voc-1-0024
+    stem: '出かけようと　したら、急に　雨が　__降り出した__。'
+    choices:
+      - 'ふりだした'
+      - 'くだりだした'
+      - 'ふりいだした'
+      - 'おりだした'
+    answer: 1
+    explanation:
+      en: '降り出した is read ふりだした, "began to fall". 降りる (おりる) is "to get off".'
+      es: '降り出した se lee ふりだした, "empezó a llover". 降りる (おりる) es "bajarse".'
+    author: claude
