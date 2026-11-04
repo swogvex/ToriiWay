@@ -163,6 +163,22 @@ const t = useTranslations(getLocale(Astro.url.pathname));
     }
   }
 
+  /* In a narrow container (the Learn sidebar) the glyph goes on top. */
+  @container (width < 22rem) {
+    .kana-panel {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kana-panel__glyph {
+      justify-self: center;
+      inline-size: min(100%, 168px);
+    }
+
+    .kana-panel__actions {
+      grid-column: 1 / -1;
+    }
+  }
+
   /* Without animation there is nothing to replay. */
   @media (prefers-reduced-motion: reduce) {
     .kana-panel :global([data-panel-replay]) {
