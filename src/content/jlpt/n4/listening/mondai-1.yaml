@@ -1,0 +1,369 @@
+# N4 · Listening · Mondai 1 — task-based comprehension
+# Original questions written for ToriiWay.
+level: N4
+section: listening
+mondai: 1
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'はじめに しつもんを 聞いて ください。それから 話を 聞いて、いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-lis-1-0001
+    stem: '男の　人は　このあと　まず　何を　しますか。'
+    choices:
+      - '資料を　コピーする'
+      - 'お客さんに　メールを　送る'
+      - '会議の　時間を　変える'
+      - '女の　人に　資料を　わたす'
+    answer: 2
+    explanation:
+      en: 'The e-mail to the client comes first; copying comes after.'
+      es: 'Primero va el correo al cliente; las copias, después.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　まず　何を　しますか。\nF: 山田さん、あしたの　会議の　資料は　もう　コピーしましたか。\nM: いいえ、まだです。今から　します。\nF: あ、その　前に、お客さんに　会議の　時間を　メールで　知らせて　ください。コピーは　そのあとで　いいです。\nM: わかりました。\nN: 男の　人は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0002
+    stem: '女の　学生は　あした　何を　持って　いきますか。'
+    choices:
+      - 'お弁当と　水と　セーター'
+      - '水と　かさと　セーター'
+      - 'お弁当と　セーター'
+      - 'お弁当と　水と　かさ'
+    answer: 1
+    explanation:
+      en: 'Lunch and water, plus a sweater because the top is cold. No umbrella.'
+      es: 'Comida y agua, y un jersey porque arriba hace frío. Sin paraguas.'
+    author: claude
+    tts:
+      script: "N: 先生と　女の　学生が　話して　います。女の　学生は　あした　何を　持って　いきますか。\nM: あしたは　山へ　行きますから、お弁当と　水を　持って　きて　ください。\nF: かさは　いりますか。\nM: 天気よほうでは　晴れると　言って　いましたから、いりません。でも、山の　上は　寒いですから、セーターを　持って　きて　ください。\nF: はい、わかりました。\nN: 女の　学生は　あした　何を　持って　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0003
+    stem: '男の　人は　何番線の　電車に　乗りますか。'
+    choices:
+      - '八番線'
+      - '二番線'
+      - '五番線'
+      - '三番線'
+    answer: 3
+    explanation:
+      en: 'Platform 3 is under repair, so trains leave from platform 5.'
+      es: 'El andén 3 está en obras, así que los trenes salen del andén 5.'
+    author: claude
+    tts:
+      script: "N: 駅で　男の　人と　駅員が　話して　います。男の　人は　何番線の　電車に　乗りますか。\nM: すみません、さくら駅へ　行きたいんですが、何番線ですか。\nF: さくら駅なら　三番線です。でも、今は　工事中ですから、五番線から　出て　います。\nM: 五番線ですね。ありがとうございます。\nN: 男の　人は　何番線の　電車に　乗りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0004
+    stem: '女の　人は　何を　買いますか。'
+    choices:
+      - '花の　かさ'
+      - '青い　花'
+      - '花の　ハンカチ'
+      - '青い　ハンカチ'
+    answer: 4
+    explanation:
+      en: 'Her mother prefers blue to flowers, so she buys the blue handkerchief.'
+      es: 'A su madre le gusta más el azul que las flores, así que compra el pañuelo azul.'
+    author: claude
+    tts:
+      script: "N: 店で　女の　人と　店の　人が　話して　います。女の　人は　何を　買いますか。\nF: すみません、母の　たんじょうびに　ハンカチを　さがして　いるんですが。\nM: こちらの　花の　ハンカチは　いかがですか。\nF: かわいいですね。でも、母は　花より　青い　色が　好きなんです。\nM: では、こちらの　青い　ハンカチは　どうですか。\nF: いいですね。それを　ください。\nN: 女の　人は　何を　買いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0005
+    stem: '男の　学生は　レポートを　いつまでに　出しますか。'
+    choices:
+      - '来週の　月曜日'
+      - '来週の　金曜日'
+      - '今週の　月曜日'
+      - '今週の　金曜日'
+    answer: 1
+    explanation:
+      en: 'The teacher waits until next Monday, and no later.'
+      es: 'La profesora espera hasta el lunes que viene, y no más.'
+    author: claude
+    tts:
+      script: "N: 先生と　男の　学生が　話して　います。男の　学生は　レポートを　いつまでに　出しますか。\nM: 先生、すみません。レポートを　金曜日までに　出す　ことが　できないんですが。\nF: そうですか。じゃあ、来週の　月曜日まで　待ちましょう。でも、それより　おそく　なっては　いけませんよ。\nM: ありがとうございます。\nN: 男の　学生は　レポートを　いつまでに　出しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0006
+    stem: '女の　人は　はじめに　何を　しますか。'
+    choices:
+      - '飲み物を　買いに　行く'
+      - 'お客さんを　むかえに　行く'
+      - '料理を　作る'
+      - 'へやの　そうじを　する'
+    answer: 4
+    explanation:
+      en: 'The food is ready and he buys the drinks, so she cleans.'
+      es: 'La comida ya está y él compra las bebidas, así que ella limpia.'
+    author: claude
+    tts:
+      script: "N: 家で　男の　人と　女の　人が　話して　います。女の　人は　はじめに　何を　しますか。\nM: お客さんは　六時に　来るよ。料理は　もう　できた？\nF: うん、料理は　できたよ。あとは　部屋の　そうじと、飲み物を　買いに　行く　ことかな。\nM: 飲み物は　ぼくが　買って　くるよ。\nF: ありがとう。じゃあ、わたしは　そうじを　するね。\nN: 女の　人は　はじめに　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0007
+    stem: '二人は　あした　何時に　会いますか。'
+    choices:
+      - '二時'
+      - '一時'
+      - '一時半'
+      - '十二時半'
+    answer: 2
+    explanation:
+      en: "The cinema is far from the station, so they move it to one o'clock."
+      es: 'El cine está lejos de la estación, así que quedan a la una.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　電話で　話して　います。二人は　あした　何時に　会いますか。\nM: あしたの　映画は　二時からだね。一時半に　駅で　会おうか。\nF: 映画館は　駅から　少し　遠いから、もう　少し　早い　ほうが　いいと　思う。\nM: じゃあ、一時に　しよう。\nF: うん、そう　しよう。\nN: 二人は　あした　何時に　会いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0008
+    stem: '男の　人は　何番の　バスに　乗りますか。'
+    choices:
+      - '十五番'
+      - '十番'
+      - '十二番'
+      - '二十番'
+    answer: 3
+    explanation:
+      en: 'Both go there, but number 15 takes longer.'
+      es: 'Los dos van, pero el 15 tarda más.'
+    author: claude
+    tts:
+      script: "N: バス停で　男の　人と　女の　人が　話して　います。男の　人は　何番の　バスに　乗りますか。\nM: すみません、市役所へ　行く　バスは　どれですか。\nF: 十二番と　十五番が　行きますよ。でも、十五番は　時間が　かかりますから、十二番が　いいですよ。\nM: そうですか。ありがとうございます。\nN: 男の　人は　何番の　バスに　乗りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0009
+    stem: '女の　人は　どの　部屋に　しますか。'
+    choices:
+      - '二階の　広い　部屋'
+      - '二階の　せまい　部屋'
+      - '三階の　せまい　部屋'
+      - '三階の　広い　部屋'
+    answer: 4
+    explanation:
+      en: 'She cycles to the station, so distance is fine and she wants space.'
+      es: 'Va en bici a la estación, así que la distancia da igual y quiere espacio.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　アパートの　部屋を　見ながら　話して　います。女の　人は　どの　部屋に　しますか。\nM: この　二階の　部屋は　駅から　近くて、安いですよ。\nF: でも、ちょっと　せまいですね。\nM: では、三階の　部屋は　どうですか。広いですが、駅から　少し　遠いです。\nF: 毎日　自転車で　駅まで　行くので、少し　遠くても　だいじょうぶです。広い　ほうが　いいです。\nN: 女の　人は　どの　部屋に　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0010
+    stem: '男の　人は　あした　何時に　会社に　来ますか。'
+    choices:
+      - '八時半'
+      - '八時'
+      - '九時半'
+      - '九時'
+    answer: 1
+    explanation:
+      en: 'Thirty minutes before nine is half past eight.'
+      es: 'Treinta minutos antes de las nueve son las ocho y media.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　あした　何時に　会社に　来ますか。\nF: あしたは　九時から　お客さんが　来ます。その　前に　会議室の　じゅんびを　したいので、三十分　早く　来て　ください。\nM: 八時半ですね。わかりました。\nN: 男の　人は　あした　何時に　会社に　来ますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0011
+    stem: '女の　人は　何を　注文しますか。'
+    choices:
+      - 'カレーと　ハンバーグ'
+      - 'ハンバーグだけ'
+      - 'ハンバーグと　コーヒー'
+      - 'カレーと　コーヒー'
+    answer: 3
+    explanation:
+      en: 'She changes the curry for a hamburger steak and adds coffee.'
+      es: 'Cambia el curry por una hamburguesa y añade café.'
+    author: claude
+    tts:
+      script: "N: レストランで　女の　人と　店の　人が　話して　います。女の　人は　何を　注文しますか。\nM: ご注文は　お決まりですか。\nF: カレーを　お願いします。あ、からいですか。\nM: はい、少し　からいです。\nF: じゃあ、カレーは　やめて、ハンバーグに　します。それと、食後に　コーヒーを　お願いします。\nN: 女の　人は　何を　注文しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0012
+    stem: '男の　人は　まず　どこへ　行きますか。'
+    choices:
+      - '駅'
+      - '銀行'
+      - '郵便局'
+      - 'スーパー'
+    answer: 2
+    explanation:
+      en: 'It is already half past two and the bank closes at three.'
+      es: 'Ya son las dos y media y el banco cierra a las tres.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。男の　人は　まず　どこへ　行きますか。\nF: 銀行と　郵便局に　行くんでしょう？郵便局は　五時までだから、先に　行った　ほうが　いいよ。\nM: 銀行は　何時まで？\nF: 銀行は　三時までだよ。\nM: え、もう　二時半だ。じゃあ、先に　銀行へ　行くよ。\nN: 男の　人は　まず　どこへ　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0013
+    stem: '学生は　テストの　ために　どこを　勉強しますか。'
+    choices:
+      - '六十ページから　七十ページまで'
+      - '五十ページから　五十五ページまで'
+      - '五十ページから　六十ページまで（五十五ページは　しない）'
+      - '五十五ページだけ'
+    answer: 3
+    explanation:
+      en: 'Pages 50 to 60, except page 55, which will not be tested.'
+      es: 'De la página 50 a la 60, salvo la 55, que no entra.'
+    author: claude
+    tts:
+      script: "N: 先生が　話して　います。学生は　テストの　ために　どこを　勉強しますか。\nF: あしたの　テストは　教科書の　五十ページから　六十ページまでです。でも、五十五ページの　問題は　出ませんから、勉強しなくても　いいです。\nN: 学生は　テストの　ために　どこを　勉強しますか。"
+      voices: ['narrator', 'woman']
+  - id: n4-lis-1-0014
+    stem: '男の　人は　どの　かさを　買いますか。'
+    choices:
+      - '大きい　青い　かさ'
+      - '大きい　黒い　かさ'
+      - '小さい　青い　かさ'
+      - '小さい　黒い　かさ'
+    answer: 4
+    explanation:
+      en: 'He picks the small black one because it fits in his bag.'
+      es: 'Elige el negro pequeño porque cabe en la bolsa.'
+    author: claude
+    tts:
+      script: "N: 店で　男の　人と　店の　人が　話して　います。男の　人は　どの　かさを　買いますか。\nM: 黒い　かさが　ほしいんですが。\nF: こちらの　大きい　黒い　かさと、小さい　黒い　かさが　あります。小さい　ほうは　かばんに　入れられますよ。\nM: かばんに　入れられるのは　べんりですね。それに　します。\nN: 男の　人は　どの　かさを　買いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0015
+    stem: '女の　人は　空港まで　なにで　行きますか。'
+    choices:
+      - 'タクシー'
+      - '電車'
+      - 'バス'
+      - '車'
+    answer: 2
+    explanation:
+      en: 'The roads will be busy, so she follows his advice and takes the train.'
+      es: 'Habrá tráfico, así que sigue su consejo y va en tren.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　空港まで　なにで　行きますか。\nM: あした　空港まで　どうやって　行く？タクシー？\nF: タクシーは　高いから、バスで　行こうと　思ってる。\nM: あしたは　朝　道が　こむから、電車の　ほうが　いいよ。\nF: そうか。じゃあ、そう　する。\nN: 女の　人は　空港まで　なにで　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0016
+    stem: '男の　学生は　このあと　何を　しますか。'
+    choices:
+      - 'うけつけで　カードを　作る'
+      - '本を　借りる'
+      - 'カードを　さがす'
+      - '本を　返す'
+    answer: 1
+    explanation:
+      en: 'He has no card yet, so he must make one at reception first.'
+      es: 'Aún no tiene tarjeta, así que primero la hace en recepción.'
+    author: claude
+    tts:
+      script: "N: 図書館で　男の　学生と　図書館の　人が　話して　います。男の　学生は　このあと　何を　しますか。\nM: すみません、この　本を　借りたいんですが。\nF: 図書館カードは　ありますか。\nM: いいえ、まだ　作って　いません。\nF: では、まず　あちらの　うけつけで　カードを　作って　ください。\nN: 男の　学生は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0017
+    stem: '女の　人は　パーティーに　何を　持って　いきますか。'
+    choices:
+      - '飲み物と　くだもの'
+      - '飲み物'
+      - 'ケーキ'
+      - 'くだもの'
+    answer: 4
+    explanation:
+      en: 'Drinks are covered and Tanaka brings cake; she brings fruit.'
+      es: 'Bebida hay y Tanaka trae tarta; ella lleva fruta.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　電話で　話して　います。女の　人は　パーティーに　何を　持って　いきますか。\nF: あしたの　パーティー、何か　持って　いこうか。\nM: 飲み物は　たくさん　あるから、いらないよ。ケーキは　田中さんが　持って　くるって。\nF: じゃあ、くだものは？\nM: いいね。お願い。\nN: 女の　人は　パーティーに　何を　持って　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0018
+    stem: '男の　人は　何曜日に　病院へ　来ますか。'
+    choices:
+      - '月曜日'
+      - '木曜日'
+      - '金曜日'
+      - '水曜日'
+    answer: 3
+    explanation:
+      en: 'Monday he works and Wednesday afternoon is full, so Friday.'
+      es: 'El lunes trabaja y el miércoles por la tarde está lleno, así que el viernes.'
+    author: claude
+    tts:
+      script: "N: 病院で　男の　人と　うけつけの　人が　話して　います。男の　人は　何曜日に　来ますか。\nM: 来週、もう　一度　来たいんですが。\nF: 月曜日と　水曜日は　いかがですか。\nM: 月曜日は　仕事が　あるので、水曜日に　お願いします。\nF: すみません、水曜日は　午後が　いっぱいです。午前なら　だいじょうぶですが。\nM: 午前は　ちょっと…。じゃあ、金曜日は？\nF: 金曜日の　午後は　あいて　います。\nM: では、金曜日に　お願いします。\nN: 男の　人は　何曜日に　来ますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0019
+    stem: '女の　人は　何時の　電車に　乗りますか。'
+    choices:
+      - '八時四十分'
+      - '九時五十分'
+      - '九時'
+      - '十時十分'
+    answer: 1
+    explanation:
+      en: 'Only the 8:40 arrives before ten.'
+      es: 'Solo el de las 8:40 llega antes de las diez.'
+    author: claude
+    tts:
+      script: "N: 駅で　女の　人と　男の　人が　話して　います。女の　人は　何時の　電車に　乗りますか。\nF: 十時に　東京駅に　着きたいんですが、どの　電車が　いいですか。\nM: 九時の　電車だと　十時十分に　着きます。八時四十分の　電車なら　九時五十分に　着きますよ。\nF: じゃあ、八時四十分のに　します。\nN: 女の　人は　何時の　電車に　乗りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0020
+    stem: '男の　人は　このあと　何を　しますか。'
+    choices:
+      - '書類を　作る'
+      - '女の　人に　書類を　わたす'
+      - 'あした　会社を　休む'
+      - '部長に　書類を　見せる'
+    answer: 2
+    explanation:
+      en: 'She wants to check it first, so he brings it to her now.'
+      es: 'Ella quiere revisarlo antes, así que él se lo lleva ahora.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　何を　しますか。\nF: 鈴木さん、きのう　お願いした　書類は　できましたか。\nM: はい、できました。部長に　見せましょうか。\nF: 部長は　きょう　休みなので、あした　見せて　ください。その　前に、わたしが　一度　チェックします。\nM: わかりました。じゃあ、今　持って　きます。\nN: 男の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0021
+    stem: '女の　学生は　きょう　どこで　勉強しますか。'
+    choices:
+      - '学校'
+      - '家'
+      - '駅の　前の　きっさてん'
+      - '図書館'
+    answer: 2
+    explanation:
+      en: 'The library is closed and the café is noisy, so she studies at home.'
+      es: 'La biblioteca está cerrada y la cafetería es ruidosa, así que estudia en casa.'
+    author: claude
+    tts:
+      script: "N: 男の　学生と　女の　学生が　話して　います。女の　学生は　きょう　どこで　勉強しますか。\nM: きょう　図書館で　いっしょに　勉強しない？\nF: 図書館は　きょう　休みだよ。\nM: じゃあ、駅の　前の　きっさてんは？\nF: あそこは　うるさいから、わたしは　家で　勉強する。\nN: 女の　学生は　きょう　どこで　勉強しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0022
+    stem: '男の　人は　何を　買って　帰りますか。'
+    choices:
+      - 'ぎゅうにゅうと　パン'
+      - 'たまごと　ぎゅうにゅう'
+      - 'ぎゅうにゅう'
+      - 'パン'
+    answer: 3
+    explanation:
+      en: 'There are still eggs and she already bought bread: only milk.'
+      es: 'Aún hay huevos y ella ya compró pan: solo leche.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　電話で　話して　います。男の　人は　何を　買って　帰りますか。\nF: 帰りに　スーパーで　ぎゅうにゅうと　パンを　買って　きて。\nM: わかった。たまごは？\nF: たまごは　まだ　ある。あ、パンは　さっき　わたしが　買ったから、いらない。\nM: じゃあ、ぎゅうにゅうだけだね。\nN: 男の　人は　何を　買って　帰りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0023
+    stem: '女の　人は　あした　何時に　起きますか。'
+    choices:
+      - '六時'
+      - '七時'
+      - '五時半'
+      - '五時'
+    answer: 4
+    explanation:
+      en: "She moves it earlier to have breakfast: five o'clock."
+      es: 'Lo adelanta para desayunar: a las cinco.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　あした　何時に　起きますか。\nM: あしたは　七時の　新幹線だよね。何時に　起きる？\nF: 駅まで　三十分　かかるから、五時半に　起きる。\nM: 朝ごはんも　食べるなら、もう　少し　早い　ほうが　いいよ。\nF: そうだね。じゃあ、五時に　する。\nN: 女の　人は　あした　何時に　起きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-1-0024
+    stem: '男の　人は　どこに　車を　とめますか。'
+    choices:
+      - 'となりの　ビルの　ちゅうしゃじょう'
+      - 'デパートの　入り口'
+      - 'デパートの　地下'
+      - '店の　前'
+    answer: 1
+    explanation:
+      en: 'The basement is full, so he uses the car park next door.'
+      es: 'El sótano está lleno, así que usa el aparcamiento del edificio de al lado.'
+    author: claude
+    tts:
+      script: "N: デパートで　男の　人と　店の　人が　話して　います。男の　人は　どこに　車を　とめますか。\nM: すみません、ここに　車を　とめても　いいですか。\nF: すみません、ここは　だめなんです。地下の　ちゅうしゃじょうが　いっぱいなので、となりの　ビルの　ちゅうしゃじょうを　使って　ください。\nM: わかりました。\nN: 男の　人は　どこに　車を　とめますか。"
+      voices: ['narrator', 'man', 'woman']

@@ -1,0 +1,324 @@
+# N4 · Listening · Mondai 2 — point comprehension
+# Original questions written for ToriiWay.
+level: N4
+section: listening
+mondai: 2
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'はじめに しつもんを 聞いて ください。それから 話を 聞いて、いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-lis-2-0001
+    stem: '女の　人は　どうして　きのう　会社を　休みましたか。'
+    choices:
+      - '子どもが　びょうきだったから'
+      - '病院で　働いて　いるから'
+      - 'かぜを　ひいたから'
+      - '子どもの　学校が　休みだったから'
+    answer: 1
+    explanation:
+      en: 'Not a cold: her child had a fever.'
+      es: 'No era un resfriado: su hijo tenía fiebre.'
+    author: claude
+    tts:
+      script: "N: 会社で　男の　人と　女の　人が　話して　います。女の　人は　どうして　きのう　会社を　休みましたか。\nM: きのうは　どうしたんですか。かぜですか。\nF: いいえ、かぜでは　ないんです。子どもが　ねつを　出して、病院に　連れて　行ったんです。\nM: そうですか。だいじょうぶですか。\nF: はい、もう　元気に　なりました。\nN: 女の　人は　どうして　きのう　会社を　休みましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0002
+    stem: '男の　人は　どうして　引っ越しますか。'
+    choices:
+      - 'へやが　高いから'
+      - 'へやが　せまいから'
+      - '会社から　遠いから'
+      - '駅から　遠いから'
+    answer: 3
+    explanation:
+      en: 'The room is fine; the office is now far away.'
+      es: 'El piso está bien; ahora la oficina queda lejos.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　引っ越しますか。\nF: 来月　引っ越すんだって？今の　アパート、せまいの？\nM: ううん、広さは　いいんだ。会社が　遠く　なったから、近くに　住みたいんだよ。\nF: そう。\nN: 男の　人は　どうして　引っ越しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0003
+    stem: '女の　人は　何が　いちばん　楽しかったですか。'
+    choices:
+      - 'お寺を　見た　こと'
+      - '写真を　とった　こと'
+      - '料理を　食べた　こと'
+      - '着物を　着て　町を　歩いた　こと'
+    answer: 4
+    explanation:
+      en: 'Temples and food were good, but walking in a kimono was the best.'
+      es: 'Los templos y la comida bien, pero lo mejor fue pasear en kimono.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　旅行の　話を　して　います。女の　人は　何が　いちばん　楽しかったですか。\nM: 京都は　どうだった？\nF: お寺も　きれいだったし、料理も　おいしかったよ。でも、いちばん　楽しかったのは、着物を　着て　町を　歩いた　ことかな。\nN: 女の　人は　何が　いちばん　楽しかったですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0004
+    stem: '男の　学生は　日本語の　何が　いちばん　むずかしいと　言って　いますか。'
+    choices:
+      - '書く　こと'
+      - '聞く　こと'
+      - '話す　こと'
+      - '漢字'
+    answer: 2
+    explanation:
+      en: 'Kanji and speaking are fine; listening is hard because people talk fast.'
+      es: 'Kanji y hablar van bien; escuchar cuesta porque la gente habla rápido.'
+    author: claude
+    tts:
+      script: "N: 女の　学生と　男の　学生が　話して　います。男の　学生は　日本語の　何が　いちばん　むずかしいと　言って　いますか。\nF: 日本語の　勉強、どう？漢字が　むずかしいでしょう。\nM: 漢字は　毎日　書いて　いるから、だいじょうぶ。話すのも　好きだよ。でも、聞くのが　なかなか…。みんな　話すのが　速いからね。\nN: 男の　学生は　日本語の　何が　いちばん　むずかしいと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0005
+    stem: '女の　人は　どうして　おくれましたか。'
+    choices:
+      - 'かぎを　さがして　いたから'
+      - '電車が　止まったから'
+      - 'ねぼうしたから'
+      - '道が　わからなかったから'
+    answer: 1
+    explanation:
+      en: 'The train was fine; she could not find her keys.'
+      es: 'El tren iba bien; no encontraba las llaves.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　おくれましたか。\nM: おそかったね。電車が　止まったの？\nF: ううん、電車は　だいじょうぶだったんだけど、家を　出る　前に　かぎが　見つからなくて。\nM: そうか。\nN: 女の　人は　どうして　おくれましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0006
+    stem: '男の　人は　週末　何を　しましたか。'
+    choices:
+      - 'へやの　そうじだけ'
+      - '海へ　行った'
+      - '友だちと　海へ　行った'
+      - 'へやの　そうじと　友だちとの　食事'
+    answer: 4
+    explanation:
+      en: 'Rain cancelled the beach; he cleaned and then ate out on Sunday night.'
+      es: 'La lluvia anuló la playa; limpió y el domingo por la noche salió a cenar.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　週末　何を　しましたか。\nF: 週末は　どこかへ　行きましたか。\nM: 海へ　行く　予定でしたが、雨だったので、家で　部屋の　そうじを　しました。\nF: そうですか。\nM: でも、日曜日の　夜は　友だちと　食事に　行きました。\nN: 男の　人は　週末　何を　しましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0007
+    stem: '女の　人は　どうして　よく　この　店に　来ますか。'
+    choices:
+      - 'コーヒーが　おいしいから'
+      - 'しずかで　勉強が　できるから'
+      - 'ケーキが　安いから'
+      - '家から　近いから'
+    answer: 2
+    explanation:
+      en: 'The coffee is good, but the main reason is that it is quiet.'
+      es: 'El café es bueno, pero la razón principal es que es tranquilo.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　きっさてんで　話して　います。女の　人は　どうして　よく　この　店に　来ますか。\nM: この　店、よく　来るの？コーヒーが　おいしいから？\nF: コーヒーも　おいしいけど、いちばんの　理由は、静かで　勉強が　できる　ことかな。\nN: 女の　人は　どうして　よく　この　店に　来ますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0008
+    stem: '男の　人は　何を　わすれましたか。'
+    choices:
+      - 'スマートフォン'
+      - 'さいふだけ'
+      - '本と　さいふが　入った　かばん'
+      - '黒い　かさ'
+    answer: 3
+    explanation:
+      en: 'A black bag with a book and his wallet; he still has his phone.'
+      es: 'Una bolsa negra con un libro y la cartera; el móvil lo tiene.'
+    author: claude
+    tts:
+      script: "N: 駅で　男の　人と　駅員が　話して　います。男の　人は　何を　わすれましたか。\nM: すみません、電車の　中に　わすれものを　して　しまったんですが。\nF: 何を　わすれましたか。\nM: 黒い　かばんです。中に　本と　さいふが　入って　います。\nF: スマートフォンは　だいじょうぶですか。\nM: スマートフォンは　ここに　あります。\nN: 男の　人は　何を　わすれましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0009
+    stem: '女の　人は　どうして　犬を　飼いませんか。'
+    choices:
+      - 'アパートで　動物を　飼っては　いけないから'
+      - '犬が　きらいだから'
+      - 'お金が　かかるから'
+      - 'いそがしくて　時間が　ないから'
+    answer: 1
+    explanation:
+      en: 'She wants one, but pets are not allowed in her flat.'
+      es: 'Quiere uno, pero en su piso no se permiten animales.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　犬を　飼いませんか。\nM: 犬が　好きなら、飼えば　いいのに。\nF: 飼いたいんだけど、今の　アパートは　動物が　だめなんだ。\nM: そうなんだ。\nN: 女の　人は　どうして　犬を　飼いませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0010
+    stem: '男の　人は　きのう　何時間　ねましたか。'
+    choices:
+      - '六時間'
+      - '一時間'
+      - '五時間'
+      - '四時間'
+    answer: 4
+    explanation:
+      en: "From one to five o'clock is four hours."
+      es: 'De la una a las cinco son cuatro horas.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　きのう　何時間　ねましたか。\nF: ねむそうですね。\nM: ええ、きのうは　夜　一時に　ねて、五時に　起きたんです。\nF: 四時間しか　ねて　いないんですね。\nN: 男の　人は　きのう　何時間　ねましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0011
+    stem: '女の　学生は　どうして　アルバイトを　やめましたか。'
+    choices:
+      - '仕事が　つまらなかったから'
+      - '勉強する　時間が　ほしいから'
+      - 'お金が　少なかったから'
+      - '店長が　こわかったから'
+    answer: 2
+    explanation:
+      en: 'She liked the job; she needs time to study for exams.'
+      es: 'Le gustaba el trabajo; necesita tiempo para estudiar.'
+    author: claude
+    tts:
+      script: "N: 男の　学生と　女の　学生が　話して　います。女の　学生は　どうして　アルバイトを　やめましたか。\nM: レストランの　アルバイト、やめたんだって？\nF: うん。仕事は　楽しかったし、店長も　やさしかったんだけど、テストが　近いから、勉強する　時間が　ほしくて。\nN: 女の　学生は　どうして　アルバイトを　やめましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0012
+    stem: '男の　人は　どんな　部屋が　いいと　言って　いますか。'
+    choices:
+      - '広い　部屋'
+      - '海が　見える　部屋'
+      - '山が　見える　部屋'
+      - '駅に　近い　部屋'
+    answer: 3
+    explanation:
+      en: 'He wants the cheaper one, which is the mountain view.'
+      es: 'Quiere la más barata, que es la de vistas a la montaña.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　ホテルの　予約に　ついて　話して　います。男の　人は　どんな　部屋が　いいですか。\nF: 海が　見える　部屋と　山が　見える　部屋が　あるけど、どっちが　いい？\nM: 海が　見える　部屋は　高いでしょう。安い　ほうで　いいよ。\nF: 山の　ほうが　安いよ。\nM: じゃあ、それで。\nN: 男の　人は　どんな　部屋が　いいですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0013
+    stem: '女の　人は　どの　季節が　いちばん　好きですか。'
+    choices:
+      - 'はる'
+      - 'なつ'
+      - 'ふゆ'
+      - 'あき'
+    answer: 4
+    explanation:
+      en: 'Summer is hot, winter cold and spring brings pollen: autumn.'
+      es: 'El verano es caluroso, el invierno frío y la primavera trae polen: otoño.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どの　季節が　いちばん　好きですか。\nM: ぼくは　夏が　好きだな。海で　泳げるから。\nF: わたしは　暑いのが　苦手なの。冬も　寒くて　いやだし。\nM: じゃあ、春？\nF: 春は　花粉が　つらいから、秋が　いちばんかな。\nN: 女の　人は　どの　季節が　いちばん　好きですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0014
+    stem: '男の　人は　どうして　きょう　早く　帰りますか。'
+    choices:
+      - '友だちと　食事を　するから'
+      - 'おくさんの　たんじょうびだから'
+      - 'ぐあいが　わるいから'
+      - '病院へ　行くから'
+    answer: 2
+    explanation:
+      en: "It is his wife's birthday and he is cooking for her."
+      es: 'Es el cumpleaños de su mujer y va a cocinar para ella.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　どうして　きょう　早く　帰りますか。\nF: きょうは　早いですね。どこかへ　行くんですか。\nM: いいえ、きょうは　妻の　たんじょうびなので、早く　帰って　料理を　作るんです。\nN: 男の　人は　どうして　きょう　早く　帰りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0015
+    stem: '女の　人は　新しい　かばんの　どこが　いちばん　いいと　言って　いますか。'
+    choices:
+      - '安かった　ところ'
+      - '色が　きれいな　ところ'
+      - 'かるい　ところ'
+      - '大きい　ところ'
+    answer: 3
+    explanation:
+      en: 'She likes the colour, but being light matters most.'
+      es: 'Le gusta el color, pero lo más importante es que pesa poco.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　新しい　かばんの　どこが　いちばん　いいと　言って　いますか。\nM: その　かばん、新しいね。色が　きれいだね。\nF: ありがとう。色も　好きだけど、いちばん　いいのは　かるい　ことなの。毎日　持つからね。\nN: 女の　人は　新しい　かばんの　どこが　いちばん　いいと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0016
+    stem: '男の　学生は　夏休みに　何を　しますか。'
+    choices:
+      - '自転車で　旅行する'
+      - 'アルバイトを　する'
+      - 'ひこうきで　旅行する'
+      - '国へ　帰る'
+    answer: 1
+    explanation:
+      en: 'Flights are too expensive; he will cycle around Hokkaido.'
+      es: 'Los vuelos son caros; recorrerá Hokkaido en bici.'
+    author: claude
+    tts:
+      script: "N: 女の　学生と　男の　学生が　話して　います。男の　学生は　夏休みに　何を　しますか。\nF: 夏休みは　国へ　帰るの？\nM: 帰りたかったけど、ひこうきが　高いから、やめた。\nF: じゃあ、日本で　アルバイト？\nM: ううん、北海道を　自転車で　旅行する　つもり。\nN: 男の　学生は　夏休みに　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0017
+    stem: '女の　人は　どうして　パーティーに　行きませんか。'
+    choices:
+      - '仕事が　あるから'
+      - 'お姉さんの　けっこんしきが　あるから'
+      - 'ぐあいが　わるいから'
+      - 'パーティーが　好きではないから'
+    answer: 2
+    explanation:
+      en: 'Her older sister gets married that day.'
+      es: 'Ese día se casa su hermana mayor.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　パーティーに　行きませんか。\nM: 土曜日の　パーティー、来るよね？\nF: 行きたいんだけど、その　日は　姉の　けっこんしきなんだ。\nM: そうか。ざんねんだね。\nN: 女の　人は　どうして　パーティーに　行きませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0018
+    stem: '男の　人は　どこで　さいふを　見つけましたか。'
+    choices:
+      - '車の　中'
+      - 'かばんの　中'
+      - 'ソファの　下'
+      - 'つくえの　上'
+    answer: 3
+    explanation:
+      en: 'Not in the bag or the car: under the sofa.'
+      es: 'Ni en la bolsa ni en el coche: debajo del sofá.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どこで　さいふを　見つけましたか。\nF: さいふ、見つかった？\nM: うん。かばんの　中にも　車の　中にも　なかったんだけど、さっき　ソファの　下に　あったよ。\nN: 男の　人は　どこで　さいふを　見つけましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0019
+    stem: '女の　人は　どうして　日本語を　勉強して　いますか。'
+    choices:
+      - '日本の　会社で　働くから'
+      - '日本人の　友だちが　いるから'
+      - '日本に　旅行したいから'
+      - 'アニメが　好きだから'
+    answer: 1
+    explanation:
+      en: 'She likes anime too, but she starts at a Japanese company next year.'
+      es: 'También le gusta el anime, pero el año que viene empieza en una empresa japonesa.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　日本語を　勉強して　いますか。\nM: どうして　日本語を　勉強して　いるんですか。アニメが　好きだから？\nF: アニメも　好きですが、来年から　日本の　会社で　働くので、そのためです。\nN: 女の　人は　どうして　日本語を　勉強して　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0020
+    stem: '男の　人は　新しい　アパートの　何が　困ると　言って　いますか。'
+    choices:
+      - 'へやが　高い　こと'
+      - 'へやが　せまい　こと'
+      - '駅から　遠い　こと'
+      - 'となりの　人の　音楽が　うるさい　こと'
+    answer: 4
+    explanation:
+      en: "Space and location are good; the neighbour's music at night is the problem."
+      es: 'El tamaño y el sitio están bien; el problema es la música del vecino por la noche.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　新しい　アパートに　ついて　話して　います。男の　人は　何が　困ると　言って　いますか。\nF: 新しい　アパート、どう？\nM: 部屋は　広いし、駅からも　近いし、いいよ。ただ、となりの　人の　音楽が　夜　うるさくて　困って　いるんだ。\nN: 男の　人は　何が　困ると　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n4-lis-2-0021
+    stem: '女の　人は　何を　習いたいと　言って　いますか。'
+    choices:
+      - 'すいえい'
+      - 'えいご'
+      - '料理'
+      - 'ピアノ'
+    answer: 3
+    explanation:
+      en: 'Piano is in the past; now she wants to learn cooking.'
+      es: 'El piano ya pasó; ahora quiere aprender cocina.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　何を　習いたいと　言って　いますか。\nM: 何か　習いごとを　して　いる？\nF: 前は　ピアノを　習って　いたけど、やめたの。今は　料理を　習いたいと　思って　いるんだ。\nM: へえ、いいね。\nN: 女の　人は　何を　習いたいと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
