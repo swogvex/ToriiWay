@@ -128,7 +128,17 @@ export function initKanaExplorer(root: HTMLElement, progress: KanaProgress): voi
 
   root.addEventListener('click', (event) => {
     const button = (event.target as Element).closest<HTMLElement>('[data-kana]');
-    if (button?.dataset.kana) void show(button.dataset.kana);
+    if (button?.dataset.kana) {
+      void show(button.dataset.kana);
+      // Narrow screens put the details under the chart: bring them into view on a tap.
+      if (matchMedia('(width < 64rem)').matches) {
+        const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+        svg?.closest('.kana-panel')?.scrollIntoView({
+          block: 'nearest',
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+      }
+    }
     if ((event.target as Element).closest('[data-panel-replay]')) playStrokes(svg);
   });
 

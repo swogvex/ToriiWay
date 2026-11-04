@@ -61,6 +61,22 @@ test.describe('kana chart', () => {
     await expect(panel).not.toContainText('A blade with a spark');
   });
 
+  test('on desktop the panel stays in view next to the chart', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/learn/hiragana');
+    // ん is in the last row: clicking it scrolls the chart, the pinned panel follows.
+    await page.getByRole('button', { name: 'ん n' }).click();
+    await expect(page.locator('#kana-panel')).toContainText('ん');
+    await expect(page.locator('#kana-panel')).toBeInViewport({ ratio: 0.9 });
+  });
+
+  test('on a phone a tap brings the panel under the chart into view', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/learn/hiragana');
+    await page.getByRole('button', { name: 'か ka' }).click();
+    await expect(page.locator('#kana-panel')).toBeInViewport({ ratio: 0.5 });
+  });
+
   test('arrow keys move between cells and skip the gaps', async ({ page }) => {
     await page.goto('/learn/hiragana');
     const cell = (name: string) => page.getByRole('button', { name, exact: true });

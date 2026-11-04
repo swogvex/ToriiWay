@@ -42,24 +42,57 @@ const dataUrl = `/data/kana/${script}.json`;
 ---
 
 <div class="learn column" data-kana-explorer data-kana-src={dataUrl}>
-  <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('learn.title')} />
-
-  <nav class="learn-nav" aria-label={t('learn.sections')}>
-    {SCRIPTS.map((item) => {
-      const href = localizePath(`/learn/${item}`, locale);
-      return (
-        <a
-          class="learn-nav__link"
-          href={href}
-          aria-current={href === current ? 'page' : item === script ? 'true' : undefined}
-        >
-          {t(`learn.${item}`)}
-        </a>
-      );
-    })}
-  </nav>
+  <SectionHeader
+    level="h1"
+    kicker={t('learn.kicker')}
+    title={t('learn.title')}
+    class="learn__header"
+  >
+    <nav class="learn-nav" aria-label={t('learn.sections')}>
+      {SCRIPTS.map((item) => {
+        const href = localizePath(`/learn/${item}`, locale);
+        return (
+          <a
+            class="learn-nav__link"
+            href={href}
+            aria-current={href === current ? 'page' : item === script ? 'true' : undefined}
+          >
+            {t(`learn.${item}`)}
+          </a>
+        );
+      })}
+    </nav>
+  </SectionHeader>
 
   <div class="learn__body">
+    <section class="learn-chart" aria-labelledby="learn-chart-title">
+      <h2 class="visually-hidden" id="learn-chart-title">
+        {t('learn.chartLabel', { script: t(`learn.${script}`) })}
+      </h2>
+      <Tabs
+        id="kana-groups"
+        label={t('learn.chartLabel', { script: t(`learn.${script}`) })}
+        tabs={CHART_GROUPS.map((group) => ({ id: group, label: t(`learn.group.${group}`) }))}
+      >
+        {CHART_GROUPS.map((group) => (
+          <div slot={group}>
+            <KanaChart items={items} group={group} selected={first.char} />
+          </div>
+        ))}
+      </Tabs>
+      <p class="learn-chart__count" data-learned-count data-template={t('learn.learnedCount')}>
+        {t('learn.learnedCount', { count: 0, total: items.length })}
+      </p>
+    </section>
+    <aside class="learn-detail" aria-label={t('learn.detailLabel')}>
+      <KanaPanel kana={first} />
+      <p class="learn-chart__credit">
+        <a href={KANJIVG_CREDIT.url} rel="noopener" target="_blank">
+          {t('learn.credit')}
+          <span class="visually-hidden">{t('a11y.newTab')}</span>
+        </a>
+      </p>
+    </aside>
     {guide && (
       <section class="learn-intro" aria-labelledby="learn-intro-title">
         <h2 class="learn-intro__title" id="learn-intro-title">
@@ -88,33 +121,6 @@ const dataUrl = `/data/kana/${script}.json`;
         )}
       </section>
     )}
-
-    <section class="learn-chart" aria-labelledby="learn-chart-title">
-      <h2 class="visually-hidden" id="learn-chart-title">
-        {t('learn.chartLabel', { script: t(`learn.${script}`) })}
-      </h2>
-      <Tabs
-        id="kana-groups"
-        label={t('learn.chartLabel', { script: t(`learn.${script}`) })}
-        tabs={CHART_GROUPS.map((group) => ({ id: group, label: t(`learn.group.${group}`) }))}
-      >
-        {CHART_GROUPS.map((group) => (
-          <div slot={group}>
-            <KanaChart items={items} group={group} selected={first.char} />
-          </div>
-        ))}
-      </Tabs>
-      <p class="learn-chart__count" data-learned-count data-template={t('learn.learnedCount')}>
-        {t('learn.learnedCount', { count: 0, total: items.length })}
-      </p>
-      <KanaPanel kana={first} />
-      <p class="learn-chart__credit">
-        <a href={KANJIVG_CREDIT.url} rel="noopener" target="_blank">
-          {t('learn.credit')}
-          <span class="visually-hidden">{t('a11y.newTab')}</span>
-        </a>
-      </p>
-    </section>
   </div>
 </div>
 
@@ -142,7 +148,7 @@ const dataUrl = `/data/kana/${script}.json`;
 <style>
   .learn {
     display: grid;
-    gap: var(--space-6);
+    gap: var(--space-8);
     padding-block: var(--space-12) var(--space-16);
   }
 
@@ -177,23 +183,77 @@ const dataUrl = `/data/kana/${script}.json`;
     font-weight: 700;
   }
 
-  .learn__body {
-    display: grid;
-    gap: var(--space-8);
-    padding-block-start: var(--space-6);
-    border-block-start: 1px solid var(--ink);
-  }
+  /* Hiragana / Katakana sits beside the title, so the chart starts higher. */
+  @media (width >= 48rem) {
+    .learn :global(.learn__header) {
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: var(--space-6);
+    }
 
-  @media (width >= 64rem) {
-    .learn__body {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-      align-items: start;
+    .learn :global(.learn__header) > .learn-nav {
+      grid-row: 1 / span 2;
+      grid-column: 2;
+      align-self: end;
     }
   }
 
+  .learn__body {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .learn-detail {
+    display: grid;
+    gap: var(--space-3);
+    min-inline-size: 0;
+    container-type: inline-size;
+  }
+
+  /* Chart and details side by side, the details pinned while the chart scrolls:
+     choosing a kana never moves the page. Future Learn views reuse this layout. */
+  @media (width >= 64rem) {
+    .learn__body {
+      grid-template-columns: minmax(0, 1fr) 21rem;
+      align-items: start;
+    }
+
+    .learn-detail {
+      position: sticky;
+      inset-block-start: var(--space-6);
+
+      /* Short windows: the details scroll on their own instead of hiding their buttons. */
+      max-block-size: calc(100svh - 2 * var(--space-6));
+      overflow-y: auto;
+    }
+
+    .learn-intro {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* The guide intro comes after the chart: reading text, then its contents. */
   .learn-intro {
     display: grid;
     gap: var(--space-4);
+    padding-block-start: var(--space-8);
+    border-block-start: 1px solid var(--line);
+  }
+
+  @media (width >= 48rem) {
+    .learn-intro {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+      column-gap: var(--space-10);
+      align-items: start;
+    }
+
+    .learn-intro > :not(.learn-intro__toc) {
+      grid-column: 1;
+    }
+
+    .learn-intro__toc {
+      grid-row: 1 / span 6;
+      grid-column: 2;
+    }
   }
 
   .learn-intro__title {
