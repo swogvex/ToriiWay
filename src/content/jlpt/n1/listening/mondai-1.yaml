@@ -1,0 +1,279 @@
+# N1 · Listening · Mondai 1 — task-based comprehension
+# Original questions written for ToriiWay.
+level: N1
+section: listening
+mondai: 1
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'まず 質問を 聞いて ください。それから 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lis-1-0001
+    stem: '男の　人は　このあと　まず　何を　しなければ　なりませんか。'
+    choices:
+      - '経費を　精算する'
+      - '報告書を　出す'
+      - 'お礼の　メールを　送る'
+      - '領収書を　集める'
+    answer: 3
+    explanation:
+      en: 'The thank-you email comes first; the report after.'
+      es: 'Primero el correo de agradecimiento; luego el informe.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　まず　何を　しなければ　なりませんか。\nF: 先週の　出張の　報告書、まだ　出てないみたいだけど。\nM: すみません、今日中に　出します。経費の　精算も　一緒に　して　いいですか。\nF: 精算は　領収書が　そろってからで　いいよ。それより、取引先に　お礼の　メールは　送った？\nM: あ、まだです。\nF: それは　すぐ　送って。報告書は　その　あとで　いいから。\nN: 男の　人は　このあと　まず　何を　しなければ　なりませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0002
+    stem: '女の　学生は　まず　何を　しますか。'
+    choices:
+      - 'アンケートを　作る'
+      - '論文の　テーマを　変える'
+      - '先生に　論文を　見せる'
+      - '先行研究を　調べ直す'
+    answer: 4
+    explanation:
+      en: 'Previous research first; the survey can wait.'
+      es: 'Primero los estudios previos; la encuesta puede esperar.'
+    author: claude
+    tts:
+      script: "N: 大学で　女の　学生と　先生が　話して　います。女の　学生は　まず　何を　しますか。\nF: 先生、卒業論文の　ことで　ご相談が　あるんですが。\nM: うん、どう　したの。\nF: 調査の　対象を　変えたいと　思って　いまして。新しい　アンケートを　作り始めて　いるんです。\nM: 対象を　変えるなら、まず　先行研究を　もう一度　調べ直した　ほうが　いいね。アンケートは　それからでも　遅くない。\nF: わかりました。そう　します。\nN: 女の　学生は　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0003
+    stem: '男の　人は　この　用紙を　書いたあと、どこへ　行きますか。'
+    choices:
+      - '二番の　窓口'
+      - '一番の　窓口'
+      - '子どもの　学校'
+      - '三階の　教育委員会'
+    answer: 1
+    explanation:
+      en: 'The form goes to window 2; schools come after.'
+      es: 'El impreso va a la ventanilla 2; lo del colegio, después.'
+    author: claude
+    tts:
+      script: "N: 市役所で　男の　人と　係の　人が　話して　います。男の　人は　この　用紙を　書いたあと、どこへ　行きますか。\nM: 引っ越して　きたので、住所の　手続きを　したいんですが。\nF: 転入の　手続きですね。こちらの　用紙に　ご記入の　うえ、二番の　窓口へ　お出し　ください。\nM: 子どもの　学校の　手続きも　ここで　できますか。\nF: 学校の　ことは、転入の　手続きが　済んでから、三階の　教育委員会で　お願いします。\nM: わかりました。じゃ、先に　これを　書きます。\nN: 男の　人は　この　用紙を　書いたあと、どこへ　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0004
+    stem: '男の　人は　何を　準備しますか。'
+    choices:
+      - 'スライド'
+      - '紙の　資料'
+      - '会議室の　予約'
+      - '商品の　見本'
+    answer: 2
+    explanation:
+      en: 'Older clients prefer paper; she brings the samples.'
+      es: 'Los clientes mayores prefieren papel; ella lleva las muestras.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　何を　準備しますか。\nF: あしたの　会議で、新商品の　説明を　お願いできる？\nM: はい。資料は　スライドで　いいですか。\nF: 先方は　年配の　方が　多いから、スライドより　紙の　資料の　ほうが　いいと　思う。見本は　わたしが　持って　いくね。\nM: わかりました。では、人数分　印刷して　おきます。\nN: 男の　人は　何を　準備しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0005
+    stem: '男の　人は　まず　何を　しますか。'
+    choices:
+      - '問診票に　書く'
+      - '差額を　受け取る'
+      - '保険証を　取りに　帰る'
+      - '全額を　払う'
+    answer: 1
+    explanation:
+      en: 'The questionnaire comes first.'
+      es: 'Primero el cuestionario médico.'
+    author: claude
+    tts:
+      script: "N: 病院の　受付で　男の　人と　受付の　人が　話して　います。男の　人は　まず　何を　しますか。\nM: すみません、初めて　なんですが。\nF: では、保険証を　お預かりします。それから、こちらの　問診票に　ご記入　ください。\nM: あ、保険証を　家に　忘れて　しまって。\nF: その　場合は、今日は　全額　お支払い　いただいて、今月中に　保険証を　お持ち　いただければ、差額を　お返しします。まずは　問診票を　お願いします。\nN: 男の　人は　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0006
+    stem: '女の　人は　このあと　何を　しますか。'
+    choices:
+      - '山田さんの　報告を　代わりに　する'
+      - '駅まで　迎えに　行く'
+      - '皆に　伝え、部長に　順番の　変更を　頼む'
+      - '会議を　十五分　遅らせる'
+    answer: 3
+    explanation:
+      en: 'She tells everyone and asks to swap the agenda order.'
+      es: 'Avisa a todos y pide cambiar el orden del día.'
+    author: claude
+    tts:
+      script: "N: 会社で　男の　人が　女の　人に　電話を　して　います。女の　人は　このあと　何を　しますか。\nM: もしもし、山田です。今、駅に　着いたんだけど、電車が　遅れて、会議に　十五分ほど　遅れそうなんだ。\nF: わかりました。皆さんに　伝えて　おきます。\nM: それと、最初の　議題は　ぼくの　報告だから、二番目の　議題から　始めて　もらえる？\nF: はい。では、部長に　そう　お願いして　みます。\nN: 女の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0007
+    stem: '男の　人は　あした　何時に　ロビーへ　行けば　いいですか。'
+    choices:
+      - '七時五十分'
+      - '七時'
+      - '八時五十分'
+      - '六時五十分'
+    answer: 4
+    explanation:
+      en: 'He must reach the airport by 8:30, so the 7:00 bus, which arrives 10 minutes early.'
+      es: 'Debe estar en el aeropuerto a las 8:30: el autobús de las 7:00, que llega 10 minutos antes.'
+    author: claude
+    tts:
+      script: "N: ホテルで　男の　人と　ホテルの　人が　話して　います。男の　人は　あした　何時に　ロビーへ　行けば　いいですか。\nM: あしたの　空港行きの　バスは　何時ですか。\nF: 七時と　八時と　九時です。空港まで　一時間ほど　かかります。\nM: 飛行機が　十時半なので、八時ので　間に合いますかね。\nF: 国際線ですと、二時間前には　空港に　お着きに　なった　ほうが　よろしいかと。バスは　出発の　じゅっぷん前に　ロビーに　参ります。\nM: じゃあ、早い　ほうに　します。\nN: 男の　人は　あした　何時に　ロビーへ　行けば　いいですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0008
+    stem: '男の　学生は　このあと　どこへ　行きますか。'
+    choices:
+      - '二階の　閲覧室'
+      - '一階の　カウンター'
+      - '先生の　研究室'
+      - 'ほかの　図書館'
+    answer: 2
+    explanation:
+      en: 'Copies are requested at the ground-floor counter.'
+      es: 'Las copias se piden en el mostrador de la planta baja.'
+    author: claude
+    tts:
+      script: "N: 大学の　図書館で　男の　学生と　職員が　話して　います。男の　学生は　このあと　どこへ　行きますか。\nM: この　本を　借りたいんですが。\nF: 申し訳ありません。こちらは　貴重書なので、館外への　貸し出しは　できないんです。\nM: そうですか。レポートで　どうしても　必要なんですが。\nF: 館内で　お読みに　なるか、必要な　ページだけ　コピーする　ことは　できますよ。コピーは　一階の　カウンターで　申請して　ください。\nM: じゃあ、コピーに　します。\nN: 男の　学生は　このあと　どこへ　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0009
+    stem: '女の　人は　まず　企画書の　どこを　直しますか。'
+    choices:
+      - '内容'
+      - 'スケジュール'
+      - '予算'
+      - '表紙の　タイトル'
+    answer: 3
+    explanation:
+      en: 'Labour costs are missing from the budget; the title can wait.'
+      es: 'Faltan los costes de personal; el título puede esperar.'
+    author: claude
+    tts:
+      script: "N: 会社で　男の　人と　女の　人が　企画書に　ついて　話して　います。女の　人は　まず　企画書の　どこを　直しますか。\nM: 企画書、読んだよ。内容は　いいね。\nF: ありがとうございます。\nM: ただ、予算の　ところが　ちょっと　甘いかな。人件費が　入って　いないよ。\nF: あ、そうでした。\nM: スケジュールは　これで　問題ない。それから、表紙の　タイトルは　もう少し　短い　ほうが　いいけど、それは　急がないから。\nF: では、先に　予算を　直します。\nN: 女の　人は　まず　企画書の　どこを　直しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0010
+    stem: '男の　人は　このあと　まず　何を　しますか。'
+    choices:
+      - '粗大ごみの　予約を　する'
+      - '荷物を　箱に　詰める'
+      - '電気と　ガスの　会社に　連絡する'
+      - 'インターネットの　工事を　申し込む'
+    answer: 4
+    explanation:
+      en: 'The internet installation takes time, so he calls now.'
+      es: 'La instalación de internet tarda, así que llama ya.'
+    author: claude
+    tts:
+      script: "N: 家で　夫婦が　引っ越しに　ついて　話して　います。男の　人は　このあと　まず　何を　しますか。\nF: 引っ越しまで　あと　一週間だね。電気と　ガスの　連絡は　した？\nM: それは　もう　済んだよ。\nF: じゃあ、インターネットは？　工事に　時間が　かかるって　聞いたけど。\nM: あ、まだだ。\nF: それ、早く　申し込まないと、引っ越してから　しばらく　使えないよ。粗大ごみの　予約は　わたしが　するから。\nM: わかった、すぐ　電話する。\nN: 男の　人は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0011
+    stem: '男の　人は　午前中に　何を　しますか。'
+    choices:
+      - 'お客様の　データを　入力する'
+      - '動画で　研修を　受けて、テストを　する'
+      - 'パソコンを　設定する'
+      - '研修室で　講義を　聞く'
+    answer: 2
+    explanation:
+      en: 'Morning: the video training and its test.'
+      es: 'Por la mañana: la formación en vídeo y su test.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　午前中に　何を　しますか。\nF: 今日は　お客様の　データの　入力を　お願いしたいんだけど、その前に、午前中は　セキュリティの　研修を　受けて　もらえる？\nM: はい。研修は　どこで　受けるんですか。\nF: パソコンで　見られる　動画だから、自分の　席で　大丈夫。終わったら、確認テストも　忘れずに。\nM: わかりました。入力は　午後からですね。\nN: 男の　人は　午前中に　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0012
+    stem: '男の　人は　何曜日に　行きますか。'
+    choices:
+      - '水曜日'
+      - '木曜日'
+      - '月曜日'
+      - '金曜日'
+    answer: 1
+    explanation:
+      en: 'His meeting is on Thursday, so Wednesday works.'
+      es: 'Su reunión es el jueves, así que el miércoles le va bien.'
+    author: claude
+    tts:
+      script: "N: 男の　人が　歯医者に　電話を　して　います。男の　人は　何曜日に　行きますか。\nM: 来週、予約を　お願いしたいんですが。\nF: 月曜の　午後と、水曜の　午前が　あいて　おります。\nM: 月曜は　仕事で……。水曜の　午前は　会議が　あったかな。ちょっと　待って　ください。……あ、会議は　木曜でした。\nF: では、水曜の　午前で　よろしいですか。\nM: はい、お願いします。\nN: 男の　人は　何曜日に　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0013
+    stem: '女の　学生は　発表の　前に　何を　しますか。'
+    choices:
+      - '原稿を　書き直す'
+      - '学会に　時間を　確認する'
+      - '先生に　スライドを　見て　もらう'
+      - 'スライドを　仕上げて、研究室で　練習する'
+    answer: 4
+    explanation:
+      en: 'Finish the slides, then rehearse in the lab.'
+      es: 'Terminar las diapositivas y ensayar en el laboratorio.'
+    author: claude
+    tts:
+      script: "N: 大学で　男の　先生と　女の　学生が　話して　います。女の　学生は　発表の　前に　何を　しますか。\nM: 来週の　学会発表、準備は　どう？\nF: 原稿は　できました。あとは　スライドを　仕上げるだけです。\nM: そう。一度、研究室の　みんなの　前で　練習して　みたら？　時間を　計って　おくと　いいよ。\nF: そうですね。じゃあ、スライドが　できたら、金曜日に　練習させて　もらいます。\nN: 女の　学生は　発表の　前に　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0014
+    stem: '男の　人は　何を　持って　いきますか。'
+    choices:
+      - 'エプロンと　タオルだけ'
+      - '材料費と　容器'
+      - 'エプロンと　タオルと　容器'
+      - '道具と　材料'
+    answer: 3
+    explanation:
+      en: 'Apron, towel and a container for the noodles.'
+      es: 'Delantal, toalla y un recipiente para los fideos.'
+    author: claude
+    tts:
+      script: "N: 公民館で　男の　人と　係の　人が　話して　います。男の　人は　何を　持って　いきますか。\nM: 来週の　そば打ち教室に　申し込んだ　者ですが、持ち物を　確認したくて。\nF: はい。道具は　こちらで　用意しますので、エプロンと　タオルを　お持ち　ください。\nM: 材料は？\nF: 材料費は　参加費に　含まれて　います。あと、できた　そばは　お持ち帰り　いただけますので、よろしければ　容器を。\nM: わかりました。全部　持って　いきます。\nN: 男の　人は　何を　持って　いきますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0015
+    stem: '男の　人は　面接の　会議室を　どう　しますか。'
+    choices:
+      - 'Ａの　まま　使う'
+      - 'ＡからＢに　変える'
+      - 'ＣからＢに　変える'
+      - 'ＡからＣに　変える'
+    answer: 2
+    explanation:
+      en: 'C is taken, so the interview moves from A to B.'
+      es: 'La C está ocupada: la entrevista pasa de la A a la B.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　面接の　会議室を　どう　しますか。\nF: あしたの　面接、会議室を　ＡからＣに　変えて　もらえる？　Ａは　広すぎて　話しにくいって　言われて。\nM: Ｃは　午前中、営業部が　使う　ことに　なってます。\nF: そう。じゃあ、Ｂは？\nM: Ｂは　あいて　います。\nF: じゃあ、Ｂに　して。\nN: 男の　人は　面接の　会議室を　どう　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0016
+    stem: '男の　学生は　今月末までに　何を　出しますか。'
+    choices:
+      - '申込書と　受験票の　コピー'
+      - '成績証明書と　申込書'
+      - '成績証明書'
+      - '申込書だけ'
+    answer: 1
+    explanation:
+      en: 'With no score yet, the test ticket copy goes with the form.'
+      es: 'Sin nota aún, la copia del resguardo va con la solicitud.'
+    author: claude
+    tts:
+      script: "N: 大学で　男の　学生と　職員が　話して　います。男の　学生は　今月末までに　何を　出しますか。\nM: 留学の　申し込みの　ことで　伺いたいんですが。\nF: はい。申込書は　今月末まで、語学の　成績証明書は　来月　十日までです。\nM: 成績証明書は、まだ　試験を　受けて　いなくて。\nF: 試験の　結果が　間に合わない　場合は、受験票の　コピーを　先に　出して　ください。\nM: わかりました。申込書と　一緒に　出します。\nN: 男の　学生は　今月末までに　何を　出しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0017
+    stem: '男の　人は　このあと　何を　買いに　行きますか。'
+    choices:
+      - 'ガスボンベ'
+      - '食料'
+      - 'テント'
+      - '寝袋'
+    answer: 1
+    explanation:
+      en: 'Only the gas cans are missing today.'
+      es: 'Hoy solo faltan las bombonas de gas.'
+    author: claude
+    tts:
+      script: "N: 家で　夫婦が　キャンプの　準備に　ついて　話して　います。男の　人は　このあと　何を　買いに　行きますか。\nF: あしたの　キャンプ、テントは　お兄さんから　借りられたよ。\nM: よかった。寝袋は？\nF: 寝袋は　家に　あるから　大丈夫。ただ、ガスボンベが　一本しか　なかったから、あと　二本　ほしいな。\nM: 食料は？\nF: それは　あした、向こうの　スーパーで　買おう。\nM: じゃあ、今から　ホームセンターに　行って　くる。\nN: 男の　人は　このあと　何を　買いに　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-1-0018
+    stem: '女の　人は　何を　しなければ　なりませんか。'
+    choices:
+      - '契約書を　全部　訳す'
+      - '去年の　契約書を　探す'
+      - '三つの　条を　訳して、法務部に　確認して　もらう'
+      - '法務部に　翻訳を　頼む'
+    answer: 3
+    explanation:
+      en: 'Only articles 3–5, then a legal check.'
+      es: 'Solo los artículos 3 a 5 y luego revisión jurídica.'
+    author: claude
+    tts:
+      script: "N: 会社で　男の　人と　女の　人が　話して　います。女の　人は　何を　しなければ　なりませんか。\nM: この　契約書の　翻訳、来週の　月曜までに　頼めるかな。\nF: 全部ですか。\nM: いや、第三条から　第五条までで　いい。それ以外は　去年の　ものと　同じだから。\nF: わかりました。専門用語は　法務部に　確認した　ほうが　いいですよね。\nM: うん、訳し終わったら、法務部に　見て　もらって。\nN: 女の　人は　何を　しなければ　なりませんか。"
+      voices: ['narrator', 'man', 'woman']
