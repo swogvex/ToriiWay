@@ -1,0 +1,190 @@
+# N3 · Grammar · Reading · Mondai 4 — short passages
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 4
+instruction:
+  en: 'Read the text and answer the question.'
+  ja: '文章を 読んで、質問に 答えて ください。'
+passages:
+  - id: meeting
+    text: "社員の　皆様\n　来週月曜日の　会議は、３階の　会議室が　工事中の　ため、５階の　大会議室で　行います。時間は　変わりません。なお、会議の　資料は　当日　配りません。資料は　金曜日に　メールで　送りますので、各自　印刷して　お持ちください。\n総務部　田中"
+  - id: bags
+    text: '　最近、近所の　スーパーで　レジ袋が　有料に　なった。最初は　面倒だと　思ったが、自分の　袋を　持って　行くように　なってから、家に　たまって　いた　袋が　なくなり、台所が　すっきりした。小さな　ことだが、環境の　ためだけで　なく、自分の　生活にも　いい　変化だったと　思う。'
+  - id: library
+    text: "市立図書館からの　お知らせ\n　１２月２９日から　１月３日まで　お休みです。この　期間に　返す　本は、入口の　横の　返却ポストに　入れて　ください。ただし、ＣＤや　ＤＶＤは　壊れる　おそれが　あるので、ポストには　入れないで、１月４日　以降に　カウンターへ　お持ちください。"
+  - id: party
+    text: "リンさんへ\n　あしたの　飲み会ですが、店の　予約が　７時から　７時半に　変わりました。場所は　同じです。参加者が　一人　増えたので、会費は　一人　３０００円から　２８００円に　なります。お金は　当日、山下さんに　払って　ください。\n木村"
+  - id: morning
+    text: '　わたしは　朝が　苦手で、いつも　ぎりぎりに　起きて　いた。ある日、友人に　「朝の　一時間は　夜の　二時間の　価値が　ある」と　言われ、試しに　一時間　早く　起きて　みた。すると、頭が　すっきりして　いて、勉強が　思った　以上に　はかどった。それ以来、夜は　早く　寝るように　して　いる。'
+  - id: pool
+    text: "みどりスポーツクラブ　会員の　皆様へ\n　来月から　プールの　利用時間が　変わります。平日は　午前１０時から　午後９時まで、土日は　午前９時から　午後６時までです。なお、毎月　第２火曜日は　清掃の　ため、プールのみ　お休みです。トレーニングルームは　通常どおり　ご利用いただけます。"
+  - id: postcard
+    text: '　最近は　メールで　何でも　すぐに　伝えられる。しかし、先日、祖母から　手書きの　はがきが　届いた　とき、メールでは　感じられない　温かさを　感じた。字を　見るだけで、祖母が　ゆっくり　考えながら　書いて　くれた　様子が　目に　浮かんだからだ。'
+  - id: trip
+    text: "３年Ａ組の　保護者の　皆様\n　１０月１５日の　遠足は、雨の　場合は　１７日に　延期します。延期するか　どうかは、当日の　朝　６時に　学校の　ホームページで　お知らせします。電話での　問い合わせは　ご遠慮ください。なお、１７日も　雨の　場合は　中止と　なります。"
+  - id: mistake
+    text: '　仕事で　大きな　失敗を　した　とき、上司は　怒らずに　「失敗した　理由を　考えて、次に　生かせば　いい」と　言って　くれた。その　言葉の　おかげで、わたしは　失敗を　恐れずに　新しい　ことに　挑戦できるように　なった。'
+  - id: water
+    text: "マンションの　住民の　皆様へ\n　来週の　水曜日　午前９時から　正午まで、水道の　工事を　行います。この　時間は　水が　出ません。工事の　前に、必要な　水を　ためて　おいて　ください。工事の　後、しばらく　水が　にごる　ことが　ありますが、数分　流せば　きれいに　なります。"
+  - id: piano
+    text: '　子どもの　ころ、わたしは　ピアノの　練習が　大嫌いだった。母に　言われて　しかたなく　続けて　いたが、中学生に　なって　好きな　曲が　弾けるように　なると、練習が　楽しく　なった。今では、あの　とき　やめなくて　本当に　よかったと　思って　いる。'
+  - id: bento
+    text: "お客様へ\n　当店で　販売した　「さくら弁当」（１１月２日　製造）に、表示されて　いない　卵が　使われて　いた　ことが　わかりました。卵アレルギーの　ある　方は　食べないで　ください。代金は、レシートが　なくても　店で　お返しします。"
+questions:
+  - id: n3-grm-4-0001
+    passage: meeting
+    stem: 'この　メールを　読んだ　社員は、何を　しなければ　ならないか。'
+    choices:
+      - '月曜日に　資料を　もらいに　行く'
+      - '５階の　会議室を　予約する'
+      - '会議の　時間を　確認する'
+      - '送られて　きた　資料を　自分で　印刷して　持って　いく'
+    answer: 4
+    explanation:
+      en: 'The documents come by e-mail on Friday and everyone prints their own.'
+      es: 'Los documentos llegan por correo el viernes y cada uno los imprime.'
+    author: claude
+  - id: n3-grm-4-0002
+    passage: bags
+    stem: '筆者は　レジ袋の　有料化に　ついて、どう　思って　いるか。'
+    choices:
+      - '袋を　買う　ほうが　便利だ'
+      - '自分の　生活にも　よい　ことが　あった'
+      - '環境には　あまり　意味が　ない'
+      - '面倒なので　やめて　ほしい'
+    answer: 2
+    explanation:
+      en: 'The writer found it good for the environment and for their own kitchen.'
+      es: 'Le pareció bueno para el medio ambiente y también para su cocina.'
+    author: claude
+  - id: n3-grm-4-0003
+    passage: library
+    stem: '１２月３０日に　ＤＶＤを　返したい　人は、どう　するか。'
+    choices:
+      - '図書館に　電話を　する'
+      - '１２月２９日に　持って　いく'
+      - '１月４日　以降に　カウンターに　持って　いく'
+      - '返却ポストに　入れる'
+    answer: 3
+    explanation:
+      en: 'DVDs must not go in the box; bring them to the counter from 4 January.'
+      es: 'Los DVD no van al buzón; se llevan al mostrador a partir del 4 de enero.'
+    author: claude
+  - id: n3-grm-4-0004
+    passage: party
+    stem: 'リンさんに　ついて、正しいのは　どれか。'
+    choices:
+      - 'あした　７時半に　店に　行き、２８００円　払う'
+      - 'あした　７時に　店に　行き、３０００円　払う'
+      - '新しい　店を　予約する'
+      - '木村さんに　２８００円　払う'
+    answer: 1
+    explanation:
+      en: 'The time moved to 7:30 and the fee fell to 2,800 yen, paid to Yamashita.'
+      es: 'La hora pasa a las 7:30 y la cuota baja a 2.800 yenes, que se pagan a Yamashita.'
+    author: claude
+  - id: n3-grm-4-0005
+    passage: morning
+    stem: '筆者が　夜　早く　寝るように　なったのは　なぜか。'
+    choices:
+      - '夜は　勉強が　できないから'
+      - '朝が　苦手だから'
+      - '友人に　早く　寝るように　言われたから'
+      - '朝　早く　起きると　勉強が　よく　進んだから'
+    answer: 4
+    explanation:
+      en: 'Getting up early made studying go much better.'
+      es: 'Madrugar le hizo estudiar mucho mejor.'
+    author: claude
+  - id: n3-grm-4-0006
+    passage: pool
+    stem: '来月の　第２火曜日に　ついて、正しいのは　どれか。'
+    choices:
+      - 'トレーニングルームは　使えるが、プールは　使えない'
+      - 'プールは　午後６時まで　使える'
+      - 'プールは　午前９時から　使える'
+      - 'プールも　トレーニングルームも　使えない'
+    answer: 1
+    explanation:
+      en: 'Only the pool closes for cleaning; the training room is open.'
+      es: 'Solo cierra la piscina por limpieza; la sala de entrenamiento abre.'
+    author: claude
+  - id: n3-grm-4-0007
+    passage: postcard
+    stem: '筆者は　はがきの　どんな　ところに　温かさを　感じたか。'
+    choices:
+      - 'すぐに　届く　ところ'
+      - '書いた　人が　時間を　かけて　書いて　くれた　ことが　わかる　ところ'
+      - '写真が　入って　いる　ところ'
+      - '字が　きれいな　ところ'
+    answer: 2
+    explanation:
+      en: 'The handwriting showed the grandmother writing slowly and with care.'
+      es: 'La letra mostraba a la abuela escribiendo despacio y con cariño.'
+    author: claude
+  - id: n3-grm-4-0008
+    passage: trip
+    stem: '遠足が　行われるか　どうかを　知りたい　保護者は、どう　すれば　よいか。'
+    choices:
+      - '前の　日に　先生に　聞く'
+      - '子どもに　聞く'
+      - '当日の　朝、学校の　ホームページを　見る'
+      - '学校に　電話する'
+    answer: 3
+    explanation:
+      en: 'It is announced on the website at 6 a.m.; phone calls are not accepted.'
+      es: 'Se anuncia en la web a las 6 de la mañana; no se atienden llamadas.'
+    author: claude
+  - id: n3-grm-4-0009
+    passage: mistake
+    stem: '筆者が　新しい　ことに　挑戦できるように　なったのは　なぜか。'
+    choices:
+      - '上司が　失敗から　学べば　いいと　教えて　くれたから'
+      - '上司に　強く　怒られたから'
+      - '一度も　失敗しなかったから'
+      - '仕事を　変えたから'
+    answer: 1
+    explanation:
+      en: 'The boss said to learn from the mistake, which removed the fear.'
+      es: 'El jefe le dijo que aprendiera del error, y perdió el miedo.'
+    author: claude
+  - id: n3-grm-4-0010
+    passage: water
+    stem: '工事の　あと、水が　にごって　いたら、どう　するか。'
+    choices:
+      - '正午まで　使わない'
+      - 'しばらく　水を　流す'
+      - '水を　ためて　おく'
+      - '管理人に　連絡する'
+    answer: 2
+    explanation:
+      en: 'Run the water for a few minutes and it becomes clear.'
+      es: 'Hay que dejar correr el agua unos minutos y se aclara.'
+    author: claude
+  - id: n3-grm-4-0011
+    passage: piano
+    stem: '筆者は　今、ピアノに　ついて　どう　思って　いるか。'
+    choices:
+      - '早く　やめれば　よかった'
+      - '今でも　練習が　嫌いだ'
+      - '母に　感謝して　いない'
+      - '続けて　よかったと　思って　いる'
+    answer: 4
+    explanation:
+      en: 'The writer is glad not to have given up.'
+      es: 'Se alegra de no haberlo dejado.'
+    author: claude
+  - id: n3-grm-4-0012
+    passage: bento
+    stem: 'この　お知らせで　いちばん　言いたい　ことは　何か。'
+    choices:
+      - 'レシートを　持って　いる　人だけ　お金を　返す'
+      - '新しい　弁当を　売り始めた'
+      - '卵アレルギーの　人は　この　弁当を　食べないで　ほしい'
+      - '弁当の　値段が　変わった'
+    answer: 3
+    explanation:
+      en: 'The bento contains egg that was not on the label.'
+      es: 'El bento lleva huevo que no figuraba en la etiqueta.'
+    author: claude

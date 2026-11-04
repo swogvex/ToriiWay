@@ -1,0 +1,94 @@
+# N3 · Grammar · Reading · Mondai 7 — information retrieval
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 7
+instruction:
+  en: 'Look at the information and answer the questions.'
+  ja: '案内を 見て、質問に 答えて ください。'
+passages:
+  - id: course
+    text: "さくら国際交流センター　日本語講座（４月～６月）\n講座　　　　　　　曜日・時間　　　　　　レベル　　　受講料\nＡ　会話入門　　　　火・木　18:30～20:00　初級　　　　12,000円\nＢ　ビジネス日本語　水　19:00～21:00　　中級　　　　15,000円\nＣ　漢字クラス　　　土　10:00～12:00　　初級～中級　8,000円\nＤ　ＪＬＰＴ対策　　土　13:00～16:00　　中級　　　　18,000円\n＊市内に　住んで　いる　人と　市内で　働いて　いる　人は、受講料が　２割引きに　なります。\n＊申し込みは　３月２０日までに、センターの　窓口か　ホームページで。"
+  - id: bikes
+    text: "駅前市営駐輪場　利用案内\n種類　　　　　　　　１日　　　１か月　　　３か月\n自転車　　　　　　　150円　　1,800円　　4,800円\nバイク（50cc以下）　300円　　3,000円　　8,100円\n＊学生は、１か月・３か月の　料金が　半額に　なります（学生証が　必要）。\n＊１か月・３か月の　申し込みは、駐輪場の　管理室で（毎日　7:00～19:00）。\n＊１日利用は、機械で　料金を　払って　ください。"
+  - id: volunteer
+    text: "みどり市　夏祭り　ボランティア募集\n日時：８月３日（土）・４日（日）　各日　15:00～21:00\n仕事：①会場の　案内　②ごみの　分別の　手伝い　③子ども向け　ゲームの　係\n条件：１６歳以上（高校生は　保護者の　同意書が　必要）\n　　　①は　英語が　話せる　人を　優先します。\n　　　両日とも　参加できる　人を　優先します。\n申し込み：７月１０日までに、市役所　市民課へ　メールで。\n＊参加者には　お弁当と　記念Ｔシャツを　さしあげます。"
+questions:
+  - id: n3-grm-7-0001
+    passage: course
+    stem: '中級の　リーさんは、平日は　夜　８時まで　仕事が　ある。リーさんが　受けられる　講座は　どれか。'
+    choices:
+      - 'Ｂだけ'
+      - 'ＡとＣ'
+      - 'ＣとＤ'
+      - 'ＢとＤ'
+    answer: 3
+    explanation:
+      en: 'Weekday classes start before 8 p.m.; only the Saturday ones C and D fit.'
+      es: 'Las clases entre semana empiezan antes de las 8; solo encajan C y D, que son en sábado.'
+    author: claude
+  - id: n3-grm-7-0002
+    passage: course
+    stem: '市内の　会社で　働いて　いる　マリアさんが　Ａの　講座を　受ける。受講料は　いくらか。'
+    choices:
+      - '12,000円'
+      - '10,000円'
+      - '2,400円'
+      - '9,600円'
+    answer: 4
+    explanation:
+      en: 'Working in the city gives 20% off: 12,000 × 0.8 = 9,600 yen.'
+      es: 'Trabajar en la ciudad da un 20 % de descuento: 12.000 × 0,8 = 9.600 yenes.'
+    author: claude
+  - id: n3-grm-7-0003
+    passage: bikes
+    stem: '高校生の　ゆかさんは　毎日　自転車で　駅まで　通う。３か月の　利用を　申し込むと、いくら　払うか。'
+    choices:
+      - '2,400円'
+      - '900円'
+      - '1,800円'
+      - '4,800円'
+    answer: 1
+    explanation:
+      en: 'Students pay half: 4,800 ÷ 2 = 2,400 yen.'
+      es: 'Los estudiantes pagan la mitad: 4.800 ÷ 2 = 2.400 yenes.'
+    author: claude
+  - id: n3-grm-7-0004
+    passage: bikes
+    stem: '会社員の　田中さんは　毎日　夜　８時に　仕事が　終わる。バイクの　１か月の　利用を　申し込みたい。どう　すれば　よいか。'
+    choices:
+      - '夜　８時すぎに　管理室へ　行く'
+      - '朝　７時から　夜　７時の　間に　管理室へ　行く'
+      - '学生証を　持って　いく'
+      - '機械で　3,000円を　払う'
+    answer: 2
+    explanation:
+      en: 'Monthly passes are only sold at the office between 7:00 and 19:00.'
+      es: 'Los abonos mensuales solo se venden en la oficina de 7:00 a 19:00.'
+    author: claude
+  - id: n3-grm-7-0005
+    passage: volunteer
+    stem: '高校生の　ケンさんが　ボランティアに　申し込む　前に、何が　必要か。'
+    choices:
+      - '保護者の　同意書'
+      - '記念Ｔシャツ'
+      - '市役所での　面接'
+      - '英語の　試験の　結果'
+    answer: 1
+    explanation:
+      en: "High-school students need a parent's consent form."
+      es: 'Los estudiantes de bachillerato necesitan el consentimiento de sus padres.'
+    author: claude
+  - id: n3-grm-7-0006
+    passage: volunteer
+    stem: '次の　人の　中で、①の　仕事に　いちばん　選ばれやすいのは　だれか。'
+    choices:
+      - '英語が　話せて、３日だけ　参加できる　会社員'
+      - '英語が　話せる　１５歳の　中学生'
+      - '英語が　話せて、両日とも　参加できる　大学生'
+      - '英語は　話せないが、両日とも　参加できる　大学生'
+    answer: 3
+    explanation:
+      en: 'Job ① prefers English speakers who can come both days; under-16s cannot take part.'
+      es: 'El puesto ① prefiere a quien hable inglés y venga los dos días; los menores de 16 no pueden.'
+    author: claude

@@ -1,0 +1,189 @@
+# N3 · Grammar · Reading · Mondai 2 — sentence composition
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 2
+instruction:
+  en: 'Put the four parts in order. Which part goes in ★?'
+  ja: '★に 入る 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-grm-2-0001
+    stem: '彼は　＿＿＿　＿＿＿　★　＿＿＿　しまった。'
+    choices:
+      - 'ばかりなのに'
+      - '注意された'
+      - '先生に'
+      - 'また遅刻して'
+    answer: 1
+    explanation:
+      en: '彼は 先生に 注意された ばかりなのに また遅刻して しまった.'
+      es: '彼は 先生に 注意された ばかりなのに また遅刻して しまった: "Le acababan de llamar la atención y volvió a llegar tarde."'
+    author: claude
+  - id: n3-grm-2-0002
+    stem: 'この　店の　ケーキは　＿＿＿　★　＿＿＿　＿＿＿　おいしい。'
+    choices:
+      - '味は'
+      - '地味だ'
+      - 'けれど'
+      - '見た目は'
+    answer: 2
+    explanation:
+      en: 'この 店の ケーキは 見た目は 地味だ けれど 味は おいしい.'
+      es: 'この 店の ケーキは 見た目は 地味だ けれど 味は おいしい: "La tarta parece sencilla pero está rica."'
+    author: claude
+  - id: n3-grm-2-0003
+    stem: '日本に　＿＿＿　＿＿＿　★　＿＿＿　行きたい。'
+    choices:
+      - '住んで'
+      - 'いる'
+      - 'うちに'
+      - '京都へ'
+    answer: 3
+    explanation:
+      en: '日本に 住んで いる うちに 京都へ 行きたい.'
+      es: '日本に 住んで いる うちに 京都へ 行きたい: "Quiero ir a Kioto mientras vivo en Japón."'
+    author: claude
+  - id: n3-grm-2-0004
+    stem: '駅に　＿＿＿　＿＿＿　★　＿＿＿　しまった。'
+    choices:
+      - '着いた'
+      - '出て'
+      - 'とたんに'
+      - '電車が'
+    answer: 4
+    explanation:
+      en: '駅に 着いた とたんに 電車が 出て しまった.'
+      es: '駅に 着いた とたんに 電車が 出て しまった: "Justo al llegar a la estación se fue el tren."'
+    author: claude
+  - id: n3-grm-2-0005
+    stem: '天気予報に　＿＿＿　＿＿＿　★　＿＿＿　らしい。'
+    choices:
+      - '降る'
+      - 'よると'
+      - 'あしたは'
+      - '雪が'
+    answer: 4
+    explanation:
+      en: '天気予報に よると あしたは 雪が 降る らしい.'
+      es: '天気予報に よると あしたは 雪が 降る らしい: "Según el pronóstico, mañana nevará."'
+    author: claude
+  - id: n3-grm-2-0006
+    stem: 'あんなに　＿＿＿　＿＿＿　★　＿＿＿　がない。'
+    choices:
+      - 'した'
+      - '練習'
+      - '彼が'
+      - '負けるわけ'
+    answer: 3
+    explanation:
+      en: 'あんなに 練習 した 彼が 負けるわけ がない.'
+      es: 'あんなに 練習 した 彼が 負けるわけ がない: "Es imposible que pierda alguien que entrenó tanto."'
+    author: claude
+  - id: n3-grm-2-0007
+    stem: '父は　＿＿＿　★　＿＿＿　＿＿＿　寝て　しまった。'
+    choices:
+      - 'つけた'
+      - 'ソファで'
+      - 'まま'
+      - 'テレビを'
+    answer: 1
+    explanation:
+      en: '父は テレビを つけた まま ソファで 寝て しまった.'
+      es: '父は テレビを つけた まま ソファで 寝て しまった: "Mi padre se durmió en el sofá con la tele encendida."'
+    author: claude
+  - id: n3-grm-2-0008
+    stem: 'この　仕事は　＿＿＿　＿＿＿　★　＿＿＿　難しい。'
+    choices:
+      - 'とっては'
+      - '人に'
+      - 'ない'
+      - '経験の'
+    answer: 2
+    explanation:
+      en: 'この 仕事は 経験の ない 人に とっては 難しい.'
+      es: 'この 仕事は 経験の ない 人に とっては 難しい: "Este trabajo es difícil para quien no tiene experiencia."'
+    author: claude
+  - id: n3-grm-2-0009
+    stem: '毎日　＿＿＿　＿＿＿　★　＿＿＿　なった。'
+    choices:
+      - 'おかげで'
+      - 'ピアノが'
+      - '練習した'
+      - '上手に'
+    answer: 2
+    explanation:
+      en: '毎日 練習した おかげで ピアノが 上手に なった.'
+      es: '毎日 練習した おかげで ピアノが 上手に なった: "Gracias a practicar cada día, toca mejor el piano."'
+    author: claude
+  - id: n3-grm-2-0010
+    stem: '雨が　＿＿＿　★　＿＿＿　＿＿＿　行われた。'
+    choices:
+      - 'いた'
+      - '降って'
+      - 'にもかかわらず'
+      - '試合は'
+    answer: 1
+    explanation:
+      en: '雨が 降って いた にもかかわらず 試合は 行われた.'
+      es: '雨が 降って いた にもかかわらず 試合は 行われた: "Pese a la lluvia, el partido se jugó."'
+    author: claude
+  - id: n3-grm-2-0011
+    stem: '仕事が　＿＿＿　＿＿＿　★　＿＿＿　ください。'
+    choices:
+      - '終わり'
+      - 'しだい'
+      - '連絡して'
+      - 'わたしに'
+    answer: 4
+    explanation:
+      en: '仕事が 終わり しだい わたしに 連絡して ください.'
+      es: '仕事が 終わり しだい わたしに 連絡して ください: "Avísame en cuanto termines."'
+    author: claude
+  - id: n3-grm-2-0012
+    stem: '彼女は　＿＿＿　★　＿＿＿　＿＿＿　話す。'
+    choices:
+      - '声で'
+      - 'ような'
+      - '子どもの'
+      - 'まるで'
+    answer: 3
+    explanation:
+      en: '彼女は まるで 子どもの ような 声で 話す.'
+      es: '彼女は まるで 子どもの ような 声で 話す: "Habla con una voz como de niña."'
+    author: claude
+  - id: n3-grm-2-0013
+    stem: '本屋に　＿＿＿　＿＿＿　★　＿＿＿　買った。'
+    choices:
+      - 'ついでに'
+      - '寄った'
+      - '好きな'
+      - '雑誌を'
+    answer: 3
+    explanation:
+      en: '本屋に 寄った ついでに 好きな 雑誌を 買った.'
+      es: '本屋に 寄った ついでに 好きな 雑誌を 買った: "Al pasar por la librería, me compré mi revista favorita."'
+    author: claude
+  - id: n3-grm-2-0014
+    stem: '社長が　＿＿＿　＿＿＿　★　＿＿＿　おこう。'
+    choices:
+      - '会議室を'
+      - '来る'
+      - '前に'
+      - '掃除して'
+    answer: 1
+    explanation:
+      en: '社長が 来る 前に 会議室を 掃除して おこう.'
+      es: '社長が 来る 前に 会議室を 掃除して おこう: "Limpiemos la sala antes de que venga el director."'
+    author: claude
+  - id: n3-grm-2-0015
+    stem: 'もう　少しで　＿＿＿　＿＿＿　★　＿＿＿　だった。'
+    choices:
+      - 'ところ'
+      - '乗り'
+      - '電車に'
+      - '遅れる'
+    answer: 4
+    explanation:
+      en: 'もう 少しで 電車に 乗り 遅れる ところ だった.'
+      es: 'もう 少しで 電車に 乗り 遅れる ところ だった: "Por poco pierdo el tren."'
+    author: claude
