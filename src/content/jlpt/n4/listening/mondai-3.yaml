@@ -18,6 +18,7 @@ questions:
       en: 'いただく is the humble "eat"; asking permission fits.'
       es: 'いただく es el humilde "comer"; pedir permiso es lo adecuado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0001-83bd6bfcd0aa.mp3'
     tts:
       script: "N: 友だちの　家で、もっと　ケーキを　食べたいです。なんと　言いますか。\nN: 1　もう　少し　食べましょうか\nN: 2　もう　少し　めしあがって　ください\nN: 3　もう　少し　いただいても　いいですか"
       voices: ['narrator']
@@ -32,6 +33,7 @@ questions:
       en: 'You cannot hear, so you ask for a louder voice.'
       es: 'No oyes bien, así que pides que hable más alto.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0002-2336a097978f.mp3'
     tts:
       script: "N: 先生の　話が　よく　聞こえません。なんと　言いますか。\nN: 1　すみません、もう　少し　大きい　声で　お願いします\nN: 2　すみません、もう　少し　小さい　声で　お願いします\nN: 3　すみません、よく　聞いて　ください"
       voices: ['narrator']
@@ -46,6 +48,7 @@ questions:
       en: '〜て みても いいですか asks to try something on.'
       es: '〜て みても いいですか pide probarse algo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0003-ff0c631bbdd7.mp3'
     tts:
       script: "N: 店で　この　シャツを　着て　みたいです。なんと　言いますか。\nN: 1　これ、着て　ください\nN: 2　これ、着て　みても　いいですか\nN: 3　これ、着て　みましょうか"
       voices: ['narrator']
@@ -60,6 +63,7 @@ questions:
       en: 'You warn that you will be a little late.'
       es: 'Avisas de que llegarás un poco tarde.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0004-3cd46babe10e.mp3'
     tts:
       script: "N: 会社に　おくれそうです。電話で　なんと　言いますか。\nN: 1　すみません、早く　来て　ください\nN: 2　すみません、もう　着きました\nN: 3　すみません、少し　おくれます"
       voices: ['narrator']
@@ -74,6 +78,7 @@ questions:
       en: '〜ましょうか offers help.'
       es: '〜ましょうか ofrece ayuda.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0005-368743776976.mp3'
     tts:
       script: "N: 友だちが　重い　にもつを　持って　います。なんと　言いますか。\nN: 1　一つ　持ちましょうか\nN: 2　一つ　持って　くれませんか\nN: 3　一つ　持って　いますか"
       voices: ['narrator']
@@ -88,6 +93,7 @@ questions:
       en: '〜て いただけませんか politely asks a favour.'
       es: '〜て いただけませんか pide un favor con cortesía.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0006-aefc9d5931dc.mp3'
     tts:
       script: "N: 先生に　作文を　見て　もらいたいです。なんと　言いますか。\nN: 1　先生、この　作文を　見せて　あげましょうか\nN: 2　先生、この　作文を　見て　いただけませんか\nN: 3　先生、この　作文を　見ても　いいですか"
       voices: ['narrator']
@@ -102,6 +108,7 @@ questions:
       en: 'You apologise when you bump into someone.'
       es: 'Al chocar con alguien se pide perdón.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0007-85cd7b1cb2dd.mp3'
     tts:
       script: "N: 道で　人に　ぶつかりました。なんと　言いますか。\nN: 1　いいえ、どういたしまして\nN: 2　おかげさまで\nN: 3　あ、すみません"
       voices: ['narrator']
@@ -116,6 +123,7 @@ questions:
       en: 'おめでとう congratulates.'
       es: 'おめでとう sirve para felicitar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0008-177282148fc8.mp3'
     tts:
       script: "N: 友だちが　しけんに　ごうかくしました。なんと　言いますか。\nN: 1　おめでとう\nN: 2　おつかれさま\nN: 3　おだいじに"
       voices: ['narrator']
@@ -130,6 +138,7 @@ questions:
       en: 'おだいじに wishes a sick person well.'
       es: 'おだいじに desea que alguien enfermo se mejore.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0009-56c01ee44103.mp3'
     tts:
       script: "N: かぜを　ひいた　友だちと　わかれます。なんと　言いますか。\nN: 1　いただきます\nN: 2　おだいじに\nN: 3　おめでとう"
       voices: ['narrator']
@@ -144,6 +153,7 @@ questions:
       en: 'お先に しつれいします is said when leaving work before others.'
       es: 'お先に しつれいします se dice al irse del trabajo antes que los demás.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0010-76bbe322ab2c.mp3'
     tts:
       script: "N: 会社で、ほかの　人より　先に　帰ります。なんと　言いますか。\nN: 1　いってらっしゃい\nN: 2　お先に　しつれいします\nN: 3　おかえりなさい"
       voices: ['narrator']
@@ -158,6 +168,7 @@ questions:
       en: 'すみません calls the staff.'
       es: 'すみません sirve para llamar al personal.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0011-179045ea9bf8.mp3'
     tts:
       script: "N: レストランで　お店の　人を　よびたいです。なんと　言いますか。\nN: 1　ごちそうさま\nN: 2　いらっしゃいませ\nN: 3　すみません"
       voices: ['narrator']
@@ -172,6 +183,7 @@ questions:
       en: 'You ask your friend to lend it: 貸して くれない？'
       es: 'Pides que te lo preste: 貸して くれない？'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0012-57a98b5c4459.mp3'
     tts:
       script: "N: 友だちに　じしょを　借りたいです。なんと　言いますか。\nN: 1　じしょを　貸して　くれない？\nN: 2　じしょを　貸して　あげようか\nN: 3　じしょを　借りて　くれない？"
       voices: ['narrator']
@@ -186,6 +198,7 @@ questions:
       en: 'めしあがる is the respectful "eat, drink" for a guest.'
       es: 'めしあがる es el respetuoso "comer, beber" para un invitado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0013-0fe602c5de85.mp3'
     tts:
       script: "N: お客さんに　お茶を　出します。なんと　言いますか。\nN: 1　どうぞ、めしあがって　ください\nN: 2　どうぞ、いただいて　ください\nN: 3　いただきます"
       voices: ['narrator']
@@ -200,6 +213,7 @@ questions:
       en: 'おじゃまします on entering; おじゃましました on leaving.'
       es: 'おじゃまします al entrar; おじゃましました al salir.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0014-4facd0f62e6c.mp3'
     tts:
       script: "N: 友だちの　家に　入ります。なんと　言いますか。\nN: 1　おじゃましました\nN: 2　ただいま\nN: 3　おじゃまします"
       voices: ['narrator']
@@ -214,6 +228,7 @@ questions:
       en: 'You offer your seat: どうぞ、すわって ください.'
       es: 'Ofreces tu asiento: どうぞ、すわって ください.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n4-lis-3-0015-116cb6a89d31.mp3'
     tts:
       script: "N: 電車で　おばあさんに　席を　ゆずりたいです。なんと　言いますか。\nN: 1　どうぞ、立って　ください\nN: 2　どうぞ、すわって　ください\nN: 3　すみません、すわっても　いいですか"
       voices: ['narrator']
