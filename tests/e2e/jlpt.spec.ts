@@ -110,24 +110,14 @@ test.describe('JLPT start page', () => {
     await expectNoAxeViolations(page);
   });
 
-  test('levels with a full bank can start while N1 is being written', async ({ page }) => {
+  test('every level can start', async ({ page }) => {
     await page.goto('/jlpt');
-    for (const level of ['N4', 'N3', 'N2'] as const) {
+    for (const level of ['N4', 'N3', 'N2', 'N1'] as const) {
       await page.getByRole('radio', { name: level }).check();
       await expect(page.getByRole('heading', { name: `${level} sections` })).toBeVisible();
       await expect(
         page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }),
       ).toBeEnabled();
-    }
-    for (const level of ['N1'] as const) {
-      await page.getByRole('radio', { name: level }).check();
-      await expect(page.getByRole('heading', { name: `${level} sections` })).toBeVisible();
-      await expect(
-        page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }),
-      ).toBeDisabled();
-      await expect(
-        page.getByText(new RegExp(`${level} question bank is being written`)),
-      ).toBeVisible();
     }
     await page.getByRole('radio', { name: 'Kana' }).check();
     await expect(page.getByRole('button', { name: /Start Kana simulation/ })).toBeEnabled();
@@ -224,6 +214,20 @@ test.describe('JLPT exam', () => {
     await expect(page.locator('[data-summary]').getByText(/^1\/21 · /)).toBeVisible();
     await page.getByRole('button', { name: 'Hard' }).click();
     await expect(page.getByText('Thanks, noted.')).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
+  test('a full N1 run reaches the score', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'light', 'Real breaks: run once.');
+    test.setTimeout(300_000);
+    await stubBlobAudio(page);
+    await startRun(page, 'N1');
+    await answerEverySection(page, [
+      ['Language knowledge · Reading', 71],
+      ['Listening', 37],
+    ]);
+    await expect(page.getByText('N1 · Simulation complete')).toBeVisible();
+    await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
     await expectNoAxeViolations(page);
   });
 
