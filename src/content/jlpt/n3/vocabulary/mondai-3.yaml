@@ -1,0 +1,405 @@
+# N3 · Vocabulary · Mondai 3 — contextual meaning
+# Original questions written for ToriiWay.
+level: N3
+section: vocabulary
+mondai: 3
+instruction:
+  en: 'Choose the word that best fills the blank (　).'
+  ja: '（　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-voc-3-0001
+    stem: '雨で　試合が　（　）に　なった。'
+    choices:
+      - '中心'
+      - '中止'
+      - '禁止'
+      - '停止'
+    answer: 2
+    explanation:
+      en: 'A match is called off: 中止に なる.'
+      es: 'Un partido se suspende: 中止に なる.'
+    author: claude
+  - id: n3-voc-3-0002
+    stem: 'かぜを　ひかないように、外から　帰ったら　（　）を　しましょう。'
+    choices:
+      - 'うがい'
+      - 'くしゃみ'
+      - 'ねつ'
+      - 'せき'
+    answer: 1
+    explanation:
+      en: 'To avoid a cold you gargle (うがい) after going out.'
+      es: 'Para no resfriarse se hacen gárgaras (うがい) al volver.'
+    author: claude
+  - id: n3-voc-3-0003
+    stem: 'かれは　約束の　時間に　いつも　（　）　来る。'
+    choices:
+      - 'しっかり'
+      - 'はっきり'
+      - 'ぴったり'
+      - 'すっかり'
+    answer: 3
+    explanation:
+      en: 'ぴったり: exactly on time.'
+      es: 'ぴったり: justo a la hora.'
+    author: claude
+  - id: n3-voc-3-0004
+    stem: '会議の　時間が　（　）　されたので、予定を　変えた。'
+    choices:
+      - '交換'
+      - '変化'
+      - '交代'
+      - '変更'
+    answer: 4
+    explanation:
+      en: 'A schedule is changed: 変更 される.'
+      es: 'Un horario se cambia: 変更 される.'
+    author: claude
+  - id: n3-voc-3-0005
+    stem: 'この　仕事には　（　）が　必要なので、経験の　ある　人に　頼もう。'
+    choices:
+      - '手術'
+      - '技術'
+      - '美術'
+      - '芸術'
+    answer: 2
+    explanation:
+      en: 'A job that needs experience needs skill (技術).'
+      es: 'Un trabajo que pide experiencia pide técnica (技術).'
+    author: claude
+  - id: n3-voc-3-0006
+    stem: '山田さんは　いつも　（　）ので、みんなに　信頼されて　いる。'
+    choices:
+      - 'まじめな'
+      - 'いいかげんな'
+      - 'わがままな'
+      - 'ずるい'
+    answer: 1
+    explanation:
+      en: 'People trust someone serious and reliable (まじめ).'
+      es: 'Se confía en alguien serio y responsable (まじめ).'
+    author: claude
+  - id: n3-voc-3-0007
+    stem: '窓を　開けたら、冷たい　風が　（　）　入って　きた。'
+    choices:
+      - 'のんびり'
+      - 'にっこり'
+      - 'ぐっすり'
+      - 'さっと'
+    answer: 4
+    explanation:
+      en: 'さっと: quickly, all at once, like a gust.'
+      es: 'さっと: de golpe, como una ráfaga.'
+    author: claude
+  - id: n3-voc-3-0008
+    stem: '駅前に　新しい　ビルが　（　）。'
+    choices:
+      - '成功した'
+      - '実現した'
+      - '完成した'
+      - '完了した'
+    answer: 3
+    explanation:
+      en: 'A building is completed: 完成する. 完了 is for tasks.'
+      es: 'Un edificio se termina: 完成する. 完了 es para tareas.'
+    author: claude
+  - id: n3-voc-3-0009
+    stem: '荷物が　重かったので、駅員に　（　）　もらった。'
+    choices:
+      - '手配して'
+      - '手入れして'
+      - '手当てして'
+      - '手伝って'
+    answer: 4
+    explanation:
+      en: 'Someone helps you carry it: 手伝って もらう.'
+      es: 'Alguien te ayuda a llevarlo: 手伝って もらう.'
+    author: claude
+  - id: n3-voc-3-0010
+    stem: 'この　ドラマは　若い　人に　（　）が　ある。'
+    choices:
+      - '人間'
+      - '人口'
+      - '人気'
+      - '人生'
+    answer: 3
+    explanation:
+      en: '人気が ある: popular.'
+      es: '人気が ある: tener éxito, ser popular.'
+    author: claude
+  - id: n3-voc-3-0011
+    stem: 'かぜを　ひいて、のどが　（　）。'
+    choices:
+      - '重い'
+      - '痛い'
+      - '鋭い'
+      - '強い'
+    answer: 2
+    explanation:
+      en: 'A sore throat: のどが 痛い.'
+      es: 'Dolor de garganta: のどが 痛い.'
+    author: claude
+  - id: n3-voc-3-0012
+    stem: '時間が　ないので、要点だけ　（　）　話して　ください。'
+    choices:
+      - '簡単に'
+      - '熱心に'
+      - '自由に'
+      - '複雑に'
+    answer: 1
+    explanation:
+      en: 'Only the main points, so briefly (簡単に).'
+      es: 'Solo lo esencial, así que brevemente (簡単に).'
+    author: claude
+  - id: n3-voc-3-0013
+    stem: '台風の　（　）で　電車が　止まった。'
+    choices:
+      - '意見'
+      - '影響'
+      - '感動'
+      - '印象'
+    answer: 2
+    explanation:
+      en: "The typhoon's effect (影響) stopped the trains."
+      es: 'El efecto (影響) del tifón paró los trenes.'
+    author: claude
+  - id: n3-voc-3-0014
+    stem: '大切な　書類を　（　）　しまった。'
+    choices:
+      - 'うつして'
+      - 'ためして'
+      - 'なくして'
+      - 'なおして'
+    answer: 3
+    explanation:
+      en: 'You lost (なくす) an important document.'
+      es: 'Perdiste (なくす) un documento importante.'
+    author: claude
+  - id: n3-voc-3-0015
+    stem: 'この　レストランは　（　）が　必要です。前の　日までに　電話して　ください。'
+    choices:
+      - '予報'
+      - '予習'
+      - '予定'
+      - '予約'
+    answer: 4
+    explanation:
+      en: 'Calling ahead is for a reservation (予約).'
+      es: 'Llamar antes es para reservar (予約).'
+    author: claude
+  - id: n3-voc-3-0016
+    stem: '一日中　立って　いたので、足が　（　）。'
+    choices:
+      - '疲れた'
+      - '倒れた'
+      - '壊れた'
+      - '汚れた'
+    answer: 1
+    explanation:
+      en: 'Standing all day makes your legs tired (疲れる).'
+      es: 'Estar de pie todo el día cansa las piernas (疲れる).'
+    author: claude
+  - id: n3-voc-3-0017
+    stem: '人前で　話すのは　（　）　する。'
+    choices:
+      - 'ぺらぺら'
+      - 'ぴかぴか'
+      - 'ぐっすり'
+      - 'どきどき'
+    answer: 4
+    explanation:
+      en: 'どきどき: your heart pounds from nerves.'
+      es: 'どきどき: el corazón late de nervios.'
+    author: claude
+  - id: n3-voc-3-0018
+    stem: '電気代を　（　）　するために、エアコンを　あまり　使わない。'
+    choices:
+      - '予約'
+      - '計算'
+      - '節約'
+      - '貯金'
+    answer: 3
+    explanation:
+      en: 'Saving on the bill is 節約.'
+      es: 'Ahorrar en la factura es 節約.'
+    author: claude
+  - id: n3-voc-3-0019
+    stem: '彼女は　料理が　上手で、特に　ケーキ作りが　（　）だ。'
+    choices:
+      - '得意'
+      - '熱心'
+      - '有名'
+      - '苦手'
+    answer: 1
+    explanation:
+      en: '得意: something you are good at.'
+      es: '得意: algo que se te da bien.'
+    author: claude
+  - id: n3-voc-3-0020
+    stem: 'この　道は　夜に　なると　（　）　暗く　なる。'
+    choices:
+      - '別々に'
+      - '急に'
+      - '次々に'
+      - '互いに'
+    answer: 2
+    explanation:
+      en: '急に: suddenly.'
+      es: '急に: de repente.'
+    author: claude
+  - id: n3-voc-3-0021
+    stem: '電車の　中に　かさを　（　）　しまった。'
+    choices:
+      - '消えて'
+      - '落ちて'
+      - '離れて'
+      - '忘れて'
+    answer: 4
+    explanation:
+      en: 'You leave something behind: 忘れる.'
+      es: 'Dejarse algo olvidado: 忘れる.'
+    author: claude
+  - id: n3-voc-3-0022
+    stem: '朝から　何も　食べて　いないので、おなかが　（　）だ。'
+    choices:
+      - 'ぴかぴか'
+      - 'ばらばら'
+      - 'ぺこぺこ'
+      - 'ぺらぺら'
+    answer: 3
+    explanation:
+      en: 'おなかが ぺこぺこ: very hungry.'
+      es: 'おなかが ぺこぺこ: muerto de hambre.'
+    author: claude
+  - id: n3-voc-3-0023
+    stem: 'わからない　ことが　あれば、遠慮しないで　（　）　ください。'
+    choices:
+      - '質問して'
+      - '案内して'
+      - '注意して'
+      - '我慢して'
+    answer: 1
+    explanation:
+      en: 'If you do not understand, ask (質問する).'
+      es: 'Si no entiendes, pregunta (質問する).'
+    author: claude
+  - id: n3-voc-3-0024
+    stem: 'パーティーの　（　）は　一人　五千円です。'
+    choices:
+      - '交通費'
+      - '参加費'
+      - '医療費'
+      - '生活費'
+    answer: 2
+    explanation:
+      en: 'The fee to join a party is 参加費.'
+      es: 'La cuota para ir a una fiesta es 参加費.'
+    author: claude
+  - id: n3-voc-3-0025
+    stem: 'かれは　怒って、ドアを　（　）　閉めた。'
+    choices:
+      - 'ぽかぽかと'
+      - 'にこっと'
+      - 'ふわっと'
+      - 'ばたんと'
+    answer: 4
+    explanation:
+      en: 'ばたんと: a door slammed shut.'
+      es: 'ばたんと: un portazo.'
+    author: claude
+  - id: n3-voc-3-0026
+    stem: '電車が　遅れたが、会議には　（　）　間に合った。'
+    choices:
+      - 'ぼろぼろ'
+      - 'ぐらぐら'
+      - 'ぎりぎり'
+      - 'ぺこぺこ'
+    answer: 3
+    explanation:
+      en: 'ぎりぎり: just barely in time.'
+      es: 'ぎりぎり: por los pelos.'
+    author: claude
+  - id: n3-voc-3-0027
+    stem: 'この　町の　（　）は　毎年　減って　いる。'
+    choices:
+      - '人生'
+      - '人口'
+      - '人気'
+      - '人物'
+    answer: 2
+    explanation:
+      en: "A town's population is 人口."
+      es: 'La población de un pueblo es 人口.'
+    author: claude
+  - id: n3-voc-3-0028
+    stem: '駅で　さいふを　拾ったので、交番に　（　）。'
+    choices:
+      - '届けた'
+      - '届いた'
+      - '預かった'
+      - '送った'
+    answer: 1
+    explanation:
+      en: 'You take it to the police box: 交番に 届ける.'
+      es: 'Se lleva a la comisaría: 交番に 届ける.'
+    author: claude
+  - id: n3-voc-3-0029
+    stem: '新しい　仕事に　（　）まで、時間が　かかった。'
+    choices:
+      - '習う'
+      - '慣らす'
+      - '似る'
+      - '慣れる'
+    answer: 4
+    explanation:
+      en: '仕事に 慣れる: to get used to the job.'
+      es: '仕事に 慣れる: acostumbrarse al trabajo.'
+    author: claude
+  - id: n3-voc-3-0030
+    stem: '電話が　（　）ので、何を　言って　いるか　わからない。'
+    choices:
+      - '長い'
+      - '遠い'
+      - '低い'
+      - '深い'
+    answer: 2
+    explanation:
+      en: '電話が 遠い: you cannot hear the caller well.'
+      es: '電話が 遠い: no se oye bien a quien llama.'
+    author: claude
+  - id: n3-voc-3-0031
+    stem: '雨が　（　）　ふって　きた。'
+    choices:
+      - 'ごろごろ'
+      - 'ぶつぶつ'
+      - 'ぽつぽつ'
+      - 'ぱくぱく'
+    answer: 3
+    explanation:
+      en: 'ぽつぽつ: the first scattered drops.'
+      es: 'ぽつぽつ: las primeras gotas sueltas.'
+    author: claude
+  - id: n3-voc-3-0032
+    stem: 'ゆうべは　疲れて　いたので、（　）　眠った。'
+    choices:
+      - 'ぐっすり'
+      - 'うっかり'
+      - 'すっかり'
+      - 'しっかり'
+    answer: 1
+    explanation:
+      en: 'ぐっすり 眠る: to sleep soundly.'
+      es: 'ぐっすり 眠る: dormir profundamente.'
+    author: claude
+  - id: n3-voc-3-0033
+    stem: 'その　案には　みんなが　（　）した。'
+    choices:
+      - '完成'
+      - '賛成'
+      - '作成'
+      - '成功'
+    answer: 2
+    explanation:
+      en: 'Everyone agreed with the plan: 賛成する.'
+      es: 'Todos estuvieron de acuerdo con el plan: 賛成する.'
+    author: claude
