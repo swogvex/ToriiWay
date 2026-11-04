@@ -58,7 +58,7 @@ export function adminDenied(check: Exclude<AdminCheck, 'ok'>): Response {
       status: 401,
       headers: {
         ...ADMIN_HEADERS,
-        'WWW-Authenticate': 'Basic realm="Nihongo No Torii admin", charset="UTF-8"',
+        'WWW-Authenticate': 'Basic realm="ToriiWay admin", charset="UTF-8"',
       },
     });
   }

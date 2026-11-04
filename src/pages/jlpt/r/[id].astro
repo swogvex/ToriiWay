@@ -70,7 +70,7 @@ const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(localizePath(`/jlpt/r/${id}`, locale), site);
 const discord = (await getSiteCopy(locale)).social.discord;
 const imageUrl = new URL(`/api/og/jlpt/${id}.png`, site);
-const imageName = run ? `nihongo-no-torii-${run.level.toLowerCase()}-report.png` : '';
+const imageName = run ? `toriiway-${run.level.toLowerCase()}-report.png` : '';
 const levelLabel = (level: string) => (level === 'kana' ? t('jlpt.level.kana') : level);
 const next = run ? nextLevel(run.level) : null;
 const date = run ? new Date(run.finishedAt ?? run.createdAt).toISOString().slice(0, 10) : '';

@@ -10,7 +10,7 @@ const PAGEFIND = '**/pagefind/pagefind.js';
 // before the site has pages beyond the sections. `/` duplicates the Home section option.
 const FAKE_PAGEFIND = `
 const pages = [
-  { url: '/', excerpt: 'the <mark>torii</mark> gate', meta: { title: 'Nihongo No Torii' } },
+  { url: '/', excerpt: 'the <mark>torii</mark> gate', meta: { title: 'ToriiWay' } },
   { url: '/learn/hiragana/', excerpt: 'the <mark>hiragana</mark> chart &amp; strokes', meta: { title: 'Hiragana chart' } },
 ];
 export async function options() {}
