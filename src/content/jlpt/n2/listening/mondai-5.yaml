@@ -1,0 +1,201 @@
+# N2 · Listening · Mondai 5 — integrated comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: listening
+mondai: 5
+instruction:
+  en: 'Listen to the longer conversation and choose the best answer.'
+  ja: '長めの 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lis-5-0001
+    stem: '二人は　何を　プレゼントしますか。'
+    choices:
+      - '花'
+      - 'マッサージ機'
+      - '温泉旅行'
+      - '写真の　アルバム'
+    answer: 4
+    explanation:
+      en: 'Each idea is ruled out until the family photo album.'
+      es: 'Descartan cada idea hasta llegar al álbum de fotos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0001-d5038c450dc5.mp3'
+    tts:
+      script: "N: 夫婦が、おばあさんの　誕生日の　プレゼントに　ついて　話して　います。\nF: おばあちゃんの　誕生日、何に　しようか。花は　どう？\nM: 花は　毎年　あげてるからなあ。温泉旅行は？\nF: 最近　膝が　痛いって　言ってたから、遠くへ　行くのは　大変かも。マッサージ機は？\nM: 前に　買って　あげたのが　まだ　あるよ。それより、家族の　写真を　アルバムに　まとめたら　喜ぶんじゃないかな。\nF: いいね。孫たちの　写真も　入れよう。\nN: 二人は　何を　プレゼントしますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0002
+    stem: '交流会は　何を　する　ことに　なりましたか。'
+    choices:
+      - 'ボウリング'
+      - '料理教室'
+      - '食事会'
+      - 'バーベキュー'
+    answer: 2
+    explanation:
+      en: 'Cooking together beats eating out.'
+      es: 'Cocinar juntos gana a solo comer.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0002-c5ba5f93e3b9.mp3'
+    tts:
+      script: "N: 会社で、男の　人と　女の　人が　社員の　交流会に　ついて　話して　います。\nM: 交流会、今年は　どう　しましょうか。去年は　バーベキューでしたね。\nF: 来月は　雨の　日が　多いから、外は　避けた　ほうが　いいですね。ボウリングは？\nM: ボウリングは　苦手な　人も　いるし、話す　時間が　少ないんですよね。\nF: じゃあ、料理教室は　どうですか。みんなで　一緒に　作れば、自然に　話が　できますよ。\nM: 食事会だけより　盛り上がりそうですね。それに　しましょう。\nN: 交流会は　何を　する　ことに　なりましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0003
+    stem: '女の　人は　どの　部屋を　見に　行きますか。'
+    choices:
+      - '三つ目の　部屋'
+      - '二つ目の　部屋'
+      - '四つ目の　部屋'
+      - '一つ目の　部屋'
+    answer: 3
+    explanation:
+      en: 'She has a dog: only the fourth allows pets.'
+      es: 'Tiene perro: solo el cuarto admite mascotas.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0003-3f34fe5b9f7d.mp3'
+    tts:
+      script: "N: 不動産屋で、店の　人が　部屋を　紹介して　います。\nM: 一つ目は　駅から　三分、家賃は　十二万円です。二つ目は　駅から　じゅっぷんで　九万円、日当たりが　いいです。三つ目は　駅から　二十分ですが、広くて　八万円です。四つ目は　駅から　じゅっぷん、九万円で、ペットが　飼えます。\nF: 犬を　飼って　いるので、四つ目を　見せて　ください。\nN: 女の　人は　どの　部屋を　見に　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0004
+    stem: '男の　学生は　どの　授業を　取りますか。'
+    choices:
+      - '経済学入門'
+      - 'どちらも　取らない'
+      - '両方'
+      - '心理学'
+    answer: 1
+    explanation:
+      en: 'One hard exam beats weekly reports for him.'
+      es: 'Prefiere un examen difícil a informes semanales.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0004-c0e7fc5d7335.mp3'
+    tts:
+      script: "N: 大学で、男の　学生と　女の　学生が　授業に　ついて　話して　います。\nF: 来期、何の　授業　取る？\nM: 経済学入門か、心理学か、迷ってるんだ。\nF: 経済学入門は　試験が　難しいって　聞いたよ。心理学は　試験が　なくて、毎週　レポートが　あるみたい。\nM: 毎週は　きついな。アルバイトも　あるし。じゃあ、試験は　大変でも、一回で　済む　ほうに　するよ。\nN: 男の　学生は　どの　授業を　取りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0005
+    stem: '二人は　どの　店に　行きますか。'
+    choices:
+      - '和食の　店'
+      - 'イタリア料理の　店'
+      - '公園の　近くの　カフェ'
+      - '焼肉の　店'
+    answer: 3
+    explanation:
+      en: "With a child, the café with a kids' menu and space."
+      es: 'Con un niño, la cafetería con menú infantil y espacio.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0005-8b09a43e10a9.mp3'
+    tts:
+      script: "N: ラジオで、新しく　できた　店を　紹介して　います。それを　聞いて、夫婦が　話して　います。\nN: 一つ目は　駅前の　イタリア料理の　店。パスタが　人気で、予約が　ないと　はいれません。二つ目は　公園の　近くの　カフェ。子ども用の　メニューが　あり、広い　席で　ゆっくり　できます。三つ目は　和食の　店で、昼は　手ごろな　定食が　食べられます。四つ目は　焼肉の　店で、夜　遅くまで　開いて　います。\nM: 今度の　日曜、子どもと　一緒に　お昼　食べに　行かない？\nF: いいね。子どもが　いるなら、ゆっくり　できる　ところが　いいな。\nM: じゃあ、あそこに　しよう。\nN: 二人は　どの　店に　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0006
+    stem: '宣伝は　まず　なにで　おこなう　ことに　なりましたか。'
+    choices:
+      - 'ＳＮＳ'
+      - 'テレビの　コマーシャル'
+      - '駅の　ポスター'
+      - '新聞の　広告'
+    answer: 1
+    explanation:
+      en: 'They start with the no-cost option: social media.'
+      es: 'Empiezan por lo que no cuesta: las redes sociales.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0006-84578cb6f209.mp3'
+    tts:
+      script: "N: 会社で、新しい　商品の　宣伝の　方法に　ついて　話して　います。\nM: 新しい　お菓子の　宣伝、テレビの　コマーシャルは　どうですか。\nF: 費用が　かかりすぎますね。若い　人に　買って　ほしいなら、ＳＮＳの　ほうが　効果が　あると　思います。\nM: 駅に　大きな　ポスターを　出すのは？\nF: それも　いいですけど、まずは　お金を　かけずに　始められる　ほうからに　しましょう。\nN: 宣伝は　まず　なにで　おこなう　ことに　なりましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0007
+    stem: '二人は　どこへ　行く　ことに　しましたか。'
+    choices:
+      - '沖縄'
+      - 'どこにも　行かない'
+      - '近くの　温泉'
+      - '北海道'
+    answer: 4
+    explanation:
+      en: 'A bit pricier but no typhoon risk: Hokkaido.'
+      es: 'Algo más caro pero sin riesgo de tifón: Hokkaido.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0007-b8414f0b9e05.mp3'
+    tts:
+      script: "N: 夫婦が　旅行の　行き先に　ついて　話して　います。\nF: 夏休み、北海道と　沖縄、どっちに　する？\nM: 沖縄は　海が　きれいだけど、この　時期は　台風が　心配だな。\nF: 北海道は　涼しいけど、飛行機代が　高いのよね。\nM: 近くの　温泉は？\nF: 温泉は　冬に　行きたいな。やっぱり、台風で　行けなく　なるよりは、少し　高くても　確実な　ほうが　いいよ。\nM: そうだね。\nN: 二人は　どこへ　行く　ことに　しましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0008
+    stem: '打ち合わせは　いつに　なりましたか。'
+    choices:
+      - '月曜日の　午前'
+      - '水曜日の　午前'
+      - '火曜日'
+      - '月曜日の　午後'
+    answer: 2
+    explanation:
+      en: 'Monday and Tuesday fail; Wednesday morning works.'
+      es: 'El lunes y el martes no; el miércoles por la mañana sí.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0008-9594ba877ec0.mp3'
+    tts:
+      script: "N: 会社で、男の　人と　女の　人が　打ち合わせの　日に　ついて　話して　います。\nF: 打ち合わせ、来週の　月曜は　どうですか。\nM: 月曜は　午前中に　別の　会議が　入って　いて。午後なら　大丈夫です。\nF: 午後は　わたしが　外出なんです。火曜は　どうですか。\nM: 火曜は　いちにち　出張です。水曜の　午前は？\nF: 水曜の　午前、大丈夫です。じゃあ、そう　しましょう。\nN: 打ち合わせは　いつに　なりましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0009
+    stem: '女の　人は　どの　掃除機を　買いますか。'
+    choices:
+      - '一番'
+      - '三番'
+      - '二番'
+      - '四番'
+    answer: 3
+    explanation:
+      en: 'She cleans late at night, so the quiet model.'
+      es: 'Limpia de noche, así que el modelo silencioso.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0009-2003095c3f83.mp3'
+    tts:
+      script: "N: 電器店で、店の　人が　掃除機に　ついて　説明して　います。\nM: こちらの　四つが　人気です。一番は　軽くて　持ち運びが　楽ですが、音が　少し　大きめです。二番は　音が　静かで、夜でも　使えます。三番は　吸う　力が　一番　強いですが、重いです。四番は　自動で　掃除して　くれる　ロボットタイプです。\nF: マンションなので、夜　遅くに　掃除する　ことが　多いんです。近所に　迷惑を　かけたくないので、静かな　ものに　します。\nN: 女の　人は　どの　掃除機を　買いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0010
+    stem: 'サークルは　学園祭で　何を　する　ことに　なりましたか。'
+    choices:
+      - '焼きそばの　店'
+      - '飲み物の　店'
+      - '写真の　展示'
+      - '何も　しない'
+    answer: 2
+    explanation:
+      en: 'Easy to prepare and it earns money: drinks.'
+      es: 'Fácil de preparar y da dinero: bebidas.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0010-109fdfc4f597.mp3'
+    tts:
+      script: "N: 大学の　サークルで、学園祭で　何を　するかを　話して　います。\nM: 学園祭、去年と　同じ　焼きそばの　店で　いい？\nF: 焼きそばは　売れたけど、準備が　大変だったよね。今年は　人数も　少ないし。\nM: じゃあ、写真の　展示は？　準備は　楽だよ。\nF: 展示だと　お金が　入らないから、来年の　活動費が　足りなく　なるかも。\nM: 飲み物だけ　売る　店は？　準備も　楽だし、お金も　入る。\nF: それが　いいね。\nN: サークルは　学園祭で　何を　する　ことに　なりましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0011
+    stem: '二人は　何を　プレゼントする　ことに　しましたか。'
+    choices:
+      - 'メッセージを　集めた　本'
+      - '花束'
+      - 'ゴルフの　道具'
+      - 'ネクタイ'
+    answer: 1
+    explanation:
+      en: "A book of everyone's messages will be a keepsake."
+      es: 'Un libro con los mensajes de todos será un buen recuerdo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0011-a67c26dc4af3.mp3'
+    tts:
+      script: "N: 会社で、男の　人と　女の　人が、退職する　部長への　プレゼントに　ついて　話して　います。\nF: 部長への　プレゼント、何が　いいでしょうね。ネクタイとか？\nM: 退職したら、ネクタイは　あまり　使わないんじゃ　ないかな。\nF: そうですね。部長、ゴルフが　好きですよね。\nM: でも、道具は　こだわりが　あるから、選ぶのが　難しいよ。それより、みんなの　メッセージを　集めた　本は　どうかな。\nF: いいですね。思い出に　残ります。\nN: 二人は　何を　プレゼントする　ことに　しましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-5-0012
+    stem: '男の　人は　どの　プランに　しますか。'
+    choices:
+      - '三つ目'
+      - '一つ目'
+      - '二つ目'
+      - '四つ目'
+    answer: 4
+    explanation:
+      en: 'He can only go after nine: the evening plan.'
+      es: 'Solo puede ir después de las nueve: el plan de noche.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-5-0012-20fc76393096.mp3'
+    tts:
+      script: "N: スポーツクラブで、受付の　人が　会員の　プランに　ついて　説明して　います。\nF: 一つ目は、いつでも　使える　プランで、月　一万円です。二つ目は　平日の　昼間だけの　プランで、月　六千円です。三つ目は　土日だけの　プランで、月　七千円です。四つ目は　夜　八時以降だけの　プランで、月　五千円です。\nM: 仕事が　終わるのが　いつも　九時ごろなので、それから　行けるのが　一番　いいですね。安いし、それに　します。\nN: 男の　人は　どの　プランに　しますか。"
+      voices: ['narrator', 'man', 'woman']

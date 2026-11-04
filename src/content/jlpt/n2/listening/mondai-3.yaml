@@ -1,0 +1,249 @@
+# N2 · Listening · Mondai 3 — summary comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: listening
+mondai: 3
+instruction:
+  en: 'Listen to the whole talk and choose what it is mainly about.'
+  ja: '話全体を 聞いて、内容に 合う 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lis-3-0001
+    stem: '話して　いる　人は　何に　ついて　話して　いますか。'
+    choices:
+      - '朝ごはんを　食べる　ことの　大切さ'
+      - '昼ごはんの　選び方'
+      - '健康に　いい　飲み物'
+      - '朝早く　起きる　方法'
+    answer: 1
+    explanation:
+      en: 'The talk is about why breakfast matters.'
+      es: 'La charla trata de la importancia del desayuno.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0001-f29a2ef393d4.mp3'
+    tts:
+      script: "N: ラジオで　医者が　話して　います。\nM: 朝ごはんを　食べない　人が　増えて　いる　そうですが、朝ごはんには　体と　頭を　目覚めさせる　大切な　役割が　あります。食べないと、午前中に　集中力が　続かず、昼に　食べすぎて　しまう　原因にも　なります。忙しい　朝でも、バナナや　ヨーグルトなど、簡単な　もので　いいので、口に　入れるように　しましょう。\nN: 医者は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0002
+    stem: '先生は　何に　ついて　説明して　いますか。'
+    choices:
+      - '試験の　日程'
+      - 'レポートを　書く　ときの　注意'
+      - '教科書の　買い方'
+      - '授業を　休む　ときの　連絡'
+    answer: 2
+    explanation:
+      en: 'Conclusion, evidence and citing sources: report-writing tips.'
+      es: 'Conclusión, argumentos y fuentes: consejos para escribir informes.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0002-4337b53fbd37.mp3'
+    tts:
+      script: "N: 大学の　授業で　先生が　話して　います。\nF: レポートを　書く　ときは、まず　結論を　はっきりさせて　ください。その　うえで、なぜ　そう　考えるのか、根拠を　示す　ことが　大切です。また、本や　インターネットの　文章を　そのまま　使う　場合は、必ず　出典を　書いて　ください。\nN: 先生は　何に　ついて　説明して　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0003
+    stem: '店長が　いちばん　伝えたい　ことは　何ですか。'
+    choices:
+      - 'レジの　使い方'
+      - '商品の　場所を　全部　覚える　こと'
+      - '店を　きれいに　する　こと'
+      - 'お客様を　待たせない　こと'
+    answer: 4
+    explanation:
+      en: 'Never leave customers waiting in silence.'
+      es: 'No dejar nunca al cliente esperando en silencio.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0003-fbf9c5da91da.mp3'
+    tts:
+      script: "N: 店で　店長が　新しい　アルバイトに　話して　います。\nM: 仕事で　いちばん　大事なのは、お客様を　お待たせしない　ことです。商品の　場所が　わからなくても、まず　「少々　お待ちください」と　声を　かけて、ほかの　店員を　呼んで　ください。黙って　探して　いると、お客様は　不安に　なりますから。\nN: 店長が　いちばん　伝えたい　ことは　何ですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0004
+    stem: '話の　内容に　合うのは　どれですか。'
+    choices:
+      - '図書館の　本が　減って　いる'
+      - 'スマートフォンで　本が　借りられる'
+      - '図書館が　人の　集まる　場所に　なって　いる'
+      - '図書館が　閉館する'
+    answer: 3
+    explanation:
+      en: 'Events turned the library into a meeting place.'
+      es: 'Las actividades han convertido la biblioteca en un lugar de encuentro.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0004-b5d588a07c04.mp3'
+    tts:
+      script: "N: テレビで　女の　人が　話して　います。\nF: この　町の　図書館では、本を　貸すだけで　なく、子ども向けの　読み聞かせや、お年寄りの　ための　スマートフォン教室も　開いて　います。その　結果、これまで　図書館に　来なかった　人も　多く　訪れるように　なり、町の　人たちの　交流の　場に　なって　います。\nN: 話の　内容に　合うのは　どれですか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0005
+    stem: '話して　いる　人が　言いたい　ことは　何ですか。'
+    choices:
+      - '失敗は　人に　話さない　ほうが　いい'
+      - '失敗を　次に　生かす　ことが　大切だ'
+      - '失敗しないように　準備するべきだ'
+      - '失敗が　多い　人は　成功しない'
+    answer: 2
+    explanation:
+      en: 'What you learn from failure matters most.'
+      es: 'Lo importante es lo que se aprende del fracaso.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0005-3285acdf0e8e.mp3'
+    tts:
+      script: "N: 講演会で　男の　人が　話して　います。\nM: わたしは　これまで、たくさんの　失敗を　して　きました。でも、失敗した　あとに　何が　いけなかったかを　考える　ことで、次は　うまく　いくように　なりました。失敗　そのものより、そこから　何を　学ぶかが　大切なのです。\nN: 話して　いる　人が　言いたい　ことは　何ですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0006
+    stem: '男の　人は　何の　ために　電話しましたか。'
+    choices:
+      - '打ち合わせを　中止する　ため'
+      - 'ホテルを　予約する　ため'
+      - '打ち合わせの　時間を　変える　ため'
+      - '打ち合わせの　場所が　変わった　ことを　伝える　ため'
+    answer: 4
+    explanation:
+      en: 'Same time, new place.'
+      es: 'Misma hora, nuevo lugar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0006-03628bd887ae.mp3'
+    tts:
+      script: "N: 留守番電話の　メッセージを　聞いて　います。\nM: もしもし、田中です。あしたの　打ち合わせの　件ですが、会議室が　使えなく　なったので、駅前の　ホテルの　ロビーで　おこなう　ことに　なりました。時間は　予定どおり　十時です。よろしく　お願いします。\nN: 男の　人は　何の　ために　電話しましたか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0007
+    stem: '話して　いる　人は　何に　ついて　話して　いますか。'
+    choices:
+      - 'ジムに　通う　方法'
+      - '長く　運動する　大切さ'
+      - '短い　時間で　できる　運動の　よさ'
+      - '運動の　前に　食べる　もの'
+    answer: 3
+    explanation:
+      en: 'Even five minutes a day helps if you keep at it.'
+      es: 'Incluso cinco minutos al día ayudan si se mantienen.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0007-4ad2cb7c7fac.mp3'
+    tts:
+      script: "N: ラジオで　女の　人が　話して　います。\nF: 運動しなければと　思っても、忙しくて　時間が　取れない　人は　多いでしょう。でも、一回　五分の　体操でも、毎日　続ければ　体は　変わります。大切なのは　長い　時間では　なく、続ける　ことなんです。\nN: 話して　いる　人は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0008
+    stem: '話して　いる　人は　何を　伝えたいですか。'
+    choices:
+      - '新しい　ことに　挑戦し続けて　ほしい'
+      - '失敗しないように　して　ほしい'
+      - '会社を　早く　辞めないで　ほしい'
+      - '先生に　連絡して　ほしい'
+    answer: 1
+    explanation:
+      en: 'Keep trying new things.'
+      es: 'Seguir probando cosas nuevas.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0008-88c36457f0f8.mp3'
+    tts:
+      script: "N: 卒業式で　先生が　話して　います。\nM: 卒業　おめでとう。社会に　出ると、うまく　いかない　ことも　あるでしょう。でも、慣れた　ことだけを　続けるのでは　なく、新しい　ことに　挑戦する　気持ちを　忘れないで　ください。それが　皆さんを　成長させて　くれるはずです。\nN: 話して　いる　人は　何を　伝えたいですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0009
+    stem: '話の　内容に　合うのは　どれですか。'
+    choices:
+      - '高齢者の　事故が　増えて　いる'
+      - 'バスの　料金が　上がった'
+      - '運転免許を　返す　高齢者が　増えて　いる'
+      - '高齢者は　運転できなく　なった'
+    answer: 3
+    explanation:
+      en: 'More older people give up their licence; the city helps.'
+      es: 'Más personas mayores devuelven el carné; la ciudad les ayuda.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0009-815e38d5ef4d.mp3'
+    tts:
+      script: "N: ニュースで　女の　人が　話して　います。\nF: 運転に　不安を　感じて、自分から　運転免許を　返す　高齢者が　増えて　います。市では、免許を　返した　人に　バスの　料金を　割り引くなど、生活が　不便に　ならないよう　支援を　進めて　います。\nN: 話の　内容に　合うのは　どれですか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0010
+    stem: '社長は　何に　ついて　話して　いますか。'
+    choices:
+      - '給料の　上がり方'
+      - '会議の　時間の　変更'
+      - '休みの　日の　増やし方'
+      - '新しい　働き方の　制度'
+    answer: 4
+    explanation:
+      en: 'Flexible working hours start next month.'
+      es: 'El mes que viene empieza el horario flexible.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0010-be8a9de243ec.mp3'
+    tts:
+      script: "N: 会社で　社長が　話して　います。\nM: 来月から、勤務時間を　自分で　選べる　制度を　始めます。朝早く　来て　早く　帰る　人、遅く　来て　遅く　帰る　人、それぞれの　生活に　合わせて　働いて　ください。ただし、会議の　ある　時間には　必ず　いるように　して　ください。\nN: 社長は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0011
+    stem: '話して　いる　人が　いちばん　伝えたい　ことは　何ですか。'
+    choices:
+      - '料理は　失敗を　気に　せず　楽しめば　いい'
+      - '料理教室に　通うべきだ'
+      - '味の　濃い　料理は　よくない'
+      - '料理は　毎日　するべきだ'
+    answer: 1
+    explanation:
+      en: 'Do not fear mistakes; enjoy cooking.'
+      es: 'No temer los errores; disfrutar cocinando.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0011-a1d940b6afba.mp3'
+    tts:
+      script: "N: 料理番組で　女の　人が　話して　います。\nF: 料理が　苦手だと　いう　方は、失敗を　怖がりすぎて　いるのかも　しれません。少し　焦げても、味が　濃くても　大丈夫。何度も　作る　うちに、自然と　上手に　なります。まずは　楽しむ　ことが　一番です。\nN: 話して　いる　人が　いちばん　伝えたい　ことは　何ですか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0012
+    stem: '話の　内容に　合うのは　どれですか。'
+    choices:
+      - '燃える　ごみの　日が　増える'
+      - 'プラスチックの　ごみの　出し方が　変わる'
+      - 'ごみを　出す　時間が　変わる'
+      - 'ごみの　袋が　無料に　なる'
+    answer: 2
+    explanation:
+      en: 'Plastic now goes out separately on Wednesdays.'
+      es: 'El plástico se saca aparte los miércoles.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0012-1a29a60b4092.mp3'
+    tts:
+      script: "N: 市の　職員が　話して　います。\nM: 来年四月から、プラスチックの　ごみの　出し方が　変わります。これまでは　燃える　ごみと　一緒に　出して　いただいて　いましたが、今後は　プラスチックだけを　別の　袋に　入れて、毎週　水曜日に　出して　ください。\nN: 話の　内容に　合うのは　どれですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0013
+    stem: '話して　いる　人は　何に　ついて　説明して　いますか。'
+    choices:
+      - 'お寺を　見学する　ときの　注意'
+      - 'お土産の　買い方'
+      - 'お寺の　歴史'
+      - '庭の　手入れの　方法'
+    answer: 1
+    explanation:
+      en: 'Rules for visiting: no photos inside, keep quiet.'
+      es: 'Normas de visita: sin fotos dentro y en silencio.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0013-11c6ffb16d6c.mp3'
+    tts:
+      script: "N: お寺で　ガイドが　話して　います。\nF: これから　お寺の　中に　入ります。建物の　中では、写真を　撮らないように　お願いします。また、大きな　声で　話す　ことは　控えて　ください。庭では　写真を　撮っても　大丈夫です。\nN: 話して　いる　人は　何に　ついて　説明して　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-3-0014
+    stem: '話して　いる　人は　何を　伝えて　いますか。'
+    choices:
+      - '図書館が　工事で　閉まる　こと'
+      - '図書館の　本が　増える　こと'
+      - '試験の　日程が　変わる　こと'
+      - '図書館の　利用時間が　延びる　こと'
+    answer: 4
+    explanation:
+      en: 'During exams the library stays open until ten.'
+      es: 'En época de exámenes la biblioteca abre hasta las diez.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0014-bf4b4715c283.mp3'
+    tts:
+      script: "N: 大学で　職員が　話して　います。\nM: 来月から、試験の　期間中は　大学の　図書館を　夜　十時まで　開ける　ことに　しました。普段は　夜　八時までですが、試験の　前に　勉強する　場所が　ほしいと　いう　声が　多かった　ためです。\nN: 話して　いる　人は　何を　伝えて　いますか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-3-0015
+    stem: '話して　いる　人の　考えに　合うのは　どれですか。'
+    choices:
+      - '一日　一冊は　読むべきだ'
+      - '有名な　本を　読むべきだ'
+      - '本は　自分の　興味で　自由に　選べば　いい'
+      - '漫画は　読まない　ほうが　いい'
+    answer: 3
+    explanation:
+      en: 'Read whatever interests you; enjoying it matters most.'
+      es: 'Leer lo que interese; lo importante es disfrutar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-3-0015-b23ed73404e1.mp3'
+    tts:
+      script: "N: 講演会で　女の　人が　話して　います。\nF: 「どんな　本を　読めば　いいですか」と　よく　聞かれます。でも、決まった　答えは　ありません。有名な　本で　なくても、漫画でも、自分が　面白いと　思う　ものを　読めば　いいのです。読む　楽しさを　知る　ことが、なにより　大切だと　思います。\nN: 話して　いる　人の　考えに　合うのは　どれですか。"
+      voices: ['narrator', 'woman']

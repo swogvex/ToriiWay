@@ -1,0 +1,549 @@
+# N2 · Listening · Mondai 4 — quick response
+# Original questions written for ToriiWay.
+level: N2
+section: listening
+mondai: 4
+instruction:
+  en: 'Listen to the sentence and the three replies. Choose the best reply.'
+  ja: '文を 聞いて、１から３の 中から、最も よい 返事を えらんで ください。'
+questions:
+  - id: n2-lis-4-0001
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、目に　入れて　おきます'
+      - '承知しました。夕方までに　見て　おきます'
+      - 'いえ、通して　いただきました'
+    answer: 2
+    explanation:
+      en: '目を 通す: look through. She agrees politely.'
+      es: '目を 通す: revisar. Ella acepta con cortesía.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0001-bfdaa18e3fd8.mp3'
+    tts:
+      script: "M: この　書類、今日中に　目を　通して　いただけますか。\nF: 1　はい、目に　入れて　おきます\nF: 2　承知しました。夕方までに　見て　おきます\nF: 3　いえ、通して　いただきました"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0002
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、留守番して　おくね'
+      - 'せっかくだから、また　来てね'
+      - 'ううん、急に　来た　僕が　悪いんだよ'
+    answer: 3
+    explanation:
+      en: 'He reassures her: it was his fault for dropping by.'
+      es: 'Él la tranquiliza: fue culpa suya pasar sin avisar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0002-3f13741070eb.mp3'
+    tts:
+      script: "F: せっかく　来て　もらったのに、留守に　してて　ごめんね。\nM: 1　うん、留守番して　おくね\nM: 2　せっかくだから、また　来てね\nM: 3　ううん、急に　来た　僕が　悪いんだよ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0003
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ええ、お疲れさま'
+      - 'ええ、お先に　どうぞ　召し上がって'
+      - 'いえ、失礼しました'
+    answer: 1
+    explanation:
+      en: 'Permission to leave first: お疲れさま.'
+      es: 'Permiso para irse antes: お疲れさま.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0003-9a5f02b30f14.mp3'
+    tts:
+      script: "M: お先に　失礼しても　よろしいでしょうか。\nF: 1　ええ、お疲れさま\nF: 2　ええ、お先に　どうぞ　召し上がって\nF: 3　いえ、失礼しました"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0004
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'そうだね、いつも　遅いね'
+      - 'うん、今日だけ　早く　来たよ'
+      - 'ほんと、いつもは　一番に　来るのにね'
+    answer: 3
+    explanation:
+      en: '今日に 限って: today of all days, unusually.'
+      es: '今日に 限って: justo hoy, cosa rara.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0004-6ff5f07febdb.mp3'
+    tts:
+      script: "F: 山田さん、今日に　限って　遅いね。\nM: 1　そうだね、いつも　遅いね\nM: 2　うん、今日だけ　早く　来たよ\nM: 3　ほんと、いつもは　一番に　来るのにね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0005
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ごめん、なかなか　言い出せなくて'
+      - 'じゃあ、もっと　遅く　言うね'
+      - 'うん、早く　言ったよね'
+    answer: 1
+    explanation:
+      en: 'A complaint; she apologises.'
+      es: 'Una queja; ella se disculpa.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0005-41c166d63a5f.mp3'
+    tts:
+      script: "M: もう　少し　早く　言って　くれれば　よかったのに。\nF: 1　ごめん、なかなか　言い出せなくて\nF: 2　じゃあ、もっと　遅く　言うね\nF: 3　うん、早く　言ったよね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0006
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'へえ、すごく　おいしかったんだね'
+      - 'そうなんだ。評判ほどじゃ　なかったんだね'
+      - 'じゃあ、また　行こうよ'
+    answer: 2
+    explanation:
+      en: 'たいした ことない: not that good.'
+      es: 'たいした ことない: no era para tanto.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0006-8127d924cefc.mp3'
+    tts:
+      script: "F: あの　店、行って　みたら　たいした　ことなかったよ。\nM: 1　へえ、すごく　おいしかったんだね\nM: 2　そうなんだ。評判ほどじゃ　なかったんだね\nM: 3　じゃあ、また　行こうよ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0007
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、任せて　いただきました'
+      - 'いえ、わたしが　お任せします'
+      - 'はい、精一杯　やらせて　いただきます'
+    answer: 3
+    explanation:
+      en: 'Accepting responsibility humbly.'
+      es: 'Aceptar una responsabilidad con humildad.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0007-16c0703d1a6a.mp3'
+    tts:
+      script: "M: この　プロジェクト、君に　任せても　いいかな。\nF: 1　はい、任せて　いただきました\nF: 2　いえ、わたしが　お任せします\nF: 3　はい、精一杯　やらせて　いただきます"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0008
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、バスで　行こうかな'
+      - 'うん、すぐ　着いたね'
+      - '歩くのは　かからないよ'
+    answer: 1
+    explanation:
+      en: 'It is a long walk, so he takes the bus.'
+      es: 'Es un paseo largo, así que irá en autobús.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0008-06ce499fd04d.mp3'
+    tts:
+      script: "F: 駅まで　歩くと　けっこう　かかるよ。\nM: 1　じゃあ、バスで　行こうかな\nM: 2　うん、すぐ　着いたね\nM: 3　歩くのは　かからないよ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0009
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いえ、置いて　おきます'
+      - 'はい、机の　上に　置いて　あります'
+      - 'はい、コピーして　ください'
+    answer: 2
+    explanation:
+      en: 'Yes, they are ready on the desk.'
+      es: 'Sí, están listos sobre la mesa.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0009-b32b19e40654.mp3'
+    tts:
+      script: "M: 会議の　資料、もう　コピーして　ありますか。\nF: 1　いえ、置いて　おきます\nF: 2　はい、机の　上に　置いて　あります\nF: 3　はい、コピーして　ください"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0010
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、座って　います'
+      - 'ええ、あきました'
+      - 'あ、すみません。連れが　来るんです'
+    answer: 3
+    explanation:
+      en: 'The seat is taken by someone coming.'
+      es: 'El asiento es para alguien que viene.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0010-a65ce56e357b.mp3'
+    tts:
+      script: "F: すみません、ここ、あいて　いますか。\nM: 1　はい、座って　います\nM: 2　ええ、あきました\nM: 3　あ、すみません。連れが　来るんです"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0011
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、似合って　ないよね'
+      - 'ありがとう。思い切って　短く　して　みたの'
+      - 'ありがとう。切って　もらおうかな'
+    answer: 2
+    explanation:
+      en: 'Thanks for a compliment.'
+      es: 'Agradecer un cumplido.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0011-dcb6353a3589.mp3'
+    tts:
+      script: "M: あれ、髪　切った？　似合うね。\nF: 1　うん、似合って　ないよね\nF: 2　ありがとう。思い切って　短く　して　みたの\nF: 3　ありがとう。切って　もらおうかな"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0012
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、念のため　伝えて　おこう'
+      - 'うん、もう　報告されたよ'
+      - 'いや、部長が　報告するよ'
+    answer: 1
+    explanation:
+      en: 'Agreeing to report just in case.'
+      es: 'Acordar informar por si acaso.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0012-332a0d4a85c4.mp3'
+    tts:
+      script: "F: この　件、部長に　報告して　おいた　ほうが　いいかな。\nM: 1　うん、念のため　伝えて　おこう\nM: 2　うん、もう　報告されたよ\nM: 3　いや、部長が　報告するよ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0013
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'え、残念。何か　あったの？'
+      - 'よかった、楽しんで　きてね'
+      - 'うん、行けると　いいね'
+    answer: 1
+    explanation:
+      en: 'Sympathy and a question.'
+      es: 'Lamentarlo y preguntar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0013-7c86f22363d3.mp3'
+    tts:
+      script: "M: 今度の　旅行、行けなく　なっちゃった。\nF: 1　え、残念。何か　あったの？\nF: 2　よかった、楽しんで　きてね\nF: 3　うん、行けると　いいね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0014
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '動いて　よかったですね'
+      - 'はい、見せて　あげます'
+      - 'いいですよ。どれどれ'
+    answer: 3
+    explanation:
+      en: 'He agrees to take a look.'
+      es: 'Él acepta echarle un vistazo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0014-6c8d717d15ed.mp3'
+    tts:
+      script: "F: この　パソコン、ちょっと　見て　もらえませんか。急に　動かなく　なって。\nM: 1　動いて　よかったですね\nM: 2　はい、見せて　あげます\nM: 3　いいですよ。どれどれ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0015
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '社長に　見えますか'
+      - 'すぐ　会議室に　ご案内して'
+      - 'では、お見せしましょう'
+    answer: 2
+    explanation:
+      en: 'お見えに なる: has arrived (respectful).'
+      es: 'お見えに なる: ha llegado (respetuoso).'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0015-e01b78db9aa7.mp3'
+    tts:
+      script: "M: 社長が　お見えに　なりました。\nF: 1　社長に　見えますか\nF: 2　すぐ　会議室に　ご案内して\nF: 3　では、お見せしましょう"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0016
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、大差で　勝ったね'
+      - 'うん、あと　一点だったのに'
+      - '惜しくないよ、負けたから'
+    answer: 2
+    explanation:
+      en: '惜しい: so close.'
+      es: '惜しい: por poco.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0016-0ff312428ad5.mp3'
+    tts:
+      script: "F: きのうの　試合、惜しかったね。\nM: 1　うん、大差で　勝ったね\nM: 2　うん、あと　一点だったのに\nM: 3　惜しくないよ、負けたから"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0017
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'わざとでは　ありません'
+      - 'ええ、とても　忙しかったです'
+      - 'いえいえ、こちらこそ'
+    answer: 3
+    explanation:
+      en: 'A polite exchange of thanks.'
+      es: 'Un intercambio cortés de agradecimientos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0017-4d935d825d68.mp3'
+    tts:
+      script: "M: お忙しい　ところ、わざわざ　ありがとうございます。\nF: 1　わざとでは　ありません\nF: 2　ええ、とても　忙しかったです\nF: 3　いえいえ、こちらこそ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0018
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'どうぞ、遠慮しないで'
+      - 'いや、もう　食べても　いいよ'
+      - 'うん、食べて　あげる'
+    answer: 1
+    explanation:
+      en: 'Giving permission.'
+      es: 'Dar permiso.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0018-a3f5d66857df.mp3'
+    tts:
+      script: "F: ねえ、この　お菓子、食べても　いい？\nM: 1　どうぞ、遠慮しないで\nM: 2　いや、もう　食べても　いいよ\nM: 3　うん、食べて　あげる"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0019
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ううん、もっと　練ったよ'
+      - 'うん、練習しよう'
+      - 'そうだね、もう　一度　見直そう'
+    answer: 3
+    explanation:
+      en: '練る: refine; she agrees to revise.'
+      es: '練る: pulir; ella acepta revisarlo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0019-534bccd59a8f.mp3'
+    tts:
+      script: "M: この　企画、もう　少し　練った　ほうが　よくない？\nF: 1　ううん、もっと　練ったよ\nF: 2　うん、練習しよう\nF: 3　そうだね、もう　一度　見直そう"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0020
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いえ、申し上げません'
+      - 'あ、すみません。もう　少し　ゆっくり　言いますね'
+      - 'はい、おっしゃいます'
+    answer: 2
+    explanation:
+      en: 'He repeats more slowly.'
+      es: 'Él lo repite más despacio.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0020-bf1cb3b6c7a6.mp3'
+    tts:
+      script: "F: すみません、もう　一度　おっしゃって　いただけますか。\nM: 1　いえ、申し上げません\nM: 2　あ、すみません。もう　少し　ゆっくり　言いますね\nM: 3　はい、おっしゃいます"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0021
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'そうだね、タクシーで　帰ろうか'
+      - 'そうだね、晴れて　よかった'
+      - 'うん、もう　やんだね'
+    answer: 1
+    explanation:
+      en: 'It will not stop: take a taxi.'
+      es: 'No va a parar: mejor un taxi.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0021-2cb6c7775209.mp3'
+    tts:
+      script: "M: 雨、やみそうに　ないね。\nF: 1　そうだね、タクシーで　帰ろうか\nF: 2　そうだね、晴れて　よかった\nF: 3　うん、もう　やんだね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0022
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'お昼は　一緒だったよ'
+      - 'うん、きのう　行ったよ'
+      - 'いいね。どこに　行く？'
+    answer: 3
+    explanation:
+      en: 'Accepting an invitation.'
+      es: 'Aceptar una invitación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0022-ac0885c430ae.mp3'
+    tts:
+      script: "F: あしたの　お昼、一緒に　どう？\nM: 1　お昼は　一緒だったよ\nM: 2　うん、きのう　行ったよ\nM: 3　いいね。どこに　行く？"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0023
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'あ、そこの　机の　上に　お願いします'
+      - '運んで　いただきました'
+      - 'はい、お運びに　なります'
+    answer: 1
+    explanation:
+      en: 'She tells him where to put it.'
+      es: 'Ella le indica dónde dejarlo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0023-5b2b8ec73e3a.mp3'
+    tts:
+      script: "M: この　荷物、どちらに　お運びしましょうか。\nF: 1　あ、そこの　机の　上に　お願いします\nF: 2　運んで　いただきました\nF: 3　はい、お運びに　なります"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0024
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、けんか　しようか'
+      - 'え、本当？　仲が　よかったのに'
+      - 'うん、とても　仲が　いいね'
+    answer: 2
+    explanation:
+      en: 'Surprise at the news.'
+      es: 'Sorpresa ante la noticia.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0024-571034e005f0.mp3'
+    tts:
+      script: "F: あの　二人、最近　けんかばかり　してるらしいよ。\nM: 1　じゃあ、けんか　しようか\nM: 2　え、本当？　仲が　よかったのに\nM: 3　うん、とても　仲が　いいね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0025
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いえ、送って　いただきました'
+      - 'ありがとうございます。助かります'
+      - 'はい、お送りに　なります'
+    answer: 2
+    explanation:
+      en: 'Accepting a kind offer.'
+      es: 'Aceptar un ofrecimiento amable.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0025-5b6da03372a2.mp3'
+    tts:
+      script: "M: もし　よろしければ、駅まで　お送りしましょうか。\nF: 1　いえ、送って　いただきました\nF: 2　ありがとうございます。助かります\nF: 3　はい、お送りに　なります"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0026
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '元気が　なくて　心配だね'
+      - 'うん、具合が　悪そうだね'
+      - 'うん、何か　いい　ことが　あったのかな'
+    answer: 3
+    explanation:
+      en: 'やけに: unusually.'
+      es: 'やけに: inusualmente.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0026-d4e067f2b3f6.mp3'
+    tts:
+      script: "F: 田中さん、今日は　やけに　元気だね。\nM: 1　元気が　なくて　心配だね\nM: 2　うん、具合が　悪そうだね\nM: 3　うん、何か　いい　ことが　あったのかな"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0027
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、締め切りを　延ばして　もらえないか　聞いて　みる'
+      - 'うん、もう　終わったよ'
+      - '無理なく　終わって　よかった'
+    answer: 1
+    explanation:
+      en: 'Not possible by tomorrow: ask for more time.'
+      es: 'Imposible para mañana: pedir más plazo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0027-65bd828de346.mp3'
+    tts:
+      script: "M: この　仕事、あしたまでに　終わらせるのは　無理が　あるよ。\nF: 1　じゃあ、締め切りを　延ばして　もらえないか　聞いて　みる\nF: 2　うん、もう　終わったよ\nF: 3　無理なく　終わって　よかった"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0028
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、借りても　いい？'
+      - 'はい、参考に　貸しました'
+      - 'それは　よかった。いつでも　言ってね'
+    answer: 3
+    explanation:
+      en: 'Glad it helped.'
+      es: 'Se alegra de que le sirviera.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0028-6c2258fa091a.mp3'
+    tts:
+      script: "F: 先週　お借りした　本、とても　参考に　なりました。\nM: 1　じゃあ、借りても　いい？\nM: 2　はい、参考に　貸しました\nM: 3　それは　よかった。いつでも　言ってね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0029
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'お会計に　なりました'
+      - 'はい、ご一緒で　よろしいですか'
+      - 'はい、いらっしゃいませ'
+    answer: 2
+    explanation:
+      en: 'The waiter asks if they pay together.'
+      es: 'Preguntan si pagan juntos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0029-df0aa26412df.mp3'
+    tts:
+      script: "M: すみません、お会計を　お願いします。\nF: 1　お会計に　なりました\nF: 2　はい、ご一緒で　よろしいですか\nF: 3　はい、いらっしゃいませ"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0030
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '南向きだから、すごく　明るいよ'
+      - 'うん、日曜日に　行くよ'
+      - '日に　当たって　暑かった'
+    answer: 1
+    explanation:
+      en: '日当たり: sunlight in a room.'
+      es: '日当たり: la luz que recibe una habitación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0030-f86f9db033da.mp3'
+    tts:
+      script: "F: 新しい　部屋、日当たりは　どう？\nM: 1　南向きだから、すごく　明るいよ\nM: 2　うん、日曜日に　行くよ\nM: 3　日に　当たって　暑かった"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0031
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '家に　置いて　くれば　いいよ'
+      - 'じゃあ、今日は　わたしが　払って　おくよ'
+      - 'よかった、持って　きたんだね'
+    answer: 2
+    explanation:
+      en: 'She offers to pay.'
+      es: 'Ella se ofrece a pagar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0031-6086ee7c2cef.mp3'
+    tts:
+      script: "M: あ、財布を　家に　置いて　きちゃった。\nF: 1　家に　置いて　くれば　いいよ\nF: 2　じゃあ、今日は　わたしが　払って　おくよ\nF: 3　よかった、持って　きたんだね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0032
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、あと　五部　コピーして　きます'
+      - '足りて　よかったです'
+      - '部数を　減らしましょう'
+    answer: 1
+    explanation:
+      en: 'Make more copies.'
+      es: 'Hacer más copias.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0032-fa8b453dd182.mp3'
+    tts:
+      script: "F: この　資料、部数が　足りないみたいです。\nM: 1　じゃあ、あと　五部　コピーして　きます\nM: 2　足りて　よかったです\nM: 3　部数を　減らしましょう"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0033
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、長引いて　大変だったね'
+      - 'じゃあ、早く　始めよう'
+      - 'うん、みんなの　準備が　よかったからね'
+    answer: 3
+    explanation:
+      en: 'It ended early thanks to preparation.'
+      es: 'Terminó pronto gracias a la preparación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0033-5d40552010e1.mp3'
+    tts:
+      script: "M: 今日の　会議、思ったより　早く　終わったね。\nF: 1　うん、長引いて　大変だったね\nF: 2　じゃあ、早く　始めよう\nF: 3　うん、みんなの　準備が　よかったからね"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0034
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ありがとうございます。いただきます'
+      - 'どうぞ　召し上がって　ください'
+      - '合わなくて　残念です'
+    answer: 1
+    explanation:
+      en: 'Accepting food humbly offered.'
+      es: 'Aceptar comida ofrecida con modestia.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0034-888c0c751a89.mp3'
+    tts:
+      script: "F: お口に　合うか　どうか　わかりませんが、どうぞ。\nM: 1　ありがとうございます。いただきます\nM: 2　どうぞ　召し上がって　ください\nM: 3　合わなくて　残念です"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0035
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'じゃあ、早く　起きよう'
+      - 'よく　眠れて　よかったね'
+      - '大丈夫？　一度　病院に　行って　みたら？'
+    answer: 3
+    explanation:
+      en: 'Concern and advice.'
+      es: 'Preocupación y consejo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0035-5a6d30f3f3f0.mp3'
+    tts:
+      script: "M: 最近、全然　眠れなくて。\nF: 1　じゃあ、早く　起きよう\nF: 2　よく　眠れて　よかったね\nF: 3　大丈夫？　一度　病院に　行って　みたら？"
+      voices: ['man', 'woman']
+  - id: n2-lis-4-0036
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、濃すぎるね'
+      - 'そう？　じゃあ、塩を　少し　足そうか'
+      - '薄くて　よかったね'
+    answer: 2
+    explanation:
+      en: 'Too bland: add salt.'
+      es: 'Está soso: añadir sal.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n2-lis-4-0036-df6164fefee8.mp3'
+    tts:
+      script: "F: この　スープ、ちょっと　味が　薄くない？\nM: 1　うん、濃すぎるね\nM: 2　そう？　じゃあ、塩を　少し　足そうか\nM: 3　薄くて　よかったね"
+      voices: ['man', 'woman']
