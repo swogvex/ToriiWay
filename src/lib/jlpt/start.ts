@@ -152,6 +152,19 @@ export function initStart(root: HTMLElement): void {
   const note = root.querySelector<HTMLElement>('[data-audio-note]');
   const help = root.querySelector<HTMLElement>('[data-voice-help-link]');
   audio?.addEventListener('click', async () => {
+    // The pre-generated clip plays in any browser; the voice is only the fallback.
+    const file = audio.dataset.src ? new Audio(audio.dataset.src) : null;
+    if (
+      file &&
+      (await file.play().then(
+        () => true,
+        () => false,
+      ))
+    ) {
+      if (help) help.hidden = true;
+      if (note) note.textContent = '';
+      return;
+    }
     const voice = 'speechSynthesis' in window ? pickJapaneseVoice(await loadVoices()) : undefined;
     if (help) help.hidden = Boolean(voice);
     if (!voice) {

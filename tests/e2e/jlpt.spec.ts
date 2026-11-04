@@ -61,8 +61,45 @@ test.describe('JLPT start page', () => {
     await expect(page.getByText(/Kana is a site-only level/)).toBeVisible();
   });
 
+  test('Test audio plays the pre-generated clip even without a Japanese voice', async ({
+    page,
+  }) => {
+    // 0.1 s of silence as a WAV file stands in for the clip on Blob.
+    const samples = 2205;
+    const wav = Buffer.alloc(44 + samples * 2);
+    wav.write('RIFF', 0);
+    wav.writeUInt32LE(36 + samples * 2, 4);
+    wav.write('WAVEfmt ', 8);
+    wav.writeUInt32LE(16, 16);
+    wav.writeUInt16LE(1, 20);
+    wav.writeUInt16LE(1, 22);
+    wav.writeUInt32LE(22050, 24);
+    wav.writeUInt32LE(44100, 28);
+    wav.writeUInt16LE(2, 32);
+    wav.writeUInt16LE(16, 34);
+    wav.write('data', 36);
+    wav.writeUInt32LE(samples * 2, 40);
+    await page.route('**/test-clip.wav', (route) =>
+      route.fulfill({ body: wav, contentType: 'audio/wav' }),
+    );
+    await page.addInitScript(() => {
+      const play = HTMLMediaElement.prototype.play;
+      HTMLMediaElement.prototype.play = function () {
+        return play.call(this).then(() => document.documentElement.setAttribute('data-played', ''));
+      };
+    });
+    await page.goto('/jlpt');
+    await page.locator('[data-test-audio]').evaluate((button: HTMLElement) => {
+      button.dataset.src = '/test-clip.wav';
+    });
+    await page.getByRole('button', { name: 'Test audio' }).click();
+    await expect(page.locator('html[data-played]')).toHaveCount(1);
+    await expect(page.getByText(/This browser has no Japanese voice/)).toBeHidden();
+  });
+
   test('without a Japanese voice, Test audio explains how to add one', async ({ page }) => {
-    // Headless Chromium has no Japanese voice.
+    // Headless Chromium has no Japanese voice, and here the clip on Blob fails too.
+    await page.route('**/*.public.blob.vercel-storage.com/**', (route) => route.abort());
     await page.goto('/jlpt');
     await page.getByRole('button', { name: 'Test audio' }).click();
     await expect(page.getByText(/This browser has no Japanese voice/)).toBeVisible();
