@@ -266,16 +266,18 @@ const messages = {
     gap: var(--space-6);
   }
 
-  /* Four large tabs across the column, as in artboard 11. */
+  /* One tab per level across the column (artboard 11): same width, narrower cells. */
   .start :global(.start__levels .segmented__track) {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     inline-size: 100%;
   }
 
   .start :global(.start__levels .segmented__label) {
     min-block-size: 52px;
-    font-size: var(--text-md);
+    padding-inline: var(--space-1);
+    /* Six cells must fit "Kana" on a 320 px phone. */
+    font-size: clamp(var(--text-sm), 4.2vw, var(--text-md));
     font-weight: 700;
   }
 
@@ -492,7 +494,9 @@ const messages = {
   .start:has(:global(input[name='level'][value='kana']:checked)) [data-for='kana'],
   .start:has(:global(input[name='level'][value='N5']:checked)) [data-for='N5'],
   .start:has(:global(input[name='level'][value='N4']:checked)) [data-for='N4'],
-  .start:has(:global(input[name='level'][value='N3']:checked)) [data-for='N3'] {
+  .start:has(:global(input[name='level'][value='N3']:checked)) [data-for='N3'],
+  .start:has(:global(input[name='level'][value='N2']:checked)) [data-for='N2'],
+  .start:has(:global(input[name='level'][value='N1']:checked)) [data-for='N1'] {
     display: revert;
   }
 

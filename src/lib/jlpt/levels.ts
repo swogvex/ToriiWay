@@ -1,6 +1,7 @@
 // JLPT simulation structure. Adding a level is configuration here plus a question bank.
 // N5/N4 counts: jlpt.jp notice of 2020-09-10 (revised from the December 2020 test).
-// N3 counts: official guidebook "Composition of test items" (unchanged since 2010).
+// N3, N2 and N1 counts: official guidebook 問題の構成 (guidebook_s_j.pdf, p. 7); section times
+// from jlpt.jp/e/guideline/testsections.html (N1 listening 55 min since December 2022).
 // Kana is a site-only level; its structure and pass rule are our own.
 
 import type {
@@ -21,6 +22,7 @@ export const SECTION_CODE: Readonly<Record<SectionId, string>> = {
   dictation: 'dict',
   vocabulary: 'voc',
   'grammar-reading': 'grm',
+  'language-reading': 'lr',
   listening: 'lis',
 };
 
@@ -269,9 +271,94 @@ const N3: LevelConfig = {
   replays: 1,
 };
 
-export const JLPT_LEVELS: readonly JlptLevel[] = ['kana', 'N5', 'N4', 'N3'];
+// N2 and N1: one language knowledge · reading section, then listening. Reading passages:
+// mid-size texts carry 3 questions, the long and integrated texts carry them all.
+const N2: LevelConfig = {
+  ...N3,
+  id: 'N2',
+  code: 'n2',
+  sections: [
+    {
+      id: 'language-reading',
+      ja: '言語知識（文字・語彙・文法）・読解',
+      minutes: 105,
+      mondai: [
+        mondai(1, 'kanji-reading', '漢字読み', 5, 'vocabulary'),
+        mondai(2, 'orthography', '表記', 5, 'vocabulary'),
+        mondai(3, 'word-formation', '語形成', 5, 'vocabulary'),
+        mondai(4, 'contextual', '文脈規定', 7, 'vocabulary'),
+        mondai(5, 'paraphrase', '言い換え類義', 5, 'vocabulary'),
+        mondai(6, 'usage', '用法', 5, 'vocabulary'),
+        mondai(7, 'grammar-form', '文法形式の判断', 12, 'grammar'),
+        mondai(8, 'sentence-composition', '文の組み立て', 5, 'grammar'),
+        mondai(9, 'text-grammar', '文章の文法', 5, 'grammar', passage(5)),
+        mondai(10, 'short-passage', '内容理解（短文）', 5, 'reading', passage(1)),
+        mondai(11, 'mid-passage', '内容理解（中文）', 9, 'reading', passage(3)),
+        mondai(12, 'integrated', '統合理解', 2, 'reading', passage(2)),
+        mondai(13, 'thematic', '主張理解（長文）', 3, 'reading', passage(3)),
+        mondai(14, 'information-retrieval', '情報検索', 2, 'reading', passage(2)),
+      ],
+    },
+    {
+      id: 'listening',
+      ja: '聴解',
+      minutes: 50,
+      mondai: [
+        mondai(1, 'task', '課題理解', 5, 'listening', listen()),
+        mondai(2, 'point', 'ポイント理解', 6, 'listening', listen()),
+        mondai(3, 'summary', '概要理解', 5, 'listening', listen()),
+        mondai(4, 'quick-response', '即時応答', 12, 'listening', listen(3)),
+        mondai(5, 'listening-integrated', '統合理解', 4, 'listening', listen()),
+      ],
+    },
+  ],
+  passMark: 90,
+};
 
-export const LEVELS: Readonly<Record<JlptLevel, LevelConfig>> = { kana: KANA, N5, N4, N3 };
+const N1: LevelConfig = {
+  ...N3,
+  id: 'N1',
+  code: 'n1',
+  sections: [
+    {
+      id: 'language-reading',
+      ja: '言語知識（文字・語彙・文法）・読解',
+      minutes: 110,
+      mondai: [
+        mondai(1, 'kanji-reading', '漢字読み', 6, 'vocabulary'),
+        mondai(2, 'contextual', '文脈規定', 7, 'vocabulary'),
+        mondai(3, 'paraphrase', '言い換え類義', 6, 'vocabulary'),
+        mondai(4, 'usage', '用法', 6, 'vocabulary'),
+        mondai(5, 'grammar-form', '文法形式の判断', 10, 'grammar'),
+        mondai(6, 'sentence-composition', '文の組み立て', 5, 'grammar'),
+        mondai(7, 'text-grammar', '文章の文法', 5, 'grammar', passage(5)),
+        mondai(8, 'short-passage', '内容理解（短文）', 4, 'reading', passage(1)),
+        mondai(9, 'mid-passage', '内容理解（中文）', 9, 'reading', passage(3)),
+        mondai(10, 'long-passage', '内容理解（長文）', 4, 'reading', passage(4)),
+        mondai(11, 'integrated', '統合理解', 3, 'reading', passage(3)),
+        mondai(12, 'thematic', '主張理解（長文）', 4, 'reading', passage(4)),
+        mondai(13, 'information-retrieval', '情報検索', 2, 'reading', passage(2)),
+      ],
+    },
+    {
+      id: 'listening',
+      ja: '聴解',
+      minutes: 55,
+      mondai: [
+        mondai(1, 'task', '課題理解', 6, 'listening', listen()),
+        mondai(2, 'point', 'ポイント理解', 7, 'listening', listen()),
+        mondai(3, 'summary', '概要理解', 6, 'listening', listen()),
+        mondai(4, 'quick-response', '即時応答', 14, 'listening', listen(3)),
+        mondai(5, 'listening-integrated', '統合理解', 4, 'listening', listen()),
+      ],
+    },
+  ],
+  passMark: 100,
+};
+
+export const JLPT_LEVELS: readonly JlptLevel[] = ['kana', 'N5', 'N4', 'N3', 'N2', 'N1'];
+
+export const LEVELS: Readonly<Record<JlptLevel, LevelConfig>> = { kana: KANA, N5, N4, N3, N2, N1 };
 
 export function findMondai(
   level: JlptLevel,

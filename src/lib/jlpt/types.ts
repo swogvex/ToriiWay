@@ -1,9 +1,16 @@
 // Types for the JLPT simulation structure (data in levels.ts).
 
-export type JlptLevel = 'kana' | 'N5' | 'N4' | 'N3';
+export type JlptLevel = 'kana' | 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
 
 export type SectionId =
-  'hiragana' | 'katakana' | 'dictation' | 'vocabulary' | 'grammar-reading' | 'listening';
+  | 'hiragana'
+  | 'katakana'
+  | 'dictation'
+  | 'vocabulary'
+  | 'grammar-reading'
+  /** N2 and N1 test vocabulary, grammar and reading in one section. */
+  | 'language-reading'
+  | 'listening';
 
 /** Bucket used for scoring sections and reference grades. */
 export type SubArea =

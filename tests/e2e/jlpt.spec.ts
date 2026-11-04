@@ -106,7 +106,7 @@ test.describe('JLPT start page', () => {
     await expectNoAxeViolations(page);
   });
 
-  test('every level with a full bank can start', async ({ page }) => {
+  test('levels with a full bank can start while N2 and N1 are being written', async ({ page }) => {
     await page.goto('/jlpt');
     for (const level of ['N4', 'N3'] as const) {
       await page.getByRole('radio', { name: level }).check();
@@ -114,6 +114,16 @@ test.describe('JLPT start page', () => {
       await expect(
         page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }),
       ).toBeEnabled();
+    }
+    for (const level of ['N2', 'N1'] as const) {
+      await page.getByRole('radio', { name: level }).check();
+      await expect(page.getByRole('heading', { name: `${level} sections` })).toBeVisible();
+      await expect(
+        page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }),
+      ).toBeDisabled();
+      await expect(
+        page.getByText(new RegExp(`${level} question bank is being written`)),
+      ).toBeVisible();
     }
     await page.getByRole('radio', { name: 'Kana' }).check();
     await expect(page.getByRole('button', { name: /Start Kana simulation/ })).toBeEnabled();
