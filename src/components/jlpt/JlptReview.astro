@@ -12,7 +12,7 @@ const { items } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 const speaker = { narrator: '', man: '男：', woman: '女：' } as const;
-// One collapsible group per section keeps long reviews short; the first one starts open.
+// One collapsible group per section keeps long reviews short; all start closed (owner choice).
 const groups = [...new Set(items.map((item) => item.section))].map((section) => ({
   section,
   items: items.filter((item) => item.section === section),
@@ -22,8 +22,8 @@ const groups = [...new Set(items.map((item) => item.section))].map((section) => 
 <section class="review" id="review" aria-labelledby="review-title" tabindex="-1">
   <h2 id="review-title">{t('jlpt.report.review')}</h2>
   {items.length === 0 && <p>{t('jlpt.report.review.none')}</p>}
-  {groups.map((group, index) => (
-    <details class="review__group" open={index === 0}>
+  {groups.map((group) => (
+    <details class="review__group">
       <summary>
         {t(`jlpt.section.${group.section}`)}
         <span class="review__count">
@@ -114,6 +114,22 @@ const groups = [...new Set(items.map((item) => item.section))].map((section) => 
     font-size: var(--text-lg);
     font-weight: 700;
     cursor: pointer;
+  }
+
+  /* Flex hides the native marker; groups start closed, so show that they open. */
+  .review__group > summary::after {
+    align-self: center;
+    inline-size: 0.5em;
+    block-size: 0.5em;
+    margin-inline: auto 0.25em;
+    content: '';
+    border-block-end: 2px solid currentcolor;
+    border-inline-end: 2px solid currentcolor;
+    transform: rotate(45deg);
+  }
+
+  .review__group[open] > summary::after {
+    transform: rotate(-135deg);
   }
 
   .review__count {
