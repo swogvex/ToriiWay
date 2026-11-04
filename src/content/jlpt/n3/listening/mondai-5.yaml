@@ -18,6 +18,7 @@ questions:
       en: 'He asks the time; she recalls it.'
       es: 'Pregunta la hora; ella la recuerda.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0001-595821468c83.mp3'
     tts:
       script: "M: あしたの　会議、何時からか　覚えてる？\nF: 1　たしか　十時からだったと　思う\nF: 2　十時に　会議が　終わったよ\nF: 3　うん、会議に　出るよ"
       voices: ['man', 'woman']
@@ -32,6 +33,7 @@ questions:
       en: 'Accepting a request: なんとか やって みます.'
       es: 'Aceptar un encargo: なんとか やって みます.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0002-fcb0cb5a9267.mp3'
     tts:
       script: "F: この　書類、あしたまでに　お願いできますか。\nM: 1　はい、あした　お願いします\nM: 2　いいえ、書類では　ありません\nM: 3　はい、なんとか　やって　みます"
       voices: ['man', 'woman']
@@ -46,6 +48,7 @@ questions:
       en: 'Giving permission to step out.'
       es: 'Dar permiso para ausentarse un momento.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0003-0a28ed38388d.mp3'
     tts:
       script: "M: すみません、ちょっと　席を　外しても　いいですか。\nF: 1　ええ、外して　あげます\nF: 2　どうぞ、ごゆっくり\nF: 3　いえ、席は　ありません"
       voices: ['man', 'woman']
@@ -60,6 +63,7 @@ questions:
       en: 'Accepting the offer with thanks.'
       es: 'Aceptar la oferta con gratitud.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0004-de684ad4219c.mp3'
     tts:
       script: "F: 駅まで　送って　いこうか。\nM: 1　ありがとう。助かるよ\nM: 2　うん、駅に　送ったよ\nM: 3　うん、送って　あげるよ"
       voices: ['man', 'woman']
@@ -74,6 +78,7 @@ questions:
       en: 'Not ready yet: ask for a moment.'
       es: 'Aún no: pedir un momento.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0005-fdb81a7901db.mp3'
     tts:
       script: "M: ご注文は　お決まりですか。\nF: 1　はい、決まって　いません\nF: 2　いいえ、注文します\nF: 3　もう　少し　待って　もらえますか"
       voices: ['man', 'woman']
@@ -88,6 +93,7 @@ questions:
       en: 'Yes, he barely caught the last train.'
       es: 'Sí, cogió el último tren por los pelos.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0006-c3d835edb275.mp3'
     tts:
       script: "F: きのうは　遅くまで　残業だったんでしょう？\nM: 1　うん、今日は　早く　帰るよ\nM: 2　うん、終電に　ぎりぎり　間に合ったよ\nM: 3　ううん、残業は　あるよ"
       voices: ['man', 'woman']
@@ -102,6 +108,7 @@ questions:
       en: 'She lets him and adds a request.'
       es: 'Ella le deja y añade un favor.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0007-fc6e5bee85e1.mp3'
     tts:
       script: "M: この　パソコン、ちょっと　使わせて　もらっても　いい？\nF: 1　いいよ。終わったら　電源を　切って　おいてね\nF: 2　うん、使って　もらうね\nF: 3　うん、使って　あげたよ"
       voices: ['man', 'woman']
@@ -116,6 +123,7 @@ questions:
       en: 'He confirms and gives the reason.'
       es: 'Lo confirma y da el motivo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0008-4b742343a7c1.mp3'
     tts:
       script: "F: あれ、田中さん、髪を　切ったんですね。\nM: 1　ええ、切って　あげました\nM: 2　いいえ、切りましょう\nM: 3　ええ、暑く　なって　きたので"
       voices: ['man', 'woman']
@@ -130,6 +138,7 @@ questions:
       en: 'A tentative yes.'
       es: 'Un sí provisional.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0009-8d14d1941091.mp3'
     tts:
       script: "M: 来週の　飲み会、参加できそう？\nF: 1　うん、飲み会だよ\nF: 2　たぶん　大丈夫だと　思う\nF: 3　うん、参加したよ"
       voices: ['man', 'woman']
@@ -144,6 +153,7 @@ questions:
       en: 'Eat in or take away: he takes it away.'
       es: 'Para tomar aquí o para llevar: para llevar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0010-e19ff708f91d.mp3'
     tts:
       script: "F: こちらで　召し上がりますか。\nM: 1　はい、召し上がります\nM: 2　いえ、持ち帰りで\nM: 3　いいえ、ここで　食べます"
       voices: ['man', 'woman']
@@ -158,6 +168,7 @@ questions:
       en: 'The shop offers a discount.'
       es: 'La tienda ofrece un descuento.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0011-507261e97c5d.mp3'
     tts:
       script: "M: もう　少し　安く　なりませんか。\nF: 1　では、一割　引かせて　いただきます\nF: 2　いいえ、高く　します\nF: 3　はい、安く　なりました"
       voices: ['man', 'woman']
@@ -172,6 +183,7 @@ questions:
       en: 'Mostly used to it now.'
       es: 'Ya casi se ha acostumbrado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0012-7250cfdbaecf.mp3'
     tts:
       script: "F: 日本の　生活には　もう　慣れた？\nM: 1　ううん、もう　慣れたよ\nM: 2　うん、慣らして　いるよ\nM: 3　うん、だいぶ　慣れて　きたよ"
       voices: ['man', 'woman']
@@ -186,6 +198,7 @@ questions:
       en: 'She takes the advice.'
       es: 'Ella sigue el consejo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0013-0385a9ccf53e.mp3'
     tts:
       script: "M: 雨が　ふりそうだから、かさを　持って　いったら？\nF: 1　うん、もう　ふったよ\nF: 2　そうだね。そう　する\nF: 3　ううん、かさを　貸すよ"
       voices: ['man', 'woman']
@@ -200,6 +213,7 @@ questions:
       en: 'He gives his opinion and thanks her.'
       es: 'Da su opinión y le da las gracias.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0014-e1e6246c8897.mp3'
     tts:
       script: "F: 先週　お貸しした　本、いかがでしたか。\nM: 1　はい、お貸しします\nM: 2　はい、あとで　借ります\nM: 3　とても　おもしろかったです。ありがとうございました"
       voices: ['man', 'woman']
@@ -214,6 +228,7 @@ questions:
       en: 'She explains she slept badly.'
       es: 'Explica que ha dormido poco.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0015-93d44b355e1c.mp3'
     tts:
       script: "M: 山田さん、今日は　なんだか　元気が　ないね。\nF: 1　うん、ちょっと　寝不足で\nF: 2　うん、元気に　なったよ\nF: 3　ありがとう、元気だよ"
       voices: ['man', 'woman']
@@ -228,6 +243,7 @@ questions:
       en: 'The reply to a colleague leaving first.'
       es: 'La respuesta a un compañero que se va antes.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0016-46d6216864bf.mp3'
     tts:
       script: "F: お先に　失礼します。\nM: 1　いってらっしゃい\nM: 2　失礼しました\nM: 3　お疲れさまでした"
       voices: ['man', 'woman']
@@ -242,6 +258,7 @@ questions:
       en: 'She suggests going.'
       es: 'Ella propone ir.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0017-53d331d2605b.mp3'
     tts:
       script: "M: 駅前に　新しい　ラーメン屋が　できたらしいよ。\nF: 1　うん、ラーメンを　作ったよ\nF: 2　へえ、今度　行って　みようか\nF: 3　駅前に　行って　きたの？"
       voices: ['man', 'woman']
@@ -256,6 +273,7 @@ questions:
       en: 'He admits it is hard and asks for help.'
       es: 'Admite que es duro y pide ayuda.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0018-693cefc69fb0.mp3'
     tts:
       script: "F: この　仕事、一人で　大丈夫？\nM: 1　ちょっと　大変だから、手伝って　もらえる？\nM: 2　大丈夫、二人だよ\nM: 3　うん、一人で　手伝うよ"
       voices: ['man', 'woman']
@@ -270,6 +288,7 @@ questions:
       en: 'She confirms and adds when.'
       es: 'Lo confirma y dice cuándo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0019-706167ca03f9.mp3'
     tts:
       script: "M: お子さん、もう　大学生なんですか。\nF: 1　いいえ、大学生です\nF: 2　ええ、この　春に　入学したんです\nF: 3　ええ、大学生に　なりたいです"
       voices: ['man', 'woman']
@@ -284,6 +303,7 @@ questions:
       en: 'He apologises.'
       es: 'Él se disculpa.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0020-6dd5faceb302.mp3'
     tts:
       script: "F: すみません、ここ、禁煙なんですが。\nM: 1　あ、すみません。気が　つきませんでした\nM: 2　いいえ、禁煙です\nM: 3　はい、吸っても　いいですよ"
       voices: ['man', 'woman']
@@ -298,6 +318,7 @@ questions:
       en: 'She accepts and proposes a place.'
       es: 'Acepta y propone un sitio.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0021-2bba23b8adcc.mp3'
     tts:
       script: "M: 今度の　週末、どこか　行かない？\nF: 1　うん、行って　きたよ\nF: 2　週末は　楽しかったね\nF: 3　いいね。海は　どう？"
       voices: ['man', 'woman']
@@ -312,6 +333,7 @@ questions:
       en: 'Not yet.'
       es: 'Todavía no.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0022-140498fb5eaf.mp3'
     tts:
       script: "F: あの　映画、もう　見た？\nM: 1　ううん、まだなんだ\nM: 2　ううん、もう　見たよ\nM: 3　うん、これから　見るよ"
       voices: ['man', 'woman']
@@ -326,6 +348,7 @@ questions:
       en: 'He asks how many; she says twenty.'
       es: 'Pregunta cuántas; ella dice veinte.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0023-2736c78bb23b.mp3'
     tts:
       script: "M: 会議の　資料、何部　コピーすれば　いいですか。\nF: 1　会議室で　お願いします\nF: 2　はい、コピーしました\nF: 3　二十部　お願いします"
       voices: ['man', 'woman']
@@ -340,6 +363,7 @@ questions:
       en: 'Accepting an invitation: お言葉に 甘えて.'
       es: 'Aceptar una invitación: お言葉に 甘えて.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0024-b573891e7b33.mp3'
     tts:
       script: "F: よかったら、うちで　夕ご飯　食べて　いかない？\nM: 1　うん、夕ご飯を　作ったよ\nM: 2　ありがとう。じゃあ、お言葉に　甘えて\nM: 3　ありがとう。じゃあ、食べさせて　あげる"
       voices: ['man', 'woman']
@@ -354,6 +378,7 @@ questions:
       en: 'About your own boss to an outsider, plain 戻る.'
       es: 'De tu propio jefe a alguien de fuera, 戻る sin honorífico.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0025-519e59cc6842.mp3'
     tts:
       script: "M: 部長は　いつ　お戻りに　なりますか。\nF: 1　三時ごろ　お戻りに　なりました\nF: 2　部長に　戻して　ください\nF: 3　三時ごろ　戻る　予定です"
       voices: ['man', 'woman']
@@ -368,6 +393,7 @@ questions:
       en: 'He names a place.'
       es: 'Él indica un lugar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0026-265b600dac1d.mp3'
     tts:
       script: "F: この　荷物、どこに　置いたら　いい？\nM: 1　机の　横に　置いて　おいて\nM: 2　荷物は　重いね\nM: 3　うん、置いたよ"
       voices: ['man', 'woman']
@@ -382,6 +408,7 @@ questions:
       en: 'She cannot hear well: 電話が 遠い.'
       es: 'No le oye bien: 電話が 遠い.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n3-lis-5-0027-520d2861058b.mp3'
     tts:
       script: "M: もしもし、聞こえますか。\nF: 1　いいえ、電話を　します\nF: 2　すみません、ちょっと　電話が　遠いんですが\nF: 3　はい、聞いて　います"
       voices: ['man', 'woman']
