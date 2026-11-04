@@ -87,24 +87,6 @@ const typeLabel = (section: string, type: string) =>
   noindex
   image={view === 'report' ? imageUrl.href : undefined}
 >
-  {view === 'report' && (
-    <div slot="header" class="actions">
-      <a class="actions__download" href={imageUrl.pathname} download={imageName}>
-        <Icon name="download" size={18} />
-        {t('jlpt.report.download')}
-      </a>
-      <button
-        type="button"
-        class="actions__copy"
-        data-copy-link={pageUrl.href}
-        data-copied={t('jlpt.report.copied')}
-      >
-        <Icon name="copy" size={18} />
-        <span>{t('jlpt.report.copy')}</span>
-      </button>
-    </div>
-  )}
-
   {view === 'report' && run?.scores && report ? (
     <div class="result column">
       <header class="result__head">
@@ -131,6 +113,22 @@ const typeLabel = (section: string, type: string) =>
         total={report.total}
         url={`${pageUrl.host}${pageUrl.pathname}`}
       />
+
+      <div class="actions">
+        <a class="actions__download" href={imageUrl.pathname} download={imageName}>
+          <Icon name="download" size={18} />
+          {t('jlpt.report.download')}
+        </a>
+        <button
+          type="button"
+          class="actions__copy"
+          data-copy-link={pageUrl.href}
+          data-copied={t('jlpt.report.copied')}
+        >
+          <Icon name="copy" size={18} />
+          <span>{t('jlpt.report.copy')}</span>
+        </button>
+      </div>
 
       <div class="result__grid">
         <section class="breakdown" aria-labelledby="breakdown-title">
@@ -277,9 +275,23 @@ const typeLabel = (section: string, type: string) =>
 </script>
 
 <style>
+  /* Right under the report card: what you just read is what you save or share. */
   .actions {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-3);
+    margin-block-start: calc(var(--space-6) - var(--space-10));
+  }
+
+  /* Phones: the two do not fit on one row, so stack them at full width. */
+  @media (width < 30rem) {
+    .actions {
+      display: grid;
+    }
+
+    .actions > * {
+      justify-content: center;
+    }
   }
 
   .actions__download {
