@@ -17,6 +17,9 @@ describe('level structure', () => {
     expect(questionsPerSection('N5')).toEqual([21, 22, 24]);
     expect(questionsPerSection('N4')).toEqual([28, 29, 28]);
     expect(questionsPerSection('N3')).toEqual([35, 39, 28]);
+    // Guidebook: vocabulary 32 + grammar 22 + reading 21 (N2), 25 + 20 + 26 (N1).
+    expect(questionsPerSection('N2')).toEqual([75, 32]);
+    expect(questionsPerSection('N1')).toEqual([71, 37]);
     expect(questionsPerSection('kana')).toEqual([25, 23, 20]);
   });
 
@@ -24,6 +27,8 @@ describe('level structure', () => {
     expect(totalMinutes('N5')).toBe(90);
     expect(totalMinutes('N4')).toBe(115);
     expect(totalMinutes('N3')).toBe(140);
+    expect(totalMinutes('N2')).toBe(155);
+    expect(totalMinutes('N1')).toBe(165);
     expect(totalMinutes('kana')).toBe(35);
   });
 

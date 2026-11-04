@@ -247,6 +247,10 @@ describe('JLPT API', () => {
       createRunHandler(post('/api/jlpt/runs', { level: 'N4', public: false }), deps),
     );
     expect(noBank.status).toBe(503);
+    const noN1Bank = await call(() =>
+      createRunHandler(post('/api/jlpt/runs', { level: 'N1', public: false }), deps),
+    );
+    expect(noN1Bank.status).toBe(503);
   });
 
   it('answers 410 once a run has expired', async () => {
