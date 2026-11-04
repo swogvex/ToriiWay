@@ -10,6 +10,9 @@ interface Props {
 
 const { copy } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
+// "Learn " stays; the typewriter animates the rest of each phrase.
+const fixed = `${copy.title.split(' ')[0]} `;
+const rests = copy.phrases.map((phrase) => phrase.slice(fixed.length));
 ---
 
 <section class="hero" aria-labelledby="hero-title">
@@ -19,7 +22,26 @@ const locale = getLocale(Astro.url.pathname);
       <span class="hero__kicker-more"> — {copy.kickerMore}</span>
     </p>
     <h1 class="hero__title" id="hero-title">
-      {copy.title}
+      <span class="visually-hidden">{copy.title}</span>
+      <span
+        class="hero__type"
+        aria-hidden="true"
+        data-pagefind-ignore="all"
+        data-typewriter
+        data-phrases={JSON.stringify(rests)}
+      >
+        {/* Every phrase, invisible, in the same grid cell: the title keeps the height of the tallest. */}
+        {copy.phrases.map((phrase) => (
+          <span class="hero__ghost">{phrase}</span>
+        ))}
+        <span class="hero__live">
+          {fixed}
+          <span class="hero__typed" data-typed>
+            {rests[0]}
+          </span>
+          <span class="hero__rest" data-rest></span>
+        </span>
+      </span>
     </h1>
     <p class="hero__lead">{copy.lead}</p>
     <div class="hero__actions">
@@ -101,6 +123,53 @@ const locale = getLocale(Astro.url.pathname);
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: var(--leading-display);
+  }
+
+  /* Sizes chosen so no typed phrase needs an extra line: 3 at most on phones, 2 from 40rem. */
+  @media (width < 40rem) {
+    .hero__title {
+      font-size: clamp(2rem, 10.5vw, 2.75rem);
+    }
+  }
+
+  @media (width >= 64rem) {
+    .hero__title {
+      font-size: clamp(2.75rem, 5.9vw, var(--text-display));
+    }
+  }
+
+  .hero__type {
+    display: grid;
+  }
+
+  .hero__type > * {
+    grid-area: 1 / 1;
+  }
+
+  .hero__ghost,
+  .hero__rest {
+    visibility: hidden;
+  }
+
+  /* Zero-width caret: the border is pulled back by the margin, so the text never moves. */
+  .hero__typed::after {
+    margin-inline-end: -0.07em;
+    border-inline-start: 0.07em solid var(--accent);
+    content: '';
+    animation: hero-caret 1s steps(1) infinite;
+  }
+
+  @keyframes hero-caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+
+  /* Reduced motion: no typing, so no caret either. */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__typed::after {
+      display: none;
+    }
   }
 
   .hero__lead {
@@ -189,26 +258,26 @@ const locale = getLocale(Astro.url.pathname);
   /* Clouds sway inside the sun, behind the torii; the reduced-motion reset stops them. */
   .hero__cloud {
     fill: var(--line-strong);
-    animation: hero-sway 10s ease-in-out infinite alternate;
+    animation: hero-sway 5s ease-in-out infinite alternate;
   }
 
   .hero__cloud--2 {
-    animation-duration: 12s;
+    animation-duration: 6s;
     animation-direction: alternate-reverse;
   }
 
   .hero__cloud--3 {
-    animation-duration: 14s;
-    animation-delay: -5s;
+    animation-duration: 7s;
+    animation-delay: -3s;
   }
 
   @keyframes hero-sway {
     from {
-      transform: translateX(-12px);
+      transform: translateX(-16px);
     }
 
     to {
-      transform: translateX(12px);
+      transform: translateX(16px);
     }
   }
 
@@ -250,3 +319,10 @@ const locale = getLocale(Astro.url.pathname);
     line-height: 1.3;
   }
 </style>
+
+<script>
+  import { initTypewriter } from '../../lib/home/typewriter';
+
+  const root = document.querySelector<HTMLElement>('[data-typewriter]');
+  if (root) initTypewriter(root);
+</script>

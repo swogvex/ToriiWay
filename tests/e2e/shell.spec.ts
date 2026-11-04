@@ -55,7 +55,12 @@ test.describe('desktop shell', () => {
     const learn = page
       .getByRole('navigation', { name: 'Main' })
       .getByRole('link', { name: 'Learn' });
+    // Reach it with the keyboard: :focus-visible after a script focus() depends on the
+    // browser's last-input heuristic, which made this test flaky under load.
     await learn.focus();
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    await expect(learn).toBeFocused();
     await expect(learn.locator('.rail__tip')).toHaveCSS('opacity', '1');
   });
 
@@ -178,6 +183,39 @@ test.describe('desktop shell', () => {
       await expect(link).toHaveAttribute('rel', 'noopener');
       await expect(link).toContainText('(opens in a new tab)');
     }
+  });
+});
+
+test.describe('home hero typewriter', () => {
+  for (const width of [1440, 1024, 390, 320]) {
+    test(`types new phrases without moving the page at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      // Screen readers get the stable title; the typed copy is hidden from them.
+      await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName(
+        'Learn Japanese one keystroke at a time.',
+      );
+      const typed = page.locator('[data-typed]');
+      const button = page.getByRole('link', { name: 'Start with hiragana' });
+      const top = (await button.boundingBox())?.y;
+      const first = await typed.textContent();
+      await expect.poll(() => typed.textContent(), { timeout: 8_000 }).not.toBe(first);
+      for (let i = 0; i < 10; i += 1) {
+        expect((await button.boundingBox())?.y).toBe(top);
+        await page.waitForTimeout(150);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    });
+  }
+
+  test('stays still with reduced motion', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    const typed = page.locator('[data-typed]');
+    await page.waitForTimeout(2500);
+    await expect(typed).toHaveText('Japanese one keystroke at a time.');
   });
 });
 
