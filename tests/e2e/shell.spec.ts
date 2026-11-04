@@ -55,7 +55,12 @@ test.describe('desktop shell', () => {
     const learn = page
       .getByRole('navigation', { name: 'Main' })
       .getByRole('link', { name: 'Learn' });
+    // Reach it with the keyboard: :focus-visible after a script focus() depends on the
+    // browser's last-input heuristic, which made this test flaky under load.
     await learn.focus();
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    await expect(learn).toBeFocused();
     await expect(learn.locator('.rail__tip')).toHaveCSS('opacity', '1');
   });
 
