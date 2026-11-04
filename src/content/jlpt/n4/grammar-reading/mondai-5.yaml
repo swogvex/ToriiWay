@@ -1,0 +1,133 @@
+# N4 · Grammar · Reading · Mondai 5 — mid-size passages
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 5
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: '文章を 読んで、しつもんに 答えて ください。'
+passages:
+  - id: park
+    text: "「わたしの　好きな　場所」　グエン\n　わたしは　日本に　来て　二年に　なります。今は　大学の　近くの　アパートに　住んで　います。\n　わたしの　好きな　場所は、アパートの　近くに　ある　小さい　公園です。この　公園には　大きな　さくらの　木が　あります。春に　なると、たくさんの　人が　花を　見に　来ます。でも、わたしが　いちばん　好きなのは　春では　なく、秋です。秋は　人が　少なくて　静かなので、ベンチで　本を　読んだり、勉強したり　できます。\n　先週、国から　母が　来ました。母を　その　公園に　連れて　行きました。母は　「国の　家の　近くの　公園に　にて　いるね」と　言いました。それを　聞いて、わたしは　どうして　この　公園が　好きなのか、わかりました。"
+  - id: train
+    text: "「電車の　中で」　ジョン\n　先週の　月よう日、朝の　電車に　乗りました。電車の　中は　とても　こんで　いて、すわる　ことが　できませんでした。\n　つぎの　駅で、おなかの　大きい　女の　人が　乗って　きました。わたしの　前に　すわって　いた　高校生が　すぐに　立って、「どうぞ」と　言いました。女の　人は　「ありがとう」と　言って、すわりました。\n　わたしの　国でも、席を　ゆずる　人は　います。でも、こんで　いる　電車で　知らない　人に　声を　かけるのは　はずかしいと　思う　人も　多いです。その　高校生は　少しも　はずかしそうでは　ありませんでした。わたしも　これから、困って　いる　人を　見たら、すぐに　声を　かけようと　思いました。"
+  - id: cooking
+    text: "「料理教室」　アンナ\n　わたしは　料理が　あまり　上手では　ありません。国に　いた　ときは、いつも　母が　作って　くれたので、自分で　作った　ことが　ほとんど　ありませんでした。\n　日本に　来てから、毎日　コンビニの　お弁当を　食べて　いました。でも、お金が　かかるし、野菜も　少ないので、先月から　近くの　料理教室に　通う　ことに　しました。\n　教室では　毎週　一つ　日本の　料理を　習います。先生は　「料理は　むずかしく　考えなくても　いいですよ。まず　楽しんで　ください」と　言います。先週は　みそしるを　作りました。はじめて　自分で　作った　みそしるは　少し　からかったですが、おいしかったです。\n　今では、教室で　習った　料理を　週に　二、三回　家でも　作って　います。"
+questions:
+  - id: n4-grm-5-0001
+    passage: park
+    stem: 'グエンさんは　どうして　秋の　公園が　いちばん　好きですか。'
+    choices:
+      - 'さくらの　花が　きれいだから'
+      - '母と　いっしょに　行けるから'
+      - '静かで、本を　読んだり　勉強したり　できるから'
+      - 'たくさんの　人が　来るから'
+    answer: 3
+    explanation:
+      en: 'In autumn the park is quiet, so Nguyen can read and study there.'
+      es: 'En otoño el parque está tranquilo, así que Nguyen puede leer y estudiar.'
+    author: claude
+  - id: n4-grm-5-0002
+    passage: park
+    stem: '春の　公園は　どんな　ようすですか。'
+    choices:
+      - '人が　少なくて　静かだ'
+      - '花を　見に　来る　人が　多い'
+      - 'ベンチが　なくて　すわれない'
+      - 'さくらの　木が　一本も　ない'
+    answer: 2
+    explanation:
+      en: 'In spring many people come to see the cherry blossom.'
+      es: 'En primavera viene mucha gente a ver los cerezos.'
+    author: claude
+  - id: n4-grm-5-0003
+    passage: park
+    stem: '「どうして　この　公園が　好きなのか、わかりました」と　ありますが、どうして　好きなのですか。'
+    choices:
+      - '大学から　近いから'
+      - 'さくらの　木が　大きいから'
+      - '母が　好きな　公園だから'
+      - '国の　家の　近くの　公園に　にて　いるから'
+    answer: 4
+    explanation:
+      en: 'Her mother said it looks like the park near their home, and Nguyen understood.'
+      es: 'Su madre dijo que se parece al parque de su casa, y Nguyen lo entendió.'
+    author: claude
+  - id: n4-grm-5-0004
+    passage: train
+    stem: '電車の　中で、高校生は　何を　しましたか。'
+    choices:
+      - '女の　人に　席を　ゆずった'
+      - 'ジョンさんに　席を　ゆずった'
+      - '女の　人に　席を　ゆずって　もらった'
+      - 'つぎの　駅で　電車を　おりた'
+    answer: 1
+    explanation:
+      en: 'The student stood up and gave the seat to the pregnant woman.'
+      es: 'El estudiante se levantó y le dio el asiento a la mujer embarazada.'
+    author: claude
+  - id: n4-grm-5-0005
+    passage: train
+    stem: 'ジョンさんの　国に　ついて、文章の　内容と　合って　いるのは　どれですか。'
+    choices:
+      - '席を　ゆずる　人は　一人も　いない'
+      - '電車は　いつも　すいて　いる'
+      - '知らない　人に　声を　かけるのが　はずかしいと　思う　人が　多い'
+      - '高校生は　みんな　席を　ゆずる'
+    answer: 3
+    explanation:
+      en: 'John says many people feel shy speaking to strangers on a crowded train.'
+      es: 'John dice que a mucha gente le da vergüenza hablar con desconocidos en un tren lleno.'
+    author: claude
+  - id: n4-grm-5-0006
+    passage: train
+    stem: 'ジョンさんは　これから　どう　しようと　思って　いますか。'
+    choices:
+      - '困って　いる　人を　見たら、すぐ　声を　かける'
+      - 'いつも　席に　すわる'
+      - 'こんで　いる　電車には　乗らない'
+      - '高校生に　お礼を　言う'
+    answer: 1
+    explanation:
+      en: 'He decides to speak up right away when he sees someone in trouble.'
+      es: 'Decide hablar enseguida cuando vea a alguien en apuros.'
+    author: claude
+  - id: n4-grm-5-0007
+    passage: cooking
+    stem: 'アンナさんは　どうして　料理教室に　通う　ことに　しましたか。'
+    choices:
+      - '母に　言われたから'
+      - '料理が　上手だから'
+      - 'コンビニの　お弁当が　きらいだから'
+      - 'お弁当は　お金が　かかって、野菜も　少ないから'
+    answer: 4
+    explanation:
+      en: 'Convenience-store lunches cost money and have few vegetables.'
+      es: 'Los bentos de la tienda cuestan dinero y tienen poca verdura.'
+    author: claude
+  - id: n4-grm-5-0008
+    passage: cooking
+    stem: '先生は　料理に　ついて　何と　言いましたか。'
+    choices:
+      - '野菜を　たくさん　入れた　ほうが　いい'
+      - 'むずかしく　考えないで、楽しめば　いい'
+      - 'みそしるは　からく　作る'
+      - '毎日　作らなければ　ならない'
+    answer: 2
+    explanation:
+      en: 'The teacher says not to overthink it and to enjoy it first.'
+      es: 'La profesora dice que no hay que complicarse y que primero hay que disfrutar.'
+    author: claude
+  - id: n4-grm-5-0009
+    passage: cooking
+    stem: '今、アンナさんは　どう　して　いますか。'
+    choices:
+      - '毎日　教室に　通って　いる'
+      - '母に　料理を　教えて　いる'
+      - '習った　料理を　家でも　ときどき　作って　いる'
+      - '毎日　コンビニの　お弁当を　食べて　いる'
+    answer: 3
+    explanation:
+      en: 'She now cooks what she learned at home two or three times a week.'
+      es: 'Ahora cocina en casa lo que aprendió dos o tres veces por semana.'
+    author: claude

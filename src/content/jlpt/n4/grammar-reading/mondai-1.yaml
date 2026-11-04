@@ -1,0 +1,477 @@
+# N4 · Grammar · Reading · Mondai 1 — grammar form
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 1
+instruction:
+  en: 'Choose the word that best fills the blank (　).'
+  ja: '（　）に 何を 入れますか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-grm-1-0001
+    stem: 'この　本は　字が　大きくて　（　）です。'
+    choices:
+      - '読みにくい'
+      - '読むそう'
+      - '読みやすい'
+      - '読みたい'
+    answer: 3
+    explanation:
+      en: 'Big letters make a book easy to read: 読み + やすい.'
+      es: 'Las letras grandes hacen que un libro sea fácil de leer: 読み + やすい.'
+    author: claude
+  - id: n4-grm-1-0002
+    stem: '雨が　ふり（　）ので、かさを　持って　いきます。'
+    choices:
+      - 'ような'
+      - 'そうだ'
+      - 'らしい'
+      - 'そうな'
+    answer: 4
+    explanation:
+      en: 'ふりそうな ので: "since it looks like rain". Before ので the form is そうな.'
+      es: 'ふりそうな ので: "como parece que va a llover". Antes de ので va そうな.'
+    author: claude
+  - id: n4-grm-1-0003
+    stem: '日本に　来てから、すしを　三回　食べた　（　）が　あります。'
+    choices:
+      - 'こと'
+      - 'ほう'
+      - 'もの'
+      - 'ところ'
+    answer: 1
+    explanation:
+      en: '〜た ことが ある tells about an experience.'
+      es: '〜た ことが ある expresa una experiencia.'
+    author: claude
+  - id: n4-grm-1-0004
+    stem: 'ピアノを　ひき（　）、歌を　歌います。'
+    choices:
+      - 'ために'
+      - 'ながら'
+      - 'ても'
+      - 'なら'
+    answer: 2
+    explanation:
+      en: '〜ながら: doing two things at the same time.'
+      es: '〜ながら: hacer dos cosas a la vez.'
+    author: claude
+  - id: n4-grm-1-0005
+    stem: 'しゅくだいを　家に　わすれて　（　）。'
+    choices:
+      - 'おきました'
+      - 'しまいました'
+      - 'あげました'
+      - 'みました'
+    answer: 2
+    explanation:
+      en: '〜て しまう shows something done by mistake or with regret.'
+      es: '〜て しまう indica algo hecho por error o con pena.'
+    author: claude
+  - id: n4-grm-1-0006
+    stem: 'お客さんが　来るので、ビールを　冷やして　（　）　ください。'
+    choices:
+      - 'おく'
+      - 'おき'
+      - 'おいて'
+      - 'おけ'
+    answer: 3
+    explanation:
+      en: '〜て おく "do in advance" before ください takes the て form: おいて.'
+      es: '〜て おく "dejar hecho" va en forma て antes de ください: おいて.'
+    author: claude
+  - id: n4-grm-1-0007
+    stem: 'この　くつを　はいて　（　）も　いいですか。'
+    choices:
+      - 'しまって'
+      - 'あって'
+      - 'おいて'
+      - 'みて'
+    answer: 4
+    explanation:
+      en: 'はいて みる: "try on". 〜て みても いいですか asks to try.'
+      es: 'はいて みる: "probarse". 〜て みても いいですか pide probar.'
+    author: claude
+  - id: n4-grm-1-0008
+    stem: '天気よほうに　よると、あしたは　雨が　ふる　（　）です。'
+    choices:
+      - 'そう'
+      - 'ところ'
+      - 'つもり'
+      - 'ため'
+    answer: 1
+    explanation:
+      en: 'Dictionary form + そうです passes on what you heard ("I hear that").'
+      es: 'Forma de diccionario + そうです transmite algo oído ("dicen que").'
+    author: claude
+  - id: n4-grm-1-0009
+    stem: 'もう　夜　十時ですから、店は　しまって　いる　（　）。'
+    choices:
+      - 'はずです'
+      - 'ためです'
+      - 'までです'
+      - 'ほうです'
+    answer: 1
+    explanation:
+      en: '〜はずです: what you expect from the facts.'
+      es: '〜はずです: lo que se espera según los hechos.'
+    author: claude
+  - id: n4-grm-1-0010
+    stem: 'わからない　ことが　あったら、先生に　聞いた　（　）が　いいですよ。'
+    choices:
+      - 'もの'
+      - 'ところ'
+      - 'こと'
+      - 'ほう'
+    answer: 4
+    explanation:
+      en: '〜た ほうが いい gives advice.'
+      es: '〜た ほうが いい sirve para aconsejar.'
+    author: claude
+  - id: n4-grm-1-0011
+    stem: '駅に　（　）、電話して　ください。'
+    choices:
+      - 'つくと'
+      - 'つきながら'
+      - 'ついたら'
+      - 'ついても'
+    answer: 3
+    explanation:
+      en: 'たら works with a request: "when you arrive, call me". と cannot take a request.'
+      es: 'たら admite una petición: "cuando llegues, llámame". と no la admite.'
+    author: claude
+  - id: n4-grm-1-0012
+    stem: 'もっと　安（　）、買いたいです。'
+    choices:
+      - 'かったで'
+      - 'ければ'
+      - 'いなら'
+      - 'くて'
+    answer: 2
+    explanation:
+      en: 'The ば form of 安い is 安ければ: "if it were cheaper".'
+      es: 'La forma ば de 安い es 安ければ: "si fuera más barato".'
+    author: claude
+  - id: n4-grm-1-0013
+    stem: 'この　ボタンを　おす（　）、ドアが　あきます。'
+    choices:
+      - 'のに'
+      - 'ながら'
+      - 'と'
+      - 'ても'
+    answer: 3
+    explanation:
+      en: '〜と: a result that always follows.'
+      es: '〜と: un resultado que siempre ocurre.'
+    author: claude
+  - id: n4-grm-1-0014
+    stem: '日本語が　上手に　なる（　）、毎日　れんしゅうして　います。'
+    choices:
+      - 'ばかりに'
+      - 'ところに'
+      - 'ことに'
+      - 'ように'
+    answer: 4
+    explanation:
+      en: '〜ように: a goal reached as a change (上手に なる).'
+      es: '〜ように: una meta que es un cambio (上手に なる).'
+    author: claude
+  - id: n4-grm-1-0015
+    stem: '大学に　入る　（　）、毎日　勉強して　います。'
+    choices:
+      - 'ながら'
+      - 'ために'
+      - 'のに'
+      - 'ばかり'
+    answer: 2
+    explanation:
+      en: '〜ために: purpose of a deliberate action.'
+      es: '〜ために: finalidad de una acción voluntaria.'
+    author: claude
+  - id: n4-grm-1-0016
+    stem: 'たくさん　練習した（　）、試合に　負けました。'
+    choices:
+      - 'のに'
+      - 'から'
+      - 'ので'
+      - 'ために'
+    answer: 1
+    explanation:
+      en: '〜のに: the result is the opposite of what you expected.'
+      es: '〜のに: el resultado es lo contrario de lo esperado.'
+    author: claude
+  - id: n4-grm-1-0017
+    stem: 'この　部屋は　広い（　）、明るいし、とても　いいです。'
+    choices:
+      - 'ても'
+      - 'が'
+      - 'し'
+      - 'のに'
+    answer: 3
+    explanation:
+      en: '〜し lists reasons: wide and bright.'
+      es: '〜し enumera razones: amplia y luminosa.'
+    author: claude
+  - id: n4-grm-1-0018
+    stem: '雨に　（　）、かぜを　ひきました。'
+    choices:
+      - 'ふらないで'
+      - 'ふられて'
+      - 'ふらせて'
+      - 'ふって'
+    answer: 2
+    explanation:
+      en: '雨に ふられる: the passive of trouble, "got caught in the rain".'
+      es: '雨に ふられる: pasiva de molestia, "me pilló la lluvia".'
+    author: claude
+  - id: n4-grm-1-0019
+    stem: '母は　わたしに　部屋の　そうじを　（　）。'
+    choices:
+      - 'させました'
+      - 'されました'
+      - 'しました'
+      - 'さしあげました'
+    answer: 1
+    explanation:
+      en: 'The causative させる: "my mother made me clean".'
+      es: 'El causativo させる: "mi madre me hizo limpiar".'
+    author: claude
+  - id: n4-grm-1-0020
+    stem: '先生は　何時に　学校に　（　）か。'
+    choices:
+      - 'おります'
+      - 'いたします'
+      - 'まいります'
+      - 'いらっしゃいます'
+    answer: 4
+    explanation:
+      en: "いらっしゃる is the respectful word for the teacher's coming or being."
+      es: 'いらっしゃる es la forma respetuosa para el profesor.'
+    author: claude
+  - id: n4-grm-1-0021
+    stem: 'はじめまして。わたしは　山田と　（　）。'
+    choices:
+      - 'おっしゃいます'
+      - 'めしあがります'
+      - 'いらっしゃいます'
+      - 'もうします'
+    answer: 4
+    explanation:
+      en: 'もうす is the humble "to be called", used about yourself.'
+      es: 'もうす es el humilde "llamarse", para uno mismo.'
+    author: claude
+  - id: n4-grm-1-0022
+    stem: '先生、この　本を　（　）も　いいですか。'
+    choices:
+      - 'お借りして'
+      - 'お借りになって'
+      - '借りなさって'
+      - 'お借りされて'
+    answer: 1
+    explanation:
+      en: 'For your own action toward the teacher use the humble お〜する.'
+      es: 'Para tu propia acción hacia el profesor se usa el humilde お〜する.'
+    author: claude
+  - id: n4-grm-1-0023
+    stem: 'あしたは　休みですから、早く　起き（　）　いいです。'
+    choices:
+      - 'なくて'
+      - 'ないで'
+      - 'なくても'
+      - 'なければ'
+    answer: 3
+    explanation:
+      en: '〜なくても いい: "you do not have to".'
+      es: '〜なくても いい: "no hace falta".'
+    author: claude
+  - id: n4-grm-1-0024
+    stem: 'この　病院は　よやくが　ひつようですから、行く　前に　電話を　し（　）。'
+    choices:
+      - 'なくてです'
+      - 'なければなりません'
+      - 'ないでください'
+      - 'なくてもいいです'
+    answer: 2
+    explanation:
+      en: 'A reservation is required, so you must call: 〜なければ なりません.'
+      es: 'Hace falta cita, así que hay que llamar: 〜なければ なりません.'
+    author: claude
+  - id: n4-grm-1-0025
+    stem: 'しゅくだいが　わからなかったので、友だちに　ノートを　見せて　（　）。'
+    choices:
+      - 'もらいました'
+      - 'あげました'
+      - 'しまいました'
+      - 'くれました'
+    answer: 1
+    explanation:
+      en: '友だちに 〜て もらう: you received the favour from your friend.'
+      es: '友だちに 〜て もらう: recibiste el favor de tu amigo.'
+    author: claude
+  - id: n4-grm-1-0026
+    stem: '兄が　わたしの　自転車を　なおして　（　）。'
+    choices:
+      - 'いただきました'
+      - 'あげました'
+      - 'くれました'
+      - 'もらいました'
+    answer: 3
+    explanation:
+      en: 'Someone does a favour for you: 兄が 〜て くれる.'
+      es: 'Alguien te hace un favor: 兄が 〜て くれる.'
+    author: claude
+  - id: n4-grm-1-0027
+    stem: 'すみませんが、ここで　写真を　とら（　）　ください。'
+    choices:
+      - 'れて'
+      - 'なくて'
+      - 'させて'
+      - 'せて'
+    answer: 4
+    explanation:
+      en: 'とらせて ください: "please let me take a photo".'
+      es: 'とらせて ください: "déjeme hacer una foto, por favor".'
+    author: claude
+  - id: n4-grm-1-0028
+    stem: '夏休みに　国へ　帰る　（　）です。'
+    choices:
+      - 'ため'
+      - 'つもり'
+      - 'ばかり'
+      - 'ながら'
+    answer: 2
+    explanation:
+      en: '〜つもりです: what you intend to do.'
+      es: '〜つもりです: lo que piensas hacer.'
+    author: claude
+  - id: n4-grm-1-0029
+    stem: 'いま　ちょうど　昼ごはんを　食べた　（　）です。'
+    choices:
+      - 'ため'
+      - 'ほう'
+      - 'つもり'
+      - 'ところ'
+    answer: 4
+    explanation:
+      en: '〜た ところ: you have just done it.'
+      es: '〜た ところ: acabas de hacerlo.'
+    author: claude
+  - id: n4-grm-1-0030
+    stem: 'この　お寺は　六百年前に　（　）。'
+    choices:
+      - '建てています'
+      - '建てましょう'
+      - '建てられました'
+      - '建てたがりました'
+    answer: 3
+    explanation:
+      en: 'The temple is the subject, so the passive 建てられる is used.'
+      es: 'El templo es el sujeto, así que se usa la pasiva 建てられる.'
+    author: claude
+  - id: n4-grm-1-0031
+    stem: 'あした　パーティーに　行く　（　）、まだ　わかりません。'
+    choices:
+      - 'かどうか'
+      - 'ために'
+      - 'ので'
+      - 'のに'
+    answer: 1
+    explanation:
+      en: '〜かどうか: "whether or not".'
+      es: '〜かどうか: "si o no".'
+    author: claude
+  - id: n4-grm-1-0032
+    stem: 'この　ケーキは　あまく　（　）ます。'
+    choices:
+      - 'つづけ'
+      - 'すぎ'
+      - 'ばかり'
+      - 'ながら'
+    answer: 2
+    explanation:
+      en: 'あまく すぎる: "too sweet".'
+      es: 'あまく すぎる: "demasiado dulce".'
+    author: claude
+  - id: n4-grm-1-0033
+    stem: '山田さんは　毎日　ゲーム（　）　して　います。'
+    choices:
+      - 'ばかり'
+      - 'ほど'
+      - 'まで'
+      - 'しか'
+    answer: 1
+    explanation:
+      en: '〜ばかり: doing nothing but that. しか needs a negative verb.'
+      es: '〜ばかり: no hacer otra cosa. しか necesita verbo negativo.'
+    author: claude
+  - id: n4-grm-1-0034
+    stem: 'もし　お金が　あっ（　）、世界を　旅行したいです。'
+    choices:
+      - 'て'
+      - 'ても'
+      - 'たら'
+      - 'ては'
+    answer: 3
+    explanation:
+      en: 'もし 〜たら: "if I had money".'
+      es: 'もし 〜たら: "si tuviera dinero".'
+    author: claude
+  - id: n4-grm-1-0035
+    stem: 'どんなに　つかれて　い（　）、毎日　ジョギングを　します。'
+    choices:
+      - 'たら'
+      - 'ので'
+      - 'ば'
+      - 'ても'
+    answer: 4
+    explanation:
+      en: 'どんなに 〜ても: "no matter how".'
+      es: 'どんなに 〜ても: "por mucho que".'
+    author: claude
+  - id: n4-grm-1-0036
+    stem: '田中さんの　話に　よると、あの　店は　来月　しまる　（　）。'
+    choices:
+      - 'ためです'
+      - 'そうです'
+      - 'ことです'
+      - 'つもりです'
+    answer: 2
+    explanation:
+      en: '〜に よると … そうです reports what someone said.'
+      es: '〜に よると … そうです transmite lo que alguien dijo.'
+    author: claude
+  - id: n4-grm-1-0037
+    stem: '外が　さわがしいですね。何か　あった　（　）です。'
+    choices:
+      - 'ほう'
+      - 'つもり'
+      - 'ため'
+      - 'よう'
+    answer: 4
+    explanation:
+      en: '〜ようです: a guess from what you can hear or see.'
+      es: '〜ようです: una suposición por lo que se oye o se ve.'
+    author: claude
+  - id: n4-grm-1-0038
+    stem: '駅へ　行く　（　）、コンビニに　よりました。'
+    choices:
+      - 'ながら'
+      - 'とちゅうで'
+      - 'あとで'
+      - 'ところ'
+    answer: 2
+    explanation:
+      en: '行く とちゅうで: "on the way". あとで needs the past: 行った あとで.'
+      es: '行く とちゅうで: "de camino". あとで necesita pasado: 行った あとで.'
+    author: claude
+  - id: n4-grm-1-0039
+    stem: '日本の　料理の　中で、何が　いちばん　（　）ですか。'
+    choices:
+      - 'すきで'
+      - 'すきに'
+      - 'すき'
+      - 'すきな'
+    answer: 3
+    explanation:
+      en: 'Before です the な-adjective stays plain: すきです.'
+      es: 'Antes de です el adjetivo な va solo: すきです.'
+    author: claude

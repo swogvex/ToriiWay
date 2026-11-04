@@ -1,0 +1,94 @@
+# N4 · Grammar · Reading · Mondai 6 — information retrieval
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 6
+instruction:
+  en: 'Look at the information and answer the questions.'
+  ja: 'あんないを 見て、しつもんに 答えて ください。'
+passages:
+  - id: sports
+    text: "みどり市スポーツセンター\n　　　　　　　　　平日（月～金）　　土・日\nプール　　　　　大人　400円　　　大人　500円\n　　　　　　　　子ども　200円　　子ども　250円\nトレーニング室　大人　300円（中学生は　使えません）\n時間：午前９時～午後９時（毎週　火よう日は　休み）\n＊子どもは　小学生と　中学生です。\n＊平日の　午後６時からは、プールの　大人は　300円です。"
+  - id: cookclass
+    text: "さくら料理教室　十一月の　クラス\nクラス　　日にち　　　　時間　　　　　　りょうきん\n和食　　　毎週　月よう日　18:00～20:00　1回　2,000円\nパン　　　毎週　水よう日　10:00～12:00　1回　1,500円\nケーキ　　毎週　土よう日　14:00～16:00　1回　2,500円\n＊はじめての　方は、1回目が　半分の　りょうきんです。\n＊エプロンは　自分で　持って　きて　ください。"
+  - id: librules
+    text: "図書館の　使い方\n・本は　一人　十さつまで、二週間　借りられます。\n・ＣＤ・ＤＶＤは　一人　三つまで、一週間　借りられます。\n・借りる　ときは　図書館カードが　いります。カードを　作る　ときは、じゅうしょが　わかる　もの（学生カードなど）を　持って　来て　ください。\n・休みの　日：毎週　月よう日"
+questions:
+  - id: n4-grm-6-0001
+    passage: sports
+    stem: '会社員の　山田さんは　水よう日の　午後七時から　プールで　およぎます。いくら　はらいますか。'
+    choices:
+      - '300円'
+      - '400円'
+      - '250円'
+      - '500円'
+    answer: 1
+    explanation:
+      en: 'Wednesday is a weekday, and after 6 p.m. adults pay 300 yen.'
+      es: 'El miércoles es laborable, y después de las 6 de la tarde los adultos pagan 300 yenes.'
+    author: claude
+  - id: n4-grm-6-0002
+    passage: sports
+    stem: '中学生の　ゆかさんと　お父さんが　日よう日に　いっしょに　プールに　行きます。二人で　いくらですか。'
+    choices:
+      - '1000円'
+      - '750円'
+      - '700円'
+      - '600円'
+    answer: 2
+    explanation:
+      en: 'Sunday: adult 500 + child 250 = 750 yen.'
+      es: 'Domingo: adulto 500 + niño 250 = 750 yenes.'
+    author: claude
+  - id: n4-grm-6-0003
+    passage: cookclass
+    stem: '平日は　午前九時から　午後六時まで　会社で　働いて　いる　リンさんが　行ける　クラスは　どれですか。'
+    choices:
+      - '和食と　ケーキ'
+      - 'パン'
+      - '和食'
+      - 'ケーキ'
+    answer: 4
+    explanation:
+      en: 'Washoku starts at six on Monday and bread is on a weekday morning; only Saturday cake fits.'
+      es: 'Washoku empieza a las seis del lunes y el pan es entre semana por la mañana; solo encaja la tarta del sábado.'
+    author: claude
+  - id: n4-grm-6-0004
+    passage: cookclass
+    stem: 'はじめて　パンの　クラスに　行く　人は、いくら　はらいますか。'
+    choices:
+      - '1,500円'
+      - '3,000円'
+      - '750円'
+      - '1,000円'
+    answer: 3
+    explanation:
+      en: 'The first lesson is half price: 1,500 ÷ 2 = 750 yen.'
+      es: 'La primera clase cuesta la mitad: 1.500 ÷ 2 = 750 yenes.'
+    author: claude
+  - id: n4-grm-6-0005
+    passage: librules
+    stem: 'はじめて　この　図書館で　本を　借りる　人は、何を　持って　いかなければ　なりませんか。'
+    choices:
+      - 'お金'
+      - '図書館カード'
+      - '借りたい　本の　リスト'
+      - 'じゅうしょが　わかる　もの'
+    answer: 4
+    explanation:
+      en: 'First-timers need a card, and to make it they bring something showing their address.'
+      es: 'Quien va por primera vez necesita la tarjeta, y para hacerla lleva algo con su dirección.'
+    author: claude
+  - id: n4-grm-6-0006
+    passage: librules
+    stem: '十一月四日（火）に　ＤＶＤを　二つ　借りました。いつまでに　返しますか。'
+    choices:
+      - '十一月十八日'
+      - '十一月四日'
+      - '十一月十一日'
+      - '十一月十日'
+    answer: 3
+    explanation:
+      en: 'DVDs are lent for one week: 4 November + 7 days = 11 November.'
+      es: 'Los DVD se prestan una semana: 4 de noviembre + 7 días = 11 de noviembre.'
+    author: claude
