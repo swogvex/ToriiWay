@@ -1,0 +1,477 @@
+# N3 · Grammar · Reading · Mondai 1 — grammar form
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 1
+instruction:
+  en: 'Choose the best answer for the blank (　).'
+  ja: '（　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-grm-1-0001
+    stem: '彼は　医者（　）、病気の　ことに　詳しい。'
+    choices:
+      - 'ばかりに'
+      - 'くせに'
+      - 'だけあって'
+      - 'わりに'
+    answer: 3
+    explanation:
+      en: '〜だけあって: "as you would expect from a doctor".'
+      es: '〜だけあって: "como era de esperar de un médico".'
+    author: claude
+  - id: n3-grm-1-0002
+    stem: '駅に　着いた（　）、電車が　出て　しまった。'
+    choices:
+      - 'あいだに'
+      - 'とたんに'
+      - 'うちに'
+      - 'ながら'
+    answer: 2
+    explanation:
+      en: '〜た とたんに: "the moment I arrived".'
+      es: '〜た とたんに: "justo en el momento en que llegué".'
+    author: claude
+  - id: n3-grm-1-0003
+    stem: '日本に　いる（　）、一度　富士山に　登りたい。'
+    choices:
+      - 'うちに'
+      - 'とたんに'
+      - 'ところで'
+      - 'ばかりに'
+    answer: 1
+    explanation:
+      en: '〜うちに: while you still can.'
+      es: '〜うちに: mientras todavía se pueda.'
+    author: claude
+  - id: n3-grm-1-0004
+    stem: 'この　仕事は　経験の　ない　人（　）　難しい。'
+    choices:
+      - 'に　ついては'
+      - 'に　よっては'
+      - 'に　くらべて'
+      - 'に　とっては'
+    answer: 4
+    explanation:
+      en: '〜に とって: from the point of view of.'
+      es: '〜に とって: desde el punto de vista de.'
+    author: claude
+  - id: n3-grm-1-0005
+    stem: '彼は　約束を　忘れた（　）、謝りも　しなかった。'
+    choices:
+      - 'うえに'
+      - 'ために'
+      - 'ように'
+      - 'かわりに'
+    answer: 1
+    explanation:
+      en: '〜うえに: on top of that.'
+      es: '〜うえに: además de eso.'
+    author: claude
+  - id: n3-grm-1-0006
+    stem: '天気予報（　）、あしたは　雪だそうだ。'
+    choices:
+      - 'に　対して'
+      - 'に　とって'
+      - 'に　よると'
+      - 'に　ついて'
+    answer: 3
+    explanation:
+      en: '〜に よると … そうだ: according to.'
+      es: '〜に よると … そうだ: según.'
+    author: claude
+  - id: n3-grm-1-0007
+    stem: '子どもの　（　）、よく　この　川で　泳いだ。'
+    choices:
+      - 'とたん'
+      - 'うち'
+      - 'まま'
+      - 'ころ'
+    answer: 4
+    explanation:
+      en: '子どもの ころ: when I was a child.'
+      es: '子どもの ころ: de pequeño.'
+    author: claude
+  - id: n3-grm-1-0008
+    stem: '先生に　（　）、もう　一度　作文を　書き直した。'
+    choices:
+      - '注意させて'
+      - '注意されて'
+      - '注意して'
+      - '注意しようと'
+    answer: 2
+    explanation:
+      en: 'The passive: the teacher pointed it out to me.'
+      es: 'La pasiva: el profesor me lo señaló.'
+    author: claude
+  - id: n3-grm-1-0009
+    stem: 'この　薬を　飲めば、熱が　下がる（　）。'
+    choices:
+      - 'ことか'
+      - 'ものか'
+      - 'わけがない'
+      - 'はずだ'
+    answer: 4
+    explanation:
+      en: '〜はずだ: what you expect to happen.'
+      es: '〜はずだ: lo que se espera que pase.'
+    author: claude
+  - id: n3-grm-1-0010
+    stem: 'あんなに　練習したのだから、彼が　負ける（　）。'
+    choices:
+      - 'わけがない'
+      - 'ことだ'
+      - 'ものだ'
+      - 'わけだ'
+    answer: 1
+    explanation:
+      en: '〜わけがない: there is no way that.'
+      es: '〜わけがない: es imposible que.'
+    author: claude
+  - id: n3-grm-1-0011
+    stem: '雨が　降って　いる（　）、彼は　かさを　ささずに　出かけた。'
+    choices:
+      - 'について'
+      - 'にとって'
+      - 'にもかかわらず'
+      - 'によって'
+    answer: 3
+    explanation:
+      en: '〜にもかかわらず: despite.'
+      es: '〜にもかかわらず: a pesar de.'
+    author: claude
+  - id: n3-grm-1-0012
+    stem: '新しい　スマホを　買った（　）、もう　壊れて　しまった。'
+    choices:
+      - 'うちに'
+      - 'ばかりなのに'
+      - 'ところに'
+      - 'ままで'
+    answer: 2
+    explanation:
+      en: '〜た ばかりなのに: I had only just bought it, yet.'
+      es: '〜た ばかりなのに: lo acababa de comprar y aun así.'
+    author: claude
+  - id: n3-grm-1-0013
+    stem: '電気を　つけた（　）、寝て　しまった。'
+    choices:
+      - 'ところ'
+      - 'ばかり'
+      - 'ほど'
+      - 'まま'
+    answer: 4
+    explanation:
+      en: '〜た まま: leaving it as it was.'
+      es: '〜た まま: dejándolo tal cual.'
+    author: claude
+  - id: n3-grm-1-0014
+    stem: '電気が　消えて　いる。もう　寝た（　）。'
+    choices:
+      - 'わけには　いかない'
+      - 'に　ちがいない'
+      - 'ことに　する'
+      - 'ことに　なる'
+    answer: 2
+    explanation:
+      en: '〜に ちがいない: a strong guess.'
+      es: '〜に ちがいない: una suposición firme.'
+    author: claude
+  - id: n3-grm-1-0015
+    stem: '毎日　練習した（　）、ピアノが　上手に　なった。'
+    choices:
+      - 'おかげで'
+      - 'わりに'
+      - 'せいで'
+      - 'くせに'
+    answer: 1
+    explanation:
+      en: '〜おかげで: a good result thanks to something.'
+      es: '〜おかげで: un buen resultado gracias a algo.'
+    author: claude
+  - id: n3-grm-1-0016
+    stem: '寝坊した（　）、会議に　遅れて　しまった。'
+    choices:
+      - 'とおりに'
+      - 'おかげで'
+      - 'せいで'
+      - 'くせに'
+    answer: 3
+    explanation:
+      en: '〜せいで: a bad result because of something.'
+      es: '〜せいで: un mal resultado por culpa de algo.'
+    author: claude
+  - id: n3-grm-1-0017
+    stem: '彼は　本当の　ことを　知って　いる（　）、何も　言わなかった。'
+    choices:
+      - 'くせに'
+      - 'とおりに'
+      - 'おかげで'
+      - 'ために'
+    answer: 1
+    explanation:
+      en: '〜くせに: criticism, "even though he knows".'
+      es: '〜くせに: crítica, "aunque lo sabe".'
+    author: claude
+  - id: n3-grm-1-0018
+    stem: 'この　映画は　子ども（　）　大人も　楽しめる。'
+    choices:
+      - 'しか'
+      - 'だけで　なく'
+      - 'までに'
+      - 'ばかりで'
+    answer: 2
+    explanation:
+      en: 'AだけでなくBも: not only A but also B.'
+      es: 'AだけでなくBも: no solo A, sino también B.'
+    author: claude
+  - id: n3-grm-1-0019
+    stem: '説明書の（　）、組み立てて　ください。'
+    choices:
+      - 'おかげに'
+      - 'うちに'
+      - 'とおりに'
+      - 'くせに'
+    answer: 3
+    explanation:
+      en: 'Nの とおりに: exactly as the instructions say.'
+      es: 'Nの とおりに: tal como dicen las instrucciones.'
+    author: claude
+  - id: n3-grm-1-0020
+    stem: 'あの　店は　値段の（　）　料理が　おいしくない。'
+    choices:
+      - 'とおりに'
+      - 'おかげで'
+      - 'ために'
+      - 'わりに'
+    answer: 4
+    explanation:
+      en: '〜の わりに: for the price, not as good as expected.'
+      es: '〜の わりに: para lo que cuesta, no es tan bueno.'
+    author: claude
+  - id: n3-grm-1-0021
+    stem: '雨が　降っ（　）、試合は　行われます。'
+    choices:
+      - 'て'
+      - 'ては'
+      - 'ても'
+      - 'たり'
+    answer: 3
+    explanation:
+      en: '〜ても: even if it rains.'
+      es: '〜ても: aunque llueva.'
+    author: claude
+  - id: n3-grm-1-0022
+    stem: '仕事が　終わり（　）、すぐ　帰ります。'
+    choices:
+      - 'ながら'
+      - 'しだい'
+      - 'がち'
+      - 'っぽい'
+    answer: 2
+    explanation:
+      en: 'Verb stem + しだい: as soon as.'
+      es: 'Raíz del verbo + しだい: en cuanto.'
+    author: claude
+  - id: n3-grm-1-0023
+    stem: '最近、彼は　会社を　休み（　）だ。'
+    choices:
+      - 'がち'
+      - 'ほど'
+      - 'しだい'
+      - 'ながら'
+    answer: 1
+    explanation:
+      en: 'Verb stem + がち: tends to.'
+      es: 'Raíz del verbo + がち: suele.'
+    author: claude
+  - id: n3-grm-1-0024
+    stem: '駅で　財布を　なくした（　）、家に　帰るまで　気が　つかなかった。'
+    choices:
+      - 'ことで'
+      - 'ものに'
+      - 'ことが'
+      - 'ことに'
+    answer: 4
+    explanation:
+      en: '〜ことに 気が つく: to notice that.'
+      es: '〜ことに 気が つく: darse cuenta de que.'
+    author: claude
+  - id: n3-grm-1-0025
+    stem: '彼の　話は　うそ（　）　聞こえる。'
+    choices:
+      - 'のように'
+      - 'みたいで'
+      - 'そうに'
+      - 'らしく'
+    answer: 1
+    explanation:
+      en: 'Nの ように 聞こえる: sounds like.'
+      es: 'Nの ように 聞こえる: suena como.'
+    author: claude
+  - id: n3-grm-1-0026
+    stem: '彼女は　いつも　（　）　ような　声で　話す。'
+    choices:
+      - '子どもな'
+      - '子ども'
+      - '子どもの'
+      - '子どもで'
+    answer: 3
+    explanation:
+      en: 'Nの ような: like a child.'
+      es: 'Nの ような: como un niño.'
+    author: claude
+  - id: n3-grm-1-0027
+    stem: '健康の（　）、毎朝　歩いて　いる。'
+    choices:
+      - 'せいで'
+      - 'ために'
+      - 'おかげで'
+      - 'ように'
+    answer: 2
+    explanation:
+      en: 'Nの ために: for the sake of.'
+      es: 'Nの ために: por el bien de.'
+    author: claude
+  - id: n3-grm-1-0028
+    stem: 'もう　少しで　電車に　乗り遅れる（　）。'
+    choices:
+      - 'ことだった'
+      - 'わけだった'
+      - 'はずだった'
+      - 'ところだった'
+    answer: 4
+    explanation:
+      en: 'もう少しで 〜ところだった: almost happened.'
+      es: 'もう少しで 〜ところだった: casi pasa.'
+    author: claude
+  - id: n3-grm-1-0029
+    stem: '日本では、家に　入る　とき　くつを　脱ぐ（　）　なって　いる。'
+    choices:
+      - 'ところに'
+      - 'ものに'
+      - 'はずに'
+      - 'ことに'
+    answer: 4
+    explanation:
+      en: '〜ことに なって いる: it is the custom or rule.'
+      es: '〜ことに なって いる: es la costumbre o la norma.'
+    author: claude
+  - id: n3-grm-1-0030
+    stem: '彼が　来る（　）、会議は　始められない。'
+    choices:
+      - 'までに'
+      - 'ところで'
+      - 'までは'
+      - 'うえで'
+    answer: 3
+    explanation:
+      en: '〜までは: until (a state continues).'
+      es: '〜までは: hasta que (mientras dura).'
+    author: claude
+  - id: n3-grm-1-0031
+    stem: '先生の　お宅に　一度　（　）　ことが　あります。'
+    choices:
+      - 'めしあがった'
+      - 'うかがった'
+      - 'いらっしゃった'
+      - 'おいでになった'
+    answer: 2
+    explanation:
+      en: 'うかがう: humble "visit", for your own action.'
+      es: 'うかがう: humilde "visitar", para la propia acción.'
+    author: claude
+  - id: n3-grm-1-0032
+    stem: '社長は　もう　お帰りに　（　）。'
+    choices:
+      - 'なりました'
+      - 'しました'
+      - 'させました'
+      - 'いたしました'
+    answer: 1
+    explanation:
+      en: 'お〜に なる: respectful form for the boss.'
+      es: 'お〜に なる: forma respetuosa para el jefe.'
+    author: claude
+  - id: n3-grm-1-0033
+    stem: 'では、資料を　（　）　いただきます。'
+    choices:
+      - '拝見させて'
+      - '拝見されて'
+      - 'ご覧に　なって'
+      - 'ご覧させて'
+    answer: 1
+    explanation:
+      en: '拝見させて いただく: humbly look at.'
+      es: '拝見させて いただく: ver, con humildad.'
+    author: claude
+  - id: n3-grm-1-0034
+    stem: '何度も　電話した（　）、彼は　出なかった。'
+    choices:
+      - 'ため'
+      - 'のに'
+      - 'ので'
+      - 'から'
+    answer: 2
+    explanation:
+      en: '〜のに: the result went against expectation.'
+      es: '〜のに: el resultado fue contrario a lo esperado.'
+    author: claude
+  - id: n3-grm-1-0035
+    stem: 'この　かばんは　大きい（　）、軽くて　便利だ。'
+    choices:
+      - 'せいで'
+      - 'おかげで'
+      - 'わりに'
+      - 'ために'
+    answer: 3
+    explanation:
+      en: '〜わりに: lighter than its size suggests.'
+      es: '〜わりに: más ligera de lo que sugiere su tamaño.'
+    author: claude
+  - id: n3-grm-1-0036
+    stem: '本屋に　行った（　）、文房具も　買った。'
+    choices:
+      - 'うちに'
+      - 'とたんに'
+      - 'ばかりに'
+      - 'ついでに'
+    answer: 4
+    explanation:
+      en: '〜ついでに: while you are at it.'
+      es: '〜ついでに: aprovechando.'
+    author: claude
+  - id: n3-grm-1-0037
+    stem: '雨が　やむ（　）、ここで　待とう。'
+    choices:
+      - 'うちに'
+      - 'までに'
+      - 'まで'
+      - 'ところ'
+    answer: 3
+    explanation:
+      en: '〜まで: wait until it stops.'
+      es: '〜まで: esperar hasta que pare.'
+    author: claude
+  - id: n3-grm-1-0038
+    stem: 'この　料理は　見た目は　ともかく、味は　（　）。'
+    choices:
+      - 'すばらしければ'
+      - 'すばらしくて'
+      - 'すばらしさ'
+      - 'すばらしい'
+    answer: 4
+    explanation:
+      en: '〜は ともかく: setting aside the looks, the taste is great.'
+      es: '〜は ともかく: dejando aparte el aspecto, el sabor es estupendo.'
+    author: claude
+  - id: n3-grm-1-0039
+    stem: 'いくら　忙しくても、朝ごはんは　食べる　（　）。'
+    choices:
+      - 'ように　して　いる'
+      - 'ように　なった'
+      - 'ことが　ある'
+      - 'ことに　なった'
+    answer: 1
+    explanation:
+      en: '〜ように して いる: I make a point of it.'
+      es: '〜ように して いる: procuro hacerlo.'
+    author: claude

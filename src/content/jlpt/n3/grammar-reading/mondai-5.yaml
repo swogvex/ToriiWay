@@ -1,0 +1,256 @@
+# N3 · Grammar · Reading · Mondai 5 — mid-size passages
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 5
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: '文章を 読んで、質問に 答えて ください。'
+passages:
+  - id: alone
+    text: "「一人暮らしを　始めて」　佐藤\n　大学に　入学して、初めて　一人暮らしを　始めた。実家に　いた　ころは、食事も　洗濯も　全部　母が　して　くれて　いたので、自分で　家事を　するのは　思ったより　大変だった。\n　特に　困ったのは　料理だ。最初の　一か月は　コンビニの　弁当ばかり　食べて　いたが、お金が　すぐに　なくなって　しまった。そこで、母に　電話して、簡単な　料理の　作り方を　教えて　もらった。今では　週に　五日は　自分で　作って　いる。\n　一人暮らしを　して、母が　毎日　どれだけ　大変だったかが　よく　わかった。今度　実家に　帰ったら、母の　代わりに　夕食を　作って　あげたいと　思って　いる。"
+  - id: commute
+    text: "「電車の　中の　時間」　森\n　わたしは　毎日　片道　一時間　電車で　通勤して　いる。以前は　その　時間を　スマートフォンの　ゲームで　過ごして　いたが、ある日、ゲームを　しても　何も　残らないと　感じて、本を　読む　ことに　した。\n　最初は　なかなか　集中できなかった。電車が　揺れたり、周りの　人の　話し声が　気に　なったり　したからだ。そこで、短い　話が　たくさん　入って　いる　本を　選ぶように　した。一つの　話が　十分ほどで　読めるので、駅に　着く　前に　区切りよく　読み終わる　ことが　できる。\n　今では　一か月に　四、五冊は　読むように　なった。通勤の　時間が、一日の　中で　いちばん　楽しみな　時間に　なって　いる。"
+  - id: beach
+    text: "「海の　ごみ拾い」　チャン\n　先月、友だちに　誘われて、海岸の　ごみを　拾う　ボランティアに　参加した。朝　八時に　集まって、二時間　ごみを　拾った。\n　驚いたのは、ごみの　多さだ。ペットボトルや　お菓子の　袋だけで　なく、遠い　外国から　流れて　きた　ごみも　たくさん　あった。二十人で　拾ったのに、大きな　袋が　五十個も　いっぱいに　なった。\n　ボランティアの　リーダーは、「ごみを　拾うのも　大切ですが、いちばん　大切なのは　ごみを　出さない　ことです」と　話して　いた。それを　聞いてから、わたしは　飲み物を　買う　代わりに、水筒を　持ち歩くように　して　いる。"
+  - id: keigo
+    text: "「敬語の　勉強」　アリ\n　日本の　会社で　働き始めて　半年に　なる。仕事で　いちばん　難しいと　感じるのは　敬語だ。学校で　習った　ときは、ルールを　覚えれば　いいと　思って　いた。しかし、実際の　会社では、相手との　関係や　場面に　よって、使う　言葉を　変えなければ　ならない。\n　ある日、お客様に　電話で　「部長は　今　いらっしゃいません」と　言って　しまった。あとで　先輩に、「自分の　会社の　人の　ことを　外の　人に　話す　ときは、『おりません』と　言うんですよ」と　教えて　もらった。\n　それ以来、先輩が　電話で　話して　いる　ときは、よく　聞くように　して　いる。本で　勉強するより、実際に　使われて　いる　言葉を　聞く　ほうが　ずっと　役に　立つと　思う。"
+  - id: neighbour
+    text: "「となりの　おばあさん」　ケン\n　去年の　春、今の　アパートに　引っ越して　きた。前に　住んで　いた　ところでは、となりに　どんな　人が　住んで　いるかも　知らなかった。\n　引っ越した　日、となりの　おばあさんが　「困った　ことが　あったら、いつでも　言ってね」と　声を　かけて　くれた。それから、ときどき　野菜や　手作りの　おかずを　くれるように　なった。お返しに、わたしは　重い　荷物を　運んだり、電球を　替えたり　して　いる。\n　先月、わたしが　かぜで　寝て　いた　とき、おばあさんが　おかゆを　作って　持って　きて　くれた。一人で　暮らして　いる　わたしには、本当に　ありがたかった。近所の　人との　付き合いが、こんなに　心強い　ものだとは　思わなかった。"
+  - id: photo
+    text: "「写真を　撮る　理由」　ミラ\n　二年前から、休みの　日に　カメラを　持って　町を　歩くのが　趣味に　なった。最初は　有名な　観光地や　きれいな　景色ばかり　撮って　いた。\n　ところが、ある日、近所の　古い　商店街を　撮った　写真を　見た　友だちが、「こういう　写真の　ほうが　好きだな」と　言った。毎日　通って　いる　道なのに、写真に　すると、今まで　気が　つかなかった　看板の　色や、店の　人の　笑顔が　見えて　きた。\n　それから、わたしは　特別な　場所では　なく、身近な　場所を　撮るように　なった。ふだんの　生活の　中にも　すてきな　ものが　たくさん　ある　ことに　気づかせて　くれた　友だちに、感謝して　いる。"
+questions:
+  - id: n3-grm-5-0001
+    passage: alone
+    stem: '一人暮らしを　始めて、筆者が　特に　困った　ことは　何か。'
+    choices:
+      - '洗濯'
+      - '勉強'
+      - '料理'
+      - '掃除'
+    answer: 3
+    explanation:
+      en: '特に 困ったのは 料理だ.'
+      es: 'Lo que más le costó fue cocinar.'
+    author: claude
+  - id: n3-grm-5-0002
+    passage: alone
+    stem: '筆者が　自分で　料理を　するように　なったのは　なぜか。'
+    choices:
+      - '弁当ばかりで　お金が　なくなったから'
+      - '母に　料理を　しなさいと　言われたから'
+      - 'コンビニが　遠いから'
+      - '料理が　好きだから'
+    answer: 1
+    explanation:
+      en: 'Buying bento every day used up the money.'
+      es: 'Comprar bento cada día le dejó sin dinero.'
+    author: claude
+  - id: n3-grm-5-0003
+    passage: alone
+    stem: '筆者は　今度　実家に　帰ったら、何を　したいと　思って　いるか。'
+    choices:
+      - '母に　料理を　教えて　もらう'
+      - '母の　代わりに　夕食を　作る'
+      - '母に　洗濯を　して　もらう'
+      - '母と　いっしょに　弁当を　買う'
+    answer: 2
+    explanation:
+      en: 'Understanding how hard it was, the writer wants to cook dinner for the mother.'
+      es: 'Al entender lo duro que era, quiere hacerle la cena a su madre.'
+    author: claude
+  - id: n3-grm-5-0004
+    passage: commute
+    stem: '筆者が　電車で　本を　読む　ことに　したのは　なぜか。'
+    choices:
+      - '友だちに　すすめられたから'
+      - '本を　読むのが　好きだったから'
+      - 'スマートフォンが　壊れたから'
+      - 'ゲームを　しても　何も　残らないと　感じたから'
+    answer: 4
+    explanation:
+      en: 'Games left nothing behind.'
+      es: 'Los juegos no le dejaban nada.'
+    author: claude
+  - id: n3-grm-5-0005
+    passage: commute
+    stem: '筆者が　短い　話の　本を　選ぶように　したのは　なぜか。'
+    choices:
+      - '字が　大きくて　読みやすいから'
+      - '駅に　着く　前に　区切りよく　読み終われるから'
+      - '値段が　安いから'
+      - '電車が　揺れないから'
+    answer: 2
+    explanation:
+      en: 'A story takes about ten minutes, so it ends before the station.'
+      es: 'Un relato dura unos diez minutos, así que acaba antes de la estación.'
+    author: claude
+  - id: n3-grm-5-0006
+    passage: commute
+    stem: '筆者に　とって、通勤の　時間は　今　どんな　時間か。'
+    choices:
+      - '一日で　いちばん　楽しみな　時間'
+      - '寝る　時間'
+      - 'ゲームを　する　時間'
+      - 'つまらない　時間'
+    answer: 1
+    explanation:
+      en: 'Commuting has become the best part of the day.'
+      es: 'El trayecto es ahora el mejor momento del día.'
+    author: claude
+  - id: n3-grm-5-0007
+    passage: beach
+    stem: '筆者が　驚いたのは、どんな　ことか。'
+    choices:
+      - '朝　早く　集まった　こと'
+      - 'ボランティアの　人が　少なかった　こと'
+      - '海岸の　ごみが　とても　多かった　こと'
+      - 'ごみ袋が　足りなかった　こと'
+    answer: 3
+    explanation:
+      en: 'Twenty people filled fifty bags.'
+      es: 'Veinte personas llenaron cincuenta bolsas.'
+    author: claude
+  - id: n3-grm-5-0008
+    passage: beach
+    stem: 'リーダーが　いちばん　大切だと　言ったのは　何か。'
+    choices:
+      - '外国の　ごみを　調べる　こと'
+      - 'ごみを　たくさん　拾う　こと'
+      - '毎月　ボランティアに　来る　こと'
+      - 'ごみを　出さない　こと'
+    answer: 4
+    explanation:
+      en: 'Not producing rubbish matters most.'
+      es: 'Lo más importante es no generar basura.'
+    author: claude
+  - id: n3-grm-5-0009
+    passage: beach
+    stem: '筆者は　ボランティアの　あと、どう　変わったか。'
+    choices:
+      - 'ペットボトルの　飲み物を　よく　買うように　なった'
+      - '水筒を　持ち歩くように　なった'
+      - '友だちを　ボランティアに　誘うように　なった'
+      - '毎週　海岸に　行くように　なった'
+    answer: 2
+    explanation:
+      en: 'Instead of buying drinks, the writer carries a flask.'
+      es: 'En vez de comprar bebidas, lleva una cantimplora.'
+    author: claude
+  - id: n3-grm-5-0010
+    passage: keigo
+    stem: '筆者が　学校で　敬語を　習った　とき、どう　思って　いたか。'
+    choices:
+      - '先輩に　習えば　いいと　思って　いた'
+      - 'とても　難しいと　思って　いた'
+      - '会社で　使う　ことは　ないと　思って　いた'
+      - 'ルールを　覚えれば　いいと　思って　いた'
+    answer: 4
+    explanation:
+      en: 'At school it seemed enough to learn the rules.'
+      es: 'En la escuela parecía que bastaba con aprender las reglas.'
+    author: claude
+  - id: n3-grm-5-0011
+    passage: keigo
+    stem: '筆者は　電話で　どんな　間違いを　したか。'
+    choices:
+      - 'お客様に　ていねいで　ない　言葉を　使った'
+      - '部長の　名前を　間違えた'
+      - '自分の　会社の　部長に　尊敬語を　使った'
+      - '電話を　途中で　切った'
+    answer: 3
+    explanation:
+      en: 'Talking to outsiders about your own boss you use humble おります, not いらっしゃる.'
+      es: 'Al hablar con externos de tu propio jefe se usa おります, no いらっしゃる.'
+    author: claude
+  - id: n3-grm-5-0012
+    passage: keigo
+    stem: '筆者が　今、敬語を　身に　つける　ために　して　いる　ことは　何か。'
+    choices:
+      - '先輩が　電話で　話すのを　よく　聞く'
+      - '敬語の　本を　毎日　読む'
+      - 'お客様に　敬語を　教えて　もらう'
+      - '学校に　もう　一度　通う'
+    answer: 1
+    explanation:
+      en: 'Listening to real use is more useful than books.'
+      es: 'Escuchar el uso real sirve más que los libros.'
+    author: claude
+  - id: n3-grm-5-0013
+    passage: neighbour
+    stem: '前に　住んで　いた　ところは、どうだったか。'
+    choices:
+      - 'となりの　人の　ことを　何も　知らなかった'
+      - 'となりに　だれも　住んで　いなかった'
+      - '近所の　人に　よく　助けて　もらった'
+      - 'となりの　人と　仲が　よかった'
+    answer: 1
+    explanation:
+      en: 'The writer did not even know who lived next door.'
+      es: 'Ni siquiera sabía quién vivía al lado.'
+    author: claude
+  - id: n3-grm-5-0014
+    passage: neighbour
+    stem: '筆者は　おばあさんに　何を　して　あげて　いるか。'
+    choices:
+      - '野菜を　あげる'
+      - '買い物に　連れて　行く'
+      - 'おかゆを　作る'
+      - '重い　荷物を　運んだり　電球を　替えたり　する'
+    answer: 4
+    explanation:
+      en: 'In return the writer carries heavy things and changes light bulbs.'
+      es: 'A cambio, lleva cosas pesadas y cambia bombillas.'
+    author: claude
+  - id: n3-grm-5-0015
+    passage: neighbour
+    stem: 'この　文章で　筆者が　いちばん　言いたい　ことは　何か。'
+    choices:
+      - '一人暮らしは　さびしい'
+      - '近所の　人との　付き合いは　心強い　ものだ'
+      - '引っ越しは　大変だ'
+      - 'かぜを　ひかないように　気を　つけたい'
+    answer: 2
+    explanation:
+      en: 'The last line: neighbours are a great support.'
+      es: 'La última frase: los vecinos son un gran apoyo.'
+    author: claude
+  - id: n3-grm-5-0016
+    passage: photo
+    stem: '最初、筆者は　どんな　写真を　撮って　いたか。'
+    choices:
+      - '近所の　商店街'
+      - '店の　人の　笑顔'
+      - '有名な　観光地や　きれいな　景色'
+      - '友だちの　顔'
+    answer: 3
+    explanation:
+      en: 'At first: famous spots and scenery.'
+      es: 'Al principio: lugares famosos y paisajes.'
+    author: claude
+  - id: n3-grm-5-0017
+    passage: photo
+    stem: '友だちの　言葉を　聞いて、筆者は　どう　変わったか。'
+    choices:
+      - '観光地へ　もっと　行くように　なった'
+      - '身近な　場所を　撮るように　なった'
+      - 'カメラを　やめた'
+      - '友だちの　写真を　撮るように　なった'
+    answer: 2
+    explanation:
+      en: 'The writer turned to everyday places.'
+      es: 'Pasó a fotografiar lugares cotidianos.'
+    author: claude
+  - id: n3-grm-5-0018
+    passage: photo
+    stem: '筆者が　友だちに　感謝して　いるのは　なぜか。'
+    choices:
+      - 'ふだんの　生活の　中の　すてきな　ものに　気づかせて　くれたから'
+      - '有名な　場所を　教えて　くれたから'
+      - '写真の　撮り方を　教えて　くれたから'
+      - '新しい　カメラを　くれたから'
+    answer: 1
+    explanation:
+      en: 'The friend showed that daily life is full of lovely things.'
+      es: 'El amigo le hizo ver que lo cotidiano está lleno de cosas bonitas.'
+    author: claude

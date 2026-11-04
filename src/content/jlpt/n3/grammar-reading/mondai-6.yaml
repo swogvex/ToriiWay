@@ -1,0 +1,172 @@
+# N3 · Grammar · Reading · Mondai 6 — long passage
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 6
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: '文章を 読んで、質問に 答えて ください。'
+passages:
+  - id: language
+    text: "「外国語を　学ぶ　意味」　山本\n　最近は、スマートフォンの　翻訳アプリが　とても　便利に　なった。話した　言葉を　すぐに　ほかの　言語に　して　くれるので、外国に　旅行しても　あまり　困らない。そのため、「もう　外国語を　勉強しなくても　いいのでは　ないか」と　言う　人も　いる。\n　たしかに、道を　聞いたり、レストランで　注文したり　する　だけなら、アプリで　十分かもしれない。しかし、わたしは　外国語を　学ぶ　ことには、それ以上の　意味が　あると　思う。\n　わたしは　大学で　スペイン語を　勉強した。文法や　単語を　覚えるのは　大変だったが、勉強する　うちに、スペイン語を　話す　国の　人々の　考え方や　生活に　興味を　持つように　なった。例えば、スペイン語には　日本語に　ない　言い方が　たくさん　ある。それを　知る　ことで、自分とは　違う　見方が　ある　ことに　気が　ついた。\n　また、相手の　言葉で　話そうと　する　ことは、相手を　大切に　して　いると　いう　気持ちを　伝える　ことにも　なる。下手でも、相手の　言葉で　あいさつを　すると、相手は　とても　喜んで　くれる。アプリで　正しい　文を　見せるより、ずっと　距離が　近く　なるのだ。\n　便利な　道具は　どんどん　使えば　いい。でも、外国語を　学ぶ　ことで　得られる　ものは、道具では　手に　入らないと　わたしは　思う。"
+  - id: nap
+    text: "「昼寝の　すすめ」　中村\n　わたしの　会社では、去年から　昼休みに　十五分ほど　昼寝を　する　ことが　すすめられて　いる。最初は、仕事中に　寝るなんて、と　思って、わたしは　しなかった。\n　しかし、午後に　なると　いつも　眠く　なって、仕事が　なかなか　進まなかった。ある日、同僚に　すすめられて、昼休みに　机で　少し　目を　閉じて　みた。すると、午後の　頭が　すっきりして、仕事の　ミスも　減った。\n　調べて　みると、短い　昼寝には　集中力を　高める　効果が　ある　そうだ。ただし、三十分以上　寝て　しまうと、かえって　起きた　あと　頭が　ぼんやりして　しまうので、注意が　必要だと　いう。\n　今では、昼寝を　する　社員が　ずいぶん　増えた。会社も、昼休みの　間は　部屋の　電気を　少し　暗く　する　など、休みやすく　する　工夫を　して　いる。働く　時間の　長さより、どれだけ　集中して　働けるかが　大切なのだと　思う。"
+  - id: cafe
+    text: "「空き家を　カフェに」　小林\n　わたしの　生まれた　町では、若い　人が　どんどん　都会へ　出て　行き、空き家が　増えて　いる。三年前、祖父が　亡くなって、祖父の　古い　家も　空き家に　なった。家族は　家を　壊して　土地を　売る　ことを　考えて　いた。\n　しかし、わたしは　その　家が　好きだった。太い　木の　柱や、庭の　大きな　柿の　木には、子どもの　ころの　思い出が　たくさん　ある。そこで、会社を　辞めて、その　家を　カフェに　する　ことに　した。\n　もちろん、簡単では　なかった。古い　家なので　直す　ところが　多く、お金も　かかった。近所の　人の　中には、「こんな　田舎に　客が　来るわけが　ない」と　言う　人も　いた。\n　それでも、開店して　一年が　たった　今、カフェには　町の　人だけで　なく、遠くから　来る　客も　増えて　きた。古い　家の　雰囲気が　いいと　言って、写真を　撮って　いく　人も　多い。最近では、町の　若い　人が　「ここで　働きたい」と　言って　くれるように　なった。古い　ものを　大切に　する　ことが、町に　人を　呼ぶ　きっかけに　なるかもしれないと、わたしは　考えて　いる。"
+questions:
+  - id: n3-grm-6-0001
+    passage: language
+    stem: '「もう　外国語を　勉強しなくても　いいのでは　ないか」と　言う　人が　いるのは　なぜか。'
+    choices:
+      - '外国に　旅行する　人が　減ったから'
+      - '学校で　外国語を　教えなく　なったから'
+      - '翻訳アプリが　便利に　なったから'
+      - '外国語の　勉強は　お金が　かかるから'
+    answer: 3
+    explanation:
+      en: 'Translation apps now make travel easy.'
+      es: 'Las apps de traducción facilitan los viajes.'
+    author: claude
+  - id: n3-grm-6-0002
+    passage: language
+    stem: '筆者は　スペイン語を　勉強して、どんな　ことに　気が　ついたか。'
+    choices:
+      - '日本語の　ほうが　言い方が　多い　こと'
+      - '自分とは　違う　見方が　ある　こと'
+      - 'スペイン語の　文法は　簡単だ　と　いう　こと'
+      - '単語を　覚えるのが　いちばん　大切な　こと'
+    answer: 2
+    explanation:
+      en: 'Expressions Japanese lacks showed a different way of seeing.'
+      es: 'Expresiones que el japonés no tiene le mostraron otra forma de ver.'
+    author: claude
+  - id: n3-grm-6-0003
+    passage: language
+    stem: '筆者に　よると、相手の　言葉で　あいさつを　すると　どう　なるか。'
+    choices:
+      - 'アプリが　いらなく　なる'
+      - '正しい　文が　話せるように　なる'
+      - '相手に　笑われる'
+      - '相手との　距離が　近く　なる'
+    answer: 4
+    explanation:
+      en: 'Even clumsy greetings bring people closer.'
+      es: 'Aunque sea torpe, saludar en su idioma acerca a la gente.'
+    author: claude
+  - id: n3-grm-6-0004
+    passage: language
+    stem: 'この　文章で　筆者が　いちばん　言いたい　ことは　何か。'
+    choices:
+      - '外国語を　学ぶ　ことには、道具では　得られない　価値が　ある'
+      - '外国語は　大学で　勉強する　べきだ'
+      - '翻訳アプリは　使わない　ほうが　いい'
+      - '旅行の　前に　外国語を　勉強する　べきだ'
+    answer: 1
+    explanation:
+      en: 'Use the tools, but learning gives what tools cannot.'
+      es: 'Usa las herramientas, pero aprender da lo que ellas no dan.'
+    author: claude
+  - id: n3-grm-6-0005
+    passage: nap
+    stem: '最初、筆者が　昼寝を　しなかったのは　なぜか。'
+    choices:
+      - '眠く　ならなかったから'
+      - '仕事中に　寝るのは　よくないと　思ったから'
+      - '昼休みが　短かったから'
+      - '同僚に　止められたから'
+    answer: 2
+    explanation:
+      en: 'Sleeping at work seemed wrong at first.'
+      es: 'Al principio dormir en el trabajo le parecía mal.'
+    author: claude
+  - id: n3-grm-6-0006
+    passage: nap
+    stem: '昼寝を　して　みて、筆者は　どう　なったか。'
+    choices:
+      - '夜　眠れなく　なった'
+      - '午後も　ずっと　眠かった'
+      - '午後の　仕事の　ミスが　減った'
+      - '昼休みが　長く　なった'
+    answer: 3
+    explanation:
+      en: 'A clear head in the afternoon meant fewer mistakes.'
+      es: 'Con la cabeza despejada por la tarde cometía menos errores.'
+    author: claude
+  - id: n3-grm-6-0007
+    passage: nap
+    stem: '昼寝に　ついて　注意が　必要なのは、どんな　ことか。'
+    choices:
+      - '昼寝の　あと　おなかが　すく　こと'
+      - '机で　寝ると　体が　痛く　なる　こと'
+      - '毎日　しないと　効果が　ない　こと'
+      - '長く　寝すぎると　頭が　ぼんやりする　こと'
+    answer: 4
+    explanation:
+      en: 'More than thirty minutes leaves you groggy.'
+      es: 'Más de treinta minutos te deja aturdido.'
+    author: claude
+  - id: n3-grm-6-0008
+    passage: nap
+    stem: '筆者が　いちばん　言いたい　ことは　何か。'
+    choices:
+      - '長く　働くより、集中して　働く　ことが　大切だ'
+      - '会社は　昼休みを　長く　する　べきだ'
+      - '社員は　もっと　早く　寝る　べきだ'
+      - '昼寝は　家で　する　ほうが　いい'
+    answer: 1
+    explanation:
+      en: 'The last line: focus matters more than hours.'
+      es: 'La última frase: importa más la concentración que las horas.'
+    author: claude
+  - id: n3-grm-6-0009
+    passage: cafe
+    stem: '家族は　はじめ、祖父の　家を　どう　しようと　考えて　いたか。'
+    choices:
+      - '自分たちが　住む'
+      - 'カフェに　する'
+      - '町に　あげる'
+      - '壊して　土地を　売る'
+    answer: 4
+    explanation:
+      en: 'The family planned to pull it down and sell the land.'
+      es: 'La familia pensaba derribarla y vender el terreno.'
+    author: claude
+  - id: n3-grm-6-0010
+    passage: cafe
+    stem: '筆者が　カフェを　始める　とき、大変だった　ことは　何か。'
+    choices:
+      - '会社が　辞めさせて　くれなかった　こと'
+      - '柿の　木を　切った　こと'
+      - '家を　直すのに　お金が　かかった　こと'
+      - '家族が　反対した　こと'
+    answer: 3
+    explanation:
+      en: 'An old house needed many repairs and money.'
+      es: 'Una casa vieja necesitaba muchas reparaciones y dinero.'
+    author: claude
+  - id: n3-grm-6-0011
+    passage: cafe
+    stem: '開店して　一年が　たって、どんな　ことが　起きて　いるか。'
+    choices:
+      - '遠くから　来る　客や、働きたいと　言う　若い　人が　出て　きた'
+      - '古い　家を　新しく　建て直した'
+      - '店を　大きく　した'
+      - '近所の　人が　だれも　来なく　なった'
+    answer: 1
+    explanation:
+      en: 'Visitors from afar and local young people wanting to work there.'
+      es: 'Clientes de lejos y jóvenes del pueblo que quieren trabajar allí.'
+    author: claude
+  - id: n3-grm-6-0012
+    passage: cafe
+    stem: '筆者は　どんな　ことを　考えて　いるか。'
+    choices:
+      - '若い　人は　都会で　働く　ほうが　いい'
+      - '古い　ものを　大切に　する　ことが、町に　人を　呼ぶ　きっかけに　なる'
+      - 'カフェを　ほかの　町にも　作りたい'
+      - '空き家は　すぐに　壊す　べきだ'
+    answer: 2
+    explanation:
+      en: 'Caring for old things may draw people to the town.'
+      es: 'Cuidar lo antiguo puede atraer gente al pueblo.'
+    author: claude

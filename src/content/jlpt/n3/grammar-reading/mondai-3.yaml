@@ -1,0 +1,211 @@
+# N3 · Grammar · Reading · Mondai 3 — text grammar
+# Original questions written for ToriiWay.
+level: N3
+section: grammar-reading
+mondai: 3
+instruction:
+  en: 'Read the text and choose the best answer for each blank.'
+  ja: '文章を 読んで、（１）から（５）の 中に 入る 最も よい ものを えらんで ください。'
+passages:
+  - id: phone
+    text: "「スマートフォンと　わたし」　パク\n　わたしは　毎日　スマートフォンを　使って　いる。ニュースを　読んだり、友だちと　連絡を　取ったり　する　ことが　できて、とても　便利だ。（１）、最近、使いすぎて　いるのでは　ないかと　思うように　なった。\n　先月、一日に　何時間　使って　いるか　調べて　みた。（２）、なんと　六時間も　使って　いた。寝る　前にも　ずっと　見て　いた　（３）、朝　起きるのが　つらく　なって　いたのだ。\n　そこで、夜　十時（４）　スマートフォンを　使わない　ことに　した。はじめは　大変だったが、今は　よく　眠れるように　なった。これからも　この　ルールを　（５）と　思う。"
+  - id: festival
+    text: "「町の　祭り」　ルイス\n　わたしが　住んで　いる　町では、毎年　八月に　大きな　祭りが　ある。去年、初めて　その　祭りに　参加した。\n　祭りの　一か月前から、町の　人たちは　夜に　集まって、踊りの　練習を　する。わたしも　近所の　人に　（１）、練習に　行く　ことに　した。最初は　動きが　速くて、なかなか　覚えられなかった。（２）、みんなが　親切に　教えて　くれたので、少しずつ　踊れるように　なった。\n　祭りの　日は、大勢の　人の　前で　踊った。とても　緊張したが、終わった　（３）は　大きな　拍手を　もらった。外国人の　わたしでも、町の　一人として　受け入れて　もらえた　（４）、とても　うれしかった。\n　今年も　もちろん　参加する　（５）だ。"
+  - id: novel
+    text: "「一冊の　本」　エマ\n　先週、学校の　図書館で　古い　日本の　小説を　見つけた。表紙が　きれいだった　（１）、何も　考えずに　借りて　みた。\n　読み始めると、知らない　言葉が　たくさん　あった。辞書を　引きながら　読んだので、一ページ　読む　（２）　三十分も　かかった。それでも、話が　おもしろくて、途中で　やめる　ことが　できなかった。\n　一週間　かけて、やっと　最後まで　読んだ。読み終わった　とき、自分が　少し　成長した　（３）　感じが　した。日本語の　力が　ついた　（４）、日本の　昔の　生活や　考え方も　知る　ことが　できたからだ。\n　次は　同じ　作家の　ほかの　本も　読んで　（５）。"
+questions:
+  - id: n3-grm-3-0001
+    passage: phone
+    stem: '（１）'
+    choices:
+      - 'だから'
+      - 'それに'
+      - 'しかし'
+      - 'たとえば'
+    answer: 3
+    explanation:
+      en: 'しかし turns from "convenient" to "too much".'
+      es: 'しかし pasa de "práctico" a "demasiado".'
+    author: claude
+  - id: n3-grm-3-0002
+    passage: phone
+    stem: '（２）'
+    choices:
+      - 'すると'
+      - 'つまり'
+      - 'そのうえ'
+      - 'それでも'
+    answer: 1
+    explanation:
+      en: 'すると introduces what the check revealed.'
+      es: 'すると introduce lo que reveló la comprobación.'
+    author: claude
+  - id: n3-grm-3-0003
+    passage: phone
+    stem: '（３）'
+    choices:
+      - 'のに'
+      - 'ので'
+      - 'ても'
+      - 'けれど'
+    answer: 2
+    explanation:
+      en: 'Looking at it before bed was the cause, so ので.'
+      es: 'Mirarlo antes de dormir era la causa, así que ので.'
+    author: claude
+  - id: n3-grm-3-0004
+    passage: phone
+    stem: '（４）'
+    choices:
+      - 'までは'
+      - 'ちょうどに'
+      - 'ごろに'
+      - '以降は'
+    answer: 4
+    explanation:
+      en: "From ten o'clock on (以降は) the phone stays off."
+      es: 'A partir de las diez (以降は) no usa el móvil.'
+    author: claude
+  - id: n3-grm-3-0005
+    passage: phone
+    stem: '（５）'
+    choices:
+      - '続けて　いった'
+      - '続けて　いて'
+      - '続けて　いくな'
+      - '続けて　いきたい'
+    answer: 4
+    explanation:
+      en: '〜て いきたいと 思う: a wish to keep going.'
+      es: '〜て いきたいと 思う: el deseo de seguir.'
+    author: claude
+  - id: n3-grm-3-0006
+    passage: festival
+    stem: '（１）'
+    choices:
+      - '誘って'
+      - '誘わせて'
+      - '誘われて'
+      - '誘われたら'
+    answer: 3
+    explanation:
+      en: 'The neighbours invited the writer: passive 誘われる.'
+      es: 'Los vecinos lo invitaron: pasiva 誘われる.'
+    author: claude
+  - id: n3-grm-3-0007
+    passage: festival
+    stem: '（２）'
+    choices:
+      - 'それで'
+      - 'でも'
+      - 'すると'
+      - 'だから'
+    answer: 2
+    explanation:
+      en: 'でも contrasts the difficulty with the help received.'
+      es: 'でも contrasta la dificultad con la ayuda recibida.'
+    author: claude
+  - id: n3-grm-3-0008
+    passage: festival
+    stem: '（３）'
+    choices:
+      - 'あと'
+      - 'まで'
+      - 'うち'
+      - 'まえ'
+    answer: 1
+    explanation:
+      en: '終わった あと: after it ended.'
+      es: '終わった あと: después de terminar.'
+    author: claude
+  - id: n3-grm-3-0009
+    passage: festival
+    stem: '（４）'
+    choices:
+      - 'ような　気が　して'
+      - 'ような　気が　しても'
+      - 'ような　気で'
+      - 'ような　気を'
+    answer: 1
+    explanation:
+      en: '〜ような 気が して: it felt as if.'
+      es: '〜ような 気が して: sentí como si.'
+    author: claude
+  - id: n3-grm-3-0010
+    passage: festival
+    stem: '（５）'
+    choices:
+      - 'わけ'
+      - 'つもり'
+      - 'はず'
+      - 'ところ'
+    answer: 2
+    explanation:
+      en: '参加する つもりだ: a firm plan.'
+      es: '参加する つもりだ: un plan firme.'
+    author: claude
+  - id: n3-grm-3-0011
+    passage: novel
+    stem: '（１）'
+    choices:
+      - 'ても'
+      - 'のに'
+      - 'ので'
+      - 'けれど'
+    answer: 3
+    explanation:
+      en: 'The pretty cover was the reason, so ので.'
+      es: 'La portada bonita fue la razón, así que ので.'
+    author: claude
+  - id: n3-grm-3-0012
+    passage: novel
+    stem: '（２）'
+    choices:
+      - 'ながら'
+      - 'ので'
+      - 'ほど'
+      - 'のに'
+    answer: 4
+    explanation:
+      en: '〜のに かかる: time needed to do something.'
+      es: '〜のに かかる: el tiempo que lleva hacer algo.'
+    author: claude
+  - id: n3-grm-3-0013
+    passage: novel
+    stem: '（３）'
+    choices:
+      - 'そうな'
+      - 'ような'
+      - 'ように'
+      - 'らしい'
+    answer: 2
+    explanation:
+      en: 'Before 感じ the form is 〜ような.'
+      es: 'Antes de 感じ va 〜ような.'
+    author: claude
+  - id: n3-grm-3-0014
+    passage: novel
+    stem: '（４）'
+    choices:
+      - 'ばかりで'
+      - 'しか'
+      - 'だけで'
+      - 'だけで　なく'
+    answer: 4
+    explanation:
+      en: 'AだけでなくBも: not only Japanese, but also the old ways.'
+      es: 'AだけでなくBも: no solo el japonés, también lo antiguo.'
+    author: claude
+  - id: n3-grm-3-0015
+    passage: novel
+    stem: '（５）'
+    choices:
+      - 'みたいと　思う'
+      - 'みて　ほしい'
+      - 'みた　ことが　ある'
+      - 'みたと　思う'
+    answer: 1
+    explanation:
+      en: 'A plan for next time: 読んで みたいと 思う.'
+      es: 'Un plan para la próxima: 読んで みたいと 思う.'
+    author: claude
