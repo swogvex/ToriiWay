@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 6 — usage
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 6
+instruction:
+  en: 'Choose the sentence that uses the word correctly.'
+  ja: 'つぎの 言葉の 使い方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-6-0001
+    stem: '__普及__'
+    choices:
+      - 'この　料理は　普及に　おいしい。'
+      - 'スマートフォンは　急速に　普及した。'
+      - '台風が　普及して　電車が　止まった。'
+      - '彼は　会社に　普及して　いる。'
+    answer: 2
+    explanation:
+      en: '普及: to spread widely.'
+      es: '普及: extenderse, generalizarse.'
+    author: claude
+  - id: n2-lr-6-0002
+    stem: '__発揮__'
+    choices:
+      - '新しい　店が　駅前に　発揮した。'
+      - '雨が　発揮して、試合が　中止に　なった。'
+      - '彼は　試合で　実力を　十分に　発揮した。'
+      - '電気を　発揮して　料理を　作る。'
+    answer: 3
+    explanation:
+      en: "発揮: to show one's ability."
+      es: '発揮: demostrar una capacidad.'
+    author: claude
+  - id: n2-lr-6-0003
+    stem: '__打ち明ける__'
+    choices:
+      - '悩みを　友人に　打ち明けた。'
+      - '窓を　打ち明けて　風を　入れた。'
+      - '箱を　打ち明けて　中を　見た。'
+      - 'ドアを　強く　打ち明けた。'
+    answer: 1
+    explanation:
+      en: '打ち明ける: to confide.'
+      es: '打ち明ける: confiar un secreto.'
+    author: claude
+  - id: n2-lr-6-0004
+    stem: '__見逃す__'
+    choices:
+      - '空港で　友人を　見逃した。'
+      - '新しい　家を　見逃して　買った。'
+      - '試験の　結果を　見逃して　安心した。'
+      - 'ドラマの　大事な　場面を　見逃して　しまった。'
+    answer: 4
+    explanation:
+      en: '見逃す: to miss seeing. Seeing someone off is 見送る.'
+      es: '見逃す: perderse algo. Despedir a alguien es 見送る.'
+    author: claude
+  - id: n2-lr-6-0005
+    stem: '__心当たり__'
+    choices:
+      - '彼は　心当たりに　歌が　上手だ。'
+      - 'その　名前に　心当たりは　ありますか。'
+      - '心当たりの　料理を　作った。'
+      - '心当たりが　強くて　眠れない。'
+    answer: 2
+    explanation:
+      en: '心当たり: an idea of who or what it might be.'
+      es: '心当たり: tener idea de qué o quién puede ser.'
+    author: claude
+  - id: n2-lr-6-0006
+    stem: '__手頃__'
+    choices:
+      - 'この　店では　手頃な　値段で　食事が　できる。'
+      - '手頃に　雨が　降って　きた。'
+      - '手頃な　声で　話して　ください。'
+      - '彼は　手頃な　態度で　謝った。'
+    answer: 1
+    explanation:
+      en: '手頃: reasonable (price, size).'
+      es: '手頃: asequible, adecuado.'
+    author: claude
+  - id: n2-lr-6-0007
+    stem: '__物足りない__'
+    choices:
+      - '物足りない　人が　多くて　座れない。'
+      - '物足りない　ほど　部屋が　狭い。'
+      - '荷物が　物足りなくて　運べない。'
+      - 'この　スープは　味が　薄くて　物足りない。'
+    answer: 4
+    explanation:
+      en: '物足りない: not quite satisfying.'
+      es: '物足りない: que se queda corto.'
+    author: claude
+  - id: n2-lr-6-0008
+    stem: '__取り組む__'
+    choices:
+      - '財布を　取り組んで　家に　帰った。'
+      - 'バスに　取り組んで　駅へ　行った。'
+      - '環境問題に　真剣に　取り組む。'
+      - '雨が　取り組んで　道が　ぬれた。'
+    answer: 3
+    explanation:
+      en: '取り組む: to tackle.'
+      es: '取り組む: abordar un problema.'
+    author: claude
+  - id: n2-lr-6-0009
+    stem: '__目安__'
+    choices:
+      - '目安に　眼鏡を　かけた。'
+      - '目安が　痛くて　病院に　行った。'
+      - '一日の　勉強時間の　目安は　二時間です。'
+      - '彼の　目安は　とても　優しい。'
+    answer: 3
+    explanation:
+      en: '目安: a rough guide.'
+      es: '目安: una referencia aproximada.'
+    author: claude
+  - id: n2-lr-6-0010
+    stem: '__甘やかす__'
+    choices:
+      - '甘やかした　声で　歌った。'
+      - '砂糖を　入れて　紅茶を　甘やかした。'
+      - '天気が　甘やかして　暖かい。'
+      - '子どもを　甘やかしすぎるのは　よくない。'
+    answer: 4
+    explanation:
+      en: '甘やかす: to spoil (a person). Sweetening tea is 甘くする.'
+      es: '甘やかす: mimar a alguien. Endulzar el té es 甘くする.'
+    author: claude
+  - id: n2-lr-6-0011
+    stem: '__覆す__'
+    choices:
+      - '新しい　発見が　今までの　常識を　覆した。'
+      - '彼は　約束の　時間を　覆して　早く　来た。'
+      - '布団を　覆して　寝た。'
+      - '傘を　覆して　雨を　防いだ。'
+    answer: 1
+    explanation:
+      en: '覆す: to overturn (an idea). Covering is 覆う.'
+      es: '覆す: echar por tierra una idea. Cubrir es 覆う.'
+    author: claude
+  - id: n2-lr-6-0012
+    stem: '__生じる__'
+    choices:
+      - 'パンを　生じて　朝ごはんに　した。'
+      - '計画に　思わぬ　問題が　生じた。'
+      - '母に　生じた　子どもです。'
+      - '庭に　花が　生じて　きれいだ。'
+    answer: 2
+    explanation:
+      en: '生じる: to arise. Plants grow with 生える.'
+      es: '生じる: surgir. Las plantas brotan con 生える.'
+    author: claude
+  - id: n2-lr-6-0013
+    stem: '__怠る__'
+    choices:
+      - '会社を　怠って　休んだ。'
+      - '確認を　怠ったため、ミスが　起きた。'
+      - '電車が　怠って　遅れた。'
+      - '怠った　料理を　食べた。'
+    answer: 2
+    explanation:
+      en: '怠る: to neglect a duty.'
+      es: '怠る: descuidar una obligación.'
+    author: claude
+  - id: n2-lr-6-0014
+    stem: '__一斉に__'
+    choices:
+      - '彼は　一斉に　約束を　守る。'
+      - '一斉に、一人で　考えて　みた。'
+      - '一斉に　ゆっくり　歩いた。'
+      - 'ベルが　鳴ると、生徒たちは　一斉に　立ち上がった。'
+    answer: 4
+    explanation:
+      en: '一斉に: all at once, together.'
+      es: '一斉に: todos a la vez.'
+    author: claude
+  - id: n2-lr-6-0015
+    stem: '__ふさわしい__'
+    choices:
+      - '彼は　リーダーに　ふさわしい　人物だ。'
+      - '服が　ふさわしくて　ボタンが　閉まらない。'
+      - 'ふさわしい　雨が　降って　いる。'
+      - '彼の　家は　駅に　ふさわしい。'
+    answer: 1
+    explanation:
+      en: 'ふさわしい: suitable for.'
+      es: 'ふさわしい: digno de, adecuado para.'
+    author: claude

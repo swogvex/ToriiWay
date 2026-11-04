@@ -1,0 +1,189 @@
+# N2 · Language knowledge · Reading · Mondai 2 — orthography
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 2
+instruction:
+  en: 'Choose how the underlined word is written.'
+  ja: '＿＿＿の 言葉を 漢字で 書く とき、最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-2-0001
+    stem: '新しい　企画を　会議で　__ていあん__した。'
+    choices:
+      - '提安'
+      - '程案'
+      - '堤案'
+      - '提案'
+    answer: 4
+    explanation:
+      en: 'ていあん, "proposal", is 提案.'
+      es: 'ていあん, "propuesta", es 提案.'
+    author: claude
+  - id: n2-lr-2-0002
+    stem: '熱が　下がって、体調が　__かいふく__した。'
+    choices:
+      - '回服'
+      - '回復'
+      - '会復'
+      - '回複'
+    answer: 2
+    explanation:
+      en: 'かいふく, "recovery", is 回復.'
+      es: 'かいふく, "recuperación", es 回復.'
+    author: claude
+  - id: n2-lr-2-0003
+    stem: '会社の　__きそく__を　守って　ください。'
+    choices:
+      - '器則'
+      - '規側'
+      - '規則'
+      - '規測'
+    answer: 3
+    explanation:
+      en: 'きそく, "rule", is 規則. 側 and 測 look like 則.'
+      es: 'きそく, "norma", es 規則. 側 y 測 se parecen a 則.'
+    author: claude
+  - id: n2-lr-2-0004
+    stem: '毎年　三月までに　税金を　__おさめる__。'
+    choices:
+      - '納める'
+      - '修める'
+      - '治める'
+      - '収める'
+    answer: 1
+    explanation:
+      en: 'Taxes are paid with 納める. 収める, 治める and 修める are other おさめる verbs.'
+      es: 'Los impuestos se pagan con 納める. 収める, 治める y 修める son otros verbos おさめる.'
+    author: claude
+  - id: n2-lr-2-0005
+    stem: '雨で　試合が　__えんき__に　なった。'
+    choices:
+      - '延規'
+      - '延機'
+      - '廷期'
+      - '延期'
+    answer: 4
+    explanation:
+      en: 'えんき, "postponement", is 延期.'
+      es: 'えんき, "aplazamiento", es 延期.'
+    author: claude
+  - id: n2-lr-2-0006
+    stem: '旅行の　間、犬を　友人に　__あずけた__。'
+    choices:
+      - '須けた'
+      - '頂けた'
+      - '預けた'
+      - '預った'
+    answer: 3
+    explanation:
+      en: 'あずける, "to leave in someone''s care", is 預ける.'
+      es: 'あずける, "dejar al cuidado de alguien", es 預ける.'
+    author: claude
+  - id: n2-lr-2-0007
+    stem: '祖母は　六人の　子どもを　__そだてた__。'
+    choices:
+      - '育った'
+      - '育てた'
+      - '背てた'
+      - '盲てた'
+    answer: 2
+    explanation:
+      en: 'そだてる, "to raise", is 育てる; 育った would read そだった.'
+      es: 'そだてる, "criar", es 育てる; 育った se leería そだった.'
+    author: claude
+  - id: n2-lr-2-0008
+    stem: '事故の　__げんいん__を　調べて　いる。'
+    choices:
+      - '原因'
+      - '元因'
+      - '源因'
+      - '原困'
+    answer: 1
+    explanation:
+      en: 'げんいん, "cause", is 原因.'
+      es: 'げんいん, "causa", es 原因.'
+    author: claude
+  - id: n2-lr-2-0009
+    stem: 'お客様が　来る　前に、部屋を　__かたづけて__　おこう。'
+    choices:
+      - '方付けて'
+      - '肩付けて'
+      - '片付けて'
+      - '片付て'
+    answer: 3
+    explanation:
+      en: 'かたづける, "to tidy up", is 片付ける.'
+      es: 'かたづける, "ordenar", es 片付ける.'
+    author: claude
+  - id: n2-lr-2-0010
+    stem: '運動を　始めてから　体重が　__へった__。'
+    choices:
+      - '滅った'
+      - '減った'
+      - '経った'
+      - '咸った'
+    answer: 2
+    explanation:
+      en: 'へる, "to decrease", is 減る. 経つ reads たつ.'
+      es: 'へる, "disminuir", es 減る. 経つ se lee たつ.'
+    author: claude
+  - id: n2-lr-2-0011
+    stem: '作業の　時間を　半分に　__ちぢめる__。'
+    choices:
+      - '締める'
+      - '宿める'
+      - '縮る'
+      - '縮める'
+    answer: 4
+    explanation:
+      en: 'ちぢめる, "to shorten", is 縮める. 締める reads しめる.'
+      es: 'ちぢめる, "acortar", es 縮める. 締める se lee しめる.'
+    author: claude
+  - id: n2-lr-2-0012
+    stem: '会議で　自分の　意見を　__のべた__。'
+    choices:
+      - '述べた'
+      - '延べた'
+      - '術べた'
+      - '迷べた'
+    answer: 1
+    explanation:
+      en: 'のべる, "to state", is 述べる.'
+      es: 'のべる, "expresar", es 述べる.'
+    author: claude
+  - id: n2-lr-2-0013
+    stem: '地球の　__かんきょう__を　守る。'
+    choices:
+      - '還境'
+      - '環境'
+      - '環竟'
+      - '環鏡'
+    answer: 2
+    explanation:
+      en: 'かんきょう, "environment", is 環境.'
+      es: 'かんきょう, "medio ambiente", es 環境.'
+    author: claude
+  - id: n2-lr-2-0014
+    stem: '明日の　会議に　__しゅっせき__します。'
+    choices:
+      - '出籍'
+      - '出度'
+      - '出帯'
+      - '出席'
+    answer: 4
+    explanation:
+      en: 'しゅっせき, "attendance", is 出席.'
+      es: 'しゅっせき, "asistencia", es 出席.'
+    author: claude
+  - id: n2-lr-2-0015
+    stem: '山の　中で　道に　__まよった__。'
+    choices:
+      - '迷った'
+      - '送った'
+      - '逃った'
+      - '述った'
+    answer: 1
+    explanation:
+      en: 'まよう, "to get lost", is 迷う.'
+      es: 'まよう, "perderse", es 迷う.'
+    author: claude

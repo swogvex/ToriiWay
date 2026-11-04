@@ -1,0 +1,379 @@
+# N2 · Language knowledge · Reading · Mondai 11 — mid-size passages
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 11
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: manual
+    text: "　新しく入った社員には、まず仕事のマニュアルを渡すことが多い。マニュアルがあれば、誰でも同じ手順で仕事ができ、失敗も減る。その点で、マニュアルはとても便利なものだ。\n　しかし、マニュアルに頼りすぎると、困ったことも起きる。書かれていない事態が起きたとき、どうしていいかわからなくなってしまうのだ。ある店で、客から珍しい注文を受けた新人が、マニュアルにないという理由で断ってしまったという話を聞いた。少し考えれば、対応できる内容だったという。\n　マニュアルは、仕事の基本を身につけるための道具である。大切なのは、なぜその手順なのかを理解することだ。理由がわかっていれば、マニュアルにない場面でも、自分で考えて行動できるようになるだろう。"
+  - id: countryside
+    text: "　最近、都会から地方の町に移り住む人が増えている。わたしの友人も、三年前に東京の会社を辞め、山に囲まれた小さな町で暮らし始めた。\n　友人によれば、地方の暮らしには不便なこともある。店は少なく、車がなければどこにも行けない。冬は雪が深く、雪かきも大変だそうだ。それでも友人は、「東京にいたころより、ずっと気持ちに余裕がある」と言う。仕事はインターネットを使って続けており、空いた時間には近所の人と畑仕事をしているそうだ。\n　移住を成功させるためには、地域の人との関係が大切だと友人は話していた。都会のやり方を押しつけず、まずは地域の行事に参加すること。そうするうちに、困ったときに助け合える関係ができるのだという。"
+  - id: sleep
+    text: "　「睡眠時間を削って勉強した」という話を、学生からよく聞く。しかし、睡眠を削ることは、必ずしも勉強の効率を上げない。\n　研究によると、人は眠っている間に、その日に覚えたことを整理し、記憶として定着させているという。つまり、十分に眠らなければ、せっかく勉強した内容も頭に残りにくいのだ。また、睡眠不足の状態では集中力が落ちるため、同じ時間勉強しても、身につく量が少なくなってしまう。\n　試験の前ほど、しっかり眠ることを心がけたい。夜遅くまで無理をするより、早く寝て、朝の頭がすっきりした時間に復習する方が、結果的に良い成績につながるはずだ。"
+  - id: playground
+    text: "　わたしが子どものころ、近所の空き地は子どもたちの遊び場だった。そこには遊具もなく、決まった遊び方もなかった。だからこそ、わたしたちは毎日、新しい遊びを考え出していた。\n　今の公園には、安全な遊具がそろっている。けがをしにくいように作られており、親も安心して子どもを遊ばせることができる。しかし、遊び方が決まった遊具ばかりでは、子どもが自分で工夫する機会が少なくなるのではないかと、わたしは心配している。\n　最近、木の枝や段ボールなどを自由に使って遊べる「冒険遊び場」が各地にできているそうだ。多少の危険はあっても、子どもが自分で考えて遊ぶ場所は、子どもの成長にとって大切な役割を果たすだろう。"
+  - id: keigo
+    text: "　「敬語が苦手だ」という若者は多い。特に、尊敬語と謙譲語の使い分けは、社会人になってからも難しいと感じる人が少なくない。\n　敬語が難しいのは、ルールが複雑だからだけではない。相手との関係や場面によって、使う言葉を変えなければならないからだ。同じ人に対しても、会社の中と外では話し方が変わることがある。\n　しかし、敬語は相手との距離を作るためのものではない。相手を大切に思っていることを伝えるための言葉である。完ぺきに使えなくても、相手を思う気持ちがあれば、それは必ず伝わる。間違いを恐れず、少しずつ使いながら覚えていけばいいのではないだろうか。"
+  - id: pets
+    text: "　一人暮らしの高齢者が増える中、ペットを飼う高齢者も増えている。犬や猫と暮らすことで、毎日の生活に張りが出るという人は多い。犬の散歩のために外に出る機会が増え、近所の人と話すきっかけにもなるそうだ。\n　一方で、問題もある。飼い主が病気になったり、施設に入ったりして、ペットの世話ができなくなるケースだ。残されたペットの行き先が見つからず、困る家族も少なくない。\n　そこで最近は、飼い主に何かあったときにペットを引き取る仕組みを作る団体も出てきた。ペットと暮らす喜びを、年齢に関係なく安心して味わえる社会になってほしいと思う。"
+  - id: secondhand
+    text: "　最近、若い人の間で古着の人気が高まっている。わたしの大学でも、古着を上手に組み合わせておしゃれを楽しむ学生をよく見かける。\n　古着が好まれる理由の一つは、値段の安さだ。しかし、それだけではない。古着には、今の店では手に入らない、一点ものの服が多い。人と同じ服を着たくないという若者にとって、古着は自分らしさを表す手段になっているのだ。\n　また、古着を選ぶことが、環境を守ることにつながると考える人もいる。服を作るには多くの水やエネルギーが必要で、捨てられる服も大量にある。まだ着られる服を次の人に回すことは、小さいながらも意味のある行動だと言えるだろう。"
+  - id: notebook
+    text: "　スマートフォンで予定を管理する人が多い中、わたしは今でも紙の手帳を使っている。周りの人からは「不便でしょう」と言われるが、わたしにとっては手放せない道具だ。\n　手帳のいいところは、一週間の予定を一目で見渡せることだ。予定を手で書き込むと、自然に頭の中も整理される。空いている時間がすぐにわかるので、無理な予定を入れることも少なくなった。\n　もちろん、スマートフォンにも便利な点は多い。わたしも、人と予定を共有するときはスマートフォンを使っている。大切なのは、どちらが優れているかではなく、自分に合った方法を見つけることなのだと思う。"
+  - id: volunteer
+    text: "　大学二年の夏、わたしは被災地でボランティア活動に参加した。最初は「人の役に立ちたい」という気持ちだけで、何ができるのかもよくわかっていなかった。\n　現地での仕事は、家の中の泥を運び出すことだった。暑さの中での作業は想像以上につらく、一日が終わると体が動かないほどだった。しかし、作業が終わった家の人から「本当に助かった」と言われたとき、疲れを忘れるほどうれしかった。\n　この経験で、わたしは助けることは同時に、多くのことを教えてもらうことでもあると知った。地域の人たちが協力して前に進もうとする姿は、今でもわたしの心に強く残っている。"
+questions:
+  - id: n2-lr-11-0001
+    passage: manual
+    stem: '筆者は　マニュアルの　よい　点を　何だと　述べて　いるか。'
+    choices:
+      - '客の　珍しい　注文に　答えられる　こと'
+      - '新人が　すぐに　辞めなく　なる　こと'
+      - 'だれでも　同じ　手順で　仕事が　でき、失敗が　減る　こと'
+      - '仕事の　量が　少なく　なる　こと'
+    answer: 3
+    explanation:
+      en: 'Everyone can follow the same steps, so mistakes fall.'
+      es: 'Todos siguen los mismos pasos y hay menos errores.'
+    author: claude
+  - id: n2-lr-11-0002
+    passage: manual
+    stem: '新人が　客の　注文を　断ったのは　なぜか。'
+    choices:
+      - 'マニュアルに　書かれて　いなかったから'
+      - '客の　態度が　悪かったから'
+      - '店の　材料が　足りなかったから'
+      - '店長に　止められたから'
+    answer: 1
+    explanation:
+      en: 'The request was not in the manual.'
+      es: 'La petición no estaba en el manual.'
+    author: claude
+  - id: n2-lr-11-0003
+    passage: manual
+    stem: '筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - 'マニュアルは　必要ない'
+      - '新人には　仕事を　任せない　ほうが　いい'
+      - 'マニュアルを　もっと　詳しく　すべきだ'
+      - '手順の　理由を　理解すれば、マニュアルに　ない　場面でも　対応できる'
+    answer: 4
+    explanation:
+      en: 'Knowing why lets you handle new situations.'
+      es: 'Saber el porqué permite afrontar lo imprevisto.'
+    author: claude
+  - id: n2-lr-11-0004
+    passage: countryside
+    stem: '友人が　話す　地方の　暮らしの　不便な　点は　どれか。'
+    choices:
+      - '近所の　人と　話す　機会が　ない　こと'
+      - '店が　少なく、車が　なければ　移動できない　こと'
+      - 'インターネットが　使えない　こと'
+      - '仕事が　見つからない　こと'
+    answer: 2
+    explanation:
+      en: 'Few shops, a car is essential, and heavy snow.'
+      es: 'Pocas tiendas, el coche es imprescindible y mucha nieve.'
+    author: claude
+  - id: n2-lr-11-0005
+    passage: countryside
+    stem: '友人が　「気持ちに　余裕が　ある」と　言うのは　どんな　生活か。'
+    choices:
+      - '仕事を　辞めて　何も　しない　生活'
+      - '毎日　東京まで　通勤する　生活'
+      - '一人で　山に　こもる　生活'
+      - 'ネットで　仕事を　続け、空いた　時間に　畑仕事を　する　生活'
+    answer: 4
+    explanation:
+      en: 'Remote work plus farming with neighbours.'
+      es: 'Teletrabajo y huerto con los vecinos.'
+    author: claude
+  - id: n2-lr-11-0006
+    passage: countryside
+    stem: '友人は　移住を　成功させる　ために　何が　大切だと　言って　いるか。'
+    choices:
+      - 'できるだけ　一人で　生活する　こと'
+      - '地域の　行事に　参加し、地域の　人と　関係を　作る　こと'
+      - '都会の　やり方を　地域に　教える　こと'
+      - '大きな　家を　買う　こと'
+    answer: 2
+    explanation:
+      en: 'Join local events instead of imposing city ways.'
+      es: 'Participar en las actividades locales en vez de imponer lo urbano.'
+    author: claude
+  - id: n2-lr-11-0007
+    passage: sleep
+    stem: '筆者は　睡眠を　削って　勉強する　ことに　ついて、どう　考えて　いるか。'
+    choices:
+      - '勉強の　効率は　必ずしも　上がらない'
+      - '試験の　前には　必要だ'
+      - '勉強の　効率が　大きく　上がる'
+      - '若い　うちは　問題が　ない'
+    answer: 1
+    explanation:
+      en: 'Cutting sleep does not necessarily help.'
+      es: 'Recortar el sueño no ayuda necesariamente.'
+    author: claude
+  - id: n2-lr-11-0008
+    passage: sleep
+    stem: '研究に　よると、眠って　いる　間に　何が　起きて　いるか。'
+    choices:
+      - '集中力が　落ちる'
+      - '体の　疲れだけが　取れる'
+      - 'その　日に　覚えた　ことが　整理され、記憶に　なる'
+      - '新しい　ことを　覚えられなく　なる'
+    answer: 3
+    explanation:
+      en: 'Sleep sorts and fixes what was learned.'
+      es: 'Al dormir se ordena y fija lo aprendido.'
+    author: claude
+  - id: n2-lr-11-0009
+    passage: sleep
+    stem: '筆者が　すすめて　いるのは　どれか。'
+    choices:
+      - '夜遅くまで　勉強する　こと'
+      - '試験の　前日は　勉強しない　こと'
+      - '早く　寝て、朝に　復習する　こと'
+      - '睡眠時間を　少しずつ　減らす　こと'
+    answer: 3
+    explanation:
+      en: 'Sleep early and review in the clear morning.'
+      es: 'Dormir pronto y repasar por la mañana.'
+    author: claude
+  - id: n2-lr-11-0010
+    passage: playground
+    stem: '筆者が　子どもの　ころ、空き地で　毎日　新しい　遊びを　考えたのは　なぜか。'
+    choices:
+      - '大人に　教えて　もらったから'
+      - 'けがを　したく　なかったから'
+      - '公園が　遠かったから'
+      - '遊具も　決まった　遊び方も　なかったから'
+    answer: 4
+    explanation:
+      en: 'With nothing set, the children invented games.'
+      es: 'Sin nada fijado, los niños inventaban juegos.'
+    author: claude
+  - id: n2-lr-11-0011
+    passage: playground
+    stem: '筆者は　今の　公園の　何を　心配して　いるか。'
+    choices:
+      - '遊具が　危険な　こと'
+      - '子どもが　自分で　工夫する　機会が　減る　こと'
+      - '親が　安心できない　こと'
+      - '公園の　数が　少ない　こと'
+    answer: 2
+    explanation:
+      en: 'Fixed play equipment leaves little room to invent.'
+      es: 'Los columpios fijos dejan poco margen para inventar.'
+    author: claude
+  - id: n2-lr-11-0012
+    passage: playground
+    stem: '筆者は　「冒険遊び場」に　ついて、どう　考えて　いるか。'
+    choices:
+      - '子どもの　成長に　とって　大切な　場所だ'
+      - '遊具の　ある　公園の　ほうが　いい'
+      - '危険なので　なくすべきだ'
+      - '大人の　ための　場所だ'
+    answer: 1
+    explanation:
+      en: 'Places where children think for themselves matter.'
+      es: 'Los lugares donde los niños piensan por sí mismos importan.'
+    author: claude
+  - id: n2-lr-11-0013
+    passage: keigo
+    stem: '筆者に　よると、敬語が　難しいのは　なぜか。'
+    choices:
+      - '学校で　習わないから'
+      - 'ルールが　決まって　いないから'
+      - '若者が　使いたがらないから'
+      - '相手との　関係や　場面に　よって　言葉を　変える　必要が　あるから'
+    answer: 4
+    explanation:
+      en: 'Not only rules: you adapt to relationship and setting.'
+      es: 'No solo por las reglas: hay que adaptarse a la relación y la situación.'
+    author: claude
+  - id: n2-lr-11-0014
+    passage: keigo
+    stem: '筆者は　敬語を　どのような　ものだと　考えて　いるか。'
+    choices:
+      - '相手を　大切に　思う　気持ちを　伝える　言葉'
+      - '完ぺきに　使うべき　言葉'
+      - '相手との　距離を　作る　言葉'
+      - '会社の　中だけで　使う　言葉'
+    answer: 1
+    explanation:
+      en: 'Keigo conveys respect, not distance.'
+      es: 'El keigo transmite respeto, no distancia.'
+    author: claude
+  - id: n2-lr-11-0015
+    passage: keigo
+    stem: '筆者が　すすめて　いる　敬語の　覚え方は　どれか。'
+    choices:
+      - '敬語を　使わないように　する'
+      - '本で　ルールを　全部　覚えてから　使う'
+      - '間違いを　恐れず、使いながら　覚える'
+      - '先輩に　代わりに　話して　もらう'
+    answer: 3
+    explanation:
+      en: 'Learn by using it, without fear of mistakes.'
+      es: 'Aprender usándolo, sin miedo a equivocarse.'
+    author: claude
+  - id: n2-lr-11-0016
+    passage: pets
+    stem: 'ペットを　飼う　ことの　よい　点として、文章で　述べられて　いるのは　どれか。'
+    choices:
+      - '医療費が　安く　なる'
+      - '外に　出る　機会や、近所の　人と　話す　きっかけが　増える'
+      - '施設に　入りやすく　なる'
+      - '家族と　会う　機会が　増える'
+    answer: 2
+    explanation:
+      en: 'Walks get people out and talking to neighbours.'
+      es: 'Los paseos hacen salir y hablar con los vecinos.'
+    author: claude
+  - id: n2-lr-11-0017
+    passage: pets
+    stem: '文章で　問題と　されて　いるのは　どれか。'
+    choices:
+      - 'ペットの　値段が　高い　こと'
+      - 'ペットが　病気に　なりやすい　こと'
+      - '飼い主が　世話を　できなく　なった　あと、ペットの　行き先が　見つからない　こと'
+      - '近所の　人が　ペットを　嫌う　こと'
+    answer: 3
+    explanation:
+      en: 'Pets left behind when owners cannot care for them.'
+      es: 'Mascotas que se quedan solas cuando el dueño no puede cuidarlas.'
+    author: claude
+  - id: n2-lr-11-0018
+    passage: pets
+    stem: '筆者は　どのような　社会を　望んで　いるか。'
+    choices:
+      - 'ペットを　飼う　人が　減る　社会'
+      - '年齢に　関係なく　安心して　ペットと　暮らせる　社会'
+      - '高齢者が　ペットを　飼わない　社会'
+      - '団体が　ペットを　すべて　育てる　社会'
+    answer: 2
+    explanation:
+      en: 'Everyone, at any age, living safely with pets.'
+      es: 'Que cualquiera, a cualquier edad, pueda vivir tranquilo con su mascota.'
+    author: claude
+  - id: n2-lr-11-0019
+    passage: secondhand
+    stem: '若者が　古着を　好む　理由として、値段の　ほかに　挙げられて　いるのは　どれか。'
+    choices:
+      - '店員が　親切な　こと'
+      - '新品より　丈夫な　こと'
+      - '有名な　ブランドが　多い　こと'
+      - '一点ものが　多く、自分らしさを　表せる　こと'
+    answer: 4
+    explanation:
+      en: 'One-off pieces let young people show who they are.'
+      es: 'Las piezas únicas permiten mostrar la propia personalidad.'
+    author: claude
+  - id: n2-lr-11-0020
+    passage: secondhand
+    stem: '古着を　選ぶ　ことが　環境を　守る　ことに　つながるのは　なぜか。'
+    choices:
+      - '服を　作るには　多くの　水や　エネルギーが　必要だから'
+      - '古着の　店は　電気を　使わないから'
+      - '古着は　洗わなくて　いいから'
+      - '古着は　すぐに　捨てられるから'
+    answer: 1
+    explanation:
+      en: 'Making clothes uses much water and energy.'
+      es: 'Fabricar ropa gasta mucha agua y energía.'
+    author: claude
+  - id: n2-lr-11-0021
+    passage: secondhand
+    stem: '筆者は　古着を　次の　人に　回す　ことを　どう　評価して　いるか。'
+    choices:
+      - '小さいが　意味の　ある　行動だ'
+      - 'あまり　意味が　ない'
+      - '若者だけが　すべき　ことだ'
+      - '服の　店を　困らせる'
+    answer: 1
+    explanation:
+      en: '小さいながらも意味のある行動.'
+      es: 'Una acción pequeña pero con sentido.'
+    author: claude
+  - id: n2-lr-11-0022
+    passage: notebook
+    stem: '筆者が　紙の　手帳を　使う　いちばんの　理由は　何か。'
+    choices:
+      - '予定を　人と　共有しやすいから'
+      - '一週間の　予定を　一目で　見渡せるから'
+      - 'スマートフォンを　持って　いないから'
+      - '周りの　人に　すすめられたから'
+    answer: 2
+    explanation:
+      en: 'A week at a glance, and writing organises thoughts.'
+      es: 'Una semana de un vistazo, y escribir ordena las ideas.'
+    author: claude
+  - id: n2-lr-11-0023
+    passage: notebook
+    stem: '手帳を　使うように　なって、筆者に　どんな　変化が　あったか。'
+    choices:
+      - 'スマートフォンを　使わなく　なった'
+      - '予定を　忘れる　ことが　増えた'
+      - '無理な　予定を　入れる　ことが　少なく　なった'
+      - '人と　会う　ことが　減った'
+    answer: 3
+    explanation:
+      en: 'Seeing free time stops overbooking.'
+      es: 'Ver el tiempo libre evita llenar la agenda.'
+    author: claude
+  - id: n2-lr-11-0024
+    passage: notebook
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - 'スマートフォンは　使うべきでは　ない'
+      - '紙の　手帳の　ほうが　必ず　優れて　いる'
+      - 'みんなが　同じ　方法を　使うべきだ'
+      - '自分に　合った　方法を　見つける　ことが　大切だ'
+    answer: 4
+    explanation:
+      en: 'The point is finding what suits you.'
+      es: 'Lo importante es encontrar lo que te va bien.'
+    author: claude
+  - id: n2-lr-11-0025
+    passage: volunteer
+    stem: '筆者が　ボランティアに　参加した　とき、最初は　どんな　気持ちだったか。'
+    choices:
+      - '仕事の　内容を　よく　知って　いた'
+      - '友人に　頼まれて　しかたなく　行った'
+      - '人の　役に　立ちたいと　いう　気持ちだけだった'
+      - '体を　鍛えたいと　思って　いた'
+    answer: 3
+    explanation:
+      en: 'Only the wish to help, without knowing what to do.'
+      es: 'Solo ganas de ayudar, sin saber qué hacer.'
+    author: claude
+  - id: n2-lr-11-0026
+    passage: volunteer
+    stem: '筆者が　疲れを　忘れる　ほど　うれしかったのは　なぜか。'
+    choices:
+      - '新しい　友だちが　できたから'
+      - '家の　人に　「本当に　助かった」と　言われたから'
+      - '作業が　予定より　早く　終わったから'
+      - '休みの　日が　もらえたから'
+    answer: 2
+    explanation:
+      en: "The family's thanks made it worthwhile."
+      es: 'El agradecimiento de la familia lo compensó todo.'
+    author: claude
+  - id: n2-lr-11-0027
+    passage: volunteer
+    stem: '筆者は　この　経験から　何を　知ったか。'
+    choices:
+      - 'ボランティアは　体に　悪い'
+      - '一人で　できる　ことは　少ない'
+      - '被災地には　行くべきでは　ない'
+      - '助ける　ことは、多くの　ことを　教えて　もらう　ことでも　ある'
+    answer: 4
+    explanation:
+      en: 'Helping also means learning a lot.'
+      es: 'Ayudar también es aprender mucho.'
+    author: claude

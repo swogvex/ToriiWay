@@ -1,0 +1,441 @@
+# N2 · Language knowledge · Reading · Mondai 7 — grammar form
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 7
+instruction:
+  en: 'Choose the best answer for the blank (　).'
+  ja: 'つぎの 文の （　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lr-7-0001
+    stem: '社長の　許可を　得ない　（　）、計画を　進める　ことは　できない。'
+    choices:
+      - 'ものの'
+      - 'とたん'
+      - 'ばかりに'
+      - 'かぎり'
+    answer: 4
+    explanation:
+      en: '〜ない かぎり: unless.'
+      es: '〜ない かぎり: a menos que.'
+    author: claude
+  - id: n2-lr-7-0002
+    stem: 'いくら　頼まれた　（　）、できない　ことは　できない。'
+    choices:
+      - 'ところで'
+      - 'うえに'
+      - 'ばかりに'
+      - 'とたんに'
+    answer: 1
+    explanation:
+      en: '〜た ところで: even if.'
+      es: '〜た ところで: aunque.'
+    author: claude
+  - id: n2-lr-7-0003
+    stem: '彼は　医者　（　）、健康に　気を　使って　いない。'
+    choices:
+      - 'であるだけに'
+      - 'であるうえは'
+      - 'であるにもかかわらず'
+      - 'であるからには'
+    answer: 3
+    explanation:
+      en: '〜にもかかわらず: despite being a doctor.'
+      es: '〜にもかかわらず: a pesar de ser médico.'
+    author: claude
+  - id: n2-lr-7-0004
+    stem: 'この　本は、子ども　（　）大人まで　楽しめる。'
+    choices:
+      - 'より'
+      - 'から'
+      - 'まで'
+      - 'ほど'
+    answer: 2
+    explanation:
+      en: 'AからBまで: from children to adults.'
+      es: 'AからBまで: desde niños hasta adultos.'
+    author: claude
+  - id: n2-lr-7-0005
+    stem: '日本に　来た　（　）、日本語を　しっかり　勉強したい。'
+    choices:
+      - 'からには'
+      - 'ものの'
+      - 'ところで'
+      - 'からといって'
+    answer: 1
+    explanation:
+      en: '〜からには: now that.'
+      es: '〜からには: ya que.'
+    author: claude
+  - id: n2-lr-7-0006
+    stem: '彼の　話を　聞く　（　）、だんだん　腹が　立って　きた。'
+    choices:
+      - 'とたんに'
+      - 'につれて'
+      - 'ばかりに'
+      - 'ものの'
+    answer: 2
+    explanation:
+      en: '〜につれて: as … goes on.'
+      es: '〜につれて: a medida que.'
+    author: claude
+  - id: n2-lr-7-0007
+    stem: '心配する　（　）。すぐに　よく　なりますよ。'
+    choices:
+      - 'わけは　ない'
+      - 'ものは　ない'
+      - 'ことは　ない'
+      - 'はずは　ない'
+    answer: 3
+    explanation:
+      en: '〜ことは ない: there is no need to.'
+      es: '〜ことは ない: no hace falta.'
+    author: claude
+  - id: n2-lr-7-0008
+    stem: 'この　レストランは、味　（　）値段も　手頃だ。'
+    choices:
+      - 'に　とって'
+      - 'に　かわって'
+      - 'に　ついて'
+      - 'は　もちろん'
+    answer: 4
+    explanation:
+      en: 'Aは もちろん Bも: not only A but also B.'
+      es: 'Aは もちろん Bも: no solo A, también B.'
+    author: claude
+  - id: n2-lr-7-0009
+    stem: '事故の　原因　（　）、現在　調査中です。'
+    choices:
+      - 'に　対しては'
+      - 'に　よっては'
+      - 'に　とっては'
+      - 'に　ついては'
+    answer: 4
+    explanation:
+      en: '〜に ついては: as for, regarding.'
+      es: '〜に ついては: en cuanto a.'
+    author: claude
+  - id: n2-lr-7-0010
+    stem: '彼女は　泣き　（　）、事情を　話して　くれた。'
+    choices:
+      - 'ながら'
+      - 'かけて'
+      - 'がちに'
+      - 'っぽく'
+    answer: 1
+    explanation:
+      en: '〜ながら: while crying.'
+      es: '〜ながら: mientras lloraba.'
+    author: claude
+  - id: n2-lr-7-0011
+    stem: '一度　約束した　（　）、守らなければ　ならない。'
+    choices:
+      - 'うえに'
+      - '一方'
+      - '以上'
+      - 'くせに'
+    answer: 3
+    explanation:
+      en: '〜以上: since, once.'
+      es: '〜以上: ya que, una vez que.'
+    author: claude
+  - id: n2-lr-7-0012
+    stem: '彼は　忙しい　（　）、毎日　ジムに　通って　いる。'
+    choices:
+      - 'おかげで'
+      - 'にもかかわらず'
+      - 'せいで'
+      - 'ことから'
+    answer: 2
+    explanation:
+      en: '〜にもかかわらず: in spite of.'
+      es: '〜にもかかわらず: a pesar de.'
+    author: claude
+  - id: n2-lr-7-0013
+    stem: 'この　町は、昔　（　）ずいぶん　静かに　なった。'
+    choices:
+      - 'に　とって'
+      - 'に　対して'
+      - 'に　比べて'
+      - 'に　ついて'
+    answer: 3
+    explanation:
+      en: '〜に 比べて: compared with.'
+      es: '〜に 比べて: comparado con.'
+    author: claude
+  - id: n2-lr-7-0014
+    stem: '天気予報　（　）、あしたは　晴れるそうだ。'
+    choices:
+      - 'に　かけて'
+      - 'に　よれば'
+      - 'に　おいて'
+      - 'に　沿って'
+    answer: 2
+    explanation:
+      en: '〜に よれば: according to.'
+      es: '〜に よれば: según.'
+    author: claude
+  - id: n2-lr-7-0015
+    stem: '努力する　（　）、成功は　ない。'
+    choices:
+      - 'ことに'
+      - 'ことだから'
+      - 'ことから'
+      - 'ことなしに'
+    answer: 4
+    explanation:
+      en: '〜ことなしに: without doing.'
+      es: '〜ことなしに: sin hacer.'
+    author: claude
+  - id: n2-lr-7-0016
+    stem: '彼女の　気持ちを　考える　（　）、本当の　ことは　言えなかった。'
+    choices:
+      - 'と'
+      - 'うえ'
+      - 'なら'
+      - 'ところ'
+    answer: 1
+    explanation:
+      en: '〜と: when (I) thought of.'
+      es: '〜と: al pensar en.'
+    author: claude
+  - id: n2-lr-7-0017
+    stem: '試験の　結果　（　）、進学先を　決める　つもりだ。'
+    choices:
+      - '次第で'
+      - 'のあまり'
+      - 'をめぐって'
+      - '次第に'
+    answer: 1
+    explanation:
+      en: '〜次第で: depending on.'
+      es: '〜次第で: según.'
+    author: claude
+  - id: n2-lr-7-0018
+    stem: '合格の　知らせを　聞いて、彼は　うれしさ　（　）、泣き出して　しまった。'
+    choices:
+      - 'の　わりに'
+      - 'の　くせに'
+      - 'の　あまり'
+      - 'の　たびに'
+    answer: 3
+    explanation:
+      en: '〜の あまり: so … that.'
+      es: '〜の あまり: de tanto.'
+    author: claude
+  - id: n2-lr-7-0019
+    stem: '新しい　空港の　建設　（　）、住民の　意見が　分かれて　いる。'
+    choices:
+      - 'を　こめて'
+      - 'を　めぐって'
+      - 'に　かけて'
+      - 'に　沿って'
+    answer: 2
+    explanation:
+      en: '〜を めぐって: over, concerning.'
+      es: '〜を めぐって: en torno a.'
+    author: claude
+  - id: n2-lr-7-0020
+    stem: 'お客様の　ご要望　（　）、新しい　サービスを　始めました。'
+    choices:
+      - 'に　かけて'
+      - 'を　めぐって'
+      - 'に　わたって'
+      - 'に　こたえて'
+    answer: 4
+    explanation:
+      en: '〜に こたえて: in response to.'
+      es: '〜に こたえて: respondiendo a.'
+    author: claude
+  - id: n2-lr-7-0021
+    stem: 'この　調査は　三年　（　）行われた。'
+    choices:
+      - 'に　沿って'
+      - 'を　こめて'
+      - 'に　わたって'
+      - 'に　かけて'
+    answer: 3
+    explanation:
+      en: '〜に わたって: over a period.'
+      es: '〜に わたって: a lo largo de.'
+    author: claude
+  - id: n2-lr-7-0022
+    stem: '母の　ために　心を　（　）手紙を　書いた。'
+    choices:
+      - 'わたって'
+      - 'こめて'
+      - 'めぐって'
+      - 'そって'
+    answer: 2
+    explanation:
+      en: "心を こめて: with all one's heart."
+      es: '心を こめて: con todo el corazón.'
+    author: claude
+  - id: n2-lr-7-0023
+    stem: '彼が　来ない　（　）、パーティーは　盛り上がらない。'
+    choices:
+      - 'ことから'
+      - 'ことだから'
+      - 'ことなく'
+      - 'ことには'
+    answer: 4
+    explanation:
+      en: '〜ない ことには: unless.'
+      es: '〜ない ことには: a menos que.'
+    author: claude
+  - id: n2-lr-7-0024
+    stem: '大学を　卒業した　（　）、まだ　仕事が　見つからない。'
+    choices:
+      - 'ものの'
+      - 'もので'
+      - 'ものか'
+      - 'ものだから'
+    answer: 1
+    explanation:
+      en: '〜ものの: although.'
+      es: '〜ものの: aunque.'
+    author: claude
+  - id: n2-lr-7-0025
+    stem: 'あれほど　注意したのに　また　遅刻するとは、あきれる　（　）。'
+    choices:
+      - 'ほかない'
+      - 'ものでは　ない'
+      - 'ことは　ない'
+      - 'わけでは　ない'
+    answer: 1
+    explanation:
+      en: '〜ほかない: there is nothing else to do but.'
+      es: '〜ほかない: no queda más que.'
+    author: claude
+  - id: n2-lr-7-0026
+    stem: '彼の　実力　（　）、優勝は　間違いないだろう。'
+    choices:
+      - 'に　とって'
+      - 'を　めぐって'
+      - 'に　関して'
+      - 'から　すれば'
+    answer: 4
+    explanation:
+      en: '〜から すれば: judging from.'
+      es: '〜から すれば: a juzgar por.'
+    author: claude
+  - id: n2-lr-7-0027
+    stem: '台風が　近づいて　いて、電車が　止まる　（　）。'
+    choices:
+      - 'ことに　なって　いる'
+      - 'おそれが　ある'
+      - 'わけには　いかない'
+      - 'ことに　する'
+    answer: 2
+    explanation:
+      en: '〜おそれが ある: there is a risk that.'
+      es: '〜おそれが ある: hay riesgo de que.'
+    author: claude
+  - id: n2-lr-7-0028
+    stem: '彼は　遅刻した　（　）、謝りも　しなかった。'
+    choices:
+      - 'どころか'
+      - 'せいか'
+      - 'ばかりか'
+      - 'ものの'
+    answer: 3
+    explanation:
+      en: '〜ばかりか: not only … but also.'
+      es: '〜ばかりか: no solo … sino también.'
+    author: claude
+  - id: n2-lr-7-0029
+    stem: '冗談　（　）、本題に　入りましょう。'
+    choices:
+      - 'は　もとより'
+      - 'は　さておき'
+      - 'に　もかかわらず'
+      - 'に　しては'
+    answer: 2
+    explanation:
+      en: '〜は さておき: setting aside.'
+      es: '〜は さておき: dejando aparte.'
+    author: claude
+  - id: n2-lr-7-0030
+    stem: '一人暮らしを　始めた　ばかりで、さびしく　（　）。'
+    choices:
+      - 'ては　いけない'
+      - 'ても　かまわない'
+      - 'て　しょうがない'
+      - 'て　ばかり　いる'
+    answer: 3
+    explanation:
+      en: '〜て しょうがない: unbearably.'
+      es: '〜て しょうがない: muchísimo.'
+    author: claude
+  - id: n2-lr-7-0031
+    stem: '彼は　まるで　何も　知らない　（　）ふるまった。'
+    choices:
+      - 'かのように'
+      - 'かと　思うと'
+      - 'からこそ'
+      - 'からには'
+    answer: 1
+    explanation:
+      en: '〜かのように: as if.'
+      es: '〜かのように: como si.'
+    author: claude
+  - id: n2-lr-7-0032
+    stem: '一生懸命　練習した　（　）、優勝できたのだ。'
+    choices:
+      - 'からして'
+      - 'からには'
+      - 'からといって'
+      - 'からこそ'
+    answer: 4
+    explanation:
+      en: '〜からこそ: precisely because.'
+      es: '〜からこそ: precisamente porque.'
+    author: claude
+  - id: n2-lr-7-0033
+    stem: '彼女は　わたしと　会う　（　）、新しい　服を　着て　いる。'
+    choices:
+      - 'ところに'
+      - 'ばかりに'
+      - 'たびに'
+      - 'うちに'
+    answer: 3
+    explanation:
+      en: '〜たびに: every time.'
+      es: '〜たびに: cada vez que.'
+    author: claude
+  - id: n2-lr-7-0034
+    stem: '社長に　（　）、部長が　会議に　出席した。'
+    choices:
+      - '対して'
+      - '代わって'
+      - '沿って'
+      - '応じて'
+    answer: 2
+    explanation:
+      en: '〜に 代わって: in place of.'
+      es: '〜に 代わって: en lugar de.'
+    author: claude
+  - id: n2-lr-7-0035
+    stem: '年齢　（　）、だれでも　参加できます。'
+    choices:
+      - 'を　めぐって'
+      - 'に　沿って'
+      - 'に　比べ'
+      - 'を　問わず'
+    answer: 4
+    explanation:
+      en: '〜を 問わず: regardless of.'
+      es: '〜を 問わず: sin importar.'
+    author: claude
+  - id: n2-lr-7-0036
+    stem: 'もう　少し　早く　出発して　（　）、電車に　間に合ったのに。'
+    choices:
+      - 'いれば'
+      - 'いるなら'
+      - 'いたので'
+      - 'いても'
+    answer: 1
+    explanation:
+      en: '〜て いれば … のに: if only.'
+      es: '〜て いれば … のに: si hubiera.'
+    author: claude

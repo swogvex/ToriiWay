@@ -1,0 +1,211 @@
+# N2 · Language knowledge · Reading · Mondai 9 — text grammar
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 9
+instruction:
+  en: 'Read the text and choose the best answer for each blank.'
+  ja: 'つぎの 文章を 読んで、文章全体の 内容を 考えて、（１）から（５）の 中に 入る 最も よい ものを えらんで ください。'
+passages:
+  - id: reading
+    text: "　最近、若者の　読書離れが　進んで　いると　言われて　いる。（１）、本当に　そうだろうか。確かに、紙の　本を　買う　人は　減って　いる。しかし、スマートフォンで　小説や　漫画を　読む　若者は、（２）増えて　いるのだ。\n　わたしは、読む　形が　変わっただけで、読む　こと（３）が　嫌いに　なった　わけでは　ないと　思う。むしろ、いつでも　どこでも　読めるように　なった（４）、以前より　多くの　文章に　触れて　いる　人も　いるだろう。\n　大切なのは、何で　読むかでは　なく、何を　読むかである。若者が　読む　本の　中身に（５）、「読書離れ」と　いう　言葉だけで　判断するべきでは　ない。"
+  - id: remote
+    text: "　去年から、わたしの　会社では　週に　二日、家で　仕事を　する　ことが（１）。最初は、通勤しなくても　いい　分、楽に　なると　思って　いた。\n　ところが、実際に　始めて　みると、思わぬ　問題が　あった。家に　いると、仕事と　生活の　区別が（２）、夜遅くまで　パソコンに　向かって　しまうのだ。（３）、同僚と　直接　話す　機会が　減り、ちょっとした　相談も　しにくく　なった。\n　そこで、わたしは　家でも　仕事の　時間を　決め、時間に　なったら　パソコンを　閉じる（４）。また、週に　一度は　オンラインで　同僚と　雑談する　時間を　作った。こうした　工夫の（５）、今では　在宅勤務の　よさを　感じられるように　なった。"
+  - id: dialect
+    text: "　わたしは　大学に　入るまで、自分の　話す　言葉が　方言だとは　あまり　意識して　いなかった。東京の　大学に　入って、友人に　「その　言葉、どういう　意味？」と　聞かれ、（１）気が　ついたのだ。\n　最初は　恥ずかしくて、なるべく　標準語で　話す（２）。しかし、ある日、地元の　言葉で　話す　友人を　見て、考えが　変わった。彼女は　方言を（３）、楽しそうに　話して　いたのである。周りの　人たちも　彼女の　言葉に　興味を　持ち、会話が　弾んで　いた。\n　言葉は、その　土地の　歴史や　文化を　伝える（４）。方言を　話す　ことは、自分の　生まれた　場所を　大切に　する　ことでも　あるのだ。今では、わたしも　地元の　言葉を（５）話して　いる。"
+questions:
+  - id: n2-lr-9-0001
+    passage: reading
+    stem: '（１）'
+    choices:
+      - 'つまり'
+      - 'しかし'
+      - 'そのうえ'
+      - 'そこで'
+    answer: 2
+    explanation:
+      en: 'しかし questions the common claim.'
+      es: 'しかし pone en duda la idea extendida.'
+    author: claude
+  - id: n2-lr-9-0002
+    passage: reading
+    stem: '（２）'
+    choices:
+      - 'むしろ'
+      - 'ほとんど'
+      - 'まったく'
+      - 'けっして'
+    answer: 1
+    explanation:
+      en: 'むしろ: on the contrary, they are increasing.'
+      es: 'むしろ: al contrario, aumentan.'
+    author: claude
+  - id: n2-lr-9-0003
+    passage: reading
+    stem: '（３）'
+    choices:
+      - 'だけ'
+      - 'ばかり'
+      - 'ほど'
+      - 'そのもの'
+    answer: 4
+    explanation:
+      en: '読むこと そのもの: reading itself.'
+      es: '読むこと そのもの: la lectura en sí.'
+    author: claude
+  - id: n2-lr-9-0004
+    passage: reading
+    stem: '（４）'
+    choices:
+      - 'ことに'
+      - 'こととは'
+      - 'ことで'
+      - 'ことなく'
+    answer: 3
+    explanation:
+      en: '〜ことで: by being able to read anywhere.'
+      es: '〜ことで: gracias a poder leer en cualquier sitio.'
+    author: claude
+  - id: n2-lr-9-0005
+    passage: reading
+    stem: '（５）'
+    choices:
+      - '目を　向けるために'
+      - '目を　向けたうえで'
+      - '目を　向けずに'
+      - '目を　向けてこそ'
+    answer: 3
+    explanation:
+      en: 'Without looking at the content, one should not judge.'
+      es: 'Sin fijarse en el contenido, no se debería juzgar.'
+    author: claude
+  - id: n2-lr-9-0006
+    passage: remote
+    stem: '（１）'
+    choices:
+      - '認めさせた'
+      - '認められるように　なった'
+      - '認めるように　なった'
+      - '認められなかった'
+    answer: 2
+    explanation:
+      en: 'Working from home became allowed: passive with が.'
+      es: 'Se empezó a permitir el teletrabajo: pasiva con が.'
+    author: claude
+  - id: n2-lr-9-0007
+    passage: remote
+    stem: '（２）'
+    choices:
+      - 'つきにくく'
+      - 'つきやすく'
+      - 'つけにくく'
+      - 'つかないで'
+    answer: 1
+    explanation:
+      en: '区別が つく (intransitive): hard to keep apart.'
+      es: '区別が つく (intransitivo): cuesta distinguir.'
+    author: claude
+  - id: n2-lr-9-0008
+    passage: remote
+    stem: '（３）'
+    choices:
+      - 'そのため'
+      - 'ところが'
+      - 'つまり'
+      - 'さらに'
+    answer: 4
+    explanation:
+      en: 'さらに adds a second problem.'
+      es: 'さらに añade un segundo problema.'
+    author: claude
+  - id: n2-lr-9-0009
+    passage: remote
+    stem: '（４）'
+    choices:
+      - 'ことだった'
+      - 'ことが　ある'
+      - 'ことに　した'
+      - 'ことは　ない'
+    answer: 3
+    explanation:
+      en: 'The writer decided it: 〜ことに した.'
+      es: 'Lo decidió quien escribe: 〜ことに した.'
+    author: claude
+  - id: n2-lr-9-0010
+    passage: remote
+    stem: '（５）'
+    choices:
+      - 'おかげで'
+      - 'わりに'
+      - 'せいで'
+      - 'くせに'
+    answer: 1
+    explanation:
+      en: 'A good result thanks to the changes: おかげで.'
+      es: 'Un buen resultado gracias a los cambios: おかげで.'
+    author: claude
+  - id: n2-lr-9-0011
+    passage: dialect
+    stem: '（１）'
+    choices:
+      - 'わざと'
+      - 'さっそく'
+      - '決して'
+      - '初めて'
+    answer: 4
+    explanation:
+      en: 'Only then did the writer first notice.'
+      es: 'Fue entonces cuando se dio cuenta por primera vez.'
+    author: claude
+  - id: n2-lr-9-0012
+    passage: dialect
+    stem: '（２）'
+    choices:
+      - 'わけには　いかなかった'
+      - 'ように　して　いた'
+      - 'ほどだった'
+      - 'ことに　されて　いた'
+    answer: 2
+    explanation:
+      en: '〜ように して いた: made a point of it.'
+      es: '〜ように して いた: procuraba hacerlo.'
+    author: claude
+  - id: n2-lr-9-0013
+    passage: dialect
+    stem: '（３）'
+    choices:
+      - '恥ずかしがるばかりか'
+      - '恥ずかしがったあげく'
+      - '恥ずかしがるにつれて'
+      - '恥ずかしがるどころか'
+    answer: 4
+    explanation:
+      en: '〜どころか: far from being shy.'
+      es: '〜どころか: lejos de avergonzarse.'
+    author: claude
+  - id: n2-lr-9-0014
+    passage: dialect
+    stem: '（４）'
+    choices:
+      - 'ことは　ない'
+      - 'わけでは　ない'
+      - 'ものでも　ある'
+      - 'ものでは　ない'
+    answer: 3
+    explanation:
+      en: '〜ものでも ある: it is also something that.'
+      es: '〜ものでも ある: también es algo que.'
+    author: claude
+  - id: n2-lr-9-0015
+    passage: dialect
+    stem: '（５）'
+    choices:
+      - '堂々と'
+      - 'おどおど'
+      - 'こっそり'
+      - 'しぶしぶ'
+    answer: 1
+    explanation:
+      en: 'Now the writer speaks it proudly: 堂々と.'
+      es: 'Ahora lo habla con orgullo: 堂々と.'
+    author: claude

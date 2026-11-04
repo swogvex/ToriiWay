@@ -1,0 +1,94 @@
+# N2 · Language knowledge · Reading · Mondai 14 — information retrieval
+# Original questions written for ToriiWay.
+level: N2
+section: language-reading
+mondai: 14
+instruction:
+  en: 'Look at the information and answer the questions.'
+  ja: '右の ページは 案内です。これを 読んで、下の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: scholarship
+    text: "さくら国際大学　留学生奨学金のご案内\n対象：本学の留学生（大学院生を含む）\n金額：月額三万円（一年間）\n人数：二十名\n条件：①前学期の成績が平均Ｂ以上であること　②ほかの奨学金を受けていないこと\n申し込み：四月十日から四月二十日までに、学生課に申込書と成績証明書を提出\n＊大学院生は、指導教員の推薦書も必要です。\n＊結果は五月中旬に、メールで本人に知らせます。"
+  - id: moving
+    text: "みどり引越センター　料金のご案内（市内の引っ越し）\nプラン　　　　　トラック　　作業員　　料金\n単身プラン　　　小型　　　　二名　　　三万円\nファミリーＳ　　中型　　　　三名　　　六万円\nファミリーＬ　　大型　　　　四名　　　九万円\n＊土・日・祝日は料金が二割増しになります。\n＊三月・四月は料金が一割増しになります（土日と重なる場合は三割増し）。\n＊段ボール箱二十個まで無料。それ以上は一個百円です。"
+  - id: lecture
+    text: "みどり市　市民講座（秋）\n講座名　　　　　曜日・時間　　　　回数　　受講料\nＡ　はじめての写真　　火　十九時～二十一時　　五回　　五千円\nＢ　やさしい英会話　　水　十時～十二時　　　　十回　　八千円\nＣ　地域の歴史　　　　土　十四時～十六時　　　四回　　三千円\nＤ　健康ヨガ　　　　　日　九時～十時半　　　　六回　　四千円\n＊市内在住の六十五歳以上の方は、受講料が半額になります。\n＊申し込みは九月十五日まで。定員を超えた場合は抽選です。"
+questions:
+  - id: n2-lr-14-0001
+    passage: scholarship
+    stem: '大学院生の　ワンさんが　この　奨学金に　申し込む　とき、提出しなければ　ならない　ものは　どれか。'
+    choices:
+      - '申込書と　成績証明書と　指導教員の　推薦書'
+      - '申込書と　成績証明書だけ'
+      - '成績証明書と　ほかの　奨学金の　書類'
+      - '申込書と　指導教員の　推薦書だけ'
+    answer: 1
+    explanation:
+      en: "Graduate students also need their supervisor's recommendation."
+      es: 'Los de posgrado necesitan también la recomendación del tutor.'
+    author: claude
+  - id: n2-lr-14-0002
+    passage: scholarship
+    stem: 'この　奨学金を　受けられないのは　どの　人か。'
+    choices:
+      - '前学期の　成績が　平均　Ａの　人'
+      - 'すでに　ほかの　奨学金を　受けて　いる　人'
+      - '大学院の　留学生'
+      - '四月十五日に　申し込んだ　人'
+    answer: 2
+    explanation:
+      en: 'Condition ② excludes those with another scholarship.'
+      es: 'La condición ② excluye a quien ya tiene otra beca.'
+    author: claude
+  - id: n2-lr-14-0003
+    passage: moving
+    stem: '一人暮らしの　学生が　三月の　平日に　単身プランで　引っ越す。料金は　いくらか。'
+    choices:
+      - '三万九千円'
+      - '三万六千円'
+      - '三万円'
+      - '三万三千円'
+    answer: 4
+    explanation:
+      en: 'March adds 10%: 30,000 × 1.1 = 33,000 yen.'
+      es: 'Marzo suma un 10 %: 30.000 × 1,1 = 33.000 yenes.'
+    author: claude
+  - id: n2-lr-14-0004
+    passage: moving
+    stem: '四月の　日曜日に　ファミリーＳで　引っ越し、段ボール箱を　二十五個　使う。料金は　全部で　いくらか。'
+    choices:
+      - '六万六千五百円'
+      - '六万円'
+      - '七万八千五百円'
+      - '七万二千五百円'
+    answer: 3
+    explanation:
+      en: 'April + Sunday = 30%: 78,000 yen; 5 extra boxes = 500 yen.'
+      es: 'Abril + domingo = 30 %: 78.000 yenes; 5 cajas extra = 500 yenes.'
+    author: claude
+  - id: n2-lr-14-0005
+    passage: lecture
+    stem: '平日は　朝から　夕方まで　働いて　いる　会社員が　受けられる　講座は　どれか。'
+    choices:
+      - 'Ｂと　Ｃ'
+      - 'Ａと　Ｂ'
+      - 'Ａと　Ｃと　Ｄ'
+      - 'Ｂと　Ｄ'
+    answer: 3
+    explanation:
+      en: 'Only the Wednesday-morning course B clashes with work.'
+      es: 'Solo el curso B, el miércoles por la mañana, coincide con el trabajo.'
+    author: claude
+  - id: n2-lr-14-0006
+    passage: lecture
+    stem: '市内に　住んで　いる　七十歳の　山田さんが　ＢとＣを　受ける。受講料は　全部で　いくらか。'
+    choices:
+      - '五千五百円'
+      - '四千円'
+      - '八千円'
+      - '一万一千円'
+    answer: 1
+    explanation:
+      en: 'Half price: (8,000 + 3,000) ÷ 2 = 5,500 yen.'
+      es: 'Mitad de precio: (8.000 + 3.000) ÷ 2 = 5.500 yenes.'
+    author: claude
