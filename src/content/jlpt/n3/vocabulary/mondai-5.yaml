@@ -1,0 +1,189 @@
+# N3 · Vocabulary · Mondai 5 — usage
+# Original questions written for ToriiWay.
+level: N3
+section: vocabulary
+mondai: 5
+instruction:
+  en: 'Choose the sentence that uses the word correctly.'
+  ja: 'つぎの 言葉の 使い方として 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-voc-5-0001
+    stem: '__延期__'
+    choices:
+      - '電車が　延期して、学校に　遅れた。'
+      - '髪が　長く　延期したので、切りに　行った。'
+      - '店の　営業時間を　夜　十時まで　延期した。'
+      - '台風のため、試合は　来週に　延期された。'
+    answer: 4
+    explanation:
+      en: '延期 means putting something off to a later date. Longer opening hours are 延長.'
+      es: '延期 es aplazar a otra fecha. Alargar el horario es 延長.'
+    author: claude
+  - id: n3-voc-5-0002
+    stem: '__目立つ__'
+    choices:
+      - '朝　早く　目立って、散歩した。'
+      - 'この　問題は　目立って　わかりません。'
+      - '彼女は　赤い　服を　着て　いたので、とても　目立って　いた。'
+      - '目立つ　まで　ゆっくり　休んで　ください。'
+    answer: 3
+    explanation:
+      en: '目立つ: to stand out.'
+      es: '目立つ: llamar la atención.'
+    author: claude
+  - id: n3-voc-5-0003
+    stem: '__落ち着く__'
+    choices:
+      - 'かばんを　机に　落ち着いて　ください。'
+      - '大きな　地震の　あと、町は　やっと　落ち着いた。'
+      - '雨が　落ち着いて　ふって　きた。'
+      - '階段から　落ち着いて　けがを　した。'
+    answer: 2
+    explanation:
+      en: '落ち着く: to calm down, to settle.'
+      es: '落ち着く: calmarse, volver a la normalidad.'
+    author: claude
+  - id: n3-voc-5-0004
+    stem: '__片付ける__'
+    choices:
+      - '遊んだ　あとは　おもちゃを　片付けなさい。'
+      - 'かれの　話を　片付けて　聞いた。'
+      - '電車が　駅に　片付けた。'
+      - 'あしたの　天気を　片付けて　ください。'
+    answer: 1
+    explanation:
+      en: '片付ける: to tidy up, put away.'
+      es: '片付ける: ordenar, recoger.'
+    author: claude
+  - id: n3-voc-5-0005
+    stem: '__間に合う__'
+    choices:
+      - 'この　かばんは　色が　間に合う。'
+      - '急いだので、電車に　間に合った。'
+      - 'かれとは　昔から　間に合って　いる。'
+      - '二人の　意見が　間に合った。'
+    answer: 2
+    explanation:
+      en: '間に合う: to be in time.'
+      es: '間に合う: llegar a tiempo.'
+    author: claude
+  - id: n3-voc-5-0006
+    stem: '__失礼__'
+    choices:
+      - 'この　料理は　失礼で　おいしい。'
+      - '失礼な　天気が　続いて　いる。'
+      - '人の　話の　途中で　席を　立つのは　失礼だ。'
+      - '試験に　失礼して、もう　一度　受けた。'
+    answer: 3
+    explanation:
+      en: '失礼: rude, impolite.'
+      es: '失礼: de mala educación.'
+    author: claude
+  - id: n3-voc-5-0007
+    stem: '__確かめる__'
+    choices:
+      - '出かける　前に、かぎを　閉めたか　確かめた。'
+      - '雨が　確かめて　やんだ。'
+      - '友だちに　お金を　確かめて　もらった。'
+      - 'かれは　確かめて　背が　高い。'
+    answer: 1
+    explanation:
+      en: '確かめる: to check, make sure.'
+      es: '確かめる: comprobar.'
+    author: claude
+  - id: n3-voc-5-0008
+    stem: '__迷う__'
+    choices:
+      - '雨が　迷って　ふって　いる。'
+      - 'かばんが　迷って　見つからない。'
+      - 'かれは　迷った　声で　歌った。'
+      - '道に　迷って、約束の　時間に　遅れた。'
+    answer: 4
+    explanation:
+      en: '道に 迷う: to get lost.'
+      es: '道に 迷う: perderse.'
+    author: claude
+  - id: n3-voc-5-0009
+    stem: '__苦手__'
+    choices:
+      - 'かれは　ピアノが　苦手で、コンクールで　優勝した。'
+      - '苦手な　天気で　気持ちが　いい。'
+      - 'この　薬は　苦手で　よく　効く。'
+      - '数学は　苦手なので、いつも　点が　悪い。'
+    answer: 4
+    explanation:
+      en: '苦手: something you are bad at.'
+      es: '苦手: algo que se te da mal.'
+    author: claude
+  - id: n3-voc-5-0010
+    stem: '__余る__'
+    choices:
+      - '料理が　たくさん　余ったので、持って　帰った。'
+      - '時間に　余って、急いで　走った。'
+      - '試験に　余って、とても　うれしい。'
+      - 'かれは　余る　ほど　背が　低い。'
+    answer: 1
+    explanation:
+      en: '余る: to be left over.'
+      es: '余る: sobrar.'
+    author: claude
+  - id: n3-voc-5-0011
+    stem: '__順番__'
+    choices:
+      - '順番な　天気が　続く。'
+      - 'かれは　順番に　怒って　帰った。'
+      - 'みんなで　順番に　発表しましょう。'
+      - 'この　かばんは　順番が　重い。'
+    answer: 3
+    explanation:
+      en: '順番に: in turn, one after another.'
+      es: '順番に: por turnos.'
+    author: claude
+  - id: n3-voc-5-0012
+    stem: '__我慢__'
+    choices:
+      - '雨が　我慢して　ふって　いる。'
+      - '痛かったが、泣かないで　我慢した。'
+      - '我慢な　料理を　食べた。'
+      - 'かれは　我慢に　歌が　上手だ。'
+    answer: 2
+    explanation:
+      en: '我慢する: to put up with something.'
+      es: '我慢する: aguantar.'
+    author: claude
+  - id: n3-voc-5-0013
+    stem: '__普段__'
+    choices:
+      - '普段な　服を　買った。'
+      - '試験に　普段して　合格した。'
+      - 'この　道は　普段に　危ない。'
+      - '普段は　バスで　通勤して　いるが、今日は　歩いた。'
+    answer: 4
+    explanation:
+      en: '普段: usually, normally.'
+      es: '普段: normalmente.'
+    author: claude
+  - id: n3-voc-5-0014
+    stem: '__似合う__'
+    choices:
+      - 'その　ぼうし、とても　よく　似合って　いますね。'
+      - '兄と　弟は　顔が　似合って　いる。'
+      - '二人の　意見が　似合って、けんかに　なった。'
+      - '約束の　時間に　似合った。'
+    answer: 1
+    explanation:
+      en: '似合う: to suit someone. Looking alike is 似て いる.'
+      es: '似合う: sentar bien. Parecerse es 似て いる.'
+    author: claude
+  - id: n3-voc-5-0015
+    stem: '__申し込む__'
+    choices:
+      - '雨が　申し込んで　きた。'
+      - '来月の　日本語の　試験に　申し込んだ。'
+      - '電車に　申し込んで　学校へ　行った。'
+      - '先生に　申し込んで　しかられた。'
+    answer: 2
+    explanation:
+      en: '申し込む: to apply or sign up.'
+      es: '申し込む: inscribirse, solicitar.'
+    author: claude

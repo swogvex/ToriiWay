@@ -1,0 +1,225 @@
+# N3 · Vocabulary · Mondai 2 — orthography
+# Original questions written for ToriiWay.
+level: N3
+section: vocabulary
+mondai: 2
+instruction:
+  en: 'How is the underlined word written? Choose the best answer.'
+  ja: '＿＿＿の 言葉を 漢字で 書く とき、最も よい ものを えらんで ください。'
+questions:
+  - id: n3-voc-2-0001
+    stem: 'かれは　とても　__しょうじき__な　人だ。'
+    choices:
+      - '正直'
+      - '正植'
+      - '正値'
+      - '性直'
+    answer: 1
+    explanation:
+      en: 'しょうじき, "honest", is 正直.'
+      es: 'しょうじき, "honrado", es 正直.'
+    author: claude
+  - id: n3-voc-2-0002
+    stem: '毎朝　__けいざい__の　ニュースを　見る。'
+    choices:
+      - '経剤'
+      - '径済'
+      - '経斉'
+      - '経済'
+    answer: 4
+    explanation:
+      en: 'けいざい, "economy", is 経済.'
+      es: 'けいざい, "economía", es 経済.'
+    author: claude
+  - id: n3-voc-2-0003
+    stem: '空港まで　友だちを　__むかえ__に　行く。'
+    choices:
+      - '迎かえ'
+      - '仰え'
+      - '迎え'
+      - '向え'
+    answer: 3
+    explanation:
+      en: 'むかえ, "meeting someone", is 迎え. 仰 and 向 look or sound alike.'
+      es: 'むかえ, "ir a buscar", es 迎え. 仰 y 向 se parecen o suenan igual.'
+    author: claude
+  - id: n3-voc-2-0004
+    stem: 'この　時計は　__ねだん__が　高い。'
+    choices:
+      - '直段'
+      - '値段'
+      - '植段'
+      - '値断'
+    answer: 2
+    explanation:
+      en: 'ねだん, "price", is 値段.'
+      es: 'ねだん, "precio", es 値段.'
+    author: claude
+  - id: n3-voc-2-0005
+    stem: '川の　近くは　__きけん__です。'
+    choices:
+      - '危検'
+      - '危剣'
+      - '危険'
+      - '危験'
+    answer: 3
+    explanation:
+      en: 'きけん, "danger", is 危険. 検・験・剣 share the sound けん.'
+      es: 'きけん, "peligro", es 危険. 検・験・剣 suenan igual.'
+    author: claude
+  - id: n3-voc-2-0006
+    stem: 'ごみを　__へらす__　ために、何が　できるだろう。'
+    choices:
+      - '滅らす'
+      - '減らす'
+      - '減す'
+      - '経らす'
+    answer: 2
+    explanation:
+      en: 'へらす, "to reduce", is 減らす, with らす as okurigana.'
+      es: 'へらす, "reducir", es 減らす, con らす como okurigana.'
+    author: claude
+  - id: n3-voc-2-0007
+    stem: '何も　__しんぱい__　しないで　ください。'
+    choices:
+      - '信配'
+      - '新配'
+      - '心杯'
+      - '心配'
+    answer: 4
+    explanation:
+      en: 'しんぱい, "worry", is 心配.'
+      es: 'しんぱい, "preocupación", es 心配.'
+    author: claude
+  - id: n3-voc-2-0008
+    stem: '車の　__ゆしゅつ__が　増えて　いる。'
+    choices:
+      - '輸出'
+      - '論出'
+      - '輸生'
+      - '輪出'
+    answer: 1
+    explanation:
+      en: 'ゆしゅつ, "export", is 輸出. 輪 and 論 look like 輸.'
+      es: 'ゆしゅつ, "exportación", es 輸出. 輪 y 論 se parecen a 輸.'
+    author: claude
+  - id: n3-voc-2-0009
+    stem: '友だちと　大事な　__やくそく__を　した。'
+    choices:
+      - '的束'
+      - '約束'
+      - '約則'
+      - '約速'
+    answer: 2
+    explanation:
+      en: 'やくそく, "promise", is 約束.'
+      es: 'やくそく, "promesa", es 約束.'
+    author: claude
+  - id: n3-voc-2-0010
+    stem: '休み時間が　__みじかい__。'
+    choices:
+      - '短い'
+      - '知い'
+      - '短かい'
+      - '矢い'
+    answer: 1
+    explanation:
+      en: 'みじかい, "short", is 短い, with only い as okurigana.'
+      es: 'みじかい, "corto", es 短い, solo con い como okurigana.'
+    author: claude
+  - id: n3-voc-2-0011
+    stem: '図書館に　本を　__かえし__に　行く。'
+    choices:
+      - '変えし'
+      - '帰し'
+      - '返し'
+      - '反し'
+    answer: 3
+    explanation:
+      en: 'You return a book with 返す. 帰す means sending a person home.'
+      es: 'Un libro se devuelve con 返す. 帰す es mandar a alguien a casa.'
+    author: claude
+  - id: n3-voc-2-0012
+    stem: '電車が　止まって、学校に　__ちこく__した。'
+    choices:
+      - '達刻'
+      - '遅割'
+      - '遅克'
+      - '遅刻'
+    answer: 4
+    explanation:
+      en: 'ちこく, "being late", is 遅刻.'
+      es: 'ちこく, "retraso", es 遅刻.'
+    author: claude
+  - id: n3-voc-2-0013
+    stem: 'かぜで　学校を　__けっせき__した。'
+    choices:
+      - '欠度'
+      - '次席'
+      - '欠席'
+      - '決席'
+    answer: 3
+    explanation:
+      en: 'けっせき, "absence", is 欠席.'
+      es: 'けっせき, "ausencia", es 欠席.'
+    author: claude
+  - id: n3-voc-2-0014
+    stem: '来週の　会議に　__さんか__します。'
+    choices:
+      - '産加'
+      - '参加'
+      - '参賀'
+      - '散加'
+    answer: 2
+    explanation:
+      en: 'さんか, "participation", is 参加. 参賀 is a New Year visit to the palace.'
+      es: 'さんか, "participar", es 参加. 参賀 es la visita de año nuevo al palacio.'
+    author: claude
+  - id: n3-voc-2-0015
+    stem: '出張の　__ほうこく__を　書く。'
+    choices:
+      - '執告'
+      - '報造'
+      - '報吉'
+      - '報告'
+    answer: 4
+    explanation:
+      en: 'ほうこく, "report", is 報告.'
+      es: 'ほうこく, "informe", es 報告.'
+    author: claude
+  - id: n3-voc-2-0016
+    stem: 'この　ボタンを　__おして__　ください。'
+    choices:
+      - '押して'
+      - '甲して'
+      - '抽して'
+      - '推して'
+    answer: 1
+    explanation:
+      en: 'Pressing a button is 押す. 推す means "to recommend".'
+      es: 'Pulsar un botón es 押す. 推す significa "recomendar".'
+    author: claude
+  - id: n3-voc-2-0017
+    stem: 'きのう　おそくまで　起きて　いたので、__ねむい__。'
+    choices:
+      - '民い'
+      - '眼い'
+      - '眠むい'
+      - '眠い'
+    answer: 4
+    explanation:
+      en: 'ねむい, "sleepy", is 眠い. 眼 looks similar but means "eye".'
+      es: 'ねむい, "con sueño", es 眠い. 眼 se parece pero significa "ojo".'
+    author: claude
+  - id: n3-voc-2-0018
+    stem: '先生が　__こまかく__　説明して　くれた。'
+    choices:
+      - '細く'
+      - '細かく'
+      - '紬かく'
+      - '組かく'
+    answer: 2
+    explanation:
+      en: 'こまかく, "in detail", is 細かく. 細く reads ほそく, "thinly".'
+      es: 'こまかく, "en detalle", es 細かく. 細く se lee ほそく, "fino".'
+    author: claude
