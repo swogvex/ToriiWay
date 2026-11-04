@@ -11,16 +11,51 @@ async function expectNoAxeViolations(page: Page) {
   expect(results.violations).toEqual([]);
 }
 
-/** Starts an N5 run from the start page and waits for the first question. */
-async function startN5(page: Page, options: { public?: boolean } = {}) {
+/** Starts a run of the level from the start page and waits for the first question. */
+async function startRun(page: Page, level: 'N5' | 'N4', options: { public?: boolean } = {}) {
   await page.goto('/jlpt');
+  await page.getByRole('radio', { name: level }).check();
   if (options.public) await page.getByLabel(/Show my nickname and level/).check();
-  await page.getByRole('button', { name: /Start N5 simulation/ }).click();
+  await page.getByRole('button', { name: new RegExp(`Start ${level} simulation`) }).click();
   const tips = page.getByRole('dialog', { name: 'Before you start' });
   await expect(tips).toBeVisible();
   await tips.getByRole('button', { name: /Start now/ }).click();
   await expect(page).toHaveURL(/\/jlpt\/run$/);
   await expect(page.getByRole('timer')).toBeVisible({ timeout: 10_000 });
+}
+
+/**
+ * Answers every question of each section with "1", finalizes it, waits out the real break
+ * and continues. In listening it first plays the clip from the stubbed Blob.
+ */
+async function answerEverySection(page: Page, sections: readonly (readonly [string, number])[]) {
+  for (const [section, count] of sections) {
+    await expect(page.getByRole('timer')).toBeVisible({ timeout: 15_000 });
+    if (section === 'Listening') {
+      // Headless Chromium has no Japanese voice: only the file on Blob can play.
+      await expect(page.getByText(/This browser has no Japanese voice/)).toBeHidden();
+      await page.getByRole('button', { name: 'Play audio' }).click();
+      await expect(page.getByText('Plays left: 0')).toBeVisible();
+      await expect(page.getByRole('button', { name: 'Play audio' })).toBeDisabled();
+    }
+    for (let index = 0; index < count; index += 1) {
+      await page.keyboard.press('1');
+      if (index < count - 1) await page.keyboard.press('ArrowRight');
+    }
+    await expect(mapItem(page, count)).toHaveAccessibleName(`Question ${count}, answered`);
+    await page.getByRole('button', { name: 'Finalize section' }).click();
+    await page
+      .getByRole('dialog', { name: 'Finalize this section?' })
+      .getByRole('button', { name: 'Finalize', exact: true })
+      .click();
+    if (section === 'Listening') return;
+    await expect(
+      page.getByRole('heading', { name: `${section} done. Take a breath.` }),
+    ).toBeVisible();
+    const next = page.getByRole('button', { name: 'Continue', exact: true });
+    await expect(next).toBeEnabled({ timeout: 70_000 });
+    await next.click();
+  }
 }
 
 /** Stand-in for Cloudflare's Turnstile script: renders nothing and hands back the test token. */
@@ -73,10 +108,10 @@ test.describe('JLPT start page', () => {
 
   test('levels without a question bank cannot start yet', async ({ page }) => {
     await page.goto('/jlpt');
-    await page.getByRole('radio', { name: 'N4' }).check();
-    await expect(page.getByRole('heading', { name: 'N4 sections' })).toBeVisible();
-    await expect(page.getByRole('button', { name: /Start N4 simulation/ })).toBeDisabled();
-    await expect(page.getByText(/N4 question bank is being written/)).toBeVisible();
+    await page.getByRole('radio', { name: 'N3' }).check();
+    await expect(page.getByRole('heading', { name: 'N3 sections' })).toBeVisible();
+    await expect(page.getByRole('button', { name: /Start N3 simulation/ })).toBeDisabled();
+    await expect(page.getByText(/N3 question bank is being written/)).toBeVisible();
     await page.getByRole('radio', { name: 'Kana' }).check();
     await expect(page.getByRole('button', { name: /Start Kana simulation/ })).toBeEnabled();
     await expect(page.getByText(/Kana is a site-only level/)).toBeVisible();
@@ -141,7 +176,7 @@ test.describe('JLPT exam', () => {
   test('answers with the keyboard, flags, resumes after a reload and finalizes', async ({
     page,
   }) => {
-    await startN5(page);
+    await startRun(page, 'N5');
     const steps = page.getByRole('list', { name: 'Sections' });
     await expect(steps.getByRole('listitem').first()).toHaveText(/1 Vocabulary 0\/21/);
     await expect(steps.getByRole('listitem').nth(1)).toHaveText(/40:00/);
@@ -175,43 +210,32 @@ test.describe('JLPT exam', () => {
     await expectNoAxeViolations(page);
   });
 
+  test('a full N4 run reaches the score', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
+    test.setTimeout(300_000);
+    await stubBlobAudio(page);
+    await startRun(page, 'N4');
+    await answerEverySection(page, [
+      ['Vocabulary', 28],
+      ['Grammar · Reading', 29],
+      ['Listening', 28],
+    ]);
+    await expect(page.getByText('N4 · Simulation complete')).toBeVisible();
+    await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
+    await expectNoAxeViolations(page);
+  });
+
   test('a full N5 run reaches the score', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
     test.setTimeout(300_000);
     await stubTurnstile(page);
     await stubBlobAudio(page);
-    await startN5(page, { public: true });
-    for (const [section, count] of [
+    await startRun(page, 'N5', { public: true });
+    await answerEverySection(page, [
       ['Vocabulary', 21],
       ['Grammar · Reading', 22],
       ['Listening', 24],
-    ] as const) {
-      await expect(page.getByRole('timer')).toBeVisible({ timeout: 15_000 });
-      if (section === 'Listening') {
-        // Headless Chromium has no Japanese voice: only the file on Blob can play.
-        await expect(page.getByText(/This browser has no Japanese voice/)).toBeHidden();
-        await page.getByRole('button', { name: 'Play audio' }).click();
-        await expect(page.getByText('Plays left: 0')).toBeVisible();
-        await expect(page.getByRole('button', { name: 'Play audio' })).toBeDisabled();
-      }
-      for (let index = 0; index < count; index += 1) {
-        await page.keyboard.press('1');
-        if (index < count - 1) await page.keyboard.press('ArrowRight');
-      }
-      await expect(mapItem(page, count)).toHaveAccessibleName(`Question ${count}, answered`);
-      await page.getByRole('button', { name: 'Finalize section' }).click();
-      await page
-        .getByRole('dialog', { name: 'Finalize this section?' })
-        .getByRole('button', { name: 'Finalize', exact: true })
-        .click();
-      if (section === 'Listening') break;
-      await expect(
-        page.getByRole('heading', { name: `${section} done. Take a breath.` }),
-      ).toBeVisible();
-      const next = page.getByRole('button', { name: 'Continue', exact: true });
-      await expect(next).toBeEnabled({ timeout: 70_000 });
-      await next.click();
-    }
+    ]);
     await expect(page.getByText('N5 · Simulation complete')).toBeVisible();
     await expect(page.getByRole('rowheader', { name: 'Total' })).toBeVisible();
     await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
@@ -256,7 +280,7 @@ test.describe('JLPT exam on a phone', () => {
   test.use({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
 
   test('keeps the top bar and the actions on one row each', async ({ page }) => {
-    await startN5(page);
+    await startRun(page, 'N5');
     const middle = async (locator: ReturnType<Page['locator']>) => {
       const box = await locator.boundingBox();
       return (box?.y ?? 0) + (box?.height ?? 0) / 2;
@@ -297,7 +321,7 @@ test.describe('JLPT problem reports', () => {
         body: 'window.turnstile={render:(el,o)=>{setTimeout(()=>o.callback("XXXX.DUMMY.TOKEN.XXXX"));return "w1";},reset:()=>{}};',
       }),
     );
-    await startN5(page);
+    await startRun(page, 'N5');
     await page.getByRole('button', { name: 'Report a problem' }).click();
     const dialog = page.getByRole('dialog', { name: 'Report a problem with this question' });
     await expect(dialog).toBeVisible();
