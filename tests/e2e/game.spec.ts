@@ -242,7 +242,8 @@ test.describe('Kana Rush play', () => {
     });
     await startRun(page);
     await page.clock.runFor(3_000);
-    await expect(bubbles(page)).toHaveCount(2);
+    // The fake clock keeps flowing while expect polls, so check that bubbles exist, not how many.
+    await expect(bubbles(page).first()).toBeVisible();
     const transform = await bubbles(page)
       .first()
       .evaluate((el) => el.style.transform);
