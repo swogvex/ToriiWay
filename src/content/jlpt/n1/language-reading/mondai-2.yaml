@@ -208,7 +208,7 @@ questions:
       - 'うかがって'
     answer: 4
     explanation:
-      en: '顔色を うかがう: to watch someone''s mood.'
+      en: "顔色を うかがう: to watch someone's mood."
       es: '顔色を うかがう: estar pendiente del humor de alguien.'
     author: claude
   - id: n1-lr-2-0018

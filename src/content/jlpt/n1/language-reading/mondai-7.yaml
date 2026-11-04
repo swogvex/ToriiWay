@@ -76,7 +76,7 @@ questions:
       - 'でしか　なかった'
     answer: 2
     explanation:
-      en: 'A soft conclusion stating the writer''s view.'
+      en: "A soft conclusion stating the writer's view."
       es: 'Una conclusión suave con la opinión de quien escribe.'
     author: claude
   - id: n1-lr-7-0006

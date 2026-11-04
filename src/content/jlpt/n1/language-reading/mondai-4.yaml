@@ -220,6 +220,6 @@ questions:
       - '駅で　友達に　会って　腕を　振るった。'
     answer: 3
     explanation:
-      en: '腕を 振るう: to show one''s skill.'
+      en: "腕を 振るう: to show one's skill."
       es: '腕を 振るう: lucir su habilidad.'
     author: claude

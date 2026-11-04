@@ -179,7 +179,7 @@ questions:
       - '正確に　訳す　技術'
     answer: 2
     explanation:
-      en: 'More than language knowledge: imagining people''s feelings.'
+      en: "More than language knowledge: imagining people's feelings."
       es: 'Más que el idioma: imaginar lo que siente la gente.'
     author: claude
   - id: n1-lr-9-0013
@@ -296,7 +296,7 @@ questions:
       - '相手の　立場で　考えた　助けが　本当の　助けだ'
     answer: 4
     explanation:
-      en: 'Goodwill helps when it starts from the other side''s needs.'
+      en: "Goodwill helps when it starts from the other side's needs."
       es: 'La buena voluntad ayuda si parte de las necesidades del otro.'
     author: claude
   - id: n1-lr-9-0022
