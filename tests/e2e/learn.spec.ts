@@ -119,7 +119,7 @@ test.describe('kana pages', () => {
   }) => {
     await page.goto('/learn/kana/ふ');
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(/ふ\s*fu/);
-    await expect(page).toHaveTitle('ふ (fu) — hiragana stroke order · Nihongo No Torii');
+    await expect(page).toHaveTitle('ふ (fu) — hiragana stroke order · ToriiWay');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
       /\/learn\/kana\/%E3%81%B5$/,

@@ -43,7 +43,7 @@ export const GET: APIRoute = (context) =>
         'Content-Type': 'image/png',
         'Cache-Control': 'public, max-age=3600',
         'X-Robots-Tag': 'noindex, nofollow',
-        'Content-Disposition': `inline; filename="nihongo-no-torii-${run.level.toLowerCase()}-report.png"`,
+        'Content-Disposition': `inline; filename="toriiway-${run.level.toLowerCase()}-report.png"`,
       },
     });
   });

@@ -58,7 +58,7 @@ test('toast announces in the polite live region', async ({ page }) => {
 });
 
 test('stored theme is applied before paint', async ({ page }) => {
-  await page.evaluate(() => localStorage.setItem('nnt:v1:theme', 'dark'));
+  await page.evaluate(() => localStorage.setItem('tw:v1:theme', 'dark'));
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 });

@@ -3,7 +3,7 @@ import { expect, test, type Page } from '@playwright/test';
 import { toRomaji } from 'wanakana';
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
-const STORAGE_KEY = 'nnt:v1:game';
+const STORAGE_KEY = 'tw:v1:game';
 
 test.use({ viewport: { width: 1440, height: 1000 } });
 

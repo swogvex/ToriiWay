@@ -19,7 +19,7 @@ export interface KanaProgress {
   addResult(result: PracticeResult): void;
 }
 
-export const KANA_STORAGE_KEY = 'nnt:v1:kana';
+export const KANA_STORAGE_KEY = 'tw:v1:kana';
 const MAX_RESULTS = 20;
 
 interface StoredProgress {

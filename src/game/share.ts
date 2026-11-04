@@ -17,7 +17,7 @@ export interface CardFonts {
 }
 
 export interface CardData {
-  /** "Nihongo No Torii · Kana Rush". */
+  /** "ToriiWay · Kana Rush". */
   title: string;
   date: string;
   /** "SWOGVEX · HIRAGANA NORMAL · CLEARED" (already joined, without the name when empty). */

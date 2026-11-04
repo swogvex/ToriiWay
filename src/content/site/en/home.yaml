@@ -1,7 +1,7 @@
 # Home copy, footer phrase and social links (English).
 # Section names and buttons such as "Index" live in src/i18n/en.json.
 
-title: Nihongo No Torii · Learn Japanese one keystroke at a time
+title: ToriiWay · Learn Japanese one keystroke at a time
 description: >-
   Free Japanese practice with no account: a kana typing game, kana and kanji guides, JLPT mock
   exams and a library of books worth reading.
@@ -36,7 +36,7 @@ index:
 
 # Until the channel feed is wired up, this card links to the YouTube channel.
 video:
-  kicker: YouTube · @nihongonotorii
+  kicker: YouTube · @swogvex
   title: Video lessons on the channel
   text: Short lessons on kana, grammar and the JLPT.
 
@@ -51,6 +51,6 @@ footer:
 
 social:
   discord: https://discord.gg/PkQt42bDtk
-  youtube: https://www.youtube.com/@nihongonotorii
+  youtube: https://www.youtube.com/@swogvex
   x: https://x.com/swogvex
   github: https://github.com/swogvex

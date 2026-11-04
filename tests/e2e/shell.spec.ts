@@ -166,7 +166,7 @@ test.describe('desktop shell', () => {
     const jsonLd = JSON.parse(
       (await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}',
     );
-    expect(jsonLd).toMatchObject({ '@type': 'WebSite', name: 'Nihongo No Torii' });
+    expect(jsonLd).toMatchObject({ '@type': 'WebSite', name: 'ToriiWay' });
   });
 
   test('external links open in a new tab and say so', async ({ page }) => {

@@ -1,7 +1,7 @@
 // Results email (09-spec-jlpt: email). Built here as HTML and text, sent with Resend's
 // REST API (no SDK needed). Every value from the run is escaped before it reaches HTML.
 
-export const FROM = 'Nihongo No Torii <results@toriiway.xyz>';
+export const FROM = 'ToriiWay <results@toriiway.xyz>';
 
 export interface ResultEmail {
   to: string;
@@ -44,7 +44,7 @@ export function buildResultEmail(input: ResultEmail): EmailMessage {
   const text = [
     greeting,
     '',
-    `Here is your ${input.level} simulation result on Nihongo No Torii.`,
+    `Here is your ${input.level} simulation result on ToriiWay.`,
     `${verdict} · ${input.total} / ${input.max}`,
     '',
     `See your score report and review your mistakes: ${link.href}`,
@@ -58,7 +58,7 @@ export function buildResultEmail(input: ResultEmail): EmailMessage {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;margin:0 auto;background:#ffffff;border:2px solid #141414;border-radius:16px">
     <tr><td style="padding:20px 28px;background:#141414;color:#f5f4f0;border-radius:13px 13px 0 0">
       <strong style="font-size:18px">日本語能力試験 模擬テスト</strong><br>
-      <span style="font-size:13px">Nihongo No Torii · Unofficial simulation</span>
+      <span style="font-size:13px">ToriiWay · Unofficial simulation</span>
     </td></tr>
     <tr><td style="padding:28px">
       <p style="margin:0 0 12px;font-size:16px">${escape(greeting)}</p>
