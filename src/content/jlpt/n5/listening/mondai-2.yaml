@@ -75,7 +75,7 @@ questions:
       en: 'Ten minutes before three is 2:50.'
       es: 'Diez minutos antes de las tres son las 2:50.'
     author: claude
-    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0005-0544c0ad3a2b.mp3'
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n5-lis-2-0005-7523d056ea77.mp3'
     tts:
       script: "N: おとこの　ひとと　おんなの　ひとが　はなして　います。いま　なん時ですか。\nM: すみません、いま　なん時ですか。\nF: 三時じゅっぷんまえです。\nM: え、三時じゅっぷんですか。\nF: いいえ、三時の　じゅっぷんまえです。\nN: いま　なん時ですか。"
       voices: ['narrator', 'man', 'woman']
