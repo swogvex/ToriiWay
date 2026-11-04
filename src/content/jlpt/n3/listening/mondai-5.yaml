@@ -1,0 +1,387 @@
+# N3 · Listening · Mondai 5 — quick response
+# Original questions written for ToriiWay.
+level: N3
+section: listening
+mondai: 5
+instruction:
+  en: 'Listen to the sentence and the three replies. Choose the best reply.'
+  ja: '文を 聞いて、１から３の 中から、最も よい 返事を えらんで ください。'
+questions:
+  - id: n3-lis-5-0001
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'たしか　十時からだったと　思う'
+      - '十時に　会議が　終わったよ'
+      - 'うん、会議に　出るよ'
+    answer: 1
+    explanation:
+      en: 'He asks the time; she recalls it.'
+      es: 'Pregunta la hora; ella la recuerda.'
+    author: claude
+    tts:
+      script: "M: あしたの　会議、何時からか　覚えてる？\nF: 1　たしか　十時からだったと　思う\nF: 2　十時に　会議が　終わったよ\nF: 3　うん、会議に　出るよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0002
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、あした　お願いします'
+      - 'いいえ、書類では　ありません'
+      - 'はい、なんとか　やって　みます'
+    answer: 3
+    explanation:
+      en: 'Accepting a request: なんとか やって みます.'
+      es: 'Aceptar un encargo: なんとか やって みます.'
+    author: claude
+    tts:
+      script: "F: この　書類、あしたまでに　お願いできますか。\nM: 1　はい、あした　お願いします\nM: 2　いいえ、書類では　ありません\nM: 3　はい、なんとか　やって　みます"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0003
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ええ、外して　あげます'
+      - 'どうぞ、ごゆっくり'
+      - 'いえ、席は　ありません'
+    answer: 2
+    explanation:
+      en: 'Giving permission to step out.'
+      es: 'Dar permiso para ausentarse un momento.'
+    author: claude
+    tts:
+      script: "M: すみません、ちょっと　席を　外しても　いいですか。\nF: 1　ええ、外して　あげます\nF: 2　どうぞ、ごゆっくり\nF: 3　いえ、席は　ありません"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0004
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ありがとう。助かるよ'
+      - 'うん、駅に　送ったよ'
+      - 'うん、送って　あげるよ'
+    answer: 1
+    explanation:
+      en: 'Accepting the offer with thanks.'
+      es: 'Aceptar la oferta con gratitud.'
+    author: claude
+    tts:
+      script: "F: 駅まで　送って　いこうか。\nM: 1　ありがとう。助かるよ\nM: 2　うん、駅に　送ったよ\nM: 3　うん、送って　あげるよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0005
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、決まって　いません'
+      - 'いいえ、注文します'
+      - 'もう　少し　待って　もらえますか'
+    answer: 3
+    explanation:
+      en: 'Not ready yet: ask for a moment.'
+      es: 'Aún no: pedir un momento.'
+    author: claude
+    tts:
+      script: "M: ご注文は　お決まりですか。\nF: 1　はい、決まって　いません\nF: 2　いいえ、注文します\nF: 3　もう　少し　待って　もらえますか"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0006
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、今日は　早く　帰るよ'
+      - 'うん、終電に　ぎりぎり　間に合ったよ'
+      - 'ううん、残業は　あるよ'
+    answer: 2
+    explanation:
+      en: 'Yes, he barely caught the last train.'
+      es: 'Sí, cogió el último tren por los pelos.'
+    author: claude
+    tts:
+      script: "F: きのうは　遅くまで　残業だったんでしょう？\nM: 1　うん、今日は　早く　帰るよ\nM: 2　うん、終電に　ぎりぎり　間に合ったよ\nM: 3　ううん、残業は　あるよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0007
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いいよ。終わったら　電源を　切って　おいてね'
+      - 'うん、使って　もらうね'
+      - 'うん、使って　あげたよ'
+    answer: 1
+    explanation:
+      en: 'She lets him and adds a request.'
+      es: 'Ella le deja y añade un favor.'
+    author: claude
+    tts:
+      script: "M: この　パソコン、ちょっと　使わせて　もらっても　いい？\nF: 1　いいよ。終わったら　電源を　切って　おいてね\nF: 2　うん、使って　もらうね\nF: 3　うん、使って　あげたよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0008
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ええ、切って　あげました'
+      - 'いいえ、切りましょう'
+      - 'ええ、暑く　なって　きたので'
+    answer: 3
+    explanation:
+      en: 'He confirms and gives the reason.'
+      es: 'Lo confirma y da el motivo.'
+    author: claude
+    tts:
+      script: "F: あれ、田中さん、髪を　切ったんですね。\nM: 1　ええ、切って　あげました\nM: 2　いいえ、切りましょう\nM: 3　ええ、暑く　なって　きたので"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0009
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、飲み会だよ'
+      - 'たぶん　大丈夫だと　思う'
+      - 'うん、参加したよ'
+    answer: 2
+    explanation:
+      en: 'A tentative yes.'
+      es: 'Un sí provisional.'
+    author: claude
+    tts:
+      script: "M: 来週の　飲み会、参加できそう？\nF: 1　うん、飲み会だよ\nF: 2　たぶん　大丈夫だと　思う\nF: 3　うん、参加したよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0010
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、召し上がります'
+      - 'いえ、持ち帰りで'
+      - 'いいえ、ここで　食べます'
+    answer: 2
+    explanation:
+      en: 'Eat in or take away: he takes it away.'
+      es: 'Para tomar aquí o para llevar: para llevar.'
+    author: claude
+    tts:
+      script: "F: こちらで　召し上がりますか。\nM: 1　はい、召し上がります\nM: 2　いえ、持ち帰りで\nM: 3　いいえ、ここで　食べます"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0011
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'では、一割　引かせて　いただきます'
+      - 'いいえ、高く　します'
+      - 'はい、安く　なりました'
+    answer: 1
+    explanation:
+      en: 'The shop offers a discount.'
+      es: 'La tienda ofrece un descuento.'
+    author: claude
+    tts:
+      script: "M: もう　少し　安く　なりませんか。\nF: 1　では、一割　引かせて　いただきます\nF: 2　いいえ、高く　します\nF: 3　はい、安く　なりました"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0012
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ううん、もう　慣れたよ'
+      - 'うん、慣らして　いるよ'
+      - 'うん、だいぶ　慣れて　きたよ'
+    answer: 3
+    explanation:
+      en: 'Mostly used to it now.'
+      es: 'Ya casi se ha acostumbrado.'
+    author: claude
+    tts:
+      script: "F: 日本の　生活には　もう　慣れた？\nM: 1　ううん、もう　慣れたよ\nM: 2　うん、慣らして　いるよ\nM: 3　うん、だいぶ　慣れて　きたよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0013
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、もう　ふったよ'
+      - 'そうだね。そう　する'
+      - 'ううん、かさを　貸すよ'
+    answer: 2
+    explanation:
+      en: 'She takes the advice.'
+      es: 'Ella sigue el consejo.'
+    author: claude
+    tts:
+      script: "M: 雨が　ふりそうだから、かさを　持って　いったら？\nF: 1　うん、もう　ふったよ\nF: 2　そうだね。そう　する\nF: 3　ううん、かさを　貸すよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0014
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'はい、お貸しします'
+      - 'はい、あとで　借ります'
+      - 'とても　おもしろかったです。ありがとうございました'
+    answer: 3
+    explanation:
+      en: 'He gives his opinion and thanks her.'
+      es: 'Da su opinión y le da las gracias.'
+    author: claude
+    tts:
+      script: "F: 先週　お貸しした　本、いかがでしたか。\nM: 1　はい、お貸しします\nM: 2　はい、あとで　借ります\nM: 3　とても　おもしろかったです。ありがとうございました"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0015
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、ちょっと　寝不足で'
+      - 'うん、元気に　なったよ'
+      - 'ありがとう、元気だよ'
+    answer: 1
+    explanation:
+      en: 'She explains she slept badly.'
+      es: 'Explica que ha dormido poco.'
+    author: claude
+    tts:
+      script: "M: 山田さん、今日は　なんだか　元気が　ないね。\nF: 1　うん、ちょっと　寝不足で\nF: 2　うん、元気に　なったよ\nF: 3　ありがとう、元気だよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0016
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いってらっしゃい'
+      - '失礼しました'
+      - 'お疲れさまでした'
+    answer: 3
+    explanation:
+      en: 'The reply to a colleague leaving first.'
+      es: 'La respuesta a un compañero que se va antes.'
+    author: claude
+    tts:
+      script: "F: お先に　失礼します。\nM: 1　いってらっしゃい\nM: 2　失礼しました\nM: 3　お疲れさまでした"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0017
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、ラーメンを　作ったよ'
+      - 'へえ、今度　行って　みようか'
+      - '駅前に　行って　きたの？'
+    answer: 2
+    explanation:
+      en: 'She suggests going.'
+      es: 'Ella propone ir.'
+    author: claude
+    tts:
+      script: "M: 駅前に　新しい　ラーメン屋が　できたらしいよ。\nF: 1　うん、ラーメンを　作ったよ\nF: 2　へえ、今度　行って　みようか\nF: 3　駅前に　行って　きたの？"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0018
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ちょっと　大変だから、手伝って　もらえる？'
+      - '大丈夫、二人だよ'
+      - 'うん、一人で　手伝うよ'
+    answer: 1
+    explanation:
+      en: 'He admits it is hard and asks for help.'
+      es: 'Admite que es duro y pide ayuda.'
+    author: claude
+    tts:
+      script: "F: この　仕事、一人で　大丈夫？\nM: 1　ちょっと　大変だから、手伝って　もらえる？\nM: 2　大丈夫、二人だよ\nM: 3　うん、一人で　手伝うよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0019
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いいえ、大学生です'
+      - 'ええ、この　春に　入学したんです'
+      - 'ええ、大学生に　なりたいです'
+    answer: 2
+    explanation:
+      en: 'She confirms and adds when.'
+      es: 'Lo confirma y dice cuándo.'
+    author: claude
+    tts:
+      script: "M: お子さん、もう　大学生なんですか。\nF: 1　いいえ、大学生です\nF: 2　ええ、この　春に　入学したんです\nF: 3　ええ、大学生に　なりたいです"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0020
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'あ、すみません。気が　つきませんでした'
+      - 'いいえ、禁煙です'
+      - 'はい、吸っても　いいですよ'
+    answer: 1
+    explanation:
+      en: 'He apologises.'
+      es: 'Él se disculpa.'
+    author: claude
+    tts:
+      script: "F: すみません、ここ、禁煙なんですが。\nM: 1　あ、すみません。気が　つきませんでした\nM: 2　いいえ、禁煙です\nM: 3　はい、吸っても　いいですよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0021
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、行って　きたよ'
+      - '週末は　楽しかったね'
+      - 'いいね。海は　どう？'
+    answer: 3
+    explanation:
+      en: 'She accepts and proposes a place.'
+      es: 'Acepta y propone un sitio.'
+    author: claude
+    tts:
+      script: "M: 今度の　週末、どこか　行かない？\nF: 1　うん、行って　きたよ\nF: 2　週末は　楽しかったね\nF: 3　いいね。海は　どう？"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0022
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'ううん、まだなんだ'
+      - 'ううん、もう　見たよ'
+      - 'うん、これから　見るよ'
+    answer: 1
+    explanation:
+      en: 'Not yet.'
+      es: 'Todavía no.'
+    author: claude
+    tts:
+      script: "F: あの　映画、もう　見た？\nM: 1　ううん、まだなんだ\nM: 2　ううん、もう　見たよ\nM: 3　うん、これから　見るよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0023
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '会議室で　お願いします'
+      - 'はい、コピーしました'
+      - '二十部　お願いします'
+    answer: 3
+    explanation:
+      en: 'He asks how many; she says twenty.'
+      es: 'Pregunta cuántas; ella dice veinte.'
+    author: claude
+    tts:
+      script: "M: 会議の　資料、何部　コピーすれば　いいですか。\nF: 1　会議室で　お願いします\nF: 2　はい、コピーしました\nF: 3　二十部　お願いします"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0024
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'うん、夕ご飯を　作ったよ'
+      - 'ありがとう。じゃあ、お言葉に　甘えて'
+      - 'ありがとう。じゃあ、食べさせて　あげる'
+    answer: 2
+    explanation:
+      en: 'Accepting an invitation: お言葉に 甘えて.'
+      es: 'Aceptar una invitación: お言葉に 甘えて.'
+    author: claude
+    tts:
+      script: "F: よかったら、うちで　夕ご飯　食べて　いかない？\nM: 1　うん、夕ご飯を　作ったよ\nM: 2　ありがとう。じゃあ、お言葉に　甘えて\nM: 3　ありがとう。じゃあ、食べさせて　あげる"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0025
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '三時ごろ　お戻りに　なりました'
+      - '部長に　戻して　ください'
+      - '三時ごろ　戻る　予定です'
+    answer: 3
+    explanation:
+      en: 'About your own boss to an outsider, plain 戻る.'
+      es: 'De tu propio jefe a alguien de fuera, 戻る sin honorífico.'
+    author: claude
+    tts:
+      script: "M: 部長は　いつ　お戻りに　なりますか。\nF: 1　三時ごろ　お戻りに　なりました\nF: 2　部長に　戻して　ください\nF: 3　三時ごろ　戻る　予定です"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0026
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - '机の　横に　置いて　おいて'
+      - '荷物は　重いね'
+      - 'うん、置いたよ'
+    answer: 1
+    explanation:
+      en: 'He names a place.'
+      es: 'Él indica un lugar.'
+    author: claude
+    tts:
+      script: "F: この　荷物、どこに　置いたら　いい？\nM: 1　机の　横に　置いて　おいて\nM: 2　荷物は　重いね\nM: 3　うん、置いたよ"
+      voices: ['man', 'woman']
+  - id: n3-lis-5-0027
+    stem: '最も　よい　返事を　えらんで　ください。'
+    choices:
+      - 'いいえ、電話を　します'
+      - 'すみません、ちょっと　電話が　遠いんですが'
+      - 'はい、聞いて　います'
+    answer: 2
+    explanation:
+      en: 'She cannot hear well: 電話が 遠い.'
+      es: 'No le oye bien: 電話が 遠い.'
+    author: claude
+    tts:
+      script: "M: もしもし、聞こえますか。\nF: 1　いいえ、電話を　します\nF: 2　すみません、ちょっと　電話が　遠いんですが\nF: 3　はい、聞いて　います"
+      voices: ['man', 'woman']

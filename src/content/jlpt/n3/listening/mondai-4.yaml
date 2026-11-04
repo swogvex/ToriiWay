@@ -1,0 +1,177 @@
+# N3 · Listening · Mondai 4 — utterance expressions
+# Original questions written for ToriiWay.
+level: N3
+section: listening
+mondai: 4
+instruction:
+  en: 'Read the situation and listen. What do you say? Choose 1, 2 or 3.'
+  ja: '文を 読んで、聞いて ください。なんと 言いますか。１から３の 中から、最も よい ものを えらんで ください。'
+questions:
+  - id: n3-lis-4-0001
+    stem: '会議室を　使いたいです。上司に　なんと　言いますか。'
+    choices:
+      - '会議室を　使って　いただけませんか'
+      - '会議室を　使わせて　いただけませんか'
+      - '会議室を　使わせて　あげましょうか'
+    answer: 2
+    explanation:
+      en: 'Asking permission politely: 〜させて いただけませんか.'
+      es: 'Pedir permiso con cortesía: 〜させて いただけませんか.'
+    author: claude
+    tts:
+      script: "N: 会議室を　使いたいです。上司に　なんと　言いますか。\nN: 1　会議室を　使って　いただけませんか\nN: 2　会議室を　使わせて　いただけませんか\nN: 3　会議室を　使わせて　あげましょうか"
+      voices: ['narrator']
+  - id: n3-lis-4-0002
+    stem: '友だちの　かばんが　開いて　います。なんと　言いますか。'
+    choices:
+      - 'かばん、開けても　いい？'
+      - 'かばん、開けて　あげるね'
+      - 'かばん、開いて　いるよ'
+    answer: 3
+    explanation:
+      en: 'You simply tell your friend the bag is open.'
+      es: 'Simplemente le avisas de que la bolsa está abierta.'
+    author: claude
+    tts:
+      script: "N: 友だちの　かばんが　開いて　います。なんと　言いますか。\nN: 1　かばん、開けても　いい？\nN: 2　かばん、開けて　あげるね\nN: 3　かばん、開いて　いるよ"
+      voices: ['narrator']
+  - id: n3-lis-4-0003
+    stem: '先生に　推薦状を　書いて　もらいたいです。なんと　言いますか。'
+    choices:
+      - '推薦状を　書いて　いただけないでしょうか'
+      - '推薦状を　書かせて　いただけないでしょうか'
+      - '推薦状を　お書きしましょうか'
+    answer: 1
+    explanation:
+      en: 'You ask the teacher to write it: 〜て いただけないでしょうか.'
+      es: 'Pides al profesor que la escriba: 〜て いただけないでしょうか.'
+    author: claude
+    tts:
+      script: "N: 先生に　推薦状を　書いて　もらいたいです。なんと　言いますか。\nN: 1　推薦状を　書いて　いただけないでしょうか\nN: 2　推薦状を　書かせて　いただけないでしょうか\nN: 3　推薦状を　お書きしましょうか"
+      voices: ['narrator']
+  - id: n3-lis-4-0004
+    stem: '電車で　となりの　人の　荷物が　足に　当たって　痛いです。なんと　言いますか。'
+    choices:
+      - 'すみません、荷物が　足に　当たって　いるんですが'
+      - 'すみません、足を　どけましょうか'
+      - 'すみません、荷物を　持ちましょうか'
+    answer: 1
+    explanation:
+      en: 'You politely point out the problem.'
+      es: 'Señalas el problema con educación.'
+    author: claude
+    tts:
+      script: "N: 電車で　となりの　人の　荷物が　足に　当たって　痛いです。なんと　言いますか。\nN: 1　すみません、荷物が　足に　当たって　いるんですが\nN: 2　すみません、足を　どけましょうか\nN: 3　すみません、荷物を　持ちましょうか"
+      voices: ['narrator']
+  - id: n3-lis-4-0005
+    stem: 'お客さんが　帰ります。なんと　言いますか。'
+    choices:
+      - 'おじゃましました'
+      - 'いらっしゃいませ'
+      - 'お気を　つけて　お帰りください'
+    answer: 3
+    explanation:
+      en: 'Seeing a guest off: お気を つけて お帰りください.'
+      es: 'Al despedir a un invitado: お気を つけて お帰りください.'
+    author: claude
+    tts:
+      script: "N: お客さんが　帰ります。なんと　言いますか。\nN: 1　おじゃましました\nN: 2　いらっしゃいませ\nN: 3　お気を　つけて　お帰りください"
+      voices: ['narrator']
+  - id: n3-lis-4-0006
+    stem: '同僚が　重い　箱を　運んで　います。手伝いたいです。なんと　言いますか。'
+    choices:
+      - '手伝って　くれて　ありがとう'
+      - '手伝いましょうか'
+      - '手伝って　もらえませんか'
+    answer: 2
+    explanation:
+      en: 'Offering help: 〜ましょうか.'
+      es: 'Ofrecer ayuda: 〜ましょうか.'
+    author: claude
+    tts:
+      script: "N: 同僚が　重い　箱を　運んで　います。手伝いたいです。なんと　言いますか。\nN: 1　手伝って　くれて　ありがとう\nN: 2　手伝いましょうか\nN: 3　手伝って　もらえませんか"
+      voices: ['narrator']
+  - id: n3-lis-4-0007
+    stem: '会議に　遅れて　入ります。なんと　言いますか。'
+    choices:
+      - 'お先に　失礼します'
+      - 'お疲れさまでした'
+      - '遅く　なって　申し訳ありません'
+    answer: 3
+    explanation:
+      en: 'You apologise for arriving late.'
+      es: 'Pides perdón por llegar tarde.'
+    author: claude
+    tts:
+      script: "N: 会議に　遅れて　入ります。なんと　言いますか。\nN: 1　お先に　失礼します\nN: 2　お疲れさまでした\nN: 3　遅く　なって　申し訳ありません"
+      voices: ['narrator']
+  - id: n3-lis-4-0008
+    stem: '店で　ほしい　商品が　見つかりません。店員に　なんと　言いますか。'
+    choices:
+      - 'すみません、この　商品は　どこに　ありますか'
+      - 'すみません、この　商品は　ありましたか'
+      - 'すみません、この　商品を　探して　あげましょうか'
+    answer: 1
+    explanation:
+      en: 'You ask where it is.'
+      es: 'Preguntas dónde está.'
+    author: claude
+    tts:
+      script: "N: 店で　ほしい　商品が　見つかりません。店員に　なんと　言いますか。\nN: 1　すみません、この　商品は　どこに　ありますか\nN: 2　すみません、この　商品は　ありましたか\nN: 3　すみません、この　商品を　探して　あげましょうか"
+      voices: ['narrator']
+  - id: n3-lis-4-0009
+    stem: '先輩に　食事を　ごちそうに　なりました。なんと　言いますか。'
+    choices:
+      - 'いただきます'
+      - 'ごちそうさまでした'
+      - 'おかげさまで'
+    answer: 2
+    explanation:
+      en: 'After being treated: ごちそうさまでした.'
+      es: 'Después de que te inviten: ごちそうさまでした.'
+    author: claude
+    tts:
+      script: "N: 先輩に　食事を　ごちそうに　なりました。なんと　言いますか。\nN: 1　いただきます\nN: 2　ごちそうさまでした\nN: 3　おかげさまで"
+      voices: ['narrator']
+  - id: n3-lis-4-0010
+    stem: 'レストランで　注文した　料理と　違う　料理が　来ました。なんと　言いますか。'
+    choices:
+      - 'すみません、これ、注文して　いないんですが'
+      - 'すみません、これを　注文しても　いいですか'
+      - 'すみません、これ、おいしかったです'
+    answer: 1
+    explanation:
+      en: 'You point out the wrong dish.'
+      es: 'Señalas que el plato no es el tuyo.'
+    author: claude
+    tts:
+      script: "N: レストランで　注文した　料理と　違う　料理が　来ました。なんと　言いますか。\nN: 1　すみません、これ、注文して　いないんですが\nN: 2　すみません、これを　注文しても　いいですか\nN: 3　すみません、これ、おいしかったです"
+      voices: ['narrator']
+  - id: n3-lis-4-0011
+    stem: '友だちが　遠くへ　引っ越します。なんと　言いますか。'
+    choices:
+      - '引っ越して　くれて　ありがとう'
+      - '早く　引っ越してね'
+      - '新しい　ところでも　元気でね'
+    answer: 3
+    explanation:
+      en: 'A kind farewell: 元気でね.'
+      es: 'Una despedida amable: 元気でね.'
+    author: claude
+    tts:
+      script: "N: 友だちが　遠くへ　引っ越します。なんと　言いますか。\nN: 1　引っ越して　くれて　ありがとう\nN: 2　早く　引っ越してね\nN: 3　新しい　ところでも　元気でね"
+      voices: ['narrator']
+  - id: n3-lis-4-0012
+    stem: '先生の　研究室の　ドアを　ノックしました。入る　とき、なんと　言いますか。'
+    choices:
+      - 'おじゃましました'
+      - '失礼します'
+      - '失礼しました'
+    answer: 2
+    explanation:
+      en: '失礼します on entering; 失礼しました on leaving.'
+      es: '失礼します al entrar; 失礼しました al salir.'
+    author: claude
+    tts:
+      script: "N: 先生の　研究室の　ドアを　ノックしました。入る　とき、なんと　言いますか。\nN: 1　おじゃましました\nN: 2　失礼します\nN: 3　失礼しました"
+      voices: ['narrator']

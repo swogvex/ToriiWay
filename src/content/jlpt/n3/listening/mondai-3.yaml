@@ -1,0 +1,144 @@
+# N3 · Listening · Mondai 3 — summary comprehension
+# Original questions written for ToriiWay.
+level: N3
+section: listening
+mondai: 3
+instruction:
+  en: 'Listen to the whole talk and choose what it is mainly about.'
+  ja: '話全体を 聞いて、内容に 合う 最も よい ものを えらんで ください。'
+questions:
+  - id: n3-lis-3-0001
+    stem: '医者は　何に　ついて　話して　いますか。'
+    choices:
+      - '健康に　いい　食べ物'
+      - '運動を　始める　ときの　注意'
+      - '早く　寝る　方法'
+      - '朝　散歩する　ことの　よさ'
+    answer: 4
+    explanation:
+      en: 'The doctor lists the benefits of a morning walk.'
+      es: 'El médico enumera las ventajas de pasear por la mañana.'
+    author: claude
+    tts:
+      script: "N: ラジオで　医者が　話して　います。\nM: みなさん、朝の　散歩を　して　いますか。朝の　光を　浴びると、体が　目を　覚まして、いちにちを　元気に　始める　ことが　できます。また、朝に　体を　動かすと、夜も　よく　眠れるように　なります。長い　時間で　なくても　いいんです。十五分でも　いいので、ぜひ　毎朝　外を　歩いて　みて　ください。\nN: 医者は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n3-lis-3-0002
+    stem: '先生は　何に　ついて　話して　いますか。'
+    choices:
+      - '図書館が　前より　使いやすく　なる　こと'
+      - '図書館の　本を　返す　日'
+      - '図書館が　工事で　閉まる　こと'
+      - '図書館で　静かに　する　こと'
+    answer: 1
+    explanation:
+      en: 'Longer hours and more books: the library becomes easier to use.'
+      es: 'Más horario y más libros: la biblioteca será más cómoda.'
+    author: claude
+    tts:
+      script: "N: 学校で　先生が　話して　います。\nF: 来月から　図書館の　使い方が　少し　変わります。これまでは　夕方　五時に　閉まって　いましたが、来月からは　夜　七時まで　開いて　います。また、借りられる　本の　数も　五冊から　十冊に　増えます。ぜひ　もっと　図書館を　使って　ください。\nN: 先生は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n3-lis-3-0003
+    stem: '男の　人は　何に　ついて　話して　いますか。'
+    choices:
+      - '店の　野菜が　高い　こと'
+      - '野菜を　おいしく　料理する　方法'
+      - 'ベランダで　野菜を　育てる　楽しさ'
+      - 'ベランダの　掃除の　しかた'
+    answer: 3
+    explanation:
+      en: 'He describes the joy of growing vegetables on the balcony.'
+      es: 'Cuenta lo bonito de cultivar verduras en el balcón.'
+    author: claude
+    tts:
+      script: "N: 男の　人が　話して　います。\nM: 去年から、家の　ベランダで　野菜を　育てて　います。最初は　すぐに　枯らして　しまいましたが、水の　やり方や　日の　当て方を　工夫する　うちに、トマトや　ピーマンが　とれるように　なりました。自分で　育てた　野菜は、店で　買う　ものより　ずっと　おいしく　感じます。\nN: 男の　人は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n3-lis-3-0004
+    stem: '社長は　何に　ついて　話して　いますか。'
+    choices:
+      - '水曜日に　会議を　する　こと'
+      - '水曜日は　早く　帰るように　する　こと'
+      - '仕事の　時間を　長く　する　こと'
+      - '趣味の　会を　作る　こと'
+    answer: 2
+    explanation:
+      en: 'Wednesdays become no-overtime days.'
+      es: 'Los miércoles serán días sin horas extra.'
+    author: claude
+    tts:
+      script: "N: 会社で　社長が　話して　います。\nM: 来月から、毎週　水曜日は　残業を　しない　日に　します。この　日は、仕事を　六時までに　終わらせて、早く　帰って　ください。家族と　過ごしたり、趣味の　時間に　使ったり　して、元気に　なって　もらいたいと　思って　います。\nN: 社長は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n3-lis-3-0005
+    stem: '女の　人は　本に　ついて　どう　思って　いますか。'
+    choices:
+      - '主人公が　かわいそうだった'
+      - '読んで　気持ちが　楽に　なった'
+      - '田舎の　生活は　大変だと　思った'
+      - '話が　難しくて　わからなかった'
+    answer: 2
+    explanation:
+      en: 'After reading it she felt she could take life more slowly.'
+      es: 'Al leerlo sintió que podía vivir con más calma.'
+    author: claude
+    tts:
+      script: "N: 女の　人が　友だちに　本の　話を　して　います。\nF: この　前　読んだ　本、すごく　よかったよ。主人公は　仕事に　失敗して、田舎に　帰るんだけど、そこで　おばあさんと　いっしょに　暮らす　うちに、少しずつ　元気を　取り戻して　いくの。読んだ　あと、わたしも　もう少し　ゆっくり　生きて　いいんだって　思えたんだ。\nN: 女の　人は　本に　ついて　どう　思って　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n3-lis-3-0006
+    stem: '係の　人は　何に　ついて　話して　いますか。'
+    choices:
+      - '美術館の　閉館時間'
+      - 'ホールの　工事'
+      - '新しい　絵の　展示'
+      - '絵の　説明会の　案内'
+    answer: 4
+    explanation:
+      en: 'An announcement of the 2 p.m. talk about the paintings.'
+      es: 'Un aviso de la charla sobre los cuadros a las dos.'
+    author: claude
+    tts:
+      script: "N: 美術館で　係の　人が　話して　います。\nF: 本日は　ご来館　ありがとうございます。この　あと　午後二時から、二階の　ホールで　絵の　説明会を　おこないます。説明会は　三十分ほどで、どなたでも　参加できます。参加される　方は、二時までに　二階の　ホールに　お集まりください。\nN: 係の　人は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n3-lis-3-0007
+    stem: '男の　人は　何に　ついて　話して　いますか。'
+    choices:
+      - 'ゲームで　外国語を　勉強する　こと'
+      - '外国語の　文法の　教え方'
+      - '子どもに　人気の　ゲーム'
+      - 'ゲームを　する　時間の　問題'
+    answer: 1
+    explanation:
+      en: 'He talks about learning languages through games.'
+      es: 'Habla de aprender idiomas con videojuegos.'
+    author: claude
+    tts:
+      script: "N: テレビで　男の　人が　話して　います。\nM: 最近、ゲームを　しながら　外国語を　勉強する　人が　増えて　います。ゲームの　中では、言葉を　使わないと　先に　進めないので、自然に　覚えられるのです。もちろん、ゲームだけでは　文法を　しっかり　学ぶのは　難しいですが、楽しく　続けられるのが　いちばんの　よさでしょう。\nN: 男の　人は　何に　ついて　話して　いますか。"
+      voices: ['narrator', 'man']
+  - id: n3-lis-3-0008
+    stem: '女の　人は　何が　好きだと　言って　いますか。'
+    choices:
+      - '駅の　近くの　ホテルに　泊まる　こと'
+      - '飛行機から　景色を　見る　こと'
+      - 'ふつうの　電車で　ゆっくり　旅を　する　こと'
+      - '新幹線で　早く　着く　こと'
+    answer: 3
+    explanation:
+      en: 'She prefers slow trips on local trains.'
+      es: 'Prefiere viajar despacio en trenes normales.'
+    author: claude
+    tts:
+      script: "N: 女の　人が　話して　います。\nF: 旅行と　いうと、新幹線や　飛行機で　早く　目的地に　着く　ことを　考える　人が　多いと　思います。でも、わたしは　あえて　ふつうの　電車で、ゆっくり　旅を　するのが　好きです。窓の　外の　景色を　見たり、途中の　駅で　おりて　町を　歩いたり　すると、思いがけない　出会いが　あるからです。\nN: 女の　人は　何が　好きだと　言って　いますか。"
+      voices: ['narrator', 'woman']
+  - id: n3-lis-3-0009
+    stem: '店の　人は　何を　伝えて　いますか。'
+    choices:
+      - '店が　別の　場所に　移る　こと'
+      - '店の　休みの　日が　変わる　こと'
+      - '店を　完全に　やめる　こと'
+      - '建物を　新しく　する　こと'
+    answer: 1
+    explanation:
+      en: 'The shop moves to the other side of the station.'
+      es: 'La tienda se traslada al otro lado de la estación.'
+    author: claude
+    tts:
+      script: "N: 店の　人が　お客さんに　話して　います。\nM: 長い　間、この　店を　ご利用いただき、ありがとうございました。建物が　古く　なった　ため、今月末で　この　場所での　営業を　終わります。来月からは、駅の　反対側に　新しい　店を　開きますので、これからも　どうぞ　よろしく　お願いします。\nN: 店の　人は　何を　伝えて　いますか。"
+      voices: ['narrator', 'man']
