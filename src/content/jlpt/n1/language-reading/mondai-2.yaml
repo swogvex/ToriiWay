@@ -1,0 +1,261 @@
+# N1 · Language knowledge · Reading · Mondai 2 — contextual meaning
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 2
+instruction:
+  en: 'Choose the best word for the blank (　).'
+  ja: '（　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lr-2-0001
+    stem: '両社の　交渉は　（　）に　乗り上げ、合意の　見通しは　立って　いない。'
+    choices:
+      - '岐路'
+      - '暗礁'
+      - '軌道'
+      - '頂点'
+    answer: 2
+    explanation:
+      en: '暗礁に 乗り上げる: to hit a snag.'
+      es: '暗礁に 乗り上げる: encallar, estancarse.'
+    author: claude
+  - id: n1-lr-2-0002
+    stem: '彼の　計画は　費用を　（　）した　ものだと　批判された。'
+    choices:
+      - '重視'
+      - '注視'
+      - '度外視'
+      - '直視'
+    answer: 3
+    explanation:
+      en: '度外視する: to disregard; that is what draws criticism.'
+      es: '度外視する: no tener en cuenta; por eso lo critican.'
+    author: claude
+  - id: n1-lr-2-0003
+    stem: '十年に　わたる　研究が　（　）、新薬が　完成した。'
+    choices:
+      - '実を結び'
+      - '芽を出し'
+      - '根を張り'
+      - '花を添え'
+    answer: 1
+    explanation:
+      en: '実を 結ぶ: to bear fruit, pay off.'
+      es: '実を 結ぶ: dar fruto.'
+    author: claude
+  - id: n1-lr-2-0004
+    stem: '突然　スピーチを　頼まれて　（　）、何も　言えなかった。'
+    choices:
+      - '根に持って'
+      - '気を配って'
+      - '胸を張って'
+      - '面食らって'
+    answer: 4
+    explanation:
+      en: '面食らう: to be taken aback.'
+      es: '面食らう: quedarse desconcertado.'
+    author: claude
+  - id: n1-lr-2-0005
+    stem: '彼女は　どんな　困難にも　（　）立ち向かった。'
+    choices:
+      - '果敢に'
+      - '寛大に'
+      - '几帳面に'
+      - '謙虚に'
+    answer: 1
+    explanation:
+      en: '果敢に: boldly.'
+      es: '果敢に: con valentía.'
+    author: claude
+  - id: n1-lr-2-0006
+    stem: 'この　地域では　人口の　減少に　（　）が　かからず、空き家が　増えて　いる。'
+    choices:
+      - '磨き'
+      - '手間'
+      - '歯止め'
+      - '保険'
+    answer: 3
+    explanation:
+      en: '歯止めが かからない: it cannot be stopped.'
+      es: '歯止めが かからない: no se puede frenar.'
+    author: claude
+  - id: n1-lr-2-0007
+    stem: '新しい　ゲーム機は　発売と　同時に　（　）売れた。'
+    choices:
+      - '溶けるように'
+      - '眠るように'
+      - '這うように'
+      - '飛ぶように'
+    answer: 4
+    explanation:
+      en: '飛ぶように 売れる: to sell like hot cakes.'
+      es: '飛ぶように 売れる: venderse como churros.'
+    author: claude
+  - id: n1-lr-2-0008
+    stem: '彼の　説明は　（　）を　得て　いて、だれにでも　わかりやすい。'
+    choices:
+      - '要求'
+      - '要領'
+      - '要点'
+      - '要因'
+    answer: 2
+    explanation:
+      en: '要領を 得る: to be to the point.'
+      es: '要領を 得る: ir al grano.'
+    author: claude
+  - id: n1-lr-2-0009
+    stem: '社長の　突然の　辞任は　社内に　大きな　（　）を　呼んだ。'
+    choices:
+      - '波乱'
+      - '波長'
+      - '余波'
+      - '波紋'
+    answer: 4
+    explanation:
+      en: '波紋を 呼ぶ: to cause a stir.'
+      es: '波紋を 呼ぶ: causar revuelo.'
+    author: claude
+  - id: n1-lr-2-0010
+    stem: '試験に　落ちて　（　）して　いる　友人を　励ました。'
+    choices:
+      - '落胆'
+      - '没頭'
+      - '脱落'
+      - '落着'
+    answer: 1
+    explanation:
+      en: '落胆: disappointment.'
+      es: '落胆: desánimo.'
+    author: claude
+  - id: n1-lr-2-0011
+    stem: '業績の　悪化で、会社は　人員の　（　）を　迫られた。'
+    choices:
+      - '軽減'
+      - '削除'
+      - '削減'
+      - '低下'
+    answer: 3
+    explanation:
+      en: '人員の 削減: staff cuts. 削除 is for text and data.'
+      es: '人員の 削減: recorte de plantilla. 削除 es para textos y datos.'
+    author: claude
+  - id: n1-lr-2-0012
+    stem: '彼は　一度　決めた　ことは　（　）やり遂げる　人だ。'
+    choices:
+      - 'あわよくば'
+      - '是が非でも'
+      - 'もっぱら'
+      - 'かろうじて'
+    answer: 2
+    explanation:
+      en: '是が非でも: no matter what.'
+      es: '是が非でも: cueste lo que cueste.'
+    author: claude
+  - id: n1-lr-2-0013
+    stem: '彼女の　見事な　演奏は　聴衆を　（　）した。'
+    choices:
+      - '圧迫'
+      - '魅了'
+      - '誘惑'
+      - '魅力'
+    answer: 2
+    explanation:
+      en: '魅了する: to captivate.'
+      es: '魅了する: cautivar.'
+    author: claude
+  - id: n1-lr-2-0014
+    stem: '長年の　不正が　（　）に　出て、社長は　責任を　とった。'
+    choices:
+      - '明るみ'
+      - '表舞台'
+      - '白日'
+      - '日の目'
+    answer: 1
+    explanation:
+      en: '明るみに 出る: to come to light.'
+      es: '明るみに 出る: salir a la luz.'
+    author: claude
+  - id: n1-lr-2-0015
+    stem: '今の　やり方では　限界が　あるので、制度を　（　）見直す　必要が　ある。'
+    choices:
+      - '圧倒的に'
+      - '献身的に'
+      - '抜本的に'
+      - '画一的に'
+    answer: 3
+    explanation:
+      en: '抜本的に: radically, from the root.'
+      es: '抜本的に: de raíz.'
+    author: claude
+  - id: n1-lr-2-0016
+    stem: '祖父は　九十歳を　過ぎても　（　）として　いる。'
+    choices:
+      - 'うやむや'
+      - 'ちぐはぐ'
+      - 'ぎくしゃく'
+      - 'かくしゃく'
+    answer: 4
+    explanation:
+      en: 'かくしゃく: hale and hearty in old age.'
+      es: 'かくしゃく: lleno de vigor a pesar de la edad.'
+    author: claude
+  - id: n1-lr-2-0017
+    stem: '彼は　いつも　上司の　顔色を　（　）ばかり　いる。'
+    choices:
+      - 'うながして'
+      - 'うかれて'
+      - 'うかべて'
+      - 'うかがって'
+    answer: 4
+    explanation:
+      en: "顔色を うかがう: to watch someone's mood."
+      es: '顔色を うかがう: estar pendiente del humor de alguien.'
+    author: claude
+  - id: n1-lr-2-0018
+    stem: '語学力は　（　）身に　つく　ものでは　ない。'
+    choices:
+      - '一長一短に'
+      - '一進一退に'
+      - '一朝一夕に'
+      - '一石二鳥に'
+    answer: 3
+    explanation:
+      en: '一朝一夕に: overnight, in a short time.'
+      es: '一朝一夕に: de la noche a la mañana.'
+    author: claude
+  - id: n1-lr-2-0019
+    stem: 'その　ニュースは　インターネットで　瞬く間に　（　）、国中の　話題に　なった。'
+    choices:
+      - '広まり'
+      - '強まり'
+      - '高まり'
+      - '深まり'
+    answer: 1
+    explanation:
+      en: 'News spreads: 広まる.'
+      es: 'Las noticias se difunden: 広まる.'
+    author: claude
+  - id: n1-lr-2-0020
+    stem: '彼は　（　）な　性格で、細かい　ことは　気に　しない。'
+    choices:
+      - '神経質'
+      - 'おおらか'
+      - '慎重'
+      - '几帳面'
+    answer: 2
+    explanation:
+      en: 'おおらか: easygoing; the others all care about details.'
+      es: 'おおらか: despreocupado; los otros se fijan en los detalles.'
+    author: claude
+  - id: n1-lr-2-0021
+    stem: '長い　話し合いの　末、ようやく　両者の　（　）が　ついた。'
+    choices:
+      - '見合い'
+      - '折り合い'
+      - '張り合い'
+      - '付き合い'
+    answer: 2
+    explanation:
+      en: '折り合いが つく: to reach a compromise.'
+      es: '折り合いが つく: llegar a un acuerdo.'
+    author: claude

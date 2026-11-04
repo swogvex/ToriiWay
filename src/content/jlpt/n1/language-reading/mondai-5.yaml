@@ -1,0 +1,369 @@
+# N1 · Language knowledge · Reading · Mondai 5 — grammar form
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 5
+instruction:
+  en: 'Choose the best answer for the blank (　).'
+  ja: 'つぎの 文の （　）に 入れるのに 最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lr-5-0001
+    stem: '彼は　足の　けが　（　）、決勝に　出場した。'
+    choices:
+      - 'を　ものともせず'
+      - 'ならでは'
+      - 'を　もって'
+      - 'に　ひきかえ'
+    answer: 1
+    explanation:
+      en: '〜を ものともせず: undeterred by.'
+      es: '〜を ものともせず: sin dejarse vencer por.'
+    author: claude
+  - id: n1-lr-5-0002
+    stem: 'この　町　（　）の　素朴な　祭りを　楽しんだ。'
+    choices:
+      - 'ながら'
+      - 'ごとき'
+      - 'ならでは'
+      - 'まみれ'
+    answer: 3
+    explanation:
+      en: '〜ならではの: unique to.'
+      es: '〜ならではの: propio de.'
+    author: claude
+  - id: n1-lr-5-0003
+    stem: '東京公演　（　）、全国　十都市を　回る　予定だ。'
+    choices:
+      - 'を　限りに'
+      - 'を　皮切りに'
+      - 'を　よそに'
+      - 'を　おいて'
+    answer: 2
+    explanation:
+      en: '〜を 皮切りに: starting with.'
+      es: '〜を 皮切りに: empezando por.'
+    author: claude
+  - id: n1-lr-5-0004
+    stem: '彼　（　）、この　仕事を　任せられる　人は　いない。'
+    choices:
+      - 'を　もって'
+      - 'に　かこつけて'
+      - 'を　よそに'
+      - 'を　おいて'
+    answer: 4
+    explanation:
+      en: '〜を おいて … ない: no one but.'
+      es: '〜を おいて … ない: nadie más que.'
+    author: claude
+  - id: n1-lr-5-0005
+    stem: '彼は　出張　（　）、観光ばかり　して　いる。'
+    choices:
+      - 'に　ひきかえ'
+      - 'を　皮切りに'
+      - 'に　もまして'
+      - 'に　かこつけて'
+    answer: 4
+    explanation:
+      en: '〜に かこつけて: using … as an excuse.'
+      es: '〜に かこつけて: con la excusa de.'
+    author: claude
+  - id: n1-lr-5-0006
+    stem: '兄が　まじめなの　（　）、弟は　遊んでばかりだ。'
+    choices:
+      - 'に　ひきかえ'
+      - 'に　かこつけて'
+      - 'を　ものともせず'
+      - 'と　あいまって'
+    answer: 1
+    explanation:
+      en: '〜に ひきかえ: in contrast to.'
+      es: '〜に ひきかえ: en contraste con.'
+    author: claude
+  - id: n1-lr-5-0007
+    stem: '美しい　景色と　おいしい　料理が　（　）、最高の　旅に　なった。'
+    choices:
+      - 'かかわらず'
+      - 'あいまって'
+      - 'いえども'
+      - 'ひきかえ'
+    answer: 2
+    explanation:
+      en: '〜と あいまって: combined with.'
+      es: '〜と あいまって: sumado a.'
+    author: claude
+  - id: n1-lr-5-0008
+    stem: '子ども　（　）、規則は　守らなければ　ならない。'
+    choices:
+      - 'ならでは'
+      - 'ともなると'
+      - 'と　いえども'
+      - 'と　あって'
+    answer: 3
+    explanation:
+      en: '〜と いえども: even though (one is).'
+      es: '〜と いえども: aunque sea.'
+    author: claude
+  - id: n1-lr-5-0009
+    stem: '子どもたちは　泥　（　）に　なって　遊んだ。'
+    choices:
+      - 'がらみ'
+      - 'ずくめ'
+      - 'まみれ'
+      - 'めき'
+    answer: 3
+    explanation:
+      en: '〜まみれ: covered in.'
+      es: '〜まみれ: cubierto de.'
+    author: claude
+  - id: n1-lr-5-0010
+    stem: '今年は　いい　こと　（　）の　一年だった。'
+    choices:
+      - 'めいた'
+      - 'ずくめ'
+      - 'ぐるみ'
+      - 'まみれ'
+    answer: 2
+    explanation:
+      en: '〜ずくめ: nothing but.'
+      es: '〜ずくめ: lleno de, solo.'
+    author: claude
+  - id: n1-lr-5-0011
+    stem: 'ベルが　鳴る　（　）、生徒たちは　教室を　飛び出した。'
+    choices:
+      - 'が　早いか'
+      - 'そばから'
+      - 'が　最後'
+      - 'とも　なく'
+    answer: 1
+    explanation:
+      en: '〜が 早いか: no sooner than.'
+      es: '〜が 早いか: nada más.'
+    author: claude
+  - id: n1-lr-5-0012
+    stem: '新しい　単語を　覚えた　（　）忘れて　しまう。'
+    choices:
+      - 'ものなら'
+      - 'なりに'
+      - 'が　最後'
+      - 'そばから'
+    answer: 4
+    explanation:
+      en: '〜そばから: as soon as, every time.'
+      es: '〜そばから: en cuanto, cada vez.'
+    author: claude
+  - id: n1-lr-5-0013
+    stem: '彼は　一度　寝た　（　）、何が　あっても　起きない。'
+    choices:
+      - 'ところで'
+      - 'が　最後'
+      - 'そばから'
+      - 'ものを'
+    answer: 2
+    explanation:
+      en: '〜たが 最後: once … there is no going back.'
+      es: '〜たが 最後: una vez que … ya no hay remedio.'
+    author: claude
+  - id: n1-lr-5-0014
+    stem: '早く　相談して　くれれば　よかった　（　）。'
+    choices:
+      - 'ものか'
+      - 'ものだ'
+      - 'ものの'
+      - 'ものを'
+    answer: 4
+    explanation:
+      en: '〜ものを: regret, "if only".'
+      es: '〜ものを: lamento, "ojalá".'
+    author: claude
+  - id: n1-lr-5-0015
+    stem: 'そんな　簡単な　こと、わざわざ　説明する　（　）。'
+    choices:
+      - 'までも　ない'
+      - 'に　ほかならない'
+      - 'しか　ない'
+      - 'に　かたくない'
+    answer: 1
+    explanation:
+      en: '〜までも ない: there is no need to.'
+      es: '〜までも ない: no hace falta.'
+    author: claude
+  - id: n1-lr-5-0016
+    stem: '子どもを　失った　母親の　悲しみは　想像　（　）。'
+    choices:
+      - 'に　すぎない'
+      - 'を　禁じ得ない'
+      - 'に　かたくない'
+      - 'までも　ない'
+    answer: 3
+    explanation:
+      en: '〜に かたくない: it is easy to.'
+      es: '〜に かたくない: no cuesta.'
+    author: claude
+  - id: n1-lr-5-0017
+    stem: '被害者の　話を　聞いて、同情　（　）。'
+    choices:
+      - 'に　足りない'
+      - 'に　かたくない'
+      - 'を　禁じ得ない'
+      - 'に　たえない'
+    answer: 3
+    explanation:
+      en: '〜を 禁じ得ない: cannot help feeling.'
+      es: '〜を 禁じ得ない: no poder evitar sentir.'
+    author: claude
+  - id: n1-lr-5-0018
+    stem: '彼は　十分　信頼する　（　）人物だ。'
+    choices:
+      - 'に　限る'
+      - 'に　かぎらず'
+      - 'に　たえる'
+      - 'に　足る'
+    answer: 4
+    explanation:
+      en: '〜に 足る: worthy of.'
+      es: '〜に 足る: digno de.'
+    author: claude
+  - id: n1-lr-5-0019
+    stem: '皆様の　ご健康を　心より　願って　（　）。'
+    choices:
+      - 'かまいません'
+      - 'やみません'
+      - 'たまりません'
+      - 'なりません'
+    answer: 2
+    explanation:
+      en: '〜て やまない: to wish sincerely.'
+      es: '〜て やまない: desear de corazón.'
+    author: claude
+  - id: n1-lr-5-0020
+    stem: '彼女は　今にも　泣き出さ　（　）顔を　して　いた。'
+    choices:
+      - 'んばかりの'
+      - 'ずには　おかない'
+      - 'んが　ための'
+      - 'ないまでも'
+    answer: 1
+    explanation:
+      en: '〜んばかりの: as if about to.'
+      es: '〜んばかりの: como si fuera a.'
+    author: claude
+  - id: n1-lr-5-0021
+    stem: '夢を　実現せ　（　）、彼は　毎日　努力して　いる。'
+    choices:
+      - 'んばかりに'
+      - 'ぬまでも'
+      - 'ずとも'
+      - 'んが　ため'
+    answer: 4
+    explanation:
+      en: '〜んが ため: in order to.'
+      es: '〜んが ため: con el fin de.'
+    author: claude
+  - id: n1-lr-5-0022
+    stem: '彼の　演説は　聞く　人を　感動させ　（　）。'
+    choices:
+      - 'ずには　おかない'
+      - 'るまでだ'
+      - 'ては　はばからない'
+      - 'ずじまいだ'
+    answer: 1
+    explanation:
+      en: '〜ずには おかない: cannot fail to.'
+      es: '〜ずには おかない: no puede dejar de.'
+    author: claude
+  - id: n1-lr-5-0023
+    stem: '忙しくて、結局　あの　映画は　見　（　）だった。'
+    choices:
+      - 'がてら'
+      - 'ずじまい'
+      - 'っぱなし'
+      - 'んばかり'
+    answer: 2
+    explanation:
+      en: '〜ずじまい: ended up never doing.'
+      es: '〜ずじまい: al final no se hizo.'
+    author: claude
+  - id: n1-lr-5-0024
+    stem: '彼は　自分こそ　天才だと　言って　（　）。'
+    choices:
+      - 'すまない'
+      - 'たまらない'
+      - 'はばからない'
+      - 'やまない'
+    answer: 3
+    explanation:
+      en: '〜て はばからない: to say without hesitation.'
+      es: '〜て はばからない: decir sin reparos.'
+    author: claude
+  - id: n1-lr-5-0025
+    stem: '電車が　止まって　いるなら、歩いて　帰る　（　）。'
+    choices:
+      - 'ものだ'
+      - 'までだ'
+      - 'しまつだ'
+      - 'きらいが　ある'
+    answer: 2
+    explanation:
+      en: '〜までだ: I will simply.'
+      es: '〜までだ: simplemente haré.'
+    author: claude
+  - id: n1-lr-5-0026
+    stem: '彼は　遅刻を　繰り返し、ついには　無断で　休む　（　）。'
+    choices:
+      - 'までだ'
+      - 'かぎりだ'
+      - 'きらいが　ある'
+      - '始末だ'
+    answer: 4
+    explanation:
+      en: '〜始末だ: it ended up as badly as.'
+      es: '〜始末だ: acabó tan mal que.'
+    author: claude
+  - id: n1-lr-5-0027
+    stem: '彼は　物事を　悪い　方に　考える　（　）。'
+    choices:
+      - 'きらいが　ある'
+      - '始末だ'
+      - 'に　かたくない'
+      - 'までも　ない'
+    answer: 1
+    explanation:
+      en: '〜きらいが ある: tends to (a bad habit).'
+      es: '〜きらいが ある: tener tendencia a (algo negativo).'
+    author: claude
+  - id: n1-lr-5-0028
+    stem: '試合の　結果の　（　）、参加者　全員に　記念品を　渡す。'
+    choices:
+      - 'かぎりで'
+      - 'いかんで'
+      - 'いかんに　よらず'
+      - 'かたわら'
+    answer: 3
+    explanation:
+      en: '〜いかんに よらず: regardless of.'
+      es: '〜いかんに よらず: sea cual sea.'
+    author: claude
+  - id: n1-lr-5-0029
+    stem: '彼は　会社に　勤める　（　）、小説を　書いて　いる。'
+    choices:
+      - 'ついでに'
+      - 'かたわら'
+      - 'そばから'
+      - 'がてら'
+    answer: 2
+    explanation:
+      en: '〜かたわら: alongside (a main job).'
+      es: '〜かたわら: además de (su trabajo principal).'
+    author: claude
+  - id: n1-lr-5-0030
+    stem: '散歩　（　）、郵便局に　寄って　手紙を　出した。'
+    choices:
+      - 'がてら'
+      - 'なり'
+      - 'かたわら'
+      - 'ずくめ'
+    answer: 1
+    explanation:
+      en: '〜がてら: while doing (two things at once).'
+      es: '〜がてら: aprovechando.'
+    author: claude

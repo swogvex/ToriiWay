@@ -1,0 +1,211 @@
+# N1 · Language knowledge · Reading · Mondai 7 — text grammar
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 7
+instruction:
+  en: 'Read the text and choose the best answer for each blank.'
+  ja: 'つぎの 文章を 読んで、文章全体の 内容を 考えて、（１）から（５）の 中に 入る 最も よい ものを えらんで ください。'
+passages:
+  - id: translation
+    text: "　近年、機械翻訳の精度は目覚ましく向上した。旅行先で簡単な会話をする程度なら、もはや外国語を学ぶ必要はないと考える人もいる。（１）、言葉を学ぶ意味は、単に意思を伝えることだけにあるのだろうか。\n　外国語を学ぶ過程で、わたしたちは、母語では当たり前だと思っていた物の見方が、決して当たり前ではないことに気づかされる。（２）、ある言語には「兄」と「弟」の区別がなく、別の言語には日本語にない色の区別がある。こうした違いに触れることは、世界の切り取り方が一つではないと知ることに（３）。\n　機械翻訳は便利な道具であり、使わない手はない。しかし、道具に頼り切ってしまえば、異なる考え方に出会う機会を自ら手放すことに（４）。言葉を学ぶことは、他者を理解しようとする姿勢そのもの（５）。"
+  - id: night
+    text: "　わたしが子どものころ、町の店は夜八時にはほとんど閉まっていた。急に必要な物があっても、翌朝まで待つ（１）。今では、深夜でも明かりのついた店がどこにでもあり、欲しい物はいつでも手に入る。\n　便利になったことは確かだ。（２）、その便利さは、夜中に働くだれかによって支えられている。わたしたちが寝ている間に商品を運び、棚に並べる人がいる（３）、いつでも買い物ができるのだ。\n　最近、人手不足を理由に、深夜の営業をやめる店が出てきた。不便だという声もあるだろう。だが、それは働く人の生活を守るための選択でも（４）。便利さを当然のものと考えず、それを支える人に思いを（５）ことが、今の社会には必要なのではないか。"
+  - id: letters
+    text: "　手紙を書く人が減って久しい。用件を伝えるだけなら、メールの方がずっと早く、費用もかからない。（１）、わたしは今でも、大切な人には手書きの手紙を送るようにしている。\n　手書きの文字には、書いた人の人柄が表れる。丁寧に書かれた字からは相手を思う気持ちが伝わり、急いで書いた字からは、その人の忙しさが（２）。画面に並ぶ同じ形の文字では、こうしたことは伝わり（３）。\n　もちろん、手書きには時間がかかる。書き損じれば、最初から書き直さなければならない。（４）、その手間をかけること自体が、相手への敬意の表れなのだと思う。効率ばかりが重んじられる時代だからこそ、手間を惜しまない（５）を大切にしたい。"
+questions:
+  - id: n1-lr-7-0001
+    passage: translation
+    stem: '（１）'
+    choices:
+      - 'そこで'
+      - 'だが'
+      - 'したがって'
+      - 'なぜなら'
+    answer: 2
+    explanation:
+      en: 'The writer turns against the idea just stated: だが.'
+      es: 'Quien escribe se opone a la idea anterior: だが.'
+    author: claude
+  - id: n1-lr-7-0002
+    passage: translation
+    stem: '（２）'
+    choices:
+      - 'すなわち'
+      - 'ところが'
+      - 'それとも'
+      - 'たとえば'
+    answer: 4
+    explanation:
+      en: 'Examples of different views follow: たとえば.'
+      es: 'Siguen ejemplos de otras formas de ver: たとえば.'
+    author: claude
+  - id: n1-lr-7-0003
+    passage: translation
+    stem: '（３）'
+    choices:
+      - 'たえない'
+      - 'かぎらない'
+      - 'ほかならない'
+      - 'すぎない'
+    answer: 3
+    explanation:
+      en: '〜に ほかならない: it is nothing other than; the writer values it.'
+      es: '〜に ほかならない: no es otra cosa que; quien escribe lo valora.'
+    author: claude
+  - id: n1-lr-7-0004
+    passage: translation
+    stem: '（４）'
+    choices:
+      - 'なりかねない'
+      - 'なるまい'
+      - 'なった　ものだ'
+      - 'なりつつ　ある'
+    answer: 1
+    explanation:
+      en: '〜かねない: it could end up (a risk).'
+      es: '〜かねない: podría acabar (un riesgo).'
+    author: claude
+  - id: n1-lr-7-0005
+    passage: translation
+    stem: '（５）'
+    choices:
+      - 'とは　かぎらない'
+      - 'なのでは　ないだろうか'
+      - 'だった　はずが　ない'
+      - 'でしか　なかった'
+    answer: 2
+    explanation:
+      en: "A soft conclusion stating the writer's view."
+      es: 'Una conclusión suave con la opinión de quien escribe.'
+    author: claude
+  - id: n1-lr-7-0006
+    passage: night
+    stem: '（１）'
+    choices:
+      - 'しか　なかった'
+      - 'わけが　なかった'
+      - 'までも　なかった'
+      - 'ことは　なかった'
+    answer: 1
+    explanation:
+      en: 'There was no choice but to wait: 〜しか なかった.'
+      es: 'No quedaba más que esperar: 〜しか なかった.'
+    author: claude
+  - id: n1-lr-7-0007
+    passage: night
+    stem: '（２）'
+    choices:
+      - 'そのうえ'
+      - 'つまり'
+      - 'だから'
+      - 'しかし'
+    answer: 4
+    explanation:
+      en: 'A "but" after admitting it is convenient.'
+      es: 'Un "pero" tras admitir que es cómodo.'
+    author: claude
+  - id: n1-lr-7-0008
+    passage: night
+    stem: '（３）'
+    choices:
+      - 'にも　かかわらず'
+      - 'わりに'
+      - 'からこそ'
+      - 'くせに'
+    answer: 3
+    explanation:
+      en: 'Precisely because those workers exist: からこそ.'
+      es: 'Precisamente porque existen esos trabajadores: からこそ.'
+    author: claude
+  - id: n1-lr-7-0009
+    passage: night
+    stem: '（４）'
+    choices:
+      - 'あった'
+      - 'あるまい'
+      - 'ない'
+      - 'ある'
+    answer: 4
+    explanation:
+      en: 'でも ある: it is also (a choice to protect workers).'
+      es: 'でも ある: también es (una forma de proteger a quien trabaja).'
+    author: claude
+  - id: n1-lr-7-0010
+    passage: night
+    stem: '（５）'
+    choices:
+      - '馳せる'
+      - '込める'
+      - '遂げる'
+      - '晴らす'
+    answer: 1
+    explanation:
+      en: '思いを 馳せる: to think of someone far away.'
+      es: '思いを 馳せる: pensar en alguien.'
+    author: claude
+  - id: n1-lr-7-0011
+    passage: letters
+    stem: '（１）'
+    choices:
+      - 'すると'
+      - '要するに'
+      - 'それでも'
+      - 'そのため'
+    answer: 3
+    explanation:
+      en: 'Despite email being better, the writer still writes by hand.'
+      es: 'Aunque el correo es mejor, sigue escribiendo a mano.'
+    author: claude
+  - id: n1-lr-7-0012
+    passage: letters
+    stem: '（２）'
+    choices:
+      - 'うかがわせる'
+      - 'うかがえる'
+      - 'うかがって　いる'
+      - 'うかがう'
+    answer: 2
+    explanation:
+      en: '〜が うかがえる: can be sensed.'
+      es: '〜が うかがえる: se percibe.'
+    author: claude
+  - id: n1-lr-7-0013
+    passage: letters
+    stem: '（３）'
+    choices:
+      - 'やすい'
+      - 'がちだ'
+      - 'っぽい'
+      - 'にくい'
+    answer: 4
+    explanation:
+      en: 'Typed text does not carry this well: 伝わりにくい.'
+      es: 'El texto en pantalla no lo transmite bien: 伝わりにくい.'
+    author: claude
+  - id: n1-lr-7-0014
+    passage: letters
+    stem: '（４）'
+    choices:
+      - 'しかし'
+      - 'そのうえ'
+      - 'つまり'
+      - 'だから'
+    answer: 1
+    explanation:
+      en: 'After the drawbacks, a turn: しかし.'
+      es: 'Tras los inconvenientes, un giro: しかし.'
+    author: claude
+  - id: n1-lr-7-0015
+    passage: letters
+    stem: '（５）'
+    choices:
+      - '手'
+      - '腕'
+      - '心'
+      - '顔'
+    answer: 3
+    explanation:
+      en: '手間を 惜しまない 心: a spirit that spares no effort.'
+      es: '手間を 惜しまない 心: una actitud que no escatima esfuerzos.'
+    author: claude

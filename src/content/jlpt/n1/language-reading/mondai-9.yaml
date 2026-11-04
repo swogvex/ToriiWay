@@ -1,0 +1,379 @@
+# N1 · Language knowledge · Reading · Mondai 9 — mid-size passages
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 9
+instruction:
+  en: 'Read the text and answer the questions.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: naps
+    text: "　昼食の後、強い眠気に襲われた経験はだれにでもあるだろう。こうした眠気は食べ過ぎのせいだと思われがちだが、実は人間の体には、午後の早い時間に眠くなるリズムがもともと備わっているという。\n　そこで近年注目されているのが、短い昼寝である。十五分から二十分ほど眠るだけで、午後の集中力が大きく回復することがわかってきた。導入する企業も増えており、専用の部屋を設けたところもある。\n　ただし、長く眠ればよいというわけではない。三十分以上眠ると深い眠りに入ってしまい、目覚めた後にかえって頭がぼんやりする。また、夕方以降の昼寝は夜の眠りを妨げる原因になる。昼寝は、時間と長さを守ってこそ効果があるのだ。"
+  - id: street
+    text: "　わたしの住む町の商店街は、ここ十年で店の数が半分ほどに減った。郊外に大型の店ができ、車で一度に何でも買えるようになったのだから、無理もない。\n　しかし、商店街の役割は物を売ることだけではなかった。八百屋の主人は、子どもが一人で歩いていれば声をかけ、しばらく姿を見ないお年寄りがいれば家まで様子を見に行った。買い物のついでに交わす何気ない会話が、町の人々をゆるやかにつないでいたのである。\n　店がなくなって初めて、わたしたちはそのことに気づいた。最近、空き店舗を使って、住民が集まれる場所を作ろうという動きが始まっている。かつて商店街が自然に果たしていた役割を、今度は意識して作り直さなければならないのだ。"
+  - id: mistakes
+    text: "　学校では、正しい答えを出すことが求められる。テストで間違えれば点数が下がり、間違いは避けるべきものとして扱われる。しかし、社会に出れば、正解が一つに決まっている問題のほうがむしろ少ない。\n　ある小学校では、算数の授業で、わざと間違った答えを黒板に書き、どこが違うのかを子どもたちに話し合わせているという。最初は戸惑っていた子どもたちも、次第に、間違いの中に考え方の手がかりがあることに気づき始めた。「間違えても大丈夫」という雰囲気の中で、手を挙げる子も増えたそうだ。\n　間違いを恐れる子どもは、わからないことをわからないと言えなくなる。失敗から学ぶ力こそ、これからの時代を生きる子どもたちに必要なのではないだろうか。"
+  - id: translator
+    text: "　翻訳の仕事をしていると、「辞書があればだれでもできるのでは」と言われることがある。だが、言葉を一つずつ置き換えても、文章にはならない。同じ「すみません」でも、謝っているのか、感謝しているのか、人を呼んでいるのかは、場面によって違う。\n　わたしがいちばん苦労するのは、むしろ書かれていない部分だ。登場人物が何を言わずに済ませたのか、その沈黙にどんな気持ちが込められているのか。それを読み取れなければ、どんなに正確に訳しても、原文の味わいは失われてしまう。\n　だから、翻訳者に必要なのは、外国語の知識以上に、人の心を想像する力なのだと思う。辞書には載っていない言葉の重さを、別の言語で読者に届けること。それがこの仕事の難しさであり、面白さでもある。"
+  - id: chat
+    text: "　仕事の効率を上げるため、会議を短くし、無駄な会話を減らそうとする職場が増えている。確かに、目的のはっきりしない長話は時間の無駄かもしれない。\n　ところが、ある研究によると、雑談の多い職場ほど、新しいアイデアが生まれやすく、問題も早く解決されるという。何気ない会話の中で、同僚が抱えている悩みや、ほかの部署の状況を知ることができるからだ。「ちょっと聞いてもいいですか」と気軽に声をかけられる関係は、普段の雑談から生まれる。\n　在宅勤務が広がり、同僚と顔を合わせる機会は減った。だからこそ、用件だけでなく、雑談のための時間を意識して作ることが、これからの職場には必要なのかもしれない。"
+  - id: maps
+    text: "　初めての町を歩くとき、今ではスマートフォンの地図に従えば、迷うことはほとんどない。目的地まで最短の道を教えてくれるのだから、便利なことこの上ない。\n　ただ、画面の矢印ばかり見て歩いていると、どんな道を通ったのかがまるで記憶に残らない。帰り道もまた画面に頼ることになる。以前、紙の地図を手に旅をしていたころは、道を間違えては周りの建物を確かめ、少しずつ町の形を頭に描いていったものだ。遠回りをしたおかげで、思いがけずよい店を見つけたこともある。\n　効率よく目的地に着くことだけが、旅の目的ではないだろう。たまには画面から目を離し、迷うことを楽しむ余裕を持ちたいと思う。"
+  - id: volunteers
+    text: "　災害が起きると、多くの人がボランティアとして被災地に駆けつける。困っている人を助けたいという気持ちは尊い。しかし、受け入れる側の準備が整わないうちに大勢が押し寄せると、かえって現地を混乱させることもある。泊まる場所や食事を自分で用意せず、地元の人の負担になってしまう例も少なくない。\n　大切なのは、自分が何をしたいかではなく、現地で何が求められているかを知ることだ。必要とされているのは、がれきの片付けかもしれないし、子どもの遊び相手かもしれない。あるいは、現地に行かずに寄付をすることが、最も役に立つ場合もある。\n　善意は、相手の立場に立ってこそ本当の助けになる。"
+  - id: aloud
+    text: "　子どものころ、国語の時間に教科書を声に出して読まされるのが苦手だった。黙って読めばすむのに、なぜわざわざ声に出すのかと不思議に思っていた。\n　ところが、大人になって外国語を学び始めてから、音読の効用を実感するようになった。目で追うだけでは読み飛ばしてしまう助詞の一つ一つも、声に出せばごまかしがきかない。うまく読めない箇所は、たいてい文の構造を理解できていない所だ。音読は、自分がどこまで理解しているかを確かめる、何よりの方法なのである。\n　最近は、母語の文章もときどき声に出して読んでいる。名文と呼ばれる文章ほど、声に出したときのリズムが心地よいことに気づいた。"
+  - id: waiting
+    text: "　電車が数分遅れただけで、駅のホームにはいら立った空気が流れる。わたしたちは、いつの間にか待つことがひどく苦手になったようだ。注文した品物は翌日に届き、見たい映画はすぐに見られる。便利さに慣れるほど、少しの待ち時間が耐えがたく感じられる。\n　だが、待つ時間には待つ時間なりの価値がある。手紙の返事を待つ間、相手は今ごろ何を思っているだろうと想像する。種をまいた畑の前で、芽が出る日を心待ちにする。待つことは、相手や物事のペースを受け入れることでもあるのだ。\n　すべてがすぐに手に入る時代だからこそ、待つことを楽しむ心のゆとりを失いたくない。"
+questions:
+  - id: n1-lr-9-0001
+    passage: naps
+    stem: '午後に　眠く　なる　原因に　ついて、筆者は　どう　述べて　いるか。'
+    choices:
+      - '昼食を　食べ過ぎる　ことが　主な　原因だ'
+      - '夜の　睡眠が　足りない　ことが　原因だ'
+      - '体に　もともと　そういう　リズムが　ある'
+      - '仕事の　疲れが　午後に　出る　ためだ'
+    answer: 3
+    explanation:
+      en: 'The body naturally gets sleepy in the early afternoon.'
+      es: 'El cuerpo tiene por naturaleza sueño a primera hora de la tarde.'
+    author: claude
+  - id: n1-lr-9-0002
+    passage: naps
+    stem: '短い　昼寝の　効果は　何か。'
+    choices:
+      - '仕事の　時間が　短く　なる'
+      - '夜の　睡眠が　深く　なる'
+      - '食後の　消化が　よく　なる'
+      - '午後の　集中力が　回復する'
+    answer: 4
+    explanation:
+      en: '15–20 minutes restores afternoon focus.'
+      es: '15-20 minutos recuperan la concentración de la tarde.'
+    author: claude
+  - id: n1-lr-9-0003
+    passage: naps
+    stem: '昼寝に　ついて　筆者が　注意して　いる　ことは　何か。'
+    choices:
+      - '長すぎたり　遅すぎたり　すると　逆効果に　なる'
+      - '十五分より　短いと　意味が　ない'
+      - '専用の　部屋が　なければ　効果が　ない'
+      - '毎日　同じ　場所で　眠らなければ　ならない'
+    answer: 1
+    explanation:
+      en: 'Over 30 minutes or in the evening, a nap backfires.'
+      es: 'Más de 30 minutos o por la tarde-noche, la siesta perjudica.'
+    author: claude
+  - id: n1-lr-9-0004
+    passage: street
+    stem: '筆者は、商店街の　店が　減った　ことを　どう　考えて　いるか。'
+    choices:
+      - '住民の　努力が　足りなかった'
+      - '理由を　考えれば　仕方が　ない'
+      - '大型の　店が　不正を　した　せいだ'
+      - 'まったく　理解できない'
+    answer: 2
+    explanation:
+      en: '無理もない: understandable, given the big suburban stores.'
+      es: '無理もない: es comprensible, con las grandes tiendas de las afueras.'
+    author: claude
+  - id: n1-lr-9-0005
+    passage: street
+    stem: '商店街が　果たして　いた　役割とは　何か。'
+    choices:
+      - '子どもに　仕事を　教える　こと'
+      - '安い　品物を　売る　こと'
+      - 'お年寄りに　品物を　届ける　こと'
+      - '住民同士を　つなぎ、見守る　こと'
+    answer: 4
+    explanation:
+      en: 'Shopkeepers watched over people and connected them.'
+      es: 'Los tenderos cuidaban de la gente y la mantenían unida.'
+    author: claude
+  - id: n1-lr-9-0006
+    passage: street
+    stem: '筆者が　最も　言いたい　ことは　何か。'
+    choices:
+      - '昔の　商店街を　そのまま　残すべきだ'
+      - '商店街が　持って　いた　つながりを　意識して　作り直す　必要が　ある'
+      - '空き店舗に　新しい　店を　呼ぶべきだ'
+      - '大型の　店を　減らすべきだ'
+    answer: 2
+    explanation:
+      en: 'The bonds the street gave naturally must now be rebuilt on purpose.'
+      es: 'Los lazos que daba la calle ahora hay que recrearlos a propósito.'
+    author: claude
+  - id: n1-lr-9-0007
+    passage: mistakes
+    stem: '「社会に　出れば」の　後で、筆者が　言いたい　ことは　何か。'
+    choices:
+      - 'テストの　点数が　大切だ'
+      - '学校の　勉強は　役に　立たない'
+      - '答えが　一つでは　ない　問題が　多い'
+      - '間違いは　許されない'
+    answer: 3
+    explanation:
+      en: 'In real life few problems have a single answer.'
+      es: 'En la vida real pocos problemas tienen una sola respuesta.'
+    author: claude
+  - id: n1-lr-9-0008
+    passage: mistakes
+    stem: 'ある　小学校の　授業で、子どもたちは　どう　変わったか。'
+    choices:
+      - '間違いから　考え方を　学び、発言が　増えた'
+      - '黒板に　答えを　書くのが　上手に　なった'
+      - '算数の　テストの　点数が　上がった'
+      - '間違える　ことが　なく　なった'
+    answer: 1
+    explanation:
+      en: 'They found clues in mistakes and raised their hands more.'
+      es: 'Encontraron pistas en los errores y participaron más.'
+    author: claude
+  - id: n1-lr-9-0009
+    passage: mistakes
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - 'テストは　なくすべきだ'
+      - '正しい　答えを　早く　出す　練習が　必要だ'
+      - '先生は　いつも　わざと　間違えるべきだ'
+      - '子どもには　失敗から　学ぶ　力が　必要だ'
+    answer: 4
+    explanation:
+      en: 'Learning from failure is what children need.'
+      es: 'Aprender del error es lo que necesitan los niños.'
+    author: claude
+  - id: n1-lr-9-0010
+    passage: translator
+    stem: '「辞書が　あれば　だれでも　できる」と　いう　考えに　ついて、筆者は　どう　思って　いるか。'
+    choices:
+      - '言葉を　置き換えるだけでは　翻訳に　ならない'
+      - '辞書を　使えば　簡単に　できる'
+      - '辞書は　翻訳に　まったく　必要ない'
+      - 'よい　辞書を　選ぶ　ことが　大切だ'
+    answer: 1
+    explanation:
+      en: 'Swapping words one by one does not make a text.'
+      es: 'Cambiar palabra por palabra no da un texto.'
+    author: claude
+  - id: n1-lr-9-0011
+    passage: translator
+    stem: '筆者が　いちばん　苦労するのは　何か。'
+    choices:
+      - '原文を　速く　読む　こと'
+      - '「すみません」を　正確に　訳す　こと'
+      - '書かれて　いない　気持ちを　読み取る　こと'
+      - '難しい　言葉を　辞書で　調べる　こと'
+    answer: 3
+    explanation:
+      en: 'The hardest part is what is left unsaid.'
+      es: 'Lo más difícil es lo que no se dice.'
+    author: claude
+  - id: n1-lr-9-0012
+    passage: translator
+    stem: '筆者に　よると、翻訳者に　最も　必要なのは　何か。'
+    choices:
+      - '外国語の　豊富な　知識'
+      - '人の　心を　想像する　力'
+      - 'たくさんの　辞書'
+      - '正確に　訳す　技術'
+    answer: 2
+    explanation:
+      en: "More than language knowledge: imagining people's feelings."
+      es: 'Más que el idioma: imaginar lo que siente la gente.'
+    author: claude
+  - id: n1-lr-9-0013
+    passage: chat
+    stem: '雑談の　多い　職場に　ついて、研究で　わかった　ことは　何か。'
+    choices:
+      - '会議の　時間が　長く　なる'
+      - '在宅勤務が　しにくく　なる'
+      - 'アイデアが　生まれやすく、問題の　解決も　早い'
+      - '仕事の　効率が　下がる'
+    answer: 3
+    explanation:
+      en: 'Chatty workplaces produce ideas and solve problems faster.'
+      es: 'Donde se charla más surgen ideas y se resuelve antes.'
+    author: claude
+  - id: n1-lr-9-0014
+    passage: chat
+    stem: '雑談に　よって　どんな　関係が　生まれるか。'
+    choices:
+      - '気軽に　相談できる　関係'
+      - '仕事以外では　会わない　関係'
+      - '部署ごとに　競争する　関係'
+      - '上司と　部下の　厳しい　関係'
+    answer: 1
+    explanation:
+      en: '"Can I ask you something?" comes from everyday chat.'
+      es: '"¿Te puedo preguntar algo?" nace de la charla diaria.'
+    author: claude
+  - id: n1-lr-9-0015
+    passage: chat
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '会議は　もっと　短く　すべきだ'
+      - '在宅勤務を　やめるべきだ'
+      - '長話は　時間の　無駄だ'
+      - '雑談の　ための　時間を　意識して　作るべきだ'
+    answer: 4
+    explanation:
+      en: 'Time for small talk should be made on purpose.'
+      es: 'Hay que crear a propósito tiempo para charlar.'
+    author: claude
+  - id: n1-lr-9-0016
+    passage: maps
+    stem: 'スマートフォンの　地図に　ついて、筆者が　問題だと　思って　いる　ことは　何か。'
+    choices:
+      - '電池が　すぐに　なくなる'
+      - '通った　道が　記憶に　残らない'
+      - '道を　間違える　ことが　多い'
+      - '最短の　道を　教えて　くれない'
+    answer: 2
+    explanation:
+      en: 'Following the arrow, you forget the route.'
+      es: 'Siguiendo la flecha, olvidas el camino.'
+    author: claude
+  - id: n1-lr-9-0017
+    passage: maps
+    stem: '紙の　地図で　旅を　して　いた　ころ、筆者は　どう　して　いたか。'
+    choices:
+      - '人に　道を　聞いて　歩いた'
+      - '迷いながら　町の　様子を　覚えて　いった'
+      - '迷わないように　事前に　道を　覚えた'
+      - 'いつも　最短の　道を　選んだ'
+    answer: 2
+    explanation:
+      en: 'Getting lost, the writer built a picture of the town.'
+      es: 'Perdiéndose, se hacía una idea de la ciudad.'
+    author: claude
+  - id: n1-lr-9-0018
+    passage: maps
+    stem: '筆者が　言いたい　ことは　何か。'
+    choices:
+      - '目的地には　早く　着くべきだ'
+      - 'スマートフォンは　旅に　必要ない'
+      - '旅では　迷う　ことも　楽しみたい'
+      - '紙の　地図を　使うべきだ'
+    answer: 3
+    explanation:
+      en: 'The writer wants room to enjoy getting lost.'
+      es: 'Quiere margen para disfrutar perdiéndose.'
+    author: claude
+  - id: n1-lr-9-0019
+    passage: volunteers
+    stem: '筆者に　よると、ボランティアが　現地を　混乱させるのは　どんな　場合か。'
+    choices:
+      - '寄付が　少ない　場合'
+      - '子どもの　相手を　する　場合'
+      - '地元の　人が　手伝わない　場合'
+      - '受け入れの　準備が　ない　まま　大勢が　来る　場合'
+    answer: 4
+    explanation:
+      en: 'Crowds arriving before the area is ready cause confusion.'
+      es: 'Llegar en masa antes de que estén preparados genera caos.'
+    author: claude
+  - id: n1-lr-9-0020
+    passage: volunteers
+    stem: '「大切なのは」　何を　知る　ことだと　言って　いるか。'
+    choices:
+      - '現地で　必要とされて　いる　こと'
+      - '現地までの　行き方'
+      - '自分が　したい　こと'
+      - 'ほかの　ボランティアの　人数'
+    answer: 1
+    explanation:
+      en: 'What the area actually needs.'
+      es: 'Lo que la zona necesita de verdad.'
+    author: claude
+  - id: n1-lr-9-0021
+    passage: volunteers
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '寄付より　現地での　活動が　大切だ'
+      - '善意が　あれば　何を　しても　よい'
+      - 'ボランティアは　被災地に　行くべきでは　ない'
+      - '相手の　立場で　考えた　助けが　本当の　助けだ'
+    answer: 4
+    explanation:
+      en: "Goodwill helps when it starts from the other side's needs."
+      es: 'La buena voluntad ayuda si parte de las necesidades del otro.'
+    author: claude
+  - id: n1-lr-9-0022
+    passage: aloud
+    stem: '子どもの　ころ、筆者は　音読を　どう　思って　いたか。'
+    choices:
+      - 'とても　楽しかった'
+      - '声に　出す　必要が　わからなかった'
+      - '外国語の　勉強に　役立つと　思って　いた'
+      - '目が　疲れるので　いやだった'
+    answer: 2
+    explanation:
+      en: 'The writer did not see why to read aloud.'
+      es: 'No entendía por qué leer en voz alta.'
+    author: claude
+  - id: n1-lr-9-0023
+    passage: aloud
+    stem: '筆者に　よると、音読で　うまく　読めない　ところは　どんな　所か。'
+    choices:
+      - '名文と　呼ばれる　所'
+      - '助詞が　多い　所'
+      - '文の　構造が　理解できて　いない　所'
+      - '発音しにくい　言葉が　ある　所'
+    answer: 3
+    explanation:
+      en: 'Stumbles show where the structure is not understood.'
+      es: 'Los tropiezos muestran dónde no se entiende la estructura.'
+    author: claude
+  - id: n1-lr-9-0024
+    passage: aloud
+    stem: '筆者が　最近　気づいた　ことは　何か。'
+    choices:
+      - 'よい　文章は　声に　出すと　リズムが　心地よい'
+      - '音読すると　読むのが　速く　なる'
+      - '外国語は　音読しなくても　理解できる'
+      - '母語の　音読は　意味が　ない'
+    answer: 1
+    explanation:
+      en: 'Fine prose has a pleasant rhythm aloud.'
+      es: 'La buena prosa suena con un ritmo agradable.'
+    author: claude
+  - id: n1-lr-9-0025
+    passage: waiting
+    stem: '筆者に　よると、人々が　待つ　ことが　苦手に　なったのは　なぜか。'
+    choices:
+      - '手紙を　書かなく　なったから'
+      - '忙しい　人が　増えたから'
+      - '電車が　よく　遅れるから'
+      - '便利な　生活に　慣れたから'
+    answer: 4
+    explanation:
+      en: 'Getting used to convenience makes waiting hard.'
+      es: 'Acostumbrarse a la comodidad hace difícil esperar.'
+    author: claude
+  - id: n1-lr-9-0026
+    passage: waiting
+    stem: '「待つ　ことは、相手や　物事の　ペースを　受け入れる　ことでも　ある」とは　どう　いう　意味か。'
+    choices:
+      - '自分の　都合だけで　物事は　進まないと　認める　こと'
+      - '相手に　急ぐように　頼む　こと'
+      - '相手より　早く　行動する　こと'
+      - '待つ　時間を　できるだけ　短く　する　こと'
+    answer: 1
+    explanation:
+      en: 'Waiting accepts that things move at their own pace.'
+      es: 'Esperar es aceptar que las cosas llevan su ritmo.'
+    author: claude
+  - id: n1-lr-9-0027
+    passage: waiting
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '手紙で　連絡を　取るべきだ'
+      - '便利な　サービスは　使うべきでは　ない'
+      - '待つ　時間を　楽しむ　ゆとりを　持ちたい'
+      - '待つ　時間は　無駄だ'
+    answer: 3
+    explanation:
+      en: 'The writer wants to keep the calm to enjoy waiting.'
+      es: 'Quiere conservar la calma para disfrutar la espera.'
+    author: claude

@@ -1,0 +1,190 @@
+# N1 · Language knowledge · Reading · Mondai 8 — short passages
+# Original questions written for ToriiWay.
+level: N1
+section: language-reading
+mondai: 8
+instruction:
+  en: 'Read the text and answer the question.'
+  ja: 'つぎの 文章を 読んで、後の 問いに 対する 答えとして 最も よい ものを えらんで ください。'
+passages:
+  - id: canteen
+    text: "社員各位\n　社員食堂の改装工事に伴い、十月一日から三十一日まで食堂を閉鎖します。期間中は一階ロビーで弁当を販売しますが、数に限りがあるため、事前の予約をお勧めします。予約は前日の十五時まで、社内サイトで受け付けます。なお、改装後は座席数が現在の一・五倍になる予定です。\n総務部"
+  - id: boredom
+    text: '　何もすることがない時間を、わたしたちは無駄だと考えがちだ。少しでも暇ができると、すぐにスマートフォンを手に取ってしまう。しかし、新しい考えが浮かぶのは、案外そうした退屈な時間なのではないか。頭に情報を入れ続けている間は、それらを結びつける余裕がない。ぼんやりする時間は、頭の中を整理し、思いがけない発想を生むために欠かせないものなのだ。'
+  - id: prices
+    text: "株式会社さくら工業　購買部　佐藤様\n　平素より格別のお引き立てを賜り、誠にありがとうございます。\n　さて、原材料費の高騰が続いており、弊社ではこれまで経費の削減に努めてまいりましたが、現行の価格を維持することが困難な状況となりました。つきましては、誠に勝手ながら、来年一月のご注文分より、全製品の価格を五パーセント改定させていただきたく存じます。なお、十二月末日までにいただいたご注文は、現行価格にて承ります。\n　何とぞ事情をご賢察のうえ、ご了承くださいますようお願い申し上げます。\nみどり製作所　営業部　田中"
+  - id: experts
+    text: '　本当の専門家ほど、「それはわからない」と口にすることが多い。知識が深くなればなるほど、自分の分野にはまだ解明されていないことが数多く残っているとわかるからだ。反対に、少しかじった程度の人ほど、何でも断定的に語りたがる。わからないことをわからないと言えるのは、無知だからではなく、知識の限界を正確に知っているからなのである。'
+  - id: water
+    text: "みどりマンション　居住者の皆様へ\n　給水管の点検のため、十一月十二日（水）九時から十二時まで断水いたします。断水中は、水道、トイレ、お風呂がご利用になれません。前日までに飲み水などをご用意ください。また、点検は各住戸の台所で行いますので、当日はご在宅をお願いいたします。ご都合の悪い方は、十一月五日までに管理事務所へお知らせください。\n管理組合"
+  - id: praise
+    text: '　子どもがテストでよい点を取ると、わたしたちはつい「頭がいいね」とほめてしまう。しかし、こうしたほめ方を続けると、子どもは失敗を恐れ、難しい問題に挑戦しなくなるという。頭のよさを否定されることを避けようとするからだ。むしろ、「よく頑張ったね」と努力そのものを認めるほうが、子どもは困難に向かう力を身につける。何をほめるかが、子どもの成長を左右するのである。'
+  - id: lecture
+    text: "山本先生\n　先日はご講演をお引き受けいただき、誠にありがとうございました。\n　大変申し訳ないのですが、会場の都合により、ご講演の日程を当初の十二月三日から十二月十日に変更させていただけないでしょうか。時間と会場はこれまでどおりです。先生のご都合が合わない場合は、改めて日程を調整いたしますので、今週中にお知らせいただけますと幸いです。\n文化センター　小林"
+  - id: rest
+    text: '　まじめな人ほど、休むことに罪悪感を覚える。周りが働いているのに自分だけ休むのは申し訳ない、と感じるのだろう。だが、疲れた状態で長く働いても、効率は上がらず、ミスも増える。結局、周りに迷惑をかけることにもなりかねない。十分に休んで力を取り戻すことは、怠けることではなく、よい仕事をするための準備なのだ。'
+  - id: ebooks
+    text: "みどり市立図書館からのお知らせ\n　四月から電子書籍の貸し出しを始めます。ご利用には、図書館の利用カードとパスワードが必要です。パスワードは、カウンターで利用カードを提示して登録してください。一度に借りられるのは三冊まで、貸出期間は二週間で、期間が過ぎると自動的に返却されます。なお、電子書籍の予約はできません。"
+  - id: tools
+    text: '　祖母の家には、何十年も使い続けている包丁や鍋がある。刃が欠ければ研ぎに出し、取っ手が壊れれば付け替える。新しい物を買ったほうが安いこともあるだろう。それでも祖母は、「手になじんだ物は代わりがきかない」と言う。物を使い捨てにする暮らしに慣れたわたしたちは、物と長く付き合うことで得られるものを、知らず知らずのうちに失っているのかもしれない。'
+  - id: certificate
+    text: "リン様\n　先日は奨学金の申請書類をご提出いただき、ありがとうございました。確認しましたところ、在学証明書の発行日が三か月以上前のものでした。お手数ですが、発行日から三か月以内の在学証明書を、今月二十日までに学生課の窓口へお持ちください。その他の書類は受理しておりますので、再提出の必要はありません。\n学生課　奨学金担当"
+  - id: questions
+    text: '　会議で「何か質問はありますか」と聞かれても、手を挙げる人は少ない。的外れな質問をして恥をかきたくないからだろう。しかし、よい質問とは、必ずしも鋭い質問のことではない。自分が何をわかっていないのかを正直に示す質問は、同じ疑問を抱えていたほかの参加者をも助ける。質問することは、議論を深めるための立派な貢献なのである。'
+questions:
+  - id: n1-lr-8-0001
+    passage: canteen
+    stem: 'この　お知らせで　最も　伝えたい　ことは　何か。'
+    choices:
+      - '弁当は　当日の　十五時まで　予約できる　こと'
+      - '改装後に　座席が　増える　こと'
+      - '十月は　食堂が　使えず、弁当は　予約した　ほうが　よい　こと'
+      - '十月は　ロビーで　食事を　しては　いけない　こと'
+    answer: 3
+    explanation:
+      en: 'The canteen closes in October; booking a lunch box is advised.'
+      es: 'El comedor cierra en octubre; conviene reservar el bentō.'
+    author: claude
+  - id: n1-lr-8-0002
+    passage: boredom
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '退屈な　時間は　新しい　発想の　ために　必要だ'
+      - '暇な　時間は　情報を　集める　ために　使うべきだ'
+      - 'スマートフォンを　使う　時間を　なくすべきだ'
+      - '新しい　考えは　忙しい　ときほど　浮かびやすい'
+    answer: 1
+    explanation:
+      en: 'Idle time lets the mind connect ideas.'
+      es: 'El tiempo ocioso deja que la mente conecte ideas.'
+    author: claude
+  - id: n1-lr-8-0003
+    passage: prices
+    stem: 'この　メールで　伝えて　いる　ことは　何か。'
+    choices:
+      - '一月から　一部の　製品だけ　値段が　上がる　こと'
+      - '一月の　注文から　値段が　上がる　こと'
+      - '十二月の　注文から　値段が　上がる　こと'
+      - '原材料費が　下がったので　値段を　下げる　こと'
+    answer: 2
+    explanation:
+      en: 'All prices rise 5% from January orders; December orders keep the old price.'
+      es: 'Todos los precios suben un 5 % desde los pedidos de enero; diciembre mantiene el precio.'
+    author: claude
+  - id: n1-lr-8-0004
+    passage: experts
+    stem: '筆者に　よると、専門家が　「わからない」と　言うのは　なぜか。'
+    choices:
+      - 'ほかの　専門家に　答えを　任せたいから'
+      - '知識が　足りないと　思われたく　ないから'
+      - '断定的に　話すのが　苦手だから'
+      - '自分の　分野に　未解明の　ことが　多いと　知って　いるから'
+    answer: 4
+    explanation:
+      en: 'Deep knowledge shows how much is still unknown.'
+      es: 'Saber mucho muestra cuánto queda por descubrir.'
+    author: claude
+  - id: n1-lr-8-0005
+    passage: water
+    stem: '当日、家に　いられない　人は　どう　しなければ　ならないか。'
+    choices:
+      - '十二日の　九時までに　台所を　片付ける'
+      - '十一月五日までに　管理事務所に　連絡する'
+      - '前日までに　飲み水を　用意する'
+      - '十二日の　午後に　管理事務所へ　行く'
+    answer: 2
+    explanation:
+      en: 'Those who cannot be home must tell the office by 5 November.'
+      es: 'Quien no pueda estar debe avisar a la oficina antes del 5 de noviembre.'
+    author: claude
+  - id: n1-lr-8-0006
+    passage: praise
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - 'よい　点を　取った　ときだけ　ほめる　べきだ'
+      - '難しい　問題は　子どもに　させない　ほうが　よい'
+      - '才能よりも　努力を　ほめた　ほうが　よい'
+      - '子どもは　あまり　ほめない　ほうが　よい'
+    answer: 3
+    explanation:
+      en: 'Praising effort helps children face difficulty.'
+      es: 'Elogiar el esfuerzo ayuda a afrontar las dificultades.'
+    author: claude
+  - id: n1-lr-8-0007
+    passage: lecture
+    stem: 'この　メールの　目的は　何か。'
+    choices:
+      - '講演の　お礼を　伝える　こと'
+      - '講演の　会場が　変わった　ことを　知らせる　こと'
+      - '講演を　中止に　する　ことを　謝る　こと'
+      - '講演の　日を　変えられるか　どうか　たずねる　こと'
+    answer: 4
+    explanation:
+      en: 'The centre asks whether the talk can move to 10 December.'
+      es: 'El centro pregunta si la charla puede pasar al 10 de diciembre.'
+    author: claude
+  - id: n1-lr-8-0008
+    passage: rest
+    stem: '筆者の　考えに　合うのは　どれか。'
+    choices:
+      - '休む　ことは　よい　仕事の　ために　必要だ'
+      - '長く　働けば　効率が　上がる'
+      - '周りが　働いて　いる　ときは　休むべきでは　ない'
+      - 'まじめな　人は　休まない　ほうが　よい'
+    answer: 1
+    explanation:
+      en: 'Rest is preparation for good work, not laziness.'
+      es: 'Descansar es prepararse para trabajar bien, no pereza.'
+    author: claude
+  - id: n1-lr-8-0009
+    passage: ebooks
+    stem: '利用カードを　持って　いる　人が　電子書籍を　借りる　ために、最初に　しなければ　ならない　ことは　何か。'
+    choices:
+      - '二週間ごとに　本を　返却する'
+      - 'インターネットで　利用カードを　作る'
+      - '読みたい　本を　予約する'
+      - 'カウンターで　パスワードを　登録する'
+    answer: 4
+    explanation:
+      en: 'A password registered at the counter is needed first.'
+      es: 'Primero hay que registrar una contraseña en el mostrador.'
+    author: claude
+  - id: n1-lr-8-0010
+    passage: tools
+    stem: '筆者が　言いたい　ことは　何か。'
+    choices:
+      - '壊れた　物は　すぐに　買い替えるべきだ'
+      - '物を　長く　使う　ことで　得られる　ものが　ある'
+      - '祖母の　道具は　もう　使えない'
+      - '古い　物は　新しい　物より　安い'
+    answer: 2
+    explanation:
+      en: 'Using things for a long time gives something we are losing.'
+      es: 'Usar las cosas mucho tiempo aporta algo que estamos perdiendo.'
+    author: claude
+  - id: n1-lr-8-0011
+    passage: certificate
+    stem: 'リンさんは　何を　しなければ　ならないか。'
+    choices:
+      - '二十日に　学生課で　面接を　受ける'
+      - '三か月　待ってから　申請する'
+      - '新しい　在学証明書を　学生課に　持って　いく'
+      - '申請書類を　すべて　出し直す'
+    answer: 3
+    explanation:
+      en: 'Only a recent certificate of enrolment is needed.'
+      es: 'Solo hace falta un certificado de matrícula reciente.'
+    author: claude
+  - id: n1-lr-8-0012
+    passage: questions
+    stem: '筆者に　よると、よい　質問とは　どんな　ものか。'
+    choices:
+      - 'わからない　ことを　正直に　たずねる　質問'
+      - '会議の　最後に　まとめて　する　質問'
+      - '恥を　かかないように　準備した　質問'
+      - 'だれも　思いつかない　鋭い　質問'
+    answer: 1
+    explanation:
+      en: 'An honest question about what one does not understand helps everyone.'
+      es: 'Una pregunta sincera sobre lo que no se entiende ayuda a todos.'
+    author: claude
