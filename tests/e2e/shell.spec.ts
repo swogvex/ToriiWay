@@ -181,6 +181,39 @@ test.describe('desktop shell', () => {
   });
 });
 
+test.describe('home hero typewriter', () => {
+  for (const width of [1440, 1024, 390, 320]) {
+    test(`types new phrases without moving the page at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto('/');
+      // Screen readers get the stable title; the typed copy is hidden from them.
+      await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName(
+        'Learn Japanese one keystroke at a time.',
+      );
+      const typed = page.locator('[data-typed]');
+      const button = page.getByRole('link', { name: 'Start with hiragana' });
+      const top = (await button.boundingBox())?.y;
+      const first = await typed.textContent();
+      await expect.poll(() => typed.textContent(), { timeout: 8_000 }).not.toBe(first);
+      for (let i = 0; i < 10; i += 1) {
+        expect((await button.boundingBox())?.y).toBe(top);
+        await page.waitForTimeout(150);
+      }
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+        true,
+      );
+    });
+  }
+
+  test('stays still with reduced motion', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/');
+    const typed = page.locator('[data-typed]');
+    await page.waitForTimeout(2500);
+    await expect(typed).toHaveText('Japanese one keystroke at a time.');
+  });
+});
+
 test.describe('mobile shell', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 

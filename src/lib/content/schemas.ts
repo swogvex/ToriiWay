@@ -437,15 +437,31 @@ const rubyText = z
 export const siteSchema = z.strictObject({
   title: z.string().min(1).max(60),
   description: z.string().min(1).max(160),
-  hero: z.strictObject({
-    kicker: z.string().min(1),
-    /** Hidden on small screens. */
-    kickerMore: z.string().min(1),
-    title: z.string().min(1),
-    lead: z.string().min(1),
-    primary: z.string().min(1),
-    secondary: z.string().min(1),
-  }),
+  hero: z
+    .strictObject({
+      kicker: z.string().min(1),
+      /** Hidden on small screens. */
+      kickerMore: z.string().min(1),
+      /** The h1 for screen readers and without JavaScript. */
+      title: z.string().min(1),
+      /** Typed in turn after the fixed first word of the title (components/home/Hero.astro). */
+      phrases: z.array(z.string().min(1)).min(1),
+      lead: z.string().min(1),
+      primary: z.string().min(1),
+      secondary: z.string().min(1),
+    })
+    .superRefine((hero, ctx) => {
+      const fixed = `${hero.title.split(' ')[0]} `;
+      hero.phrases.forEach((phrase, index) => {
+        if (!phrase.startsWith(fixed)) {
+          ctx.addIssue({
+            code: 'custom',
+            path: ['phrases', index],
+            message: `Every phrase must start with "${fixed.trim()}"`,
+          });
+        }
+      });
+    }),
   index: z.strictObject({
     game: indexCard,
     learn: indexCard,
