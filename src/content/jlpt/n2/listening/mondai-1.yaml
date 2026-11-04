@@ -1,0 +1,234 @@
+# N2 · Listening · Mondai 1 — task-based comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: listening
+mondai: 1
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'まず 質問を 聞いて ください。それから 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lis-1-0001
+    stem: '男の　人は　このあと　まず　何を　しますか。'
+    choices:
+      - '資料を　印刷する'
+      - '部長に　資料を　見せる'
+      - '資料の　数字を　新しく　する'
+      - '会議室を　予約する'
+    answer: 3
+    explanation:
+      en: 'The figures must be updated first; the manager sees it after that.'
+      es: 'Primero hay que actualizar las cifras; el jefe lo ve después.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　まず　何を　しますか。\nF: 来週の　プレゼンの　資料、できた？\nM: はい、大体　できました。\nF: 数字が　去年の　ままだったから、最新の　データに　直して　おいて。印刷は　会議の　前の　日で　いいよ。\nM: 部長にも　見て　もらった　ほうが　いいですか。\nF: 部長には、数字を　直してからで　いいよ。\nN: 男の　人は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0002
+    stem: '女の　学生は　まず　何を　しなければ　なりませんか。'
+    choices:
+      - '先生に　推薦書を　頼む'
+      - '申込書を　書く'
+      - '締め切りを　確認する'
+      - '語学の　試験を　受ける'
+    answer: 1
+    explanation:
+      en: 'The recommendation takes time, so she asks her teacher first.'
+      es: 'La carta tarda, así que primero se la pide al profesor.'
+    author: claude
+    tts:
+      script: "N: 大学の　事務室で　女の　学生と　職員が　話して　います。女の　学生は　まず　何を　しなければ　なりませんか。\nF: 交換留学に　申し込みたいんですが。\nM: 申込書の　ほかに、語学の　試験の　点数と、指導教員の　推薦書が　必要です。点数は　もう　ありますか。\nF: はい。推薦書は　まだです。\nM: 推薦書は　書いて　いただくのに　時間が　かかるので、まず　先生に　お願いして　ください。申込書は　締め切りの　一週間前まででも　いいですよ。\nN: 女の　学生は　まず　何を　しなければ　なりませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0003
+    stem: '男の　人は　このあと　何を　しますか。'
+    choices:
+      - '全額を　払う'
+      - 'レシートを　もらう'
+      - '保険証を　取りに　帰る'
+      - '問診票に　記入する'
+    answer: 4
+    explanation:
+      en: 'Payment comes later; first he fills in the questionnaire.'
+      es: 'El pago viene luego; primero rellena el cuestionario.'
+    author: claude
+    tts:
+      script: "N: 病院の　受付で　女の　人と　男の　人が　話して　います。男の　人は　このあと　何を　しますか。\nF: 初めての　方ですね。保険証を　お願いします。\nM: あ、家に　忘れて　しまって。\nF: では、今日は　全額を　お支払いいただいて、一か月以内に　保険証と　レシートを　お持ちいただければ、差額を　お返しします。まず　こちらの　問診票に　ご記入ください。\nN: 男の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0004
+    stem: '女の　人は　これから　何を　しますか。'
+    choices:
+      - '電気の　手続きを　する'
+      - 'ガス会社に　電話する'
+      - '新しい　部屋を　見に　行く'
+      - '引っ越し業者に　連絡する'
+    answer: 2
+    explanation:
+      en: 'He handles electricity online; she calls the gas company.'
+      es: 'Él gestiona la luz por internet; ella llama a la compañía de gas.'
+    author: claude
+    tts:
+      script: "N: 夫婦が　引っ越しの　準備に　ついて　話して　います。女の　人は　これから　何を　しますか。\nM: 引っ越し業者には　連絡した？\nF: うん、きのう。あとは　電気と　ガスの　手続きね。\nM: 電気は　ネットで　できるから　僕が　やるよ。ガスは　立ち会いが　必要だから、日にちを　決めて　電話しないと。\nF: じゃあ　わたし、ガス会社に　電話するね。\nN: 女の　人は　これから　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0005
+    stem: 'アルバイトの　女の　人は　このあと　まず　何を　しますか。'
+    choices:
+      - '棚に　商品を　補充する'
+      - 'レジに　入る'
+      - '新商品の　ポップを　作る'
+      - '看板を　中に　入れる'
+    answer: 3
+    explanation:
+      en: 'The POP card is needed before the rush; the sign can wait for the rain.'
+      es: 'El cartel del producto hace falta antes de la hora punta; el letrero puede esperar.'
+    author: claude
+    tts:
+      script: "N: 店で　店長と　アルバイトの　女の　人が　話して　います。アルバイトの　女の　人は　このあと　まず　何を　しますか。\nM: 今日は　午後から　雨らしいから、外の　看板は　中に　入れて　おいて。\nF: はい。棚の　商品の　補充は　どうしますか。\nM: それは　あとで　いい。先に、レジの　横に　置く　新商品の　ポップを　作って　くれる？　お客さんが　増える　前に　置きたいから。\nF: 看板は？\nM: ああ、雨が　降り出す　前で　いいよ。\nN: アルバイトの　女の　人は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0006
+    stem: '男の　人は　このあと　何を　しますか。'
+    choices:
+      - '午後の　第一会議室を　予約する'
+      - '第三会議室の　予約を　そのままに　する'
+      - '午前の　第一会議室を　予約する'
+      - '打ち合わせの　時間を　変える'
+    answer: 1
+    explanation:
+      en: 'Eight people need the bigger room, free in the afternoon.'
+      es: 'Para ocho personas hace falta la sala grande, libre por la tarde.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　このあと　何を　しますか。\nF: あしたの　打ち合わせ、人数が　八人に　増えたんです。\nM: 今　予約して　いる　第三会議室は　六人用ですね。\nF: 第一会議室は　あいてますか。\nM: 午前は　あいて　いませんが、午後なら　あいて　います。\nF: 打ち合わせは　午後二時からなので、そちらに　して　ください。\nN: 男の　人は　このあと　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0007
+    stem: '男の　学生は　本を　どう　しますか。'
+    choices:
+      - '貸し出しを　延長する'
+      - '別の　図書館で　借りる'
+      - '家に　持って　帰る'
+      - '今日　返して、もう　一度　予約する'
+    answer: 4
+    explanation:
+      en: 'Someone has reserved it, so he returns it and reserves again.'
+      es: 'Otra persona lo ha reservado, así que lo devuelve y lo vuelve a reservar.'
+    author: claude
+    tts:
+      script: "N: 図書館で　男の　学生と　係の　人が　話して　います。男の　学生は　本を　どう　しますか。\nM: この　本、返す　期限が　今日なんですが、まだ　読み終わって　いなくて。\nF: 予約が　入って　いなければ　延長できますよ。あ、この　本は　次の　方が　予約して　いますね。\nM: そうですか。\nF: 一度　返して　いただいて、その　あとに　もう　一度　予約して　ください。\nN: 男の　学生は　本を　どう　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0008
+    stem: '女の　人は　どの　ツアーを　申し込みますか。'
+    choices:
+      - '一泊二日の　食事つきの　ツアー'
+      - '一泊二日の　食事なしの　ツアー'
+      - '二泊三日の　ツアー'
+      - '二泊三日の　食事なしの　ツアー'
+    answer: 2
+    explanation:
+      en: 'Two days off and she wants to find her own dinner.'
+      es: 'Tiene dos días libres y quiere buscar ella la cena.'
+    author: claude
+    tts:
+      script: "N: 旅行会社で　女の　人と　店の　人が　話して　います。女の　人は　どの　ツアーを　申し込みますか。\nF: 来月、京都の　ツアーを　探して　いるんですが。\nM: 二泊三日と　一泊二日の　ツアーが　あります。\nF: 休みが　二日しか　ないんです。\nM: では　一泊二日ですね。こちらは　食事つきと　食事なしが　ございます。\nF: 夕食は　自分で　好きな　店を　探したいので、食事なしで。\nN: 女の　人は　どの　ツアーを　申し込みますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0009
+    stem: '女の　人は　レポートを　いつまでに　出しますか。'
+    choices:
+      - '金曜日の　夕方'
+      - '月曜日'
+      - '金曜日の　朝'
+      - '木曜日'
+    answer: 4
+    explanation:
+      en: 'Thursday works because he reads it Friday morning.'
+      es: 'El jueves vale porque él lo lee el viernes por la mañana.'
+    author: claude
+    tts:
+      script: "N: 会社で　男の　人と　女の　人が　話して　います。女の　人は　レポートを　いつまでに　出しますか。\nM: 出張の　レポート、金曜日までに　出せる？\nF: 金曜日は　いちにち　外出なので、木曜日の　夕方でも　いいですか。\nM: 月曜日の　会議で　使うから、金曜の　朝に　見て　おきたいんだ。木曜中なら　大丈夫だよ。\nN: 女の　人は　レポートを　いつまでに　出しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0010
+    stem: '生徒は　まず　何を　しますか。'
+    choices:
+      - '手を　洗う'
+      - 'エプロンを　つける'
+      - 'バターを　冷蔵庫から　出す'
+      - '小麦粉を　量る'
+    answer: 2
+    explanation:
+      en: 'The apron goes on even before washing hands.'
+      es: 'El delantal va incluso antes de lavarse las manos.'
+    author: claude
+    tts:
+      script: "N: 料理教室で　先生が　話して　います。生徒は　まず　何を　しますか。\nF: 今日は　パンを　作ります。まず　手を　洗ってから、小麦粉を　量って　ください。バターは　室温に　戻して　おく　必要が　あるので、冷蔵庫から　出して　おいて　くださいね。あ、手を　洗う　前に、エプロンを　つけるのを　忘れずに。\nN: 生徒は　まず　何を　しますか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-1-0011
+    stem: '男の　学生は　何を　持って　いけば　いいですか。'
+    choices:
+      - '水筒と　お弁当と　地図'
+      - '雨具と　水筒と　お弁当'
+      - '雨具と　水筒と　帽子'
+      - '雨具と　地図と　帽子'
+    answer: 3
+    explanation:
+      en: 'Lunch is bought and the map is handed out.'
+      es: 'La comida se compra allí y el mapa lo reparten.'
+    author: claude
+    tts:
+      script: "N: 大学で　女の　学生と　男の　学生が　話して　います。男の　学生は　何を　持って　いけば　いいですか。\nF: 来週の　ハイキング、雨具と　水筒は　必ず　持って　きてね。お弁当は　みんなで　駅前で　買うから、いらないよ。\nM: 地図は？\nF: 地図は　リーダーが　配るから　大丈夫。あ、帽子は　あった　ほうが　いいかな。日差しが　強いらしいから。\nN: 男の　学生は　何を　持って　いけば　いいですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0012
+    stem: '女の　人は　この　窓口の　手続きの　あと、どこへ　行きますか。'
+    choices:
+      - '二階の　保険の　窓口'
+      - '一階の　別の　窓口'
+      - '保険会社'
+      - '区役所'
+    answer: 1
+    explanation:
+      en: 'The insurance change is done upstairs.'
+      es: 'El cambio del seguro se hace en el segundo piso.'
+    author: claude
+    tts:
+      script: "N: 市役所の　窓口で　女の　人と　職員が　話して　います。女の　人は　この　窓口の　手続きの　あと、どこへ　行きますか。\nF: 住所の　変更を　したいんですが。\nM: こちらで　できます。あの、国民健康保険にも　入って　いらっしゃいますか。\nF: はい。\nM: 保険の　住所変更は　二階の　窓口に　なりますので、こちらが　終わったら、二階へ　お願いします。\nN: 女の　人は　この　窓口の　手続きの　あと、どこへ　行きますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0013
+    stem: '男の　人は　何時に　チェックアウトしますか。'
+    choices:
+      - '午後一時'
+      - '十一時'
+      - '夕方'
+      - '午後三時'
+    answer: 1
+    explanation:
+      en: 'He extends to 1 p.m. for 2,000 yen.'
+      es: 'Amplía hasta la una por 2.000 yenes.'
+    author: claude
+    tts:
+      script: "N: ホテルで　男の　人と　受付の　人が　話して　います。男の　人は　何時に　チェックアウトしますか。\nM: チェックアウトは　何時ですか。\nF: 十一時です。\nM: 飛行機が　夕方なので、少し　遅く　できますか。\nF: 午後一時までなら、二千円で　延長できます。それ以降は　一泊分の　料金に　なります。\nM: じゃあ、一時まで　お願いします。\nN: 男の　人は　何時に　チェックアウトしますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0014
+    stem: '新人は　このあと　まず　何を　しますか。'
+    choices:
+      - 'メールを　送る'
+      - '先輩に　メールを　見せる'
+      - '取引先に　電話する'
+      - 'ファイルを　添付する'
+    answer: 2
+    explanation:
+      en: 'Before sending, she shows it to her senior.'
+      es: 'Antes de enviarlo, se lo enseña a su superior.'
+    author: claude
+    tts:
+      script: "N: 会社で　先輩と　新人が　話して　います。新人は　このあと　まず　何を　しますか。\nM: 取引先への　メール、書けた？\nF: はい、これから　送ります。\nM: 送る　前に、一度　僕に　見せて。相手の　名前、間違えやすいから。\nF: わかりました。\nM: それと、添付ファイルを　忘れないように。\nN: 新人は　このあと　まず　何を　しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-1-0015
+    stem: '女の　人は　どの　部屋を　見に　行きますか。'
+    choices:
+      - '駅から　十五分の　十万円の　部屋'
+      - '駅から　五分の　十万円の　部屋'
+      - '駅から　五分の　七万円の　部屋'
+      - '駅から　十五分の　七万円の　部屋'
+    answer: 4
+    explanation:
+      en: 'She cycles, so the cheaper, farther flat is fine.'
+      es: 'Va en bici, así que le vale el piso más barato y lejano.'
+    author: claude
+    tts:
+      script: "N: 不動産屋で　女の　人と　店の　人が　話して　います。女の　人は　どの　部屋を　見に　行きますか。\nF: 駅から　近くて、二部屋　ある　ところを　探して　います。\nM: 駅から　五分で　二部屋の　物件は、家賃が　十万円です。十五分　歩きますが、同じ　広さで　七万円の　部屋も　あります。\nF: 毎日　自転車で　駅まで　行くので、少し　遠くても　いいです。安い　ほうを　見せて　ください。\nN: 女の　人は　どの　部屋を　見に　行きますか。"
+      voices: ['narrator', 'man', 'woman']

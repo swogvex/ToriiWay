@@ -1,0 +1,279 @@
+# N2 · Listening · Mondai 2 — point comprehension
+# Original questions written for ToriiWay.
+level: N2
+section: listening
+mondai: 2
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'まず 質問を 聞いて ください。それから 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n2-lis-2-0001
+    stem: '女の　人は　どうして　会社を　辞めますか。'
+    choices:
+      - '仕事が　大変だったから'
+      - '福祉の　勉強を　する　ため'
+      - '家族の　世話を　する　ため'
+      - '給料が　安かったから'
+    answer: 2
+    explanation:
+      en: 'She enjoyed the job; she wants to study welfare.'
+      es: 'Le gustaba el trabajo; quiere estudiar asistencia social.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。女の　人は　どうして　会社を　辞めますか。\nF: 来月で　退職する　ことに　しました。\nM: え、仕事が　大変だったから？\nF: 仕事は　楽しかったんです。ただ、前から　興味の　あった　福祉の　勉強が　したくて、専門学校に　入る　ことに　したんです。\nN: 女の　人は　どうして　会社を　辞めますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0002
+    stem: '男の　人は　どうして　新しい　パソコンを　買いませんか。'
+    choices:
+      - '値段が　高いから'
+      - '使い方が　わからないから'
+      - '会社から　新しい　パソコンが　配られるから'
+      - '今の　パソコンで　十分だから'
+    answer: 3
+    explanation:
+      en: 'The company is handing out new ones next month.'
+      es: 'La empresa repartirá ordenadores nuevos el mes que viene.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　新しい　パソコンを　買いませんか。\nF: パソコン、遅いって　言ってたよね。新しいの　買わないの？\nM: 値段は　下がって　きたし、買いたいんだけど、来月から　会社で　新しいのが　配られる　ことに　なったんだ。\nF: そうなんだ。\nN: 男の　人は　どうして　新しい　パソコンを　買いませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0003
+    stem: '女の　人は　映画の　何が　いちばん　よかったと　言って　いますか。'
+    choices:
+      - '音楽'
+      - '映像'
+      - '話の　筋'
+      - '母親役の　俳優の　演技'
+    answer: 4
+    explanation:
+      en: 'なにより points to the actress playing the mother.'
+      es: 'なにより señala a la actriz que hace de madre.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　映画に　ついて　話して　います。女の　人は　映画の　何が　いちばん　よかったと　言って　いますか。\nM: あの　映画、どうだった？\nF: 映像も　きれいだったし、音楽も　よかった。でも　なにより、主人公の　母親を　演じた　俳優の　演技に　引き込まれたなあ。\nN: 女の　人は　映画の　何が　いちばん　よかったと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0004
+    stem: 'この　パン屋が　閉店する　理由は　何ですか。'
+    choices:
+      - '店主が　朝早く　働くのが　体力的に　つらく　なったから'
+      - '店主が　引っ越すから'
+      - '客が　減ったから'
+      - '建物が　古く　なったから'
+    answer: 1
+    explanation:
+      en: 'Not fewer customers: early baking became too hard.'
+      es: 'No por falta de clientes: madrugar para hornear se hizo duro.'
+    author: claude
+    tts:
+      script: "N: ラジオで　男の　人が　話して　います。この　パン屋が　閉店する　理由は　何ですか。\nM: 町の　人に　長く　愛されて　きた　この　パン屋が、今月で　閉店します。店主は、「お客さんが　減ったからでは　なく、朝早くから　パンを　焼くのが　体力的に　難しく　なった」と　話して　います。\nN: この　パン屋が　閉店する　理由は　何ですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-2-0005
+    stem: '女の　学生が　この　ゼミを　選んだ　いちばんの　理由は　何ですか。'
+    choices:
+      - '先生が　有名だから'
+      - '友だちが　いるから'
+      - '課題が　少ないから'
+      - '実際に　現地に　行って　調べられるから'
+    answer: 4
+    explanation:
+      en: 'The fieldwork is the main reason.'
+      es: 'El trabajo de campo es la razón principal.'
+    author: claude
+    tts:
+      script: "N: 大学で　男の　学生と　女の　学生が　話して　います。女の　学生が　この　ゼミを　選んだ　いちばんの　理由は　何ですか。\nM: どうして　この　ゼミに　したの？　先生が　有名だから？\nF: それも　あるけど、いちばんは　フィールドワークが　多い　ことかな。実際に　現地に　行って　調べたかったから。\nN: 女の　学生が　この　ゼミを　選んだ　いちばんの　理由は　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0006
+    stem: 'あしたの　会議は　どうして　延期に　なりましたか。'
+    choices:
+      - '部長が　出張だから'
+      - '会議室が　使えないから'
+      - '資料に　間違いが　見つかったから'
+      - '参加者が　少ないから'
+    answer: 3
+    explanation:
+      en: 'Errors in the figures mean redoing the documents.'
+      es: 'Errores en las cifras obligan a rehacer los documentos.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。あしたの　会議は　どうして　延期に　なりましたか。\nF: あしたの　会議、延期だって。\nM: 部長が　出張だから？\nF: 部長は　午後には　戻るんだけど、資料の　数字に　間違いが　見つかって、作り直す　ことに　なったんだって。\nN: あしたの　会議は　どうして　延期に　なりましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0007
+    stem: '男の　人は　週末に　何を　しましたか。'
+    choices:
+      - '本を　読んだ'
+      - '釣りに　行った'
+      - '友だちに　会った'
+      - '映画を　見た'
+    answer: 1
+    explanation:
+      en: 'Fishing was cancelled; he read a book instead.'
+      es: 'Se canceló la pesca; leyó un libro.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　週末に　何を　しましたか。\nF: 週末は　釣りに　行ったの？\nM: 行く　予定だったんだけど、風が　強くて　中止。代わりに、ずっと　読みたかった　本を　いちにちで　読んじゃった。\nN: 男の　人は　週末に　何を　しましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0008
+    stem: '女の　人は　アプリの　何が　嫌だと　言って　いますか。'
+    choices:
+      - '料金が　高い　こと'
+      - '広告が　よく　出る　こと'
+      - '入力が　難しい　こと'
+      - 'グラフが　見にくい　こと'
+    answer: 2
+    explanation:
+      en: 'Easy and clear, but adverts keep popping up.'
+      es: 'Fácil y clara, pero salen anuncios todo el rato.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　アプリの　何が　嫌だと　言って　いますか。\nM: 新しい　家計簿アプリ、どう？\nF: 入力は　すごく　簡単。グラフも　見やすいし。ただ、無料だと　広告が　しょっちゅう　出て　くるのが　嫌なのよね。\nN: 女の　人は　アプリの　何が　嫌だと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0009
+    stem: 'この　町が　今年から　いちばん　力を　入れて　いるのは　何ですか。'
+    choices:
+      - '子育ての　支援'
+      - '道路の　整備'
+      - '観光客を　増やす　こと'
+      - '高齢者の　医療'
+    answer: 1
+    explanation:
+      en: 'Tourism was the old focus; now childcare support.'
+      es: 'Antes era el turismo; ahora la ayuda a la crianza.'
+    author: claude
+    tts:
+      script: "N: 町長が　話して　います。この　町が　今年から　いちばん　力を　入れて　いるのは　何ですか。\nM: わが町は、これまで　観光客を　増やす　ことに　力を　入れて　きました。しかし　今年からは、若い　家族に　住んで　もらう　ため、子育て支援を　最優先に　して　います。\nN: この　町が　今年から　いちばん　力を　入れて　いるのは　何ですか。"
+      voices: ['narrator', 'man']
+  - id: n2-lis-2-0010
+    stem: '男の　人は　どうして　遅刻しましたか。'
+    choices:
+      - '電車が　止まったから'
+      - '具合の　悪く　なった　人に　付き添って　いたから'
+      - '寝坊したから'
+      - '道に　迷ったから'
+    answer: 2
+    explanation:
+      en: 'He stayed with someone taken ill.'
+      es: 'Se quedó con una persona que se encontró mal.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人は　どうして　遅刻しましたか。\nF: 珍しいね、遅刻なんて。電車が　止まってたの？\nM: 電車は　大丈夫だったんだけど、駅で　具合が　悪く　なった　人が　いて、救急車が　来るまで　付き添ってたんだ。\nN: 男の　人は　どうして　遅刻しましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0011
+    stem: '女の　人が　この　カフェに　よく　来る　いちばんの　理由は　何ですか。'
+    choices:
+      - '駅から　近いから'
+      - 'コーヒーが　おいしいから'
+      - '値段が　安いから'
+      - '電源が　あって、長く　いられるから'
+    answer: 4
+    explanation:
+      en: 'Power sockets and being able to stay long.'
+      es: 'Enchufes y poder quedarse mucho rato.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　カフェで　話して　います。女の　人が　この　カフェに　よく　来る　いちばんの　理由は　何ですか。\nM: いつも　この　カフェだね。コーヒーが　おいしいから？\nF: コーヒーも　いいけど、いちばんは　電源が　あって、長い　時間　いても　嫌な　顔を　されない　ことかな。\nN: 女の　人が　この　カフェに　よく　来る　いちばんの　理由は　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0012
+    stem: '話して　いる　人が　健康の　ために　最も　大切だと　思って　いるのは　何ですか。'
+    choices:
+      - '運動を　する　こと'
+      - '食事に　気を　つける　こと'
+      - '毎日　同じ　時間に　寝て　起きる　こと'
+      - 'たくさん　眠る　こと'
+    answer: 3
+    explanation:
+      en: 'A regular sleep schedule matters most to her.'
+      es: 'Para ella lo más importante es un horario de sueño regular.'
+    author: claude
+    tts:
+      script: "N: 講演会で　女の　人が　話して　います。話して　いる　人が　健康の　ために　最も　大切だと　思って　いるのは　何ですか。\nF: 健康の　ために　運動や　食事に　気を　つける　人は　多いですが、わたしが　最も　大切だと　思うのは、毎日　同じ　時間に　寝て、同じ　時間に　起きる　ことです。\nN: 話して　いる　人が　健康の　ために　最も　大切だと　思って　いるのは　何ですか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-2-0013
+    stem: '男の　人が　プロジェクトで　いちばん　困った　ことは　何ですか。'
+    choices:
+      - '客が　見つからなかった　こと'
+      - 'メンバーの　意見が　まとまらなかった　こと'
+      - '時間が　足りなかった　こと'
+      - '予算が　少なかった　こと'
+    answer: 2
+    explanation:
+      en: 'The low budget was expected; disagreement was the problem.'
+      es: 'El presupuesto bajo era previsible; el problema fue la falta de acuerdo.'
+    author: claude
+    tts:
+      script: "N: 会社で　女の　人と　男の　人が　話して　います。男の　人が　プロジェクトで　いちばん　困った　ことは　何ですか。\nF: 新しい　プロジェクト、大変だったでしょう。\nM: 予算が　少ないのは　まあ　想定内だったんだけど、いちばん　困ったのは、メンバーの　間で　意見が　なかなか　まとまらなかった　ことかな。\nN: 男の　人が　プロジェクトで　いちばん　困った　ことは　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0014
+    stem: '女の　人が　引っ越さない　いちばんの　理由は　何ですか。'
+    choices:
+      - '会社に　近いから'
+      - '部屋が　広いから'
+      - '大家さんが　いい　人だから'
+      - '家賃が　安いから'
+    answer: 3
+    explanation:
+      en: 'Cheap rent too, but なにより the kind landlord.'
+      es: 'También el alquiler barato, pero なにより el buen casero.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人が　引っ越さない　いちばんの　理由は　何ですか。\nM: 会社から　遠いのに、引っ越さないの？\nF: 確かに　通勤は　大変だけど、今の　部屋は　家賃が　安いし、なにより　大家さんが　いい　人で、離れがたいのよ。\nN: 女の　人が　引っ越さない　いちばんの　理由は　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0015
+    stem: '男の　学生が　アルバイトを　選んだ　理由は　何ですか。'
+    choices:
+      - '将来の　仕事に　関係が　あるから'
+      - '時間が　自由だから'
+      - '家から　近いから'
+      - '時給が　高いから'
+    answer: 1
+    explanation:
+      en: 'It relates to the job he wants later.'
+      es: 'Tiene que ver con el trabajo que quiere en el futuro.'
+    author: claude
+    tts:
+      script: "N: 女の　学生と　男の　学生が　話して　います。男の　学生が　アルバイトを　選んだ　理由は　何ですか。\nF: アルバイト、何で　選んだの？　時給？\nM: 時給は　普通だよ。それより、将来　やりたい　仕事に　関係が　あるから、勉強に　なると　思って。\nN: 男の　学生が　アルバイトを　選んだ　理由は　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0016
+    stem: '電車が　止まって　いる　原因は　何ですか。'
+    choices:
+      - '事故が　あったから'
+      - '大雨が　降ったから'
+      - '線路に　人が　入ったから'
+      - '信号が　故障したから'
+    answer: 4
+    explanation:
+      en: 'Not a person on the tracks: a signal failure.'
+      es: 'No es una persona en la vía: es una avería de señales.'
+    author: claude
+    tts:
+      script: "N: 駅の　アナウンスです。電車が　止まって　いる　原因は　何ですか。\nF: 現在、さくら線は　運転を　見合わせて　おります。原因は、線路への　人の　立ち入りでは　なく、信号の　故障に　よる　ものです。復旧には　一時間ほど　かかる　見込みです。\nN: 電車が　止まって　いる　原因は　何ですか。"
+      voices: ['narrator', 'woman']
+  - id: n2-lis-2-0017
+    stem: '女の　人が　料理教室を　やめた　理由は　何ですか。'
+    choices:
+      - '先生が　厳しかったから'
+      - '料金が　上がったから'
+      - '料理が　上手に　なったから'
+      - '毎週　同じ　時間に　通えなく　なったから'
+    answer: 4
+    explanation:
+      en: 'Work made the fixed weekly time impossible.'
+      es: 'El trabajo le impidió ir cada semana a la misma hora.'
+    author: claude
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人が　料理教室を　やめた　理由は　何ですか。\nM: 料理教室、やめちゃったの？　先生が　厳しかった？\nF: 先生は　やさしかったよ。ただ、仕事が　忙しく　なって、毎週　同じ　時間に　通えなく　なったの。\nN: 女の　人が　料理教室を　やめた　理由は　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n2-lis-2-0018
+    stem: '男の　人が　いちばん　心配して　いる　ことは　何ですか。'
+    choices:
+      - '時間が　足りない　こと'
+      - '質問に　うまく　答えられるか'
+      - '発表の　練習が　足りない　こと'
+      - '資料が　間に合うか'
+    answer: 2
+    explanation:
+      en: 'The talk is practised; the questions worry him.'
+      es: 'La exposición está ensayada; le preocupan las preguntas.'
+    author: claude
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人が　いちばん　心配して　いる　ことは　何ですか。\nF: あしたの　発表、緊張してる？\nM: 発表　自体は　練習したから　大丈夫。それより、質問された　ときに　ちゃんと　答えられるかが　心配なんだ。\nN: 男の　人が　いちばん　心配して　いる　ことは　何ですか。"
+      voices: ['narrator', 'man', 'woman']
