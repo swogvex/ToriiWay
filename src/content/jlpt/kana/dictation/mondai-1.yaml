@@ -15,6 +15,7 @@ questions:
       en: 'You heard か. Compare: が, こ, た.'
       es: 'Has oído か. Compara: が, こ, た.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0001-010b9c4bfdb2.mp3'
     tts:
       script: 'N: か。もう　いちど。か。'
       voices: ['narrator']
@@ -26,6 +27,7 @@ questions:
       en: 'You heard ぎ. Compare: き, じ, に.'
       es: 'Has oído ぎ. Compara: き, じ, に.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0002-0396730629d2.mp3'
     tts:
       script: 'N: ぎ。もう　いちど。ぎ。'
       voices: ['narrator']
@@ -37,6 +39,7 @@ questions:
       en: 'You heard つ. Compare: す, ち, ず.'
       es: 'Has oído つ. Compara: す, ち, ず.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0003-fe62d984b6c6.mp3'
     tts:
       script: 'N: つ。もう　いちど。つ。'
       voices: ['narrator']
@@ -48,6 +51,7 @@ questions:
       en: 'You heard しゃ. Compare: しや, さ, ちゃ.'
       es: 'Has oído しゃ. Compara: しや, さ, ちゃ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0004-77f4c7bc5501.mp3'
     tts:
       script: 'N: しゃ。もう　いちど。しゃ。'
       voices: ['narrator']
@@ -59,6 +63,7 @@ questions:
       en: 'You heard きょ. Compare: きよ, きゅ, ぎょ.'
       es: 'Has oído きょ. Compara: きよ, きゅ, ぎょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0005-b9d942d379df.mp3'
     tts:
       script: 'N: きょ。もう　いちど。きょ。'
       voices: ['narrator']
@@ -70,6 +75,7 @@ questions:
       en: 'You heard ず. Compare: す, じ, ぞ.'
       es: 'Has oído ず. Compara: す, じ, ぞ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0006-1d69ef0be3a3.mp3'
     tts:
       script: 'N: ず。もう　いちど。ず。'
       voices: ['narrator']
@@ -81,6 +87,7 @@ questions:
       en: 'You heard ぱ. Compare: ば, は, ぽ.'
       es: 'Has oído ぱ. Compara: ば, は, ぽ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0007-bef4bf7dd2d2.mp3'
     tts:
       script: 'N: ぱ。もう　いちど。ぱ。'
       voices: ['narrator']
@@ -92,6 +99,7 @@ questions:
       en: 'You heard ふ. Compare: ほ, ひ, ぷ.'
       es: 'Has oído ふ. Compara: ほ, ひ, ぷ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0008-75083c8e9f07.mp3'
     tts:
       script: 'N: ふ。もう　いちど。ふ。'
       voices: ['narrator']
@@ -103,6 +111,7 @@ questions:
       en: 'You heard りゅ. Compare: りょ, ゆ, ぎゅ.'
       es: 'Has oído りゅ. Compara: りょ, ゆ, ぎゅ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0009-6df0500a64f0.mp3'
     tts:
       script: 'N: りゅ。もう　いちど。りゅ。'
       voices: ['narrator']
@@ -114,6 +123,7 @@ questions:
       en: 'You heard ん. Compare: む, ぬ, の.'
       es: 'Has oído ん. Compara: む, ぬ, の.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0010-9495abff4338.mp3'
     tts:
       script: 'N: ん。もう　いちど。ん。'
       voices: ['narrator']
@@ -125,6 +135,7 @@ questions:
       en: 'You heard ぴゃ. Compare: びゃ, ひゃ, ぴゅ.'
       es: 'Has oído ぴゃ. Compara: びゃ, ひゃ, ぴゅ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0011-3e2ddb6fcfef.mp3'
     tts:
       script: 'N: ぴゃ。もう　いちど。ぴゃ。'
       voices: ['narrator']
@@ -136,6 +147,7 @@ questions:
       en: 'You heard で. Compare: て, ど, れ.'
       es: 'Has oído で. Compara: て, ど, れ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0012-ce21be703d87.mp3'
     tts:
       script: 'N: で。もう　いちど。で。'
       voices: ['narrator']
@@ -147,6 +159,7 @@ questions:
       en: 'You heard ちょ. Compare: しょ, ちゅ, じょ.'
       es: 'Has oído ちょ. Compara: しょ, ちゅ, じょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0013-5e628eca6a80.mp3'
     tts:
       script: 'N: ちょ。もう　いちど。ちょ。'
       voices: ['narrator']
@@ -158,6 +171,7 @@ questions:
       en: 'You heard ろ. Compare: よ, る, ど.'
       es: 'Has oído ろ. Compara: よ, る, ど.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0014-185c15ccb2e5.mp3'
     tts:
       script: 'N: ろ。もう　いちど。ろ。'
       voices: ['narrator']
@@ -169,6 +183,7 @@ questions:
       en: 'You heard み. Compare: に, び, め.'
       es: 'Has oído み. Compara: に, び, め.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0015-077e3f3c7bc0.mp3'
     tts:
       script: 'N: み。もう　いちど。み。'
       voices: ['narrator']
@@ -180,6 +195,7 @@ questions:
       en: 'You heard ぞ. Compare: そ, じょ, ず.'
       es: 'Has oído ぞ. Compara: そ, じょ, ず.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0016-81e2a2bc7ff8.mp3'
     tts:
       script: 'N: ぞ。もう　いちど。ぞ。'
       voices: ['narrator']
@@ -191,6 +207,7 @@ questions:
       en: 'You heard にゃ. Compare: にや, にょ, みゃ.'
       es: 'Has oído にゃ. Compara: にや, にょ, みゃ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0017-8c87c723f4c5.mp3'
     tts:
       script: 'N: にゃ。もう　いちど。にゃ。'
       voices: ['narrator']
@@ -202,6 +219,7 @@ questions:
       en: 'You heard へ. Compare: え, べ, せ.'
       es: 'Has oído へ. Compara: え, べ, せ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0018-0e878e75c539.mp3'
     tts:
       script: 'N: へ。もう　いちど。へ。'
       voices: ['narrator']
@@ -213,6 +231,7 @@ questions:
       en: 'You heard ぐ. Compare: く, ご, ぶ.'
       es: 'Has oído ぐ. Compara: く, ご, ぶ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0019-07b1527b16bb.mp3'
     tts:
       script: 'N: ぐ。もう　いちど。ぐ。'
       voices: ['narrator']
@@ -224,6 +243,7 @@ questions:
       en: 'You heard わ. Compare: ば, や, ら.'
       es: 'Has oído わ. Compara: ば, や, ら.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0020-bc63524106db.mp3'
     tts:
       script: 'N: わ。もう　いちど。わ。'
       voices: ['narrator']
@@ -235,6 +255,7 @@ questions:
       en: 'You heard じゅ. Compare: しゅ, ちゅ, じょ.'
       es: 'Has oído じゅ. Compara: しゅ, ちゅ, じょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0021-2da311b13dd9.mp3'
     tts:
       script: 'N: じゅ。もう　いちど。じゅ。'
       voices: ['narrator']
@@ -246,6 +267,7 @@ questions:
       en: 'You heard め. Compare: ね, べ, み.'
       es: 'Has oído め. Compara: ね, べ, み.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0022-da03c5b0f092.mp3'
     tts:
       script: 'N: め。もう　いちど。め。'
       voices: ['narrator']
@@ -257,6 +279,7 @@ questions:
       en: 'You heard さ. Compare: ざ, しゃ, ちゃ.'
       es: 'Has oído さ. Compara: ざ, しゃ, ちゃ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0023-6741283965a8.mp3'
     tts:
       script: 'N: さ。もう　いちど。さ。'
       voices: ['narrator']
@@ -268,6 +291,7 @@ questions:
       en: 'You heard ひょ. Compare: ひよ, びょ, しょ.'
       es: 'Has oído ひょ. Compara: ひよ, びょ, しょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0024-d36bb22398a9.mp3'
     tts:
       script: 'N: ひょ。もう　いちど。ひょ。'
       voices: ['narrator']
@@ -279,6 +303,7 @@ questions:
       en: 'You heard と. Compare: ど, そ, こ.'
       es: 'Has oído と. Compara: ど, そ, こ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0025-d16891595b70.mp3'
     tts:
       script: 'N: と。もう　いちど。と。'
       voices: ['narrator']
@@ -290,6 +315,7 @@ questions:
       en: 'You heard ぶ. Compare: ぷ, ふ, む.'
       es: 'Has oído ぶ. Compara: ぷ, ふ, む.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0026-f565dfa9a302.mp3'
     tts:
       script: 'N: ぶ。もう　いちど。ぶ。'
       voices: ['narrator']
@@ -301,6 +327,7 @@ questions:
       en: 'You heard き. Compare: ち, ぎ, ひ.'
       es: 'Has oído き. Compara: ち, ぎ, ひ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0027-309e9e8295b5.mp3'
     tts:
       script: 'N: き。もう　いちど。き。'
       voices: ['narrator']
@@ -312,6 +339,7 @@ questions:
       en: 'You heard ちゃ. Compare: じゃ, ちょ, しゃ.'
       es: 'Has oído ちゃ. Compara: じゃ, ちょ, しゃ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0028-eb1e1b5eca43.mp3'
     tts:
       script: 'N: ちゃ。もう　いちど。ちゃ。'
       voices: ['narrator']
@@ -323,6 +351,7 @@ questions:
       en: 'You heard ぬ. Compare: む, る, の.'
       es: 'Has oído ぬ. Compara: む, る, の.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0029-0c56417e8474.mp3'
     tts:
       script: 'N: ぬ。もう　いちど。ぬ。'
       voices: ['narrator']
@@ -334,6 +363,7 @@ questions:
       en: 'You heard びょ. Compare: ぴょ, ひょ, ぎょ.'
       es: 'Has oído びょ. Compara: ぴょ, ひょ, ぎょ.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/kana-dict-1-0030-c552226a99f4.mp3'
     tts:
       script: 'N: びょ。もう　いちど。びょ。'
       voices: ['narrator']
