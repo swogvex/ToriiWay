@@ -1,0 +1,189 @@
+# N4 · Vocabulary · Mondai 2 — orthography
+# Original questions written for ToriiWay.
+level: N4
+section: vocabulary
+mondai: 2
+instruction:
+  en: 'How is the underlined word written? Choose the best answer.'
+  ja: '＿＿＿の ことばは どう かきますか。'
+questions:
+  - id: n4-voc-2-0001
+    stem: 'あの　__えいが__は　おもしろかったです。'
+    choices:
+      - '央画'
+      - '映絵'
+      - '映画'
+      - '英画'
+    answer: 3
+    explanation:
+      en: 'えいが, "film", is 映画. 英 is also read えい but means "English".'
+      es: 'えいが, "película", es 映画. 英 también se lee えい pero significa "inglés".'
+    author: claude
+  - id: n4-voc-2-0002
+    stem: 'デパートで　__ようふく__を　買いました。'
+    choices:
+      - '洋服'
+      - '羊服'
+      - '洋福'
+      - '洋腹'
+    answer: 1
+    explanation:
+      en: 'ようふく, "clothes", is 洋服. 福 and 腹 share the sound ふく but not the meaning.'
+      es: 'ようふく, "ropa", es 洋服. 福 y 腹 suenan ふく pero significan otra cosa.'
+    author: claude
+  - id: n4-voc-2-0003
+    stem: '__としょかん__で　本を　かりました。'
+    choices:
+      - '図書官'
+      - '図書館'
+      - '図書観'
+      - '地書館'
+    answer: 2
+    explanation:
+      en: 'としょかん, "library", is 図書館: 館 means "building".'
+      es: 'としょかん, "biblioteca", es 図書館: 館 significa "edificio".'
+    author: claude
+  - id: n4-voc-2-0004
+    stem: 'あしたは　__びょういん__へ　行きます。'
+    choices:
+      - '病完'
+      - '病員'
+      - '秒院'
+      - '病院'
+    answer: 4
+    explanation:
+      en: 'びょういん, "hospital", is 病院.'
+      es: 'びょういん, "hospital", es 病院.'
+    author: claude
+  - id: n4-voc-2-0005
+    stem: '__きょうだい__は　何人ですか。'
+    choices:
+      - '兄段'
+      - '兄弟'
+      - '兄第'
+      - '元弟'
+    answer: 2
+    explanation:
+      en: 'きょうだい, "siblings", is 兄弟: older brother + younger brother.'
+      es: 'きょうだい, "hermanos", es 兄弟: hermano mayor + hermano menor.'
+    author: claude
+  - id: n4-voc-2-0006
+    stem: 'この　へやは　__あかるい__です。'
+    choices:
+      - '赤るい'
+      - '明かるい'
+      - '明るい'
+      - '朋るい'
+    answer: 3
+    explanation:
+      en: 'あかるい, "bright", is 明るい, with the okurigana るい.'
+      es: 'あかるい, "luminoso", es 明るい, con okurigana るい.'
+    author: claude
+  - id: n4-voc-2-0007
+    stem: '先生、__しつもん__が　あります。'
+    choices:
+      - '質間'
+      - '実問'
+      - '質門'
+      - '質問'
+    answer: 4
+    explanation:
+      en: 'しつもん, "question", is 質問. 門 and 間 look like 問 but mean "gate" and "space".'
+      es: 'しつもん, "pregunta", es 質問. 門 y 間 se parecen a 問 pero significan "puerta" y "espacio".'
+    author: claude
+  - id: n4-voc-2-0008
+    stem: '駅までの　__ちず__を　かいて　ください。'
+    choices:
+      - '地図'
+      - '他図'
+      - '池図'
+      - '地回'
+    answer: 1
+    explanation:
+      en: 'ちず, "map", is 地図.'
+      es: 'ちず, "mapa", es 地図.'
+    author: claude
+  - id: n4-voc-2-0009
+    stem: '毎日　__うんどう__を　して　います。'
+    choices:
+      - '連動'
+      - '運勤'
+      - '運働'
+      - '運動'
+    answer: 4
+    explanation:
+      en: 'うんどう, "exercise", is 運動. 働 and 勤 are about work.'
+      es: 'うんどう, "ejercicio", es 運動. 働 y 勤 tienen que ver con el trabajo.'
+    author: claude
+  - id: n4-voc-2-0010
+    stem: '__ゆうはん__は　何を　食べますか。'
+    choices:
+      - '夕版'
+      - '夕飯'
+      - '夕飲'
+      - '多飯'
+    answer: 2
+    explanation:
+      en: 'ゆうはん, "dinner", is 夕飯: evening + meal.'
+      es: 'ゆうはん, "cena", es 夕飯: tarde + comida.'
+    author: claude
+  - id: n4-voc-2-0011
+    stem: '__えき__の　まえで　まって　います。'
+    choices:
+      - '馬'
+      - '駆'
+      - '駅'
+      - '験'
+    answer: 3
+    explanation:
+      en: 'えき, "station", is 駅. 験 has the same right part but means "test".'
+      es: 'えき, "estación", es 駅. 験 tiene la misma parte derecha pero significa "examen".'
+    author: claude
+  - id: n4-voc-2-0012
+    stem: 'この　__しなもの__は　高いです。'
+    choices:
+      - '品物'
+      - '晶物'
+      - '口物'
+      - '品者'
+    answer: 1
+    explanation:
+      en: 'しなもの, "goods", is 品物.'
+      es: 'しなもの, "artículo, mercancía", es 品物.'
+    author: claude
+  - id: n4-voc-2-0013
+    stem: '車に　__ちゅうい__して　ください。'
+    choices:
+      - '柱意'
+      - '往意'
+      - '注意'
+      - '注音'
+    answer: 3
+    explanation:
+      en: 'ちゅうい, "care", is 注意. 柱 and 往 look like 注.'
+      es: 'ちゅうい, "cuidado", es 注意. 柱 y 往 se parecen a 注.'
+    author: claude
+  - id: n4-voc-2-0014
+    stem: 'あしたは　__はやく__　起きます。'
+    choices:
+      - '草く'
+      - '早く'
+      - '早やく'
+      - '旱く'
+    answer: 2
+    explanation:
+      en: 'はやく, "early", is 早く, with only く as okurigana.'
+      es: 'はやく, "temprano", es 早く, solo con く como okurigana.'
+    author: claude
+  - id: n4-voc-2-0015
+    stem: '駅まで　__はしって__　行きました。'
+    choices:
+      - '走って'
+      - '赴って'
+      - '起って'
+      - '足って'
+    answer: 1
+    explanation:
+      en: 'はしって, "running", is 走って, from 走る.'
+      es: 'はしって, "corriendo", es 走って, de 走る.'
+    author: claude

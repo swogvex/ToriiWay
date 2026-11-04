@@ -1,0 +1,153 @@
+# N4 · Vocabulary · Mondai 5 — usage
+# Original questions written for ToriiWay.
+level: N4
+section: vocabulary
+mondai: 5
+instruction:
+  en: 'Choose the sentence that uses the word correctly.'
+  ja: 'つぎの ことばの つかいかたで いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-voc-5-0001
+    stem: '__じゅんび__'
+    choices:
+      - '友だちに　じゅんびを　話しかけました。'
+      - 'この　ケーキは　じゅんびが　おいしいです。'
+      - 'あしたの　天気は　じゅんびです。'
+      - 'りょこうの　じゅんびは　もう　できましたか。'
+    answer: 4
+    explanation:
+      en: 'じゅんび means "preparation": りょこうの じゅんび.'
+      es: 'じゅんび significa "preparativos": りょこうの じゅんび.'
+    author: claude
+  - id: n4-voc-5-0002
+    stem: '__こわれる__'
+    choices:
+      - '時計が　こわれて、動きません。'
+      - 'きのう　友だちと　こわれました。'
+      - 'コップの　水が　こわれました。'
+      - 'かぜで　かみが　こわれました。'
+    answer: 1
+    explanation:
+      en: 'こわれる is used for things that break, like a clock.'
+      es: 'こわれる se usa con cosas que se rompen, como un reloj.'
+    author: claude
+  - id: n4-voc-5-0003
+    stem: '__るす__'
+    choices:
+      - 'わたしの　しゅみは　るすです。'
+      - 'この　店は　るすが　安いです。'
+      - '友だちの　家に　行きましたが、るすでした。'
+      - 'るすの　電車に　のりました。'
+    answer: 3
+    explanation:
+      en: 'るす means nobody is at home.'
+      es: 'るす significa que no hay nadie en casa.'
+    author: claude
+  - id: n4-voc-5-0004
+    stem: '__ねっしん__'
+    choices:
+      - 'きょうは　ねっしんな　天気です。'
+      - '弟は　ねっしんに　ピアノを　れんしゅうして　います。'
+      - 'ねっしんな　くつを　買いました。'
+      - 'この　お茶は　ねっしんです。'
+    answer: 2
+    explanation:
+      en: 'ねっしん describes a person who works hard at something.'
+      es: 'ねっしん describe a una persona que se esfuerza en algo.'
+    author: claude
+  - id: n4-voc-5-0005
+    stem: '__おれい__'
+    choices:
+      - 'おれいが　ふって　きました。'
+      - 'まどを　おれいして　ください。'
+      - 'てつだって　くれた　友だちに　おれいを　言いました。'
+      - 'おれいの　バスに　のりました。'
+    answer: 3
+    explanation:
+      en: 'おれいを いう means "to thank".'
+      es: 'おれいを いう significa "dar las gracias".'
+    author: claude
+  - id: n4-voc-5-0006
+    stem: '__すく__'
+    choices:
+      - 'おなかが　すいたので、何か　食べましょう。'
+      - 'へやに　人が　たくさん　すいて　います。'
+      - 'あめが　すいて　きました。'
+      - 'この　本を　すいて　ください。'
+    answer: 1
+    explanation:
+      en: 'おなかが すく means "to get hungry".'
+      es: 'おなかが すく significa "tener hambre".'
+    author: claude
+  - id: n4-voc-5-0007
+    stem: '__ひろう__'
+    choices:
+      - 'しゅくだいを　ひろって　ください。'
+      - 'かぜが　ひろって　きました。'
+      - 'バスを　ひろって　学校へ　行きます。'
+      - '道で　さいふを　ひろって、交番に　とどけました。'
+    answer: 4
+    explanation:
+      en: 'ひろう means picking something up from the ground.'
+      es: 'ひろう significa recoger algo del suelo.'
+    author: claude
+  - id: n4-voc-5-0008
+    stem: '__ていねい__'
+    choices:
+      - 'ていねいな　雨が　ふって　います。'
+      - '先生は　ていねいに　せつめいして　くれました。'
+      - 'この　くつは　ていねいに　大きいです。'
+      - 'ていねいな　水を　飲みました。'
+    answer: 2
+    explanation:
+      en: 'ていねい means careful or polite, for how someone does something.'
+      es: 'ていねい significa cuidadoso o educado, para la manera de hacer algo.'
+    author: claude
+  - id: n4-voc-5-0009
+    stem: '__ちこく__'
+    choices:
+      - 'この　時計は　ちこくして　います。'
+      - 'ちこくな　人は　きらいです。'
+      - 'ねぼうして、学校に　ちこくしました。'
+      - 'ちこくして、早く　つきました。'
+    answer: 3
+    explanation:
+      en: 'ちこくする means arriving late. A slow clock is おくれて いる.'
+      es: 'ちこくする significa llegar tarde. Un reloj atrasado está おくれて いる.'
+    author: claude
+  - id: n4-voc-5-0010
+    stem: '__とどける__'
+    choices:
+      - 'しゅくだいを　あたまで　とどけました。'
+      - '友だちの　家に　にもつを　とどけました。'
+      - '雨が　とどけて　います。'
+      - '空に　ひこうきが　とどけました。'
+    answer: 2
+    explanation:
+      en: 'とどける means to deliver something to someone.'
+      es: 'とどける significa entregar algo a alguien.'
+    author: claude
+  - id: n4-voc-5-0011
+    stem: '__つごう__'
+    choices:
+      - 'つごうに　のって　大阪へ　行きました。'
+      - 'わたしの　つごうは　赤い　色です。'
+      - 'この　つごうは　とても　おいしいです。'
+      - 'あしたは　つごうが　わるいので、あさって　会いましょう。'
+    answer: 4
+    explanation:
+      en: 'つごうが わるい means a time does not suit you.'
+      es: 'つごうが わるい significa que un momento no te viene bien.'
+    author: claude
+  - id: n4-voc-5-0012
+    stem: '__さかん__'
+    choices:
+      - 'この　町は　サッカーが　さかんです。'
+      - 'さかんな　水を　飲みました。'
+      - 'この　かばんは　さかんです。'
+      - 'きのうは　さかんに　ねました。'
+    answer: 1
+    explanation:
+      en: 'さかん means something is popular or thriving in a place.'
+      es: 'さかん significa que algo es popular o próspero en un lugar.'
+    author: claude
