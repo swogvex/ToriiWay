@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "vercel-build": "node scripts/db/migrate.ts && astro build",
+    "vercel-build": "node scripts/db/migrate.ts && astro build && node scripts/vercel/crons.ts",
     "preview": "astro preview",
     "check": "astro check && tsc --noEmit",
     "lint": "eslint . --max-warnings=0 && stylelint \"src/**/*.{css,astro}\" --max-warnings=0",
