@@ -1,0 +1,345 @@
+# N1 · Listening · Mondai 2 — point comprehension
+# Original questions written for ToriiWay.
+level: N1
+section: listening
+mondai: 2
+instruction:
+  en: 'Listen to the question first, then the conversation, and choose the best answer.'
+  ja: 'まず 質問を 聞いて ください。それから 話を 聞いて、最も よい ものを えらんで ください。'
+questions:
+  - id: n1-lis-2-0001
+    stem: '男の　人は　どうして　引っ越しますか。'
+    choices:
+      - '母親の　近くに　住む　ため'
+      - '駅から　遠いから'
+      - '家賃が　高いから'
+      - '工事が　うるさいから'
+    answer: 1
+    explanation:
+      en: 'The noise was a joke; his mother is unwell.'
+      es: 'Lo del ruido era broma; su madre está enferma.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0001-d31c5b091f10.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。男の　人は　どうして　引っ越しますか。\nF: 引っ越すんだって？　今の　部屋、駅から　近くて　便利なのに。\nM: うん、便利なんだけど、隣の　工事が　うるさくて……って　いうのは　冗談で、実は　母の　体の　具合が　よくなくてね。実家の　近くに　住む　ことに　したんだ。\nF: そうだったんだ。\nN: 男の　人は　どうして　引っ越しますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0002
+    stem: '女の　人は　新しい　職場の　何が　いちばん　大変だと　言って　いますか。'
+    choices:
+      - '仕事の　内容'
+      - '残業が　多い　こと'
+      - '人間関係'
+      - '通勤に　時間が　かかる　こと'
+    answer: 4
+    explanation:
+      en: 'The 90-minute commute.'
+      es: 'El trayecto de hora y media.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0002-05ce3c5a0189.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　新しい　職場の　何が　いちばん　大変だと　言って　いますか。\nM: 新しい　職場は　どう？\nF: 仕事の　内容は　前と　似て　いるから、すぐ　慣れたんだけど。\nM: 人間関係は？\nF: みんな　親切だよ。ただ、通勤に　一時間半も　かかるのが　つらくて。朝、六時に　起きなきゃ　いけないの。\nN: 女の　人は　新しい　職場の　何が　いちばん　大変だと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0003
+    stem: '男の　人は　映画の　どこが　よかったと　言って　いますか。'
+    choices:
+      - '話の　筋'
+      - '音楽'
+      - '映像'
+      - '俳優'
+    answer: 2
+    explanation:
+      en: 'The music alone made it worth seeing.'
+      es: 'Solo la música ya merecía la pena.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0003-cecb8ee484c1.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。男の　人は　映画の　どこが　よかったと　言って　いますか。\nF: きのうの　映画、どうだった？　話題の　俳優が　出てるんでしょう？\nM: うん。でも、正直、話の　筋は　よく　ある　感じだったな。\nF: そうなんだ。\nM: ただ、音楽が　すばらしくて。場面ごとに　曲が　ぴったりで、それだけで　見る　価値が　あったよ。\nN: 男の　人は　映画の　どこが　よかったと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0004
+    stem: '女の　人は　どうして　あしたの　会議に　出られませんか。'
+    choices:
+      - '体調が　悪いから'
+      - '会議の　時間を　知らなかったから'
+      - '本社の　研修が　あるから'
+      - '取引先に　行くから'
+    answer: 3
+    explanation:
+      en: 'The meeting is in the afternoon, when she has training.'
+      es: 'La reunión es por la tarde, cuando tiene formación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0004-b370ad11d089.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　あしたの　会議に　出られませんか。\nM: あしたの　会議、出られる？\nF: それが、急に　取引先から　呼ばれて。午前中は　そっちに　行かないと　いけないんです。\nM: 会議は　午後だよ。\nF: 午後は　午後で、本社の　研修が　入って　いまして。\nN: 女の　人は　どうして　あしたの　会議に　出られませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0005
+    stem: '男の　人が　ボランティアを　始めた　きっかけは　何ですか。'
+    choices:
+      - '教える　仕事に　興味が　あったから'
+      - '子どもと　一緒に　したかったから'
+      - '地域の　人に　恩返しを　したかったから'
+      - '友人に　誘われたから'
+    answer: 3
+    explanation:
+      en: 'He wants to give back to the community.'
+      es: 'Quiere devolver lo que recibió del barrio.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0005-46f2e34b81ec.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人が　ボランティアを　始めた　きっかけは　何ですか。\nF: 週末、子どもに　勉強を　教える　ボランティアを　して　いるそうですね。\nM: ええ。実は、自分の　子どもが　小さい　ころ、地域の　方に　ずいぶん　お世話に　なったんです。\nF: そうでしたか。\nM: 今度は　自分が　恩返しを　する　番だと　思いましてね。\nN: 男の　人が　ボランティアを　始めた　きっかけは　何ですか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0006
+    stem: '女の　人は　この　店の　何が　いちばん　気に入って　いますか。'
+    choices:
+      - '値段の　安さ'
+      - '店の　雰囲気'
+      - 'コーヒーの　味'
+      - '店の　人との　会話'
+    answer: 4
+    explanation:
+      en: 'Staff who remember her and chat.'
+      es: 'Que el personal la recuerde y charle con ella.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0006-2dc4c6ba29ed.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　この　店の　何が　いちばん　気に入って　いますか。\nM: この　カフェ、よく　来るの？\nF: うん、週に　三回は　来てる。\nM: コーヒーが　おいしいから？\nF: コーヒーも　いいけど、それより、店の　人が　お客さんの　ことを　覚えて　いて、自然に　話しかけて　くれるのが　うれしくて。\nN: 女の　人は　この　店の　何が　いちばん　気に入って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0007
+    stem: '男の　人は　どうして　車を　買うのを　やめましたか。'
+    choices:
+      - '必要な　ときに　借りる　ほうが　安いから'
+      - '電車の　ほうが　便利だから'
+      - '運転が　苦手だから'
+      - '駐車場代が　高いから'
+    answer: 1
+    explanation:
+      en: 'Car sharing is far cheaper for his use.'
+      es: 'Alquilar cuando lo necesita le sale mucho más barato.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0007-41e62717a3cf.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　車を　買うのを　やめましたか。\nF: 車、買うって　言ってなかった？\nM: うん、そう　思ってたんだけど。\nF: 駐車場代が　高いから？\nM: それも　あるけど、最近は　必要な　ときだけ　借りられる　サービスが　あるでしょ。月に　二、三回しか　乗らないなら、その　ほうが　ずっと　安いって　わかってね。\nN: 男の　人は　どうして　車を　買うのを　やめましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0008
+    stem: '女の　人は　どうして　昇進の　話を　断りましたか。'
+    choices:
+      - '責任が　重いから'
+      - 'お客と　直接　話す　仕事を　続けたいから'
+      - '家族の　世話が　あるから'
+      - '給料が　上がらないから'
+    answer: 2
+    explanation:
+      en: 'She loves talking to customers on the floor.'
+      es: 'Le encanta tratar con los clientes.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0008-1b5f64774f3f.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　昇進の　話を　断りましたか。\nM: 課長の　話、断ったんだって？\nF: ええ。\nM: 給料も　上がるのに、もったいない。\nF: 管理職に　なると、現場で　お客様と　話す　機会が　なくなるでしょう。わたしは　それが　何より　好きなので。\nN: 女の　人は　どうして　昇進の　話を　断りましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0009
+    stem: '男の　人は　何が　問題だと　言って　いますか。'
+    choices:
+      - '古い　データが　一部　移せない　こと'
+      - '操作が　難しい　こと'
+      - '画面が　見にくい　こと'
+      - '処理が　遅い　こと'
+    answer: 1
+    explanation:
+      en: 'Some old data could not be migrated.'
+      es: 'Parte de los datos antiguos no se pudo migrar.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0009-91a7ab997f13.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　何が　問題だと　言って　いますか。\nF: 新しい　システム、使って　みて　どう？\nM: 画面は　見やすく　なったし、処理も　速く　なったよ。\nF: よかった。\nM: ただ、前の　システムの　データが　一部　移せなくて、昔の　記録を　調べるのに　苦労してるんだ。\nN: 男の　人は　何が　問題だと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0010
+    stem: '女の　人は　どうして　早く　帰りますか。'
+    choices:
+      - '夫の　出張の　準備が　あるから'
+      - '娘を　迎えに　行くから'
+      - '体調が　悪いから'
+      - '娘の　学校の　面談に　行くから'
+    answer: 4
+    explanation:
+      en: "She goes to the school meeting in her husband's place."
+      es: 'Va a la reunión del colegio en lugar de su marido.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0010-4fb02b005645.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　早く　帰りますか。\nM: もう　帰るの？　まだ　四時だよ。\nF: 今日は　娘の　学校で　面談が　あって。\nM: ああ、それで。\nF: 本当は　夫が　行く　予定だったんだけど、急な　出張が　入っちゃって。\nN: 女の　人は　どうして　早く　帰りますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0011
+    stem: '男の　人は　料理教室に　通って　何が　変わったと　言って　いますか。'
+    choices:
+      - '外食が　好きに　なった'
+      - '体重が　減った'
+      - '料理が　上手に　なった'
+      - '友達が　増えた'
+    answer: 2
+    explanation:
+      en: 'Cooking at home, he lost five kilos.'
+      es: 'Cocinando en casa perdió cinco kilos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0011-5f3a589c193b.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　料理教室に　通って　何が　変わったと　言って　いますか。\nF: 料理教室に　通い始めて　半年だって？　上手に　なった？\nM: うーん、腕前は　まだまだだよ。\nF: そうなの？\nM: でも、自分で　作るように　なってから、外食が　減って、体重が　五キロも　落ちたんだ。\nN: 男の　人は　料理教室に　通って　何が　変わったと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0012
+    stem: '女の　人は　どうして　その　ホテルに　決めましたか。'
+    choices:
+      - '温泉が　あるから'
+      - '駅から　近いから'
+      - '部屋からの　景色が　いいから'
+      - '値段が　安いから'
+    answer: 3
+    explanation:
+      en: 'The mountain view from the room.'
+      es: 'La vista de la montaña desde la habitación.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0012-5686c51e569d.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　その　ホテルに　決めましたか。\nM: 旅行の　ホテル、決めた？\nF: うん、駅から　少し　遠いんだけど、ここに　した。\nM: 値段が　安いの？\nF: ほかと　同じくらい。でも、部屋から　山が　見えるって　書いて　あって。せっかくだから　景色を　楽しみたくて。\nN: 女の　人は　どうして　その　ホテルに　決めましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0013
+    stem: '男の　人は　どうして　今朝　会社に　遅れましたか。'
+    choices:
+      - '道に　迷ったから'
+      - '倒れた　人に　付き添って　いたから'
+      - '電車が　止まったから'
+      - '寝坊したから'
+    answer: 2
+    explanation:
+      en: 'He stayed with a neighbour who collapsed.'
+      es: 'Se quedó con una vecina que se desmayó.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0013-ed605d30e2e1.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　今朝　会社に　遅れましたか。\nF: 今朝、遅かったね。電車、止まってたの？\nM: いや、電車は　動いてたんだけど。\nF: 寝坊？\nM: 違うよ。家を　出たら、近所の　おばあさんが　道で　倒れて　いてね。救急車が　来るまで　付き添って　いたんだ。\nN: 男の　人は　どうして　今朝　会社に　遅れましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0014
+    stem: '女の　人は　何を　心配して　いますか。'
+    choices:
+      - '食べ物'
+      - '言葉'
+      - '仕事の　内容'
+      - '冬の　寒さ'
+    answer: 4
+    explanation:
+      en: 'She hates the cold.'
+      es: 'Lleva fatal el frío.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0014-be40140bc9c2.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　何を　心配して　いますか。\nM: 来月から　海外勤務だって？　すごいね。\nF: ありがとう。言葉は　ずっと　勉強して　きたから、なんとか　なると　思うんだけど。\nM: 食べ物とか？\nF: 食べ物は　何でも　平気。ただ、向こうは　冬が　すごく　寒いらしくて。寒いのが　本当に　苦手なの。\nN: 女の　人は　何を　心配して　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0015
+    stem: '男の　人は　どうして　その　本を　読もうと　思いましたか。'
+    choices:
+      - '京都を　観光する　ため'
+      - '試験が　あるから'
+      - '取引先の　社長と　話を　する　ため'
+      - '歴史が　好きだから'
+    answer: 3
+    explanation:
+      en: 'To keep up with a client who loves history.'
+      es: 'Para poder hablar con un cliente apasionado de la historia.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0015-213bff9655b5.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　その　本を　読もうと　思いましたか。\nF: 珍しいね、歴史の　本なんて。\nM: うん。今度、仕事で　京都に　行く　ことに　なってね。\nF: 観光するんだ？\nM: 観光の　時間は　ないんだけど、取引先の　社長が　歴史に　詳しい　人で。話を　合わせられるように　したくて。\nN: 男の　人は　どうして　その　本を　読もうと　思いましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0016
+    stem: '女の　人は　この　町の　何が　変わったと　言って　いますか。'
+    choices:
+      - '外国人が　増えた'
+      - '人が　少なく　なった'
+      - '駅前が　新しく　なった'
+      - '店が　減った'
+    answer: 1
+    explanation:
+      en: 'Many more foreign residents.'
+      es: 'Hay muchos más residentes extranjeros.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0016-762a6011da43.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　この　町の　何が　変わったと　言って　いますか。\nM: 十年ぶりに　帰って　きて、町、変わった？\nF: 駅前は　ほとんど　昔の　まま。\nM: そうなんだ。\nF: でも、外国から　来た　人が　ずいぶん　増えたね。お店の　看板にも　いろいろな　言葉が　書いて　あって、びっくりした。\nN: 女の　人は　この　町の　何が　変わったと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0017
+    stem: '男の　人は　どうして　今年の　マラソン大会に　出ませんか。'
+    choices:
+      - '友人の　結婚式が　あるから'
+      - '仕事が　忙しいから'
+      - '足を　けがしたから'
+      - '練習が　足りないから'
+    answer: 1
+    explanation:
+      en: "A friend's wedding is that day."
+      es: 'Ese día es la boda de un amigo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0017-5df370c5e10f.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　どうして　今年の　マラソン大会に　出ませんか。\nF: 今年も　マラソン大会、出るんでしょ？\nM: それが、今年は　やめて　おく。\nF: 足、けがしたの？\nM: 足は　大丈夫。大会の　日に　友人の　結婚式が　入っちゃってね。スピーチを　頼まれてるから、断れなくて。\nN: 男の　人は　どうして　今年の　マラソン大会に　出ませんか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0018
+    stem: '女の　人は　新しい　商品の　どこを　変えるべきだと　言って　いますか。'
+    choices:
+      - '値段'
+      - '量'
+      - 'パッケージ'
+      - '味'
+    answer: 3
+    explanation:
+      en: 'The package is hard to open.'
+      es: 'El envase cuesta abrirlo.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0018-710ba0bf5f54.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　新しい　商品の　どこを　変えるべきだと　言って　いますか。\nM: 新商品の　試作品、どうでした？\nF: 味は　とても　いいと　思います。\nM: 値段は？\nF: 少し　高めですが、品質を　考えれば　妥当でしょう。気に　なったのは　パッケージです。開けにくくて、お年寄りには　難しいと　思います。\nN: 女の　人は　新しい　商品の　どこを　変えるべきだと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0019
+    stem: '男の　人は　何が　いちばん　うれしかったと　言って　いますか。'
+    choices:
+      - '賞金を　もらえた　こと'
+      - '家族が　喜んで　くれた　こと'
+      - '有名に　なれた　こと'
+      - '審査員に　評価された　こと'
+    answer: 2
+    explanation:
+      en: "Above all, his family's joy."
+      es: 'Sobre todo, la alegría de su familia.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0019-7f4629143327.mp3'
+    tts:
+      script: "N: 授賞式で　女の　人が　男の　人に　インタビューを　して　います。男の　人は　何が　いちばん　うれしかったと　言って　いますか。\nF: 受賞、おめでとうございます。\nM: ありがとうございます。賞金も　いただけて、ありがたいです。\nF: 審査員の　方々からも　高く　評価されて　いましたね。\nM: ええ。でも　何より、ずっと　支えて　くれた　家族が　会場で　喜んで　くれたのが　うれしかったですね。\nN: 男の　人は　何が　いちばん　うれしかったと　言って　いますか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0020
+    stem: '女の　人は　どうして　ピアノを　また　始めましたか。'
+    choices:
+      - '仕事で　必要だから'
+      - '子どもの　ころの　夢だったから'
+      - '友人に　すすめられたから'
+      - '娘と　一緒に　練習したいから'
+    answer: 4
+    explanation:
+      en: 'To practise with her daughter.'
+      es: 'Para practicar con su hija.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0020-553938a47d4c.mp3'
+    tts:
+      script: "N: 男の　人と　女の　人が　話して　います。女の　人は　どうして　ピアノを　また　始めましたか。\nM: ピアノ、また　始めたんだって？\nF: うん。子どもの　ころ　やめちゃったんだけど。\nM: 何か　きっかけが　あったの？\nF: 娘が　習い始めてね。一緒に　練習できたら　楽しいかなって。\nN: 女の　人は　どうして　ピアノを　また　始めましたか。"
+      voices: ['narrator', 'man', 'woman']
+  - id: n1-lis-2-0021
+    stem: '男の　人は　今の　仕事の　何に　満足して　いますか。'
+    choices:
+      - '自分の　企画を　任せて　もらえる　こと'
+      - '勤務時間'
+      - '職場の　場所'
+      - '給料'
+    answer: 1
+    explanation:
+      en: 'He is trusted with his own projects.'
+      es: 'Le confían sus propios proyectos.'
+    author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-2-0021-32459d78ecf6.mp3'
+    tts:
+      script: "N: 女の　人と　男の　人が　話して　います。男の　人は　今の　仕事の　何に　満足して　いますか。\nF: 転職して　一年だね。どう？\nM: 給料は　前より　少し　下がったよ。\nF: そうなんだ。\nM: でも、自分の　企画を　任せて　もらえるから、やりがいが　あるんだ。前の　会社では　考えられなかったよ。\nN: 男の　人は　今の　仕事の　何に　満足して　いますか。"
+      voices: ['narrator', 'man', 'woman']
