@@ -19,6 +19,7 @@ questions:
       en: 'The roles weeds play.'
       es: 'El papel que cumplen las malas hierbas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0001-8fd8566407a0.mp3'
     tts:
       script: "N: ラジオで　研究者が　話して　います。\nM: 雑草と　いうと、取り除くべき　邪魔な　ものと　思われがちです。しかし、雑草の　根は　土を　しっかりと　つかみ、雨で　土が　流れるのを　防いで　います。また、多くの　虫の　すみかと　なり、それを　食べる　鳥を　呼び寄せます。雑草が　ある　ことで、その　土地の　生き物の　つながりが　保たれて　いるのです。\nN: 研究者は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -34,6 +35,7 @@ questions:
       en: 'A new kind of library.'
       es: 'Un nuevo tipo de biblioteca.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0002-3a0ef44a850e.mp3'
     tts:
       script: "N: テレビで　アナウンサーが　話して　います。\nF: 静かに　本を　読む　場所と　いう　イメージの　強い　図書館ですが、この　町に　先月　できた　図書館は　少し　違います。館内には　カフェが　あり、飲み物を　片手に　本を　選ぶ　ことが　できます。また、話し合いが　できる　部屋も　用意され、学生や　地域の　人たちが　気軽に　集まる　場所に　なって　います。\nN: アナウンサーは　何に　ついて　伝えて　いますか。"
       voices: ['narrator', 'woman']
@@ -49,6 +51,7 @@ questions:
       en: 'Stay off screens an hour before bed.'
       es: 'Dejar las pantallas una hora antes de dormir.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0003-5835fda9516a.mp3'
     tts:
       script: "N: 講演会で　医者が　話して　います。\nM: 夜、なかなか　寝付けないと　いう　相談を　よく　受けます。話を　聞くと、多くの　方が　寝る　直前まで　スマートフォンを　見て　います。画面の　強い　光は、脳に　昼間だと　勘違いさせ、眠りを　促す　ホルモンの　働きを　弱めて　しまいます。寝る　一時間前には　画面から　離れ、部屋の　明かりも　少し　暗く　する。それだけで、眠りの　質は　ずいぶん　変わりますよ。\nN: 医者が　最も　言いたい　ことは　何ですか。"
       voices: ['narrator', 'man']
@@ -64,6 +67,7 @@ questions:
       en: 'New rules for working from home.'
       es: 'Nuevas normas de teletrabajo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0004-f65a55d844f0.mp3'
     tts:
       script: "N: 会社の　会議で　部長が　話して　います。\nM: 来月から、在宅勤務の　ルールを　一部　変更します。これまでは　週　二日まででしたが、今後は　仕事の　内容に　応じて、週　三日まで　認めます。ただし、毎週　水曜日は　全員　出社とし、チームでの　打ち合わせに　あてて　ください。詳しくは　後ほど　メールで　お知らせします。\nN: 部長は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -79,6 +83,7 @@ questions:
       en: 'Tips for not wasting food.'
       es: 'Trucos para no desperdiciar comida.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0005-1b18e2748274.mp3'
     tts:
       script: "N: ラジオで　料理研究家が　話して　います。\nF: 冷蔵庫の　奥で、使い忘れた　野菜が　しなびて　いた、と　いう　経験は　ありませんか。わたしは、週に　一度、冷蔵庫の　中を　全部　確認する　日を　決めて　います。残って　いる　材料で　スープや　炒め物を　作れば、捨てずに　すみます。買い物の　前に　冷蔵庫を　見る　習慣も、余分な　物を　買わない　ために　役立ちますよ。\nN: 料理研究家は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'woman']
@@ -94,6 +99,7 @@ questions:
       en: 'Why dialects are worth keeping.'
       es: 'Por qué vale la pena conservar los dialectos.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0006-9bb588d12be5.mp3'
     tts:
       script: "N: 大学の　授業で　先生が　話して　います。\nM: テレビの　普及などに　より、各地の　方言を　話す　人は　年々　減って　います。若い　世代の　中には、方言は　古くさいと　感じる　人も　いるでしょう。しかし、方言には、その　土地の　暮らしや　自然と　結びついた　言葉が　数多く　含まれて　います。方言が　消えると　いう　ことは、その　土地の　文化の　一部が　失われる　ことでも　あるのです。\nN: 先生は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -109,6 +115,7 @@ questions:
       en: 'Alternatives are needed if older drivers give up licences.'
       es: 'Hacen falta alternativas si los mayores dejan el carné.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0007-08d7af0cac52.mp3'
     tts:
       script: "N: テレビで　専門家が　話して　います。\nF: 高齢の　運転者に　よる　事故が　報道される　たびに、免許を　返すべきだと　いう　声が　高まります。けれども、地方では、車が　なければ　買い物にも　病院にも　行けない　人が　少なく　ありません。返納を　すすめるのなら、同時に、地域の　バスや　送迎の　サービスなど、代わりの　移動手段を　整える　ことが　欠かせないのです。\nN: 専門家が　言いたい　ことは　何ですか。"
       voices: ['narrator', 'woman']
@@ -124,6 +131,7 @@ questions:
       en: 'The merits of renovating old houses.'
       es: 'Las ventajas de reformar casas antiguas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0008-784672abe3d0.mp3'
     tts:
       script: "N: 講演会で　建築家が　話して　います。\nM: 古い　家は　寒くて　不便だから、壊して　建て直す　ほうが　いいと　考える　方が　多いようです。しかし、柱や　はりが　しっかりして　いれば、断熱や　水回りを　直すだけで、快適に　暮らせるように　なります。長い　年月を　経た　木材には、新しい　材料には　ない　味わいも　あります。費用も、建て直すより　安く　済む　ことが　多いんですよ。\nN: 建築家は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -139,6 +147,7 @@ questions:
       en: 'The joys of travelling alone.'
       es: 'Lo bueno de viajar solo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0009-9489fb350787.mp3'
     tts:
       script: "N: ラジオで　女の　人が　話して　います。\nF: わたしは　年に　一度、一人で　旅に　出ます。友人と　行く　旅行も　楽しいですが、一人だと、行きたい　所に　行き、疲れたら　好きなだけ　休めます。それに、一人で　いると、地元の　人が　声を　かけて　くれる　ことが　多いんです。思いがけない　出会いが　ある　ことも、一人旅の　魅力だと　思います。\nN: 女の　人は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'woman']
@@ -154,6 +163,7 @@ questions:
       en: 'Choose the channel to suit the message.'
       es: 'Elegir el medio según el mensaje.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0010-ee4385a85eee.mp3'
     tts:
       script: "N: 会社の　研修で　講師が　話して　います。\nM: 最近は、仕事の　連絡を　ほとんど　メールで　済ませる　人が　増えて　います。記録が　残るので、確かに　便利です。ただ、急ぎの　用件や、相手に　謝らなければ　ならない　ときまで　メールで　済ませるのは　考えものです。文字だけでは、気持ちが　伝わりにくいからです。何を　伝えたいのかを　考えて、メールに　するか、電話に　するか、あるいは　直接　会うかを　決めて　ください。\nN: 講師が　最も　言いたい　ことは　何ですか。"
       voices: ['narrator', 'man']
@@ -169,6 +179,7 @@ questions:
       en: 'A town reviving itself with empty houses.'
       es: 'Un pueblo que revive con sus casas vacías.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0011-09743121d8ac.mp3'
     tts:
       script: "N: テレビで　アナウンサーが　話して　います。\nF: 人口が　減り、空き家が　増えて　いた　この　町では、三年前から、空き家を　安く　貸し出す　取り組みを　始めました。町が　修理の　費用の　一部を　負担し、都会から　移り住む　人を　募った　ところ、これまでに　四十組の　家族が　移住して　きました。空き家を　使った　カフェや　工房も　開かれ、町に　にぎわいが　戻りつつ　あります。\nN: アナウンサーは　何に　ついて　伝えて　いますか。"
       voices: ['narrator', 'woman']
@@ -184,6 +195,7 @@ questions:
       en: 'How laughing affects the body.'
       es: 'Cómo afecta la risa al cuerpo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0012-d64e828bb4a0.mp3'
     tts:
       script: "N: 大学の　授業で　先生が　話して　います。\nF: 「笑う　かどには　福　きたる」と　いう　ことわざが　ありますが、笑いは　実際に　体にも　よい　影響を　与える　ことが　わかって　きました。笑うと、体の　中で　病気と　戦う　細胞の　働きが　活発に　なると　いう　研究が　あります。また、笑った　あとは　血圧が　下がり、気分も　落ち着きます。笑いは、お金の　かからない　健康法と　言えるかもしれません。\nN: 先生は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'woman']
@@ -199,6 +211,7 @@ questions:
       en: 'Write every day, even three lines.'
       es: 'Escribir cada día, aunque sean tres líneas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0013-d2764c965208.mp3'
     tts:
       script: "N: 講演会で　作家が　話して　います。\nM: 作家に　なりたいと　いう　若い　方から、どう　すれば　文章が　うまく　なるかと　よく　聞かれます。わたしの　答えは　いつも　同じです。毎日、たとえ　三行でも　いいから　書く　こと。調子の　いい　日に　まとめて　書くより、少しずつでも　毎日　続ける　ほうが、ずっと　力が　つきます。才能は、その　あとで　ついて　くる　ものだと　思います。\nN: 作家が　最も　言いたい　ことは　何ですか。"
       voices: ['narrator', 'man']
@@ -214,6 +227,7 @@ questions:
       en: 'The benefits of shifting his commute.'
       es: 'Las ventajas de cambiar la hora del trayecto.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0014-c281dcc60cc0.mp3'
     tts:
       script: "N: ラジオで　男の　人が　話して　います。\nM: わたしの　会社では、出社する　時間を　自分で　選べるように　なりました。わたしは　一時間　早く　家を　出る　ことに　したのですが、電車が　すいて　いて、座って　本が　読めるんです。早く　着いた　分、静かな　事務所で　集中して　仕事が　でき、夕方は　早めに　帰れます。満員電車の　ストレスが　なくなっただけで、ずいぶん　楽に　なりました。\nN: 男の　人は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -229,6 +243,7 @@ questions:
       en: 'Why outdoor play matters.'
       es: 'Por qué importa jugar al aire libre.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0015-6ffdd822474b.mp3'
     tts:
       script: "N: テレビで　専門家が　話して　います。\nF: 最近の　子どもは、外で　遊ぶ　時間が　大きく　減って　います。しかし、外遊びには、体力を　つけるだけでなく、友達と　ルールを　決めたり、けんかを　して　仲直りしたり　する　中で、人との　関わり方を　学ぶ　意味も　あります。危ないからと　大人が　何でも　止めて　しまうのではなく、見守る　姿勢が　大切です。\nN: 専門家は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'woman']
@@ -244,6 +259,7 @@ questions:
       en: 'Do not fear change; try new things.'
       es: 'No temer al cambio; probar cosas nuevas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0016-f4959d33a578.mp3'
     tts:
       script: "N: 会社で　社長が　社員に　話して　います。\nM: わが社は　今年、創業　五十年を　迎えました。これも　皆さんの　努力の　おかげです。ただ、これまで　うまく　いって　きた　やり方が、これからも　通用するとは　限りません。お客様の　求める　ものは、年々　変わって　いるからです。失敗を　恐れず、新しい　ことに　どんどん　挑戦して　ください。それが、次の　五十年を　作る　力に　なると　信じて　います。\nN: 社長が　言いたい　ことは　何ですか。"
       voices: ['narrator', 'man']
@@ -259,6 +275,7 @@ questions:
       en: 'Drinking water in winter too.'
       es: 'Beber agua también en invierno.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0017-474f82e24b26.mp3'
     tts:
       script: "N: ラジオで　医者が　話して　います。\nM: 水分を　とる　ことは　夏だけの　問題だと　思って　いませんか。実は、冬も　空気が　乾燥し、暖房の　効いた　部屋では、知らないうちに　体から　水分が　失われて　います。のどが　渇いたと　感じにくい　ため、気づかない　ことが　多いのです。冬でも　こまめに　水を　飲む　ことを　心がけて　ください。\nN: 医者は　何に　ついて　話して　いますか。"
       voices: ['narrator', 'man']
@@ -274,6 +291,7 @@ questions:
       en: 'Unexpected results deserve attention.'
       es: 'Los resultados inesperados merecen atención.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-3-0018-e4839af5c45f.mp3'
     tts:
       script: "N: 講演会で　大学の　先生が　話して　います。\nF: 科学の　歴史を　ふり返ると、大きな　発見の　多くは、予想と　違う　結果から　生まれて　います。ある　薬も、別の　目的で　おこなった　実験の　失敗が　きっかけでした。思った　とおりに　ならなかった　とき、それを　ただの　失敗として　捨てて　しまうか、なぜだろうと　立ち止まるか。その　違いが、発見に　つながるか　どうかを　分けるのです。\nN: 先生が　最も　言いたい　ことは　何ですか。"
       voices: ['narrator', 'woman']

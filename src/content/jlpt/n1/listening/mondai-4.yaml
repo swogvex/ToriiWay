@@ -18,6 +18,7 @@ questions:
       en: 'ただでは 済まない: there will be trouble.'
       es: 'ただでは 済まない: habrá problemas.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0001-7f31ff14b39a.mp3'
     tts:
       script: "M: あの　件、部長の　耳に　入ったら　ただでは　済まないよ。\nF: 1　そうだね、早めに　自分から　報告しよう\nF: 2　ただなら　ありがたいね\nF: 3　うん、部長は　耳が　いいからね"
       voices: ['man', 'woman']
@@ -32,6 +33,7 @@ questions:
       en: 'Agreeing it went well.'
       es: 'Coincidir en que salió bien.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0002-b96d7a539b01.mp3'
     tts:
       script: "F: 今回の　企画、彼に　任せて　正解だったね。\nM: 1　え、不正解だったの？\nM: 2　任せなければ　よかったね\nM: 3　うん、期待以上の　出来だったよ"
       voices: ['man', 'woman']
@@ -46,6 +48,7 @@ questions:
       en: 'The manager is out: come back another time.'
       es: 'El jefe no está: volver otro día.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0003-14c336d0d2d6.mp3'
     tts:
       script: "M: せっかく　来て　いただいたのに、あいにく　部長は　外出して　おりまして。\nF: 1　では、部長に　外出して　いただけますか\nF: 2　そうですか。では、また　改めて　伺います\nF: 3　それは　よかったです"
       voices: ['man', 'woman']
@@ -60,6 +63,7 @@ questions:
       en: '詰める: to refine, work out details.'
       es: '詰める: pulir, concretar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0004-7b0a614fe5fb.mp3'
     tts:
       script: "F: この　報告書、もう少し　詰めた　ほうが　いいんじゃない？\nM: 1　そうですね。データを　もう一度　見直します\nM: 2　もう　ぎりぎりまで　あけました\nM: 3　はい、箱に　詰めて　おきます"
       voices: ['man', 'woman']
@@ -74,6 +78,7 @@ questions:
       en: '身が 入らない: cannot focus.'
       es: '身が 入らない: no concentrarse.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0005-cb65eaec2d69.mp3'
     tts:
       script: "M: 田中さん、最近　仕事に　身が　入って　ないみたいだね。\nF: 1　うん、すごく　頑張ってるね\nF: 2　何か　悩みでも　あるのかな\nF: 3　体重が　減ったのかな"
       voices: ['man', 'woman']
@@ -88,6 +93,7 @@ questions:
       en: 'A polite request for a moment.'
       es: 'Una petición cortés de un momento.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0006-ab834b1d9534.mp3'
     tts:
       script: "F: お忙しい　ところ　恐れ入りますが、少々　お時間を　いただけますか。\nM: 1　いえ、時間は　差し上げられません\nM: 2　はい、恐れて　います\nM: 3　ええ、何でしょうか"
       voices: ['man', 'woman']
@@ -102,6 +108,7 @@ questions:
       en: 'No regrets after all that practice.'
       es: 'Sin remordimientos tras tanto entrenar.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0007-b8c8250c594c.mp3'
     tts:
       script: "M: あれだけ　練習したんだから、負けても　悔いは　ないよ。\nF: 1　じゃあ、もっと　練習すれば　よかったね\nF: 2　悔しくて　たまらないね\nF: 3　うん、やれる　ことは　全部　やったもんね"
       voices: ['man', 'woman']
@@ -116,6 +123,7 @@ questions:
       en: '独壇場: a one-person show.'
       es: '独壇場: un espectáculo de una sola persona.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0008-0823efb80d5a.mp3'
     tts:
       script: "F: 今日の　プレゼン、山田さんの　独壇場だったね。\nM: 1　うん、山田さんは　来なかったね\nM: 2　本当、だれも　口を　挟めなかったね\nM: 3　みんなで　協力して　よかったね"
       voices: ['man', 'woman']
@@ -130,6 +138,7 @@ questions:
       en: '今さら: too late now.'
       es: '今さら: ya es tarde.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0009-995f7d1d0835.mp3'
     tts:
       script: "M: そんな　こと、今さら　言われても　困るよ。\nF: 1　ごめん、もっと　早く　言うべきだったね\nF: 2　じゃあ、あとで　言うね\nF: 3　今　言って　よかった"
       voices: ['man', 'woman']
@@ -144,6 +153,7 @@ questions:
       en: 'Reassuring about the weather.'
       es: 'Tranquilizar sobre el tiempo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0010-19de2b975447.mp3'
     tts:
       script: "F: 今度の　旅行、雨に　降られなければ　いいけど。\nM: 1　雨で　よかったね\nM: 2　うん、雨に　降らせよう\nM: 3　天気予報では　晴れるって　言ってたよ"
       voices: ['man', 'woman']
@@ -158,6 +168,7 @@ questions:
       en: '腑に 落ちない: it does not convince.'
       es: '腑に 落ちない: no convence.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0011-37fb3d4e69a1.mp3'
     tts:
       script: "M: 彼の　話、どうも　腑に　落ちないんだよね。\nF: 1　お腹が　痛いの？\nF: 2　わたしも、何か　隠してる　気が　する\nF: 3　うん、とても　納得できたね"
       voices: ['man', 'woman']
@@ -172,6 +183,7 @@ questions:
       en: '目を 通す: to look over.'
       es: '目を 通す: echar un vistazo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0012-df5ac78656ab.mp3'
     tts:
       script: "F: 課長、この　書類に　目を　通して　いただけますか。\nM: 1　わかった。あとで　見て　おくよ\nM: 2　書類を　通して　おいて\nM: 3　目は　大丈夫だよ"
       voices: ['man', 'woman']
@@ -186,6 +198,7 @@ questions:
       en: 'あとには 引けない: no turning back.'
       es: 'あとには 引けない: ya no hay vuelta atrás.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0013-ec9c10201515.mp3'
     tts:
       script: "M: ここまで　来たら、もう　あとには　引けないね。\nF: 1　後ろに　下がって　ください\nF: 2　じゃあ、引き返そうか\nF: 3　うん、最後まで　やり遂げよう"
       voices: ['man', 'woman']
@@ -200,6 +213,7 @@ questions:
       en: 'The set reply when a colleague leaves.'
       es: 'La respuesta fija cuando un compañero se va.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0014-4427ae1df543.mp3'
     tts:
       script: "F: すみません、お先に　失礼します。\nM: 1　お疲れさまでした\nM: 2　いえ、失礼じゃないですよ\nM: 3　どうぞ、お先に　召し上がって"
       voices: ['man', 'woman']
@@ -214,6 +228,7 @@ questions:
       en: '見送る: to pass on (a proposal).'
       es: '見送る: descartar (una propuesta).'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0015-510b903c6e93.mp3'
     tts:
       script: "M: 今回は　見送らせて　いただく　ことに　なりました。\nF: 1　はい、駅まで　お見送りします\nF: 2　そうですか。残念ですが、承知しました\nF: 3　ありがとうございます、助かります"
       voices: ['man', 'woman']
@@ -228,6 +243,7 @@ questions:
       en: '荷が 重い: too much responsibility.'
       es: '荷が 重い: demasiada responsabilidad.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0016-5cced2bae05b.mp3'
     tts:
       script: "F: この　仕事、わたしには　荷が　重いです。\nM: 1　大丈夫、ぼくも　手伝うから\nM: 2　軽くて　よかったね\nM: 3　じゃあ、荷物を　持とうか"
       voices: ['man', 'woman']
@@ -242,6 +258,7 @@ questions:
       en: '〜は ともかく: setting aside (the taste).'
       es: '〜は ともかく: dejando aparte (el sabor).'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0017-cf78e83d4fef.mp3'
     tts:
       script: "M: あの　店、味は　ともかく、雰囲気は　いいね。\nF: 1　雰囲気が　悪かったね\nF: 2　そうだね、料理は　いまいちだったけど\nF: 3　うん、味が　最高だったね"
       voices: ['man', 'woman']
@@ -256,6 +273,7 @@ questions:
       en: 'The usual humble reply.'
       es: 'La respuesta humilde habitual.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0018-e901264e47fb.mp3'
     tts:
       script: "F: 先日は　大変　お世話に　なりました。\nM: 1　いいえ、お世話に　なりません\nM: 2　はい、お世話して　あげました\nM: 3　いえいえ、こちらこそ"
       voices: ['man', 'woman']
@@ -270,6 +288,7 @@ questions:
       en: 'Prepare a backup plan.'
       es: 'Preparar un plan B.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0019-d642b29a5d88.mp3'
     tts:
       script: "M: その　案、通るとは　限らないよ。\nF: 1　その　道は　通れないの？\nF: 2　じゃあ、必ず　通るね\nF: 3　うん、別の　案も　考えて　おこう"
       voices: ['man', 'woman']
@@ -284,6 +303,7 @@ questions:
       en: '頭が 下がる: to admire deeply.'
       es: '頭が 下がる: admirar profundamente.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0020-36b337f95b56.mp3'
     tts:
       script: "F: 彼女の　努力には　頭が　下がるね。\nM: 1　本当に、だれにも　まねできないよ\nM: 2　もう少し　努力して　ほしいね\nM: 3　うん、頭が　痛いね"
       voices: ['man', 'woman']
@@ -298,6 +318,7 @@ questions:
       en: 'He is delayed: start without him.'
       es: 'Se retrasa: empezar sin él.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0021-a9c37297b1b8.mp3'
     tts:
       script: "M: 会議、長引きそうだから、先に　始めて　いて。\nF: 1　うん、早く　終わって　よかった\nF: 2　わかった。じゃあ、資料だけ　配って　おくね\nF: 3　じゃあ、待って　いるね"
       voices: ['man', 'woman']
@@ -312,6 +333,7 @@ questions:
       en: 'Accepting an offer graciously.'
       es: 'Aceptar un ofrecimiento con cortesía.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0022-99d0354371c4.mp3'
     tts:
       script: "F: お言葉に　甘えて、使わせて　いただきます。\nM: 1　いえ、使わないで　ください\nM: 2　どうぞ、遠慮なく\nM: 3　甘い　言葉ですね"
       voices: ['man', 'woman']
@@ -326,6 +348,7 @@ questions:
       en: 'Agreeing he went too far.'
       es: 'Coincidir en que se pasó.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0023-36cbd5165513.mp3'
     tts:
       script: "M: 彼の　発言、ちょっと　言い過ぎじゃない？\nF: 1　うん、あれは　相手も　気を　悪く　するよね\nF: 2　言わなさすぎだね\nF: 3　もっと　言えば　よかったね"
       voices: ['man', 'woman']
@@ -340,6 +363,7 @@ questions:
       en: '白紙に 戻す: start over.'
       es: '白紙に 戻す: empezar de cero.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0024-a27054dd3827.mp3'
     tts:
       script: "F: この　計画、白紙に　戻すしか　なさそうですね。\nM: 1　うまく　進んで　よかったです\nM: 2　じゃあ、白い　紙を　用意します\nM: 3　残念だけど、一から　考え直そう"
       voices: ['man', 'woman']
@@ -354,6 +378,7 @@ questions:
       en: 'The client is angry: go and apologise.'
       es: 'El cliente está enfadado: ir a disculparse.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0025-8fafbbb85f83.mp3'
     tts:
       script: "M: 先方、だいぶ　お怒りの　ようでしたよ。\nF: 1　よかった、喜んで　いたんだね\nF: 2　じゃあ、すぐに　お詫びに　伺おう\nF: 3　怒って　あげれば　いいよ"
       voices: ['man', 'woman']
@@ -368,6 +393,7 @@ questions:
       en: 'Out of stock: ask to be notified.'
       es: 'Sin existencias: pedir aviso.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0026-e5e97d404c8f.mp3'
     tts:
       script: "F: ご注文の　品、あいにく　在庫を　切らして　おりまして。\nM: 1　じゃあ、全部　ください\nM: 2　在庫が　あって　よかった\nM: 3　では、入荷したら　連絡して　ください"
       voices: ['man', 'woman']
@@ -382,6 +408,7 @@ questions:
       en: 'まさか: nobody expected it.'
       es: 'まさか: nadie lo esperaba.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0027-7f4bbddc8b4b.mp3'
     tts:
       script: "M: まさか　彼が　会社を　辞めるとはね。\nF: 1　本当、思っても　みなかったよ\nF: 2　うん、やっぱり　辞めたね\nF: 3　辞めるに　決まってるよ"
       voices: ['man', 'woman']
@@ -396,6 +423,7 @@ questions:
       en: '話の わかる 人: understanding, reasonable.'
       es: '話の わかる 人: comprensivo, razonable.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0028-f88232d33809.mp3'
     tts:
       script: "F: 新しい　部長、なかなか　話の　わかる　人だね。\nM: 1　うん、何を　言ってるか　わからないね\nM: 2　うん、意見も　ちゃんと　聞いて　くれるし\nM: 3　話が　長くて　困るね"
       voices: ['man', 'woman']
@@ -410,6 +438,7 @@ questions:
       en: '一存では 決めかねる: cannot decide alone.'
       es: '一存では 決めかねる: no puede decidirlo solo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0029-24bbd43e0e8c.mp3'
     tts:
       script: "M: この　件は　わたしの　一存では　決めかねます。\nF: 1　では、上の　かたと　ご相談の　うえ、お返事　ください\nF: 2　では、今　決めて　ください\nF: 3　決めて　くださって　ありがとうございます"
       voices: ['man', 'woman']
@@ -424,6 +453,7 @@ questions:
       en: 'Apologising for telling her late.'
       es: 'Disculparse por avisar tarde.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0030-abbd558f7190.mp3'
     tts:
       script: "F: もう　少し　早く　言って　くれれば　よかったのに。\nM: 1　うん、早く　言えたね\nM: 2　じゃあ、遅く　言うね\nM: 3　ごめん、うっかり　忘れてて"
       voices: ['man', 'woman']
@@ -438,6 +468,7 @@ questions:
       en: '五分五分: fifty-fifty.'
       es: '五分五分: al cincuenta por ciento.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0031-82e34c3689fe.mp3'
     tts:
       script: "M: 試験、受かるか　どうか、ごぶごぶって　ところかな。\nF: 1　半分　受かったんだね\nF: 2　ごふんで　終わったの？\nF: 3　大丈夫、きっと　受かるよ"
       voices: ['man', 'woman']
@@ -452,6 +483,7 @@ questions:
       en: '〜だけの ことは ある: as expected of.'
       es: '〜だけの ことは ある: como era de esperar de.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0032-c41b7c840f15.mp3'
     tts:
       script: "F: 山田さん、さすが　ベテランだけの　ことは　あるね。\nM: 1　本当、手際が　全然　違うね\nM: 2　ベテランなのに　残念だね\nM: 3　まだ　新人だからね"
       voices: ['man', 'woman']
@@ -466,6 +498,7 @@ questions:
       en: '言い出したら 聞かない: stubborn.'
       es: '言い出したら 聞かない: testarudo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0033-1a32980300d9.mp3'
     tts:
       script: "M: うちの　部長、言い出したら　聞かないからなあ。\nF: 1　よく　話を　聞いて　くれるよね\nF: 2　一度　決めたら　変えない　人だもんね\nF: 3　何も　言わない　人だね"
       voices: ['man', 'woman']
@@ -480,6 +513,7 @@ questions:
       en: 'お口汚し: a humble way to offer food.'
       es: 'お口汚し: forma humilde de ofrecer comida.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0034-df8767fe7131.mp3'
     tts:
       script: "F: お口汚しですが、どうぞ。\nM: 1　汚くて　すみません\nM: 2　では、遠慮なく　いただきます\nM: 3　口を　拭いて　ください"
       voices: ['man', 'woman']
@@ -494,6 +528,7 @@ questions:
       en: 'A polite disagreement.'
       es: 'Un desacuerdo cortés.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0035-069880334dc5.mp3'
     tts:
       script: "M: あの　映画、期待した　ほどじゃ　なかったな。\nF: 1　うん、期待以上だったね\nF: 2　じゃあ、また　期待しよう\nF: 3　そう？　わたしは　結構　楽しめたけど"
       voices: ['man', 'woman']
@@ -508,6 +543,7 @@ questions:
       en: 'Agreeing to postpone and asking when.'
       es: 'Aceptar el aplazamiento y preguntar cuándo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0036-ec6ba561b88e.mp3'
     tts:
       script: "F: 急な　話で　恐縮ですが、あしたの　打ち合わせ、延期に　できませんか。\nM: 1　ええ、構いませんよ。いつが　よろしいですか\nM: 2　はい、あしたで　大丈夫です\nM: 3　いえ、急いで　ください"
       voices: ['man', 'woman']
@@ -522,6 +558,7 @@ questions:
       en: 'All talk.'
       es: 'Mucho hablar y poco hacer.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0037-4b578e003160.mp3'
     tts:
       script: "M: あいつ、口では　偉そうな　ことを　言うけど、実際は　どうかな。\nF: 1　うん、無口だよね\nF: 2　確かに、口ばっかりの　ところ　あるよね\nF: 3　実際に　やって　みせて　くれたね"
       voices: ['man', 'woman']
@@ -536,6 +573,7 @@ questions:
       en: '参った: worn out.'
       es: '参った: agotado.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0038-33607f941cb0.mp3'
     tts:
       script: "F: この　ところ、残業続きで　さすがに　参ったよ。\nM: 1　参加して　よかったね\nM: 2　残業が　なくて　いいね\nM: 3　大変だね。少しは　休めてる？"
       voices: ['man', 'woman']
@@ -550,6 +588,7 @@ questions:
       en: 'Accepting the offer to keep her bag.'
       es: 'Aceptar que le guarden la bolsa.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0039-fbc157bdf421.mp3'
     tts:
       script: "M: よろしければ、こちらで　お預かり　いたしましょうか。\nF: 1　あ、では　お願いします\nF: 2　預かって　あげます\nF: 3　はい、お預けに　なります"
       voices: ['man', 'woman']
@@ -564,6 +603,7 @@ questions:
       en: '〜の わりに: considering the price.'
       es: '〜の わりに: para lo que cuesta.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0040-be7f3c7ce55c.mp3'
     tts:
       script: "F: 値段の　わりに、品質が　いまいちだね。\nM: 1　うん、この　値段なら　もっと　いい　物が　あるよ\nM: 2　安いのに　いい　物だね\nM: 3　値段が　安くて　助かるね"
       voices: ['man', 'woman']
@@ -578,6 +618,7 @@ questions:
       en: 'ここだけの 話: between us.'
       es: 'ここだけの 話: entre nosotros.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0041-af222a08d81f.mp3'
     tts:
       script: "M: その　話、ここだけの　話に　して　おいてね。\nF: 1　うん、みんなに　伝えて　おく\nF: 2　わかった、だれにも　言わないよ\nF: 3　じゃあ、ここで　話そう"
       voices: ['man', 'woman']
@@ -592,6 +633,7 @@ questions:
       en: 'いい 薬: a useful lesson.'
       es: 'いい 薬: una buena lección.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-4-0042-c6ab39d6fe17.mp3'
     tts:
       script: "F: 今回の　失敗を　いい　薬に　して、次は　頑張ります。\nM: 1　薬局に　行って　きて\nM: 2　具合が　悪いの？\nM: 3　うん、その　意気だよ"
       voices: ['man', 'woman']

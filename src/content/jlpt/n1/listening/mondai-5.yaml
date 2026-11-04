@@ -19,6 +19,7 @@ questions:
       en: 'Cheaper than the train, easier on grandma, handy there.'
       es: 'Más barato que el tren, cómodo para la abuela y útil allí.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0001-6d3f77f9af3f.mp3'
     tts:
       script: "N: 夫婦が　法事に　行く　方法に　ついて　話して　います。\nF: 来月の　法事、新幹線で　行く？\nM: 新幹線は　速いけど、三人分だと　高いよね。夜行バスは？\nF: 夜行バスは　安いけど、おばあちゃんが　一緒だと　疲れるでしょう。\nM: じゃあ、車は？　交代で　運転すれば。\nF: 向こうで　親戚の　家を　回るなら、車が　あると　便利だね。\nM: よし、決まり。\nN: 二人は　なにで　行く　ことに　しましたか。"
       voices: ['narrator', 'man', 'woman']
@@ -34,6 +35,7 @@ questions:
       en: 'Weekday mornings are out; pottery in the evening.'
       es: 'Las mañanas laborables no puede; cerámica por la noche.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0002-b1d363eead61.mp3'
     tts:
       script: "N: ラジオで　四つの　講座を　紹介して　います。それを　聞いて、夫婦が　話して　います。\nN: 一つ目は　写真講座。毎週　土曜の　朝です。二つ目は　陶芸教室。平日の　夜、月に　二回です。三つ目は　英会話。毎週　日曜の　午後です。四つ目は　ヨガ。平日の　朝です。\nF: わたし、体を　動かす　ものが　いいな。でも、平日の　朝は　仕事に　行く　前だから　無理。\nM: じゃあ、土曜の　朝の　写真は？　一緒に　行こうか。\nF: 写真は　体を　動かさないでしょう。……それなら、手を　使う　陶芸かな。夜なら　行けるし。\nM: ぼくは　週末が　いいから、英会話に　する。\nN: 女の　人は　どの　講座に　行きますか。"
       voices: ['narrator', 'man', 'woman']
@@ -49,6 +51,7 @@ questions:
       en: 'He wants the weekend: English on Sunday.'
       es: 'Quiere el fin de semana: inglés el domingo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0003-97d10c11703a.mp3'
     tts:
       script: "N: ラジオで　四つの　講座を　紹介して　います。それを　聞いて、夫婦が　話して　います。\nN: 一つ目は　写真講座。毎週　土曜の　朝です。二つ目は　陶芸教室。平日の　夜、月に　二回です。三つ目は　英会話。毎週　日曜の　午後です。四つ目は　ヨガ。平日の　朝です。\nF: わたし、体を　動かす　ものが　いいな。でも、平日の　朝は　仕事に　行く　前だから　無理。\nM: じゃあ、土曜の　朝の　写真は？　一緒に　行こうか。\nF: 写真は　体を　動かさないでしょう。……それなら、手を　使う　陶芸かな。夜なら　行けるし。\nM: ぼくは　週末が　いいから、英会話に　する。\nN: 男の　人は　どの　講座に　行きますか。"
       voices: ['narrator', 'man', 'woman']
@@ -64,6 +67,7 @@ questions:
       en: 'In-house, one day: they meet and save money.'
       es: 'En la empresa, en un día: se conocen y ahorran.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0004-e9fe114072b0.mp3'
     tts:
       script: "N: 会社で　男の　人と　女の　人が　新人研修に　ついて　話して　います。\nM: 新人研修、今年は　どう　する？　去年と　同じ　ホテルでの　合宿に　する？\nF: 合宿は　費用が　かかるし、泊まりは　負担だって　声も　あったよね。\nM: じゃあ、オンラインは？\nF: 安いけど、同期同士の　つながりが　できにくいと　思う。\nM: それなら、会社の　会議室で、日帰りで　やろうか。\nF: うん、それなら　顔も　合わせられるし、費用も　抑えられるね。\nN: 研修は　どう　する　ことに　なりましたか。"
       voices: ['narrator', 'man', 'woman']
@@ -79,6 +83,7 @@ questions:
       en: 'Frequent trips: the long battery.'
       es: 'Viaja mucho: la batería duradera.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0005-475a52b119b5.mp3'
     tts:
       script: "N: テレビで　四つの　新しい　スマートフォンを　紹介して　います。それを　聞いて、男の　人と　女の　人が　話して　います。\nN: 一番は　画面が　大きく、動画を　見るのに　向いて　います。二番は　電池が　長持ちで、三日　充電しなくても　大丈夫です。三番は　カメラの　性能が　高く、暗い　所でも　きれいに　撮れます。四番は　小さくて　軽く、値段も　いちばん　安いです。\nM: ぼく、出張が　多いから、充電できない　ことが　よく　あるんだ。\nF: じゃあ、迷う　こと　ないね。わたしは　写真を　よく　撮るけど、夜景は　撮らないし……。それより、通勤の　電車で　ドラマを　見るのが　楽しみなんだ。\nM: それなら　決まりだね。\nN: 男の　人は　どれを　選びますか。"
       voices: ['narrator', 'man', 'woman']
@@ -94,6 +99,7 @@ questions:
       en: 'She watches dramas on the train: the big screen.'
       es: 'Ve series en el tren: la pantalla grande.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0006-b23832af6180.mp3'
     tts:
       script: "N: テレビで　四つの　新しい　スマートフォンを　紹介して　います。それを　聞いて、男の　人と　女の　人が　話して　います。\nN: 一番は　画面が　大きく、動画を　見るのに　向いて　います。二番は　電池が　長持ちで、三日　充電しなくても　大丈夫です。三番は　カメラの　性能が　高く、暗い　所でも　きれいに　撮れます。四番は　小さくて　軽く、値段も　いちばん　安いです。\nM: ぼく、出張が　多いから、充電できない　ことが　よく　あるんだ。\nF: じゃあ、迷う　こと　ないね。わたしは　写真を　よく　撮るけど、夜景は　撮らないし……。それより、通勤の　電車で　ドラマを　見るのが　楽しみなんだ。\nM: それなら　決まりだね。\nN: 女の　人は　どれを　選びますか。"
       voices: ['narrator', 'man', 'woman']
@@ -109,6 +115,7 @@ questions:
       en: 'Only birds and fish are allowed; they choose fish.'
       es: 'Solo se permiten pájaros y peces; eligen peces.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0007-0a7ad7d4a65b.mp3'
     tts:
       script: "N: 夫婦が　ペットに　ついて　話して　います。\nF: 犬を　飼いたいって、子どもたちが　言うんだけど。\nM: 犬は　毎日　散歩が　必要だろう。うちは　二人とも　帰りが　遅いし。\nF: 猫は？\nM: 猫なら　散歩は　いらないけど、この　マンション、猫は　禁止じゃなかった？\nF: 規則では、小鳥と　魚だけ　だって。\nM: じゃあ、魚に　しよう。世話も　子どもたちが　できるし。\nN: 二人は　何を　飼う　ことに　しましたか。"
       voices: ['narrator', 'man', 'woman']
@@ -124,6 +131,7 @@ questions:
       en: "She wants to work with children: the children's cafeteria."
       es: 'Quiere trabajar con niños: el comedor infantil.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0008-16f63055565e.mp3'
     tts:
       script: "N: ラジオで　四つの　ボランティアの　募集を　紹介して　います。それを　聞いて、男の　学生と　女の　学生が　話して　います。\nN: 一つ目は、公園の　清掃です。毎月　第一　日曜日の　朝に　おこないます。二つ目は、留学生への　日本語の　支援で、平日の　夕方です。三つ目は、高齢者施設での　話し相手で、土曜日の　午後です。四つ目は、子ども食堂の　手伝いで、金曜日の　夜です。\nF: わたし、教育学部だから、子どもと　関わる　ものが　いいな。\nM: 金曜の　夜は　アルバイトが　あるから、ぼくは　無理だ。言葉を　教えるのは　興味が　あるけど、平日の　夕方は　授業が　あるし……。\nF: 土曜なら　あいてるんでしょう？　お年寄りと　話すのも　いい　経験に　なるよ。\nM: そうだね。そう　する。\nN: 女の　学生は　どれに　参加しますか。"
       voices: ['narrator', 'man', 'woman']
@@ -139,6 +147,7 @@ questions:
       en: 'Saturday is free: talking with older people.'
       es: 'El sábado lo tiene libre: charlar con mayores.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0009-77357f8e9b94.mp3'
     tts:
       script: "N: ラジオで　四つの　ボランティアの　募集を　紹介して　います。それを　聞いて、男の　学生と　女の　学生が　話して　います。\nN: 一つ目は、公園の　清掃です。毎月　第一　日曜日の　朝に　おこないます。二つ目は、留学生への　日本語の　支援で、平日の　夕方です。三つ目は、高齢者施設での　話し相手で、土曜日の　午後です。四つ目は、子ども食堂の　手伝いで、金曜日の　夜です。\nF: わたし、教育学部だから、子どもと　関わる　ものが　いいな。\nM: 金曜の　夜は　アルバイトが　あるから、ぼくは　無理だ。言葉を　教えるのは　興味が　あるけど、平日の　夕方は　授業が　あるし……。\nF: 土曜なら　あいてるんでしょう？　お年寄りと　話すのも　いい　経験に　なるよ。\nM: そうだね。そう　する。\nN: 男の　学生は　どれに　参加しますか。"
       voices: ['narrator', 'man', 'woman']
@@ -154,6 +163,7 @@ questions:
       en: 'Kitchen grease and bathroom mould: the second.'
       es: 'Grasa de cocina y moho del baño: el segundo.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0010-14cc0cce48fa.mp3'
     tts:
       script: "N: テレビで　店の　人が　三つの　掃除の　サービスを　説明して　います。それを　聞いて、夫婦が　話して　います。\nN: 一つ目は、毎週　一回、二時間の　掃除で、月　二万円です。二つ目は、月に　一回、台所と　お風呂を　専門に　掃除します。月　一万二千円です。三つ目は、エアコンの　掃除で、一台　一万円です。\nF: 毎週は　さすがに　高いね。\nM: 普段の　掃除は　自分たちで　できるし。ぼくが　困ってるのは、台所の　油汚れと　お風呂の　カビなんだよな。\nF: エアコンは　去年　やったばかりだしね。\nM: じゃあ、それに　しよう。\nN: 二人は　どの　サービスを　頼みますか。"
       voices: ['narrator', 'man', 'woman']
@@ -169,6 +179,7 @@ questions:
       en: 'It fits 50 people within the budget.'
       es: 'Caben 50 personas dentro del presupuesto.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0011-c7e651dfe4fb.mp3'
     tts:
       script: "N: 会社で　男の　人と　女の　人が　忘年会の　会場に　ついて　話して　います。\nM: 忘年会の　会場、どこに　しましょう。駅前の　居酒屋は　安いですけど、狭いんですよね。\nF: 今年は　五十人だから、狭いのは　困るね。ホテルの　宴会場は？\nM: 広くて　いいんですが、一人　八千円　かかります。予算は　五千円なので。\nF: 去年の　レストランは？\nM: 貸し切りに　すれば　五十人　はいれて、一人　五千円です。\nF: じゃあ、そこで　決まりね。\nN: 忘年会の　会場は　どこに　なりましたか。"
       voices: ['narrator', 'man', 'woman']
@@ -184,6 +195,7 @@ questions:
       en: 'He makes the slides and answers questions; she presents.'
       es: 'Él hace el material y responde preguntas; ella presenta.'
     author: claude
+    audio: 'https://zmzyiqao9nzbcbfv.public.blob.vercel-storage.com/jlpt/audio/n1-lis-5-0012-c344bc919078.mp3'
     tts:
       script: "N: 大学で　男の　学生と　女の　学生が　ゼミの　発表の　分担に　ついて　話して　います。\nF: 発表、資料作りと、発表と、質問への　対応、どう　分ける？\nM: ぼく、人前で　話すのは　苦手なんだ。\nF: じゃあ、資料を　お願いできる？　パソコン、得意だよね。\nM: うん。でも、資料を　作った　人が　質問に　答える　ほうが　いいんじゃない？\nF: 確かに。じゃあ、発表は　わたしが　やるね。\nN: 男の　学生は　何を　担当しますか。"
       voices: ['narrator', 'man', 'woman']
