@@ -1,0 +1,172 @@
+# N4 · Grammar · Reading · Mondai 3 — text grammar
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 3
+instruction:
+  en: 'Read the text and choose the best answer for each blank.'
+  ja: '文章を 読んで、（１）から（４）に 入る いちばん いい ものを えらんで ください。'
+passages:
+  - id: summer
+    text: "「日本の　夏」　キム・ミンジュ\n　日本に　来て、はじめての　夏です。日本の　夏は　わたしの　国（１）　ずっと　あついです。毎日　三十五度ぐらい　あります。\n　（２）、日本の　夏には　楽しい　ことも　たくさん　あります。先週、友だちと　花火大会に　行きました。ゆかたを　（３）、川の　近くで　花火を　見ました。とても　きれいでした。\n　来年の　夏も　また　花火を　（４）と　思って　います。"
+  - id: library
+    text: "「わたしの　町の　図書館」　ロペス\n　わたしの　町には　大きい　図書館が　あります。（１）　図書館は　駅から　歩いて　五分の　ところに　あるので、とても　べんりです。\n　図書館では　本を　借りる　（２）　できます。一度に　十さつまで　借りられます。わたしは　毎週　日本語の　絵本を　借りて　います。\n　図書館の　中では　大きい　声で　話しては　（３）。それで、とても　静かです。家より　（４）　勉強できるので、テストの　前は　いつも　図書館に　行きます。"
+  - id: parttime
+    text: "「はじめての　アルバイト」　チェン\n　先月から　駅の　前の　パン屋で　アルバイトを　して　います。週に　三回、学校が　（１）　あとで　働いて　います。\n　はじめは　日本語の　けいごが　むずかしくて、お客さんと　うまく　話せませんでした。でも、店長が　いつも　ていねいに　教えて　（２）。今は　少し　話せるように　なりました。\n　アルバイトは　大変ですが、日本語の　勉強にも　なるし、お金も　もらえる　（３）、とても　いいと　思います。来月は　ケーキの　作り方も　（４）　つもりです。"
+questions:
+  - id: n4-grm-3-0001
+    passage: summer
+    stem: '（１）'
+    choices:
+      - 'ほど'
+      - 'より'
+      - 'から'
+      - 'まで'
+    answer: 2
+    explanation:
+      en: 'AはBより: "hotter than my country".'
+      es: 'AはBより: "más caluroso que mi país".'
+    author: claude
+  - id: n4-grm-3-0002
+    passage: summer
+    stem: '（２）'
+    choices:
+      - 'たとえば'
+      - 'だから'
+      - 'でも'
+      - 'それから'
+    answer: 3
+    explanation:
+      en: 'でも turns from the heat to the good side.'
+      es: 'でも pasa del calor a lo bueno.'
+    author: claude
+  - id: n4-grm-3-0003
+    passage: summer
+    stem: '（３）'
+    choices:
+      - 'きて'
+      - 'かぶって'
+      - 'はいて'
+      - 'しめて'
+    answer: 1
+    explanation:
+      en: 'A yukata is worn with きる, like other clothes for the body.'
+      es: 'El yukata se pone con きる, como la ropa del cuerpo.'
+    author: claude
+  - id: n4-grm-3-0004
+    passage: summer
+    stem: '（４）'
+    choices:
+      - '見に行った'
+      - '見に行って'
+      - '見に行くな'
+      - '見に行きたい'
+    answer: 4
+    explanation:
+      en: '〜たいと 思って います: a wish for next year.'
+      es: '〜たいと 思って います: un deseo para el año que viene.'
+    author: claude
+  - id: n4-grm-3-0005
+    passage: library
+    stem: '（１）'
+    choices:
+      - 'どの'
+      - 'こんな'
+      - 'その'
+      - 'あの'
+    answer: 3
+    explanation:
+      en: 'その points back to the library just mentioned.'
+      es: 'その remite a la biblioteca que se acaba de mencionar.'
+    author: claude
+  - id: n4-grm-3-0006
+    passage: library
+    stem: '（２）'
+    choices:
+      - 'ものが'
+      - 'ことが'
+      - 'のを'
+      - 'ことを'
+    answer: 2
+    explanation:
+      en: 'Dictionary form + ことが できる: "can borrow".'
+      es: 'Forma de diccionario + ことが できる: "se puede tomar prestado".'
+    author: claude
+  - id: n4-grm-3-0007
+    passage: library
+    stem: '（３）'
+    choices:
+      - 'いけません'
+      - 'いいです'
+      - 'かまいません'
+      - 'ください'
+    answer: 1
+    explanation:
+      en: '〜ては いけません: "you must not". That is why it is quiet.'
+      es: '〜ては いけません: "no se debe". Por eso hay silencio.'
+    author: claude
+  - id: n4-grm-3-0008
+    passage: library
+    stem: '（４）'
+    choices:
+      - '静かだ'
+      - '静かで'
+      - '静かな'
+      - '静かに'
+    answer: 4
+    explanation:
+      en: 'Before a verb the な-adjective takes に: 静かに 勉強できる.'
+      es: 'Antes de un verbo el adjetivo な lleva に: 静かに 勉強できる.'
+    author: claude
+  - id: n4-grm-3-0009
+    passage: parttime
+    stem: '（１）'
+    choices:
+      - '終わった'
+      - '終われば'
+      - '終わって'
+      - '終わる'
+    answer: 1
+    explanation:
+      en: '〜た あとで: after class is over, so the past form.'
+      es: '〜た あとで: después de clase, por eso va en pasado.'
+    author: claude
+  - id: n4-grm-3-0010
+    passage: parttime
+    stem: '（２）'
+    choices:
+      - 'あげます'
+      - 'もらいます'
+      - 'やります'
+      - 'くれます'
+    answer: 4
+    explanation:
+      en: '店長が 教えて くれる: the manager does the favour for the writer.'
+      es: '店長が 教えて くれる: el encargado le hace el favor a quien escribe.'
+    author: claude
+  - id: n4-grm-3-0011
+    passage: parttime
+    stem: '（３）'
+    choices:
+      - 'ても'
+      - 'ので'
+      - 'のに'
+      - 'けど'
+    answer: 2
+    explanation:
+      en: 'The reasons lead to "I think it is good", so ので.'
+      es: 'Las razones llevan a "creo que está bien", así que ので.'
+    author: claude
+  - id: n4-grm-3-0012
+    passage: parttime
+    stem: '（４）'
+    choices:
+      - '習った'
+      - '習おう'
+      - '習う'
+      - '習って'
+    answer: 3
+    explanation:
+      en: 'Dictionary form + つもりです: a plan for next month.'
+      es: 'Forma de diccionario + つもりです: un plan para el mes que viene.'
+    author: claude

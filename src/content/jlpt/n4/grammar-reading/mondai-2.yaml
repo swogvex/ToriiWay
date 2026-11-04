@@ -1,0 +1,153 @@
+# N4 · Grammar · Reading · Mondai 2 — sentence composition
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 2
+instruction:
+  en: 'Put the four parts in order. Which part goes in ★?'
+  ja: '★に 入る ものは どれですか。いちばん いい ものを えらんで ください。'
+questions:
+  - id: n4-grm-2-0001
+    stem: 'あそこで　＿＿＿　＿＿＿　★　＿＿＿　わたしの　兄です。'
+    choices:
+      - 'いる'
+      - '読んで'
+      - '本を'
+      - '人が'
+    answer: 1
+    explanation:
+      en: 'あそこで 本を 読んで いる 人が わたしの 兄です: "The person reading over there is my brother."'
+      es: 'あそこで 本を 読んで いる 人が わたしの 兄です: "La persona que lee allí es mi hermano."'
+    author: claude
+  - id: n4-grm-2-0002
+    stem: 'この　かばんは　＿＿＿　＿＿＿　★　＿＿＿　です。'
+    choices:
+      - '持って'
+      - 'べんり'
+      - 'いくのに'
+      - '旅行に'
+    answer: 3
+    explanation:
+      en: 'この かばんは 旅行に 持って いくのに べんり です: "This bag is handy for taking on trips."'
+      es: 'この かばんは 旅行に 持って いくのに べんり です: "Esta bolsa es práctica para llevar de viaje."'
+    author: claude
+  - id: n4-grm-2-0003
+    stem: 'きのうは　＿＿＿　＿＿＿　★　＿＿＿　行けませんでした。'
+    choices:
+      - 'ひいて'
+      - '学校へ'
+      - 'かぜを'
+      - 'しまって'
+    answer: 4
+    explanation:
+      en: 'きのうは かぜを ひいて しまって 学校へ 行けませんでした.'
+      es: 'きのうは かぜを ひいて しまって 学校へ 行けませんでした: "Ayer me resfrié y no pude ir a clase."'
+    author: claude
+  - id: n4-grm-2-0004
+    stem: '母に　＿＿＿　★　＿＿＿　＿＿＿　言われました。'
+    choices:
+      - 'ように'
+      - 'きれいに'
+      - 'する'
+      - 'へやを'
+    answer: 2
+    explanation:
+      en: '母に へやを きれいに する ように 言われました: "My mother told me to tidy my room."'
+      es: '母に へやを きれいに する ように 言われました: "Mi madre me dijo que ordenara la habitación."'
+    author: claude
+  - id: n4-grm-2-0005
+    stem: 'あしたは　＿＿＿　＿＿＿　★　＿＿＿　なる　かもしれません。'
+    choices:
+      - 'ふる'
+      - 'ので'
+      - '中止に'
+      - '雨が'
+    answer: 2
+    explanation:
+      en: 'あしたは 雨が ふる ので 中止に なる かもしれません: "It may be called off tomorrow because of rain."'
+      es: 'あしたは 雨が ふる ので 中止に なる かもしれません: "Mañana quizá se suspenda por la lluvia."'
+    author: claude
+  - id: n4-grm-2-0006
+    stem: 'わたしの　しゅみは　＿＿＿　＿＿＿　★　＿＿＿　です。'
+    choices:
+      - 'こと'
+      - '山の'
+      - '写真を'
+      - 'とる'
+    answer: 4
+    explanation:
+      en: 'わたしの しゅみは 山の 写真を とる こと です: "My hobby is taking photos of mountains."'
+      es: 'わたしの しゅみは 山の 写真を とる こと です: "Mi afición es hacer fotos de montañas."'
+    author: claude
+  - id: n4-grm-2-0007
+    stem: '先生が　＿＿＿　★　＿＿＿　＿＿＿　わかりやすかったです。'
+    choices:
+      - 'くれた'
+      - 'せつめいは'
+      - 'して'
+      - 'とても'
+    answer: 1
+    explanation:
+      en: '先生が して くれた せつめいは とても わかりやすかったです.'
+      es: '先生が して くれた せつめいは とても わかりやすかったです: "La explicación del profesor fue muy clara."'
+    author: claude
+  - id: n4-grm-2-0008
+    stem: 'へやの　＿＿＿　＿＿＿　★　＿＿＿　ください。'
+    choices:
+      - 'けして'
+      - '電気を'
+      - 'から'
+      - '出かけて'
+    answer: 3
+    explanation:
+      en: 'へやの 電気を けして から 出かけて ください: "Turn off the light before you go out."'
+      es: 'へやの 電気を けして から 出かけて ください: "Apaga la luz antes de salir."'
+    author: claude
+  - id: n4-grm-2-0009
+    stem: '妹は　＿＿＿　＿＿＿　★　＿＿＿　食べて　います。'
+    choices:
+      - 'ケーキを'
+      - 'もらった'
+      - '母に'
+      - '作って'
+    answer: 2
+    explanation:
+      en: '妹は 母に 作って もらった ケーキを 食べて います.'
+      es: '妹は 母に 作って もらった ケーキを 食べて います: "Mi hermana come el pastel que le hizo mamá."'
+    author: claude
+  - id: n4-grm-2-0010
+    stem: 'これは　＿＿＿　★　＿＿＿　＿＿＿　本です。'
+    choices:
+      - 'かして'
+      - 'くれた'
+      - '日本語の'
+      - '友だちが'
+    answer: 1
+    explanation:
+      en: 'これは 友だちが かして くれた 日本語の 本です.'
+      es: 'これは 友だちが かして くれた 日本語の 本です: "Este es el libro de japonés que me prestó un amigo."'
+    author: claude
+  - id: n4-grm-2-0011
+    stem: '早く　＿＿＿　＿＿＿　★　＿＿＿　しまいました。'
+    choices:
+      - 'ねぼうして'
+      - '起きる'
+      - 'つもり'
+      - 'だったのに'
+    answer: 4
+    explanation:
+      en: '早く 起きる つもり だったのに ねぼうして しまいました.'
+      es: '早く 起きる つもり だったのに ねぼうして しまいました: "Pensaba levantarme pronto, pero me dormí."'
+    author: claude
+  - id: n4-grm-2-0012
+    stem: '日曜日は　＿＿＿　＿＿＿　★　＿＿＿　つもりです。'
+    choices:
+      - 'そうじを'
+      - 'して'
+      - 'から'
+      - '出かける'
+    answer: 3
+    explanation:
+      en: '日曜日は そうじを して から 出かける つもりです.'
+      es: '日曜日は そうじを して から 出かける つもりです: "El domingo pienso salir después de limpiar."'
+    author: claude

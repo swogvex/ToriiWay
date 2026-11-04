@@ -1,0 +1,261 @@
+# N4 · Vocabulary · Mondai 1 — kanji reading
+# Original questions written for ToriiWay.
+level: N4
+section: vocabulary
+mondai: 1
+instruction:
+  en: 'Choose the reading of the underlined word.'
+  ja: '＿＿＿の ことばの よみかたを えらんで ください。'
+questions:
+  - id: n4-voc-1-0001
+    stem: '__近所__の　スーパーは　夜　十時まで　あいて　います。'
+    choices:
+      - 'きんど'
+      - 'きんじょ'
+      - 'きんしょ'
+      - 'ちかじょ'
+    answer: 2
+    explanation:
+      en: '近所 is read きんじょ, "neighbourhood".'
+      es: '近所 se lee きんじょ, "vecindario".'
+    author: claude
+  - id: n4-voc-1-0002
+    stem: 'あしたは　__特別__な　日です。'
+    choices:
+      - 'とくべつ'
+      - 'とくべち'
+      - 'とくへつ'
+      - 'どくべつ'
+    answer: 1
+    explanation:
+      en: '特別 is read とくべつ, "special".'
+      es: '特別 se lee とくべつ, "especial".'
+    author: claude
+  - id: n4-voc-1-0003
+    stem: '駅まで　__歩いて__　十分ぐらいです。'
+    choices:
+      - 'はしいて'
+      - 'あらいて'
+      - 'あるいて'
+      - 'あゆいて'
+    answer: 3
+    explanation:
+      en: '歩いて is read あるいて, from 歩く "to walk".'
+      es: '歩いて se lee あるいて, de 歩く "caminar".'
+    author: claude
+  - id: n4-voc-1-0004
+    stem: 'この　__料理__は　とても　おいしいです。'
+    choices:
+      - 'りょうい'
+      - 'りようり'
+      - 'りょり'
+      - 'りょうり'
+    answer: 4
+    explanation:
+      en: '料理 is read りょうり, with a long う: "cooking, dish".'
+      es: '料理 se lee りょうり, con う larga: "cocina, plato".'
+    author: claude
+  - id: n4-voc-1-0005
+    stem: '日曜日は　__家族__と　出かけます。'
+    choices:
+      - 'かぞう'
+      - 'がぞく'
+      - 'かぞく'
+      - 'かそく'
+    answer: 3
+    explanation:
+      en: '家族 is read かぞく, "family".'
+      es: '家族 se lee かぞく, "familia".'
+    author: claude
+  - id: n4-voc-1-0006
+    stem: 'もう　少し　__急いで__　ください。'
+    choices:
+      - 'いしいで'
+      - 'いそいで'
+      - 'いそうで'
+      - 'きゅういで'
+    answer: 2
+    explanation:
+      en: '急いで is read いそいで, from 急ぐ "to hurry".'
+      es: '急いで se lee いそいで, de 急ぐ "darse prisa".'
+    author: claude
+  - id: n4-voc-1-0007
+    stem: '__空港__まで　バスで　行きました。'
+    choices:
+      - 'くうこう'
+      - 'そらこう'
+      - 'くこう'
+      - 'くうごう'
+    answer: 1
+    explanation:
+      en: '空港 is read くうこう, "airport".'
+      es: '空港 se lee くうこう, "aeropuerto".'
+    author: claude
+  - id: n4-voc-1-0008
+    stem: 'この　問題は　__簡単__です。'
+    choices:
+      - 'かんたい'
+      - 'けんたん'
+      - 'かんだん'
+      - 'かんたん'
+    answer: 4
+    explanation:
+      en: '簡単 is read かんたん, "easy, simple".'
+      es: '簡単 se lee かんたん, "fácil, sencillo".'
+    author: claude
+  - id: n4-voc-1-0009
+    stem: '先生に　__質問__しました。'
+    choices:
+      - 'しつもん'
+      - 'じつもん'
+      - 'しちもん'
+      - 'しつむん'
+    answer: 1
+    explanation:
+      en: '質問 is read しつもん, "question".'
+      es: '質問 se lee しつもん, "pregunta".'
+    author: claude
+  - id: n4-voc-1-0010
+    stem: '__世界__には　いろいろな　国が　あります。'
+    choices:
+      - 'よかい'
+      - 'せかい'
+      - 'せがい'
+      - 'せいかい'
+    answer: 2
+    explanation:
+      en: '世界 is read せかい, "world".'
+      es: '世界 se lee せかい, "mundo".'
+    author: claude
+  - id: n4-voc-1-0011
+    stem: 'あの　__建物__は　図書館です。'
+    choices:
+      - 'たちもの'
+      - 'けんもの'
+      - 'たてもの'
+      - 'だてもの'
+    answer: 3
+    explanation:
+      en: '建物 is read たてもの, "building".'
+      es: '建物 se lee たてもの, "edificio".'
+    author: claude
+  - id: n4-voc-1-0012
+    stem: '__会議__は　三時からです。'
+    choices:
+      - 'がいぎ'
+      - 'かいき'
+      - 'あいぎ'
+      - 'かいぎ'
+    answer: 4
+    explanation:
+      en: '会議 is read かいぎ, "meeting".'
+      es: '会議 se lee かいぎ, "reunión".'
+    author: claude
+  - id: n4-voc-1-0013
+    stem: '__毎晩__　日本語を　勉強します。'
+    choices:
+      - 'まいばん'
+      - 'まいよる'
+      - 'まいぱん'
+      - 'めいばん'
+    answer: 1
+    explanation:
+      en: '毎晩 is read まいばん, "every evening".'
+      es: '毎晩 se lee まいばん, "cada noche".'
+    author: claude
+  - id: n4-voc-1-0014
+    stem: 'あの　店では　くつを　__売って__　います。'
+    choices:
+      - 'かって'
+      - 'うつって'
+      - 'うって'
+      - 'ばいって'
+    answer: 3
+    explanation:
+      en: '売って is read うって, from 売る "to sell". かって is 買って, "to buy".'
+      es: '売って se lee うって, de 売る "vender". かって es 買って, "comprar".'
+    author: claude
+  - id: n4-voc-1-0015
+    stem: '__自分__で　ばんごはんを　作ります。'
+    choices:
+      - 'しぶん'
+      - 'じぶ'
+      - 'じふん'
+      - 'じぶん'
+    answer: 4
+    explanation:
+      en: '自分 is read じぶん, "oneself".'
+      es: '自分 se lee じぶん, "uno mismo".'
+    author: claude
+  - id: n4-voc-1-0016
+    stem: 'この　__道__を　まっすぐ　行って　ください。'
+    choices:
+      - 'どう'
+      - 'みち'
+      - 'まち'
+      - 'みず'
+    answer: 2
+    explanation:
+      en: '道 on its own is read みち, "road". どう is its reading in words like 水道.'
+      es: '道 solo se lee みち, "camino". どう es su lectura en palabras como 水道.'
+    author: claude
+  - id: n4-voc-1-0017
+    stem: '__地図__を　見ながら　歩きました。'
+    choices:
+      - 'ちず'
+      - 'ちと'
+      - 'ちづ'
+      - 'じず'
+    answer: 1
+    explanation:
+      en: '地図 is read ちず, "map".'
+      es: '地図 se lee ちず, "mapa".'
+    author: claude
+  - id: n4-voc-1-0018
+    stem: 'へやの　__電気__を　消して　ください。'
+    choices:
+      - 'でんぎ'
+      - 'でんき'
+      - 'てんき'
+      - 'てんぎ'
+    answer: 2
+    explanation:
+      en: '電気 is read でんき, "light, electricity". てんき is 天気, "weather".'
+      es: '電気 se lee でんき, "luz, electricidad". てんき es 天気, "tiempo".'
+    author: claude
+  - id: n4-voc-1-0019
+    stem: '__去年__　日本へ　行きました。'
+    choices:
+      - 'こねん'
+      - 'きょとし'
+      - 'きょねん'
+      - 'さるねん'
+    answer: 3
+    explanation:
+      en: '去年 is read きょねん, "last year".'
+      es: '去年 se lee きょねん, "el año pasado".'
+    author: claude
+  - id: n4-voc-1-0020
+    stem: '車に　__注意__して　道を　わたって　ください。'
+    choices:
+      - 'じゅうい'
+      - 'ちゅい'
+      - 'ちゅうえ'
+      - 'ちゅうい'
+    answer: 4
+    explanation:
+      en: '注意 is read ちゅうい, "care, attention".'
+      es: '注意 se lee ちゅうい, "cuidado, atención".'
+    author: claude
+  - id: n4-voc-1-0021
+    stem: '__春__に　なると、さくらが　さきます。'
+    choices:
+      - 'あき'
+      - 'ふゆ'
+      - 'なつ'
+      - 'はる'
+    answer: 4
+    explanation:
+      en: '春 is read はる, "spring".'
+      es: '春 se lee はる, "primavera".'
+    author: claude

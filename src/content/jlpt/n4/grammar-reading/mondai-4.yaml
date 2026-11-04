@@ -1,0 +1,145 @@
+# N4 · Grammar · Reading · Mondai 4 — short passages
+# Original questions written for ToriiWay.
+level: N4
+section: grammar-reading
+mondai: 4
+instruction:
+  en: 'Read the text and answer the question.'
+  ja: '文章を 読んで、しつもんに 答えて ください。'
+passages:
+  - id: memo
+    text: "田中さんへ\n　午後、山下さんから　電話が　ありました。あしたの　会議は　十時からでは　なく、十一時からに　なったそうです。会議の　前に、資料を　十部　コピーして　おいて　ください。\n森"
+  - id: garbage
+    text: "ごみの　出し方\n・もえる　ごみ：月よう日と　木よう日\n・ビン・カン：水よう日\n・ごみは　朝　八時までに　出して　ください。前の　日の　夜に　出さないで　ください。"
+  - id: party
+    text: "リーさん\n　来週の　土よう日、うちで　パーティーを　します。リーさんも　来ませんか。料理は　わたしが　作りますから、何も　持って　こなくても　いいです。でも、飲み物は　たりないかもしれないので、もし　よかったら　ジュースを　買って　きて　ください。\nマリア"
+  - id: rain
+    text: 'きのうは　友だちと　山に　登る　予定でしたが、朝から　雨が　ふって　いたので、行くのを　やめました。かわりに、家で　友だちと　映画を　見ました。山には　来週　行く　ことに　しました。'
+  - id: shop
+    text: "お知らせ\n　店の　工事の　ため、三月十日（月）から　十五日（土）まで　お休みします。十六日（日）から　いつもの　時間に　開きます。ごめいわくを　おかけして　すみません。"
+  - id: teacher
+    text: "みなさんへ\n　あしたの　漢字の　テストは　教科書の　二十ページから　三十ページまでです。テストの　あとで、作文の　しゅくだいを　出して　ください。作文を　わすれた　人は、あさってまでに　先生の　部屋に　持って　来て　ください。"
+  - id: walk
+    text: 'わたしは　毎朝　七時に　起きて、三十分　散歩します。前は　朝ごはんを　食べないで　会社へ　行って　いましたが、散歩を　始めてから、朝ごはんが　おいしく　なりました。今は　毎日　食べて　います。'
+  - id: umbrella
+    text: "山本さん\n　借りて　いた　かさを　返しに　来ましたが、山本さんは　いなかったので、ドアの　前に　置いて　おきます。本当に　ありがとう　ございました。お礼に　おかしも　入れて　おきました。どうぞ　食べて　ください。\nキム"
+  - id: class
+    text: "さくら日本語学校　夏の　クラス\n　七月二十日から　八月十日まで、夏の　特別クラスが　あります。クラスは　月よう日から　金よう日の　午前中です。もうしこみは　七月十日までに、うけつけで　して　ください。"
+questions:
+  - id: n4-grm-4-0001
+    passage: memo
+    stem: '田中さんは　あした、会議の　前に　何を　しなければ　なりませんか。'
+    choices:
+      - '山下さんに　電話する'
+      - '会議の　時間を　森さんに　知らせる'
+      - '資料を　十部　コピーする'
+      - '十時までに　会議室へ　行く'
+    answer: 3
+    explanation:
+      en: 'The memo asks Tanaka to copy ten sets of the documents before the meeting.'
+      es: 'La nota pide a Tanaka que haga diez copias de los documentos antes de la reunión.'
+    author: claude
+  - id: n4-grm-4-0002
+    passage: garbage
+    stem: '木よう日に　もえる　ごみを　出したい　人は、いつ　出しますか。'
+    choices:
+      - '木よう日の　夜に'
+      - '水よう日の　夜に'
+      - '月よう日の　朝に'
+      - '木よう日の　朝　八時までに'
+    answer: 4
+    explanation:
+      en: 'Burnable rubbish goes out on Thursday morning by eight, never the night before.'
+      es: 'La basura quemable se saca el jueves antes de las ocho, nunca la noche anterior.'
+    author: claude
+  - id: n4-grm-4-0003
+    passage: party
+    stem: 'リーさんは　パーティーに　何を　持って　いけば　いいですか。'
+    choices:
+      - '料理と　ジュース'
+      - 'ジュース'
+      - '料理'
+      - '何も　持って　いかなくて　いい'
+    answer: 2
+    explanation:
+      en: 'Maria cooks, but asks Lee to bring juice because drinks may run short.'
+      es: 'María cocina, pero pide a Lee que traiga zumo porque puede faltar bebida.'
+    author: claude
+  - id: n4-grm-4-0004
+    passage: rain
+    stem: 'きのう、「わたし」は　何を　しましたか。'
+    choices:
+      - '家で　友だちと　映画を　見た'
+      - '来週の　予定を　やめた'
+      - '友だちと　山に　登った'
+      - '雨の　中を　友だちと　歩いた'
+    answer: 1
+    explanation:
+      en: 'Because of the rain they stayed home and watched a film.'
+      es: 'Por la lluvia se quedaron en casa y vieron una película.'
+    author: claude
+  - id: n4-grm-4-0005
+    passage: shop
+    stem: 'この　店は　いつから　また　開きますか。'
+    choices:
+      - '三月十日'
+      - '三月十五日'
+      - '三月十一日'
+      - '三月十六日'
+    answer: 4
+    explanation:
+      en: 'It is closed from the 10th to the 15th and opens again on the 16th.'
+      es: 'Cierra del 10 al 15 y vuelve a abrir el 16.'
+    author: claude
+  - id: n4-grm-4-0006
+    passage: teacher
+    stem: '作文を　わすれた　人は　どう　しますか。'
+    choices:
+      - 'あさってまでに　先生の　部屋に　持って　いく'
+      - '教科書の　二十ページから　読む'
+      - 'あしたの　テストの　前に　出す'
+      - '先生に　電話を　する'
+    answer: 1
+    explanation:
+      en: "Those who forget it bring it to the teacher's room by the day after tomorrow."
+      es: 'Quien lo olvide debe llevarlo al despacho del profesor antes de pasado mañana.'
+    author: claude
+  - id: n4-grm-4-0007
+    passage: walk
+    stem: '散歩を　始めてから、「わたし」は　どう　なりましたか。'
+    choices:
+      - '七時に　起きられなく　なった'
+      - '朝ごはんを　食べなく　なった'
+      - '毎朝　朝ごはんを　食べるように　なった'
+      - '会社へ　歩いて　行くように　なった'
+    answer: 3
+    explanation:
+      en: 'Breakfast started to taste good, and now the writer eats it every day.'
+      es: 'El desayuno empezó a saberle bien y ahora lo toma cada día.'
+    author: claude
+  - id: n4-grm-4-0008
+    passage: umbrella
+    stem: 'キムさんは　何を　しましたか。'
+    choices:
+      - '山本さんに　かさを　借りに　来た'
+      - 'かさと　おかしを　ドアの　前に　置いた'
+      - 'おかしを　山本さんと　食べた'
+      - '山本さんに　会って　かさを　返した'
+    answer: 2
+    explanation:
+      en: 'Yamamoto was out, so Kim left the umbrella and some sweets at the door.'
+      es: 'Yamamoto no estaba, así que Kim dejó el paraguas y unos dulces en la puerta.'
+    author: claude
+  - id: n4-grm-4-0009
+    passage: class
+    stem: '夏の　クラスに　入りたい　人は　どう　しなければ　なりませんか。'
+    choices:
+      - '午前中に　学校に　電話する'
+      - '八月十日までに　もうしこむ'
+      - '七月二十日に　うけつけへ　行く'
+      - '七月十日までに　うけつけで　もうしこむ'
+    answer: 4
+    explanation:
+      en: 'You apply at reception by 10 July.'
+      es: 'Hay que apuntarse en recepción antes del 10 de julio.'
+    author: claude
