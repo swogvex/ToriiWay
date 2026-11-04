@@ -207,6 +207,10 @@ const check = (passed: boolean) => (passed ? '✓' : '✗');
   .report__title {
     font-family: var(--font-display-ja);
     font-size: var(--text-xl);
+
+    /* Break only at the space (日本語能力試験 | 模擬テスト), never inside a word. */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
   }
 
   .report__sub,
