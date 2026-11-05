@@ -57,9 +57,10 @@ async function submit(
 }
 
 test.describe('Kana Rush leaderboard', () => {
-  test('lists submitted runs, expands a row and keeps filters in the URL', async ({
+  test('lists runs, expands a row, keeps filters in the URL, and moderation hides a reported run', async ({
     page,
     request,
+    browser,
   }, info) => {
     // Each project (light, dark) uses its own script, so parallel runs do not mix.
     const script = info.project.name === 'dark' ? 'katakana' : 'hiragana';
@@ -101,6 +102,38 @@ test.describe('Kana Rush leaderboard', () => {
     await expect(page.getByRole('radio', { name: 'Challenge' })).toBeChecked();
     await expect(page.locator('[data-board-sort]')).toBeHidden();
     await expect(rows).toHaveCount(2);
+
+    // Report the slow run (Turnstile stubbed), then hide it from /admin/leaderboard.
+    await page.route('https://challenges.cloudflare.com/**', (route) =>
+      route.fulfill({
+        contentType: 'text/javascript',
+        body: 'window.turnstile={render:(el,o)=>{setTimeout(()=>o.callback("XXXX.DUMMY.TOKEN.XXXX"));return "w1";},reset:()=>{}};',
+      }),
+    );
+    await rows.nth(1).click();
+    await page.locator('[data-row-details]:not([hidden]) [data-row-report]').click();
+    const dialog = page.getByRole('dialog', { name: 'Report this entry' });
+    await dialog.getByRole('radio', { name: 'Suspicious score' }).check();
+    await dialog.getByRole('button', { name: 'Send report' }).click();
+    await expect(dialog.getByText('Thanks. We will review it.')).toBeVisible();
+
+    expect((await page.request.get('/admin/leaderboard')).status()).toBe(401);
+    const admin = await browser.newContext({
+      httpCredentials: { username: 'e2e-admin', password: 'e2e-admin-password' },
+    });
+    const adminPage = await admin.newPage();
+    await adminPage.goto('/admin/leaderboard');
+    const item = adminPage.getByRole('listitem').filter({ hasText: `Slow_${tag}` });
+    await expect(item).toContainText('1 open report: 1× score');
+    await item.getByRole('button', { name: 'Hide' }).click();
+    await expect(adminPage.getByRole('listitem').filter({ hasText: `Slow_${tag}` })).toContainText(
+      'hidden',
+    );
+    await admin.close();
+
+    await page.reload();
+    await expect(rows).toHaveCount(1);
+    await expect(rows.nth(0)).toContainText(`Fast_${tag}`);
   });
 
   test('shows the empty state and passes axe on a phone', async ({ page }) => {

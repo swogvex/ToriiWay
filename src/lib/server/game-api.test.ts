@@ -4,6 +4,7 @@ import { fakeClaim, ITEMS, NOW } from '../game/leaderboard/fixtures';
 import { AUTO_HIDE_REPORTS, memoryGameStore } from '../game/leaderboard/store';
 import type { RunClaim } from '../game/leaderboard/verify';
 import {
+  adminScoreHandler,
   createRunHandler,
   deleteScoreHandler,
   gameCleanup,
@@ -402,5 +403,60 @@ describe('gameCleanup', () => {
     expect(await gameCleanup(deps)).toEqual({ runs: 1 });
     // The entry stays after its run is gone.
     expect((await board()).body.entries).toHaveLength(1);
+  });
+});
+
+describe('POST /api/admin/game-scores/[id]', () => {
+  const moderate = (id: string, action: string, origin = SITE) =>
+    handle(() =>
+      adminScoreHandler(
+        new Request(`${SITE}/api/admin/game-scores/${id}`, {
+          method: 'POST',
+          body: new URLSearchParams({ action }),
+          headers: { origin },
+        }),
+        id,
+        deps,
+      ),
+    );
+
+  it('lists reported entries first and hides, shows and deletes them', async () => {
+    const quiet = String((await play('Quiet', BOB)).body.id);
+    const loud = String(
+      (await play('Loud', ALICE, { difficulty: 'hard', ...hardClear() })).body.id,
+    );
+    client = 'reporter';
+    await report(loud, 'score');
+    const [first, second] = await deps.store.adminList(10);
+    expect(first).toMatchObject({ id: loud, openReports: 1, reasons: ['score'] });
+    expect(second?.id).toBe(quiet);
+
+    const hidden = await moderate(loud, 'hide');
+    expect(hidden.status).toBe(303);
+    expect(hidden.headers.get('location')).toBe('/admin/leaderboard');
+    expect((await board()).body.entries.map((entry) => entry.name)).toEqual(['Quiet']);
+    // Reviewing resolves the open reports.
+    expect((await deps.store.adminList(10)).find((e) => e.id === loud)?.openReports).toBe(0);
+
+    await moderate(loud, 'show');
+    expect((await board()).body.entries).toHaveLength(2);
+    await moderate(quiet, 'delete');
+    expect(await deps.store.getScore(quiet)).toBeNull();
+  });
+
+  it('blocking a name hides all its entries and stops new submissions with it', async () => {
+    const id = String((await play('Kenji', ALICE)).body.id);
+    await play('Kenji', ALICE, { difficulty: 'hard', ...hardClear() });
+    await moderate(id, 'block');
+    expect((await board()).body.entries).toHaveLength(0);
+    expect((await deps.store.adminList(10)).every((entry) => entry.nameBlocked)).toBe(true);
+    expect((await play('kenji', ALICE, pace(6))).body).toEqual({ error: 'name-invalid' });
+  });
+
+  it('rejects other origins, unknown actions and unknown entries', async () => {
+    const id = String((await play('Kenji', ALICE)).body.id);
+    expect((await moderate(id, 'hide', 'https://evil.example')).status).toBe(403);
+    expect((await moderate(id, 'nuke')).status).toBe(400);
+    expect((await moderate('00000000-0000-4000-8000-999999999999', 'hide')).status).toBe(404);
   });
 });

@@ -1,0 +1,47 @@
+---
+/** Tabs between the admin pages (Basic auth covers every /admin path). */
+interface Props {
+  current: 'reports' | 'leaderboard';
+}
+
+const { current } = Astro.props;
+const tabs = [
+  { id: 'reports', label: 'Question reports', href: '/admin' },
+  { id: 'leaderboard', label: 'Leaderboard', href: '/admin/leaderboard' },
+] as const;
+---
+
+<nav class="admin-nav" aria-label="Admin">
+  {tabs.map((tab) => (
+    <a href={tab.href} aria-current={tab.id === current ? 'page' : undefined}>
+      {tab.label}
+    </a>
+  ))}
+</nav>
+
+<style>
+  .admin-nav {
+    display: flex;
+    gap: var(--space-4);
+    border-block-end: 1px solid var(--line-strong);
+  }
+
+  .admin-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--target-min);
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .admin-nav a[aria-current='page'] {
+    color: var(--ink);
+    font-weight: 700;
+    box-shadow: inset 0 -2px 0 var(--ink);
+  }
+
+  .admin-nav a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+</style>

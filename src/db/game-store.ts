@@ -19,7 +19,7 @@ import {
 import { drizzle } from 'drizzle-orm/neon-http';
 
 import type { Difficulty, GameScript, Mode } from '../game/config';
-import { AUTO_HIDE_REPORTS, type GameStore } from '../lib/game/leaderboard/store';
+import { type AdminEntry, AUTO_HIDE_REPORTS, type GameStore } from '../lib/game/leaderboard/store';
 import type {
   BoardFilter,
   GameRunRecord,
@@ -265,6 +265,68 @@ export function drizzleGameStore(databaseUrl: string): GameStore {
         )
         .returning({ id: gameRuns.id });
       return { runs: deleted.length };
+    },
+    async adminList(limit) {
+      const openReports = sql<number>`(count(${gameReports.id}) filter (where ${gameReports.status} = 'open'))::int`;
+      const rows = await db
+        .select({
+          score: gameScores,
+          openReports,
+          reasons: sql<
+            string[]
+          >`coalesce(array_agg(${gameReports.reason}) filter (where ${gameReports.status} = 'open'), '{}')`,
+          nameBlocked: gameNames.blocked,
+        })
+        .from(gameScores)
+        .innerJoin(gameNames, eq(gameNames.nameNormalized, gameScores.nameNormalized))
+        .leftJoin(gameReports, eq(gameReports.scoreId, gameScores.id))
+        .groupBy(gameScores.id, gameNames.blocked)
+        .orderBy(
+          desc(openReports),
+          sql`${gameScores.status} = 'visible'`,
+          desc(gameScores.createdAt),
+        )
+        .limit(limit);
+      return rows.map((row) => ({
+        ...toScore(row.score),
+        openReports: row.openReports,
+        reasons: row.reasons as AdminEntry['reasons'],
+        nameBlocked: row.nameBlocked,
+      }));
+    },
+    async moderate(id, action) {
+      const [score] = await db
+        .select({ nameNormalized: gameScores.nameNormalized })
+        .from(gameScores)
+        .where(eq(gameScores.id, id))
+        .limit(1);
+      if (!score) return false;
+      if (action === 'delete') {
+        // Reports go with it (foreign key cascade).
+        await db.delete(gameScores).where(eq(gameScores.id, id));
+        return true;
+      }
+      const resolveFor = (scoreIds: SQL) =>
+        db
+          .update(gameReports)
+          .set({ status: 'resolved' })
+          .where(and(eq(gameReports.status, 'open'), sql`${gameReports.scoreId} in ${scoreIds}`));
+      if (action === 'block') {
+        const sameName = eq(gameScores.nameNormalized, score.nameNormalized);
+        await db
+          .update(gameNames)
+          .set({ blocked: true })
+          .where(eq(gameNames.nameNormalized, score.nameNormalized));
+        await db.update(gameScores).set({ status: 'hidden' }).where(sameName);
+        await resolveFor(sql`(select ${gameScores.id} from ${gameScores} where ${sameName})`);
+        return true;
+      }
+      await db
+        .update(gameScores)
+        .set({ status: action === 'hide' ? 'hidden' : 'visible' })
+        .where(eq(gameScores.id, id));
+      await resolveFor(sql`(${id}::uuid)`);
+      return true;
     },
   };
 }
