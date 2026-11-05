@@ -45,6 +45,10 @@ const labels = {
   allModes: t('game.board.allModes'),
   chartDesc: t('game.board.chart.desc'),
   chartEmpty: t('game.results.chart.empty'),
+  chartTip: t('game.results.chart.tip'),
+  prev: t('game.board.prev'),
+  next: t('game.board.next'),
+  page: t('game.board.page'),
   removeText: t('game.board.remove.text'),
   removeError: t('game.board.remove.error'),
   removed: t('game.board.removed'),
@@ -67,7 +71,7 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     <div class="board__intro">
       <p class="board__lead">{t('game.board.lead')}</p>
       <div class="board__cta">
-        <BigGlyph glyph="番" size="md" tone="faint" class="board__glyph" />
+        <BigGlyph glyph="番" size="lg" tone="faint" class="board__glyph" />
         <Button href={localizePath('/game', locale)}>{t('game.board.play')}</Button>
       </div>
     </div>
@@ -87,7 +91,8 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
   </form>
 
   <div class="board__summary">
-    <p class="board__count" role="status" data-board-summary>
+    <!-- The filters already show the selection; screen readers still hear the result count. -->
+    <p class="visually-hidden" role="status" data-board-summary>
       {t('game.board.loading')}
     </p>
     <p class="board__hint" aria-hidden="true">
@@ -95,7 +100,7 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     </p>
   </div>
 
-  <div class="board__table" aria-busy="true" data-board-table>
+  <div class="board__table" aria-busy="true" tabindex="-1" data-board-table>
     <div class="board__head" aria-hidden="true">
       <span>{t('game.board.col.rank')}</span>
       <span>{t('game.board.col.name')}</span>
@@ -135,11 +140,8 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     </div>
   </div>
 
-  <div class="board__more">
-    <Button variant="outline" data-board-more hidden>
-      {t('game.board.more')}
-    </Button>
-  </div>
+  <!-- Pages of 50: built by board.ts (previous · 1 2 3 … · next), hidden with one page. -->
+  <nav class="board__pages" aria-label={t('game.board.pages')} data-board-pages hidden></nav>
 
   <p class="board__note">{t('game.board.note')}</p>
 
@@ -184,9 +186,12 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
                 <span class="row__legend-error">× {t('game.results.chart.legendError')}</span>
               </span>
             </figcaption>
-            <svg class="row__svg" role="img" data-chart xmlns="http://www.w3.org/2000/svg">
-              <desc data-chart-desc></desc>
-            </svg>
+            <div class="row__plot">
+              <svg class="row__svg" role="img" data-chart xmlns="http://www.w3.org/2000/svg">
+                <desc data-chart-desc></desc>
+              </svg>
+              <p class="row__tip" aria-hidden="true" data-chart-tip hidden></p>
+            </div>
             <p class="row__axis" aria-hidden="true">
               <span>0:00</span>
               <span data-f="end"></span>
@@ -328,7 +333,7 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
 
   /* Tighter options so Script, Difficulty and Mode fit one row of the 1000px column. */
   .board__filters :global(.segmented__label) {
-    padding-inline: var(--space-3);
+    padding-inline: var(--space-2);
   }
 
   .board__sort {
@@ -348,12 +353,8 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     flex-wrap: wrap;
     gap: var(--space-2) var(--space-4);
     align-items: baseline;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-block-end: calc(-1 * var(--space-3));
-  }
-
-  .board__count {
-    font-weight: 700;
   }
 
   .board__hint {
@@ -418,8 +419,14 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     cursor: pointer;
   }
 
-  .row__toggle:hover {
-    background: var(--bg);
+  /*
+   * Only real hover: on touch screens :hover sticks to the last tapped row, which looked
+   * like a "painted" row after closing and opening it again.
+   */
+  @media (hover: hover) {
+    .row__toggle:hover {
+      background: var(--bg);
+    }
   }
 
   .row__toggle:focus-visible {
@@ -514,8 +521,9 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
     gap: var(--space-5);
-    padding: var(--space-2) var(--space-5) var(--space-5)
-      calc(3rem + var(--space-5) + var(--space-3));
+
+    /* Same space left and right, so the chart and the stats use the full width. */
+    padding: var(--space-2) var(--space-5) var(--space-5);
   }
 
   .row__details[hidden] {
@@ -562,6 +570,7 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     inline-size: 100%;
     block-size: auto;
     aspect-ratio: 640 / 220;
+    touch-action: pan-y;
   }
 
   /* Chart nodes are created by src/game/chart.ts, outside Astro's scope. */
@@ -594,6 +603,29 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
   }
 
   .row__svg :global(.chart__cross) {
+    stroke: var(--muted);
+    stroke-width: 1;
+  }
+
+  .row__plot {
+    position: relative;
+  }
+
+  .row__tip {
+    position: absolute;
+    inset-block-start: 0;
+    padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+    background: var(--bg);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    white-space: nowrap;
+    pointer-events: none;
+    translate: -50% 0;
+  }
+
+  .row__tip[hidden] {
     display: none;
   }
 
@@ -725,17 +757,62 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     line-height: 1;
   }
 
-  .board__more {
+  .board__pages {
     display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
     justify-content: center;
   }
 
-  .board__more:not(:has(:not([hidden]))) {
+  .board__pages[hidden] {
     display: none;
   }
 
-  .board__more :global([hidden]) {
-    display: none;
+  /* Page buttons are built by board.ts, outside Astro's scope. */
+  .board__pages :global(.page) {
+    display: grid;
+    place-items: center;
+    min-inline-size: var(--target-min);
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-family: var(--font-mono);
+    cursor: pointer;
+  }
+
+  .board__pages :global(.page[aria-current='page']) {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .board__pages :global(.page:disabled) {
+    color: var(--muted);
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  .board__pages :global(.page:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .board__pages :global(.page-gap) {
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+
+  /* Closer to images 15a/15b than the shared "lg" glyph size. */
+  .board__cta :global(.big-glyph) {
+    /* Rises into the title's row instead of pushing the lead down. */
+    margin-block-start: -2.5rem;
+    font-size: 6rem;
   }
 
   .board__note {

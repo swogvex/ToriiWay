@@ -1,15 +1,19 @@
-// /game/leaderboard: filters in the URL, paged rows from the API, one expandable row at a
+// /game/leaderboard: filters and page in the URL, 50 rows per page, one expandable row at a
 // time with its chart, and the Report / "Remove my run" dialogs. Rows are built from a
 // <template> with textContent only, so player names can never inject markup.
 
-import { chartGeometry, renderChart } from '../../../game/chart';
+import { CHART, chartGeometry, nearestPoint, renderChart } from '../../../game/chart';
 import { turnstileWidget, type Widget } from '../../turnstile-client';
 import {
+  BOARD_PAGE_SIZE,
   type BoardPage,
+  boardSearch,
   clock,
   filterFromSearch,
   forgetEntry,
   myEntries,
+  pageFromSearch,
+  pageList,
   searchFromFilter,
   submitterToken,
 } from './client';
@@ -40,13 +44,13 @@ export function initBoard(root: HTMLElement): void {
   const list = need<HTMLOListElement>(root, '[data-board-rows]');
   const empty = need<HTMLElement>(root, '[data-board-empty]');
   const failed = need<HTMLElement>(root, '[data-board-error]');
-  const more = need<HTMLButtonElement>(root, '[data-board-more]');
+  const pages = need<HTMLElement>(root, '[data-board-pages]');
   const template = need<HTMLTemplateElement>(root, '[data-row-template]');
   const skeleton = list.innerHTML;
 
   let filter: BoardFilter = filterFromSearch(location.search);
-  let next: string | null = null;
-  /** Ignores answers to requests that a newer filter change replaced. */
+  let page = pageFromSearch(location.search);
+  /** Ignores answers to requests that a newer filter or page change replaced. */
   let request = 0;
   let open: HTMLButtonElement | null = null;
 
@@ -74,6 +78,7 @@ export function initBoard(root: HTMLElement): void {
     return filterFromSearch(`?${query.toString()}`);
   }
 
+  /** Screen-reader status only: the filters already show the selection on screen. */
   function describe(total: number): string {
     const params = {
       count: total,
@@ -154,6 +159,7 @@ export function initBoard(root: HTMLElement): void {
 
   function drawChart(row: HTMLElement, entry: PublicScore): void {
     const svg = need<SVGSVGElement>(row, '[data-chart]');
+    const tip = need<HTMLElement>(row, '[data-chart-tip]');
     const title = need<HTMLElement>(row, '[data-f="chart-title"]');
     const desc = need<SVGDescElement>(row, '[data-chart-desc]');
     title.id = `board-chart-title-${entry.id}`;
@@ -162,7 +168,8 @@ export function initBoard(root: HTMLElement): void {
     const points = entry.series.length;
     const step = points > 0 ? entry.durationS / points : 1;
     const durations = Array.from({ length: points }, () => step);
-    renderChart(svg, chartGeometry(entry.series, durations, entry.errors));
+    const geometry = chartGeometry(entry.series, durations, entry.errors);
+    const cross = renderChart(svg, geometry);
     desc.textContent =
       points === 0
         ? (labels.chartEmpty ?? '')
@@ -173,63 +180,136 @@ export function initBoard(root: HTMLElement): void {
             peak: Math.max(...entry.series),
             errors: entry.errors.length,
           });
+
+    // Hover like the results chart: a crosshair and "time · wpm" at the nearest point.
+    const hide = () => {
+      tip.hidden = true;
+      cross.setAttribute('visibility', 'hidden');
+    };
+    svg.addEventListener('pointerleave', hide);
+    svg.addEventListener('pointermove', (event) => {
+      const box = svg.getBoundingClientRect();
+      if (box.width === 0) return;
+      const index = nearestPoint(geometry, (event.clientX - box.left) / box.width);
+      const point = geometry.points[index];
+      if (!point) return hide();
+      cross.setAttribute('x1', String(point.x));
+      cross.setAttribute('x2', String(point.x));
+      cross.setAttribute('visibility', 'visible');
+      tip.textContent = fill(labels.chartTip ?? '{time} · {wpm} wpm', {
+        time: clock(step * (index + 1)),
+        wpm: entry.series[index] ?? 0,
+      });
+      tip.style.insetInlineStart = `${(point.x / CHART.width) * 100}%`;
+      tip.hidden = false;
+    });
   }
 
-  async function load(append: boolean): Promise<void> {
-    const current = ++request;
-    if (!append) {
-      open = null;
-      showState('loading');
-      more.hidden = true;
+  function renderPages(total: number): void {
+    const count = Math.max(1, Math.ceil(total / BOARD_PAGE_SIZE));
+    pages.hidden = count <= 1;
+    if (count <= 1) {
+      pages.replaceChildren();
+      return;
     }
-    more.disabled = true;
+    const button = (
+      label: string,
+      target: number,
+      options: { current?: boolean; aria?: string } = {},
+    ) => {
+      const element = document.createElement('button');
+      element.type = 'button';
+      element.className = 'page';
+      element.textContent = label;
+      if (options.aria) element.setAttribute('aria-label', options.aria);
+      if (options.current) element.setAttribute('aria-current', 'page');
+      element.disabled = target < 1 || target > count;
+      element.addEventListener('click', () => goTo(target));
+      return element;
+    };
+    const items: HTMLElement[] = [
+      button('‹', page - 1, { aria: labels.prev ?? 'Previous page' }),
+      ...pageList(page, count).map((item) => {
+        if (item === 'gap') {
+          const gap = document.createElement('span');
+          gap.className = 'page-gap';
+          gap.setAttribute('aria-hidden', 'true');
+          gap.textContent = '…';
+          return gap;
+        }
+        return button(String(item), item, {
+          current: item === page,
+          aria: fill(labels.page ?? 'Page {page}', { page: item }),
+        });
+      }),
+      button('›', page + 1, { aria: labels.next ?? 'Next page' }),
+    ];
+    pages.replaceChildren(...items);
+  }
+
+  function pushUrl(): void {
+    const url = `${location.pathname}${boardSearch(filter, page)}`;
+    if (url !== `${location.pathname}${location.search}`) history.pushState(null, '', url);
+  }
+
+  function goTo(target: number): void {
+    page = target;
+    pushUrl();
+    void load(true);
+  }
+
+  async function load(scrollUp = false): Promise<void> {
+    const current = ++request;
+    open = null;
+    showState('loading');
     const query = new URLSearchParams(searchFromFilter(filter).slice(1));
-    if (append && next) query.set('cursor', next);
+    if (page > 1) query.set('cursor', String((page - 1) * BOARD_PAGE_SIZE));
     try {
       const response = await fetch(`/api/game/leaderboard?${query.toString()}`);
       if (!response.ok) throw new Error(String(response.status));
-      const page = (await response.json()) as BoardPage;
+      const result = (await response.json()) as BoardPage;
       if (current !== request) return;
+      // A page past the end (old link, rows removed): go to the last one.
+      const last = Math.max(1, Math.ceil(result.total / BOARD_PAGE_SIZE));
+      if (page > last) {
+        page = last;
+        history.replaceState(null, '', `${location.pathname}${boardSearch(filter, page)}`);
+        void load(scrollUp);
+        return;
+      }
       const mine = myEntries();
-      const rows = page.entries.map((entry) => buildRow(entry, mine));
-      if (append) list.append(...rows);
-      else list.replaceChildren(...rows);
-      next = page.next;
-      more.hidden = next === null;
-      summary.textContent = describe(page.total);
-      showState(page.total === 0 ? 'empty' : 'rows');
+      list.replaceChildren(...result.entries.map((entry) => buildRow(entry, mine)));
+      renderPages(result.total);
+      summary.textContent = describe(result.total);
+      showState(result.total === 0 ? 'empty' : 'rows');
+      if (scrollUp) table.scrollIntoView({ block: 'start' });
     } catch {
       if (current !== request) return;
-      if (append) {
-        more.hidden = false;
-      } else {
-        summary.textContent = '';
-        showState('error');
-      }
-    } finally {
-      if (current === request) more.disabled = false;
+      summary.textContent = '';
+      pages.hidden = true;
+      showState('error');
     }
   }
 
   form.addEventListener('change', () => {
     filter = readForm();
+    page = 1;
     syncForm();
-    const url = `${location.pathname}${searchFromFilter(filter)}`;
-    if (url !== `${location.pathname}${location.search}`) history.pushState(null, '', url);
-    void load(false);
+    pushUrl();
+    void load();
   });
   form.addEventListener('submit', (event) => event.preventDefault());
 
   window.addEventListener('popstate', () => {
     filter = filterFromSearch(location.search);
+    page = pageFromSearch(location.search);
     syncForm();
-    void load(false);
+    void load();
   });
 
   need<HTMLButtonElement>(root, '[data-board-retry]').addEventListener('click', () => {
-    void load(false);
+    void load();
   });
-  more.addEventListener('click', () => void load(true));
 
   // The board is cached at the edge for 30 s, so a removed row is dropped here, not reloaded.
   initDialogs(root, labels, (id) => {
@@ -241,10 +321,10 @@ export function initBoard(root: HTMLElement): void {
     open = null;
     summary.textContent = labels.removed ?? '';
     // After the dialog's own focus return (to the removed button) has run.
-    window.setTimeout(() => (neighbour ?? more).focus(), 0);
+    window.setTimeout(() => (neighbour ?? table).focus(), 0);
   });
   syncForm();
-  void load(false);
+  void load();
 }
 
 /** Report and "Remove my run" dialogs, shared by every row. */
