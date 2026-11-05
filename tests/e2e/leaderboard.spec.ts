@@ -1,7 +1,6 @@
-import AxeBuilder from '@axe-core/playwright';
 import { type APIRequestContext, expect, test } from '@playwright/test';
 
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
+import { expectNoAxeViolations } from './axe';
 
 test.use({ viewport: { width: 1440, height: 1000 } });
 
@@ -88,8 +87,7 @@ test.describe('Kana Rush leaderboard', () => {
     await rows.nth(1).click();
     await expect(rows.nth(0)).toHaveAttribute('aria-expanded', 'false');
 
-    const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-    expect(axe.violations).toEqual([]);
+    await expectNoAxeViolations(page);
 
     // Endless shows the survival sort and writes the filter to the URL.
     await page.getByRole('radio', { name: 'Endless' }).check({ force: true });
@@ -143,7 +141,6 @@ test.describe('Kana Rush leaderboard', () => {
     await expect(page.locator('[data-board-summary]')).toHaveText(
       /^0 runs · Kanji · Easy · Endless/,
     );
-    const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-    expect(axe.violations).toEqual([]);
+    await expectNoAxeViolations(page);
   });
 });

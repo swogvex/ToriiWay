@@ -1,15 +1,10 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 
+import { expectNoAxeViolations } from './axe';
+
 // The preview server keeps runs in memory (JLPT_MEMORY_STORE in playwright.config.ts).
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
 test.use({ viewport: { width: 1440, height: 1000 } });
-
-async function expectNoAxeViolations(page: Page) {
-  const results = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-  expect(results.violations).toEqual([]);
-}
 
 /** The break and end screens must fit a laptop window (1080p at 125% ≈ 700px tall) without scrolling. */
 async function expectNoPageScroll(page: Page) {

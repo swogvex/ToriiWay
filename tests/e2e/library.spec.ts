@@ -1,15 +1,10 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, type Page, test } from '@playwright/test';
 
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
+import { expectNoAxeViolations } from './axe';
 
 test.use({ viewport: { width: 1440, height: 1000 } });
 
 const cards = (page: Page) => page.locator('[data-slug]:not([hidden])');
-const noAxeViolations = async (page: Page) => {
-  const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-  expect(axe.violations).toEqual([]);
-};
 
 test.describe('Library', () => {
   test('lists the books with featured ones first, with no axe violations', async ({ page }) => {
@@ -21,7 +16,7 @@ test.describe('Library', () => {
     await expect(page.getByRole('status').filter({ hasText: /books?$/ })).toHaveText(
       `${all} books`,
     );
-    await noAxeViolations(page);
+    await expectNoAxeViolations(page);
   });
 
   test('filters (OR within a group, AND across groups) live in the URL', async ({ page }) => {
@@ -74,7 +69,7 @@ test.describe('Library', () => {
     await expect(visit).toHaveAttribute('rel', /noopener/);
     await expect(visit).toHaveAccessibleName(/opens in a new tab/);
     await expect(page.getByRole('heading', { name: 'Related books' })).toBeVisible();
-    await noAxeViolations(page);
+    await expectNoAxeViolations(page);
   });
 
   test('phones fold the filters and pass axe', async ({ page }) => {
@@ -86,6 +81,6 @@ test.describe('Library', () => {
     await toggle.click();
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
     await expect(page.getByRole('checkbox', { name: 'Kanji' })).toBeVisible();
-    await noAxeViolations(page);
+    await expectNoAxeViolations(page);
   });
 });
