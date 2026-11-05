@@ -17,6 +17,8 @@ overrides:
   '@lhci/cli>uuid': 11.1.1
   'get-uri>basic-ftp': 6.2.3
   'chromium-bidi>zod': 4.6.7
+  # ESLint 10.14 and typescript-eslint pin minimatch ^10; 11.0.1 fixes GHSA-g3hv-75wg-m249 (same API).
+  'minimatch@>=10 <11.0.1': ^11.0.1
   # extract-zip has no fixed release; @puppeteer/browsers 3 no longer depends on it.
   'puppeteer-core>@puppeteer/browsers': 3.2.5
   # ...which needs proxy-agent 8 as a peer (lhci uses the same ProxyAgent class).

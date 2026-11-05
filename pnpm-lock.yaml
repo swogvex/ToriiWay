@@ -172,6 +172,7 @@ overrides:
   '@lhci/cli>uuid': 11.1.1
   get-uri>basic-ftp: 6.2.3
   chromium-bidi>zod: 4.6.7
+  minimatch@>=10 <11.0.1: ^11.0.1
   puppeteer-core>@puppeteer/browsers: 3.2.5
   proxy-agent: 8.0.2
 
@@ -3681,10 +3682,6 @@ packages:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
 
-  minimatch@10.2.6:
-    resolution: {integrity: sha512-vpLQEs+VLCr1nU0BXS07maYoFwlDAH0gngQuuttxIwutDFEMHq2blX+8vpgxDdK3J1PwjCJiep77OitTZ4Ll1A==}
-    engines: {node: 18 || 20 || >=22}
-
   minimatch@11.0.3:
     resolution: {integrity: sha512-iny/40PEGkNJQ5/Pv6z3nm6FbRAby32GeZRjCUJk2WnNDbgPSTcdI+DDvLqsgBdD4cD5sMtMheqPPnehCCa8Nw==}
     engines: {node: 18 || 20 || >=22}
@@ -5866,7 +5863,7 @@ snapshots:
     dependencies:
       '@eslint/object-schema': 3.0.5
       debug: 4.4.3(supports-color@10.2.2)
-      minimatch: 10.2.6
+      minimatch: 11.0.3
     transitivePeerDependencies:
       - supports-color
 
@@ -6550,7 +6547,7 @@ snapshots:
       '@typescript-eslint/types': 8.72.1
       '@typescript-eslint/visitor-keys': 8.72.1
       debug: 4.4.3(supports-color@10.2.2)
-      minimatch: 10.2.6
+      minimatch: 11.0.3
       semver: 7.8.5
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@6.0.3)
@@ -7693,7 +7690,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       json-stable-stringify-without-jsonify: 1.0.1
-      minimatch: 10.2.6
+      minimatch: 11.0.3
       natural-compare: 1.4.0
       optionator: 0.9.4
     transitivePeerDependencies:
@@ -8663,10 +8660,6 @@ snapshots:
   mimic-fn@1.2.0: {}
 
   mimic-fn@2.1.0: {}
-
-  minimatch@10.2.6:
-    dependencies:
-      brace-expansion: 5.0.12
 
   minimatch@11.0.3:
     dependencies:
