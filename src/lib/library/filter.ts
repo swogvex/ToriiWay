@@ -11,6 +11,8 @@ export const CATEGORIES = [
 ] as const;
 export const RESOURCES = ['audio', 'exercises', 'es', 'en'] as const;
 export const SORTS = ['recommended', 'az', 'level'] as const;
+/** Books per page (owner, 2026-11-06). */
+export const PAGE_SIZE = 6;
 
 export type Level = (typeof LEVELS)[number];
 export type Category = (typeof CATEGORIES)[number];
@@ -37,6 +39,8 @@ export interface LibraryState {
   resources: Resource[];
   query: string;
   sort: Sort;
+  /** 1-based; reset to 1 by any filter change. */
+  page: number;
 }
 
 export const EMPTY_STATE: LibraryState = {
@@ -45,6 +49,7 @@ export const EMPTY_STATE: LibraryState = {
   resources: [],
   query: '',
   sort: 'recommended',
+  page: 1,
 };
 
 /** Lowercase without accents, so "japones" finds "japonés". */
@@ -61,12 +66,14 @@ function listParam<T extends string>(value: string | null, allowed: readonly T[]
 export function stateFromSearch(search: string): LibraryState {
   const params = new URLSearchParams(search);
   const sort = params.get('sort');
+  const page = Number(params.get('page'));
   return {
     levels: listParam(params.get('level'), LEVELS),
     categories: listParam(params.get('category'), CATEGORIES),
     resources: listParam(params.get('resources'), RESOURCES),
     query: (params.get('q') ?? '').slice(0, 64),
     sort: SORTS.includes(sort as Sort) ? (sort as Sort) : 'recommended',
+    page: Number.isInteger(page) && page > 1 ? page : 1,
   };
 }
 
@@ -78,6 +85,7 @@ export function searchFromState(state: LibraryState): string {
   if (state.resources.length) params.set('resources', state.resources.join(','));
   if (state.query.trim()) params.set('q', state.query.trim());
   if (state.sort !== 'recommended') params.set('sort', state.sort);
+  if (state.page > 1) params.set('page', String(state.page));
   const query = params.toString().replaceAll('%2C', ',');
   return query ? `?${query}` : '';
 }

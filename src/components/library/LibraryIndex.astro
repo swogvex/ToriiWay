@@ -9,7 +9,9 @@ import type { Book } from '../../lib/library/books';
 import { type BookFacts, CATEGORIES, LEVELS, RESOURCES, SORTS } from '../../lib/library/filter';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import Pagination from '../ui/Pagination.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+import Select from '../ui/Select.astro';
 import BookBadges from './BookBadges.astro';
 import BookCover from './BookCover.astro';
 
@@ -37,6 +39,9 @@ const facts: BookFacts[] = books.map((book) => ({
 const labels = {
   count: t('library.count'),
   countOne: t('library.count.one'),
+  prev: t('library.prev'),
+  next: t('library.next'),
+  page: t('library.page'),
 };
 ---
 
@@ -114,14 +119,13 @@ const labels = {
       </h2>
       <div class="lib__bar">
         <p class="visually-hidden" role="status" data-library-count></p>
-        <label class="lib__sort">
-          {t('library.sort')}
-          <select name="sort" data-library-sort>
-            {SORTS.map((sort) => (
-              <option value={sort}>{t(`library.sort.${sort}`)}</option>
-            ))}
-          </select>
-        </label>
+        <Select
+          id="library-sort"
+          name="sort"
+          label={t('library.sort')}
+          options={SORTS.map((sort) => ({ value: sort, label: t(`library.sort.${sort}`) }))}
+          class="lib__sort"
+        />
       </div>
 
       <ol class="lib__list" data-library-list>
@@ -157,6 +161,8 @@ const labels = {
           {t('library.clear')}
         </Button>
       </div>
+
+      <Pagination label={t('library.pages')} class="lib__pages" />
 
       <p class="lib__note">{t('library.note')}</p>
     </section>
@@ -328,23 +334,6 @@ const labels = {
   .lib__bar {
     display: flex;
     justify-content: flex-end;
-  }
-
-  .lib__sort {
-    display: flex;
-    gap: var(--space-3);
-    align-items: center;
-    color: var(--muted);
-  }
-
-  .lib__sort select {
-    min-block-size: var(--target-min);
-    padding-inline: var(--space-3);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-control);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
   }
 
   .lib__list {
