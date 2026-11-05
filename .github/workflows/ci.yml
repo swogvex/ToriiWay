@@ -1,9 +1,8 @@
 name: CI
 
+# PRs only: the merge to main was already checked on its PR, and a second run doubles Actions minutes.
 on:
   pull_request:
-  push:
-    branches: [main]
 
 permissions:
   contents: read
