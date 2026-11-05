@@ -1,6 +1,8 @@
 ---
 import '../../styles/base.css';
 import { DEFAULT_LOCALE, localizePath, PUBLISHED_LOCALES } from '../../i18n';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import { THEME_PREPAINT_SCRIPT } from '../../lib/theme/prepaint';
 
 interface Props {
@@ -29,6 +31,8 @@ const alternates = PUBLISHED_LOCALES.map((locale) => ({
   locale,
   href: new URL(localizePath(pathname, locale), Astro.site).href,
 }));
+// Only real production: elsewhere the scripts 404 (Lighthouse CI) or load a third-party debug build (dev).
+const analytics = process.env.VERCEL_ENV === 'production';
 const xDefault = new URL(localizePath(pathname, DEFAULT_LOCALE), Astro.site).href;
 ---
 
@@ -79,3 +83,5 @@ const xDefault = new URL(localizePath(pathname, DEFAULT_LOCALE), Astro.site).hre
 <meta name="theme-color" content="#f5f4f0" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)" />
 {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+{analytics && <Analytics />}
+{analytics && <SpeedInsights />}
