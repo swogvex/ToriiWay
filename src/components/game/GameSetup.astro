@@ -281,6 +281,8 @@ const labels = Object.fromEntries([
   }
 
   .setup__lead {
+    /* Grows to 52ch but can shrink, so stats and the Leaderboard button stay on its row. */
+    flex: 1 1 30ch;
     max-inline-size: 52ch;
     color: var(--muted);
     font-size: var(--text-md);

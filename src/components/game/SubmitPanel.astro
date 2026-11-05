@@ -73,8 +73,7 @@ const labels = Object.fromEntries(
         data-submit-name
       />
       <p id="submit-hint" class="submit__hint">
-        {t('game.submit.hint')}
-        {t('game.submit.owner')}
+        {`${t('game.submit.hint')} ${t('game.submit.owner')}`}
       </p>
       <p id="submit-error" class="submit__error" data-submit-error></p>
       <div class="submit__check" data-turnstile></div>
