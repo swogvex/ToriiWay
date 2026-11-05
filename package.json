@@ -36,6 +36,8 @@
     "@astrojs/vercel": "11.0.17",
     "@neondatabase/serverless": "1.2.0",
     "@resvg/resvg-js": "2.6.2",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "7.4.4",
     "cuelume": "0.2.8",
     "drizzle-orm": "0.45.4",
