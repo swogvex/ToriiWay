@@ -1,0 +1,81 @@
+---
+/**
+ * Typographic cover (image 09): easiest level on top, the book's kanji below, on ink,
+ * accent or info. Decorative: the title next to it carries the meaning.
+ */
+import type { CoverTone } from '../../lib/library/books';
+
+interface Props {
+  level: string;
+  kanji: string;
+  tone: CoverTone;
+  size?: 'md' | 'lg';
+}
+
+const { level, kanji, tone, size = 'md' } = Astro.props;
+---
+
+<span class:list={['cover', `cover--${tone}`, `cover--${size}`]} aria-hidden="true">
+  <span class="cover__level">{level}</span>
+  <span class="cover__kanji" lang="ja">
+    {kanji}
+  </span>
+</span>
+
+<style>
+  .cover {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-control);
+  }
+
+  .cover--md {
+    inline-size: 4rem;
+    block-size: 5.25rem;
+  }
+
+  .cover--lg {
+    inline-size: 7.5rem;
+    block-size: 10rem;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .cover--ink {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .cover--accent {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .cover--info {
+    background: var(--info);
+    color: var(--bg);
+  }
+
+  .cover__level {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 700;
+  }
+
+  .cover__kanji {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .cover--lg .cover__level {
+    font-size: var(--text-xs);
+  }
+
+  .cover--lg .cover__kanji {
+    font-size: var(--text-3xl);
+  }
+</style>

@@ -1,7 +1,7 @@
-import AxeBuilder from '@axe-core/playwright';
 import { expect, type Page, test } from '@playwright/test';
 
-const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
+import { expectNoAxeViolations } from './axe';
+
 /** Endless, so these runs never land on the Challenge boards that leaderboard.spec.ts counts. */
 const MODE = 'endless';
 
@@ -54,8 +54,7 @@ test.describe('Kana Rush leaderboard submission', () => {
     await field.fill(name);
     await expect(send).toBeEnabled();
 
-    const axe = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
-    expect(axe.violations).toEqual([]);
+    await expectNoAxeViolations(page);
 
     await send.click();
     await expect(panel(page)).toHaveAttribute('data-state', 'done', { timeout: 10_000 });

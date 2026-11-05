@@ -1,0 +1,72 @@
+---
+/** Resource badges of a book (image 09): Audio, Exercises, then ES / EN editions. */
+import { getLocale, useTranslations } from '../../i18n';
+import type { Book } from '../../lib/library/books';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+const editions = (['es', 'en'] as const).filter((edition) => book.editions.includes(edition));
+---
+
+<ul class="badges">
+  {book.audio && (
+    <li class="badge">
+      <Icon name="volume-2" size={12} />
+      {t('library.badge.audio')}
+    </li>
+  )}
+  {book.exercises && <li class="badge">{t('library.badge.exercises')}</li>}
+  {editions.map((edition) => (
+    <li class:list={['badge', `badge--${edition}`]}>
+      <abbr
+        title={t('library.edition.label', { language: t(`library.edition.${edition}`) })}
+        aria-label={t('library.edition.label', { language: t(`library.edition.${edition}`) })}
+      >
+        {edition.toUpperCase()}
+      </abbr>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    gap: var(--space-1);
+    align-items: center;
+    padding: 0.125rem var(--space-2);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .badge--es {
+    border-color: transparent;
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  .badge--en {
+    border-color: transparent;
+    background: var(--info-soft);
+    color: var(--info);
+  }
+
+  .badge abbr {
+    text-decoration: none;
+  }
+</style>
