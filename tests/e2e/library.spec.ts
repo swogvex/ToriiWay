@@ -84,3 +84,40 @@ test.describe('Library', () => {
     await expectNoAxeViolations(page);
   });
 });
+
+test.describe('Library counter', () => {
+  test('a visit to the official page is counted once and shows on /admin/library', async ({
+    page,
+    browser,
+  }, info) => {
+    // Each project counts a different book, so parallel runs do not share a number.
+    const slug = info.project.name === 'dark' ? 'quartet' : 'tobira-beginning';
+    await page.goto(`/library/${slug}`);
+    // Stay on the page: a second listener cancels the new tab; the page's own listener
+    // still sends the beacon.
+    await page.evaluate(() =>
+      document.addEventListener('click', (event) => event.preventDefault()),
+    );
+    const visit = page.getByRole('link', { name: /Visit official page/ });
+    for (let i = 0; i < 2; i++) {
+      const beacon = page.waitForRequest(
+        (request) => request.url().endsWith('/api/counters') && request.method() === 'POST',
+      );
+      await visit.click();
+      // Playwright does not expose beacon bodies; /admin/library below checks the key.
+      await beacon;
+    }
+
+    const admin = await browser.newContext({
+      httpCredentials: { username: 'e2e-admin', password: 'e2e-admin-password' },
+    });
+    const adminPage = await admin.newPage();
+    await adminPage.goto('/admin/library');
+    const row = adminPage
+      .getByRole('row')
+      .filter({ has: adminPage.locator(`a[href="/library/${slug}"]`) });
+    // Two clicks from the same visitor on the same day count once.
+    await expect(row.getByRole('cell')).toHaveText(['1', '1']);
+    await admin.close();
+  });
+});
