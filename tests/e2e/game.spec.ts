@@ -157,19 +157,30 @@ test.describe('Kana Rush play', () => {
     const chartBox = await results.locator('.chart').boundingBox();
     const wordsBox = await results.locator('.words').boundingBox();
     expect(Math.abs((chartBox?.height ?? 0) - (wordsBox?.height ?? 0))).toBeLessThan(2);
-    // A long list, expanded, grows the words card only; the chart keeps its height.
-    await results.locator('.words').evaluate((card) => {
-      const list = card.querySelector('[data-words]');
-      for (let index = 0; index < 60; index += 1) {
-        list?.append(Object.assign(document.createElement('li'), { textContent: `word ${index}` }));
+    // A long list: "Show all" opens every word in a dialog that scrolls inside, and the
+    // results layout does not change.
+    await results.locator('[data-words]').evaluate((list) => {
+      for (let index = 0; index < 200; index += 1) {
+        list.append(Object.assign(document.createElement('li'), { textContent: `word ${index}` }));
       }
-      card.classList.add('is-expanded');
     });
-    const expandedChart = await results.locator('.chart').boundingBox();
-    const expandedWords = await results.locator('.words').boundingBox();
-    expect(expandedWords?.height ?? 0).toBeGreaterThan((chartBox?.height ?? 0) + 50);
-    expect(Math.abs((expandedChart?.height ?? 0) - (chartBox?.height ?? 0))).toBeLessThan(2);
-    await results.locator('.words').evaluate((card) => card.classList.remove('is-expanded'));
+    // A width change refits the card (ResizeObserver), which reveals "Show all".
+    await page.setViewportSize({ width: 900, height: 1000 });
+    const showAll = results.getByRole('button', { name: /Show all \(201\)/ });
+    await expect(showAll).toBeVisible();
+    const narrowChart = await results.locator('.chart').boundingBox();
+    await showAll.click();
+    const dialog = page.getByRole('dialog', { name: /Words/ });
+    await expect(dialog).toBeVisible();
+    const all = dialog.locator('[data-words-all]');
+    await expect(all.locator('li')).toHaveCount(201);
+    expect(await all.evaluate((list) => list.scrollHeight > list.clientHeight)).toBe(true);
+    const openChart = await results.locator('.chart').boundingBox();
+    expect(Math.abs((openChart?.height ?? 0) - (narrowChart?.height ?? 0))).toBeLessThan(2);
+    await page.keyboard.press('Escape');
+    await expect(dialog).toBeHidden();
+    await expect(showAll).toBeFocused();
+    await page.setViewportSize({ width: 1440, height: 1000 });
     await expect(results.locator('[data-chart] .chart__error')).not.toHaveCount(0);
     await expect(results.locator('[data-chart-desc]')).toContainText('Seconds with errors: 1');
     await expect(results.locator('[data-slowest] a').first()).toHaveAttribute(

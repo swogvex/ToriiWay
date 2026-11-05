@@ -2,7 +2,7 @@
 // time with its chart, and the Report / "Remove my run" dialogs. Rows are built from a
 // <template> with textContent only, so player names can never inject markup.
 
-import { CHART, chartGeometry, nearestPoint, renderChart } from '../../../game/chart';
+import { CHART, chartGeometry, nearestPoint, renderChart, showDot } from '../../../game/chart';
 import { turnstileWidget, type Widget } from '../../turnstile-client';
 import {
   BOARD_PAGE_SIZE,
@@ -169,7 +169,7 @@ export function initBoard(root: HTMLElement): void {
     const step = points > 0 ? entry.durationS / points : 1;
     const durations = Array.from({ length: points }, () => step);
     const geometry = chartGeometry(entry.series, durations, entry.errors);
-    const cross = renderChart(svg, geometry);
+    const dot = renderChart(svg, geometry);
     desc.textContent =
       points === 0
         ? (labels.chartEmpty ?? '')
@@ -181,10 +181,10 @@ export function initBoard(root: HTMLElement): void {
             errors: entry.errors.length,
           });
 
-    // Hover like the results chart: a crosshair and "time · wpm" at the nearest point.
+    // Hover like the results chart: a red dot on the line and "time · wpm" at the top.
     const hide = () => {
       tip.hidden = true;
-      cross.setAttribute('visibility', 'hidden');
+      dot.setAttribute('visibility', 'hidden');
     };
     svg.addEventListener('pointerleave', hide);
     svg.addEventListener('pointermove', (event) => {
@@ -193,9 +193,7 @@ export function initBoard(root: HTMLElement): void {
       const index = nearestPoint(geometry, (event.clientX - box.left) / box.width);
       const point = geometry.points[index];
       if (!point) return hide();
-      cross.setAttribute('x1', String(point.x));
-      cross.setAttribute('x2', String(point.x));
-      cross.setAttribute('visibility', 'visible');
+      showDot(dot, point);
       tip.textContent = fill(labels.chartTip ?? '{time} · {wpm} wpm', {
         time: clock(step * (index + 1)),
         wpm: entry.series[index] ?? 0,

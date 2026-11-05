@@ -6,6 +6,7 @@
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import { getKana, kanaHref, scriptHref, SCRIPTS } from '../../lib/kana/data';
 import Button from '../ui/Button.astro';
+import Dialog from '../ui/Dialog.astro';
 import Icon from '../ui/Icon.astro';
 import SubmitPanel from './SubmitPanel.astro';
 
@@ -31,7 +32,6 @@ const keys = [
   'chart.tip',
   'words.count',
   'words.all',
-  'words.less',
   'announce',
 ] as const;
 const labels = Object.fromEntries([
@@ -39,6 +39,7 @@ const labels = Object.fromEntries([
   ['title.failed', t('game.play.failed')],
   ['title.quit', t('game.play.quit')],
   ...keys.map((key) => [key, t(`game.results.${key}`)]),
+  ['words.title', t('game.results.words')],
   ['share.copied', t('game.share.copied')],
   ['share.copyFailed', t('game.share.copyFailed')],
   ['card.alt', t('game.share.alt')],
@@ -158,7 +159,7 @@ const stats = [
         <button
           class="words__toggle"
           type="button"
-          aria-controls="words-list"
+          aria-haspopup="dialog"
           data-words-toggle
         ></button>
       </div>
@@ -184,6 +185,11 @@ const stats = [
       </p>
     </section>
   </div>
+
+  <!-- "Show all": every word in a dialog that scrolls inside (owner, 2026-11-06). -->
+  <Dialog id="words-all" title={t('game.results.words')} class="words-dialog">
+    <ul class="words__list words__list--all" data-words-all></ul>
+  </Dialog>
 
   <section class="share" aria-labelledby="share-title">
     <div class="share__form">
@@ -362,11 +368,6 @@ const stats = [
     gap: var(--space-5);
   }
 
-  /* Expanded, the words card grows down on its own; the chart keeps its height. */
-  .results__pair:has(.words.is-expanded) {
-    align-items: start;
-  }
-
   .results__card {
     display: grid;
     gap: var(--space-4);
@@ -443,9 +444,12 @@ const stats = [
     stroke-linecap: round;
   }
 
-  .chart__svg :global(.chart__cross) {
-    stroke: var(--muted);
-    stroke-width: 1;
+  /* Hover: a red dot on the line (no crosshair), ringed in the card colour so it reads on the line. */
+  .chart__svg :global(.chart__dot) {
+    fill: var(--accent);
+    stroke: var(--bg);
+    stroke-width: 2;
+    pointer-events: none;
   }
 
   .chart__tip {
@@ -497,17 +501,24 @@ const stats = [
    * out of the row height) and src/game/results.ts hides the words that do not fit.
    */
   @media (width >= 48rem) {
-    .words:not(.is-expanded) {
+    .words {
       contain: size;
       display: flex;
       flex-direction: column;
     }
 
-    .words:not(.is-expanded) .words__list {
+    .words .words__list {
       flex: 1 1 auto;
       min-block-size: 0;
       overflow: hidden;
     }
+  }
+
+  /* The full list scrolls inside the dialog; its header and close button stay put. */
+  .words__list--all {
+    max-block-size: min(60dvh, 32rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .words__list {

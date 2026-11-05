@@ -6,7 +6,7 @@ export const CHART = { width: 640, height: 220, left: 36, right: 8, top: 12, plo
 export interface ChartGeometry {
   /** Line points in viewBox units, one per sample. */
   points: { x: number; y: number }[];
-  /** Gridlines at half and full scale. */
+  /** Gridlines every gridStep() up to the top of the scale. */
   grid: { value: number; y: number }[];
   /** × positions (middle of each second with errors). */
   errors: number[];
@@ -16,15 +16,27 @@ export interface ChartGeometry {
   baseY: number;
 }
 
-/** A round top for the scale: the next multiple of 10, at least 10. */
-export function niceMax(value: number): number {
-  return Math.max(10, Math.ceil(value / 10) * 10);
+/**
+ * Gridline step: every 15 WPM up to 60 (15 · 30 · 45 · 60), every 30 above, so fast runs
+ * do not crowd the axis.
+ */
+export function gridStep(max: number): number {
+  return max <= 60 ? 15 : 30;
 }
 
+/** Room above the peak: the top quarter stays free for the hover tooltip. */
+const HEADROOM = 1.25;
+
 /**
- * Lays out the series. `durations` are the sample lengths (the last one may be
- * shorter than a second), so the line ends exactly at the run's time.
+ * Top of the scale: at least 60 (owner, 2026-11-06), and high enough that the line stays
+ * under the tooltip at the top; rounded up to a whole gridline.
  */
+export function niceMax(value: number): number {
+  const wanted = Math.max(60, value * HEADROOM);
+  const step = gridStep(wanted);
+  return Math.ceil(wanted / step) * step;
+}
+
 export function chartGeometry(
   series: readonly number[],
   durations: readonly number[],
@@ -43,7 +55,10 @@ export function chartGeometry(
   });
   return {
     points,
-    grid: [max / 2, max].map((value) => ({ value, y: y(value) })),
+    grid: Array.from(
+      { length: max / gridStep(max) },
+      (_, index) => (index + 1) * gridStep(max),
+    ).map((value) => ({ value, y: y(value) })),
     errors: errorSeconds.map((second) => x(Math.min(second + 0.5, total))),
     errorY: top + plot + 24,
     baseY: top + plot + 44,
@@ -63,8 +78,8 @@ function node<K extends keyof SVGElementTagNameMap>(
   return el;
 }
 
-/** Draws the chart into `svg` (clearing it) and returns the crosshair line for hover. */
-export function renderChart(svg: SVGSVGElement, geometry: ChartGeometry): SVGLineElement {
+/** Draws the chart into `svg` (clearing it) and returns the hover dot (hidden until hover). */
+export function renderChart(svg: SVGSVGElement, geometry: ChartGeometry): SVGCircleElement {
   const { width, height, left, right } = CHART;
   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
   for (const child of [...svg.children]) {
@@ -96,10 +111,17 @@ export function renderChart(svg: SVGSVGElement, geometry: ChartGeometry): SVGLin
     );
     svg.append(mark);
   }
-  const cross = node('line', { x1: 0, x2: 0, y1: 0, y2: geometry.baseY }, 'chart__cross');
-  cross.setAttribute('visibility', 'hidden');
-  svg.append(cross);
-  return cross;
+  const dot = node('circle', { cx: 0, cy: 0, r: 6 }, 'chart__dot');
+  dot.setAttribute('visibility', 'hidden');
+  svg.append(dot);
+  return dot;
+}
+
+/** Puts the hover dot on a point of the line. */
+export function showDot(dot: SVGCircleElement, point: { x: number; y: number }): void {
+  dot.setAttribute('cx', point.x.toFixed(1));
+  dot.setAttribute('cy', point.y.toFixed(1));
+  dot.setAttribute('visibility', 'visible');
 }
 
 /** The point nearest to a pointer position given as a share (0–1) of the chart's width. */

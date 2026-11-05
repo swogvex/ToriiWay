@@ -1,4 +1,11 @@
-import { CHART, type ChartGeometry, chartGeometry, nearestPoint, renderChart } from './chart';
+import {
+  CHART,
+  type ChartGeometry,
+  chartGeometry,
+  nearestPoint,
+  renderChart,
+  showDot,
+} from './chart';
 import { buildClaim, canSubmit } from './claim';
 import type { GameScript } from './config';
 import { romajiHint } from './romaji';
@@ -85,7 +92,7 @@ export class Results {
   private readonly learn: LearnLinks;
   private readonly svg: SVGSVGElement;
   private readonly tip: HTMLElement;
-  private cross: SVGLineElement | null = null;
+  private dot: SVGCircleElement | null = null;
   private readonly canvas: HTMLCanvasElement;
   private readonly image: HTMLElement;
   private readonly name: HTMLInputElement;
@@ -126,12 +133,7 @@ export class Results {
     this.logo.addEventListener('load', () => this.drawCard());
 
     const toggle = required<HTMLButtonElement>(root, '[data-words-toggle]');
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') !== 'true';
-      toggle.setAttribute('aria-expanded', String(expanded));
-      required(root, '.words').classList.toggle('is-expanded', expanded);
-      this.fitWords();
-    });
+    toggle.addEventListener('click', () => this.showAllWords(toggle));
     // The list's height comes from the chart beside it; refit when it changes.
     new ResizeObserver(() => this.fitWords()).observe(required(root, '[data-words]'));
 
@@ -192,7 +194,7 @@ export class Results {
       run.samples.map((sample) => sample.seconds),
       errors,
     );
-    this.cross = renderChart(this.svg, this.geometry);
+    this.dot = renderChart(this.svg, this.geometry);
     this.hideTip();
     required(this.root, '[data-chart-end]').textContent = formatTime(summary.time);
 
@@ -213,15 +215,13 @@ export class Results {
 
   private hover(event: PointerEvent): void {
     const geometry = this.geometry;
-    const line = this.cross;
-    if (!geometry || !line || geometry.points.length === 0) return;
+    const dot = this.dot;
+    if (!geometry || !dot || geometry.points.length === 0) return;
     const box = this.svg.getBoundingClientRect();
     const index = nearestPoint(geometry, (event.clientX - box.left) / box.width);
     const point = geometry.points[index];
     if (!point) return;
-    line.setAttribute('x1', String(point.x));
-    line.setAttribute('x2', String(point.x));
-    line.setAttribute('visibility', 'visible');
+    showDot(dot, point);
     this.tip.textContent = this.label('chart.tip', {
       time: formatTime(index + 1),
       wpm: this.series[index] ?? 0,
@@ -232,7 +232,7 @@ export class Results {
 
   private hideTip(): void {
     this.tip.hidden = true;
-    this.cross?.setAttribute('visibility', 'hidden');
+    this.dot?.setAttribute('visibility', 'hidden');
   }
 
   private fillWords(run: Run, summary: RunSummary): void {
@@ -260,36 +260,52 @@ export class Results {
     required(this.root, '[data-words-count]').textContent = this.label('words.count', {
       count: summary.popped,
     });
-    required(this.root, '[data-words-toggle]').setAttribute('aria-expanded', 'false');
-    required(this.root, '.words').classList.remove('is-expanded');
     required<HTMLElement>(this.root, '[data-words-empty]').hidden = words.length > 0;
     this.fitWords();
   }
 
   /**
-   * Folded, the words card is as tall as the chart beside it and shows the words that
-   * fit; stacked under the chart (narrow screens) it shows the first 12.
+   * The words card is as tall as the chart beside it and shows the words that fit;
+   * stacked under the chart (narrow screens) it shows the first 12. "Show all" opens them
+   * all in a dialog.
    */
   private fitWords(): void {
     const list = required<HTMLElement>(this.root, '[data-words]');
     const toggle = required<HTMLButtonElement>(this.root, '[data-words-toggle]');
     const items = [...list.children] as HTMLElement[];
-    const expanded = toggle.getAttribute('aria-expanded') === 'true';
     for (const item of items) item.hidden = false;
     let shown = items.length;
-    if (!expanded && matchMedia(SIDE_BY_SIDE).matches) {
+    if (matchMedia(SIDE_BY_SIDE).matches) {
       const overflow = items.findIndex(
         (item) => item.offsetTop + item.offsetHeight > list.clientHeight,
       );
       if (overflow !== -1) shown = overflow;
-    } else if (!expanded) {
+    } else {
       shown = Math.min(WORDS_SHOWN, items.length);
     }
     items.forEach((item, index) => (item.hidden = index >= shown));
-    toggle.hidden = !expanded && shown >= items.length;
-    toggle.textContent = expanded
-      ? this.label('words.less')
-      : this.label('words.all', { count: items.length });
+    toggle.hidden = shown >= items.length;
+    toggle.textContent = this.label('words.all', { count: items.length });
+  }
+
+  /** Every word, in a dialog that scrolls inside; Esc or the close button closes it. */
+  private showAllWords(opener: HTMLButtonElement): void {
+    const dialog = document.getElementById('words-all');
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    const all = required<HTMLElement>(dialog, '[data-words-all]');
+    const words = [...required(this.root, '[data-words]').children].map((item) => {
+      const copy = item.cloneNode(true) as HTMLElement;
+      copy.hidden = false;
+      return copy;
+    });
+    all.replaceChildren(...words);
+    all.scrollTop = 0;
+    const title = document.getElementById('words-all-title');
+    if (title) {
+      title.textContent = `${this.label('words.title')} · ${required(this.root, '[data-words-count]').textContent ?? ''}`;
+    }
+    dialog.showModal();
+    dialog.addEventListener('close', () => opener.focus(), { once: true });
   }
 
   private fillSlowest(run: Run): void {
