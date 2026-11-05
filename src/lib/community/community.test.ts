@@ -93,13 +93,19 @@ describe('caches', () => {
 });
 
 describe('categories', () => {
-  const [first, second, third] = parseFeed(FEED);
+  const feed = parseFeed(FEED);
+  const video = (index: number) => {
+    const found = feed[index];
+    if (!found) throw new Error(`fixture has no video ${index}`);
+    return found;
+  };
+  const [first, second, third] = [video(0), video(1), video(2)];
 
   it('uses the override, then the playlist, then "other"', () => {
     const videos = categorise(
-      [first!, second!, third!],
-      [{ category: 'kana', ids: new Set([second!.id]) }],
-      [{ id: first!.id, category: 'jlpt', featured: true, title: 'Custom' }],
+      [first, second, third],
+      [{ category: 'kana', ids: new Set([second.id]) }],
+      [{ id: first.id, category: 'jlpt', featured: true, title: 'Custom' }],
     );
     expect(videos.map((video) => [video.category, video.featured])).toEqual([
       ['jlpt', true],
@@ -112,7 +118,7 @@ describe('categories', () => {
   it('builds the list from the channel and playlist feeds', async () => {
     const fetcher = vi.fn(async (url: string) =>
       url.includes('playlist_id')
-        ? new Response(`<feed><entry><yt:videoId>${second!.id}</yt:videoId></entry></feed>`)
+        ? new Response(`<feed><entry><yt:videoId>${second.id}</yt:videoId></entry></feed>`)
         : new Response(FEED),
     );
     const videos = await channelVideos(
@@ -121,6 +127,6 @@ describe('categories', () => {
       [],
     )(0);
     expect(videos).toHaveLength(15);
-    expect(videos.find((video) => video.id === second!.id)?.category).toBe('kana');
+    expect(videos.find((video) => video.id === second.id)?.category).toBe('kana');
   });
 });
