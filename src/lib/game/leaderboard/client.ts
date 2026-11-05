@@ -8,6 +8,9 @@ export const SUBMITTER_KEY = 'tw:v1:submitter';
 export const MINE_KEY = 'tw:v1:leaderboard-mine';
 export const NAME_KEY = 'tw:v1:leaderboard-name';
 
+/** 3–16 letters, digits, _ and - (the server also filters offensive words). */
+export const NAME_PATTERN = /^[A-Za-z0-9_-]{3,16}$/;
+
 export const DEFAULT_FILTER: BoardFilter = {
   script: null,
   difficulty: null,

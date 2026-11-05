@@ -8,6 +8,7 @@ export interface CardPalette {
   ink: string;
   muted: string;
   line: string;
+  info: string;
 }
 
 export interface CardFonts {
@@ -28,6 +29,8 @@ export interface CardData {
   wpmLabel: string;
   /** Big background glyph: あ, ア or 字. */
   glyph: string;
+  /** "LEADERBOARD #4" once the run is on the board (image 16b). */
+  chip?: string;
 }
 
 /** Waits for the faces the card uses, so the first draw is not in a fallback font. */
@@ -80,6 +83,20 @@ export function drawCard(
   ctx.fillStyle = palette.muted;
   ctx.font = `400 24px ${fonts.mono}`;
   ctx.fillText(data.date, width - pad, pad + logoSize / 2);
+  if (data.chip) {
+    // Outlined chip left of the date, in the info colour.
+    const dateWidth = ctx.measureText(data.date).width;
+    ctx.font = `700 22px ${fonts.mono}`;
+    const text = data.chip.toUpperCase();
+    const chipWidth = ctx.measureText(text).width + 28;
+    const right = width - pad - dateWidth - 20;
+    const top = pad + logoSize / 2 - 20;
+    ctx.fillStyle = palette.info;
+    ctx.globalAlpha = 0.18;
+    ctx.fillRect(right - chipWidth, top, chipWidth, 40);
+    ctx.globalAlpha = 1;
+    ctx.fillText(text, right - 14, pad + logoSize / 2);
+  }
 
   // Kicker and the big WPM.
   ctx.textAlign = 'left';

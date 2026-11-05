@@ -1,9 +1,10 @@
 // Leaderboard names (13-security: "Names"): 3–16 [A-Za-z0-9_-], unique case-insensitively,
 // offensive-word filter on a folded form where digits count as the letters they look like.
 
+import { NAME_PATTERN } from './client';
 import { OFFENSIVE_WORDS } from './offensive-words';
 
-export const NAME_PATTERN = /^[A-Za-z0-9_-]{3,16}$/;
+export { NAME_PATTERN };
 
 /** The key a name is owned under: "Kenji_99" and "kenji_99" are the same name. */
 export function normalizeName(name: string): string {

@@ -7,6 +7,7 @@ import { getLocale, localizePath, useTranslations } from '../../i18n';
 import { getKana, kanaHref, scriptHref, SCRIPTS } from '../../lib/kana/data';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import SubmitPanel from './SubmitPanel.astro';
 
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -50,6 +51,7 @@ const labels = Object.fromEntries([
     `card.${key}`,
     t(`game.card.${key}`),
   ]),
+  ['card.leaderboard', t('game.card.leaderboard')],
 ]);
 
 const stats = [
@@ -118,6 +120,8 @@ const stats = [
       </dl>
     </details>
   </div>
+
+  <SubmitPanel />
 
   <div class="results__pair">
     <figure class="results__card chart">
@@ -224,6 +228,7 @@ const stats = [
         <span data-card-color="ink"></span>
         <span data-card-color="muted"></span>
         <span data-card-color="line"></span>
+        <span data-card-color="info"></span>
       </span>
     </div>
   </section>
@@ -674,6 +679,10 @@ const stats = [
 
   [data-card-color='line'] {
     color: var(--line);
+  }
+
+  [data-card-color='info'] {
+    color: var(--info);
   }
 
   @media (width < 48rem) {

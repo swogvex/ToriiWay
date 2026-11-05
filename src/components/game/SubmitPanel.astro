@@ -1,0 +1,287 @@
+---
+/**
+ * Optional leaderboard submission on the results screen (images 16a, 16b). Shown after
+ * cleared and failed runs; src/game/submit.ts switches its states with data-state:
+ * offer · done · declined · reduced · offline (hidden for quit runs).
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import { siteKeyFor } from '../../lib/server/turnstile';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const siteKey = siteKeyFor(process.env.VERCEL_ENV);
+
+const labels = Object.fromEntries(
+  (
+    [
+      'rank',
+      'invalid',
+      'send',
+      'sending',
+      'done.text',
+      'done.hidden',
+      'taken',
+      'nameRejected',
+      'notBetter',
+      'notBetterHidden',
+      'invalidRun',
+      'error',
+      'limit',
+      'verify',
+    ] as const
+  ).map((key) => [key, t(`game.submit.${key}`)]),
+);
+---
+
+<section
+  class="submit"
+  aria-labelledby="submit-title"
+  data-submit
+  data-state="hidden"
+  data-labels={JSON.stringify(labels)}
+  data-sitekey={siteKey}
+  data-board={localizePath('/game/leaderboard', locale)}
+  hidden
+>
+  <div class="submit__offer" data-submit-offer>
+    <div class="submit__text">
+      <p class="submit__kicker">{t('game.submit.kicker')}</p>
+      <h3 id="submit-title" class="submit__title">
+        {t('game.submit.title')}
+      </h3>
+      <p class="submit__lead">
+        <span data-submit-rank></span>
+        {t('game.submit.note')}
+      </p>
+    </div>
+    <form class="submit__form" novalidate data-submit-form>
+      <label class="submit__label" for="submit-name">
+        {t('game.submit.name')}
+      </label>
+      <input
+        id="submit-name"
+        class="submit__input"
+        name="name"
+        type="text"
+        autocomplete="nickname"
+        autocapitalize="off"
+        spellcheck="false"
+        maxlength="16"
+        aria-describedby="submit-hint submit-error"
+        data-submit-name
+      />
+      <p id="submit-hint" class="submit__hint">
+        {`${t('game.submit.hint')} ${t('game.submit.owner')}`}
+      </p>
+      <p id="submit-error" class="submit__error" data-submit-error></p>
+      <div class="submit__check" data-turnstile></div>
+      <div class="submit__actions">
+        <Button variant="accent" type="submit" data-submit-send>
+          <Icon name="arrow-up-right" size={18} />
+          <span data-submit-send-label>{t('game.submit.send')}</span>
+        </Button>
+        <Button variant="outline" data-submit-decline>
+          {t('game.submit.decline')}
+        </Button>
+      </div>
+    </form>
+  </div>
+
+  <div class="submit__done" role="status" data-submit-done>
+    <span class="submit__badge" aria-hidden="true">
+      <Icon name="check" size={22} />
+    </span>
+    <div class="submit__done-text">
+      <p class="submit__done-title" data-submit-done-title>
+        {t('game.submit.done.title')}
+      </p>
+      <p data-submit-done-text></p>
+    </div>
+    <Button href={localizePath('/game/leaderboard', locale)}>
+      {t('game.submit.view')}
+      <Icon name="arrow-right" size={18} />
+    </Button>
+  </div>
+
+  <p class="submit__quiet" data-submit-declined>
+    {t('game.submit.declined')}
+    <button class="submit__link" type="button" data-submit-reopen>
+      {t('game.submit.changeMind')}
+    </button>
+  </p>
+  <p class="submit__quiet" data-submit-reduced>
+    {t('game.submit.reduced')}
+  </p>
+  <p class="submit__quiet" data-submit-offline>
+    {t('game.submit.offline')}
+  </p>
+</section>
+
+<style>
+  .submit[hidden] {
+    display: none;
+  }
+
+  /* One block per state; only the current one shows. */
+  .submit > * {
+    display: none;
+  }
+
+  .submit[data-state='offer'] [data-submit-offer] {
+    display: grid;
+  }
+
+  .submit[data-state='done'] [data-submit-done] {
+    display: flex;
+  }
+
+  .submit[data-state='declined'] [data-submit-declined],
+  .submit[data-state='reduced'] [data-submit-reduced],
+  .submit[data-state='offline'] [data-submit-offline] {
+    display: block;
+  }
+
+  .submit__offer {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-6) var(--space-10);
+    padding: var(--space-6);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  .submit__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .submit__title {
+    margin-block: var(--space-2) var(--space-3);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: var(--leading-display);
+  }
+
+  .submit__lead {
+    color: var(--muted);
+  }
+
+  .submit__lead :global(strong) {
+    color: var(--ink);
+  }
+
+  .submit__form {
+    display: grid;
+    gap: var(--space-2);
+    align-content: start;
+  }
+
+  .submit__label {
+    font-weight: 700;
+  }
+
+  .submit__input {
+    min-block-size: 3rem;
+    padding-inline: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--bg);
+    color: var(--ink);
+    font: inherit;
+  }
+
+  .submit__input:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .submit__input[aria-invalid='true'] {
+    border-color: var(--accent);
+  }
+
+  .submit__hint {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .submit__error {
+    color: var(--accent-ink);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .submit__error:empty,
+  .submit__check:empty {
+    display: none;
+  }
+
+  .submit__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .submit__done {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: center;
+    padding: var(--space-5) var(--space-6);
+    border-radius: var(--radius-card);
+    background: var(--info-soft);
+    color: var(--ink);
+  }
+
+  .submit__badge {
+    display: grid;
+    flex: none;
+    place-items: center;
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border-radius: 50%;
+    background: var(--info);
+    color: var(--bg);
+  }
+
+  .submit__done-text {
+    flex: 1 1 20rem;
+  }
+
+  .submit__done-title {
+    color: var(--info);
+    font-size: var(--text-md);
+    font-weight: 700;
+  }
+
+  .submit__quiet {
+    color: var(--muted);
+  }
+
+  .submit__link {
+    min-block-size: var(--target-min);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+  .submit__link:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  @media (width < 48rem) {
+    .submit__offer {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>
