@@ -1,0 +1,67 @@
+---
+/**
+ * Numbered page navigation (‹ 1 2 3 … n ›), filled by renderPages() in
+ * src/lib/ui/pagination.ts. Hidden until there is more than one page.
+ */
+interface Props {
+  label: string;
+  class?: string;
+}
+
+const { label, class: className } = Astro.props;
+---
+
+<nav class:list={['pages', className]} aria-label={label} data-pages hidden></nav>
+
+<style>
+  .pages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pages[hidden] {
+    display: none;
+  }
+
+  /* Buttons are created by renderPages(), outside Astro's scope. */
+  .pages :global(.page) {
+    display: grid;
+    place-items: center;
+    min-inline-size: var(--target-min);
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-family: var(--font-mono);
+    cursor: pointer;
+  }
+
+  .pages :global(.page[aria-current='page']) {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .pages :global(.page:disabled) {
+    color: var(--muted);
+    cursor: default;
+    opacity: 0.5;
+  }
+
+  .pages :global(.page:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .pages :global(.page-gap) {
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+</style>

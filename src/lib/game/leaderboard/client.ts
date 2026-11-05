@@ -62,20 +62,8 @@ export function boardSearch(filter: BoardFilter, page: number): string {
   return query ? `?${query}` : '';
 }
 
-/**
- * Page buttons to show: always the first and last, the current one with a neighbour on
- * each side, and 'gap' where pages are skipped. 1 2 3 … 9 / 1 … 4 5 6 … 9.
- */
-export function pageList(current: number, total: number): (number | 'gap')[] {
-  if (total <= 7) return Array.from({ length: total }, (_, index) => index + 1);
-  const shown = new Set([1, total, current - 1, current, current + 1]);
-  if (current <= 3) [2, 3, 4].forEach((page) => shown.add(page));
-  if (current >= total - 2) [total - 3, total - 2, total - 1].forEach((page) => shown.add(page));
-  const pages = [...shown].filter((page) => page >= 1 && page <= total).sort((a, b) => a - b);
-  return pages.flatMap((page, index) =>
-    index > 0 && page - (pages[index - 1] ?? page) > 1 ? ['gap' as const, page] : [page],
-  );
-}
+/** Shared with the library; kept exported here for the leaderboard. */
+export { pageList } from '../../ui/pagination';
 
 /** 754 → "12:34". */
 export function clock(seconds: number): string {

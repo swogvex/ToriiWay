@@ -1,5 +1,8 @@
-// /library in the browser: filters, search and sort over the cards the server rendered,
-// with the state in the URL (shareable, back/forward friendly).
+// /library in the browser: filters, search, sort and pages of 6 over the cards the server
+// rendered, with the state in the URL (shareable, back/forward friendly).
+
+import { renderPages } from '../ui/pagination';
+import { setSelectValue } from '../ui/select';
 
 import {
   type BookFacts,
@@ -7,6 +10,7 @@ import {
   EMPTY_STATE,
   type LibraryState,
   matches,
+  PAGE_SIZE,
   searchFromState,
   stateFromSearch,
 } from './filter';
@@ -25,9 +29,12 @@ export function initLibrary(root: HTMLElement): void {
   const toggle = need<HTMLButtonElement>(root, '[data-library-toggle]');
   const query = need<HTMLInputElement>(root, '[data-library-query]');
   const search = need<HTMLFormElement>(root, '[data-library-search]');
-  const sort = need<HTMLSelectElement>(root, '[data-library-sort]');
+  const sort = need<HTMLElement>(root, '.lib__sort[data-select]');
+  const sortValue = need<HTMLInputElement>(sort, '[data-select-input]');
+  const pages = need<HTMLElement>(root, '[data-pages]');
+  const results = need<HTMLElement>(root, '.lib__results');
   const list = need<HTMLOListElement>(root, '[data-library-list]');
-  const count = need<HTMLElement>(root, '[data-library-count]');
+  const status = need<HTMLElement>(root, '[data-library-count]');
   const empty = need<HTMLElement>(root, '[data-library-empty]');
   const cards = new Map(
     [...list.querySelectorAll<HTMLLIElement>('[data-slug]')].map((card) => [
@@ -55,7 +62,7 @@ export function initLibrary(root: HTMLElement): void {
       input.checked = checked[input.name]?.includes(input.value) ?? false;
     }
     query.value = state.query;
-    sort.value = state.sort;
+    setSelectValue(sort, state.sort);
   }
 
   function readInputs(): LibraryState {
@@ -66,21 +73,40 @@ export function initLibrary(root: HTMLElement): void {
       if (values.length) params.set(name, values.join(','));
     }
     params.set('q', query.value);
-    params.set('sort', sort.value);
+    params.set('sort', sortValue.value);
     return stateFromSearch(`?${params.toString()}`);
   }
 
   function render(): void {
-    const shown = facts.filter((book) => matches(book, state)).sort(compareBooks(state.sort));
+    const matching = facts.filter((book) => matches(book, state)).sort(compareBooks(state.sort));
+    // A page past the end (old link, narrower filters) shows the last one.
+    const count = Math.max(1, Math.ceil(matching.length / PAGE_SIZE));
+    if (state.page > count) {
+      state = { ...state, page: count };
+      history.replaceState(null, '', `${location.pathname}${searchFromState(state)}`);
+    }
+    const shown = matching.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
     const visible = new Set(shown.map((book) => book.slug));
     for (const [slug, card] of cards) card.hidden = !visible.has(slug);
     // Reorder only what moved, so focus and scroll stay put.
     list.append(...shown.map((book) => cards.get(book.slug)).filter((card) => card !== undefined));
-    empty.hidden = shown.length > 0;
-    count.textContent =
-      shown.length === 1
+    empty.hidden = matching.length > 0;
+    status.textContent =
+      matching.length === 1
         ? (labels.countOne ?? '')
-        : (labels.count ?? '').replace('{count}', String(shown.length));
+        : (labels.count ?? '').replace('{count}', String(matching.length));
+    renderPages(
+      pages,
+      state.page,
+      count,
+      { prev: labels.prev ?? '', next: labels.next ?? '', page: labels.page ?? '' },
+      (page) => {
+        state = { ...state, page };
+        history.pushState(null, '', `${location.pathname}${searchFromState(state)}`);
+        render();
+        results.scrollIntoView({ block: 'start' });
+      },
+    );
   }
 
   function update(push: boolean): void {
