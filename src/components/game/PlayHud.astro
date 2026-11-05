@@ -102,7 +102,9 @@ const t = useTranslations(getLocale(Astro.url.pathname));
     font-size: var(--text-lg);
     font-variant-numeric: tabular-nums;
     border: 2px solid var(--ink);
-    border-radius: var(--radius-pill);
+
+    /* Rounded rectangle like the other controls, never a capsule (owner, 2026-11-06). */
+    border-radius: var(--radius-control);
   }
 
   .hud__row {

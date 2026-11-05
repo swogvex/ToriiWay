@@ -7,7 +7,6 @@
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import type { Book } from '../../lib/library/books';
 import { type BookFacts, CATEGORIES, LEVELS, RESOURCES, SORTS } from '../../lib/library/filter';
-import BigGlyph from '../ui/BigGlyph.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
@@ -43,7 +42,6 @@ const labels = {
 
 <div class="lib column page-frame" data-library data-labels={JSON.stringify(labels)}>
   <SectionHeader level="h1" kicker={t('library.kicker')} title={t('library.title')}>
-    <BigGlyph glyph="本" size="md" tone="faint" class="lib__glyph" />
     <form class="lib__search" role="search" data-library-search>
       <label class="visually-hidden" for="library-query">
         {t('library.search')}
@@ -154,9 +152,6 @@ const labels = {
       </ol>
 
       <div class="lib__empty" data-library-empty hidden>
-        <span class="lib__empty-glyph" lang="ja" aria-hidden="true">
-          空
-        </span>
         <p>{t('library.empty')}</p>
         <Button variant="outline" size={40} data-library-reset>
           {t('library.clear')}
@@ -181,16 +176,6 @@ const labels = {
   .lib {
     display: grid;
     gap: var(--space-8);
-  }
-
-  .lib :global(.section-header) {
-    position: relative;
-  }
-
-  .lib :global(.lib__glyph) {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-end: 0;
   }
 
   .lib__search {
@@ -455,13 +440,6 @@ const labels = {
     display: none;
   }
 
-  .lib__empty-glyph {
-    color: var(--line-strong);
-    font-family: var(--font-display-ja);
-    font-size: var(--text-display);
-    line-height: 1;
-  }
-
   .lib__note {
     color: var(--muted);
     font-size: var(--text-sm);
@@ -481,7 +459,7 @@ const labels = {
       padding-inline: var(--space-4);
       border: 1px solid var(--ink);
       border-radius: var(--radius-control);
-      background: none;
+      background: var(--surface);
       color: var(--ink);
       font: inherit;
       font-weight: 700;
@@ -507,10 +485,6 @@ const labels = {
     }
 
     .card__open {
-      display: none;
-    }
-
-    .lib :global(.lib__glyph) {
       display: none;
     }
   }
