@@ -88,7 +88,7 @@ const typeLabel = (section: string, type: string) =>
   image={view === 'report' ? imageUrl.href : undefined}
 >
   {view === 'report' && run?.scores && report ? (
-    <div class="result column">
+    <div class="result column page-frame">
       <header class="result__head">
         <div>
           <p class="result__kicker">
@@ -326,7 +326,6 @@ const typeLabel = (section: string, type: string) =>
   .result {
     display: grid;
     gap: var(--space-10);
-    padding-block: var(--space-10) var(--space-16);
   }
 
   .result__head {

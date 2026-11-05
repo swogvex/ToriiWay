@@ -66,7 +66,7 @@ const labels = {
 const skeletons = Array.from({ length: 5 }, (_, index) => index);
 ---
 
-<div class="board column" data-board data-labels={JSON.stringify(labels)}>
+<div class="board column page-frame" data-board data-labels={JSON.stringify(labels)}>
   <SectionHeader level="h1" kicker={t('game.board.kicker')} title={t('game.board.title')}>
     <div class="board__intro">
       <p class="board__lead">{t('game.board.lead')}</p>
@@ -293,7 +293,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
   .board {
     display: grid;
     gap: var(--space-6);
-    padding-block: var(--space-8) var(--space-12);
   }
 
   /* Wrapper for the search index only; adds no box to the page grid. */

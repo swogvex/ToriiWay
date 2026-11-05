@@ -21,7 +21,7 @@ const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pa
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
 >
-  <div class="help column">
+  <div class="help column page-frame">
     <SectionHeader level="h1" kicker={t('voice.help.kicker')} title={t('voice.help.title')} />
     <VoiceHelpContent />
   </div>
@@ -31,7 +31,6 @@ const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pa
   .help {
     display: grid;
     gap: var(--space-8);
-    padding-block: var(--space-10) var(--space-16);
   }
 
   .help > :global(.voice-help) {

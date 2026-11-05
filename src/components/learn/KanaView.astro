@@ -41,7 +41,7 @@ const guideHref = localizePath(`/learn/guide/${slug}`, locale);
 const dataUrl = `/data/kana/${script}.json`;
 ---
 
-<div class="learn column" data-kana-explorer data-kana-src={dataUrl}>
+<div class="learn column page-frame" data-kana-explorer data-kana-src={dataUrl}>
   <SectionHeader
     level="h1"
     kicker={t('learn.kicker')}
@@ -149,7 +149,6 @@ const dataUrl = `/data/kana/${script}.json`;
   .learn {
     display: grid;
     gap: var(--space-8);
-    padding-block: var(--space-12) var(--space-16);
   }
 
   /* Hiragana / Katakana: a segmented row of links, the current one filled with ink. */
