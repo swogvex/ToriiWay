@@ -101,7 +101,11 @@ test.describe('desktop shell', () => {
 
     await input.fill('zzz');
     await expect(dialog.getByRole('option')).toHaveCount(0);
-    await expect(dialog.getByText('No results for “zzz”.')).toBeVisible();
+    // The visible message and the delayed screen-reader status carry the same text.
+    const empty = dialog.locator('[data-search-empty]');
+    await expect(empty).toBeVisible();
+    await expect(empty).toHaveText('No results for “zzz”.');
+    await expect(dialog.getByRole('status')).toHaveText('No results for “zzz”.');
 
     await input.fill('biblioteca');
     await page.keyboard.press('Enter');
