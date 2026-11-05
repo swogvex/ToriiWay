@@ -23,7 +23,13 @@ export default defineConfig({
   },
   // Vercel builds set VERCEL=1. Everywhere else (CI, local) the Node adapter keeps
   // `astro preview` working for e2e and Lighthouse, which the Vercel adapter cannot serve.
-  adapter: process.env.VERCEL ? vercel() : node({ mode: 'standalone' }),
+  adapter: process.env.VERCEL
+    ? vercel({
+        webAnalytics: {
+          enabled: true,
+        },
+      })
+    : node({ mode: 'standalone' }),
   // Server secrets are read at runtime on Vercel; all are optional so static pages build without them.
   env: {
     schema: {
