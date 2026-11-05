@@ -63,7 +63,7 @@ const ratings = ['easy', 'right', 'hard'] as const;
     display: grid;
     gap: var(--space-10);
     align-content: start;
-    padding-block: var(--space-12);
+    padding-block: var(--space-8);
   }
 
   .pause[hidden] {
@@ -78,7 +78,7 @@ const ratings = ['easy', 'right', 'hard'] as const;
 
   .pause__main {
     display: grid;
-    gap: var(--space-6);
+    gap: var(--space-5);
     align-content: start;
   }
 
@@ -90,8 +90,9 @@ const ratings = ['easy', 'right', 'hard'] as const;
     text-transform: uppercase;
   }
 
+  /* Smaller than the display size so the whole break fits a laptop screen without scrolling. */
   .pause__title {
-    font-size: var(--text-display);
+    font-size: var(--text-2xl);
     line-height: var(--leading-display);
   }
 
@@ -114,8 +115,8 @@ const ratings = ['easy', 'right', 'hard'] as const;
 
   .ring {
     position: relative;
-    inline-size: 160px;
-    block-size: 160px;
+    inline-size: 128px;
+    block-size: 128px;
   }
 
   .ring svg {

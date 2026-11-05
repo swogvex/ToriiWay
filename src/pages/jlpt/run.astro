@@ -266,9 +266,9 @@ const categories = ['typo', 'answer', 'audio', 'other'] as const;
 
   .done {
     display: grid;
-    gap: var(--space-5);
+    gap: var(--space-4);
     justify-items: start;
-    padding-block: var(--space-12);
+    padding-block: var(--space-8);
   }
 
   .done[hidden] {
@@ -286,6 +286,7 @@ const categories = ['typo', 'answer', 'audio', 'other'] as const;
   .done__title {
     font-family: var(--font-display-ja);
     font-size: var(--text-display);
+    line-height: var(--leading-display);
   }
 
   .done__title:focus {
@@ -323,7 +324,7 @@ const categories = ['typo', 'answer', 'audio', 'other'] as const;
     display: grid;
     gap: var(--space-4);
     inline-size: 100%;
-    max-inline-size: 28rem;
+    max-inline-size: 36rem;
   }
 
   .done__actions {
