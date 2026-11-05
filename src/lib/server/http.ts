@@ -61,13 +61,14 @@ export function assertSameOrigin(request: Request, site: URL): void {
 export async function readJson<T extends z.ZodType>(
   request: Request,
   schema: T,
+  maxBytes = MAX_BODY_BYTES,
 ): Promise<z.infer<T>> {
   const type = request.headers.get('content-type') ?? '';
   if (!type.toLowerCase().startsWith('application/json')) {
     throw new HttpError('bad-request', 415, 'content type');
   }
   const text = await request.text();
-  if (new TextEncoder().encode(text).length > MAX_BODY_BYTES) {
+  if (new TextEncoder().encode(text).length > maxBytes) {
     throw new HttpError('bad-request', 413, 'body too large');
   }
   let body: unknown;

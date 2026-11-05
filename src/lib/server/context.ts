@@ -10,15 +10,23 @@ import {
   TURNSTILE_SECRET_KEY,
 } from 'astro:env/server';
 
+import { type Difficulty, type GameScript } from '../../game/config';
+import { getGameItems } from '../game/items';
+import { type GameStore, memoryGameStore } from '../game/leaderboard/store';
+import { reachablePools } from '../game/leaderboard/verify';
 import type { BankMondai } from '../jlpt/paper';
 import { memoryStore, type RunStore } from '../jlpt/store';
 import { sendWithResend, type EmailMessage } from './email';
 import { hashIp, HttpError } from './http';
 import { secretFor, verifyTurnstile } from './turnstile';
+import type { GameDeps } from './game-api';
 import type { JlptDeps } from './jlpt-api';
 
 let store: RunStore | undefined;
 let bank: BankMondai[] | undefined;
+let gameStore: GameStore | undefined;
+/** Item texts per game list, loaded once per server instance. */
+const itemTexts = new Map<string, Promise<Set<string>>>();
 
 async function getStore(): Promise<RunStore> {
   if (store) return store;
@@ -31,6 +39,31 @@ async function getStore(): Promise<RunStore> {
     throw new HttpError('unavailable', 503, 'DATABASE_URL is not set');
   }
   return store;
+}
+
+async function getGameStore(): Promise<GameStore> {
+  if (gameStore) return gameStore;
+  if (DATABASE_URL) {
+    const { drizzleGameStore } = await import('../../db/game-store');
+    gameStore = drizzleGameStore(DATABASE_URL);
+  } else if (JLPT_MEMORY_STORE || import.meta.env.DEV) {
+    gameStore = memoryGameStore();
+  } else {
+    throw new HttpError('unavailable', 503, 'DATABASE_URL is not set');
+  }
+  return gameStore;
+}
+
+function listTexts(script: GameScript, difficulty: Difficulty): Promise<Set<string>> {
+  const key = `${script}/${difficulty}`;
+  let texts = itemTexts.get(key);
+  if (!texts) {
+    texts = getGameItems(script, difficulty).then(
+      (items) => new Set(items.map((item) => item.text)),
+    );
+    itemTexts.set(key, texts);
+  }
+  return texts;
 }
 
 async function getBank(): Promise<BankMondai[]> {
@@ -83,5 +116,30 @@ export async function jlptDeps(context: RequestContext): Promise<JlptDeps> {
         clientIp(context),
       ),
     sendEmail,
+  };
+}
+
+export async function gameDeps(context: RequestContext): Promise<GameDeps> {
+  const limits = await getStore();
+  return {
+    store: await getGameStore(),
+    site: context.site ?? new URL(context.request.url),
+    now: () => Date.now(),
+    clientKey: () => hashIp(clientIp(context), salt()),
+    newId: () => crypto.randomUUID(),
+    newSeed: () => crypto.getRandomValues(new Int32Array(1))[0] ?? 0,
+    verifyHuman: (token) =>
+      verifyTurnstile(
+        token,
+        secretFor(process.env.VERCEL_ENV, TURNSTILE_SECRET_KEY),
+        clientIp(context),
+      ),
+    rateLimit: (key, limit, windowMs) => limits.rateLimit(key, limit, windowMs, Date.now()),
+    items: async (combo, duration) => {
+      const lists = await Promise.all(
+        reachablePools(combo, duration).map((difficulty) => listTexts(combo.script, difficulty)),
+      );
+      return new Set(lists.flatMap((texts) => [...texts]));
+    },
   };
 }

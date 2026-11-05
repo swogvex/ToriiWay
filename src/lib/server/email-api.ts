@@ -53,17 +53,21 @@ export async function emailHandler(
   return json({ ok: true }, 202);
 }
 
-/** Daily cleanup. Vercel Cron sends `Authorization: Bearer <CRON_SECRET>`. */
+/** Daily cleanup (plus `more`: old Kana Rush runs). Vercel Cron sends `Authorization: Bearer <CRON_SECRET>`. */
 export async function cleanupHandler(
   request: Request,
   deps: JlptDeps,
   secret: string | undefined,
+  more: () => Promise<Record<string, number>> = async () => ({}),
 ): Promise<Response> {
   if (!secret) throw new HttpError('unavailable', 503, 'CRON_SECRET is not set');
   const given = request.headers.get('authorization') ?? '';
   if (!sameText(given, `Bearer ${secret}`)) throw new HttpError('forbidden', 401);
   const now = deps.now();
-  const result = await deps.store.cleanup(now, now - EMAIL_RETENTION_DAYS * DAY, now - DAY);
+  const result = {
+    ...(await deps.store.cleanup(now, now - EMAIL_RETENTION_DAYS * DAY, now - DAY)),
+    ...(await more()),
+  };
   console.info('[cron] cleanup', result);
   return json(result);
 }
