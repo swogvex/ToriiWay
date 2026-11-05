@@ -31,7 +31,7 @@ const labels = Object.fromEntries([
 ---
 
 <div
-  class="setup column"
+  class="setup column page-frame"
   data-setup
   data-labels={JSON.stringify(labels)}
   data-available={JSON.stringify(available)}
@@ -269,7 +269,6 @@ const labels = Object.fromEntries([
   .setup {
     display: grid;
     gap: var(--space-8);
-    padding-block: var(--space-10) var(--space-16);
   }
 
   .setup__intro {

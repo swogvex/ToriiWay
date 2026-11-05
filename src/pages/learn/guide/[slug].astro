@@ -56,7 +56,7 @@ const jsonLd = jsonLdGraph(
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
 >
-  <article class="guide column">
+  <article class="guide column page-frame">
     <SectionHeader level="h1" kicker={t('learn.guide.kicker')} title={guide.data.title} />
     <div class="guide__prose">
       {guide.data.intro?.map((paragraph) => (
@@ -80,7 +80,6 @@ const jsonLd = jsonLdGraph(
   .guide {
     display: grid;
     gap: var(--space-8);
-    padding-block: var(--space-12) var(--space-16);
   }
 
   /* Reading measure: about 70 characters per line. */

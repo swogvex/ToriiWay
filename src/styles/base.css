@@ -117,6 +117,15 @@
 }
 
 @layer utilities {
+  /*
+   * Page frame: every page's first content (the kicker) starts at the same distance under
+   * the header, so moving between sections never shifts the start of the page. Use it on
+   * the root element of every new page (next to .column). Not ".page": BaseLayout uses that name.
+   */
+  .page-frame {
+    padding-block: var(--space-12) var(--space-16);
+  }
+
   /* The central column: max 1000px including its padding (golden rule 1). */
   .column {
     inline-size: 100%;
