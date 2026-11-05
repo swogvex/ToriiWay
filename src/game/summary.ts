@@ -15,7 +15,7 @@ export interface RunSummary {
 }
 
 /** Raw WPM of each full second (all keys), the series consistency is measured on. */
-function rawPerSecond(samples: readonly Sample[]): number[] {
+export function rawPerSecond(samples: readonly Sample[]): number[] {
   return samples
     .filter((sample) => sample.seconds >= 1)
     .map((sample) => wpm(sample.correct + sample.wrong, sample.seconds));

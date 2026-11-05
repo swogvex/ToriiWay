@@ -2,6 +2,7 @@
 
 import {
   boolean,
+  doublePrecision,
   index,
   integer,
   jsonb,
@@ -10,6 +11,7 @@ import {
   smallint,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from 'drizzle-orm/pg-core';
 
@@ -100,4 +102,99 @@ export const reports = pgTable(
     status: text('status').notNull(),
   },
   (table) => [index('reports_status_created_idx').on(table.status, table.createdAt)],
+);
+
+/** Kana Rush runs handed out at the countdown (single use, purged by the daily cron). */
+export const gameRuns = pgTable(
+  'game_runs',
+  {
+    id: uuid('id').primaryKey(),
+    seed: integer('seed').notNull(),
+    script: text('script').notNull(),
+    difficulty: text('difficulty').notNull(),
+    mode: text('mode').notNull(),
+    serverStart: time('server_start').notNull(),
+    usedAt: time('used_at'),
+  },
+  (table) => [index('game_runs_server_start_idx').on(table.serverStart)],
+);
+
+/** Who owns a leaderboard name (sha256 of the browser's submitter token), and admin blocks. */
+export const gameNames = pgTable('game_names', {
+  nameNormalized: text('name_normalized').primaryKey(),
+  submitterHash: text('submitter_hash').notNull(),
+  blocked: boolean('blocked').notNull().default(false),
+  createdAt: time('created_at').notNull(),
+});
+
+/** One leaderboard entry per name and script × difficulty × mode. */
+export const gameScores = pgTable(
+  'game_scores',
+  {
+    id: uuid('id').primaryKey(),
+    /** No foreign key: used runs are purged a day later, the entry stays. Unique = no replays. */
+    runId: uuid('run_id').notNull().unique(),
+    name: text('name').notNull(),
+    nameNormalized: text('name_normalized')
+      .notNull()
+      .references(() => gameNames.nameNormalized, { onDelete: 'cascade' }),
+    submitterHash: text('submitter_hash').notNull(),
+    script: text('script').notNull(),
+    difficulty: text('difficulty').notNull(),
+    mode: text('mode').notNull(),
+    cleared: boolean('cleared').notNull(),
+    durationS: integer('duration_s').notNull(),
+    wpm: doublePrecision('wpm').notNull(),
+    rawWpm: doublePrecision('raw_wpm').notNull(),
+    accuracy: doublePrecision('accuracy').notNull(),
+    consistency: doublePrecision('consistency').notNull(),
+    popped: integer('popped').notNull(),
+    missed: integer('missed').notNull(),
+    series: jsonb('series').$type<number[]>().notNull(),
+    errors: jsonb('errors').$type<number[]>().notNull(),
+    status: text('status').notNull().default('visible'),
+    reports: integer('reports').notNull().default(0),
+    createdAt: time('created_at').notNull(),
+  },
+  (table) => [
+    uniqueIndex('game_scores_name_combo_idx').on(
+      table.nameNormalized,
+      table.script,
+      table.difficulty,
+      table.mode,
+    ),
+    index('game_scores_combo_wpm_idx').on(
+      table.script,
+      table.difficulty,
+      table.mode,
+      table.status,
+      table.wpm.desc(),
+    ),
+    index('game_scores_combo_duration_idx').on(
+      table.script,
+      table.difficulty,
+      table.mode,
+      table.status,
+      table.durationS.desc(),
+    ),
+    index('game_scores_status_wpm_idx').on(table.status, table.wpm.desc()),
+  ],
+);
+
+/** Reports on leaderboard entries (offensive name or suspicious score), reviewed on /admin. */
+export const gameReports = pgTable(
+  'game_reports',
+  {
+    id: uuid('id').primaryKey(),
+    scoreId: uuid('score_id')
+      .notNull()
+      .references(() => gameScores.id, { onDelete: 'cascade' }),
+    reason: text('reason').notNull(),
+    status: text('status').notNull().default('open'),
+    createdAt: time('created_at').notNull(),
+  },
+  (table) => [
+    index('game_reports_status_created_idx').on(table.status, table.createdAt),
+    index('game_reports_score_idx').on(table.scoreId),
+  ],
 );
