@@ -5,6 +5,7 @@ import { AUTO_HIDE_REPORTS, memoryGameStore } from '../game/leaderboard/store';
 import type { RunClaim } from '../game/leaderboard/verify';
 import {
   adminScoreHandler,
+  adminUnblockHandler,
   createRunHandler,
   deleteScoreHandler,
   gameCleanup,
@@ -458,5 +459,43 @@ describe('POST /api/admin/game-scores/[id]', () => {
     expect((await moderate(id, 'hide', 'https://evil.example')).status).toBe(403);
     expect((await moderate(id, 'nuke')).status).toBe(400);
     expect((await moderate('00000000-0000-4000-8000-999999999999', 'hide')).status).toBe(404);
+  });
+});
+
+describe('POST /api/admin/game-names/[name]', () => {
+  const post = (path: string, body: Record<string, string>) =>
+    new Request(`${SITE}${path}`, {
+      method: 'POST',
+      body: new URLSearchParams(body),
+      headers: { origin: SITE },
+    });
+
+  it('unblocks a name even after its entries were deleted, so it can be used again', async () => {
+    const id = String((await play('swogvex', ALICE)).body.id);
+    await handle(() => adminScoreHandler(post(`/x/${id}`, { action: 'block' }), id, deps));
+    await handle(() => adminScoreHandler(post(`/x/${id}`, { action: 'delete' }), id, deps));
+    expect(await deps.store.blockedNames()).toEqual(['swogvex']);
+    expect((await play('swogvex', ALICE, pace(4))).body).toEqual({ error: 'name-invalid' });
+
+    const response = await handle(() =>
+      adminUnblockHandler(post('/api/admin/game-names/swogvex', {}), 'swogvex', deps),
+    );
+    expect(response.status).toBe(303);
+    expect(await deps.store.blockedNames()).toEqual([]);
+    expect((await play('swogvex', ALICE, pace(5))).status).toBe(201);
+  });
+
+  it('shows the entries the block had hidden', async () => {
+    const id = String((await play('Kenji', ALICE)).body.id);
+    await handle(() => adminScoreHandler(post(`/x/${id}`, { action: 'block' }), id, deps));
+    expect((await board()).body.entries).toHaveLength(0);
+    await handle(() => adminUnblockHandler(post('/x', {}), 'kenji', deps));
+    expect((await board()).body.entries).toHaveLength(1);
+  });
+
+  it('answers 404 for names that are not blocked or not valid', async () => {
+    const unblock = (name: string) => handle(() => adminUnblockHandler(post('/x', {}), name, deps));
+    expect((await unblock('nobody')).status).toBe(404);
+    expect((await unblock('Bad Name!')).status).toBe(404);
   });
 });

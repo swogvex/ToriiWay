@@ -50,6 +50,13 @@ export interface GameStore {
    * False when the entry does not exist.
    */
   moderate(id: string, action: ModerationAction): Promise<boolean>;
+  /** Blocked names (normalized), oldest first, for /admin. Listed even without entries. */
+  blockedNames(): Promise<string[]>;
+  /**
+   * Lifts a block: the name can be used again and its entries show again (blocking hid
+   * them all). False when the name is not blocked.
+   */
+  unblockName(nameNormalized: string): Promise<boolean>;
 }
 
 export type ModerationAction = 'hide' | 'show' | 'delete' | 'block';
@@ -212,6 +219,21 @@ export function memoryGameStore(): GameStore {
       } else {
         score.status = action === 'hide' ? 'hidden' : 'visible';
         resolve(id);
+      }
+      return true;
+    },
+    async blockedNames() {
+      return [...names.values()]
+        .filter((name) => name.blocked)
+        .sort((a, b) => a.createdAt - b.createdAt)
+        .map((name) => name.nameNormalized);
+    },
+    async unblockName(nameNormalized) {
+      const name = names.get(nameNormalized);
+      if (!name?.blocked) return false;
+      name.blocked = false;
+      for (const entry of scores.values()) {
+        if (entry.nameNormalized === nameNormalized) entry.status = 'visible';
       }
       return true;
     },

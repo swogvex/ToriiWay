@@ -12,6 +12,7 @@ export const prerender = false;
 
 const deps = await gameDeps(Astro);
 const entries = await deps.store.adminList(200);
+const blocked = await deps.store.blockedNames();
 const reported = entries.filter((entry) => entry.openReports > 0).length;
 const hidden = entries.filter((entry) => entry.status === 'hidden').length;
 const when = (ms: number) => new Date(ms).toISOString().slice(0, 16).replace('T', ' ');
@@ -36,6 +37,26 @@ const reasons = (list: readonly string[]) =>
       {entries.length} entries shown · {reported} reported · {hidden} hidden. Three open reports
       hide an entry until you review it.
     </p>
+    {blocked.length > 0 && (
+      <section class="admin__blocked" aria-labelledby="blocked-title">
+        <h2 id="blocked-title">Blocked names</h2>
+        <p class="admin__meta">
+          Nobody can submit with these names. Unblocking also shows their entries again.
+        </p>
+        <ul class="admin__names">
+          {blocked.map((name) => (
+            <li>
+              <strong>{name}</strong>
+              <form method="post" action={`/api/admin/game-names/${name}`}>
+                <button type="submit" aria-label={`Unblock ${name}`}>
+                  Unblock
+                </button>
+              </form>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
     {entries.length === 0 && <p>No entries yet.</p>}
     <ol class="admin__list">
       {entries.map((entry) => (
@@ -142,6 +163,32 @@ const reasons = (list: readonly string[]) =>
   .admin__meta {
     color: var(--muted);
     font-size: var(--text-sm);
+  }
+
+  .admin__blocked {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-card);
+  }
+
+  .admin__blocked h2 {
+    font-size: var(--text-md);
+  }
+
+  .admin__names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .admin__names li {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
   }
 
   .admin__actions {
