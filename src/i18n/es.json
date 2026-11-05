@@ -264,7 +264,6 @@
   "game.results.words": "Palabras",
   "game.results.words.count": "{count} explotadas",
   "game.results.words.all": "Ver todas ({count})",
-  "game.results.words.less": "Ver menos",
   "game.results.words.missed": "perdida",
   "game.results.words.empty": "Ninguna burbuja salió del campo.",
   "game.results.slowest": "Kana más lentos:",
