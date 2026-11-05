@@ -84,7 +84,13 @@ const jsonLd = jsonLdGraph(
       <div class="book__text">
         <Content />
         <p>
-          <a class="book__visit" href={data.link.url} target="_blank" rel="noopener">
+          <a
+            class="book__visit"
+            href={data.link.url}
+            target="_blank"
+            rel="noopener"
+            data-count={`library:${book.slug}`}
+          >
             {t('library.book.visit')}
             <Icon name="arrow-up-right" size={18} />
             <span class="visually-hidden">{t('library.book.newTab')}</span>
@@ -154,6 +160,18 @@ const jsonLd = jsonLdGraph(
     </p>
   </article>
 </BaseLayout>
+
+<script>
+  // Anonymous count of visits to the official page (11-spec-library: "Counting").
+  // sendBeacon survives the new tab opening and never delays it; nothing is sent about you.
+  document.addEventListener('click', (event) => {
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-count]');
+    const key = link?.dataset.count;
+    if (!key || !('sendBeacon' in navigator)) return;
+    const body = new Blob([JSON.stringify({ key })], { type: 'application/json' });
+    navigator.sendBeacon('/api/counters', body);
+  });
+</script>
 
 <style>
   .book {

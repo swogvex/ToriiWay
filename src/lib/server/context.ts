@@ -16,6 +16,7 @@ import { type GameStore, memoryGameStore } from '../game/leaderboard/store';
 import { reachablePools } from '../game/leaderboard/verify';
 import type { BankMondai } from '../jlpt/paper';
 import { memoryStore, type RunStore } from '../jlpt/store';
+import { type CounterDeps, type CounterStore, memoryCounterStore } from './counters';
 import { sendWithResend, type EmailMessage } from './email';
 import { hashIp, HttpError } from './http';
 import { secretFor, verifyTurnstile } from './turnstile';
@@ -25,6 +26,8 @@ import type { JlptDeps } from './jlpt-api';
 let store: RunStore | undefined;
 let bank: BankMondai[] | undefined;
 let gameStore: GameStore | undefined;
+let counterStore: CounterStore | undefined;
+let counterKeys: Promise<Set<string>> | undefined;
 /** Item texts per game list, loaded once per server instance. */
 const itemTexts = new Map<string, Promise<Set<string>>>();
 
@@ -39,6 +42,39 @@ async function getStore(): Promise<RunStore> {
     throw new HttpError('unavailable', 503, 'DATABASE_URL is not set');
   }
   return store;
+}
+
+async function getCounterStore(): Promise<CounterStore> {
+  if (counterStore) return counterStore;
+  if (DATABASE_URL) {
+    const { drizzleCounterStore } = await import('../../db/counter-store');
+    counterStore = drizzleCounterStore(DATABASE_URL);
+  } else if (JLPT_MEMORY_STORE || import.meta.env.DEV) {
+    counterStore = memoryCounterStore();
+  } else {
+    throw new HttpError('unavailable', 503, 'DATABASE_URL is not set');
+  }
+  return counterStore;
+}
+
+/** `library:<slug>` for every book: the only keys /api/counters accepts. */
+function allowedCounterKeys(): Promise<Set<string>> {
+  counterKeys ??= getCollection('library', (entry) => entry.id.startsWith('en/')).then(
+    (entries) => new Set(entries.map((entry) => `library:${entry.id.slice(3)}`)),
+  );
+  return counterKeys;
+}
+
+export async function counterDeps(context: RequestContext): Promise<CounterDeps> {
+  const limits = await getStore();
+  return {
+    store: await getCounterStore(),
+    site: context.site ?? new URL(context.request.url),
+    now: () => Date.now(),
+    clientKey: () => hashIp(clientIp(context), salt()),
+    rateLimit: (key, limit, windowMs) => limits.rateLimit(key, limit, windowMs, Date.now()),
+    allowed: allowedCounterKeys,
+  };
 }
 
 async function getGameStore(): Promise<GameStore> {

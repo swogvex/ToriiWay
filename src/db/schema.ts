@@ -2,6 +2,7 @@
 
 import {
   boolean,
+  date,
   doublePrecision,
   index,
   integer,
@@ -197,4 +198,15 @@ export const gameReports = pgTable(
     index('game_reports_status_created_idx').on(table.status, table.createdAt),
     index('game_reports_score_idx').on(table.scoreId),
   ],
+);
+
+/** Anonymous aggregate counters (library clicks): one row per key and UTC day, no visitor data. */
+export const counters = pgTable(
+  'counters',
+  {
+    key: text('key').notNull(),
+    day: date('day', { mode: 'string' }).notNull(),
+    value: integer('value').notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.key, table.day] })],
 );

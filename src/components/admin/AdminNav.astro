@@ -1,13 +1,14 @@
 ---
 /** Tabs between the admin pages (Basic auth covers every /admin path). */
 interface Props {
-  current: 'reports' | 'leaderboard';
+  current: 'reports' | 'leaderboard' | 'library';
 }
 
 const { current } = Astro.props;
 const tabs = [
   { id: 'reports', label: 'Question reports', href: '/admin' },
   { id: 'leaderboard', label: 'Leaderboard', href: '/admin/leaderboard' },
+  { id: 'library', label: 'Library', href: '/admin/library' },
 ] as const;
 ---
 

@@ -1,0 +1,86 @@
+---
+/** Library click counts (13-security: admin "basic counters"). Basic auth in the middleware. */
+import AdminNav from '../../components/admin/AdminNav.astro';
+import BareLayout from '../../layouts/BareLayout.astro';
+import { getBooks } from '../../lib/library/books';
+import { counterDeps } from '../../lib/server/context';
+import { recentSince } from '../../lib/server/counters';
+
+export const prerender = false;
+
+const deps = await counterDeps(Astro);
+const totals = await deps.store.totals('library:', recentSince(Date.now()));
+const titles = new Map((await getBooks()).map((book) => [`library:${book.slug}`, book.title]));
+const counted = new Set(totals.map((row) => row.key));
+const unclicked = [...titles].filter(([key]) => !counted.has(key));
+---
+
+<BareLayout title="Library · Admin" description="Library click counts." noindex>
+  <main class="admin column">
+    <AdminNav current="library" />
+    <h1>Library</h1>
+    <p>
+      Clicks on "Visit official page", counted once per visitor, book and day. Nothing about the
+      visitor is stored.
+    </p>
+    <table class="admin__table">
+      <thead>
+        <tr>
+          <th scope="col">Book</th>
+          <th scope="col">Last 30 days</th>
+          <th scope="col">All time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {totals.map((row) => (
+          <tr>
+            <th scope="row">
+              <a href={`/library/${row.key.slice('library:'.length)}`}>
+                {titles.get(row.key) ?? row.key}
+              </a>
+            </th>
+            <td>{row.recent}</td>
+            <td>{row.total}</td>
+          </tr>
+        ))}
+        {unclicked.map(([key, title]) => (
+          <tr class="admin__zero">
+            <th scope="row">
+              <a href={`/library/${key.slice('library:'.length)}`}>{title}</a>
+            </th>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </main>
+</BareLayout>
+
+<style>
+  .admin {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-10);
+  }
+
+  .admin__table {
+    inline-size: 100%;
+    border-collapse: collapse;
+  }
+
+  .admin__table th,
+  .admin__table td {
+    padding: var(--space-2) var(--space-3);
+    border-block-end: 1px solid var(--line);
+    text-align: start;
+  }
+
+  .admin__table td {
+    font-family: var(--font-mono);
+  }
+
+  .admin__zero {
+    color: var(--muted);
+  }
+</style>
