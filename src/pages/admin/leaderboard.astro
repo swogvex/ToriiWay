@@ -1,0 +1,160 @@
+---
+/**
+ * Kana Rush leaderboard moderation (13-security: "Moderation"): reported entries first,
+ * then hidden ones, then the newest. Basic auth in the middleware; actions are same-origin
+ * form posts to /api/admin/game-scores/[id].
+ */
+import AdminNav from '../../components/admin/AdminNav.astro';
+import BareLayout from '../../layouts/BareLayout.astro';
+import { gameDeps } from '../../lib/server/context';
+
+export const prerender = false;
+
+const deps = await gameDeps(Astro);
+const entries = await deps.store.adminList(200);
+const reported = entries.filter((entry) => entry.openReports > 0).length;
+const hidden = entries.filter((entry) => entry.status === 'hidden').length;
+const when = (ms: number) => new Date(ms).toISOString().slice(0, 16).replace('T', ' ');
+const time = (seconds: number) =>
+  `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+const reasons = (list: readonly string[]) =>
+  Object.entries(
+    list.reduce<Record<string, number>>((counts, reason) => {
+      counts[reason] = (counts[reason] ?? 0) + 1;
+      return counts;
+    }, {}),
+  )
+    .map(([reason, count]) => `${count}× ${reason}`)
+    .join(', ');
+---
+
+<BareLayout title="Leaderboard · Admin" description="Leaderboard moderation." noindex>
+  <main class="admin column">
+    <AdminNav current="leaderboard" />
+    <h1>Leaderboard</h1>
+    <p>
+      {entries.length} entries shown · {reported} reported · {hidden} hidden. Three open reports
+      hide an entry until you review it.
+    </p>
+    {entries.length === 0 && <p>No entries yet.</p>}
+    <ol class="admin__list">
+      {entries.map((entry) => (
+        <li
+          class:list={[
+            'admin__item',
+            { 'admin__item--reported': entry.openReports > 0 },
+            { 'admin__item--hidden': entry.status === 'hidden' },
+          ]}
+        >
+          <p class="admin__title">
+            <strong>{entry.name}</strong>
+            {entry.nameBlocked && <span class="admin__tag">name blocked</span>}
+            {entry.status === 'hidden' && <span class="admin__tag">hidden</span>}
+            {entry.openReports > 0 && (
+              <span class="admin__tag admin__tag--alert">
+                {entry.openReports} open report{entry.openReports === 1 ? '' : 's'}:{' '}
+                {reasons(entry.reasons)}
+              </span>
+            )}
+          </p>
+          <p class="admin__meta">
+            {when(entry.createdAt)} · {entry.script} · {entry.difficulty} · {entry.mode} ·{' '}
+            {entry.cleared ? 'cleared' : 'not cleared'} · {Math.round(entry.wpm)} WPM ·{' '}
+            {Math.round(entry.accuracy)}% acc · {time(entry.durationS)} · {entry.popped} popped ·{' '}
+            {entry.reports} report{entry.reports === 1 ? '' : 's'} in total
+          </p>
+          <form class="admin__actions" method="post" action={`/api/admin/game-scores/${entry.id}`}>
+            {entry.status === 'visible' ? (
+              <button type="submit" name="action" value="hide">
+                Hide
+              </button>
+            ) : (
+              <button type="submit" name="action" value="show">
+                Show
+              </button>
+            )}
+            <button type="submit" name="action" value="delete">
+              Delete
+            </button>
+            {!entry.nameBlocked && (
+              <button type="submit" name="action" value="block">
+                Block name
+              </button>
+            )}
+          </form>
+        </li>
+      ))}
+    </ol>
+  </main>
+</BareLayout>
+
+<style>
+  .admin {
+    display: grid;
+    gap: var(--space-4);
+    padding-block: var(--space-10);
+  }
+
+  .admin__list {
+    display: grid;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .admin__item {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  .admin__item--reported {
+    border-color: var(--accent);
+  }
+
+  .admin__item--hidden {
+    background: var(--bg);
+  }
+
+  .admin__title {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .admin__tag {
+    padding: 0.125rem var(--space-2);
+    border-radius: var(--radius-chip);
+    background: var(--line);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .admin__tag--alert {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  .admin__meta {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .admin__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .admin button {
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    font: inherit;
+  }
+</style>

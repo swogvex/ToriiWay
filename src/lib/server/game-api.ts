@@ -5,7 +5,7 @@ import { z } from 'astro/zod';
 import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
 import { nameProblem, normalizeName } from '../game/leaderboard/names';
 import { isBetter } from '../game/leaderboard/ranking';
-import type { GameStore } from '../game/leaderboard/store';
+import type { GameStore, ModerationAction } from '../game/leaderboard/store';
 import type {
   BoardFilter,
   Combo,
@@ -338,6 +338,37 @@ export async function reportScoreHandler(
     createdAt: deps.now(),
   });
   return json({ ok: true }, 201);
+}
+
+const MODERATION_ACTIONS: readonly ModerationAction[] = ['hide', 'show', 'delete', 'block'];
+
+/**
+ * POST /api/admin/game-scores/[id] — plain form post from /admin/leaderboard (Basic auth in
+ * the middleware, same origin here). Answers with a redirect back to the list.
+ */
+export async function adminScoreHandler(
+  request: Request,
+  id: string,
+  deps: Pick<GameDeps, 'store' | 'site'>,
+): Promise<Response> {
+  assertSameOrigin(request, deps.site);
+  if (!UUID.test(id)) throw new HttpError('not-found', 404);
+  let action: string;
+  try {
+    action = String((await request.formData()).get('action') ?? '');
+  } catch {
+    throw new HttpError('bad-request', 400, 'form');
+  }
+  if (!MODERATION_ACTIONS.includes(action as ModerationAction)) {
+    throw new HttpError('bad-request', 400, `action ${action}`);
+  }
+  if (!(await deps.store.moderate(id, action as ModerationAction))) {
+    throw new HttpError('not-found', 404);
+  }
+  return new Response(null, {
+    status: 303,
+    headers: { Location: '/admin/leaderboard', 'Cache-Control': 'no-store' },
+  });
 }
 
 /** Part of the daily cron: unused runs after their 2 h life, used runs a day after use. */

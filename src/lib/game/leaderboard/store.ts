@@ -42,6 +42,30 @@ export interface GameStore {
   addReport(report: GameReport): Promise<void>;
   /** Deletes unused runs created before `unusedBefore` and used runs used before `usedBefore`. */
   cleanup(unusedBefore: number, usedBefore: number): Promise<GameCleanupResult>;
+  /** Entries for /admin: open reports first (most reported first), then hidden, then newest. */
+  adminList(limit: number): Promise<AdminEntry[]>;
+  /**
+   * Applies a moderation action. hide / show set the status and resolve the entry's open
+   * reports; delete removes it; block marks the name blocked and hides all its entries.
+   * False when the entry does not exist.
+   */
+  moderate(id: string, action: ModerationAction): Promise<boolean>;
+}
+
+export type ModerationAction = 'hide' | 'show' | 'delete' | 'block';
+
+export interface AdminEntry extends ScoreRecord {
+  openReports: number;
+  /** Reasons of the open reports, e.g. ["name", "name", "score"]. */
+  reasons: GameReport['reason'][];
+  nameBlocked: boolean;
+}
+
+/** Order of the admin list (see GameStore.adminList). */
+export function adminOrder(a: AdminEntry, b: AdminEntry): number {
+  if (a.openReports !== b.openReports) return b.openReports - a.openReports;
+  if (a.status !== b.status) return a.status === 'hidden' ? -1 : 1;
+  return b.createdAt - a.createdAt;
 }
 
 export function matchesFilter(score: Combo, filter: BoardFilter): boolean {
@@ -147,6 +171,49 @@ export function memoryGameStore(): GameStore {
         }
       }
       return { runs: deleted };
+    },
+    async adminList(limit) {
+      return [...scores.values()]
+        .map((score) => {
+          const open = [...reports.values()].filter(
+            (report) => report.scoreId === score.id && report.status === 'open',
+          );
+          return {
+            ...structuredClone(score),
+            openReports: open.length,
+            reasons: open.map((report) => report.reason),
+            nameBlocked: names.get(score.nameNormalized)?.blocked ?? false,
+          };
+        })
+        .sort(adminOrder)
+        .slice(0, limit);
+    },
+    async moderate(id, action) {
+      const score = scores.get(id);
+      if (!score) return false;
+      const resolve = (scoreId: string) => {
+        for (const report of reports.values()) {
+          if (report.scoreId === scoreId) report.status = 'resolved';
+        }
+      };
+      if (action === 'delete') {
+        for (const [reportId, report] of reports) {
+          if (report.scoreId === id) reports.delete(reportId);
+        }
+        scores.delete(id);
+      } else if (action === 'block') {
+        const name = names.get(score.nameNormalized);
+        if (name) name.blocked = true;
+        for (const entry of scores.values()) {
+          if (entry.nameNormalized !== score.nameNormalized) continue;
+          entry.status = 'hidden';
+          resolve(entry.id);
+        }
+      } else {
+        score.status = action === 'hide' ? 'hidden' : 'visible';
+        resolve(id);
+      }
+      return true;
     },
   };
 }

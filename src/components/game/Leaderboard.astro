@@ -143,135 +143,138 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
 
   <p class="board__note">{t('game.board.note')}</p>
 
-  <template data-row-template>
-    <li class="row">
-      <button class="row__toggle" type="button" aria-expanded="false" data-row-toggle>
-        <span class="row__rank">
-          <span class="visually-hidden">{t('game.board.rank')}</span>
-          <span data-f="rank"></span>
-        </span>
-        <span class="row__name" data-f="name"></span>
-        <span class="row__meta">
-          <span class="row__script">
-            <span class="row__glyph" lang="ja" aria-hidden="true" data-f="glyph"></span>
-            <span data-f="script"></span>
+  <!-- Row template and dialogs are not page text: keep them out of the search index. -->
+  <div class="board__hidden" data-pagefind-ignore="all">
+    <template data-row-template>
+      <li class="row">
+        <button class="row__toggle" type="button" aria-expanded="false" data-row-toggle>
+          <span class="row__rank">
+            <span class="visually-hidden">{t('game.board.rank')}</span>
+            <span data-f="rank"></span>
           </span>
-          <span class="row__difficulty" data-f="difficulty"></span>
-          <span class="row__mode">
-            <span class="mode" data-f="mode"></span>
-          </span>
-        </span>
-        <span class="row__nums">
-          <span class="row__survived">
-            <span class="row__label">{t('game.board.col.survived')}</span>
-            <span data-f="survived"></span>
-          </span>
-          <span class="row__wpm">
-            <span class="row__label">{t('game.board.col.wpm')}</span>
-            <span data-f="wpm"></span>
-          </span>
-        </span>
-        <Icon name="chevron-down" size={20} class="row__chevron" />
-      </button>
-      <div class="row__details" hidden data-row-details>
-        <figure class="row__chart">
-          <figcaption class="row__charthead">
-            <span data-f="chart-title">{t('game.results.chart')}</span>
-            <span class="row__legend" aria-hidden="true">
-              <span>— {t('game.results.chart.legendWpm')}</span>
-              <span class="row__legend-error">× {t('game.results.chart.legendError')}</span>
+          <span class="row__name" data-f="name"></span>
+          <span class="row__meta">
+            <span class="row__script">
+              <span class="row__glyph" lang="ja" aria-hidden="true" data-f="glyph"></span>
+              <span data-f="script"></span>
             </span>
-          </figcaption>
-          <svg class="row__svg" role="img" data-chart xmlns="http://www.w3.org/2000/svg">
-            <desc data-chart-desc></desc>
-          </svg>
-          <p class="row__axis" aria-hidden="true">
-            <span>0:00</span>
-            <span data-f="end"></span>
+            <span class="row__difficulty" data-f="difficulty"></span>
+            <span class="row__mode">
+              <span class="mode" data-f="mode"></span>
+            </span>
+          </span>
+          <span class="row__nums">
+            <span class="row__survived">
+              <span class="row__label">{t('game.board.col.survived')}</span>
+              <span data-f="survived"></span>
+            </span>
+            <span class="row__wpm">
+              <span class="row__label">{t('game.board.col.wpm')}</span>
+              <span data-f="wpm"></span>
+            </span>
+          </span>
+          <Icon name="chevron-down" size={20} class="row__chevron" />
+        </button>
+        <div class="row__details" hidden data-row-details>
+          <figure class="row__chart">
+            <figcaption class="row__charthead">
+              <span data-f="chart-title">{t('game.results.chart')}</span>
+              <span class="row__legend" aria-hidden="true">
+                <span>— {t('game.results.chart.legendWpm')}</span>
+                <span class="row__legend-error">× {t('game.results.chart.legendError')}</span>
+              </span>
+            </figcaption>
+            <svg class="row__svg" role="img" data-chart xmlns="http://www.w3.org/2000/svg">
+              <desc data-chart-desc></desc>
+            </svg>
+            <p class="row__axis" aria-hidden="true">
+              <span>0:00</span>
+              <span data-f="end"></span>
+            </p>
+          </figure>
+          <dl class="row__stats">
+            <div class="stat stat--wide">
+              <dt>{t('game.board.col.wpm')}</dt>
+              <dd data-f="stat-wpm"></dd>
+            </div>
+            <div class="stat">
+              <dt>{t('game.results.accuracy')}</dt>
+              <dd data-f="accuracy"></dd>
+            </div>
+            <div class="stat">
+              <dt>{t('game.results.consistency')}</dt>
+              <dd data-f="consistency"></dd>
+            </div>
+            <div class="stat stat--info">
+              <dt>{t('game.board.popped')}</dt>
+              <dd data-f="popped"></dd>
+            </div>
+            <div class="stat stat--accent">
+              <dt>{t('game.results.missed')}</dt>
+              <dd data-f="missed"></dd>
+            </div>
+          </dl>
+          <p class="row__actions">
+            <button class="row__action" type="button" data-row-report>
+              {t('game.board.report')}
+            </button>
+            <button class="row__action" type="button" data-row-remove hidden>
+              {t('game.board.remove')}
+            </button>
           </p>
-        </figure>
-        <dl class="row__stats">
-          <div class="stat stat--wide">
-            <dt>{t('game.board.col.wpm')}</dt>
-            <dd data-f="stat-wpm"></dd>
-          </div>
-          <div class="stat">
-            <dt>{t('game.results.accuracy')}</dt>
-            <dd data-f="accuracy"></dd>
-          </div>
-          <div class="stat">
-            <dt>{t('game.results.consistency')}</dt>
-            <dd data-f="consistency"></dd>
-          </div>
-          <div class="stat stat--info">
-            <dt>{t('game.board.popped')}</dt>
-            <dd data-f="popped"></dd>
-          </div>
-          <div class="stat stat--accent">
-            <dt>{t('game.results.missed')}</dt>
-            <dd data-f="missed"></dd>
-          </div>
-        </dl>
-        <p class="row__actions">
-          <button class="row__action" type="button" data-row-report>
-            {t('game.board.report')}
-          </button>
-          <button class="row__action" type="button" data-row-remove hidden>
-            {t('game.board.remove')}
-          </button>
-        </p>
+        </div>
+      </li>
+    </template>
+
+    <Dialog id="board-report" title={t('game.board.report.title')}>
+      <form
+        class="board__dialog-form"
+        id="board-report-form"
+        data-board-report-form
+        data-sitekey={siteKey}
+        novalidate
+      >
+        <fieldset class="board__reasons">
+          <legend>{t('game.board.report.reason')}</legend>
+          <label>
+            <input type="radio" name="reason" value="name" checked />
+            {t('game.board.report.name')}
+          </label>
+          <label>
+            <input type="radio" name="reason" value="score" />
+            {t('game.board.report.score')}
+          </label>
+        </fieldset>
+        <div data-turnstile></div>
+        <p class="board__dialog-status" role="status" data-board-report-status></p>
+      </form>
+      <div slot="footer" class="board__dialog-actions">
+        <form method="dialog">
+          <Button variant="outline" type="submit">
+            {t('game.board.report.cancel')}
+          </Button>
+        </form>
+        <Button variant="accent" type="submit" form="board-report-form" data-board-report-send>
+          {t('game.board.report.send')}
+        </Button>
       </div>
-    </li>
-  </template>
+    </Dialog>
 
-  <Dialog id="board-report" title={t('game.board.report.title')}>
-    <form
-      class="board__dialog-form"
-      id="board-report-form"
-      data-board-report-form
-      data-sitekey={siteKey}
-      novalidate
-    >
-      <fieldset class="board__reasons">
-        <legend>{t('game.board.report.reason')}</legend>
-        <label>
-          <input type="radio" name="reason" value="name" checked />
-          {t('game.board.report.name')}
-        </label>
-        <label>
-          <input type="radio" name="reason" value="score" />
-          {t('game.board.report.score')}
-        </label>
-      </fieldset>
-      <div data-turnstile></div>
-      <p class="board__dialog-status" role="status" data-board-report-status></p>
-    </form>
-    <div slot="footer" class="board__dialog-actions">
-      <form method="dialog">
-        <Button variant="outline" type="submit">
-          {t('game.board.report.cancel')}
+    <Dialog id="board-remove" title={t('game.board.remove.title')}>
+      <p data-board-remove-text></p>
+      <p class="board__dialog-status" role="status" data-board-remove-status></p>
+      <div slot="footer" class="board__dialog-actions">
+        <form method="dialog">
+          <Button variant="outline" type="submit">
+            {t('game.board.report.cancel')}
+          </Button>
+        </form>
+        <Button variant="accent" data-board-remove-confirm>
+          {t('game.board.remove.confirm')}
         </Button>
-      </form>
-      <Button variant="accent" type="submit" form="board-report-form" data-board-report-send>
-        {t('game.board.report.send')}
-      </Button>
-    </div>
-  </Dialog>
-
-  <Dialog id="board-remove" title={t('game.board.remove.title')}>
-    <p data-board-remove-text></p>
-    <p class="board__dialog-status" role="status" data-board-remove-status></p>
-    <div slot="footer" class="board__dialog-actions">
-      <form method="dialog">
-        <Button variant="outline" type="submit">
-          {t('game.board.report.cancel')}
-        </Button>
-      </form>
-      <Button variant="accent" data-board-remove-confirm>
-        {t('game.board.remove.confirm')}
-      </Button>
-    </div>
-  </Dialog>
+      </div>
+    </Dialog>
+  </div>
 </div>
 
 <script>
@@ -286,6 +289,11 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     display: grid;
     gap: var(--space-6);
     padding-block: var(--space-8) var(--space-12);
+  }
+
+  /* Wrapper for the search index only; adds no box to the page grid. */
+  .board__hidden {
+    display: contents;
   }
 
   .board__intro {

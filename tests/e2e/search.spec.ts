@@ -66,6 +66,12 @@ test.describe('search with Pagefind', () => {
     expect(urls).toContain('/');
   });
 
+  test('the Kana Rush leaderboard is in the built index', async ({ page }) => {
+    await openSearch(page);
+    const urls = await searchBuiltIndex(page, 'leaderboard');
+    expect(urls.some((url) => url.startsWith('/game/leaderboard'))).toBe(true);
+  });
+
   test('the index runs under the site CSP enforced', async ({ context, page }) => {
     // `astro preview` sends no headers, so serve every response with the CSP from
     // vercel.json switched from report-only to enforcing.
