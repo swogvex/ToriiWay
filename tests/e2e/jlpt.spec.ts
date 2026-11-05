@@ -11,6 +11,14 @@ async function expectNoAxeViolations(page: Page) {
   expect(results.violations).toEqual([]);
 }
 
+/** The break and end screens must fit a laptop window (1080p at 125% ≈ 700px tall) without scrolling. */
+async function expectNoPageScroll(page: Page) {
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollHeight - window.innerHeight,
+  );
+  expect(overflow).toBeLessThanOrEqual(0);
+}
+
 /** Starts a run of the level from the start page and waits for the first question. */
 async function startRun(
   page: Page,
@@ -56,6 +64,7 @@ async function answerEverySection(page: Page, sections: readonly (readonly [stri
     await expect(
       page.getByRole('heading', { name: `${section} done. Take a breath.` }),
     ).toBeVisible();
+    await expectNoPageScroll(page);
     const next = page.getByRole('button', { name: 'Continue', exact: true });
     await expect(next).toBeEnabled({ timeout: 70_000 });
     await next.click();
@@ -278,6 +287,7 @@ test.describe('JLPT exam', () => {
   test('a full N5 run reaches the score', async ({ page }, testInfo) => {
     test.skip(testInfo.project.name !== 'light', 'Real two-minute breaks: run once.');
     test.setTimeout(300_000);
+    await page.setViewportSize({ width: 1536, height: 700 });
     await stubTurnstile(page);
     await stubBlobAudio(page);
     await startRun(page, 'N5', { public: true });
@@ -289,6 +299,7 @@ test.describe('JLPT exam', () => {
     await expect(page.getByText('N5 · Simulation complete')).toBeVisible();
     await expect(page.getByRole('rowheader', { name: 'Total' })).toBeVisible();
     await expect(page.getByRole('cell', { name: / \/ 180$/ })).toBeVisible();
+    await expectNoPageScroll(page);
     await expectNoAxeViolations(page);
 
     await page.getByLabel('Name on your report (optional)').fill('  Ana  ');
