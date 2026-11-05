@@ -45,6 +45,38 @@ export function searchFromFilter(filter: BoardFilter): string {
   return query ? `?${query}` : '';
 }
 
+/** Rows per page (the API's page size). */
+export const BOARD_PAGE_SIZE = 50;
+
+/** `?page=3` → 3; missing or invalid → 1. */
+export function pageFromSearch(search: string): number {
+  const page = Number(new URLSearchParams(search).get('page'));
+  return Number.isInteger(page) && page > 1 ? page : 1;
+}
+
+/** Page URL query: the filters plus `page` when it is not the first. */
+export function boardSearch(filter: BoardFilter, page: number): string {
+  const params = new URLSearchParams(searchFromFilter(filter).slice(1));
+  if (page > 1) params.set('page', String(page));
+  const query = params.toString();
+  return query ? `?${query}` : '';
+}
+
+/**
+ * Page buttons to show: always the first and last, the current one with a neighbour on
+ * each side, and 'gap' where pages are skipped. 1 2 3 … 9 / 1 … 4 5 6 … 9.
+ */
+export function pageList(current: number, total: number): (number | 'gap')[] {
+  if (total <= 7) return Array.from({ length: total }, (_, index) => index + 1);
+  const shown = new Set([1, total, current - 1, current, current + 1]);
+  if (current <= 3) [2, 3, 4].forEach((page) => shown.add(page));
+  if (current >= total - 2) [total - 3, total - 2, total - 1].forEach((page) => shown.add(page));
+  const pages = [...shown].filter((page) => page >= 1 && page <= total).sort((a, b) => a - b);
+  return pages.flatMap((page, index) =>
+    index > 0 && page - (pages[index - 1] ?? page) > 1 ? ['gap' as const, page] : [page],
+  );
+}
+
 /** 754 → "12:34". */
 export function clock(seconds: number): string {
   const whole = Math.max(0, Math.round(seconds));

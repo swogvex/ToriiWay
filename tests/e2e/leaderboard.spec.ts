@@ -136,6 +136,61 @@ test.describe('Kana Rush leaderboard', () => {
     await expect(rows.nth(0)).toContainText(`Fast_${tag}`);
   });
 
+  test('pages of 50 with numbered navigation kept in the URL', async ({ page }) => {
+    const cursors: string[] = [];
+    // A fake API with 120 entries, so paging needs no real submissions.
+    await page.route('**/api/game/leaderboard?*', (route) => {
+      const url = new URL(route.request().url());
+      const offset = Number(url.searchParams.get('cursor') ?? 0);
+      cursors.push(String(offset));
+      const entries = Array.from({ length: Math.min(50, 120 - offset) }, (_, index) => ({
+        id: `00000000-0000-4000-8000-${String(offset + index).padStart(12, '0')}`,
+        rank: offset + index + 1,
+        name: `Player_${offset + index + 1}`,
+        script: 'hiragana',
+        difficulty: 'normal',
+        mode: 'challenge',
+        cleared: true,
+        durationS: 150,
+        wpm: 200 - offset - index,
+        rawWpm: 200,
+        accuracy: 99,
+        consistency: 90,
+        popped: 50,
+        missed: 0,
+        series: [10, 20, 30],
+        errors: [],
+        createdAt: 0,
+      }));
+      return route.fulfill({
+        json: { entries, next: offset + 50 < 120 ? String(offset + 50) : null, total: 120 },
+      });
+    });
+    await page.goto('/game/leaderboard?mode=challenge');
+    const rows = page.locator('[data-row-toggle]');
+    await expect(rows).toHaveCount(50);
+    const pages = page.getByRole('navigation', { name: 'Leaderboard pages' });
+    await expect(pages.getByRole('button', { name: 'Page 1' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    );
+    await expect(pages.getByRole('button', { name: 'Previous page' })).toBeDisabled();
+
+    await pages.getByRole('button', { name: 'Page 3' }).click();
+    await expect(page).toHaveURL(/mode=challenge&page=3/);
+    await expect(rows).toHaveCount(20);
+    await expect(rows.first()).toContainText('Player_101');
+    await expect(pages.getByRole('button', { name: 'Next page' })).toBeDisabled();
+    expect(cursors).toContain('100');
+
+    // Changing a filter goes back to page 1.
+    await page.getByRole('radio', { name: 'Normal' }).check({ force: true });
+    await expect(page).not.toHaveURL(/page=/);
+    await page.goBack();
+    await expect(page).toHaveURL(/page=3/);
+    await expect(rows.first()).toContainText('Player_101');
+  });
+
   test('shows the empty state and passes axe on a phone', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/game/leaderboard?script=kanji&difficulty=easy&mode=endless');

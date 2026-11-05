@@ -30,7 +30,9 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
           value={option.value}
           checked={option.value === value}
         />
-        <span class="segmented__label">{option.label}</span>
+        <span class="segmented__label" data-text={option.label}>
+          {option.label}
+        </span>
       </label>
     ))}
   </div>
@@ -83,6 +85,21 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
     color: var(--muted);
     font-weight: 500;
     pointer-events: none;
+  }
+
+  /*
+   * An invisible bold copy reserves the selected width, so choosing an option never
+   * changes the group's width (or pushes the next group onto another line).
+   */
+  .segmented__label::after {
+    content: attr(data-text);
+
+    /* Same grid cell as the text, so it adds width but no height. */
+    grid-area: 1 / 1;
+    overflow: hidden;
+    block-size: 0;
+    font-weight: 700;
+    visibility: hidden;
   }
 
   .segmented__input:hover + .segmented__label {
