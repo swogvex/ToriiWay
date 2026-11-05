@@ -229,6 +229,10 @@ export function drizzleGameStore(databaseUrl: string): GameStore {
         .offset(offset);
       return rows.map(toScore);
     },
+    async countScores(filter) {
+      const [row] = await db.select({ value: count() }).from(gameScores).where(boardWhere(filter));
+      return row?.value ?? 0;
+    },
     async countAhead(filter, key) {
       const [row] = await db
         .select({ value: count() })

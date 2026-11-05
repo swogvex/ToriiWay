@@ -10,6 +10,7 @@
         "http://localhost:4321/404.html",
         "http://localhost:4321/game",
         "http://localhost:4321/game/play",
+        "http://localhost:4321/game/leaderboard",
         "http://localhost:4321/jlpt",
         "http://localhost:4321/jlpt/run",
         "http://localhost:4321/help/japanese-voice"

@@ -34,6 +34,8 @@ export interface GameStore {
   deleteScore(id: string): Promise<boolean>;
   /** Visible entries for a board, in board order. */
   listScores(filter: BoardFilter, offset: number, limit: number): Promise<ScoreRecord[]>;
+  /** Visible entries on a board. */
+  countScores(filter: BoardFilter): Promise<number>;
   /** Visible entries listed before `key` on a board (ties included, see rankAmong). */
   countAhead(filter: BoardFilter, key: RankKey): Promise<number>;
   /** Saves a report and counts it on the entry; hides the entry at AUTO_HIDE_REPORTS open reports. */
@@ -116,6 +118,9 @@ export function memoryGameStore(): GameStore {
         .sort(boardOrder(filter.mode, filter.sort))
         .slice(offset, offset + limit)
         .map((score) => structuredClone(score));
+    },
+    async countScores(filter) {
+      return visible(filter).length;
     },
     async countAhead(filter, key) {
       const compare = boardOrder(filter.mode, filter.sort);

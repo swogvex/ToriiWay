@@ -118,6 +118,7 @@ async function board(query = '') {
     body: (await response.json()) as {
       entries: { id: string; name: string; rank: number; wpm: number }[];
       next: string | null;
+      total: number;
     },
   };
 }
@@ -294,6 +295,7 @@ describe('GET /api/game/leaderboard', () => {
     expect(first.response.headers.get('cache-control')).toContain('s-maxage=30');
     expect(first.body.entries).toHaveLength(PAGE_SIZE);
     expect(first.body.next).toBe(String(PAGE_SIZE));
+    expect(first.body.total).toBe(PAGE_SIZE + 2);
     const wpms = first.body.entries.map((entry) => entry.wpm);
     expect(wpms).toEqual([...wpms].sort((a, b) => b - a));
     const second = await board(`?script=hiragana&mode=challenge&cursor=${first.body.next}`);
