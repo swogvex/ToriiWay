@@ -371,6 +371,22 @@ export async function adminScoreHandler(
   });
 }
 
+/** POST /api/admin/game-names/[name] — "Unblock" from the blocked names list on /admin/leaderboard. */
+export async function adminUnblockHandler(
+  request: Request,
+  name: string,
+  deps: Pick<GameDeps, 'store' | 'site'>,
+): Promise<Response> {
+  assertSameOrigin(request, deps.site);
+  // Stored names are the normalized (lowercase) form of NAME_PATTERN.
+  if (!/^[a-z0-9_-]{3,16}$/.test(name)) throw new HttpError('not-found', 404);
+  if (!(await deps.store.unblockName(name))) throw new HttpError('not-found', 404);
+  return new Response(null, {
+    status: 303,
+    headers: { Location: '/admin/leaderboard', 'Cache-Control': 'no-store' },
+  });
+}
+
 /** Part of the daily cron: unused runs after their 2 h life, used runs a day after use. */
 export async function gameCleanup(deps: Pick<GameDeps, 'store' | 'now'>) {
   const now = deps.now();

@@ -328,5 +328,26 @@ export function drizzleGameStore(databaseUrl: string): GameStore {
       await resolveFor(sql`(${id}::uuid)`);
       return true;
     },
+    async blockedNames() {
+      const rows = await db
+        .select({ name: gameNames.nameNormalized })
+        .from(gameNames)
+        .where(eq(gameNames.blocked, true))
+        .orderBy(asc(gameNames.createdAt));
+      return rows.map((row) => row.name);
+    },
+    async unblockName(nameNormalized) {
+      const updated = await db
+        .update(gameNames)
+        .set({ blocked: false })
+        .where(and(eq(gameNames.nameNormalized, nameNormalized), eq(gameNames.blocked, true)))
+        .returning({ name: gameNames.nameNormalized });
+      if (updated.length === 0) return false;
+      await db
+        .update(gameScores)
+        .set({ status: 'visible' })
+        .where(eq(gameScores.nameNormalized, nameNormalized));
+      return true;
+    },
   };
 }
