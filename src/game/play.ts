@@ -1,4 +1,5 @@
 import { localGameProgress } from '../lib/progress/game';
+import { lazySeededRandom, type ServerRun } from './claim';
 import { initBlocked } from './blocked';
 import { type Difficulty, DIFFICULTY, REDUCED_MOTION_SPEED } from './config';
 import { Field } from './field';
@@ -26,6 +27,29 @@ function required<T extends Element>(root: ParentNode, selector: string): T {
   const el = root.querySelector<T>(selector);
   if (!el) throw new Error(`Missing ${selector}`);
   return el;
+}
+
+/** A single-use run for the leaderboard; null when the API cannot be reached. */
+async function requestServerRun(): Promise<ServerRun | null> {
+  const settings = readSettings(location.search);
+  try {
+    const response = await fetch('/api/game/runs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        script: settings.script,
+        difficulty: settings.difficulty,
+        mode: settings.mode,
+      }),
+    });
+    if (!response.ok) return null;
+    const body = (await response.json()) as Partial<ServerRun>;
+    return typeof body.runId === 'string' && typeof body.seed === 'number'
+      ? { runId: body.runId, seed: body.seed }
+      : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function initPlay(root: HTMLElement): Promise<void> {
@@ -84,6 +108,8 @@ export async function initPlay(root: HTMLElement): Promise<void> {
   let timers: number[] = [];
   /** Bumped by every new run, so a countdown waiting for a key knows it is stale. */
   let countdownId = 0;
+  /** The leaderboard run asked for at this run's countdown (null if that failed). */
+  let serverRun: Promise<ServerRun | null> = Promise.resolve(null);
   const pressKey = required<HTMLElement>(root, '[data-press-key]');
 
   const setState = (next: State, status?: RunStatus | 'unavailable') => {
@@ -167,8 +193,16 @@ export async function initPlay(root: HTMLElement): Promise<void> {
   /** New run: fresh field and HUD, then 3 · 2 · 1 · 始め! and play. */
   const begin = () => {
     stopClock();
+    // Ask for a single-use leaderboard run now; its seed arrives during the countdown.
+    let serverSeed: number | null = null;
+    serverRun = requestServerRun();
+    void serverRun.then((server) => {
+      serverSeed = server?.seed ?? null;
+    });
     const random: Random =
-      settings.seed === null ? Math.random.bind(Math) : seededRandom(settings.seed);
+      settings.seed === null
+        ? lazySeededRandom(() => serverSeed, Math.random.bind(Math), seededRandom)
+        : seededRandom(settings.seed);
     run = new Run({
       config,
       mode: settings.mode,
@@ -253,6 +287,8 @@ export async function initPlay(root: HTMLElement): Promise<void> {
       modeLabel: modeLabel(settings, labels),
       setupLabel: `${labels[settings.script] ?? settings.script} ${labels[settings.difficulty] ?? settings.difficulty}`,
       date: result.date,
+      reducedMotion,
+      runId: serverRun.then((server) => server?.runId ?? null),
     });
     setState('ended', status);
     stage.classList.remove('is-paused');

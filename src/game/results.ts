@@ -1,4 +1,5 @@
 import { CHART, type ChartGeometry, chartGeometry, nearestPoint, renderChart } from './chart';
+import { buildClaim, canSubmit } from './claim';
 import type { GameScript } from './config';
 import { romajiHint } from './romaji';
 import type { Run, RunStatus } from './run';
@@ -12,6 +13,7 @@ import {
   drawCard,
   loadCardFonts,
 } from './share';
+import { SubmitPanel } from './submit';
 import {
   errorSeconds,
   type RunSummary,
@@ -68,6 +70,10 @@ export interface ResultContext {
   /** "Hiragana Normal", for the card. */
   setupLabel: string;
   date: string;
+  /** The game option or the system setting: such runs are not ranked. */
+  reducedMotion: boolean;
+  /** Server run for the leaderboard; resolves to null when it could not be created. */
+  runId: Promise<string | null>;
 }
 
 /**
@@ -97,6 +103,7 @@ export class Results {
     glyph: 'あ',
   };
   private fontsReady: Promise<void> | null = null;
+  private readonly submit: SubmitPanel;
 
   constructor(private readonly root: HTMLElement) {
     this.labels = JSON.parse(root.dataset['labels'] ?? '{}') as Record<string, string>;
@@ -107,6 +114,7 @@ export class Results {
     this.image = required(root, '[data-share-image]');
     this.name = required(root, '[data-share-name]');
     this.shareStatus = required(root, '[data-share-status]');
+    this.submit = new SubmitPanel(required(root, '[data-submit]'));
     this.logo = new Image();
     this.logo.src = root.dataset['logo'] ?? '';
 
@@ -147,6 +155,7 @@ export class Results {
     this.fillWords(run, summary);
     this.fillSlowest(run);
     this.prepareCard(context, summary);
+    this.offerSubmission(context);
     this.shareStatus.textContent = '';
     // Announced once: the focus moves to "Play again" for a quick restart.
     required(this.root, '[data-results-announce]').textContent = this.label('announce', {
@@ -308,6 +317,25 @@ export class Results {
     );
   }
 
+  private offerSubmission(context: ResultContext): void {
+    const { run, settings, status, reducedMotion } = context;
+    const offered = status === 'cleared' || status === 'failed';
+    const state = !offered ? 'hidden' : canSubmit(status, reducedMotion) ? 'offer' : 'reduced';
+    const claim = state === 'offer' && offered ? buildClaim(run, settings, status, '') : null;
+    this.submit.show({
+      state,
+      claim,
+      runId: context.runId,
+      comboLabel: context.modeLabel,
+      onRanked: (rank, name) => {
+        if (!this.name.value.trim()) this.name.value = name;
+        if (rank === null) delete this.card.chip;
+        else this.card.chip = this.label('card.leaderboard', { rank });
+        this.drawCard();
+      },
+    });
+  }
+
   private prepareCard(context: ResultContext, summary: RunSummary): void {
     this.card = {
       title: this.label('card.title'),
@@ -342,7 +370,13 @@ export class Results {
   private palette(): CardPalette {
     const color = (name: string) =>
       getComputedStyle(required(this.root, `[data-card-color="${name}"]`)).color;
-    return { bg: color('bg'), ink: color('ink'), muted: color('muted'), line: color('line') };
+    return {
+      bg: color('bg'),
+      ink: color('ink'),
+      muted: color('muted'),
+      line: color('line'),
+      info: color('info'),
+    };
   }
 
   private drawCard(): void {

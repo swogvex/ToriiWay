@@ -58,6 +58,15 @@ const labels = Object.fromEntries([
           </dd>
         </div>
       </dl>
+      <Button
+        variant="outline"
+        size={48}
+        href={localizePath('/game/leaderboard', locale)}
+        class="setup__board"
+      >
+        <Icon name="trophy" size={18} />
+        {t('game.setup.leaderboard')}
+      </Button>
     </div>
   </SectionHeader>
 
@@ -280,6 +289,9 @@ const labels = Object.fromEntries([
   .setup__stats {
     display: flex;
     gap: var(--space-8);
+
+    /* Stats and the Leaderboard button sit together on the right (image 05). */
+    margin-inline-start: auto;
   }
 
   .setup__stats dt,

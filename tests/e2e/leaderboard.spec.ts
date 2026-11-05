@@ -67,7 +67,8 @@ test.describe('Kana Rush leaderboard', () => {
     await submit(request, `Slow_${tag}`, script, 4);
     await submit(request, `Fast_${tag}`, script, 8);
 
-    await page.goto(`/game/leaderboard?script=${script}&difficulty=extreme`);
+    // Challenge only: leaderboard-submit.spec.ts puts Endless runs on these scripts.
+    await page.goto(`/game/leaderboard?script=${script}&difficulty=extreme&mode=challenge`);
     await expect(page.getByRole('heading', { level: 1, name: 'Leaderboard' })).toBeVisible();
     await expect(page.getByRole('radio', { name: 'Extreme' })).toBeChecked();
     const rows = page.locator('[data-row-toggle]');
@@ -97,7 +98,7 @@ test.describe('Kana Rush leaderboard', () => {
     await expect(page).toHaveURL(/sort=shortest/);
     await page.goBack();
     await page.goBack();
-    await expect(page.getByRole('radio', { name: 'Endless' })).not.toBeChecked();
+    await expect(page.getByRole('radio', { name: 'Challenge' })).toBeChecked();
     await expect(page.locator('[data-board-sort]')).toBeHidden();
     await expect(rows).toHaveCount(2);
   });
