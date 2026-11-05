@@ -54,6 +54,7 @@ async function locate(pathname: string): Promise<string | null> {
  */
 const API_FIXTURES: Record<string, string> = {
   '/api/jlpt/recent': '[]',
+  '/api/game/leaderboard': '{"entries":[],"next":null,"total":0}',
 };
 
 createServer(async (request, response) => {

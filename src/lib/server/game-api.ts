@@ -261,10 +261,13 @@ export async function leaderboardHandler(url: URL, deps: GameDeps): Promise<Resp
     mode: query.mode ?? null,
     sort: query.mode === 'endless' ? (query.sort ?? 'longest') : 'longest',
   };
-  const rows = await deps.store.listScores(filter, offset, PAGE_SIZE + 1);
+  const [rows, total] = await Promise.all([
+    deps.store.listScores(filter, offset, PAGE_SIZE + 1),
+    deps.store.countScores(filter),
+  ]);
   const entries = rows.slice(0, PAGE_SIZE).map((row, index) => toPublic(row, offset + index + 1));
   const next = rows.length > PAGE_SIZE ? String(offset + PAGE_SIZE) : null;
-  return new Response(JSON.stringify({ entries, next }), {
+  return new Response(JSON.stringify({ entries, next, total }), {
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'public, max-age=0, s-maxage=30',

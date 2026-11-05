@@ -1,0 +1,844 @@
+---
+/**
+ * Kana Rush public leaderboard (images 15a, 15b; 08-spec-game "Public leaderboard").
+ * The page is static; src/lib/game/leaderboard/board.ts fetches /api/game/leaderboard,
+ * keeps the filters in the URL and renders the rows from the <template> below.
+ */
+import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BigGlyph from '../ui/BigGlyph.astro';
+import Button from '../ui/Button.astro';
+import Dialog from '../ui/Dialog.astro';
+import Icon from '../ui/Icon.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Segmented from '../ui/Segmented.astro';
+import Skeleton from '../ui/Skeleton.astro';
+
+interface Props {
+  siteKey: string;
+}
+
+const { siteKey } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+
+const all = { value: '', label: t('game.board.all') };
+const options = {
+  script: [all, ...GAME_SCRIPTS.map((value) => ({ value, label: t(`game.script.${value}`) }))],
+  difficulty: [
+    all,
+    ...DIFFICULTIES.map((value) => ({ value, label: t(`game.difficulty.${value}`) })),
+  ],
+  mode: [all, ...MODES.map((value) => ({ value, label: t(`game.mode.${value}`) }))],
+  sort: [
+    { value: 'longest', label: t('game.board.sort.longest') },
+    { value: 'shortest', label: t('game.board.sort.shortest') },
+  ],
+};
+
+/** Strings the client needs, keyed without the "game.board." prefix where possible. */
+const labels = {
+  summary: t('game.board.summary'),
+  summaryOne: t('game.board.summary.one'),
+  allScripts: t('game.board.allScripts'),
+  allDifficulties: t('game.board.allDifficulties'),
+  allModes: t('game.board.allModes'),
+  chartDesc: t('game.board.chart.desc'),
+  chartEmpty: t('game.results.chart.empty'),
+  removeText: t('game.board.remove.text'),
+  removeError: t('game.board.remove.error'),
+  removed: t('game.board.removed'),
+  sending: t('game.board.report.sending'),
+  thanks: t('game.board.report.thanks'),
+  verify: t('game.board.report.verify'),
+  limit: t('game.board.report.limit'),
+  generic: t('game.board.report.generic'),
+  ...Object.fromEntries([
+    ...GAME_SCRIPTS.map((key) => [key, t(`game.script.${key}`)]),
+    ...DIFFICULTIES.map((key) => [key, t(`game.difficulty.${key}`)]),
+    ...MODES.map((key) => [key, t(`game.mode.${key}`)]),
+  ]),
+};
+const skeletons = Array.from({ length: 5 }, (_, index) => index);
+---
+
+<div class="board column" data-board data-labels={JSON.stringify(labels)}>
+  <SectionHeader level="h1" kicker={t('game.board.kicker')} title={t('game.board.title')}>
+    <div class="board__intro">
+      <p class="board__lead">{t('game.board.lead')}</p>
+      <div class="board__cta">
+        <BigGlyph glyph="番" size="md" tone="faint" class="board__glyph" />
+        <Button href={localizePath('/game', locale)}>{t('game.board.play')}</Button>
+      </div>
+    </div>
+  </SectionHeader>
+
+  <form class="board__filters" data-board-filters>
+    <Segmented name="script" legend={t('game.board.filter.script')} options={options.script} />
+    <Segmented
+      name="difficulty"
+      legend={t('game.board.filter.difficulty')}
+      options={options.difficulty}
+    />
+    <Segmented name="mode" legend={t('game.board.filter.mode')} options={options.mode} />
+    <div class="board__sort" data-board-sort hidden>
+      <Segmented name="sort" legend={t('game.board.filter.sort')} options={options.sort} />
+    </div>
+  </form>
+
+  <div class="board__summary">
+    <p class="board__count" role="status" data-board-summary>
+      {t('game.board.loading')}
+    </p>
+    <p class="board__hint" aria-hidden="true">
+      {t('game.board.hint')}
+    </p>
+  </div>
+
+  <div class="board__table" aria-busy="true" data-board-table>
+    <div class="board__head" aria-hidden="true">
+      <span>{t('game.board.col.rank')}</span>
+      <span>{t('game.board.col.name')}</span>
+      <span>{t('game.board.col.script')}</span>
+      <span>{t('game.board.col.difficulty')}</span>
+      <span>{t('game.board.col.mode')}</span>
+      <span>{t('game.board.col.survived')}</span>
+      <span class="board__num">{t('game.board.col.wpm')}</span>
+      <span></span>
+    </div>
+    <ol class="board__rows" data-board-rows>
+      {skeletons.map(() => (
+        <li class="row row--skeleton" aria-hidden="true">
+          <div class="row__toggle">
+            <Skeleton shape="text" class="row__sk-rank" />
+            <Skeleton shape="text" class="row__sk-name" />
+            <Skeleton shape="text" class="row__sk-cell" />
+            <Skeleton shape="text" class="row__sk-cell" />
+            <Skeleton shape="chip" class="row__sk-chip" />
+            <Skeleton shape="text" class="row__sk-cell" />
+            <Skeleton shape="text" class="row__sk-num" />
+          </div>
+        </li>
+      ))}
+    </ol>
+    <div class="board__state" data-board-empty hidden>
+      <span class="board__state-glyph" lang="ja" aria-hidden="true">
+        空
+      </span>
+      <p>{t('game.board.empty')}</p>
+    </div>
+    <div class="board__state" data-board-error hidden>
+      <p>{t('game.board.error')}</p>
+      <Button variant="outline" size={40} data-board-retry>
+        {t('game.board.retry')}
+      </Button>
+    </div>
+  </div>
+
+  <div class="board__more">
+    <Button variant="outline" data-board-more hidden>
+      {t('game.board.more')}
+    </Button>
+  </div>
+
+  <p class="board__note">{t('game.board.note')}</p>
+
+  <template data-row-template>
+    <li class="row">
+      <button class="row__toggle" type="button" aria-expanded="false" data-row-toggle>
+        <span class="row__rank">
+          <span class="visually-hidden">{t('game.board.rank')}</span>
+          <span data-f="rank"></span>
+        </span>
+        <span class="row__name" data-f="name"></span>
+        <span class="row__meta">
+          <span class="row__script">
+            <span class="row__glyph" lang="ja" aria-hidden="true" data-f="glyph"></span>
+            <span data-f="script"></span>
+          </span>
+          <span class="row__difficulty" data-f="difficulty"></span>
+          <span class="row__mode">
+            <span class="mode" data-f="mode"></span>
+          </span>
+        </span>
+        <span class="row__nums">
+          <span class="row__survived">
+            <span class="row__label">{t('game.board.col.survived')}</span>
+            <span data-f="survived"></span>
+          </span>
+          <span class="row__wpm">
+            <span class="row__label">{t('game.board.col.wpm')}</span>
+            <span data-f="wpm"></span>
+          </span>
+        </span>
+        <Icon name="chevron-down" size={20} class="row__chevron" />
+      </button>
+      <div class="row__details" hidden data-row-details>
+        <figure class="row__chart">
+          <figcaption class="row__charthead">
+            <span data-f="chart-title">{t('game.results.chart')}</span>
+            <span class="row__legend" aria-hidden="true">
+              <span>— {t('game.results.chart.legendWpm')}</span>
+              <span class="row__legend-error">× {t('game.results.chart.legendError')}</span>
+            </span>
+          </figcaption>
+          <svg class="row__svg" role="img" data-chart xmlns="http://www.w3.org/2000/svg">
+            <desc data-chart-desc></desc>
+          </svg>
+          <p class="row__axis" aria-hidden="true">
+            <span>0:00</span>
+            <span data-f="end"></span>
+          </p>
+        </figure>
+        <dl class="row__stats">
+          <div class="stat stat--wide">
+            <dt>{t('game.board.col.wpm')}</dt>
+            <dd data-f="stat-wpm"></dd>
+          </div>
+          <div class="stat">
+            <dt>{t('game.results.accuracy')}</dt>
+            <dd data-f="accuracy"></dd>
+          </div>
+          <div class="stat">
+            <dt>{t('game.results.consistency')}</dt>
+            <dd data-f="consistency"></dd>
+          </div>
+          <div class="stat stat--info">
+            <dt>{t('game.board.popped')}</dt>
+            <dd data-f="popped"></dd>
+          </div>
+          <div class="stat stat--accent">
+            <dt>{t('game.results.missed')}</dt>
+            <dd data-f="missed"></dd>
+          </div>
+        </dl>
+        <p class="row__actions">
+          <button class="row__action" type="button" data-row-report>
+            {t('game.board.report')}
+          </button>
+          <button class="row__action" type="button" data-row-remove hidden>
+            {t('game.board.remove')}
+          </button>
+        </p>
+      </div>
+    </li>
+  </template>
+
+  <Dialog id="board-report" title={t('game.board.report.title')}>
+    <form
+      class="board__dialog-form"
+      id="board-report-form"
+      data-board-report-form
+      data-sitekey={siteKey}
+      novalidate
+    >
+      <fieldset class="board__reasons">
+        <legend>{t('game.board.report.reason')}</legend>
+        <label>
+          <input type="radio" name="reason" value="name" checked />
+          {t('game.board.report.name')}
+        </label>
+        <label>
+          <input type="radio" name="reason" value="score" />
+          {t('game.board.report.score')}
+        </label>
+      </fieldset>
+      <div data-turnstile></div>
+      <p class="board__dialog-status" role="status" data-board-report-status></p>
+    </form>
+    <div slot="footer" class="board__dialog-actions">
+      <form method="dialog">
+        <Button variant="outline" type="submit">
+          {t('game.board.report.cancel')}
+        </Button>
+      </form>
+      <Button variant="accent" type="submit" form="board-report-form" data-board-report-send>
+        {t('game.board.report.send')}
+      </Button>
+    </div>
+  </Dialog>
+
+  <Dialog id="board-remove" title={t('game.board.remove.title')}>
+    <p data-board-remove-text></p>
+    <p class="board__dialog-status" role="status" data-board-remove-status></p>
+    <div slot="footer" class="board__dialog-actions">
+      <form method="dialog">
+        <Button variant="outline" type="submit">
+          {t('game.board.report.cancel')}
+        </Button>
+      </form>
+      <Button variant="accent" data-board-remove-confirm>
+        {t('game.board.remove.confirm')}
+      </Button>
+    </div>
+  </Dialog>
+</div>
+
+<script>
+  import { initBoard } from '../../lib/game/leaderboard/board';
+
+  const root = document.querySelector<HTMLElement>('[data-board]');
+  if (root) initBoard(root);
+</script>
+
+<style>
+  .board {
+    display: grid;
+    gap: var(--space-6);
+    padding-block: var(--space-8) var(--space-12);
+  }
+
+  .board__intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .board__lead {
+    max-inline-size: 34rem;
+    color: var(--muted);
+    font-size: var(--text-md);
+  }
+
+  .board__cta {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .board__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .board__filters :global(.segmented__track) {
+    flex-wrap: wrap;
+  }
+
+  /* Tighter options so Script, Difficulty and Mode fit one row of the 1000px column. */
+  .board__filters :global(.segmented__label) {
+    padding-inline: var(--space-3);
+  }
+
+  .board__sort {
+    flex-basis: 100%;
+  }
+
+  .board__sort[hidden] {
+    display: none;
+  }
+
+  .board__sort :global(.segmented__legend) {
+    color: var(--accent-ink);
+  }
+
+  .board__summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    align-items: baseline;
+    justify-content: space-between;
+    margin-block-end: calc(-1 * var(--space-3));
+  }
+
+  .board__count {
+    font-weight: 700;
+  }
+
+  .board__hint {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .board__table {
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  /* Shared column grid for the header and every row button. */
+  .board__head,
+  .row__toggle {
+    display: grid;
+    grid-template-columns:
+      3rem minmax(0, 1.6fr) minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr)
+      minmax(0, 1fr) 4rem 2.5rem;
+    gap: var(--space-3);
+    align-items: center;
+    padding-inline: var(--space-5) var(--space-3);
+  }
+
+  .board__head {
+    min-block-size: 2.75rem;
+    border-block-end: 1px solid var(--line);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .board__num,
+  .row__wpm {
+    text-align: end;
+  }
+
+  .board__rows {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .row + .row {
+    border-block-start: 1px solid var(--line);
+  }
+
+  .row__toggle {
+    inline-size: 100%;
+    min-block-size: 3.5rem;
+    padding-block: var(--space-2);
+    border: 0;
+    background: none;
+    color: var(--ink);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+  }
+
+  .row__toggle:hover {
+    background: var(--bg);
+  }
+
+  .row__toggle:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: -2px;
+  }
+
+  .row--skeleton .row__toggle {
+    cursor: default;
+  }
+
+  /* Groups for the phone cards; on wide screens their cells sit in the row grid. */
+  .row__meta,
+  .row__nums {
+    display: contents;
+  }
+
+  .row__rank,
+  .row__survived,
+  .row__wpm {
+    font-family: var(--font-mono);
+  }
+
+  .row__rank[data-top] {
+    color: var(--accent-ink);
+  }
+
+  .row__name {
+    overflow: hidden;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .row__script {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+  }
+
+  .row__glyph {
+    display: grid;
+    place-items: center;
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-chip);
+    font-family: var(--font-body-ja);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .mode {
+    display: inline-block;
+    padding: 0.125rem var(--space-2);
+    border-radius: var(--radius-chip);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .mode[data-mode='challenge'] {
+    background: var(--info-soft);
+    color: var(--info);
+  }
+
+  .mode[data-mode='endless'] {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+  }
+
+  /* Column headers show these on wide screens (screen readers still get them); on phones the cards show them. */
+  .row__label {
+    position: absolute;
+    overflow: hidden;
+    inline-size: 1px;
+    block-size: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .row__chevron {
+    justify-self: center;
+    color: var(--muted);
+    transition: rotate var(--duration-fast) var(--ease);
+  }
+
+  .row__toggle[aria-expanded='true'] .row__chevron {
+    rotate: 180deg;
+  }
+
+  .row__details {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: var(--space-5);
+    padding: var(--space-2) var(--space-5) var(--space-5)
+      calc(3rem + var(--space-5) + var(--space-3));
+  }
+
+  .row__details[hidden] {
+    display: none;
+  }
+
+  .row__chart {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    margin: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--bg);
+  }
+
+  .row__charthead,
+  .row__axis {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .row__charthead {
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .row__legend {
+    display: flex;
+    gap: var(--space-2);
+    color: var(--ink);
+    text-transform: none;
+  }
+
+  .row__legend-error {
+    color: var(--accent-ink);
+  }
+
+  .row__svg {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 640 / 220;
+  }
+
+  /* Chart nodes are created by src/game/chart.ts, outside Astro's scope. */
+  .row__svg :global(.chart__grid) {
+    stroke: var(--line-strong);
+    stroke-dasharray: 3 4;
+  }
+
+  .row__svg :global(.chart__axis) {
+    stroke: var(--line-strong);
+  }
+
+  .row__svg :global(.chart__label) {
+    fill: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .row__svg :global(.chart__line) {
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+
+  .row__svg :global(.chart__error line) {
+    stroke: var(--accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  .row__svg :global(.chart__cross) {
+    display: none;
+  }
+
+  .row__axis {
+    /* Same insets as CHART.left and CHART.right, as shares of the 640 viewBox. */
+    padding-inline: 5.625% 1.25%;
+  }
+
+  .row__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
+    align-content: start;
+    margin: 0;
+  }
+
+  .stat {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--bg);
+  }
+
+  .stat--wide {
+    grid-column: 1 / -1;
+  }
+
+  .stat dt {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .stat dd {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: var(--text-xl);
+  }
+
+  .stat--wide dd {
+    font-size: var(--text-2xl);
+  }
+
+  .stat--info dd {
+    color: var(--info);
+  }
+
+  .stat--accent dd {
+    color: var(--accent-ink);
+  }
+
+  .row__actions {
+    display: flex;
+    grid-column: 1 / -1;
+    gap: var(--space-4);
+    justify-content: end;
+    margin: 0;
+  }
+
+  .row__action {
+    min-block-size: var(--target-min);
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted);
+    font: inherit;
+    font-size: var(--text-sm);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+  .row__action:hover {
+    color: var(--ink);
+  }
+
+  .row__action:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .row__action[hidden] {
+    display: none;
+  }
+
+  :global(.row__sk-rank) {
+    inline-size: 1.5rem;
+  }
+
+  :global(.row__sk-name) {
+    inline-size: 70%;
+  }
+
+  :global(.row__sk-cell) {
+    inline-size: 60%;
+  }
+
+  :global(.row__sk-chip) {
+    inline-size: 4.5rem;
+    block-size: 1.25rem;
+  }
+
+  :global(.row__sk-num) {
+    inline-size: 2rem;
+    justify-self: end;
+  }
+
+  .board__state {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: center;
+    padding: var(--space-10) var(--space-6);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .board__state[hidden] {
+    display: none;
+  }
+
+  .board__state-glyph {
+    color: var(--line-strong);
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+    line-height: 1;
+  }
+
+  .board__more {
+    display: flex;
+    justify-content: center;
+  }
+
+  .board__more:not(:has(:not([hidden]))) {
+    display: none;
+  }
+
+  .board__more :global([hidden]) {
+    display: none;
+  }
+
+  .board__note {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .board__dialog-form {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .board__reasons {
+    display: grid;
+    gap: var(--space-2);
+    padding: 0;
+    border: 0;
+  }
+
+  .board__reasons legend {
+    margin-block-end: var(--space-2);
+    font-weight: 700;
+  }
+
+  .board__reasons label {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-block-size: var(--target-min);
+  }
+
+  .board__dialog-status:empty {
+    display: none;
+  }
+
+  .board__dialog-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: end;
+  }
+
+  /* Phones: the table becomes cards (rank + name, chips, Survived and WPM). */
+  @media (width < 48rem) {
+    .board__head {
+      display: none;
+    }
+
+    .row__toggle {
+      grid-template-areas:
+        'rank name chevron'
+        'meta meta chevron'
+        'nums nums chevron';
+      grid-template-columns: auto minmax(0, 1fr) 2.5rem;
+      gap: var(--space-2) var(--space-3);
+      padding: var(--space-4);
+    }
+
+    .row__rank {
+      grid-area: rank;
+    }
+
+    .row__name {
+      grid-area: name;
+    }
+
+    .row__meta,
+    .row__nums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2) var(--space-4);
+      align-items: center;
+    }
+
+    .row__meta {
+      grid-area: meta;
+    }
+
+    .row__nums {
+      grid-area: nums;
+    }
+
+    .row__wpm {
+      text-align: start;
+    }
+
+    .row__chevron {
+      grid-area: chevron;
+    }
+
+    .row__label {
+      position: static;
+      inline-size: auto;
+      block-size: auto;
+      clip-path: none;
+      margin-inline-end: var(--space-1);
+      color: var(--muted);
+      font-size: var(--text-xs);
+    }
+
+    .row__details {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 0 var(--space-4) var(--space-4);
+    }
+
+    .row--skeleton .row__toggle {
+      grid-template-areas: none;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .board__cta :global(.big-glyph) {
+      display: none;
+    }
+  }
+</style>
