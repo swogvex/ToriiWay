@@ -433,6 +433,39 @@ const rubyText = z
   .min(1)
   .regex(/^(?:[^[\]]|(?<=[\p{Script=Han}々])\[[^[\]]+\])+$/u, 'Use 漢字[よみ] for furigana');
 
+// Both languages are required here: the 404 ships its Spanish strings from the start (16-i18n).
+const bilingualText = z.strictObject({ en: z.string().min(1), es: z.string().min(1) });
+const kanaReading = z.string().regex(/^[\p{Script=Hiragana}ー]+$/u, 'Use hiragana only');
+
+// src/content/site/404-fortunes.yaml: the omikuji of the 404 page (07-spec-shell).
+export const fortuneSchema = z.strictObject({
+  rank: z.string().regex(/^[\p{Script=Han}]{1,3}$/u, 'Use the rank in kanji, e.g. 小吉'),
+  reading: kanaReading,
+  romaji: z.string().min(1),
+  meaning: bilingualText,
+  message: bilingualText,
+  path: z.enum(['home', 'game', 'learn', 'library', 'jlpt', 'community']),
+  word: z.string().min(1),
+  wordKana: kanaReading,
+  wordMeaning: bilingualText,
+});
+
+export const fortunesSchema = z
+  .strictObject({ fortunes: z.array(fortuneSchema).min(2).max(12) })
+  .superRefine(({ fortunes }, ctx) => {
+    const seen = new Set<string>();
+    fortunes.forEach((fortune, index) => {
+      if (seen.has(fortune.rank)) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['fortunes', index, 'rank'],
+          message: `Duplicate rank ${fortune.rank}`,
+        });
+      }
+      seen.add(fortune.rank);
+    });
+  });
+
 // One file per locale: src/content/site/<locale>/home.yaml (Home copy, footer and social links).
 export const siteSchema = z.strictObject({
   title: z.string().min(1).max(60),
