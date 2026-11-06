@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UCOey2A5vOKyiU-RHXjWf4aA"/>
+ <id>yt:channel:Oey2A5vOKyiU-RHXjWf4aA</id>
+ <yt:channelId>Oey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+ <title>Nihongo no Torii</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA"/>
+ <author>
+  <name>Nihongo no Torii</name>
+  <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+ </author>
+ <published>2020-04-09T21:23:39+00:00</published>
+ <entry>
+  <id>yt:video:4O7tdiVWwF0</id>
+  <yt:videoId>4O7tdiVWwF0</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Noche libre</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=4O7tdiVWwF0"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-04-20T19:15:21+00:00</published>
+  <updated>2026-11-04T15:53:36+00:00</updated>
+  <media:group>
+   <media:title>Noche libre</media:title>
+   <media:content url="https://www.youtube.com/v/4O7tdiVWwF0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/4O7tdiVWwF0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Stream dedicados al estudio del japones y divertise mientras lo hacemos</media:description>
+   <media:community>
+    <media:starRating count="3" average="5.00" min="1" max="5"/>
+    <media:statistics views="28"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:F23kX3OhQVU</id>
+  <yt:videoId>F23kX3OhQVU</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Minna estudiemos japones</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=F23kX3OhQVU"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-04-13T20:31:43+00:00</published>
+  <updated>2026-10-01T22:24:42+00:00</updated>
+  <media:group>
+   <media:title>Minna estudiemos japones</media:title>
+   <media:content url="https://www.youtube.com/v/F23kX3OhQVU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/F23kX3OhQVU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Stream dedicados al estudio del japones y divertise mientras lo hacemos</media:description>
+   <media:community>
+    <media:starRating count="4" average="5.00" min="1" max="5"/>
+    <media:statistics views="90"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:Zt0I8ZRm7jU</id>
+  <yt:videoId>Zt0I8ZRm7jU</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Bienvenido al Curso de Japones N5 de Hakuya Enseña</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=Zt0I8ZRm7jU"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-04-13T05:16:58+00:00</published>
+  <updated>2026-10-04T17:10:35+00:00</updated>
+  <media:group>
+   <media:title>Bienvenido al Curso de Japones N5 de Hakuya Enseña</media:title>
+   <media:content url="https://www.youtube.com/v/Zt0I8ZRm7jU?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/Zt0I8ZRm7jU/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Link de la pagina para las simulaciones de  JLPT:
+https://www.jlpt.jp/e/samples/sampleindex.html</media:description>
+   <media:community>
+    <media:starRating count="20" average="5.00" min="1" max="5"/>
+    <media:statistics views="205"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:m00gtNe7MmA</id>
+  <yt:videoId>m00gtNe7MmA</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Novedades y Actualizaciones niponescas</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=m00gtNe7MmA"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-04-06T18:51:20+00:00</published>
+  <updated>2026-11-01T14:13:20+00:00</updated>
+  <media:group>
+   <media:title>Novedades y Actualizaciones niponescas</media:title>
+   <media:content url="https://www.youtube.com/v/m00gtNe7MmA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/m00gtNe7MmA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Stream dedicados al estudio del japones y divertise mientras lo hacemos</media:description>
+   <media:community>
+    <media:starRating count="7" average="5.00" min="1" max="5"/>
+    <media:statistics views="44"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:tk9GvFgpvS4</id>
+  <yt:videoId>tk9GvFgpvS4</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>El Fantasma de la oscuridad  #japones #residentevilrequiem</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/tk9GvFgpvS4"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-03-12T22:11:02+00:00</published>
+  <updated>2026-10-04T21:53:06+00:00</updated>
+  <media:group>
+   <media:title>El Fantasma de la oscuridad  #japones #residentevilrequiem</media:title>
+   <media:content url="https://www.youtube.com/v/tk9GvFgpvS4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/tk9GvFgpvS4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Un muy pequeño cuento de terror del nueo Juego de resident evil requiem</media:description>
+   <media:community>
+    <media:starRating count="3" average="5.00" min="1" max="5"/>
+    <media:statistics views="786"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:CkvlwkMNmNA</id>
+  <yt:videoId>CkvlwkMNmNA</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>El Fantasma de la oscuridad / Cuentos cortos para aprender japones</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=CkvlwkMNmNA"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-03-12T21:37:46+00:00</published>
+  <updated>2026-10-04T02:16:34+00:00</updated>
+  <media:group>
+   <media:title>El Fantasma de la oscuridad / Cuentos cortos para aprender japones</media:title>
+   <media:content url="https://www.youtube.com/v/CkvlwkMNmNA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/CkvlwkMNmNA/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Este es un cuento muy corto para aprener japones espero y les guste</media:description>
+   <media:community>
+    <media:starRating count="9" average="5.00" min="1" max="5"/>
+    <media:statistics views="65"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:kyzL_UMdfH0</id>
+  <yt:videoId>kyzL_UMdfH0</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Como Aprender KANJI</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=kyzL_UMdfH0"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2026-02-23T06:50:58+00:00</published>
+  <updated>2026-09-30T02:33:02+00:00</updated>
+  <media:group>
+   <media:title>Como Aprender KANJI</media:title>
+   <media:content url="https://www.youtube.com/v/kyzL_UMdfH0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/kyzL_UMdfH0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Espero y les sirva como guia para aquellos que tenian duda o no sabian que hacer para aprender kanji y japones.
+
+Pagina de tadoku books:
+https://tadoku.org/japanese/en/free-books-en/
+
+Discord: 
+https://discord.gg/T2eYUZYEuv</media:description>
+   <media:community>
+    <media:starRating count="21" average="5.00" min="1" max="5"/>
+    <media:statistics views="225"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:re5xvVwANhM</id>
+  <yt:videoId>re5xvVwANhM</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprende Japones con Anime Pt3 CP1 Acchi kocchi  #anime #japones</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/re5xvVwANhM"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-12-27T22:39:15+00:00</published>
+  <updated>2026-10-04T20:00:41+00:00</updated>
+  <media:group>
+   <media:title>Aprende Japones con Anime Pt3 CP1 Acchi kocchi  #anime #japones</media:title>
+   <media:content url="https://www.youtube.com/v/re5xvVwANhM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/re5xvVwANhM/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="17" average="5.00" min="1" max="5"/>
+    <media:statistics views="1086"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:0KweEdOG4ko</id>
+  <yt:videoId>0KweEdOG4ko</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>El zorro y la grulla - Un cuento Corto para aprender japones【キツネとツル】</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=0KweEdOG4ko"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-12-18T22:29:39+00:00</published>
+  <updated>2026-11-05T06:44:07+00:00</updated>
+  <media:group>
+   <media:title>El zorro y la grulla - Un cuento Corto para aprender japones【キツネとツル】</media:title>
+   <media:content url="https://www.youtube.com/v/0KweEdOG4ko?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/0KweEdOG4ko/hqdefault.jpg" width="480" height="360"/>
+   <media:description>こんばんは！みんな
+Espero y este pequeño cuento les sirva a los principiantes y los que estan interesados en aprender japones.
+
+Pagina de Tadoku:
+https://tadoku.org/japanese/en/free-books-en/
+
+Gracias por ver el video, aqui mis redes sociales:
+Discord: https://discord.gg/whThma7CGu</media:description>
+   <media:community>
+    <media:starRating count="131" average="5.00" min="1" max="5"/>
+    <media:statistics views="2313"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:uuY_S9v4-c8</id>
+  <yt:videoId>uuY_S9v4-c8</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Probando Doulingo Japones-Español</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=uuY_S9v4-c8"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-10-18T17:15:01+00:00</published>
+  <updated>2026-11-03T22:09:22+00:00</updated>
+  <media:group>
+   <media:title>Probando Doulingo Japones-Español</media:title>
+   <media:content url="https://www.youtube.com/v/uuY_S9v4-c8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/uuY_S9v4-c8/hqdefault.jpg" width="480" height="360"/>
+   <media:description>(Por que no hay Español-Japones Car@j*)</media:description>
+   <media:community>
+    <media:starRating count="11" average="5.00" min="1" max="5"/>
+    <media:statistics views="129"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:gB4P5Dl76u8</id>
+  <yt:videoId>gB4P5Dl76u8</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprende Japones con Anime - P2 CP1 Acchi kocchi  #anime #animeshorts #japones</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/gB4P5Dl76u8"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-09-24T20:45:46+00:00</published>
+  <updated>2026-10-04T15:29:56+00:00</updated>
+  <media:group>
+   <media:title>Aprende Japones con Anime - P2 CP1 Acchi kocchi  #anime #animeshorts #japones</media:title>
+   <media:content url="https://www.youtube.com/v/gB4P5Dl76u8?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/gB4P5Dl76u8/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="44" average="5.00" min="1" max="5"/>
+    <media:statistics views="1345"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:1M4CKDDxPM0</id>
+  <yt:videoId>1M4CKDDxPM0</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprendiendo Japones Con Mazos de Anime-(Mazos de Anki)</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=1M4CKDDxPM0"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-09-21T16:36:06+00:00</published>
+  <updated>2026-10-31T08:41:12+00:00</updated>
+  <media:group>
+   <media:title>Aprendiendo Japones Con Mazos de Anime-(Mazos de Anki)</media:title>
+   <media:content url="https://www.youtube.com/v/1M4CKDDxPM0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/1M4CKDDxPM0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Stream dedicados al estudio del japones y divertise mientras lo hacemos
+
+Mazos usados 
+Anime : https://ankiweb.net/shared/info/911122782
+el ultimo es fue uno personal despues lo publicare</media:description>
+   <media:community>
+    <media:starRating count="5" average="5.00" min="1" max="5"/>
+    <media:statistics views="87"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:52h_v0_rSFE</id>
+  <yt:videoId>52h_v0_rSFE</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprende Japones con Anime   Acchi kocchi Cap1 P1  #animeshorts #anime</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/52h_v0_rSFE"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-09-19T17:45:51+00:00</published>
+  <updated>2026-10-01T21:50:59+00:00</updated>
+  <media:group>
+   <media:title>Aprende Japones con Anime   Acchi kocchi Cap1 P1  #animeshorts #anime</media:title>
+   <media:content url="https://www.youtube.com/v/52h_v0_rSFE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/52h_v0_rSFE/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="84" average="5.00" min="1" max="5"/>
+    <media:statistics views="3718"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:qII6DZxaEFs</id>
+  <yt:videoId>qII6DZxaEFs</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprende Japones con Anime - P3 Acchi Kocchi   #anime</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/qII6DZxaEFs"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-09-18T21:55:11+00:00</published>
+  <updated>2026-10-05T10:08:47+00:00</updated>
+  <media:group>
+   <media:title>Aprende Japones con Anime - P3 Acchi Kocchi   #anime</media:title>
+   <media:content url="https://www.youtube.com/v/qII6DZxaEFs?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/qII6DZxaEFs/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="37" average="5.00" min="1" max="5"/>
+    <media:statistics views="2084"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:7FY-eVtfOiA</id>
+  <yt:videoId>7FY-eVtfOiA</yt:videoId>
+  <yt:channelId>UCOey2A5vOKyiU-RHXjWf4aA</yt:channelId>
+  <title>Aprende Japones con Anime P2 - Acchi Kocchi  #anime</title>
+  <link rel="alternate" href="https://www.youtube.com/shorts/7FY-eVtfOiA"/>
+  <author>
+   <name>Nihongo no Torii</name>
+   <uri>https://www.youtube.com/channel/UCOey2A5vOKyiU-RHXjWf4aA</uri>
+  </author>
+  <published>2025-09-16T22:26:30+00:00</published>
+  <updated>2026-10-03T12:05:55+00:00</updated>
+  <media:group>
+   <media:title>Aprende Japones con Anime P2 - Acchi Kocchi  #anime</media:title>
+   <media:content url="https://www.youtube.com/v/7FY-eVtfOiA?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/7FY-eVtfOiA/hqdefault.jpg" width="480" height="360"/>
+   <media:description></media:description>
+   <media:community>
+    <media:starRating count="46" average="5.00" min="1" max="5"/>
+    <media:statistics views="1735"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>

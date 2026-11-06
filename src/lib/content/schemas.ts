@@ -225,6 +225,8 @@ export const communitySchema = z.strictObject({
       description: localizedText,
     }),
   ),
+  /** Shown by the "Server rules" disclosure under the Discord card (owner, 2026-11-06). */
+  rules: z.array(localizedText).min(1),
 });
 
 export const playlistsSchema = z.strictObject({
