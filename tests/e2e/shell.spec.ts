@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type Locator, type Page } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 
@@ -101,7 +101,11 @@ test.describe('desktop shell', () => {
 
     await input.fill('zzz');
     await expect(dialog.getByRole('option')).toHaveCount(0);
-    await expect(dialog.getByText('No results for “zzz”.')).toBeVisible();
+    // The visible message and the delayed screen-reader status carry the same text.
+    const empty = dialog.locator('[data-search-empty]');
+    await expect(empty).toBeVisible();
+    await expect(empty).toHaveText('No results for “zzz”.');
+    await expect(dialog.getByRole('status')).toHaveText('No results for “zzz”.');
 
     await input.fill('biblioteca');
     await page.keyboard.press('Enter');
@@ -244,104 +248,5 @@ test.describe('mobile shell', () => {
     );
     expect(overflow).toBe(0);
     await expectNoAxeViolations(page);
-  });
-});
-
-/** Waits until a 404 glyph lies flat on the ground line. */
-async function waitForRest(page: Page, glyph: Locator): Promise<void> {
-  const field = page.locator('[data-lost-field]');
-  await expect
-    .poll(
-      async () => {
-        const [box, area] = await Promise.all([glyph.boundingBox(), field.boundingBox()]);
-        const ground = (area?.y ?? 0) + (area?.height ?? 0) - 1;
-        const gap = Math.abs(ground - ((box?.y ?? 0) + (box?.height ?? 0)));
-        const tilt = Math.abs((box?.width ?? 0) - (box?.height ?? 0));
-        return gap <= 2 && tilt <= 2;
-      },
-      { timeout: 8000 },
-    )
-    .toBe(true);
-}
-
-test.describe('404 playground', () => {
-  test.use({ reducedMotion: 'no-preference' });
-
-  test('glyphs are buttons that move with the keyboard', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist');
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found');
-    const glyph = page.getByRole('button', { name: /^迷/ });
-    await expect(glyph).toBeVisible();
-
-    // The glyphs fall on their own, tumble and settle flat on the ground line...
-    await waitForRest(page, glyph);
-
-    // ...and Space throws one back up: track its highest point for a moment.
-    const before = await glyph.boundingBox();
-    await glyph.focus();
-    const [highest] = await Promise.all([
-      glyph.evaluate(
-        (el) =>
-          new Promise<number>((resolve) => {
-            let min = Infinity;
-            const start = performance.now();
-            const sample = () => {
-              min = Math.min(min, el.getBoundingClientRect().top);
-              if (performance.now() - start < 800) requestAnimationFrame(sample);
-              else resolve(min);
-            };
-            sample();
-          }),
-      ),
-      page.keyboard.press('Space'),
-    ]);
-    expect(highest).toBeLessThan((before?.y ?? 0) - 50);
-    await expect(page.locator('[data-lost-hint]')).toHaveAttribute('data-hidden', '');
-  });
-
-  test('a mouse press moves a glyph without drawing the focus ring', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist');
-    const glyph = page.getByRole('button', { name: /^子/ });
-    await waitForRest(page, glyph);
-    const box = await glyph.boundingBox();
-    const x = (box?.x ?? 0) + (box?.width ?? 0) * 0.15;
-    const y = (box?.y ?? 0) + (box?.height ?? 0) * 0.15;
-    await page.mouse.move(x, y);
-    await page.mouse.down();
-    await page.mouse.move(x - 120, y - 160, { steps: 8 });
-    await page.mouse.up();
-    expect(await glyph.evaluate((el) => el.matches(':focus-visible'))).toBe(false);
-    await expect(page.locator('[data-lost-hint]')).toHaveAttribute('data-hidden', '');
-    // Grabbed off-centre, the glyph turns as it is dragged.
-    expect(await glyph.evaluate((el) => el.style.transform)).toMatch(/rotate\((?!0rad)/);
-  });
-
-  test('has no header or footer and fits one screen', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist');
-    await expect(page.locator('header, footer')).toHaveCount(0);
-    const overflow = await page.evaluate(
-      () => document.documentElement.scrollHeight - document.documentElement.clientHeight,
-    );
-    expect(overflow).toBe(0);
-  });
-
-  test('reduced motion keeps the glyphs still', async ({ browser }) => {
-    const context = await browser.newContext({ reducedMotion: 'reduce' });
-    const page = await context.newPage();
-    await page.goto('/this-page-does-not-exist');
-    const glyph = page.getByRole('button', { name: /^迷/ });
-    const before = await glyph.boundingBox();
-    await glyph.focus();
-    await page.keyboard.press('Space');
-    await page.waitForTimeout(150);
-    expect(await glyph.boundingBox()).toEqual(before);
-    await expect(page.locator('[data-lost-hint]')).toBeHidden();
-    await context.close();
-  });
-
-  test('links to every section', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist');
-    const links = page.getByRole('navigation', { name: 'Try one of these instead:' });
-    await expect(links.getByRole('link')).toHaveCount(6);
   });
 });

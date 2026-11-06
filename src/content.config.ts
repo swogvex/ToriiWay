@@ -3,6 +3,7 @@ import { contentGlob } from './lib/content/loader';
 
 import {
   communitySchema,
+  fortunesSchema,
   gameListSchema,
   guideSchema,
   jlptMondaiSchema,
@@ -60,6 +61,12 @@ const site = defineCollection({
   schema: siteSchema,
 });
 
+// One file next to the site copy, but its own collection: the site loader reads {en,es}/*.yaml.
+const fortunes = defineCollection({
+  loader: contentGlob('404-fortunes.yaml', `${base}/site`),
+  schema: fortunesSchema,
+});
+
 export const collections = {
   guides,
   kana,
@@ -70,4 +77,5 @@ export const collections = {
   jlpt,
   game,
   site,
+  fortunes,
 };

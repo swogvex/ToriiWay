@@ -1,0 +1,174 @@
+---
+/**
+ * Styled single-choice dropdown (owner, 2026-11-06: no native select look). ARIA listbox
+ * pattern: a button opens a list of options; ↑ ↓ Home End move, Enter or Space picks, Esc
+ * or Tab or a click outside closes. The value lives in a hidden input named `name`, and the
+ * root fires a bubbling `change` event when it changes. Set it from code with
+ * `setSelectValue(root, value)` (src/lib/ui/select.ts).
+ */
+import Icon from './Icon.astro';
+
+interface Option {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  options: Option[];
+  value?: string;
+  class?: string;
+}
+
+const { id, name, label, options, value = options[0]?.value ?? '', class: className } = Astro.props;
+const current = options.find((option) => option.value === value) ?? options[0];
+---
+
+<div class:list={['select', className]} data-select>
+  <span class="select__label" id={`${id}-label`}>
+    {label}
+  </span>
+  <div class="select__box">
+    <button
+      class="select__button"
+      type="button"
+      id={id}
+      aria-haspopup="listbox"
+      aria-expanded="false"
+      aria-controls={`${id}-list`}
+      aria-labelledby={`${id}-label ${id}`}
+      data-select-button
+    >
+      <span data-select-current>{current?.label}</span>
+      <Icon name="chevron-down" size={16} class="select__chevron" />
+    </button>
+    <div
+      class="select__list"
+      id={`${id}-list`}
+      role="listbox"
+      tabindex="-1"
+      aria-labelledby={`${id}-label`}
+      hidden
+      data-select-list
+    >
+      {options.map((option) => (
+        <div
+          class="select__option"
+          id={`${id}-${option.value}`}
+          role="option"
+          aria-selected={option.value === current?.value ? 'true' : 'false'}
+          data-value={option.value}
+        >
+          {option.label}
+        </div>
+      ))}
+    </div>
+  </div>
+  <input type="hidden" name={name} value={current?.value} data-select-input />
+</div>
+
+<script>
+  import { initSelects } from '../../lib/ui/select';
+
+  initSelects(document);
+</script>
+
+<style>
+  .select {
+    display: inline-flex;
+    gap: var(--space-3);
+    align-items: center;
+    color: var(--muted);
+  }
+
+  .select__box {
+    position: relative;
+  }
+
+  .select__button {
+    display: inline-flex;
+    gap: var(--space-4);
+    align-items: center;
+    justify-content: space-between;
+    min-inline-size: 11rem;
+    min-block-size: var(--target-min);
+
+    /* The chevron sits a little in from the right edge (owner, 2026-11-06). */
+    padding-inline: var(--space-4) var(--space-3);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .select__button:hover {
+    border-color: var(--ink);
+  }
+
+  .select__button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .select__box :global(.select__chevron) {
+    flex: none;
+    color: var(--muted);
+    transition: rotate var(--duration-fast) var(--ease);
+  }
+
+  .select__button[aria-expanded='true'] :global(.select__chevron) {
+    rotate: 180deg;
+  }
+
+  .select__list {
+    position: absolute;
+    z-index: 20;
+    inset-block-start: calc(100% + var(--space-1));
+    inset-inline-end: 0;
+    display: grid;
+    gap: 2px;
+    min-inline-size: 100%;
+    padding: var(--space-1);
+    margin: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    box-shadow: var(--shadow-modal);
+  }
+
+  .select__list[hidden] {
+    display: none;
+  }
+
+  .select__list:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .select__option {
+    display: flex;
+    align-items: center;
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    border-radius: calc(var(--radius-control) - 2px);
+    color: var(--ink);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  /* Keyboard position and pointer hover share one look; the chosen one is ink-filled. */
+  .select__option:hover,
+  .select__option.is-active {
+    background: var(--key);
+  }
+
+  .select__option[aria-selected='true'] {
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 700;
+  }
+</style>

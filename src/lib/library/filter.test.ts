@@ -26,7 +26,7 @@ const book = (over: Partial<BookFacts>): BookFacts => ({
 describe('library URL state', () => {
   it('round-trips and leaves defaults out', () => {
     expect(searchFromState(EMPTY_STATE)).toBe('');
-    const search = '?level=N5,N4&category=grammar&resources=audio,es&q=kanji&sort=az';
+    const search = '?level=N5,N4&category=grammar&resources=audio,es&q=kanji&sort=az&page=2';
     expect(searchFromState(stateFromSearch(search))).toBe(search);
   });
 

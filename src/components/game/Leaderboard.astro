@@ -6,7 +6,6 @@
  */
 import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
 import { getLocale, localizePath, useTranslations } from '../../i18n';
-import BigGlyph from '../ui/BigGlyph.astro';
 import Button from '../ui/Button.astro';
 import Dialog from '../ui/Dialog.astro';
 import Icon from '../ui/Icon.astro';
@@ -71,7 +70,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     <div class="board__intro">
       <p class="board__lead">{t('game.board.lead')}</p>
       <div class="board__cta">
-        <BigGlyph glyph="番" size="lg" tone="faint" class="board__glyph" />
         <Button href={localizePath('/game', locale)}>{t('game.board.play')}</Button>
       </div>
     </div>
@@ -127,9 +125,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
       ))}
     </ol>
     <div class="board__state" data-board-empty hidden>
-      <span class="board__state-glyph" lang="ja" aria-hidden="true">
-        空
-      </span>
       <p>{t('game.board.empty')}</p>
     </div>
     <div class="board__state" data-board-error hidden>
@@ -326,11 +321,25 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     gap: var(--space-4);
   }
 
-  .board__filters :global(.segmented__track) {
-    flex-wrap: wrap;
+  /*
+   * Script, Difficulty and Mode share the row and grow to fill it (no empty space on the
+   * right). Options reserve their bold width (Segmented), so picking one never changes a
+   * group's size, and nothing moves or wraps.
+   */
+  .board__filters > :global(.segmented) {
+    flex: 1 1 auto;
   }
 
-  /* Tighter options so Script, Difficulty and Mode fit one row of the 1000px column. */
+  .board__filters > :global(.segmented) :global(.segmented__track) {
+    display: flex;
+    inline-size: 100%;
+  }
+
+  .board__filters :global(.segmented__option) {
+    flex: 1 1 auto;
+  }
+
+  /* Tight minimum so the three groups fit one row of the 1000px column; they grow from there. */
   .board__filters :global(.segmented__label) {
     padding-inline: var(--space-2);
   }
@@ -601,9 +610,12 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     stroke-linecap: round;
   }
 
-  .row__svg :global(.chart__cross) {
-    stroke: var(--muted);
-    stroke-width: 1;
+  /* Hover: a red dot on the line (no crosshair), ringed in the card colour so it reads on the line. */
+  .row__svg :global(.chart__dot) {
+    fill: var(--accent);
+    stroke: var(--bg);
+    stroke-width: 2;
+    pointer-events: none;
   }
 
   .row__plot {
@@ -749,13 +761,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     display: none;
   }
 
-  .board__state-glyph {
-    color: var(--line-strong);
-    font-family: var(--font-display-ja);
-    font-size: var(--text-display);
-    line-height: 1;
-  }
-
   .board__pages {
     display: flex;
     flex-wrap: wrap;
@@ -805,13 +810,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
   .board__pages :global(.page-gap) {
     color: var(--muted);
     font-family: var(--font-mono);
-  }
-
-  /* Closer to images 15a/15b than the shared "lg" glyph size. */
-  .board__cta :global(.big-glyph) {
-    /* Rises into the title's row instead of pushing the lead down. */
-    margin-block-start: -2.5rem;
-    font-size: 6rem;
   }
 
   .board__note {
@@ -919,10 +917,6 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
     .row--skeleton .row__toggle {
       grid-template-areas: none;
       grid-template-columns: repeat(3, 1fr);
-    }
-
-    .board__cta :global(.big-glyph) {
-      display: none;
     }
   }
 </style>

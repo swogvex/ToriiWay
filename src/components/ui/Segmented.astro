@@ -22,6 +22,8 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
   <legend class="segmented__legend">{legend}</legend>
   <div class="segmented__track">
     {options.map((option) => (
+      // The label text is in .segmented__text, one level deeper than the rule looks.
+      // eslint-disable-next-line astro/jsx-a11y/label-has-associated-control
       <label class="segmented__option">
         <input
           class="segmented__input"
@@ -31,7 +33,7 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
           checked={option.value === value}
         />
         <span class="segmented__label" data-text={option.label}>
-          {option.label}
+          <span class="segmented__text">{option.label}</span>
         </span>
       </label>
     ))}
@@ -89,13 +91,17 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
 
   /*
    * An invisible bold copy reserves the selected width, so choosing an option never
-   * changes the group's width (or pushes the next group onto another line).
+   * changes the group's width (or pushes the next group onto another line). The text and
+   * its bold copy share the one grid cell: without an explicit cell the text was
+   * auto-placed into a second row and sat 3–6px below the centre.
    */
+  .segmented__text,
+  .segmented__label::after {
+    grid-area: 1 / 1;
+  }
+
   .segmented__label::after {
     content: attr(data-text);
-
-    /* Same grid cell as the text, so it adds width but no height. */
-    grid-area: 1 / 1;
     overflow: hidden;
     block-size: 0;
     font-weight: 700;

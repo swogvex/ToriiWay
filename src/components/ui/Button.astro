@@ -122,9 +122,10 @@ const classes = ['btn', `btn--${variant}`, `btn--${size}`, className];
     background: color-mix(in srgb, var(--accent) 88%, var(--ink));
   }
 
+  /* Filled with the surface tone (light grey / lighter dark), like cards and segmented tracks. */
   .btn--outline {
     border-color: var(--ink);
-    background: transparent;
+    background: var(--surface);
     color: var(--ink);
   }
 

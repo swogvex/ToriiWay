@@ -12,8 +12,8 @@ describe('useTranslations', () => {
 
   it('fills named params and leaves unknown ones visible', () => {
     const t = useTranslations('en');
-    expect(t('notFound.glyph', { glyph: '迷' })).toMatch(/^迷,/);
-    expect(t('notFound.glyph')).toMatch(/^{glyph},/);
+    expect(t('notFound.statusDrawn', { rank: '吉' })).toMatch(/^You drew 吉 \(\{romaji\},/);
+    expect(t('notFound.statusDrawn')).toMatch(/^You drew \{rank\} /);
   });
 
   it('has the same keys in every locale', () => {

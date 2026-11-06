@@ -7,10 +7,11 @@
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import type { Book } from '../../lib/library/books';
 import { type BookFacts, CATEGORIES, LEVELS, RESOURCES, SORTS } from '../../lib/library/filter';
-import BigGlyph from '../ui/BigGlyph.astro';
 import Button from '../ui/Button.astro';
 import Icon from '../ui/Icon.astro';
+import Pagination from '../ui/Pagination.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
+import Select from '../ui/Select.astro';
 import BookBadges from './BookBadges.astro';
 import BookCover from './BookCover.astro';
 
@@ -38,12 +39,14 @@ const facts: BookFacts[] = books.map((book) => ({
 const labels = {
   count: t('library.count'),
   countOne: t('library.count.one'),
+  prev: t('library.prev'),
+  next: t('library.next'),
+  page: t('library.page'),
 };
 ---
 
 <div class="lib column page-frame" data-library data-labels={JSON.stringify(labels)}>
   <SectionHeader level="h1" kicker={t('library.kicker')} title={t('library.title')}>
-    <BigGlyph glyph="本" size="md" tone="faint" class="lib__glyph" />
     <form class="lib__search" role="search" data-library-search>
       <label class="visually-hidden" for="library-query">
         {t('library.search')}
@@ -116,14 +119,13 @@ const labels = {
       </h2>
       <div class="lib__bar">
         <p class="visually-hidden" role="status" data-library-count></p>
-        <label class="lib__sort">
-          {t('library.sort')}
-          <select name="sort" data-library-sort>
-            {SORTS.map((sort) => (
-              <option value={sort}>{t(`library.sort.${sort}`)}</option>
-            ))}
-          </select>
-        </label>
+        <Select
+          id="library-sort"
+          name="sort"
+          label={t('library.sort')}
+          options={SORTS.map((sort) => ({ value: sort, label: t(`library.sort.${sort}`) }))}
+          class="lib__sort"
+        />
       </div>
 
       <ol class="lib__list" data-library-list>
@@ -154,14 +156,13 @@ const labels = {
       </ol>
 
       <div class="lib__empty" data-library-empty hidden>
-        <span class="lib__empty-glyph" lang="ja" aria-hidden="true">
-          空
-        </span>
         <p>{t('library.empty')}</p>
         <Button variant="outline" size={40} data-library-reset>
           {t('library.clear')}
         </Button>
       </div>
+
+      <Pagination label={t('library.pages')} class="lib__pages" />
 
       <p class="lib__note">{t('library.note')}</p>
     </section>
@@ -181,16 +182,6 @@ const labels = {
   .lib {
     display: grid;
     gap: var(--space-8);
-  }
-
-  .lib :global(.section-header) {
-    position: relative;
-  }
-
-  .lib :global(.lib__glyph) {
-    position: absolute;
-    inset-block-start: 0;
-    inset-inline-end: 0;
   }
 
   .lib__search {
@@ -345,23 +336,6 @@ const labels = {
     justify-content: flex-end;
   }
 
-  .lib__sort {
-    display: flex;
-    gap: var(--space-3);
-    align-items: center;
-    color: var(--muted);
-  }
-
-  .lib__sort select {
-    min-block-size: var(--target-min);
-    padding-inline: var(--space-3);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-control);
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-  }
-
   .lib__list {
     display: grid;
     gap: var(--space-3);
@@ -455,13 +429,6 @@ const labels = {
     display: none;
   }
 
-  .lib__empty-glyph {
-    color: var(--line-strong);
-    font-family: var(--font-display-ja);
-    font-size: var(--text-display);
-    line-height: 1;
-  }
-
   .lib__note {
     color: var(--muted);
     font-size: var(--text-sm);
@@ -481,7 +448,7 @@ const labels = {
       padding-inline: var(--space-4);
       border: 1px solid var(--ink);
       border-radius: var(--radius-control);
-      background: none;
+      background: var(--surface);
       color: var(--ink);
       font: inherit;
       font-weight: 700;
@@ -507,10 +474,6 @@ const labels = {
     }
 
     .card__open {
-      display: none;
-    }
-
-    .lib :global(.lib__glyph) {
       display: none;
     }
   }
