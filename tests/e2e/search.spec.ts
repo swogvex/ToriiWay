@@ -89,6 +89,11 @@ test.describe('search with Pagefind', () => {
         headers: { ...response.headers(), 'content-security-policy': csp ?? '' },
       });
     });
+    // Home refreshes its community row on load; answer at once so no request is left
+    // half-proxied when the test ends (the later route wins).
+    await context.route('**/api/community', (route) =>
+      route.fulfill({ contentType: 'application/json', body: '{"discord":null,"videos":[]}' }),
+    );
     await page.addInitScript(() => {
       document.addEventListener('securitypolicyviolation', (event) => {
         (window as unknown as { violations: string[] }).violations ??= [];

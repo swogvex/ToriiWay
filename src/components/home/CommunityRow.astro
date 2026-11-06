@@ -1,10 +1,17 @@
 ---
 /**
- * Latest video + Discord cards. Until the channel feed and the cached member count
- * exist, both cards link out to the channel and the server.
+ * Latest video + Discord cards (12-spec-community, Home integration). Both come from the
+ * build; lib/home/community.ts refreshes them from /api/community. The video opens in the
+ * shared player dialog (a plain YouTube link without JavaScript); without a feed the card
+ * links to the channel instead.
  */
 import type { CollectionEntry } from 'astro:content';
-import { getLocale, useTranslations } from '../../i18n';
+
+import { getLocale, type UiKey, useTranslations } from '../../i18n';
+import type { DiscordCounts } from '../../lib/community/discord';
+import type { PublicVideo } from '../../lib/community/public';
+import { CATEGORY_GLYPH, formatDate, watchUrl } from '../../lib/community/videos';
+import VideoPlayer from '../community/VideoPlayer.astro';
 import Icon from '../ui/Icon.astro';
 
 type Site = CollectionEntry<'site'>['data'];
@@ -13,35 +20,89 @@ interface Props {
   video: Site['video'];
   discord: Site['discord'];
   social: Site['social'];
+  latest: PublicVideo | null;
+  counts: DiscordCounts | null;
 }
 
-const { video, discord, social } = Astro.props;
-const t = useTranslations(getLocale(Astro.url.pathname));
+const { video, discord, social, latest, counts } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const members = counts
+  ? t('community.discord.members', { count: new Intl.NumberFormat(locale).format(counts.members) })
+  : '';
+const island = {
+  locale,
+  members: t('community.discord.members'),
+  categories: Object.fromEntries(
+    Object.keys(CATEGORY_GLYPH).map((category) => [
+      category,
+      t(`community.videos.category.${category}` as UiKey),
+    ]),
+  ),
+};
 ---
 
-<section class="community" aria-labelledby="community-title">
+<section
+  class="community"
+  aria-labelledby="community-title"
+  data-home-community
+  data-island={JSON.stringify(island)}
+>
   <h2 class="visually-hidden" id="community-title">
     {t('home.communityRow')}
   </h2>
-  <a
-    class="community-card community-card--video"
-    href={social.youtube}
-    target="_blank"
-    rel="noopener"
-  >
-    <span class="community-card__thumb" aria-hidden="true">
-      <Icon name="play" size={24} />
-    </span>
-    <span class="community-card__body">
-      <span class="community-card__kicker">{video.kicker}</span>
-      <h3 class="community-card__title">{video.title}</h3>
-      <span class="community-card__text">{video.text}</span>
-      <span class="visually-hidden">{t('a11y.newTab')}</span>
-    </span>
-  </a>
+  {latest ? (
+    <a
+      class="community-card community-card--video"
+      href={watchUrl(latest.id, latest.short)}
+      data-video-id={latest.id}
+      data-video-open
+      data-home-video
+    >
+      <span
+        class="community-card__thumb"
+        aria-hidden="true"
+        data-glyph={CATEGORY_GLYPH[latest.category]}
+      >
+        <Icon name="play" size={24} />
+      </span>
+      <span class="community-card__body">
+        <span class="community-card__kicker">{video.kicker}</span>
+        <h3 class="community-card__title" data-video-title>
+          {latest.title}
+        </h3>
+        <span class="community-card__text" data-video-meta>
+          {t(`community.videos.category.${latest.category}` as UiKey)} ·{' '}
+          {formatDate(latest.published, locale)}
+        </span>
+      </span>
+    </a>
+  ) : (
+    <a
+      class="community-card community-card--video"
+      href={social.youtube}
+      target="_blank"
+      rel="noopener"
+    >
+      <span class="community-card__thumb" aria-hidden="true">
+        <Icon name="play" size={24} />
+      </span>
+      <span class="community-card__body">
+        <span class="community-card__kicker">{video.kicker}</span>
+        <h3 class="community-card__title">{video.title}</h3>
+        <span class="community-card__text">{video.text}</span>
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
+      </span>
+    </a>
+  )}
   <a class="community-card" href={social.discord} target="_blank" rel="noopener">
     <span class="community-card__body">
-      <span class="community-card__kicker">{discord.kicker}</span>
+      <span class="community-card__kicker">
+        {discord.kicker}{' '}
+        <span data-home-members hidden={!counts}>
+          · {members}
+        </span>
+      </span>
       <h3 class="community-card__title">{discord.title}</h3>
       <span class="community-card__cta">
         {discord.cta}
@@ -50,7 +111,15 @@ const t = useTranslations(getLocale(Astro.url.pathname));
       </span>
     </span>
   </a>
+  {latest && <VideoPlayer />}
 </section>
+
+<script>
+  import { initHomeCommunity } from '../../lib/home/community';
+
+  const root = document.querySelector<HTMLElement>('[data-home-community]');
+  if (root) initHomeCommunity(root);
+</script>
 
 <style>
   .community {
@@ -82,14 +151,35 @@ const t = useTranslations(getLocale(Astro.url.pathname));
   }
 
   .community-card__thumb {
+    position: relative;
+    overflow: hidden;
     display: grid;
     flex: none;
     place-items: center;
     inline-size: clamp(112px, 24%, 180px);
     aspect-ratio: 16 / 9;
     border-radius: var(--radius-control);
-    background: var(--ink);
-    color: var(--bg);
+
+    /* Always dark, like a video frame, as on /community. */
+    color-scheme: dark;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  .community-card__thumb::before {
+    position: absolute;
+    inset-block-end: -0.12em;
+    inset-inline-start: var(--space-2);
+    color: color-mix(in srgb, var(--ink) 16%, var(--bg));
+    font-family: var(--font-display-ja);
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1;
+    content: attr(data-glyph);
+  }
+
+  .community-card__thumb > :global(svg) {
+    position: relative;
   }
 
   .community-card__body {

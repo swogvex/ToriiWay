@@ -126,3 +126,37 @@ test.describe('community on phones', () => {
     await expectNoAxeViolations(page);
   });
 });
+
+test.describe('Home community row', () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+
+  test('shows the latest video and the member count, with no third-party request', async ({
+    page,
+  }) => {
+    const external: string[] = [];
+    page.on('request', (request) => {
+      if (!request.url().startsWith('http://localhost')) external.push(request.url());
+    });
+    await mockApi(page);
+    await page.goto('/');
+    const card = page.locator('[data-home-video]');
+    test.skip((await card.count()) === 0, 'the build could not read the feed');
+    // Lesson 1 is the newest regular video of the mock (Lesson 2 is a Short).
+    await expect(card).toHaveAttribute('data-video-id', 'video000000');
+    await expect(card.locator('[data-video-title]')).toHaveText('Lesson 1');
+    await expect(page.locator('[data-home-members]')).toHaveText('· 1,234 members');
+    await page.waitForLoadState('networkidle');
+    expect(external).toEqual([]);
+
+    await card.click();
+    const dialog = page.getByRole('dialog', { name: 'Lesson 1' });
+    await expect(dialog.locator('iframe')).toHaveAttribute(
+      'src',
+      'https://www.youtube-nocookie.com/embed/video000000?autoplay=1&rel=0',
+    );
+    await expectNoAxeViolations(page);
+    await page.keyboard.press('Escape');
+    await expect(page.locator('iframe')).toHaveCount(0);
+    await expect(card).toBeFocused();
+  });
+});

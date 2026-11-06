@@ -2,17 +2,10 @@
 // more", a refresh from /api/community, the player dialog and the rules disclosure.
 // The page works without it: cards are links to YouTube and the counts come from the build.
 
+import { initPlayer, markVideoLinks } from './player';
 import type { CommunityPayload, PublicVideo } from './public';
 import type { Category } from './source';
-import {
-  embedUrl,
-  type Filter,
-  formatDate,
-  matches,
-  readFilter,
-  type VideoFacts,
-  watchUrl,
-} from './videos';
+import { type Filter, formatDate, matches, readFilter, type VideoFacts, watchUrl } from './videos';
 
 interface IslandData {
   locale: string;
@@ -33,9 +26,6 @@ export function initCommunity(root: HTMLElement): void {
   const more = root.querySelector<HTMLButtonElement>('[data-video-more]');
   const template = root.querySelector<HTMLTemplateElement>('[data-video-template]');
   const radios = [...root.querySelectorAll<HTMLInputElement>('input[name="category"]')];
-  const dialog = root.querySelector<HTMLDialogElement>('#video-player');
-  const frame = root.querySelector<HTMLElement>('[data-player-frame]');
-  const heading = root.querySelector<HTMLElement>('#video-player-title');
   const rules = root.querySelector<HTMLDetailsElement>('[data-rules]');
 
   const tabs = radios.map((radio) => radio.value as Filter);
@@ -80,37 +70,6 @@ export function initCommunity(root: HTMLElement): void {
         ?.focus();
     }
   });
-
-  // Player: the YouTube iframe exists only while the dialog is open.
-  let opener: HTMLElement | null = null;
-  list?.addEventListener('click', (event) => {
-    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-video-open]');
-    const card = link?.closest<HTMLElement>('[data-video]');
-    if (!link || !card || !dialog || !frame) return;
-    event.preventDefault();
-    const title = card.querySelector('[data-video-title]')?.textContent ?? '';
-    const iframe = document.createElement('iframe');
-    iframe.src = embedUrl(card.dataset.videoId ?? '');
-    iframe.title = title;
-    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-    if (heading) heading.textContent = title;
-    frame.replaceChildren(iframe);
-    opener = link;
-    dialog.showModal();
-  });
-  dialog?.addEventListener('close', () => {
-    frame?.replaceChildren();
-    opener?.focus();
-    opener = null;
-  });
-
-  function markLinks(): void {
-    for (const link of root.querySelectorAll<HTMLElement>('[data-video-open]')) {
-      link.setAttribute('aria-haspopup', 'dialog');
-    }
-  }
 
   // Rules: the "Server rules" button opens the disclosure it points to.
   root.querySelector('[data-rules-open]')?.addEventListener('click', () => {
@@ -169,11 +128,11 @@ export function initCommunity(root: HTMLElement): void {
     if (!list || payload.videos.length === 0 || payload.videos.map((v) => v.id).join() === ids)
       return;
     list.replaceChildren(...payload.videos.flatMap((video) => card(video) ?? []));
-    markLinks();
+    markVideoLinks(list);
     apply();
   }
 
-  markLinks();
+  if (list) initPlayer(list);
   if (more) more.removeAttribute('data-wait');
   apply();
   void refresh();
