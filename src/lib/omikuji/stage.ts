@@ -148,4 +148,6 @@ export function initOmikuji(root: HTMLElement, data: OmikujiData): void {
   });
 
   render();
+  // The shake button held its place invisibly until now (no layout shift on load).
+  for (const b of buttons) b.removeAttribute('data-omikuji-wait');
 }

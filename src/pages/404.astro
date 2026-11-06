@@ -99,7 +99,8 @@ const rope = [0, 1, 2, 3, 4, 5, 6];
           )}
         </p>
         <div class="omikuji__actions">
-          <Button variant="accent" size={52} data-omikuji-action="shake" hidden>
+          {/* Holds its place before the island starts (no layout shift), invisible without JS. */}
+          <Button variant="accent" size={52} data-omikuji-action="shake" data-omikuji-wait>
             {t('notFound.shake')}
           </Button>
           <Button variant="accent" size={52} data-omikuji-action="tie-bad" hidden>
@@ -342,6 +343,11 @@ const rope = [0, 1, 2, 3, 4, 5, 6];
     gap: var(--space-3);
     align-items: center;
     margin-block-start: var(--space-6);
+  }
+
+  /* visibility, not display: the button keeps its space, so nothing moves when it appears. */
+  .omikuji__actions > :global([data-omikuji-wait]) {
+    visibility: hidden;
   }
 
   .omikuji__home {
