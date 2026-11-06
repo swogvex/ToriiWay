@@ -1,0 +1,76 @@
+# The six omikuji of the 404 page (07-spec-shell). Each one points to a different path:
+# home | game | learn | library | jlpt | community. A rank that contains 凶 is a bad fortune.
+fortunes:
+  - rank: 大凶
+    reading: だいきょう
+    romaji: daikyō
+    meaning: { en: Great misfortune, es: Gran desgracia }
+    message:
+      en: What you seek is not on this road. Turn back to where the path began.
+      es: Lo que buscas no está en este camino. Vuelve a donde empezó.
+    path: home
+    word: 迷子
+    wordKana: まいご
+    wordMeaning:
+      en: a lost child; someone who lost their way
+      es: un niño perdido; alguien que se ha perdido
+
+  - rank: 凶
+    reading: きょう
+    romaji: kyō
+    meaning: { en: Misfortune, es: Desgracia }
+    message:
+      en: A wrong turn, nothing more. Begin again from the first syllables.
+      es: Un giro equivocado, nada más. Empieza otra vez por las primeras sílabas.
+    path: learn
+    word: 道
+    wordKana: みち
+    wordMeaning: { en: 'road, path, way', es: 'camino, senda' }
+
+  - rank: 末吉
+    reading: すえきち
+    romaji: suekichi
+    meaning: { en: Future blessing, es: Fortuna futura }
+    message:
+      en: Patience. Speed comes later — practise until your fingers know the way.
+      es: 'Paciencia. La velocidad llega después: practica hasta que tus dedos conozcan el camino.'
+    path: game
+    word: 練習
+    wordKana: れんしゅう
+    wordMeaning: { en: practice, es: práctica }
+
+  - rank: 小吉
+    reading: しょうきち
+    romaji: shōkichi
+    meaning: { en: Small blessing, es: Pequeña fortuna }
+    message:
+      en: A small detour leads to a good book. Read a little every day.
+      es: Un pequeño desvío lleva a un buen libro. Lee un poco cada día.
+    path: library
+    word: 本
+    wordKana: ほん
+    wordMeaning: { en: book, es: libro }
+
+  - rank: 吉
+    reading: きち
+    romaji: kichi
+    meaning: { en: Blessing, es: Buena fortuna }
+    message:
+      en: Lost, but in a good place. You are ready to test yourself.
+      es: Perdido, pero en un buen lugar. Estás listo para ponerte a prueba.
+    path: jlpt
+    word: 試験
+    wordKana: しけん
+    wordMeaning: { en: 'exam, test', es: 'examen, prueba' }
+
+  - rank: 中吉
+    reading: ちゅうきち
+    romaji: chūkichi
+    meaning: { en: Middle blessing, es: Fortuna media }
+    message:
+      en: Friends find what one person cannot. Ask the others on the road.
+      es: Los amigos encuentran lo que uno solo no puede. Pregunta a los demás del camino.
+    path: community
+    word: 仲間
+    wordKana: なかま
+    wordMeaning: { en: 'companions, friends', es: 'compañeros, amigos' }

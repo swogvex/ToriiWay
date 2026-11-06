@@ -25,6 +25,9 @@
     --focus: light-dark(#1f6f8b, #5bb4d3);
     --key: light-dark(#eceae4, #202125);
 
+    /* The 404 omikuji paper: warm white in both themes, a physical sheet (owner, 2026-11-06). */
+    --paper: #fffdf8;
+
     /* White on light shu (4.96:1); white fails on dark shu (3.06:1), so ink there. */
     --on-accent: light-dark(#fff, #141414);
 
@@ -78,8 +81,9 @@
     --radius-card: 12px;
     --radius-pill: 999px;
 
-    /* Elevation: flat; one shadow for modals only */
+    /* Elevation: flat; one shadow for modals, one for the omikuji paper (05-art-direction) */
     --shadow-modal: 0 24px 60px rgb(0 0 0 / 30%);
+    --shadow-paper: 0 10px 28px rgb(20 20 20 / 14%), 0 1px 3px rgb(20 20 20 / 10%);
 
     /* Motion */
     --duration-fast: 120ms;

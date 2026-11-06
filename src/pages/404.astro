@@ -1,231 +1,871 @@
 ---
-import { getLocale, localizePath, useTranslations } from '../i18n';
-import BareLayout from '../layouts/BareLayout.astro';
-import { SECTIONS } from '../lib/nav';
+/**
+ * 404 — an omikuji (paper fortune) to draw while the visitor finds their way
+ * (07-spec-shell, images 17a–17c). The "Pick a path" links are the real content and work
+ * without JS; the island in lib/omikuji/stage.ts only adds the shrine game.
+ */
+import { getCollection } from 'astro:content';
+
+import Button from '../components/ui/Button.astro';
+import Chip from '../components/ui/Chip.astro';
+import { getLocale, localizePath, type UiKey, useTranslations } from '../i18n';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { SectionId } from '../lib/nav';
+import { type Fortune, PATH_GLYPH, PATH_HREF } from '../lib/omikuji/fortune';
+import type { OmikujiData } from '../lib/omikuji/stage';
 
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
-const glyphs = ['迷', '子'];
+const lang = locale === 'es' ? 'es' : 'en';
+
+const [file] = await getCollection('fortunes');
+const fortunes: Fortune[] = (file?.data.fortunes ?? []).map((fortune) => ({
+  rank: fortune.rank,
+  reading: fortune.reading,
+  romaji: fortune.romaji,
+  meaning: fortune.meaning[lang],
+  message: fortune.message[lang],
+  path: fortune.path,
+  word: fortune.word,
+  wordKana: fortune.wordKana,
+  wordMeaning: fortune.wordMeaning[lang],
+}));
+
+const PATHS = Object.keys(PATH_HREF) as SectionId[];
+const pathLabel = (id: SectionId) => t(`notFound.path.${id}` as UiKey);
+
+const data: OmikujiData = {
+  locale,
+  fortunes,
+  paths: Object.fromEntries(PATHS.map((id) => [id, pathLabel(id)])),
+  status: {
+    shaking: t('notFound.statusShaking'),
+    drawn: t('notFound.statusDrawn'),
+    tied: t('notFound.statusTied'),
+  },
+};
+
+const digits = [
+  { digit: '4', kana: 'よん' },
+  { digit: '0', kana: 'まる' },
+  { digit: '4', kana: 'よん' },
+];
+
+// "**bold**" and "{omikuji}" inside the lead become <strong> and a lang="ja" span.
+const lead = t('notFound.lead')
+  .split(/(\*\*.+?\*\*|\{omikuji\})/)
+  .filter(Boolean)
+  .map((part) =>
+    part === '{omikuji}'
+      ? { kind: 'ja' as const, text: 'おみくじ' }
+      : part.startsWith('**')
+        ? { kind: 'strong' as const, text: part.slice(2, -2) }
+        : { kind: 'text' as const, text: part },
+  );
+
+// Seven papers on the rope; yours hangs fourth (image 17c).
+const rope = [0, 1, 2, 3, 4, 5, 6];
 ---
 
-<BareLayout
+<BaseLayout
   title={`${t('notFound.title')} · ${t('site.name')}`}
   description={t('notFound.metaDescription')}
   noindex
 >
-  <main class="lost" id="main">
-    <div class="lost__field" data-lost-field>
-      {glyphs.map((glyph, index) => (
-        <button
-          class:list={['lost__glyph', `lost__glyph--${index + 1}`]}
-          type="button"
-          aria-label={t('notFound.glyph', { glyph })}
-          aria-describedby="lost-help"
-          data-lost-glyph
-        >
-          <span lang="ja">{glyph}</span>
-        </button>
-      ))}
-      <p class="lost__hint" aria-hidden="true" data-lost-hint>
-        {t('notFound.hint')}
-        <svg class="lost__arrow" viewBox="0 0 40 40" focusable="false">
-          <path d="M30 4c2 14-6 26-22 30"></path>
-          <path d="M8 34l4-9M8 34l9 3"></path>
-        </svg>
-      </p>
-    </div>
-    <p class="visually-hidden" id="lost-help">
-      {t('notFound.instructions')}
-    </p>
-
-    <div class="lost__ground column">
-      <div class="lost__copy">
-        <p class="lost__label">404</p>
-        <h1 class="lost__title">{t('notFound.title')}</h1>
-        <p class="lost__lead">{t('notFound.lead')}</p>
-      </div>
-      <nav class="lost__nav" aria-labelledby="lost-links">
-        <h2 class="lost__label" id="lost-links">
-          {t('notFound.links')}
-        </h2>
-        <ul class="lost__links">
-          {SECTIONS.map((section) => (
-            <li>
-              <a href={localizePath(section.href, locale)}>{t(`nav.${section.id}`)}</a>
-            </li>
+  <div class="omikuji page-frame column" data-omikuji>
+    <section class="omikuji__hero">
+      <div class="omikuji__intro">
+        <p class="omikuji__kicker">{t('notFound.kicker')}</p>
+        <div class="omikuji__digits" role="img" aria-label={t('notFound.digits')}>
+          {digits.map(({ digit, kana }) => (
+            <span class:list={['omikuji__digit', digit === '0' && 'omikuji__digit--zero']}>
+              <span class="omikuji__digit-kana" lang="ja">
+                {kana}
+              </span>
+              {digit}
+            </span>
           ))}
-        </ul>
-      </nav>
-    </div>
-  </main>
-</BareLayout>
+        </div>
+        <h1 class="omikuji__title">{t('notFound.heading')}</h1>
+        <p class="omikuji__lead">
+          {lead.map((part) =>
+            part.kind === 'ja' ? (
+              <span lang="ja">{part.text}</span>
+            ) : part.kind === 'strong' ? (
+              <strong>{part.text}</strong>
+            ) : (
+              part.text
+            ),
+          )}
+        </p>
+        <div class="omikuji__actions">
+          {/* Holds its place before the island starts (no layout shift), invisible without JS. */}
+          <Button variant="accent" size={52} data-omikuji-action="shake" data-omikuji-wait>
+            {t('notFound.shake')}
+          </Button>
+          <Button variant="accent" size={52} data-omikuji-action="tie-bad" hidden>
+            {t('notFound.tieBad')}
+          </Button>
+          <Button variant="primary" size={52} data-omikuji-action="tie-good" hidden>
+            {t('notFound.tieGood')}
+          </Button>
+          <Button variant="outline" size={52} data-omikuji-action="again" hidden>
+            {t('notFound.again')}
+          </Button>
+          <Button variant="accent" size={52} data-omikuji-action="another" hidden>
+            {t('notFound.another')}
+          </Button>
+          <a class="omikuji__home" href={localizePath('/', locale)}>
+            {t('notFound.home')}
+          </a>
+        </div>
+        <p class="omikuji__status" role="status" aria-live="polite" data-omikuji-status></p>
+      </div>
+
+      <div class="stage" data-state="idle" data-glyph="籤" data-omikuji-stage>
+        <div class="stage__rope" aria-hidden="true" data-omikuji-show="tied" hidden>
+          {rope.map((index) => (
+            <span
+              class:list={['stage__knot', index === 3 && 'stage__knot--yours']}
+              lang={index === 3 ? 'ja' : undefined}
+              data-fortune={index === 3 ? 'tied' : undefined}
+            />
+          ))}
+        </div>
+
+        <div class="stage__box" aria-hidden="true">
+          <span class="stage__stick" lang="ja">
+            四〇四
+          </span>
+          <span class="stage__lacquer" lang="ja">
+            <span class="stage__lacquer-text">御神籤</span>
+          </span>
+          <span class="stage__floor"></span>
+        </div>
+
+        <div class="stage__info" data-omikuji-show="idle shaking">
+          <p class="stage__kicker">
+            <span lang="ja">おみくじ</span> · {t('notFound.idleKicker')}
+          </p>
+          <h2 class="stage__title">{t('notFound.idleTitle')}</h2>
+          <p class="stage__text">{t('notFound.idleText')}</p>
+        </div>
+
+        <div class="stage__info" data-omikuji-show="tied" hidden>
+          <p class="stage__kicker">
+            <span lang="ja">結ぶ</span> · {t('notFound.tiedKicker')}
+          </p>
+          <h2 class="stage__title">{t('notFound.tiedTitle')}</h2>
+          <p class="stage__text">{t('notFound.tiedText')}</p>
+        </div>
+
+        <article class="fortune" aria-label={t('notFound.paper')} data-omikuji-show="open" hidden>
+          <div class="fortune__frame">
+            <p class="fortune__head">
+              <span class="fortune__number" lang="ja">
+                第四〇四番
+              </span>
+              <span class="fortune__no">{t('notFound.paperNumber')}</span>
+            </p>
+            <div class="fortune__rank">
+              <ruby class="fortune__rank-kanji" lang="ja">
+                <span data-fortune="rank"></span>
+                <rt data-fortune="reading"></rt>
+              </ruby>
+              <p class="fortune__meaning">
+                <strong data-fortune="meaning"></strong>
+                <span class="fortune__romaji" data-fortune="romaji"></span>
+              </p>
+            </div>
+            <p class="fortune__message" data-fortune="message"></p>
+            <dl class="fortune__list">
+              <div>
+                <dt>
+                  <span lang="ja">失物</span> <small>{t('notFound.lost')}</small>
+                </dt>
+                <dd>
+                  <span lang="ja">出でず</span> {t('notFound.lostText')}
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span lang="ja">方角</span> <small>{t('notFound.direction')}</small>
+                </dt>
+                <dd>
+                  {t('notFound.luckyPath')} <strong data-fortune="path"></strong>
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span lang="ja">言葉</span> <small>{t('notFound.word')}</small>
+                </dt>
+                <dd>
+                  <ruby class="fortune__word" lang="ja">
+                    <span data-fortune="word"></span>
+                    <rt data-fortune="word-kana"></rt>
+                  </ruby>
+                  — <span data-fortune="word-meaning"></span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="paths" aria-labelledby="paths-title">
+      <div class="paths__head">
+        <h2 class="paths__title" id="paths-title">
+          {t('notFound.paths')}
+        </h2>
+        <p class="paths__note">
+          <span lang="ja">道</span> · {t('notFound.pathsNote')}
+        </p>
+      </div>
+      <ul class="paths__list">
+        {PATHS.map((id) => (
+          <li>
+            <a
+              class="paths__card"
+              href={localizePath(PATH_HREF[id], locale)}
+              data-omikuji-path={id}
+            >
+              <span class="paths__glyph" lang="ja" aria-hidden="true">
+                {PATH_GLYPH[id]}
+              </span>
+              <span class="paths__name">{pathLabel(id)}</span>
+              <span class="paths__lucky" data-omikuji-lucky hidden>
+                <span aria-hidden="true">
+                  <Chip tone="accent">{t('notFound.lucky')}</Chip>
+                </span>
+                <span class="visually-hidden">{t('notFound.luckyLabel')}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <script type="application/json" data-omikuji-data set:html={JSON.stringify(data)} />
+  </div>
+</BaseLayout>
 
 <script>
-  import { initPlayground } from '../lib/lost/playground';
+  import { initOmikuji, type OmikujiData } from '../lib/omikuji/stage';
 
-  const field = document.querySelector<HTMLElement>('[data-lost-field]');
-  if (field && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    initPlayground(field);
-  }
+  const root = document.querySelector<HTMLElement>('[data-omikuji]');
+  const json = root?.querySelector('[data-omikuji-data]')?.textContent;
+  if (root && json) initOmikuji(root, JSON.parse(json) as OmikujiData);
 </script>
 
 <style>
-  /* One screen, no scroll: the playground above, the message below the ground line. */
-  .lost {
+  .omikuji {
     display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
-    block-size: 100dvh;
-    overflow: hidden;
+    gap: var(--space-10);
   }
 
-  .lost__field {
-    --glyph: min(30vmin, 240px, 40dvh);
-
-    position: relative;
-    border-block-end: 1px solid var(--ink);
-  }
-
-  .lost__glyph {
-    position: absolute;
-    inset-block-end: 0;
+  .omikuji__hero {
     display: grid;
-    place-items: center;
-    inline-size: var(--glyph);
-    block-size: var(--glyph);
-    padding: 0;
-    border: 0;
-    border-radius: var(--radius-card);
-    background: transparent;
-    color: var(--ink);
-    font-family: var(--font-display-ja);
-    font-size: calc(var(--glyph) * 0.9);
-    font-weight: 700;
-    line-height: 1;
-    cursor: grab;
-    touch-action: none;
-    user-select: none;
+    gap: var(--space-8);
+    align-items: start;
   }
 
-  /* The global :lang(ja) line-height would push the glyph below its box. */
-  .lost__glyph span {
-    line-height: 1;
+  @media (width >= 56rem) {
+    .omikuji__hero {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+      gap: var(--space-8);
+    }
   }
 
-  .lost__glyph:active {
-    cursor: grabbing;
-  }
-
-  .lost__glyph--1 {
-    inset-inline-start: calc(50% - var(--glyph));
-  }
-
-  .lost__glyph--2 {
-    inset-inline-start: 50%;
-  }
-
-  /* "drag me" sits above 子 with an arrow pointing down at the glyphs. */
-  .lost__hint {
-    position: absolute;
-    inset-block-end: calc(var(--glyph) * 0.9);
-    inset-inline-start: calc(50% + var(--glyph) * 0.7);
+  .omikuji__intro {
     display: grid;
+    align-content: start;
     justify-items: start;
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
-    pointer-events: none;
-    transition: opacity var(--duration-base) var(--ease);
   }
 
-  .lost__hint[data-hidden] {
-    opacity: 0;
-  }
-
-  .lost__arrow {
-    inline-size: 40px;
-    block-size: 40px;
-    margin-inline-start: calc(-1 * var(--space-6));
-    fill: none;
-    stroke: currentcolor;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-width: 1.5;
-  }
-
-  /* Motion allowed: glyphs start lifted and fall (the playground script). */
-  @media (prefers-reduced-motion: no-preference) {
-    .lost__glyph {
-      transform: translateY(calc(var(--glyph) * -0.9));
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .lost__glyph {
-      cursor: default;
-    }
-
-    .lost__hint {
-      display: none;
-    }
-  }
-
-  .lost__ground {
-    display: grid;
-    gap: var(--space-6);
-    padding-block: var(--space-6) var(--space-8);
-  }
-
-  @media (width >= 48rem) {
-    .lost__ground {
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: end;
-      padding-block: var(--space-8) var(--space-10);
-    }
-  }
-
-  .lost__copy {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .lost__label {
+  .omikuji__kicker,
+  .stage__kicker,
+  .paths__note {
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    font-weight: 500;
     letter-spacing: var(--tracking-label);
     text-transform: uppercase;
   }
 
-  .lost__title {
-    font-size: clamp(var(--text-xl), 5vw, var(--text-3xl));
+  .omikuji__digits {
+    display: flex;
+    margin-block-start: var(--space-6);
+    font-size: clamp(5rem, 16vw, 7rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+
+  .omikuji__digit {
+    display: grid;
+    justify-items: center;
+    gap: var(--space-2);
+  }
+
+  .omikuji__digit--zero {
+    color: var(--accent);
+  }
+
+  .omikuji__digit-kana {
+    color: var(--accent-ink);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  .omikuji__title {
+    margin-block-start: var(--space-8);
+    font-size: clamp(var(--text-xl), 4.4vw, 2.5rem);
     letter-spacing: -0.02em;
     line-height: var(--leading-display);
   }
 
-  .lost__lead {
+  .omikuji__lead {
+    max-inline-size: 30rem;
+    margin-block-start: var(--space-5);
     color: var(--muted);
-    font-size: var(--text-md);
   }
 
-  .lost__nav {
+  .omikuji__lead strong {
+    color: var(--ink);
+  }
+
+  .omikuji__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+    margin-block-start: var(--space-6);
+  }
+
+  /* visibility, not display: the button keeps its space, so nothing moves when it appears. */
+  .omikuji__actions > :global([data-omikuji-wait]) {
+    visibility: hidden;
+  }
+
+  .omikuji__home {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--target-min);
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* Beside the buttons it keeps a wider gap; on its own line it lines up with them. */
+  @media (width >= 40rem) {
+    .omikuji__home {
+      margin-inline-start: var(--space-4);
+    }
+  }
+
+  .omikuji__status {
+    min-block-size: 1.5em;
+    margin-block-start: var(--space-6);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  /* Stage ------------------------------------------------------------------------------- */
+
+  .stage {
+    position: relative;
     display: grid;
+    grid-template:
+      'rope' auto
+      'info' auto
+      'box' auto / minmax(0, 1fr);
+    gap: var(--space-6);
+    min-block-size: 420px;
+    padding: var(--space-6) var(--space-5);
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  @media (width >= 40rem) {
+    .stage {
+      grid-template:
+        'rope rope' 72px
+        'box info' 1fr / 132px minmax(0, 1fr);
+      gap: 0 var(--space-8);
+      block-size: 520px;
+      padding: var(--space-6) var(--space-8) var(--space-8);
+    }
+  }
+
+  /* 籤 in the corner. A pseudo-element: axe measures contrast on aria-hidden spans too. */
+  .stage::after {
+    position: absolute;
+    inset-block-end: -0.12em;
+    inset-inline-end: -0.04em;
+    color: var(--line);
+    font-family: var(--font-display-ja);
+    font-size: 11rem;
+    font-weight: 700;
+    line-height: 1;
+    content: attr(data-glyph);
+    pointer-events: none;
+  }
+
+  .stage > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .stage [hidden] {
+    display: none;
+  }
+
+  .stage__info {
+    grid-area: info;
+    align-self: center;
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  @media (width >= 40rem) {
+    .stage__info {
+      margin-block-start: var(--space-12);
+    }
+
+    .stage[data-state='tied'] .stage__info {
+      align-self: start;
+      margin-block-start: var(--space-8);
+    }
+  }
+
+  .stage__title {
+    font-size: var(--text-lg);
+    line-height: 1.25;
+  }
+
+  .stage__text {
+    color: var(--muted);
+    font-size: var(--text-sm);
+    line-height: 1.65;
+  }
+
+  /* The box: black lacquer with a hexagonal top, the stick behind it. */
+  .stage__box {
+    grid-area: box;
+    position: relative;
+    display: grid;
+    justify-items: center;
+    place-self: end center;
+    inline-size: 132px;
+    padding-block-start: 132px;
+  }
+
+  @media (width >= 40rem) {
+    .stage__box {
+      justify-self: start;
+    }
+  }
+
+  .stage__lacquer {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    inline-size: 116px;
+    block-size: 240px;
+    padding-block-start: 60px;
+    color-scheme: light;
+    background: var(--ink);
+    color: var(--bg);
+    clip-path: polygon(22% 0, 78% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+    transform-origin: 50% 100%;
+  }
+
+  .stage__lacquer-text {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    line-height: 1.15;
+    writing-mode: vertical-rl;
+  }
+
+  /* The short vermilion line under 御神籤. */
+  .stage__lacquer::after {
+    inline-size: 34px;
+    block-size: 3px;
+    margin-block-start: var(--space-4);
+    border-radius: 2px;
+    background: var(--accent);
+    content: '';
+  }
+
+  .stage__stick {
+    /* Physical sizes: in vertical-rl the logical ones swap axes. */
+    position: absolute;
+    bottom: 200px;
+    left: calc(50% - 7px);
+    width: 14px;
+    height: 140px;
+    padding-top: 5px;
+    border: 1px solid var(--line-strong);
+    border-radius: 3px 3px 0 0;
+    color-scheme: light;
+    background: var(--key);
+    color: var(--accent-ink);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    writing-mode: vertical-rl;
+    transform-origin: 50% calc(100% + 196px);
+
+    /* Bottom 200px up, 140px tall: 74px down leaves 22px above the box (only 四 shows). */
+    transform: translateY(74px);
+  }
+
+  .stage__floor {
+    inline-size: 148px;
+    block-size: 4px;
+    border-radius: 2px;
+    background: var(--line-strong);
+  }
+
+  /* Risen: 120px above the box, the whole 四〇四 in view. */
+  .stage[data-state='open'] .stage__stick {
+    transform: translateY(-24px);
+  }
+
+  .stage[data-state='shaking'] .stage__lacquer,
+  .stage[data-state='shaking'] .stage__stick {
+    animation: shake 0.9s var(--ease);
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      rotate: 0deg;
+    }
+
+    15% {
+      rotate: -7deg;
+    }
+
+    30% {
+      rotate: 6deg;
+    }
+
+    45% {
+      rotate: -5deg;
+    }
+
+    60% {
+      rotate: 4deg;
+    }
+
+    75% {
+      rotate: -2deg;
+    }
+  }
+
+  /* The rope with the tied papers (image 17c). */
+  .stage__rope {
+    grid-area: rope;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding-inline: var(--space-5);
+    min-block-size: 64px;
+  }
+
+  .stage__rope::before {
+    position: absolute;
+    inset: 16px 0 auto;
+    block-size: 3px;
+    border-radius: 2px;
+    background: var(--ink);
+    content: '';
+  }
+
+  .stage__knot {
+    position: relative;
+    inline-size: 24px;
+    block-size: 34px;
+    margin-block-start: 4px;
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    background: var(--surface);
+    rotate: -4deg;
+  }
+
+  .stage__knot:nth-child(even) {
+    rotate: 3deg;
+  }
+
+  .stage__knot:nth-child(3n) {
+    rotate: -1deg;
+  }
+
+  .stage__knot--yours {
+    display: grid;
+    place-items: center;
+    inline-size: 32px;
+    block-size: 44px;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-display-ja);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    rotate: 4deg;
+  }
+
+  /* The fortune paper: warm white in both themes, the one shadow outside the modals. */
+  .fortune {
+    grid-area: info;
+    padding: var(--space-2);
+    border: 1px solid var(--line-strong);
+    border-radius: 2px;
+    color-scheme: light;
+    background: var(--paper);
+    box-shadow: var(--shadow-paper);
+    color: var(--ink);
+    transform-origin: 50% 0;
+  }
+
+  @media (width >= 40rem) {
+    .fortune {
+      grid-row: 1 / -1;
+      align-self: stretch;
+      margin-block: calc(-1 * var(--space-2)) 0;
+      margin-inline: calc(-1 * var(--space-6)) calc(-1 * var(--space-4));
+    }
+  }
+
+  .fortune__frame {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    block-size: calc(100% - 6px);
+    margin: 3px;
+    padding: var(--space-3);
+    border: 1.5px solid var(--accent);
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .fortune__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .fortune__number {
+    color: var(--accent-ink);
+    font-size: var(--text-sm);
+    font-weight: 700;
+  }
+
+  .fortune__no,
+  .fortune__romaji,
+  .fortune__list small {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+  }
+
+  .fortune__rank {
+    display: flex;
+    gap: var(--space-4);
+    align-items: end;
+    padding-block-end: var(--space-3);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .fortune__rank-kanji {
+    color: var(--accent);
+    font-family: var(--font-display-ja);
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1;
+    ruby-position: over;
+  }
+
+  .fortune__rank-kanji rt {
+    color: var(--accent-ink);
+    font-family: var(--font-body-ja);
+    font-size: var(--text-2xs);
+    font-weight: 500;
+    letter-spacing: 0.3em;
+  }
+
+  .fortune__meaning {
+    display: grid;
+    padding-block-end: var(--space-1);
+    line-height: 1.2;
+  }
+
+  .fortune__message {
+    font-size: var(--text-sm);
+  }
+
+  .fortune__list {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+    font-size: var(--text-xs);
+  }
+
+  .fortune__list > div {
+    display: grid;
+    grid-template-columns: 4.25rem minmax(0, 1fr);
     gap: var(--space-2);
   }
 
-  .lost__links {
+  .fortune__list dt {
+    display: grid;
+    align-content: start;
+    color: var(--accent-ink);
+    font-weight: 700;
+  }
+
+  .fortune__list small {
+    font-weight: 400;
+  }
+
+  .fortune__list dd {
+    margin: 0;
+  }
+
+  .fortune__word {
+    font-weight: 700;
+  }
+
+  .fortune__word rt {
+    color: var(--muted);
+    font-size: 0.65em;
+    font-weight: 400;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .stage__stick {
+      transition: transform 0.5s var(--ease);
+    }
+
+    .stage[data-state='open'] .fortune {
+      animation: unfold 0.55s var(--ease) both;
+    }
+  }
+
+  @keyframes unfold {
+    from {
+      opacity: 0;
+      transform: scaleY(0.2);
+    }
+
+    to {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+
+  /* Pick a path ------------------------------------------------------------------------ */
+
+  .paths {
+    display: grid;
+    gap: var(--space-5);
+    padding-block-start: var(--space-6);
+    border-block-start: 1px solid var(--ink);
+  }
+
+  .paths__head {
     display: flex;
     flex-wrap: wrap;
-    gap: 0 var(--space-5);
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .paths__title {
+    font-size: var(--text-lg);
+  }
+
+  .paths__note {
+    text-transform: none;
+  }
+
+  .paths__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  .lost__links a {
-    display: inline-flex;
-    align-items: center;
-    min-block-size: var(--target-min);
-    font-weight: 500;
+  @media (width >= 40rem) {
+    .paths__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 64rem) {
+    .paths__list {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+
+  .paths__card {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    gap: var(--space-4);
+    block-size: 100%;
+    min-block-size: 112px;
+    padding: var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .paths__card:hover {
+    border-color: var(--ink);
+  }
+
+  .paths__card[data-lucky] {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+  }
+
+  .paths__glyph {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .paths__name {
+    align-self: end;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  .paths__lucky {
+    position: absolute;
+    inset-block-start: var(--space-4);
+    inset-inline-end: var(--space-4);
+  }
+
+  .paths__lucky[hidden] {
+    display: none;
   }
 </style>
