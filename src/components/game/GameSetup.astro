@@ -290,6 +290,18 @@ const labels = Object.fromEntries([
     margin-inline-start: auto;
   }
 
+  /*
+   * On narrow phones the Leaderboard button always gets its own row. Around 412px
+   * it fitted beside the stats with the fallback font and wrapped once the mono
+   * font arrived, pushing the whole form down (layout shift 0.15).
+   */
+  @media (width < 27rem) {
+    .setup__stats {
+      flex-basis: 100%;
+      justify-content: flex-end;
+    }
+  }
+
   .setup__stats dt,
   .setup__legend {
     padding: 0;
