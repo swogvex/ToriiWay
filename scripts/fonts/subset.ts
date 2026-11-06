@@ -37,7 +37,8 @@ const LICENSE = {
 
 // Kanji shown as big glyphs or display headings. Dictionary glyphs use system fonts.
 // The 404 omikuji adds its box, stick, ranks, path cards and the 籤 corner glyph.
-const DISPLAY_KANJI = '日本語鳥居打学試輪迷子一緒頑張家御神籤第番四〇大小中末吉凶';
+// Community video thumbnails add 話 ("other"; あ は 試 語 are already here).
+const DISPLAY_KANJI = '日本語鳥居打学試輪迷子一緒頑張家御神籤第番四〇大小中末吉凶話';
 
 // Full hiragana and katakana blocks (covers every kana table) plus display punctuation.
 const KANA_RANGES: readonly [number, number][] = [

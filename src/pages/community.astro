@@ -1,0 +1,278 @@
+---
+/**
+ * /community (artboard 10, 12-spec-community): the Discord card and the video lessons.
+ * Built with the data of build time so it works without JavaScript and never waits on
+ * Discord or YouTube; the island refreshes it from /api/community and plays videos in a
+ * privacy-enhanced YouTube embed only after a click.
+ */
+import { getEntry } from 'astro:content';
+
+import DiscordCard from '../components/community/DiscordCard.astro';
+import VideoCard from '../components/community/VideoCard.astro';
+import Dialog from '../components/ui/Dialog.astro';
+import Icon from '../components/ui/Icon.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import Segmented from '../components/ui/Segmented.astro';
+import { getLocale, localizePath, type UiKey, useTranslations } from '../i18n';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { communityData } from '../lib/community/data';
+import { toPublic } from '../lib/community/public';
+import { CATEGORIES, CATEGORY_GLYPH, tabsFor } from '../lib/community/videos';
+import { CHANNEL_URL } from '../lib/community/youtube';
+import { breadcrumbList, jsonLdGraph } from '../lib/seo';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+
+const discord = await getEntry('community', 'discord');
+if (!discord) throw new Error('src/content/community/discord.yaml is missing');
+const { discord: counts, videos } = toPublic(await communityData());
+
+/** Videos shown before "Show more" (and the step it adds). */
+const PAGE = 6;
+const tabs = tabsFor(videos);
+const label = (filter: string) =>
+  filter === 'all' ? t('community.videos.all') : t(`community.videos.category.${filter}` as UiKey);
+
+const island = {
+  locale,
+  page: PAGE,
+  glyphs: CATEGORY_GLYPH,
+  categories: Object.fromEntries(CATEGORIES.map((category) => [category, label(category)])),
+  members: t('community.discord.members'),
+  online: t('community.discord.online'),
+  play: t('community.videos.play'),
+};
+
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('nav.community') },
+];
+const pageUrl = new URL(Astro.url.pathname, site);
+const jsonLd = jsonLdGraph(
+  {
+    '@type': 'CollectionPage',
+    name: t('community.metaTitle'),
+    description: t('community.description'),
+    url: pageUrl.href,
+    inLanguage: locale,
+  },
+  breadcrumbList(breadcrumb, site, pageUrl),
+);
+---
+
+<BaseLayout
+  title={`${t('community.metaTitle')} · ${t('site.name')}`}
+  description={t('community.description')}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+>
+  <div class="community column page-frame" data-community data-island={JSON.stringify(island)}>
+    <SectionHeader level="h1" kicker={t('community.kicker')} title={t('community.title')} />
+
+    <DiscordCard discord={discord.data} counts={counts} />
+
+    <section class="videos" aria-labelledby="videos-title">
+      <div class="videos__head">
+        <h2 class="videos__title" id="videos-title">
+          {t('community.videos.title')}
+        </h2>
+        {tabs.length > 2 && (
+          <Segmented
+            class="videos__tabs"
+            name="category"
+            legend={t('community.videos.filter')}
+            options={tabs.map((tab) => ({ value: tab, label: label(tab) }))}
+          />
+        )}
+      </div>
+
+      {videos.length > 0 ? (
+        <ul class="videos__grid" data-video-list>
+          {videos.map((video, index) => (
+            <VideoCard video={video} hidden={index >= PAGE} />
+          ))}
+        </ul>
+      ) : (
+        <p class="videos__empty">{t('community.videos.empty')}</p>
+      )}
+
+      <div class="videos__foot">
+        {/* Holds its place before the island starts, so nothing shifts when it appears. */}
+        <button
+          class="videos__more"
+          type="button"
+          data-video-more
+          data-wait
+          hidden={videos.length <= PAGE}
+        >
+          {t('community.videos.more')}
+        </button>
+        <a class="videos__youtube" href={CHANNEL_URL} target="_blank" rel="noopener">
+          {t('community.videos.youtube')}
+          <Icon name="arrow-up-right" size={16} />
+          <span class="visually-hidden">{t('a11y.newTab')}</span>
+        </a>
+      </div>
+      <p class="videos__note">{t('community.videos.note')}</p>
+    </section>
+
+    <template data-video-template>
+      <VideoCard />
+    </template>
+
+    <Dialog id="video-player" title={t('community.player.title')} class="player">
+      <div class="player__frame" data-player-frame></div>
+    </Dialog>
+  </div>
+</BaseLayout>
+
+<script>
+  import { initCommunity } from '../lib/community/client';
+
+  const root = document.querySelector<HTMLElement>('[data-community]');
+  if (root) initCommunity(root);
+</script>
+
+<style>
+  /* minmax(0, 1fr): a wide child (the tabs on a phone) must not stretch the column. */
+  .community {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .videos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-5);
+    margin-block-start: var(--space-4);
+  }
+
+  /* On narrow phones the tabs scroll sideways instead of widening the page. */
+  .videos__head :global(.segmented) {
+    max-inline-size: 100%;
+    overflow-x: auto;
+  }
+
+  .videos__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .videos__title {
+    font-size: var(--text-xl);
+    letter-spacing: -0.01em;
+  }
+
+  /* The tabs need no visible legend: the heading names them (artboard 10). */
+  .videos__head :global(.segmented__legend) {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .videos__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (width >= 40rem) {
+    .videos__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 64rem) {
+    .videos__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .videos__empty {
+    padding: var(--space-6);
+    border: 1px dashed var(--line-strong);
+    border-radius: var(--radius-card);
+    color: var(--muted);
+  }
+
+  .videos__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3) var(--space-6);
+  }
+
+  .videos__more {
+    min-block-size: 48px;
+    padding-inline: var(--space-5);
+    border: 1px solid var(--ink);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--ink);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .videos__more:hover {
+    background: var(--key);
+  }
+
+  .videos__more[hidden] {
+    display: none;
+  }
+
+  /* visibility, not display: it keeps its space until the island starts (no shift). */
+  .videos__more[data-wait] {
+    visibility: hidden;
+  }
+
+  .videos__youtube {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-1);
+    min-block-size: var(--target-min);
+    margin-inline-start: auto;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .videos__note {
+    color: var(--muted);
+    font-size: var(--text-xs);
+  }
+
+  /* Player dialog: wide, the 16:9 frame edge to edge under the header. */
+  :global(.dialog.player) {
+    inline-size: min(880px, calc(100vw - 2 * var(--space-4)));
+  }
+
+  :global(.dialog.player .dialog__body) {
+    padding: 0;
+  }
+
+  .player__frame {
+    display: grid;
+    aspect-ratio: 16 / 9;
+    color-scheme: light;
+    background: var(--ink);
+  }
+
+  .player__frame :global(iframe) {
+    inline-size: 100%;
+    block-size: 100%;
+    border: 0;
+  }
+</style>

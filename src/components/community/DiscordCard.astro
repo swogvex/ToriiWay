@@ -1,0 +1,265 @@
+---
+/**
+ * The Discord server card (artboard 10): an ink block with the live counts, the description,
+ * "Join the server" and "Server rules", and the channel list. The counts come from the
+ * server (build time, then /api/community); without them the kicker shows no numbers.
+ */
+import type { CollectionEntry } from 'astro:content';
+
+import { getLocale, useTranslations } from '../../i18n';
+import type { DiscordCounts } from '../../lib/community/discord';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  discord: CollectionEntry<'community'>['data'];
+  counts: DiscordCounts | null;
+}
+
+const { discord, counts } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const text = (value: { en: string; es?: string | undefined }) =>
+  (locale === 'es' ? value.es : undefined) ?? value.en;
+const number = (value: number) => new Intl.NumberFormat(locale).format(value);
+---
+
+<section class="discord" aria-labelledby="discord-title">
+  <div class="discord__main">
+    <p class="discord__kicker">
+      {t('community.discord.kicker')}
+      <span class="discord__counts" data-discord-counts hidden={!counts}>
+        <span aria-hidden="true">·</span>
+        <span data-discord-members>
+          {counts ? t('community.discord.members', { count: number(counts.members) }) : ''}
+        </span>
+        <span aria-hidden="true">·</span>
+        <span data-discord-online>
+          {counts ? t('community.discord.online', { count: number(counts.online) }) : ''}
+        </span>
+      </span>
+    </p>
+    <h2 class="discord__name" id="discord-title">
+      {discord.name}
+    </h2>
+    <p class="discord__text">{text(discord.description)}</p>
+    <div class="discord__actions">
+      <a
+        class="discord__button discord__button--join"
+        href={discord.invite}
+        target="_blank"
+        rel="noopener"
+      >
+        {t('community.discord.join')}
+        <Icon name="arrow-up-right" size={18} />
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
+      </a>
+      <a class="discord__button discord__button--rules" href="#server-rules" data-rules-open>
+        {t('community.discord.rules')}
+      </a>
+    </div>
+  </div>
+
+  <div class="discord__channels">
+    <h3 class="visually-hidden">{t('community.discord.channels')}</h3>
+    <ul class="discord__list">
+      {discord.channels.map((channel) => (
+        <li class="discord__channel">
+          <span class="discord__channel-name">
+            <span aria-hidden="true">#</span> {channel.name}
+          </span>
+          <span class="discord__channel-text">{text(channel.description)}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<details class="rules" id="server-rules" data-rules>
+  <summary class="rules__summary">
+    {t('community.rules.title')}
+    <Icon name="chevron-down" size={18} class="rules__chevron" />
+  </summary>
+  <ol class="rules__list">
+    {discord.rules.map((rule) => (
+      <li>{text(rule)}</li>
+    ))}
+  </ol>
+</details>
+
+<style>
+  /* An ink block: ink background and paper text in light, the inverse in dark. */
+  .discord {
+    display: grid;
+    gap: var(--space-8);
+    padding: var(--space-8);
+    border-radius: var(--radius-card);
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  @media (width >= 56rem) {
+    .discord {
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: var(--space-10);
+    }
+  }
+
+  @media (width < 40rem) {
+    .discord {
+      padding: var(--space-6) var(--space-5);
+    }
+  }
+
+  .discord__main {
+    display: grid;
+    align-content: start;
+    gap: var(--space-4);
+  }
+
+  .discord__kicker {
+    color: color-mix(in srgb, var(--bg) 72%, var(--ink));
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .discord__counts {
+    display: inline;
+  }
+
+  .discord__counts > * {
+    margin-inline-start: var(--space-1);
+  }
+
+  .discord__counts[hidden] {
+    display: none;
+  }
+
+  .discord__name {
+    font-size: clamp(var(--text-xl), 3.4vw, var(--text-2xl));
+    letter-spacing: -0.02em;
+    line-height: var(--leading-display);
+  }
+
+  .discord__text {
+    max-inline-size: 34rem;
+    color: color-mix(in srgb, var(--bg) 82%, var(--ink));
+  }
+
+  .discord__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: var(--space-2);
+  }
+
+  .discord__button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-block-size: 48px;
+    padding-inline: var(--space-5);
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform var(--duration-fast) var(--ease);
+  }
+
+  .discord__button:active {
+    transform: translateY(1px);
+  }
+
+  .discord__button--join {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .discord__button--join:hover {
+    background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+  }
+
+  .discord__button--rules {
+    border-color: color-mix(in srgb, var(--bg) 45%, var(--ink));
+    color: var(--bg);
+  }
+
+  .discord__button--rules:hover {
+    background: color-mix(in srgb, var(--bg) 10%, var(--ink));
+  }
+
+  .discord__list {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .discord__channel {
+    display: grid;
+    gap: 2px;
+    padding-block: var(--space-3);
+    border-block-end: 1px solid color-mix(in srgb, var(--bg) 16%, var(--ink));
+  }
+
+  .discord__channel:first-child {
+    padding-block-start: 0;
+  }
+
+  .discord__channel:last-child {
+    border-block-end: 0;
+  }
+
+  .discord__channel-name {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+  }
+
+  .discord__channel-text {
+    color: color-mix(in srgb, var(--bg) 72%, var(--ink));
+    font-size: var(--text-xs);
+  }
+
+  /* Server rules, opened by the "Server rules" button (owner, 2026-11-06). */
+  .rules {
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    scroll-margin-block-start: var(--space-8);
+  }
+
+  .rules__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-block-size: var(--target-min);
+    padding: var(--space-3) var(--space-5);
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .rules__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .rules :global(.rules__chevron) {
+    transition: transform var(--duration-base) var(--ease);
+  }
+
+  .rules[open] :global(.rules__chevron) {
+    transform: rotate(180deg);
+  }
+
+  .rules__list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 1.25em);
+    color: var(--muted);
+  }
+</style>

@@ -14,6 +14,7 @@
         "http://localhost:4321/jlpt",
         "http://localhost:4321/library",
         "http://localhost:4321/library/kanji-para-recordar-1",
+        "http://localhost:4321/community",
         "http://localhost:4321/jlpt/run",
         "http://localhost:4321/help/japanese-voice"
       ],
