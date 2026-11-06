@@ -3,9 +3,14 @@ import CommunityRow from '../components/home/CommunityRow.astro';
 import Hero from '../components/home/Hero.astro';
 import IndexGrid from '../components/home/IndexGrid.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { communityData } from '../lib/community/data';
+import { toPublic } from '../lib/community/public';
+import { latestVideo } from '../lib/community/videos';
 import { getSiteCopy } from '../lib/content/site';
 
 const site = await getSiteCopy('en');
+// Build-time snapshot; the row refreshes itself from /api/community (Home stays static).
+const community = toPublic(await communityData());
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -22,6 +27,12 @@ const jsonLd = {
   <div class="column">
     <Hero copy={site.hero} />
     <IndexGrid copy={site.index} />
-    <CommunityRow video={site.video} discord={site.discord} social={site.social} />
+    <CommunityRow
+      video={site.video}
+      discord={site.discord}
+      social={site.social}
+      latest={latestVideo(community.videos)}
+      counts={community.discord}
+    />
   </div>
 </BaseLayout>

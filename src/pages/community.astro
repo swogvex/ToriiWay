@@ -9,7 +9,7 @@ import { getEntry } from 'astro:content';
 
 import DiscordCard from '../components/community/DiscordCard.astro';
 import VideoCard from '../components/community/VideoCard.astro';
-import Dialog from '../components/ui/Dialog.astro';
+import VideoPlayer from '../components/community/VideoPlayer.astro';
 import Icon from '../components/ui/Icon.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import Segmented from '../components/ui/Segmented.astro';
@@ -122,9 +122,7 @@ const jsonLd = jsonLdGraph(
       <VideoCard />
     </template>
 
-    <Dialog id="video-player" title={t('community.player.title')} class="player">
-      <div class="player__frame" data-player-frame></div>
-    </Dialog>
+    <VideoPlayer />
   </div>
 </BaseLayout>
 
@@ -252,27 +250,5 @@ const jsonLd = jsonLdGraph(
   .videos__note {
     color: var(--muted);
     font-size: var(--text-xs);
-  }
-
-  /* Player dialog: wide, the 16:9 frame edge to edge under the header. */
-  :global(.dialog.player) {
-    inline-size: min(880px, calc(100vw - 2 * var(--space-4)));
-  }
-
-  :global(.dialog.player .dialog__body) {
-    padding: 0;
-  }
-
-  .player__frame {
-    display: grid;
-    aspect-ratio: 16 / 9;
-    color-scheme: light;
-    background: var(--ink);
-  }
-
-  .player__frame :global(iframe) {
-    inline-size: 100%;
-    block-size: 100%;
-    border: 0;
   }
 </style>

@@ -45,6 +45,11 @@ export const watchUrl = (id: string, short = false) =>
 export const embedUrl = (id: string) =>
   `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
 
+/** The video Home shows: the newest one that is not a Short, else the newest. */
+export function latestVideo<T extends { short: boolean }>(videos: readonly T[]): T | null {
+  return videos.find((video) => !video.short) ?? videos[0] ?? null;
+}
+
 /** "Apr 20, 2026" / "20 abr 2026"; empty for a missing or broken date. */
 export function formatDate(iso: string, locale: string): string {
   const date = new Date(iso);

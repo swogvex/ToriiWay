@@ -1,0 +1,39 @@
+---
+/**
+ * The video player dialog shared by /community and Home (12-spec-community). Empty until a
+ * video link inside the page is pressed: lib/community/player.ts then creates the
+ * youtube-nocookie iframe and removes it again on close.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import Dialog from '../ui/Dialog.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<Dialog id="video-player" title={t('community.player.title')} class="player">
+  <div class="player__frame" data-player-frame></div>
+</Dialog>
+
+<style>
+  /* Wide, with the 16:9 frame edge to edge under the header. */
+  :global(.dialog.player) {
+    inline-size: min(880px, calc(100vw - 2 * var(--space-4)));
+  }
+
+  :global(.dialog.player .dialog__body) {
+    padding: 0;
+  }
+
+  .player__frame {
+    display: grid;
+    aspect-ratio: 16 / 9;
+    color-scheme: light;
+    background: var(--ink);
+  }
+
+  .player__frame :global(iframe) {
+    inline-size: 100%;
+    block-size: 100%;
+    border: 0;
+  }
+</style>

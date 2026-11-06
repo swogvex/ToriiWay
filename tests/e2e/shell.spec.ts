@@ -180,7 +180,8 @@ test.describe('desktop shell', () => {
 
   test('external links open in a new tab and say so', async ({ page }) => {
     await page.goto('/');
-    const external = page.locator('a[href^="http"]');
+    // Video links open the player dialog instead (YouTube only without JavaScript).
+    const external = page.locator('a[href^="http"]:not([data-video-open])');
     expect(await external.count()).toBeGreaterThanOrEqual(6);
     for (const link of await external.all()) {
       await expect(link).toHaveAttribute('target', '_blank');

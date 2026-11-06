@@ -1,6 +1,26 @@
 import { describe, expect, it } from 'vitest';
 
-import { embedUrl, formatDate, matches, readFilter, tabsFor, watchUrl } from './videos';
+import {
+  embedUrl,
+  formatDate,
+  latestVideo,
+  matches,
+  readFilter,
+  tabsFor,
+  watchUrl,
+} from './videos';
+
+describe('latestVideo', () => {
+  it('prefers the newest regular video over Shorts', () => {
+    const list = [
+      { id: 's', short: true },
+      { id: 'v', short: false },
+    ];
+    expect(latestVideo(list)?.id).toBe('v');
+    expect(latestVideo([{ id: 's', short: true }])?.id).toBe('s');
+    expect(latestVideo([])).toBeNull();
+  });
+});
 
 const videos = [
   { id: 'a', category: 'other' as const },

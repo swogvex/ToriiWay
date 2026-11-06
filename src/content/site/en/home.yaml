@@ -42,9 +42,10 @@ index:
     kicker: Community
     text: Discord server and video lessons.
 
-# Until the channel feed is wired up, this card links to the YouTube channel.
+# The card shows the channel's latest video (title and date come from the feed). The title
+# and text below are used only when the feed cannot be read: the card then links to the channel.
 video:
-  kicker: YouTube · @swogvex
+  kicker: YouTube · @nihongonotorii
   title: Video lessons on the channel
   text: Short lessons on kana, grammar and the JLPT.
 
