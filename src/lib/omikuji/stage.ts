@@ -103,6 +103,8 @@ export function initOmikuji(root: HTMLElement, data: OmikujiData): void {
     set('word-kana', fortune.wordKana);
     set('word-meaning', fortune.wordMeaning);
     set('tied', tiedGlyph(fortune.rank));
+    // One-kanji ranks (吉, 凶) are drawn larger; two kanji need room for the meaning.
+    board.dataset.rankSize = [...fortune.rank].length > 1 ? 'long' : 'short';
     markLucky(fortune.path);
     state = 'open';
     render();
