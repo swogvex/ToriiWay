@@ -1,0 +1,172 @@
+---
+/**
+ * One video lesson (artboard 10): a typographic 16:9 thumbnail (ink, category kanji, play
+ * button) and the title. A plain link to YouTube without JavaScript; the island turns it
+ * into a button for the player dialog. Rendered empty inside a <template> for the island.
+ */
+import { getLocale, type UiKey, useTranslations } from '../../i18n';
+import type { PublicVideo } from '../../lib/community/public';
+import { CATEGORY_GLYPH, formatDate, watchUrl } from '../../lib/community/videos';
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  video?: PublicVideo;
+  /** Past the first page: revealed by "Show more". */
+  hidden?: boolean;
+}
+
+const { video, hidden = false } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const category = video?.category ?? 'other';
+---
+
+<li
+  class="video"
+  data-video
+  data-video-id={video?.id}
+  data-category={category}
+  data-short={video?.short ? '' : undefined}
+  hidden={hidden}
+>
+  <a class="video__link" href={video ? watchUrl(video.id, video.short) : '#'} data-video-open>
+    <!-- The kanji is a pseudo-element: axe measures contrast on aria-hidden text too. -->
+    <span class="video__thumb" aria-hidden="true" data-glyph={CATEGORY_GLYPH[category]}>
+      <span class="video__play">
+        <Icon name="play" size={20} />
+      </span>
+      <span class="video__short" data-video-short hidden={!video?.short}>
+        {t('community.videos.short')}
+      </span>
+    </span>
+    <span class="video__body">
+      <span class="video__title" data-video-title>
+        {video?.title}
+      </span>
+      <span class="video__meta">
+        <span data-video-category>{t(`community.videos.category.${category}` as UiKey)}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime={video?.published} data-video-date>
+          {video ? formatDate(video.published, locale) : ''}
+        </time>
+      </span>
+    </span>
+  </a>
+</li>
+
+<style>
+  .video {
+    display: grid;
+  }
+
+  .video[hidden] {
+    display: none;
+  }
+
+  .video__link {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .video__link:hover {
+    border-color: var(--ink);
+  }
+
+  /* Always dark, like a video frame, in both themes. */
+  .video__thumb {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    color-scheme: dark;
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  .video__thumb::before {
+    position: absolute;
+    inset-block-end: -0.12em;
+    inset-inline-start: var(--space-4);
+    color: color-mix(in srgb, var(--ink) 14%, var(--bg));
+    font-family: var(--font-display-ja);
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1;
+    content: attr(data-glyph);
+  }
+
+  .video__play {
+    position: relative;
+    display: grid;
+    place-items: center;
+    inline-size: 52px;
+    block-size: 52px;
+    border-radius: 50%;
+    color-scheme: light;
+    background: var(--surface);
+    color: var(--ink);
+    transition: transform var(--duration-fast) var(--ease);
+  }
+
+  .video__link:hover .video__play {
+    transform: scale(1.06);
+  }
+
+  /* Nudge the triangle so it looks centred in the circle. */
+  .video__play :global(svg) {
+    margin-inline-start: 2px;
+    fill: currentcolor;
+  }
+
+  .video__short {
+    position: absolute;
+    inset-block-end: var(--space-3);
+    inset-inline-end: var(--space-3);
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-chip);
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .video__short[hidden] {
+    display: none;
+  }
+
+  .video__body {
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+    padding: var(--space-4);
+  }
+
+  .video__title {
+    display: -webkit-box;
+    overflow: hidden;
+    font-weight: 700;
+    line-height: 1.3;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .video__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+</style>

@@ -55,6 +55,8 @@ async function locate(pathname: string): Promise<string | null> {
 const API_FIXTURES: Record<string, string> = {
   '/api/jlpt/recent': '[]',
   '/api/game/leaderboard': '{"entries":[],"next":null,"total":0}',
+  // No videos in the answer: the page keeps the cards it was built with.
+  '/api/community': '{"discord":null,"videos":[]}',
 };
 
 createServer(async (request, response) => {
