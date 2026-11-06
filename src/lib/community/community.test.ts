@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { inviteCode, parseInvite } from './discord';
+import { toPublic } from './public';
 import {
   cached,
   categorise,
@@ -10,6 +11,7 @@ import {
   type CommunitySources,
   discordCounts,
   DISCORD_TTL_MS,
+  mergeVideos,
 } from './source';
 import { decodeXml, parseFeed } from './youtube';
 
@@ -128,5 +130,32 @@ describe('categories', () => {
     )(0);
     expect(videos).toHaveLength(15);
     expect(videos.find((video) => video.id === second.id)?.category).toBe('kana');
+  });
+});
+
+describe('toPublic', () => {
+  it('sends only what the cards need (no descriptions)', () => {
+    const [video] = categorise(parseFeed(FEED).slice(0, 1), [], []);
+    if (!video) throw new Error('fixture without videos');
+    const payload = toPublic({ discord: { members: 3, online: 1 }, videos: [video] });
+    expect(payload.discord).toEqual({ members: 3, online: 1 });
+    expect(Object.keys(payload.videos[0] ?? {}).sort()).toEqual([
+      'category',
+      'featured',
+      'id',
+      'published',
+      'short',
+      'title',
+    ]);
+  });
+});
+
+describe('mergeVideos', () => {
+  it('adds older playlist videos once, newest first', () => {
+    const [a, b, c] = parseFeed(FEED);
+    if (!a || !b || !c) throw new Error('fixture too short');
+    const old = { ...c, id: 'oldVideo001', published: '2020-01-01T00:00:00+00:00' };
+    const merged = mergeVideos([[a, b], [b, old], [a]]);
+    expect(merged.map((video) => video.id)).toEqual([a.id, b.id, old.id]);
   });
 });

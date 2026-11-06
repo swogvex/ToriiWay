@@ -92,8 +92,11 @@ export function channelVideos(
         getText(sources, feedUrl(`playlist_id=${encodeURIComponent(list.id)}`)).catch(() => ''),
       ),
     ]);
-    const videos = parseFeed(feed);
-    if (videos.length === 0 && !feed.includes('<feed')) throw new Error('not a feed');
+    const latest = parseFeed(feed);
+    if (latest.length === 0 && !feed.includes('<feed')) throw new Error('not a feed');
+    // The channel feed holds only the 15 newest videos; playlist feeds add older ones
+    // (e.g. the hiragana course), so every category tab has something to show.
+    const videos = mergeVideos([latest, ...lists.map((list) => parseFeed(list ?? ''))]);
     return categorise(
       videos,
       playlists.map((list, index) => ({
@@ -103,6 +106,14 @@ export function channelVideos(
       overrides,
     );
   }, []);
+}
+
+/** All videos once (first copy wins), newest first. */
+export function mergeVideos(feeds: readonly (readonly Video[])[]): Video[] {
+  const byId = new Map<string, Video>();
+  for (const feed of feeds)
+    for (const video of feed) if (!byId.has(video.id)) byId.set(video.id, video);
+  return [...byId.values()].sort((a, b) => b.published.localeCompare(a.published));
 }
 
 export function categorise(

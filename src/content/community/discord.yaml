@@ -22,3 +22,15 @@ channels:
     description:
       en: Voice rooms to study in company and keep each other going.
       es: Salas de voz para estudiar acompañado y motivaros entre todos.
+# "Server rules" on /community. Draft by Claude (owner, 2026-11-06): edit freely.
+rules:
+  - en: Be kind. Everyone here is learning, and every question is welcome.
+    es: Sé amable. Aquí todos estamos aprendiendo y cualquier pregunta es bienvenida.
+  - en: Correct others gently, and explain why when you can.
+    es: Corrige con tacto y, si puedes, explica por qué.
+  - en: Keep each channel on its topic; use general for everything else.
+    es: Mantén cada canal en su tema; para todo lo demás está general.
+  - en: No spam, self-promotion or links to pirated material.
+    es: Nada de spam, autopromoción ni enlaces a material pirata.
+  - en: Spanish, Japanese and English are all fine. Write in the one you can.
+    es: 'Puedes escribir en español, japonés o inglés: en el que sepas.'
