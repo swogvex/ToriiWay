@@ -17,9 +17,10 @@ export async function getSiteCopy(locale: Locale) {
       kicker: entry.data.video.kicker.replace('{handle}', channels.youtubeHandle),
     },
     social: {
-      ...entry.data.social,
+      // Before the rest: the footer shows the icons in this order.
       discord: channels.discordInvite,
       youtube: channels.youtubeUrl,
+      ...entry.data.social,
     },
   };
 }
