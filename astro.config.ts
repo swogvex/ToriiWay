@@ -5,6 +5,7 @@ import vercel from '@astrojs/vercel';
 import { defineConfig, envField } from 'astro/config';
 
 import { pagefind } from './src/integrations/pagefind';
+import { staticCss } from './src/integrations/static-css';
 
 // Until the final domain exists, Vercel builds fall back to the project's production URL.
 const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
@@ -53,6 +54,7 @@ export default defineConfig({
         return !pathname.startsWith('/dev/') && !['/learn', '/learn/search'].includes(pathname);
       },
     }),
+    staticCss(),
     pagefind(),
   ],
   build: {
