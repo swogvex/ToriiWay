@@ -43,6 +43,13 @@
       "when": 1793910213167,
       "tag": "0005_counters",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794141086742,
+      "tag": "0006_dictionary",
+      "breakpoints": true
     }
   ]
 }

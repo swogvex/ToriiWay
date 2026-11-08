@@ -1,6 +1,8 @@
 // Postgres schema (Drizzle). Migrations live in drizzle/ and are generated with `pnpm db:generate`.
 
+import { sql } from 'drizzle-orm';
 import {
+  type AnyPgColumn,
   boolean,
   date,
   doublePrecision,
@@ -210,3 +212,102 @@ export const counters = pgTable(
   },
   (table) => [primaryKey({ columns: [table.key, table.day] })],
 );
+
+// Dictionary tables: replaced as a whole by scripts/dictionary, so they carry no foreign keys.
+
+const trigram = (column: AnyPgColumn) => sql`${column} gin_trgm_ops`;
+
+/** KANJIDIC2, with JLPT levels from OpenJLPT. */
+export const kanji = pgTable('kanji', {
+  literal: text('literal').primaryKey(),
+  grade: smallint('grade'),
+  jlpt: smallint('jlpt'),
+  strokes: smallint('strokes').notNull(),
+  freq: smallint('freq'),
+  meaningsEn: text('meanings_en').array().notNull(),
+  meaningsEs: text('meanings_es').array().notNull(),
+  onReadings: text('on_readings').array().notNull(),
+  kunReadings: text('kun_readings').array().notNull(),
+});
+
+/** JMdict entries; `id` is the upstream ent_seq, so word URLs stay stable between imports. */
+export const words = pgTable(
+  'words',
+  {
+    id: integer('id').primaryKey(),
+    kanjiForms: text('kanji_forms').array().notNull(),
+    readings: text('readings').array().notNull(),
+    kanjiChars: text('kanji_chars').array().notNull(),
+    common: boolean('common').notNull(),
+    jlpt: smallint('jlpt'),
+  },
+  (table) => [index('words_kanji_chars_idx').using('gin', table.kanjiChars)],
+);
+
+export const wordSenses = pgTable(
+  'word_senses',
+  {
+    wordId: integer('word_id').notNull(),
+    position: smallint('position').notNull(),
+    pos: text('pos').array().notNull(),
+    glossesEn: text('glosses_en').array().notNull(),
+    glossesEs: text('glosses_es').array().notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.wordId, table.position] })],
+);
+
+/** One normalised search term per row: kanji form, hiragana reading, English or Spanish gloss. */
+export const wordTerms = pgTable(
+  'word_terms',
+  {
+    wordId: integer('word_id').notNull(),
+    term: text('term').notNull(),
+    kind: text('kind').notNull(),
+  },
+  (table) => [
+    index('word_terms_term_idx').on(sql`${table.term} text_pattern_ops`),
+    index('word_terms_trgm_idx').using('gin', trigram(table.term)),
+    index('word_terms_word_idx').on(table.wordId),
+  ],
+);
+
+export const kanjiTerms = pgTable(
+  'kanji_terms',
+  {
+    literal: text('literal').notNull(),
+    term: text('term').notNull(),
+    kind: text('kind').notNull(),
+  },
+  (table) => [
+    index('kanji_terms_term_idx').on(sql`${table.term} text_pattern_ops`),
+    index('kanji_terms_trgm_idx').using('gin', trigram(table.term)),
+  ],
+);
+
+/** Tatoeba sentences chosen by OpenJLPT; `id` builds the attribution link. */
+export const sentences = pgTable('sentences', {
+  id: integer('id').primaryKey(),
+  ja: text('ja').notNull(),
+  /** Furigana markup: {漢字|かんじ}. */
+  reading: text('reading'),
+  en: text('en'),
+  es: text('es'),
+});
+
+export const wordSentences = pgTable(
+  'word_sentences',
+  {
+    wordId: integer('word_id').notNull(),
+    sentenceId: integer('sentence_id').notNull(),
+  },
+  (table) => [primaryKey({ columns: [table.wordId, table.sentenceId] })],
+);
+
+/** What is loaded and from where; the credits page shows it. */
+export const dataSources = pgTable('data_sources', {
+  name: text('name').primaryKey(),
+  version: text('version').notNull(),
+  license: text('license').notNull(),
+  url: text('url').notNull(),
+  importedAt: time('imported_at').notNull(),
+});
