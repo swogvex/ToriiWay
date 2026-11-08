@@ -41,6 +41,7 @@ const searchable = !noindex && !canonical;
       jsonLd={jsonLd}
       canonical={canonical}
     />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">

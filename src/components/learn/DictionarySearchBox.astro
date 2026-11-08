@@ -1,0 +1,82 @@
+---
+/**
+ * The dictionary box (artboard 08). A plain GET form, so it works without JavaScript;
+ * on /learn/search the page's script takes over and searches as you type.
+ */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import { MAX_TERM_LENGTH } from '../../lib/dictionary/normalize';
+import Icon from '../ui/Icon.astro';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+<form
+  class="dict-box"
+  role="search"
+  method="get"
+  action={localizePath('/learn/search', locale)}
+  aria-label={t('dictionary.label')}
+>
+  <Icon name="search" size={20} />
+  <label class="visually-hidden" for="dictionary-q">
+    {t('dictionary.label')}
+  </label>
+  <input
+    class="dict-box__input"
+    id="dictionary-q"
+    name="q"
+    type="search"
+    maxlength={MAX_TERM_LENGTH}
+    required
+    autocomplete="off"
+    spellcheck="false"
+    enterkeyhint="search"
+  />
+  <span class="dict-box__hint" aria-hidden="true">
+    {t('dictionary.hint')}
+  </span>
+</form>
+
+<style>
+  .dict-box {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--muted);
+  }
+
+  .dict-box:has(.dict-box__input:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  /* The form draws the focus ring around the whole control. */
+  .dict-box__input {
+    flex: 1;
+    min-inline-size: 0;
+    min-block-size: 56px;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-size: var(--text-lg);
+    outline: none;
+  }
+
+  .dict-box__hint {
+    display: none;
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    white-space: nowrap;
+  }
+
+  @media (width >= 48rem) {
+    .dict-box__hint {
+      display: block;
+    }
+  }
+</style>

@@ -1,3 +1,6 @@
+import { canSearch, DEBOUNCE_MS, displayLocale, fetchDictionary } from './dictionary/client';
+import { dictionaryOptions } from './dictionary/palette';
+
 // Latin combining accents, U+0300 to U+036F. Kana dakuten (U+3099) sit outside it.
 const LATIN_ACCENTS = new RegExp(
   `[${String.fromCharCode(0x300)}-${String.fromCharCode(0x36f)}]`,
@@ -126,6 +129,8 @@ export function initSearch(root: HTMLElement): void {
   let active: HTMLElement | undefined;
   let announceTimer: ReturnType<typeof setTimeout> | undefined;
   let searchId = 0;
+  let dictionaryTimer: ReturnType<typeof setTimeout> | undefined;
+  let dictionaryRequest: AbortController | undefined;
 
   const visible = () =>
     [...root.querySelectorAll<HTMLElement>('[role="option"]')].filter((option) => !option.hidden);
@@ -198,12 +203,41 @@ export function initSearch(root: HTMLElement): void {
     update(query);
   }
 
+  function showDictionary(options: HTMLElement[]): void {
+    for (const option of root.querySelectorAll('[data-search-dictionary]')) option.remove();
+    groups.get('dictionary')?.append(...options);
+  }
+
+  /** Waits for a pause in typing; older requests are cancelled so they cannot overwrite. */
+  function searchDictionary(query: string): void {
+    clearTimeout(dictionaryTimer);
+    dictionaryRequest?.abort();
+    if (!canSearch(query)) {
+      showDictionary([]);
+      return;
+    }
+    const request = new AbortController();
+    dictionaryRequest = request;
+    dictionaryTimer = setTimeout(() => {
+      const locale = displayLocale();
+      fetchDictionary(query, locale, request.signal)
+        .then((result) => {
+          if (request.signal.aborted) return;
+          showDictionary(dictionaryOptions(result, locale, root.dataset.dictionaryPage ?? ''));
+          update(query);
+        })
+        // Pages and sections still answer when the dictionary cannot.
+        .catch(() => undefined);
+    }, DEBOUNCE_MS);
+  }
+
   function filter(): void {
     if (!input) return;
     const query = input.value.trim();
     for (const option of sections) {
       option.hidden = !matches(query, option.dataset.keywords ?? '');
     }
+    searchDictionary(query);
     update(query);
     void searchPages(query);
   }

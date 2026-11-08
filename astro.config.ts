@@ -50,7 +50,7 @@ export default defineConfig({
       filter: (page) => {
         const { pathname } = new URL(page);
         // /learn duplicates /learn/hiragana (canonical), so only the canonical is listed.
-        return !pathname.startsWith('/dev/') && pathname !== '/learn';
+        return !pathname.startsWith('/dev/') && !['/learn', '/learn/search'].includes(pathname);
       },
     }),
     pagefind(),
