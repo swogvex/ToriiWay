@@ -1,0 +1,195 @@
+---
+/**
+ * One page per word (10-spec-learn). Rendered on demand and kept by the CDN, because
+ * builds and CI have no database (owner decision, 2026-11-08).
+ */
+import DictionaryCredit from '../../../components/learn/DictionaryCredit.astro';
+import DictionaryNotice from '../../../components/learn/DictionaryNotice.astro';
+import DictionarySentences from '../../../components/learn/DictionarySentences.astro';
+import ListenButton from '../../../components/learn/ListenButton.astro';
+import Chip from '../../../components/ui/Chip.astro';
+import SectionHeader from '../../../components/ui/SectionHeader.astro';
+import { getLocale, localizePath, useTranslations } from '../../../i18n';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { kanjiHref, senseGlosses, wordHref } from '../../../lib/dictionary/client';
+import { CDN_CACHE, isWordParam, posKeys, type WordDetail } from '../../../lib/dictionary/detail';
+import { kanjiChars } from '../../../lib/dictionary/normalize';
+import { breadcrumbList, jsonLdGraph } from '../../../lib/seo';
+import { getDictionaryDetailStore } from '../../../lib/server/context';
+import detailCss from '../../../styles/dictionary-detail.css?url';
+
+export const prerender = false;
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const learn = localizePath('/learn', locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const { id } = Astro.params;
+
+let word: WordDetail | null = null;
+let view: 'ok' | 'missing' | 'unavailable' = 'missing';
+if (isWordParam(id)) {
+  try {
+    word = await (await getDictionaryDetailStore()).getWord(Number(id));
+    view = word ? 'ok' : 'missing';
+  } catch (error) {
+    console.error('[dictionary] word page', error);
+    view = 'unavailable';
+  }
+}
+
+Astro.response.status = { ok: 200, missing: 404, unavailable: 503 }[view];
+Astro.response.headers.set('Cache-Control', view === 'ok' ? CDN_CACHE : 'no-store');
+
+const notice = view === 'unavailable' ? 'unavailable' : 'missing';
+const form = word?.kanjiForms[0] ?? word?.readings[0] ?? '';
+const reading = word?.kanjiForms[0] ? word?.readings[0] : undefined;
+const glosses = word ? senseGlosses(word.senses) : { en: [], es: [] };
+const useSpanish = locale === 'es' && glosses.es.length > 0;
+const primaryKey = useSpanish ? 'glossesEs' : 'glossesEn';
+const otherKey = useSpanish ? 'glossesEn' : 'glossesEs';
+const summary = (useSpanish ? glosses.es : glosses.en).slice(0, 3).join(', ');
+const senses = (key: 'glossesEn' | 'glossesEs') =>
+  (word?.senses ?? []).filter((sense) => sense[key].length > 0);
+const kanjiInWord = kanjiChars(word?.kanjiForms.slice(0, 1) ?? []);
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('learn.title'), href: learn },
+  { label: form || t('dictionary.word') },
+];
+const pageUrl = word ? new URL(wordHref(learn, word.id), site) : undefined;
+const jsonLd =
+  word && pageUrl
+    ? jsonLdGraph(
+        {
+          '@type': 'DefinedTerm',
+          '@id': pageUrl.href,
+          name: form,
+          description: summary,
+          url: pageUrl.href,
+          inLanguage: 'ja',
+        },
+        breadcrumbList(breadcrumb, site, pageUrl),
+      )
+    : undefined;
+const pos = (tags: readonly string[]) =>
+  posKeys(tags)
+    .map((key) => t(`dictionary.pos.${key}`))
+    .join(' · ');
+const title = word
+  ? t('dictionary.word.pageTitle', { word: form, meaning: summary })
+  : t(`dictionary.${notice}.title`);
+const description = word
+  ? t('dictionary.word.pageDescription', { word: form, meaning: summary })
+  : t('dictionary.description');
+---
+
+<BaseLayout
+  title={`${title} · ${t('site.name')}`}
+  description={description}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+  noindex={!word}
+>
+  <link slot="head" rel="stylesheet" href={detailCss} />
+  {word ? (
+    <article class="dict-detail column page-frame" data-dict-detail>
+      <SectionHeader level="h1" kicker={t('dictionary.word')} title={form}>
+        <div class="dict-detail__actions">
+          {reading && (
+            <span class="dict-detail__reading" lang="ja">
+              {reading}
+            </span>
+          )}
+          <ListenButton text={word.readings[0] ?? form} />
+        </div>
+      </SectionHeader>
+
+      <div class="dict-detail__info">
+        <div class="dict-detail__chips">
+          {word.common && <Chip>{t('dictionary.common')}</Chip>}
+          {word.jlpt && <Chip tone="accent">{t('dictionary.jlpt', { level: word.jlpt })}</Chip>}
+        </div>
+
+        <section aria-labelledby="dict-meanings">
+          <h2 class="dict-detail__label" id="dict-meanings">
+            {t('dictionary.meanings')}
+          </h2>
+          <ol class="dict-detail__senses">
+            {senses(primaryKey).map((sense) => (
+              <li>
+                {pos(sense.pos) && <span class="dict-detail__pos">{pos(sense.pos)}</span>}
+                <p>{sense[primaryKey].join('; ')}</p>
+              </li>
+            ))}
+          </ol>
+          {locale === 'es' && !useSpanish && (
+            <p class="dict-detail__muted">{t('dictionary.englishOnly')}</p>
+          )}
+        </section>
+
+        {senses(otherKey).length > 0 && (
+          <section aria-labelledby="dict-other">
+            <h2 class="dict-detail__label" id="dict-other">
+              {t(useSpanish ? 'dictionary.inEnglish' : 'dictionary.inSpanish')}
+            </h2>
+            <ol class="dict-detail__senses dict-detail__muted">
+              {senses(otherKey).map((sense) => (
+                <li>
+                  <p>{sense[otherKey].join('; ')}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {(word.kanjiForms.length > 1 || word.readings.length > 1) && (
+          <dl class="dict-detail__readings">
+            {word.kanjiForms.length > 1 && (
+              <div>
+                <dt>{t('dictionary.otherForms')}</dt>
+                <dd lang="ja">{word.kanjiForms.slice(1).join('、')}</dd>
+              </div>
+            )}
+            {word.readings.length > 1 && (
+              <div>
+                <dt>{t('dictionary.otherReadings')}</dt>
+                <dd lang="ja">{word.readings.slice(1).join('、')}</dd>
+              </div>
+            )}
+          </dl>
+        )}
+
+        {kanjiInWord.length > 0 && (
+          <section aria-labelledby="dict-kanji-in-word">
+            <h2 class="dict-detail__label" id="dict-kanji-in-word">
+              {t('dictionary.kanjiInWord')}
+            </h2>
+            <ul class="dict-detail__kanji">
+              {kanjiInWord.map((literal) => (
+                <li>
+                  <a href={kanjiHref(learn, literal)} lang="ja">
+                    {literal}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <DictionarySentences sentences={word.sentences} />
+      </div>
+
+      <DictionaryCredit />
+    </article>
+  ) : (
+    <DictionaryNotice kicker={t('dictionary.word')} view={notice} />
+  )}
+</BaseLayout>
+
+<script>
+  import { initListen } from '../../../lib/kana/listen';
+
+  const page = document.querySelector<HTMLElement>('[data-dict-detail]');
+  if (page) void initListen(page);
+</script>

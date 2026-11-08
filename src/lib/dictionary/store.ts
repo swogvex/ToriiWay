@@ -54,7 +54,7 @@ export function trimSenses(senses: readonly SenseResult[]): SenseResult[] {
   });
 }
 
-const SAMPLE_WORD = mapWord(
+export const SAMPLE_WORD = mapWord(
   {
     id: '1160790',
     kanji: [{ common: true, text: '一' }],
@@ -67,7 +67,7 @@ const SAMPLE_WORD = mapWord(
   new Map([[1160790, 5]]),
 );
 
-const SAMPLE_KANJI = mapKanji(
+export const SAMPLE_KANJI = mapKanji(
   {
     literal: '一',
     misc: { grade: 1, strokeCounts: [1], frequency: 2 },

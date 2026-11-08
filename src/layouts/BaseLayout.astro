@@ -18,7 +18,7 @@ interface Props {
   description: string;
   noindex?: boolean;
   breadcrumb?: Crumb[];
-  jsonLd?: Record<string, unknown>;
+  jsonLd?: Record<string, unknown> | undefined;
   /** Path of the page this one duplicates; such a page stays out of the search index. */
   canonical?: string | undefined;
   /** Pagefind metadata for this page, e.g. { group: 'kana', title: 'Hiragana chart' }. */

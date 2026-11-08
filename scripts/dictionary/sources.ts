@@ -17,6 +17,7 @@ import { loadTatoeba } from './tatoeba.ts';
 const CACHE_DIR = join('node_modules', '.cache', 'dictionary');
 const SIMPLIFIED = 'scriptin/jmdict-simplified';
 const OPEN_JLPT = 'evanclan/OpenJLPT';
+const KANJIVG = 'KanjiVG/kanjivg';
 const LEVELS = ['n1', 'n2', 'n3', 'n4', 'n5'] as const;
 
 export interface SourceInfo {
@@ -37,7 +38,13 @@ export interface Downloaded {
   vocab: OpenJlptVocab[];
   jlptKanji: OpenJlptKanji[];
   corpus: TatoebaCorpus;
+  kanjiVgXml: string;
   sources: SourceInfo[];
+}
+
+interface Asset {
+  name: string;
+  browser_download_url: string;
 }
 
 async function github<T>(path: string): Promise<T> {
@@ -79,7 +86,7 @@ export async function download(): Promise<Downloaded> {
   const day = new Date().toISOString().slice(0, 10);
   const release = await github<{
     tag_name: string;
-    assets: { name: string; browser_download_url: string }[];
+    assets: Asset[];
   }>(`${SIMPLIFIED}/releases/latest`);
   const asset = async (prefix: string): Promise<string> => {
     const found = release.assets.find(
@@ -110,12 +117,20 @@ export async function download(): Promise<Downloaded> {
     return files.flatMap((file) => JSON.parse(file.toString('utf8')) as T[]);
   };
 
+  const strokes = await github<{ tag_name: string; assets: Asset[] }>(`${KANJIVG}/releases/latest`);
+  const kanjiVg = async (): Promise<string> => {
+    const found = strokes.assets.find((item) => /^kanjivg-\d+\.xml\.gz$/.test(item.name));
+    if (!found) throw new Error(`KanjiVG ${strokes.tag_name} has no XML archive`);
+    return gunzipSync(await cached(found.name, found.browser_download_url)).toString('utf8');
+  };
+
   return {
     words: jmdict.words,
     characters: kanjidic.characters,
     vocab: await openJlpt<OpenJlptVocab>('vocab'),
     jlptKanji: await openJlpt<OpenJlptKanji>('kanji'),
     corpus: await loadTatoeba(day),
+    kanjiVgXml: await kanjiVg(),
     sources: [
       {
         name: 'JMdict',
@@ -134,6 +149,12 @@ export async function download(): Promise<Downloaded> {
         version: sha,
         license: 'CC BY-SA 4.0',
         url: `https://github.com/${OPEN_JLPT}`,
+      },
+      {
+        name: 'KanjiVG',
+        version: strokes.tag_name,
+        license: 'CC BY-SA 3.0',
+        url: 'https://kanjivg.tagaini.net',
       },
       {
         name: 'Tatoeba',

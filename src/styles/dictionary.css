@@ -88,6 +88,11 @@
   line-height: 1.1;
 }
 
+a.dict-card__literal,
+a.dict-word__form {
+  color: inherit;
+}
+
 .dict-card__strokes {
   color: var(--muted);
   font-family: var(--font-mono);

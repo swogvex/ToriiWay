@@ -48,7 +48,12 @@ const labels = {
   noindex
 >
   <link slot="head" rel="stylesheet" href={dictionaryCss} />
-  <div class="dict column page-frame" data-dict-root data-labels={JSON.stringify(labels)}>
+  <div
+    class="dict column page-frame"
+    data-dict-root
+    data-labels={JSON.stringify(labels)}
+    data-learn-base={localizePath('/learn', locale)}
+  >
     <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('dictionary.title')} />
     <DictionarySearchBox />
 
@@ -121,7 +126,15 @@ const labels = {
     <template data-dict-kanji-template>
       <article class="dict-card">
         <div class="dict-card__glyph">
-          <span class="dict-card__literal" lang="ja" data-glyph></span>
+          <a
+            class="dict-card__literal"
+            href={localizePath('/learn', locale)}
+            lang="ja"
+            data-glyph
+            data-kanji-link
+          >
+            {t('dictionary.kanji')}
+          </a>
           <span class="dict-card__strokes" data-strokes></span>
         </div>
         <div class="dict-card__body">
@@ -156,7 +169,15 @@ const labels = {
     <template data-dict-word-template>
       <li class="dict-word">
         <div class="dict-word__head">
-          <span class="dict-word__form" lang="ja" data-word-form></span>
+          <a
+            class="dict-word__form"
+            href={localizePath('/learn', locale)}
+            lang="ja"
+            data-word-form
+            data-word-link
+          >
+            {t('dictionary.word')}
+          </a>
           <span class="dict-word__reading" lang="ja" data-word-reading></span>
           <Chip class="js-word-common" />
           <Chip tone="accent" class="js-word-jlpt" />

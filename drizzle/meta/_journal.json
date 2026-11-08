@@ -50,6 +50,13 @@
       "when": 1794141086742,
       "tag": "0006_dictionary",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794163403834,
+      "tag": "0007_kanji_strokes",
+      "breakpoints": true
     }
   ]
 }

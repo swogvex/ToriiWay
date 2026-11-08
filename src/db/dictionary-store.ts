@@ -104,7 +104,7 @@ export function kanjiMatches(query: ParsedQuery, lang: SearchLang): SQL {
     LIMIT ${KANJI_LIMIT}`;
 }
 
-export function commonWordsOf(literals: readonly string[]): SQL {
+export function commonWordsOf(literals: readonly string[], perKanji = COMMON_WORDS_PER_KANJI): SQL {
   const firstGloss = (column: SQL) =>
     sql`(SELECT ${column} FROM word_senses s
       WHERE s.word_id = w.id AND cardinality(${column}) > 0 ORDER BY s.position LIMIT 1)`;
@@ -119,7 +119,7 @@ export function commonWordsOf(literals: readonly string[]): SQL {
         -- and 百 only matches through its rare variant 一百.
         AND position(k.literal IN kanji_forms[1]) > 0 AND char_length(kanji_forms[1]) > 1
       ORDER BY jlpt DESC NULLS LAST, char_length(kanji_forms[1]), id
-      LIMIT ${COMMON_WORDS_PER_KANJI}
+      LIMIT ${perKanji}
     ) AS w`;
 }
 

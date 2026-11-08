@@ -1,0 +1,13 @@
+---
+/** The EDRDG licence asks for this on every screen that shows its data. */
+import { getLocale, useTranslations } from '../../i18n';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<p class="dict-detail__credit">
+  <a href="https://www.edrdg.org/edrdg/licence.html" rel="noopener" target="_blank">
+    {t('dictionary.credit')}
+    <span class="visually-hidden">{t('a11y.newTab')}</span>
+  </a>
+</p>
