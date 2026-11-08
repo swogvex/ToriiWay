@@ -20,6 +20,8 @@ import { type CounterDeps, type CounterStore, memoryCounterStore } from './count
 import { sendWithResend, type EmailMessage } from './email';
 import { hashIp, HttpError } from './http';
 import { secretFor, verifyTurnstile } from './turnstile';
+import { type DictionaryStore, memoryDictionaryStore } from '../dictionary/store';
+import type { DictionaryDeps } from './dictionary-api';
 import type { GameDeps } from './game-api';
 import type { JlptDeps } from './jlpt-api';
 
@@ -27,6 +29,7 @@ let store: RunStore | undefined;
 let bank: BankMondai[] | undefined;
 let gameStore: GameStore | undefined;
 let counterStore: CounterStore | undefined;
+let dictionaryStore: DictionaryStore | undefined;
 let counterKeys: Promise<Set<string>> | undefined;
 /** Item texts per game list, loaded once per server instance. */
 const itemTexts = new Map<string, Promise<Set<string>>>();
@@ -63,6 +66,28 @@ function allowedCounterKeys(): Promise<Set<string>> {
     (entries) => new Set(entries.map((entry) => `library:${entry.id.slice(3)}`)),
   );
   return counterKeys;
+}
+
+async function getDictionaryStore(): Promise<DictionaryStore> {
+  if (dictionaryStore) return dictionaryStore;
+  if (DATABASE_URL) {
+    const { drizzleDictionaryStore } = await import('../../db/dictionary-store');
+    dictionaryStore = drizzleDictionaryStore(DATABASE_URL);
+  } else if (JLPT_MEMORY_STORE || import.meta.env.DEV) {
+    dictionaryStore = memoryDictionaryStore();
+  } else {
+    throw new HttpError('unavailable', 503, 'DATABASE_URL is not set');
+  }
+  return dictionaryStore;
+}
+
+export async function dictionaryDeps(context: RequestContext): Promise<DictionaryDeps> {
+  const limits = await getStore();
+  return {
+    store: await getDictionaryStore(),
+    clientKey: () => hashIp(clientIp(context), salt()),
+    rateLimit: (key, limit, windowMs) => limits.rateLimit(key, limit, windowMs, Date.now()),
+  };
 }
 
 export async function counterDeps(context: RequestContext): Promise<CounterDeps> {
