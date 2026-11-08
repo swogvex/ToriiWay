@@ -29,7 +29,8 @@
     "db:migrate": "node scripts/db/migrate.ts --force",
     "admin:hash": "node scripts/admin/hash.ts",
     "jlpt:audio": "node scripts/jlpt/audio.ts",
-    "library:add": "node scripts/library/add.ts"
+    "library:add": "node scripts/library/add.ts",
+    "dictionary:import": "node --max-old-space-size=4096 scripts/dictionary/import.ts"
   },
   "dependencies": {
     "@astrojs/preact": "6.1.1",
