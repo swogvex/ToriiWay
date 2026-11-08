@@ -4,8 +4,10 @@ import {
   DEBOUNCE_MS,
   displayLocale,
   fetchDictionary,
+  kanjiHref,
   pickMeaning,
   senseGlosses,
+  wordHref,
   type DisplayLocale,
 } from './client';
 import { KANJI_LIMIT, WORD_LIMIT } from './limits';
@@ -69,6 +71,7 @@ export function initDictionarySearch(root: HTMLElement): void {
 
   const labels = JSON.parse(root.dataset.labels ?? '{}') as Labels;
   const locale: DisplayLocale = displayLocale();
+  const learn = root.dataset.learnBase ?? '/learn';
   const panels = [...root.querySelectorAll<HTMLElement>('[data-dict-panel]')];
   let controller: AbortController | undefined;
   let debounce: ReturnType<typeof setTimeout> | undefined;
@@ -107,6 +110,7 @@ export function initDictionarySearch(root: HTMLElement): void {
   function kanjiCard(kanji: KanjiResult): DocumentFragment {
     const card = kanjiTemplate.content.cloneNode(true) as DocumentFragment;
     setText(card, '[data-glyph]', kanji.literal);
+    card.querySelector('[data-kanji-link]')?.setAttribute('href', kanjiHref(learn, kanji.literal));
     setText(
       card,
       '[data-strokes]',
@@ -130,11 +134,15 @@ export function initDictionarySearch(root: HTMLElement): void {
     if (kanji.commonWords.length === 0) card.querySelector('[data-common]')?.remove();
     for (const word of kanji.commonWords) {
       const item = document.createElement('li');
-      const form = document.createElement('span');
+      const form = document.createElement('a');
       form.lang = 'ja';
-      form.textContent = `${word.form} ${word.reading}`;
+      form.href = wordHref(learn, word.id);
+      form.textContent = word.form;
+      const reading = document.createElement('span');
+      reading.lang = 'ja';
+      reading.textContent = ` ${word.reading}`;
       const gloss = pickMeaning(word.glossesEn, word.glossesEs, locale).primary[0];
-      item.append(form, gloss ? ` · ${gloss}` : '');
+      item.append(form, reading, gloss ? ` · ${gloss}` : '');
       list?.append(item);
     }
     return card;
@@ -144,6 +152,7 @@ export function initDictionarySearch(root: HTMLElement): void {
     const row = word.kanjiForms[0];
     const item = wordTemplate.content.cloneNode(true) as DocumentFragment;
     setText(item, '[data-word-form]', row ?? word.readings[0] ?? '');
+    item.querySelector('[data-word-link]')?.setAttribute('href', wordHref(learn, word.id));
     setText(item, '[data-word-reading]', row ? (word.readings[0] ?? null) : null);
     setText(item, '.js-word-common', word.common ? labels.common : null);
     setText(item, '.js-word-jlpt', word.jlpt ? fill(labels.jlpt, { level: word.jlpt }) : null);

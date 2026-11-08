@@ -109,6 +109,15 @@ for (const width of [360, 768, 1920]) {
   });
 }
 
+test('search results lead to the kanji and word pages', async ({ page }) => {
+  await page.goto('/learn/search?q=one');
+  await page.locator('a.dict-card__literal').first().click();
+  await expect(page).toHaveURL(/\/learn\/kanji\/%E4%B8%80$/);
+  await page.goto('/learn/search?q=one');
+  await page.locator('a.dict-word__form').first().click();
+  await expect(page).toHaveURL(/\/learn\/word\/1160790$/);
+});
+
 test('the Learn box opens the results', async ({ page }) => {
   await page.goto('/learn/hiragana');
   const box = page.getByRole('searchbox', { name: 'Search the dictionary' });
@@ -128,8 +137,8 @@ test('the ⌘K dialog lists kanji and words and opens the results', async ({ pag
   await expect(group.getByRole('option').first()).toContainText('一');
   await expect(dialog.getByRole('link', { name: /JMdict and KANJIDIC2/ })).toBeVisible();
   await group.getByRole('option').first().click();
-  await expect(page).toHaveURL(/\/learn\/search\?q=/);
-  await expect(page.locator('.dict-card__literal').first()).toHaveText('一');
+  await expect(page).toHaveURL(/\/learn\/kanji\/%E4%B8%80$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('一');
 });
 
 test('a single Latin letter does not query the dictionary from the dialog', async ({ page }) => {

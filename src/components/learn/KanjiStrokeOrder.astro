@@ -1,0 +1,72 @@
+---
+/**
+ * Stroke order of a kanji with replay and step controls (lib/dictionary/kanji-strokes.ts).
+ * Without JavaScript the whole kanji shows, numbered, and the controls stay hidden.
+ */
+import { getLocale, useTranslations } from '../../i18n';
+import { STROKE_GRID, strokeNumbers } from '../../lib/dictionary/kanjivg';
+import { KANJIVG_CREDIT } from '../../lib/kana/data';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  literal: string;
+  strokes: string[];
+}
+
+const { literal, strokes } = Astro.props;
+const t = useTranslations(getLocale(Astro.url.pathname));
+const numbers = strokeNumbers(strokes);
+---
+
+<figure class="dict-strokes" data-kanji-strokes>
+  <div class="dict-strokes__box">
+    <svg
+      class="strokes"
+      viewBox={`0 0 ${STROKE_GRID} ${STROKE_GRID}`}
+      role="img"
+      aria-label={t('learn.strokeOrder', { char: literal })}
+      data-strokes
+    >
+      <g class="strokes__guide">
+        {strokes.map((stroke) => (
+          <path d={stroke} />
+        ))}
+      </g>
+      <g class="strokes__ink">
+        {strokes.map((stroke) => (
+          <path d={stroke} pathLength="1" />
+        ))}
+      </g>
+      <g class="strokes__numbers">
+        {numbers.map((number, index) => (
+          <text x={number.x} y={number.y}>
+            {index + 1}
+          </text>
+        ))}
+      </g>
+    </svg>
+  </div>
+  <div class="dict-strokes__controls" data-stroke-controls hidden>
+    <Button variant="outline" size={40} data-stroke-prev>
+      {t('learn.prev')}
+    </Button>
+    <Button variant="outline" size={40} data-stroke-next>
+      {t('learn.next')}
+    </Button>
+    <Button variant="outline" size={40} data-stroke-replay>
+      {t('learn.replay')}
+    </Button>
+  </div>
+  <p
+    class="visually-hidden"
+    role="status"
+    data-stroke-status
+    data-template={t('dictionary.strokeStatus')}
+  ></p>
+  <figcaption class="dict-detail__credit">
+    <a href={KANJIVG_CREDIT.url} rel="noopener" target="_blank">
+      {t('learn.credit')}
+      <span class="visually-hidden">{t('a11y.newTab')}</span>
+    </a>
+  </figcaption>
+</figure>

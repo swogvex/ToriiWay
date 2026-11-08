@@ -55,6 +55,11 @@ export function displayLocale(): DisplayLocale {
   return document.documentElement.lang === 'es' ? 'es' : 'en';
 }
 
+export const kanjiHref = (learn: string, literal: string): string =>
+  `${learn}/kanji/${encodeURIComponent(literal)}`;
+
+export const wordHref = (learn: string, id: number): string => `${learn}/word/${id}`;
+
 export function dictionaryUrl(base: string, term: string): string {
   return `${base}?${new URLSearchParams({ q: term })}`;
 }

@@ -223,7 +223,7 @@ export function initSearch(root: HTMLElement): void {
       fetchDictionary(query, locale, request.signal)
         .then((result) => {
           if (request.signal.aborted) return;
-          showDictionary(dictionaryOptions(result, locale, root.dataset.dictionaryPage ?? ''));
+          showDictionary(dictionaryOptions(result, locale, root.dataset.learnBase ?? ''));
           update(query);
         })
         // Pages and sections still answer when the dictionary cannot.

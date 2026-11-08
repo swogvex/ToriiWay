@@ -284,6 +284,12 @@ export const kanjiTerms = pgTable(
   ],
 );
 
+/** KanjiVG stroke paths in writing order; not every kanji has them. */
+export const kanjiStrokes = pgTable('kanji_strokes', {
+  literal: text('literal').primaryKey(),
+  strokes: text('strokes').array().notNull(),
+});
+
 /** Tatoeba sentences chosen by OpenJLPT; `id` builds the attribution link. */
 export const sentences = pgTable('sentences', {
   id: integer('id').primaryKey(),

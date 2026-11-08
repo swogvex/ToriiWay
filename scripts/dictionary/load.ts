@@ -13,6 +13,7 @@ import {
   type WordRow,
   type WordTermRow,
 } from '../../src/lib/dictionary/import-map.ts';
+import { parseKanjiVg, type StrokeRow } from '../../src/lib/dictionary/kanjivg.ts';
 import { addSpanish, extraExamples } from '../../src/lib/dictionary/sentences.ts';
 import type { Downloaded, SourceInfo } from './sources.ts';
 
@@ -24,6 +25,7 @@ const MINIMUM_ROWS = {
   kanji: 10_000,
   jlptWords: 5000,
   jlptKanji: 2000,
+  strokes: 6000,
   spanishSentences: 4000,
 };
 
@@ -38,6 +40,7 @@ export interface Tables {
   terms: WordTermRow[];
   kanji: KanjiRow[];
   kanjiTerms: KanjiTermRow[];
+  strokes: StrokeRow[];
   sentences: ReturnType<typeof mapExamples>['sentences'];
   links: ReturnType<typeof mapExamples>['links'];
 }
@@ -55,6 +58,7 @@ export function buildTables(data: Downloaded): Tables {
     terms: [],
     kanji: [],
     kanjiTerms: [],
+    strokes: [],
     sentences: [],
     links: [],
   };
@@ -69,6 +73,7 @@ export function buildTables(data: Downloaded): Tables {
     tables.kanji.push(kanji);
     for (const term of terms) tables.kanjiTerms.push(term);
   }
+  tables.strokes = parseKanjiVg(data.kanjiVgXml, new Set(tables.kanji.map((row) => row.literal)));
   const known = new Set(tables.words.map((word) => word.id));
   const examples = mapExamples(data.vocab, known);
   const curated = addSpanish(examples.sentences, data.corpus);
@@ -84,6 +89,7 @@ export function assertPlausible(tables: Tables): void {
     kanji: tables.kanji.length,
     jlptWords: tables.words.filter((word) => word.jlpt !== null).length,
     jlptKanji: tables.kanji.filter((kanji) => kanji.jlpt !== null).length,
+    strokes: tables.strokes.length,
     spanishSentences: tables.sentences.filter((sentence) => sentence.es).length,
   };
   for (const key of Object.keys(MINIMUM_ROWS) as (keyof typeof MINIMUM_ROWS)[]) {
@@ -115,6 +121,7 @@ export async function replaceDictionary(
     'word_terms',
     'kanji',
     'kanji_terms',
+    'kanji_strokes',
     'sentences',
     'word_sentences',
     'data_sources',
@@ -166,6 +173,7 @@ export async function replaceDictionary(
       })),
     );
     await insert(client, 'kanji_terms', tables.kanjiTerms);
+    await insert(client, 'kanji_strokes', tables.strokes);
     await insert(client, 'sentences', tables.sentences);
     await insert(
       client,

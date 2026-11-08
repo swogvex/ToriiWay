@@ -1,6 +1,6 @@
 // Kanji and word options for the ⌘K dialog. Text nodes only: this data is never HTML.
 
-import { dictionaryUrl, pickMeaning, senseGlosses, type DisplayLocale } from './client';
+import { kanjiHref, pickMeaning, senseGlosses, wordHref, type DisplayLocale } from './client';
 import type { SearchResult } from './store';
 
 const MAX_KANJI = 3;
@@ -32,14 +32,14 @@ function option(id: string, href: string, glyph: string, meaning: string): HTMLE
 export function dictionaryOptions(
   result: SearchResult,
   locale: DisplayLocale,
-  searchPage: string,
+  learn: string,
 ): HTMLElement[] {
   const kanji = result.kanji
     .slice(0, MAX_KANJI)
     .map((item, index) =>
       option(
         `search-kanji-${index}`,
-        dictionaryUrl(searchPage, item.literal),
+        kanjiHref(learn, item.literal),
         item.literal,
         pickMeaning(item.meaningsEn, item.meaningsEs, locale).primary.join(', '),
       ),
@@ -50,7 +50,7 @@ export function dictionaryOptions(
     const { en, es } = senseGlosses(word.senses);
     return option(
       `search-word-${index}`,
-      dictionaryUrl(searchPage, form),
+      wordHref(learn, word.id),
       reading ? `${form} · ${reading}` : form,
       pickMeaning(en, es, locale).primary.join(', '),
     );

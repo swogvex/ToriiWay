@@ -1,0 +1,55 @@
+---
+/** Example sentences, each linked to its page on Tatoeba, as its licence asks. */
+import { getLocale, useTranslations } from '../../i18n';
+import { parseFurigana, type SentenceResult } from '../../lib/dictionary/detail';
+
+interface Props {
+  sentences: SentenceResult[];
+}
+
+const { sentences } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+{sentences.length > 0 && (
+  <section aria-labelledby="dict-sentences">
+    <h2 class="dict-detail__label" id="dict-sentences">
+      {t('dictionary.sentences')}
+    </h2>
+    <ul class="dict-sentences">
+      {sentences.map((sentence) => {
+        const translations =
+          locale === 'es' ? [sentence.es, sentence.en] : [sentence.en, sentence.es];
+        return (
+          <li>
+            <p class="dict-sentences__ja" lang="ja">
+              {parseFurigana(sentence.reading ?? sentence.ja).map((part) =>
+                part.ruby ? (
+                  <ruby>
+                    {part.text}
+                    <rt>{part.ruby}</rt>
+                  </ruby>
+                ) : (
+                  part.text
+                ),
+              )}
+            </p>
+            {translations.filter(Boolean).map((text, index) => (
+              <p class={index === 0 ? undefined : 'dict-detail__muted'}>{text}</p>
+            ))}
+            <a
+              class="dict-detail__credit"
+              href={`https://tatoeba.org/sentences/show/${sentence.id}`}
+              rel="noopener"
+              target="_blank"
+            >
+              {t('dictionary.sentenceSource', { id: sentence.id })}
+              <span class="visually-hidden">{t('a11y.newTab')}</span>
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+)}

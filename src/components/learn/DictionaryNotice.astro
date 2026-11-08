@@ -1,0 +1,23 @@
+---
+/** What a kanji or word page shows when the entry is missing or the database cannot answer. */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import Button from '../ui/Button.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+interface Props {
+  kicker: string;
+  view: 'missing' | 'unavailable';
+}
+
+const { kicker, view } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+---
+
+<div class="dict-detail dict-detail--notice column page-frame">
+  <SectionHeader level="h1" kicker={kicker} title={t(`dictionary.${view}.title`)} />
+  <p class="dict-detail__muted">{t(`dictionary.${view}.text`)}</p>
+  <Button variant="outline" href={localizePath('/learn/search', locale)}>
+    {t('dictionary.label')}
+  </Button>
+</div>
