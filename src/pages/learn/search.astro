@@ -1,0 +1,399 @@
+---
+/**
+ * Dictionary results (artboard 08). The page is static; the client script fills it from
+ * /api/dictionary/search. Results are not indexed: kanji and word pages will be.
+ */
+import DictionarySearchBox from '../../components/learn/DictionarySearchBox.astro';
+import Button from '../../components/ui/Button.astro';
+import Chip from '../../components/ui/Chip.astro';
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import Skeleton from '../../components/ui/Skeleton.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dictionaryUrl } from '../../lib/dictionary/client';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const self = localizePath('/learn/search', locale);
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('learn.title'), href: localizePath('/learn', locale) },
+  { label: t('dictionary.title') },
+];
+const suggestions = ['ichi', '日本語', 'water', 'comer'];
+const labels = {
+  title: t('dictionary.results'),
+  counts: t('dictionary.counts'),
+  showing: t('dictionary.showing'),
+  strokesOne: t('learn.strokes.one'),
+  strokesOther: t('learn.strokes.other'),
+  jlpt: t('dictionary.jlpt'),
+  gradeSchool: t('dictionary.grade'),
+  gradeSecondary: t('dictionary.gradeSecondary'),
+  jinmeiyo: t('dictionary.jinmeiyo'),
+  freq: t('dictionary.freq'),
+  common: t('dictionary.common'),
+  otherEn: t('dictionary.otherEn'),
+  otherEs: t('dictionary.otherEs'),
+  loading: t('dictionary.loading'),
+  error: t('dictionary.error'),
+};
+---
+
+<BaseLayout
+  title={`${t('dictionary.title')} · ${t('site.name')}`}
+  description={t('dictionary.description')}
+  breadcrumb={breadcrumb}
+  noindex
+>
+  <div class="dict column page-frame" data-dict-root data-labels={JSON.stringify(labels)}>
+    <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('dictionary.title')} />
+    <DictionarySearchBox />
+
+    <div class="dict__region" data-dict-region aria-busy="false">
+      <p class="dict__message" data-dict-panel="idle">
+        {t('dictionary.idle')}
+      </p>
+
+      <div class="dict__skeletons" data-dict-panel="loading" hidden>
+        {[1, 2].map(() => (
+          <div class="dict-card">
+            <Skeleton shape="block" />
+            <div class="dict-card__body">
+              <Skeleton shape="title" />
+              <Skeleton shape="text" />
+              <Skeleton shape="text" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="dict__message" data-dict-panel="empty" hidden>
+        <p data-dict-empty>
+          {t('dictionary.empty')} <span lang="und" data-dict-query></span>
+        </p>
+        <p>
+          {t('dictionary.try')}
+          {suggestions.map((term) => (
+            <a class="dict__try" href={dictionaryUrl(self, term)}>
+              {term}
+            </a>
+          ))}
+        </p>
+      </div>
+
+      <div class="dict__message" data-dict-panel="error" hidden>
+        <p>{t('dictionary.error')}</p>
+        <Button variant="outline" data-dict-retry>
+          {t('dictionary.retry')}
+        </Button>
+      </div>
+
+      <section
+        class="dict__results"
+        data-dict-panel="results"
+        aria-labelledby="dict-heading"
+        hidden
+      >
+        <div class="dict__head">
+          <h2 class="dict__heading" id="dict-heading" data-dict-heading>
+            {t('dictionary.title')}
+          </h2>
+          <p class="dict__counts" data-dict-counts></p>
+        </div>
+        <div class="dict__kanji" data-dict-kanji></div>
+        <ul class="dict__words" data-dict-words></ul>
+        <p class="dict__showing" data-dict-showing hidden></p>
+      </section>
+    </div>
+
+    <p class="visually-hidden" role="status" data-dict-status></p>
+
+    <p class="dict__credit">
+      <a href="https://www.edrdg.org/edrdg/licence.html" rel="noopener" target="_blank">
+        {t('dictionary.credit')}
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
+      </a>
+    </p>
+
+    <template data-dict-kanji-template>
+      <article class="dict-card">
+        <div class="dict-card__glyph">
+          <span class="dict-card__literal" lang="ja" data-glyph></span>
+          <span class="dict-card__strokes" data-strokes></span>
+        </div>
+        <div class="dict-card__body">
+          <div class="dict-card__chips">
+            <Chip tone="accent" class="js-jlpt" />
+            <Chip class="js-grade" />
+            <Chip class="js-freq" />
+          </div>
+          <p class="dict-card__meaning" data-meaning></p>
+          <p class="dict-card__other" data-meaning-other></p>
+          <p class="dict-card__other" data-english-only>
+            {t('dictionary.englishOnly')}
+          </p>
+          <dl class="dict-card__readings">
+            <div data-reading-row="on">
+              <dt>{t('dictionary.on')}</dt>
+              <dd lang="ja" data-reading="on"></dd>
+            </div>
+            <div data-reading-row="kun">
+              <dt>{t('dictionary.kun')}</dt>
+              <dd lang="ja" data-reading="kun"></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="dict-card__common" data-common>
+          <h3 class="dict-card__common-title">{t('dictionary.commonWords')}</h3>
+          <ul data-common-list></ul>
+        </div>
+      </article>
+    </template>
+
+    <template data-dict-word-template>
+      <li class="dict-word">
+        <div class="dict-word__head">
+          <span class="dict-word__form" lang="ja" data-word-form></span>
+          <span class="dict-word__reading" lang="ja" data-word-reading></span>
+          <Chip class="js-word-common" />
+          <Chip tone="accent" class="js-word-jlpt" />
+        </div>
+        <p class="dict-word__meaning" data-meaning></p>
+        <p class="dict-card__other" data-meaning-other></p>
+        <p class="dict-card__other" data-english-only>
+          {t('dictionary.englishOnly')}
+        </p>
+      </li>
+    </template>
+  </div>
+</BaseLayout>
+
+<script>
+  import { initDictionarySearch } from '../../lib/dictionary/search-page';
+
+  const root = document.querySelector<HTMLElement>('[data-dict-root]');
+  if (root) initDictionarySearch(root);
+</script>
+
+<style>
+  .dict {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .dict__region,
+  .dict__results,
+  .dict__skeletons,
+  .dict__kanji {
+    display: grid;
+    gap: var(--space-4);
+    min-inline-size: 0;
+  }
+
+  .dict__results {
+    gap: var(--space-6);
+    padding-block-start: var(--space-8);
+    border-block-start: 1px solid var(--line-strong);
+  }
+
+  /* Panels set their own display, which would otherwise beat the hidden attribute. */
+  .dict__region [hidden] {
+    display: none;
+  }
+
+  .dict__message {
+    display: grid;
+    justify-items: start;
+    gap: var(--space-3);
+    color: var(--muted);
+  }
+
+  .dict__try {
+    margin-inline-start: var(--space-3);
+  }
+
+  .dict__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .dict__heading {
+    font-size: var(--text-xl);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .dict__counts,
+  .dict__showing {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .dict__credit {
+    color: var(--muted);
+    font-size: var(--text-2xs);
+  }
+
+  .dict-card {
+    display: grid;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+  }
+
+  .dict-card :global(.chip) {
+    text-transform: none;
+  }
+
+  .dict-card__glyph {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: var(--space-2);
+  }
+
+  .dict-card__literal {
+    font-family: var(--font-display-ja);
+    font-size: var(--text-display);
+    line-height: 1.1;
+  }
+
+  .dict-card__strokes {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+  }
+
+  .dict-card__body {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    min-inline-size: 0;
+  }
+
+  .dict-card__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .dict-card__meaning,
+  .dict-word__meaning {
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .dict-card__meaning {
+    font-size: var(--text-lg);
+    line-height: 1.3;
+  }
+
+  .dict-card__other {
+    color: var(--muted);
+    font-size: var(--text-sm);
+    overflow-wrap: anywhere;
+  }
+
+  .dict-card__readings {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .dict-card__readings > div {
+    display: grid;
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+
+  .dict-card__readings dt,
+  .dict-card__common-title {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .dict-card__readings dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .dict-card__common {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+    padding-block-start: var(--space-4);
+    border-block-start: 1px solid var(--line);
+  }
+
+  .dict-card__common ul,
+  .dict__words {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dict-card__common ul {
+    gap: var(--space-2);
+    color: var(--muted);
+  }
+
+  .dict-word {
+    display: grid;
+    gap: var(--space-1);
+    padding-block: var(--space-4);
+    border-block-end: 1px solid var(--line);
+  }
+
+  .dict-word :global(.chip) {
+    text-transform: none;
+  }
+
+  .dict-word__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .dict-word__form {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+  }
+
+  .dict-word__reading {
+    color: var(--muted);
+  }
+
+  .dict-word__meaning {
+    font-weight: 400;
+  }
+
+  @media (width >= 48rem) {
+    .dict-card {
+      grid-template-columns: 8.75rem minmax(0, 1fr) minmax(0, 15rem);
+      gap: var(--space-6);
+    }
+
+    .dict-card__common {
+      padding-block-start: 0;
+      padding-inline-start: var(--space-5);
+      border-block-start: 0;
+      border-inline-start: 1px solid var(--line);
+    }
+
+    .dict__skeletons .dict-card {
+      grid-template-columns: 8.75rem minmax(0, 1fr);
+    }
+  }
+</style>

@@ -5,15 +5,14 @@ import { sql, type SQL } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/neon-http';
 
 import {
-  KANJI_LIMIT,
   trimSenses,
-  WORD_LIMIT,
   type CommonWord,
   type DictionaryStore,
   type KanjiResult,
   type SenseResult,
   type WordResult,
 } from '../lib/dictionary/store.ts';
+import { KANJI_LIMIT, WORD_LIMIT } from '../lib/dictionary/limits.ts';
 import { escapeLike, type ParsedQuery, type SearchLang } from '../lib/dictionary/search.ts';
 
 type Row = Record<string, unknown>;

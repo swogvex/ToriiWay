@@ -21,6 +21,7 @@ const t = useTranslations(locale);
     data-count-one={t('search.count.one')}
     data-count-other={t('search.count.other')}
     data-empty={t('search.empty')}
+    data-dictionary-page={localizePath('/learn/search', locale)}
   >
     <label class="visually-hidden" for="search-input">
       {t('search.label')}
@@ -53,6 +54,17 @@ const t = useTranslations(locale);
       >
         <div class="search__group-title" aria-hidden="true">
           {t('search.group.kana')}
+        </div>
+      </div>
+      <div
+        class="search__group"
+        role="group"
+        aria-label={t('search.group.dictionary')}
+        data-search-group="dictionary"
+        hidden
+      >
+        <div class="search__group-title" aria-hidden="true">
+          {t('search.group.dictionary')}
         </div>
       </div>
       <div
@@ -91,7 +103,12 @@ const t = useTranslations(locale);
     </template>
     <p class="search__empty" hidden data-search-empty></p>
     <p class="visually-hidden" role="status" data-search-status></p>
-    <p class="search__note">{t('search.note')}</p>
+    <p class="search__note">
+      <a href="https://www.edrdg.org/edrdg/licence.html" rel="noopener" target="_blank">
+        {t('dictionary.credit')}
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
+      </a>
+    </p>
   </div>
 </Dialog>
 

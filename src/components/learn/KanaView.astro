@@ -1,8 +1,8 @@
 ---
 /**
  * The Learn page for one script (artboard 08, kana part): section header, Hiragana /
- * Katakana links, the guide intro with its "In this guide" list, the chart in three
- * tabs and the detail panel. The dictionary search box arrives with the dictionary.
+ * Katakana links, the dictionary box, the guide intro with its "In this guide" list,
+ * the chart in three tabs and the detail panel.
  */
 import { getEntry, render } from 'astro:content';
 
@@ -12,6 +12,7 @@ import { getKana, KANJIVG_CREDIT, panelKana, SCRIPTS, type Script } from '../../
 import JaText from '../content/JaText.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Tabs from '../ui/Tabs.astro';
+import DictionarySearchBox from './DictionarySearchBox.astro';
 import KanaChart from './KanaChart.astro';
 import KanaPanel from './KanaPanel.astro';
 import KanaPractice from './KanaPractice.astro';
@@ -63,6 +64,8 @@ const dataUrl = `/data/kana/${script}.json`;
       })}
     </nav>
   </SectionHeader>
+
+  <DictionarySearchBox />
 
   <div class="learn__body">
     <section class="learn-chart" aria-labelledby="learn-chart-title">

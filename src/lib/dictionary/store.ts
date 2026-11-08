@@ -3,8 +3,6 @@
 import { mapKanji, mapWord, type KanjiRow, type TermKind } from './import-map.ts';
 import type { ParsedQuery, SearchLang } from './search.ts';
 
-export const KANJI_LIMIT = 12;
-export const WORD_LIMIT = 50;
 /** Per language: long entries would bloat the result list. */
 const SENSES_PER_LANGUAGE = 3;
 
