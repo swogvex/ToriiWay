@@ -3,7 +3,7 @@
 // good value; with none, the counts are hidden and the video list is empty.
 
 import { type DiscordCounts, inviteCode, inviteUrl, parseInvite } from './discord';
-import { CHANNEL_ID, feedUrl, parseFeed, parsePlaylistIds, type Video } from './youtube';
+import { feedUrl, parseFeed, parsePlaylistIds, type Video } from './youtube';
 
 export const DISCORD_TTL_MS = 10 * 60 * 1000;
 export const YOUTUBE_TTL_MS = 60 * 60 * 1000;
@@ -82,12 +82,13 @@ export function discordCounts(sources: CommunitySources, invite: string) {
  */
 export function channelVideos(
   sources: CommunitySources,
+  channelId: string,
   playlists: readonly { id: string; category: Category }[],
   overrides: readonly VideoOverride[],
 ) {
   return cached<CategorisedVideo[]>(YOUTUBE_TTL_MS, async () => {
     const [feed, ...lists] = await Promise.all([
-      getText(sources, feedUrl(`channel_id=${CHANNEL_ID}`)),
+      getText(sources, feedUrl(`channel_id=${encodeURIComponent(channelId)}`)),
       ...playlists.map((list) =>
         getText(sources, feedUrl(`playlist_id=${encodeURIComponent(list.id)}`)).catch(() => ''),
       ),
@@ -96,7 +97,8 @@ export function channelVideos(
     if (latest.length === 0 && !feed.includes('<feed')) throw new Error('not a feed');
     // The channel feed holds only the 15 newest videos; playlist feeds add older ones
     // (e.g. the hiragana course), so every category tab has something to show.
-    const videos = mergeVideos([latest, ...lists.map((list) => parseFeed(list ?? ''))]);
+    // Playlists left over from a previous channel add nothing.
+    const videos = mergeVideos([latest, ...lists.map((list) => parseFeed(list ?? '', channelId))]);
     return categorise(
       videos,
       playlists.map((list, index) => ({

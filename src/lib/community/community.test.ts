@@ -15,6 +15,7 @@ import {
 } from './source';
 import { decodeXml, parseFeed } from './youtube';
 
+const CHANNEL = 'UCOey2A5vOKyiU-RHXjWf4aA';
 const FEED = readFileSync(new URL('./fixture-feed.xml', import.meta.url), 'utf8');
 
 beforeEach(() => {
@@ -125,11 +126,28 @@ describe('categories', () => {
     );
     const videos = await channelVideos(
       { fetch: fetcher as unknown as typeof fetch, now: () => 0 },
+      CHANNEL,
       [{ id: 'PLx', category: 'kana' }],
       [],
     )(0);
     expect(videos).toHaveLength(15);
     expect(videos.find((video) => video.id === second.id)?.category).toBe('kana');
+    expect(fetcher.mock.calls.some(([url]) => url.includes(`channel_id=${CHANNEL}`))).toBe(true);
+  });
+
+  it('ignores videos of a playlist that belongs to another channel', async () => {
+    const stray =
+      '<feed><entry><yt:videoId>strayVideo1</yt:videoId><yt:channelId>UCother</yt:channelId></entry></feed>';
+    const fetcher = vi.fn(async (url: string) =>
+      url.includes('playlist_id') ? new Response(stray) : new Response(FEED),
+    );
+    const videos = await channelVideos(
+      { fetch: fetcher as unknown as typeof fetch, now: () => 0 },
+      CHANNEL,
+      [{ id: 'PLold', category: 'kana' }],
+      [],
+    )(0);
+    expect(videos.some((video) => video.id === 'strayVideo1')).toBe(false);
   });
 });
 

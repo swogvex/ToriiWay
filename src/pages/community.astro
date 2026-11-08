@@ -18,7 +18,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { communityData } from '../lib/community/data';
 import { toPublic } from '../lib/community/public';
 import { CATEGORIES, CATEGORY_GLYPH, tabsFor } from '../lib/community/videos';
-import { CHANNEL_URL } from '../lib/community/youtube';
+import { getChannels } from '../lib/content/channels';
 import { breadcrumbList, jsonLdGraph } from '../lib/seo';
 
 const locale = getLocale(Astro.url.pathname);
@@ -27,6 +27,7 @@ const site = Astro.site ?? new URL(Astro.url.origin);
 
 const discord = await getEntry('community', 'discord');
 if (!discord) throw new Error('src/content/community/discord.yaml is missing');
+const channels = await getChannels();
 const { discord: counts, videos } = toPublic(await communityData());
 
 /** Videos shown before "Show more" (and the step it adds). */
@@ -71,7 +72,7 @@ const jsonLd = jsonLdGraph(
   <div class="community column page-frame" data-community data-island={JSON.stringify(island)}>
     <SectionHeader level="h1" kicker={t('community.kicker')} title={t('community.title')} />
 
-    <DiscordCard discord={discord.data} counts={counts} />
+    <DiscordCard invite={channels.discordInvite} discord={discord.data} counts={counts} />
 
     <section class="videos" aria-labelledby="videos-title">
       <div class="videos__head">
@@ -109,7 +110,7 @@ const jsonLd = jsonLdGraph(
         >
           {t('community.videos.more')}
         </button>
-        <a class="videos__youtube" href={CHANNEL_URL} target="_blank" rel="noopener">
+        <a class="videos__youtube" href={channels.youtubeUrl} target="_blank" rel="noopener">
           {t('community.videos.youtube')}
           <Icon name="arrow-up-right" size={16} />
           <span class="visually-hidden">{t('a11y.newTab')}</span>

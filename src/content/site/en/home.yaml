@@ -45,7 +45,8 @@ index:
 # The card shows the channel's latest video (title and date come from the feed). The title
 # and text below are used only when the feed cannot be read: the card then links to the channel.
 video:
-  kicker: YouTube · @nihongonotorii
+  # {handle} is the channel's @name from src/content/community/channels.yaml.
+  kicker: YouTube · {handle}
   title: Video lessons on the channel
   text: Short lessons on kana, grammar and the JLPT.
 
@@ -59,7 +60,5 @@ footer:
   phrase: 一緒[いっしょ]に頑張[がんば]ろう
 
 social:
-  discord: https://discord.gg/PkQt42bDtk
-  youtube: https://www.youtube.com/@nihongonotorii
   x: https://x.com/swogvex
   github: https://github.com/swogvex

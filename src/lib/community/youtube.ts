@@ -2,9 +2,6 @@
 // No API key and no dependency: the Atom feed is small and regular, so a few targeted
 // regexes read it. The visitor's browser never contacts YouTube until they press play.
 
-/** @nihongonotorii (owner decision 2026-11-06). */
-export const CHANNEL_ID = 'UCOey2A5vOKyiU-RHXjWf4aA';
-export const CHANNEL_URL = 'https://www.youtube.com/@nihongonotorii';
 export const feedUrl = (query: string) => `https://www.youtube.com/feeds/videos.xml?${query}`;
 
 export interface Video {
@@ -41,12 +38,17 @@ function tag(xml: string, name: string): string {
   return match ? decodeXml(match[1] ?? '').trim() : '';
 }
 
-/** Video entries of an Atom feed, newest first (the order YouTube sends them in). */
-export function parseFeed(xml: string): Video[] {
+/**
+ * Video entries of an Atom feed, newest first (the order YouTube sends them in). With
+ * `channelId`, entries uploaded by another channel are left out.
+ */
+export function parseFeed(xml: string, channelId?: string): Video[] {
   const videos: Video[] = [];
   for (const [, entry = ''] of xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)) {
     const id = tag(entry, 'yt:videoId');
     if (!/^[\w-]{11}$/.test(id)) continue;
+    const owner = tag(entry, 'yt:channelId');
+    if (channelId && owner && owner !== channelId) continue;
     const link = /<link[^>]*href="([^"]+)"/.exec(entry)?.[1] ?? '';
     videos.push({
       id,

@@ -12,10 +12,11 @@ import Icon from '../ui/Icon.astro';
 
 interface Props {
   discord: CollectionEntry<'community'>['data'];
+  invite: string;
   counts: DiscordCounts | null;
 }
 
-const { discord, counts } = Astro.props;
+const { discord, invite, counts } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 const text = (value: { en: string; es?: string | undefined }) =>
@@ -43,12 +44,7 @@ const number = (value: number) => new Intl.NumberFormat(locale).format(value);
     </h2>
     <p class="discord__text">{text(discord.description)}</p>
     <div class="discord__actions">
-      <a
-        class="discord__button discord__button--join"
-        href={discord.invite}
-        target="_blank"
-        rel="noopener"
-      >
+      <a class="discord__button discord__button--join" href={invite} target="_blank" rel="noopener">
         {t('community.discord.join')}
         <Icon name="arrow-up-right" size={18} />
         <span class="visually-hidden">{t('a11y.newTab')}</span>
