@@ -1,4 +1,4 @@
-# YouTube playlists of @nihongonotorii → category tab on /community. A video in no playlist
+# YouTube playlists of the channel in channels.yaml → category tab on /community. A video in no playlist
 # goes to "other" unless src/content/videos/<id>.yaml says otherwise.
 playlists:
   - id: PLGQlmhyFZzSyZPB8KnQYQJNTh4GY8CaIA # Curso de Japones Basico Hiragana

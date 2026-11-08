@@ -4,6 +4,7 @@
 
 import { getCollection, getEntry } from 'astro:content';
 
+import { getChannels } from '../content/channels';
 import type { DiscordCounts } from './discord';
 import type { CommunityData } from './public';
 import {
@@ -20,8 +21,8 @@ let loaders: {
 } | null = null;
 
 async function init(sources: CommunitySources) {
-  const [discord, playlists, overrides] = await Promise.all([
-    getEntry('community', 'discord'),
+  const [channels, playlists, overrides] = await Promise.all([
+    getChannels(),
     getEntry('playlists', 'playlists'),
     getCollection('videos'),
   ]);
@@ -32,8 +33,13 @@ async function init(sources: CommunitySources) {
     ...(data.title ? { title: data.title.en } : {}),
   }));
   return {
-    discord: discordCounts(sources, discord?.data.invite ?? ''),
-    videos: channelVideos(sources, playlists?.data.playlists ?? [], videoOverrides),
+    discord: discordCounts(sources, channels.discordInvite),
+    videos: channelVideos(
+      sources,
+      channels.youtubeChannelId,
+      playlists?.data.playlists ?? [],
+      videoOverrides,
+    ),
   };
 }
 

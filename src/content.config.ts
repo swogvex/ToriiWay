@@ -2,6 +2,7 @@ import { defineCollection } from 'astro:content';
 import { contentGlob } from './lib/content/loader';
 
 import {
+  channelsSchema,
   communitySchema,
   fortunesSchema,
   gameListSchema,
@@ -34,6 +35,11 @@ const library = defineCollection({
 const videos = defineCollection({
   loader: contentGlob('*.yaml', `${base}/videos`),
   schema: videoSchema,
+});
+
+const channels = defineCollection({
+  loader: contentGlob('channels.yaml', `${base}/community`),
+  schema: channelsSchema,
 });
 
 const community = defineCollection({
@@ -72,6 +78,7 @@ export const collections = {
   kana,
   library,
   videos,
+  channels,
   community,
   playlists,
   jlpt,

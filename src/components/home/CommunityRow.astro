@@ -5,16 +5,15 @@
  * shared player dialog (a plain YouTube link without JavaScript); without a feed the card
  * links to the channel instead.
  */
-import type { CollectionEntry } from 'astro:content';
-
 import { getLocale, type UiKey, useTranslations } from '../../i18n';
 import type { DiscordCounts } from '../../lib/community/discord';
 import type { PublicVideo } from '../../lib/community/public';
 import { CATEGORY_GLYPH, formatDate, watchUrl } from '../../lib/community/videos';
+import type { getSiteCopy } from '../../lib/content/site';
 import VideoPlayer from '../community/VideoPlayer.astro';
 import Icon from '../ui/Icon.astro';
 
-type Site = CollectionEntry<'site'>['data'];
+type Site = Awaited<ReturnType<typeof getSiteCopy>>;
 
 interface Props {
   video: Site['video'];

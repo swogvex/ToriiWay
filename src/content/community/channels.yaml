@@ -1,0 +1,13 @@
+# The site's YouTube channel and Discord server, in one place. Change these values and
+# commit: Home, the footer, /community, the video feed, the member counts and the links
+# in JLPT results all follow.
+#
+# youtubeChannelId: youtube.com → the channel → About → Share channel → Copy channel ID (UC…).
+# youtubeHandle: the @name in the channel's address.
+# discordInvite: a Discord invite link that never expires.
+#
+# After changing channel, list its playlists in playlists.yaml: until then its videos
+# appear under "Other". Playlists of the previous channel are ignored automatically.
+youtubeChannelId: UCOey2A5vOKyiU-RHXjWf4aA
+youtubeHandle: '@nihongonotorii'
+discordInvite: https://discord.gg/PkQt42bDtk
