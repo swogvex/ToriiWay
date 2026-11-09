@@ -48,8 +48,13 @@ interface Asset {
 }
 
 async function github<T>(path: string): Promise<T> {
+  // Runners share IP addresses, so anonymous calls hit GitHub's rate limit (403) in CI.
+  const token = process.env.GITHUB_TOKEN;
   const response = await fetch(`https://api.github.com/repos/${path}`, {
-    headers: { accept: 'application/vnd.github+json' },
+    headers: {
+      accept: 'application/vnd.github+json',
+      ...(token ? { authorization: `Bearer ${token}` } : {}),
+    },
   });
   if (!response.ok) throw new Error(`GitHub ${path}: ${response.status}`);
   return (await response.json()) as T;
