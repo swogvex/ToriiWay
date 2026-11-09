@@ -1,0 +1,64 @@
+# Home copy, footer phrase and social links (Spanish). Draft by Claude, owner to review.
+# Section names and buttons such as "Índice" live in src/i18n/es.json.
+
+title: ToriiWay · Aprende japonés tecla a tecla
+description: >-
+  Practica japonés gratis y sin cuenta: un juego para escribir kana, guías de kana y kanji,
+  simulacros del JLPT y libros que merecen la pena.
+
+hero:
+  kicker: Japonés para estudiantes
+  kickerMore: gratis, abierto y sin cuenta
+  title: Aprende japonés tecla a tecla.
+  # Typed one after another after the fixed "Aprende" (keep them about the same length).
+  phrases:
+    - Aprende japonés tecla a tecla.
+    - Aprende hasta aprobar el JLPT.
+    - Aprende con palabras e historias.
+    - Aprende japonés más allá de lo básico.
+    - Aprende en grupo, crece en grupo.
+    - Aprende un idioma, descubre una cultura.
+  lead: >-
+    Escribe kana a contrarreloj, estudia cada carácter, haz simulacros completos del JLPT y
+    encuentra los libros que merecen la pena.
+  primary: Jugar a Kana Rush
+  secondary: Empieza por el hiragana
+
+# Home index cards, in order 01–05.
+index:
+  game:
+    kicker: Juego
+    text: Mecanografía rápida de hiragana, katakana y kanji. Revienta las burbujas antes de que crucen la pantalla.
+  learn:
+    kicker: Aprender
+    text: Tablas de kana con el orden de trazos y un diccionario de kanji en inglés y español.
+  jlpt:
+    kicker: JLPT
+    text: Simulacros cronometrados con informe de resultados.
+  library:
+    kicker: Biblioteca
+    text: Libros por nivel, destreza e idioma.
+  community:
+    kicker: Comunidad
+    text: Servidor de Discord y clases en vídeo.
+
+# The card shows the channel's latest video (title and date come from the feed). The title
+# and text below are used only when the feed cannot be read: the card then links to the channel.
+video:
+  # {handle} is the channel's @name from src/content/community/channels.yaml.
+  kicker: YouTube · {handle}
+  title: Clases en vídeo en el canal
+  text: Clases cortas sobre kana, gramática y el JLPT.
+
+discord:
+  kicker: Discord
+  title: Estudia con otros en el servidor
+  cta: Únete al servidor
+
+footer:
+  # Furigana goes in brackets right after the kanji: 漢字[かんじ]
+  phrase: 一緒[いっしょ]に頑張[がんば]ろう
+
+social:
+  x: https://x.com/swogvex
+  github: https://github.com/swogvex

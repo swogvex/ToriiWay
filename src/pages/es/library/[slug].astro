@@ -5,7 +5,7 @@ import BookPage from '../../../components/library/BookPage.astro';
 import { type Book, getBooks, relatedBooks } from '../../../lib/library/books';
 
 export const getStaticPaths = (async () => {
-  const books = await getBooks();
+  const books = await getBooks('es');
   return books.map((book) => ({
     params: { slug: book.slug },
     props: { book, related: relatedBooks(book, books) },

@@ -179,6 +179,15 @@ export const kanaScriptSchema = z
 // Sharing our own PDF is only allowed when the license says so explicitly.
 const shareableLicense = /\b(CC BY|CC0|public domain|free to share)\b/i;
 
+/**
+ * Spanish (or other) text of a book: src/content/library/<locale>/<slug>.md. The facts
+ * (level, link, licence…) stay only in the English entry, so they are edited in one place.
+ */
+export const libraryTranslationSchema = z.strictObject({
+  /** Only when the title differs from the English entry. */
+  title: z.string().min(1).optional(),
+});
+
 export const librarySchema = z
   .strictObject({
     title: z.string().min(1),
