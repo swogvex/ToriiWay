@@ -13,9 +13,10 @@ test.describe('Spanish routes', () => {
     );
   });
 
-  test('content that falls back to English says so', async ({ page }) => {
+  test('the Spanish home shows the Spanish copy', async ({ page }) => {
     await page.goto('/es');
-    await expect(page.locator('[data-untranslated]')).toContainText('Aún no traducido');
+    await expect(page).toHaveTitle('ToriiWay · Aprende japonés tecla a tecla');
+    await expect(page.locator('[data-untranslated]')).toHaveCount(0);
   });
 
   test('the English home has no notice and keeps its canonical', async ({ page }) => {
@@ -71,10 +72,11 @@ test.describe('Spanish routes', () => {
     expect((await data).ok()).toBe(true);
   });
 
-  test('a guide that is not translated says so', async ({ page }) => {
+  test('guides are in Spanish', async ({ page }) => {
     await page.goto('/es/learn/guide/what-is-hiragana');
-    await expect(page.locator('[data-untranslated]')).toContainText('Aún no traducido');
-    await expect(page.locator('article.guide')).toHaveAttribute('lang', 'en');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('¿Qué es el hiragana?');
+    await expect(page.locator('[data-untranslated]')).toHaveCount(0);
+    await expect(page.locator('article.guide')).not.toHaveAttribute('lang', 'en');
   });
 
   const PAGES = [
@@ -113,9 +115,23 @@ test.describe('Spanish routes', () => {
     await expect(page.locator('a[href="/es/library/kanji-para-recordar-1"]').first()).toBeVisible();
   });
 
-  test('a book that is not translated says so', async ({ page }) => {
-    await page.goto('/es/library/kanji-para-recordar-1');
-    await expect(page.locator('[data-untranslated]')).toContainText('Aún no traducido');
+  test('books show their Spanish text and title', async ({ page }) => {
+    await page.goto('/es/library/irodori');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+      'Irodori: japonés para la vida en Japón',
+    );
+    await expect(page.locator('.book__text')).toContainText('situaciones cotidianas');
+    await expect(page.locator('[data-untranslated]')).toHaveCount(0);
+
+    await page.goto('/library/irodori');
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+      'Irodori: Japanese for Life in Japan',
+    );
+  });
+
+  test('the Spanish library search matches Spanish text', async ({ page }) => {
+    await page.goto('/es/library?q=cotidianas');
+    await expect(page.locator('a[href="/es/library/irodori"]').first()).toBeVisible();
   });
 
   test('an unknown Spanish path is a Spanish 404', async ({ page }) => {

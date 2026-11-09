@@ -6,7 +6,7 @@ import BookBadges from '../../components/library/BookBadges.astro';
 import BookCover from '../../components/library/BookCover.astro';
 import UntranslatedNotice from '../../components/shell/UntranslatedNotice.astro';
 import Icon from '../../components/ui/Icon.astro';
-import { DEFAULT_LOCALE, getLocale, localizePath, useTranslations } from '../../i18n';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import type { Book } from '../../lib/library/books';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
@@ -21,11 +21,11 @@ const { book, related } = Astro.props;
 const { data } = book.entry;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
-const translated = locale === DEFAULT_LOCALE;
+const { translated } = book;
 const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(Astro.url.pathname, site);
-const { Content } = await render(book.entry);
-const description = (book.entry.body ?? '').trim().split(/(?<=\.)\s/)[0] ?? data.title;
+const { Content } = await render(book.body);
+const description = (book.body.body ?? '').trim().split(/(?<=\.)\s/)[0] ?? book.title;
 
 const levelLabel = (level: string) => (level === 'kana' ? t('library.level.kana') : level);
 const resources = [
@@ -40,12 +40,12 @@ const authorType = /Corporation|Foundation|Times|Publishers|Press|NPO|JEES/.test
 const breadcrumb = [
   { label: t('nav.home'), href: localizePath('/', locale) },
   { label: t('library.title'), href: localizePath('/library', locale) },
-  { label: data.title },
+  { label: book.title },
 ];
 const jsonLd = jsonLdGraph(
   {
     '@type': 'Book',
-    name: data.title,
+    name: book.title,
     author: { '@type': authorType, name: data.author },
     inLanguage: data.editions,
     educationalLevel: book.levels.map(levelLabel).join(', '),
@@ -58,7 +58,7 @@ const jsonLd = jsonLdGraph(
 ---
 
 <BaseLayout
-  title={`${data.title} · ${t('library.title')} · ${t('site.name')}`}
+  title={`${book.title} · ${t('library.title')} · ${t('site.name')}`}
   description={description}
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
@@ -70,7 +70,7 @@ const jsonLd = jsonLdGraph(
       <BookCover level={book.coverLevel} kanji={data.coverKanji} tone={book.tone} size="lg" />
       <div class="book__heading">
         <p class="book__kicker">{t('library.kicker')}</p>
-        <h1 class="book__title">{data.title}</h1>
+        <h1 class="book__title">{book.title}</h1>
         <p class="book__author">{data.author}</p>
         <BookBadges book={book} />
       </div>

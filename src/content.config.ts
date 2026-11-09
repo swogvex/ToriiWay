@@ -10,6 +10,7 @@ import {
   jlptMondaiSchema,
   kanaScriptSchema,
   librarySchema,
+  libraryTranslationSchema,
   playlistsSchema,
   siteSchema,
   videoSchema,
@@ -28,8 +29,13 @@ const kana = defineCollection({
 });
 
 const library = defineCollection({
-  loader: contentGlob('{en,es}/**/*.md', `${base}/library`),
+  loader: contentGlob('en/**/*.md', `${base}/library`),
   schema: librarySchema,
+});
+// Translated text of the English entries above: same slug, under the locale's folder.
+const libraryTranslations = defineCollection({
+  loader: contentGlob('es/**/*.md', `${base}/library`),
+  schema: libraryTranslationSchema,
 });
 
 const videos = defineCollection({
@@ -77,6 +83,7 @@ export const collections = {
   guides,
   kana,
   library,
+  libraryTranslations,
   videos,
   channels,
   community,
