@@ -31,3 +31,4 @@ jobs:
         run: pnpm dictionary:import --write
         env:
           DATABASE_URL_UNPOOLED: ${{ secrets.DATABASE_URL_UNPOOLED }}
+          GITHUB_TOKEN: ${{ github.token }}
