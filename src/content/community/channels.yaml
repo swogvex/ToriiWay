@@ -5,9 +5,10 @@
 # youtubeChannelId: youtube.com → the channel → About → Share channel → Copy channel ID (UC…).
 # youtubeHandle: the @name in the channel's address.
 # discordInvite: a Discord invite link that never expires.
+# Use null for a channel that does not exist yet: everything that depends on it stays hidden.
 #
 # After changing channel, list its playlists in playlists.yaml: until then its videos
 # appear under "Other". Playlists of the previous channel are ignored automatically.
-youtubeChannelId: UCOey2A5vOKyiU-RHXjWf4aA
-youtubeHandle: '@nihongonotorii'
-discordInvite: https://discord.gg/PkQt42bDtk
+youtubeChannelId: null
+youtubeHandle: null
+discordInvite: null

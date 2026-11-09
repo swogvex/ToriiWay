@@ -217,9 +217,15 @@ export const videoSchema = z.strictObject({
 
 /** src/content/community/channels.yaml: the one place that names the channel and the server. */
 export const channelsSchema = z.strictObject({
-  youtubeChannelId: z.string().regex(/^UC[\w-]{22}$/, 'Expected a YouTube channel ID (UC…)'),
-  youtubeHandle: z.string().regex(/^@[\w.-]+$/, 'Expected the channel handle, like @name'),
-  discordInvite: z.url({ protocol: /^https$/, hostname: /^discord\.gg$/ }),
+  youtubeChannelId: z
+    .string()
+    .regex(/^UC[\w-]{22}$/, 'Expected a YouTube channel ID (UC…)')
+    .nullable(),
+  youtubeHandle: z
+    .string()
+    .regex(/^@[\w.-]+$/, 'Expected the channel handle, like @name')
+    .nullable(),
+  discordInvite: z.url({ protocol: /^https$/, hostname: /^discord\.gg$/ }).nullable(),
 });
 
 export const communitySchema = z.strictObject({

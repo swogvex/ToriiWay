@@ -41,77 +41,81 @@ const island = {
 };
 ---
 
-<section
-  class="community"
-  aria-labelledby="community-title"
-  data-home-community
-  data-island={JSON.stringify(island)}
->
-  <h2 class="visually-hidden" id="community-title">
-    {t('home.communityRow')}
-  </h2>
-  {latest ? (
-    <a
-      class="community-card community-card--video"
-      href={watchUrl(latest.id, latest.short)}
-      data-video-id={latest.id}
-      data-video-open
-      data-home-video
-    >
-      <span
-        class="community-card__thumb"
-        aria-hidden="true"
-        data-glyph={CATEGORY_GLYPH[latest.category]}
+{(latest || social.youtube || social.discord) && (
+  <section
+    class="community"
+    aria-labelledby="community-title"
+    data-home-community
+    data-island={JSON.stringify(island)}
+  >
+    <h2 class="visually-hidden" id="community-title">
+      {t('home.communityRow')}
+    </h2>
+    {latest ? (
+      <a
+        class="community-card community-card--video"
+        href={watchUrl(latest.id, latest.short)}
+        data-video-id={latest.id}
+        data-video-open
+        data-home-video
       >
-        <Icon name="play" size={24} />
-      </span>
-      <span class="community-card__body">
-        <span class="community-card__kicker">{video.kicker}</span>
-        <h3 class="community-card__title" data-video-title>
-          {latest.title}
-        </h3>
-        <span class="community-card__text" data-video-meta>
-          {t(`community.videos.category.${latest.category}` as UiKey)} ·{' '}
-          {formatDate(latest.published, locale)}
+        <span
+          class="community-card__thumb"
+          aria-hidden="true"
+          data-glyph={CATEGORY_GLYPH[latest.category]}
+        >
+          <Icon name="play" size={24} />
         </span>
-      </span>
-    </a>
-  ) : (
-    <a
-      class="community-card community-card--video"
-      href={social.youtube}
-      target="_blank"
-      rel="noopener"
-    >
-      <span class="community-card__thumb" aria-hidden="true">
-        <Icon name="play" size={24} />
-      </span>
-      <span class="community-card__body">
-        <span class="community-card__kicker">{video.kicker}</span>
-        <h3 class="community-card__title">{video.title}</h3>
-        <span class="community-card__text">{video.text}</span>
-        <span class="visually-hidden">{t('a11y.newTab')}</span>
-      </span>
-    </a>
-  )}
-  <a class="community-card" href={social.discord} target="_blank" rel="noopener">
-    <span class="community-card__body">
-      <span class="community-card__kicker">
-        {discord.kicker}{' '}
-        <span data-home-members hidden={!counts}>
-          · {members}
+        <span class="community-card__body">
+          <span class="community-card__kicker">{video.kicker}</span>
+          <h3 class="community-card__title" data-video-title>
+            {latest.title}
+          </h3>
+          <span class="community-card__text" data-video-meta>
+            {t(`community.videos.category.${latest.category}` as UiKey)} ·{' '}
+            {formatDate(latest.published, locale)}
+          </span>
         </span>
-      </span>
-      <h3 class="community-card__title">{discord.title}</h3>
-      <span class="community-card__cta">
-        {discord.cta}
-        <Icon name="arrow-up-right" size={16} />
-        <span class="visually-hidden">{t('a11y.newTab')}</span>
-      </span>
-    </span>
-  </a>
-  {latest && <VideoPlayer />}
-</section>
+      </a>
+    ) : social.youtube ? (
+      <a
+        class="community-card community-card--video"
+        href={social.youtube}
+        target="_blank"
+        rel="noopener"
+      >
+        <span class="community-card__thumb" aria-hidden="true">
+          <Icon name="play" size={24} />
+        </span>
+        <span class="community-card__body">
+          <span class="community-card__kicker">{video.kicker}</span>
+          <h3 class="community-card__title">{video.title}</h3>
+          <span class="community-card__text">{video.text}</span>
+          <span class="visually-hidden">{t('a11y.newTab')}</span>
+        </span>
+      </a>
+    ) : null}
+    {social.discord && (
+      <a class="community-card" href={social.discord} target="_blank" rel="noopener">
+        <span class="community-card__body">
+          <span class="community-card__kicker">
+            {discord.kicker}{' '}
+            <span data-home-members hidden={!counts}>
+              · {members}
+            </span>
+          </span>
+          <h3 class="community-card__title">{discord.title}</h3>
+          <span class="community-card__cta">
+            {discord.cta}
+            <Icon name="arrow-up-right" size={16} />
+            <span class="visually-hidden">{t('a11y.newTab')}</span>
+          </span>
+        </span>
+      </a>
+    )}
+    {latest && <VideoPlayer />}
+  </section>
+)}
 
 <script>
   import { initHomeCommunity } from '../../lib/home/community';
