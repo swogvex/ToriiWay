@@ -1,37 +1,5 @@
 ---
-import LibraryIndex from '../../components/library/LibraryIndex.astro';
-import { getLocale, localizePath, useTranslations } from '../../i18n';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getBooks } from '../../lib/library/books';
-import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
-
-const locale = getLocale(Astro.url.pathname);
-const t = useTranslations(locale);
-const site = Astro.site ?? new URL(Astro.url.origin);
-const books = await getBooks();
-
-const breadcrumb = [
-  { label: t('nav.home'), href: localizePath('/', locale) },
-  { label: t('library.title') },
-];
-const pageUrl = new URL(Astro.url.pathname, site);
-const jsonLd = jsonLdGraph(
-  {
-    '@type': 'CollectionPage',
-    name: t('library.metaTitle'),
-    description: t('library.description'),
-    url: pageUrl.href,
-    inLanguage: locale,
-  },
-  breadcrumbList(breadcrumb, site, pageUrl),
-);
+import LibraryPage from '../../components/library/LibraryPage.astro';
 ---
 
-<BaseLayout
-  title={`${t('library.metaTitle')} · ${t('site.name')}`}
-  description={t('library.description')}
-  breadcrumb={breadcrumb}
-  jsonLd={jsonLd}
->
-  <LibraryIndex books={books} />
-</BaseLayout>
+<LibraryPage />

@@ -1,0 +1,176 @@
+---
+/** One book (11-spec-library: "Book page"): details, official link and related books. */
+import { render } from 'astro:content';
+
+import BookBadges from '../../components/library/BookBadges.astro';
+import BookCover from '../../components/library/BookCover.astro';
+import UntranslatedNotice from '../../components/shell/UntranslatedNotice.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { DEFAULT_LOCALE, getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Book } from '../../lib/library/books';
+import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import bookCss from '../../styles/book.css?url';
+
+interface Props {
+  book: Book;
+  related: Book[];
+}
+
+const { book, related } = Astro.props;
+const { data } = book.entry;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const translated = locale === DEFAULT_LOCALE;
+const site = Astro.site ?? new URL(Astro.url.origin);
+const pageUrl = new URL(Astro.url.pathname, site);
+const { Content } = await render(book.entry);
+const description = (book.entry.body ?? '').trim().split(/(?<=\.)\s/)[0] ?? data.title;
+
+const levelLabel = (level: string) => (level === 'kana' ? t('library.level.kana') : level);
+const resources = [
+  data.resources.audio && t('library.resource.audio'),
+  data.resources.exercises && t('library.resource.exercises'),
+].filter(Boolean);
+/** Publishers and institutions are organisations; the rest are people. */
+const authorType = /Corporation|Foundation|Times|Publishers|Press|NPO|JEES/.test(data.author)
+  ? 'Organization'
+  : 'Person';
+
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('library.title'), href: localizePath('/library', locale) },
+  { label: data.title },
+];
+const jsonLd = jsonLdGraph(
+  {
+    '@type': 'Book',
+    name: data.title,
+    author: { '@type': authorType, name: data.author },
+    inLanguage: data.editions,
+    educationalLevel: book.levels.map(levelLabel).join(', '),
+    url: pageUrl.href,
+    sameAs: data.link.url,
+    ...(data.pages && { numberOfPages: data.pages }),
+  },
+  breadcrumbList(breadcrumb, site, pageUrl),
+);
+---
+
+<BaseLayout
+  title={`${data.title} · ${t('library.title')} · ${t('site.name')}`}
+  description={description}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+>
+  <link slot="head" rel="stylesheet" href={bookCss} />
+  {!translated && <UntranslatedNotice />}
+  <article class="book column page-frame">
+    <header class="book__head">
+      <BookCover level={book.coverLevel} kanji={data.coverKanji} tone={book.tone} size="lg" />
+      <div class="book__heading">
+        <p class="book__kicker">{t('library.kicker')}</p>
+        <h1 class="book__title">{data.title}</h1>
+        <p class="book__author">{data.author}</p>
+        <BookBadges book={book} />
+      </div>
+    </header>
+
+    <div class="book__body">
+      <div class="book__text">
+        {translated ? (
+          <Content />
+        ) : (
+          <div lang="en">
+            <Content />
+          </div>
+        )}
+        <p>
+          <a
+            class="book__visit"
+            href={data.link.url}
+            target="_blank"
+            rel="noopener"
+            data-count={`library:${book.slug}`}
+          >
+            {t('library.book.visit')}
+            <Icon name="arrow-up-right" size={18} />
+            <span class="visually-hidden">{t('library.book.newTab')}</span>
+          </a>
+        </p>
+      </div>
+      <dl class="book__facts">
+        <div>
+          <dt>{t('library.book.level')}</dt>
+          <dd>{book.levels.map(levelLabel).join(' · ')}</dd>
+        </div>
+        <div>
+          <dt>{t('library.book.categories')}</dt>
+          <dd>{data.categories.map((category) => t(`library.category.${category}`)).join(', ')}</dd>
+        </div>
+        <div>
+          <dt>{t('library.book.resources')}</dt>
+          <dd>{resources.length ? resources.join(', ') : t('library.book.none')}</dd>
+        </div>
+        <div>
+          <dt>{t('library.book.editions')}</dt>
+          <dd>{data.editions.map((edition) => t(`library.edition.${edition}`)).join(', ')}</dd>
+        </div>
+        {data.pages && (
+          <div>
+            <dt>pp</dt>
+            <dd>{data.pages}</dd>
+          </div>
+        )}
+        <div>
+          <dt>{t('library.book.license')}</dt>
+          <dd>{data.license}</dd>
+        </div>
+      </dl>
+    </div>
+
+    {related.length > 0 && (
+      <section class="book__related" aria-labelledby="related-title">
+        <h2 id="related-title" class="book__subtitle">
+          {t('library.book.related')}
+        </h2>
+        <ul class="book__related-list">
+          {related.map((other) => (
+            <li>
+              <a href={localizePath(`/library/${other.slug}`, locale)}>
+                <BookCover
+                  level={other.coverLevel}
+                  kanji={other.entry.data.coverKanji}
+                  tone={other.tone}
+                />
+                <span>
+                  <strong>{other.title}</strong>
+                  <span class="book__related-author">{other.entry.data.author}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <p>
+      <a class="book__back" href={localizePath('/library', locale)}>
+        <Icon name="arrow-left" size={16} />
+        {t('library.book.back')}
+      </a>
+    </p>
+  </article>
+</BaseLayout>
+
+<script>
+  // Anonymous count of visits to the official page (11-spec-library: "Counting").
+  // sendBeacon survives the new tab opening and never delays it; nothing is sent about you.
+  document.addEventListener('click', (event) => {
+    const link = (event.target as Element | null)?.closest<HTMLAnchorElement>('[data-count]');
+    const key = link?.dataset.count;
+    if (!key || !('sendBeacon' in navigator)) return;
+    const body = new Blob([JSON.stringify({ key })], { type: 'application/json' });
+    navigator.sendBeacon('/api/counters', body);
+  });
+</script>

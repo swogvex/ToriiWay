@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+import BookPage from '../../../components/library/BookPage.astro';
+import { type Book, getBooks, relatedBooks } from '../../../lib/library/books';
+
+export const getStaticPaths = (async () => {
+  const books = await getBooks();
+  return books.map((book) => ({
+    params: { slug: book.slug },
+    props: { book, related: relatedBooks(book, books) },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  book: Book;
+  related: Book[];
+}
+
+const { book, related } = Astro.props;
+---
+
+<BookPage book={book} related={related} />

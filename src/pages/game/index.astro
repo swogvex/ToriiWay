@@ -1,37 +1,5 @@
 ---
-import GameSetup from '../../components/game/GameSetup.astro';
-import { DIFFICULTIES, GAME_SCRIPTS } from '../../game/config';
-import { getLocale, localizePath, useTranslations } from '../../i18n';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getGameItems } from '../../lib/game/items';
-import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
-
-const locale = getLocale(Astro.url.pathname);
-const t = useTranslations(locale);
-const site = Astro.site ?? new URL(Astro.url.origin);
-
-const lists = await Promise.all(
-  GAME_SCRIPTS.flatMap((script) =>
-    DIFFICULTIES.map(async (difficulty) => ({
-      key: `${script}/${difficulty}`,
-      size: (await getGameItems(script, difficulty)).length,
-    })),
-  ),
-);
-const available = lists.filter((list) => list.size > 0).map((list) => list.key);
-
-const breadcrumb = [
-  { label: t('nav.home'), href: localizePath('/', locale) },
-  { label: t('nav.game') },
-];
-const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pathname, site)));
+import GamePage from '../../components/game/GamePage.astro';
 ---
 
-<BaseLayout
-  title={`${t('game.title')} · ${t('site.name')}`}
-  description={t('game.description')}
-  breadcrumb={breadcrumb}
-  jsonLd={jsonLd}
->
-  <GameSetup available={available} />
-</BaseLayout>
+<GamePage />

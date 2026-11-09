@@ -1,0 +1,84 @@
+---
+import PlayBlocked from '../../components/game/PlayBlocked.astro';
+import PlayField from '../../components/game/PlayField.astro';
+import PlayHud from '../../components/game/PlayHud.astro';
+import PlayKeyboard from '../../components/game/PlayKeyboard.astro';
+import PlayResults from '../../components/game/PlayResults.astro';
+import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
+import { getLocale, useTranslations } from '../../i18n';
+import FocusLayout from '../../layouts/FocusLayout.astro';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+// Settings come from the URL in the browser, so the mode label is built there.
+const labels = Object.fromEntries([
+  ...GAME_SCRIPTS.map((key) => [key, t(`game.script.${key}`)]),
+  ...DIFFICULTIES.map((key) => [key, t(`game.difficulty.${key}`)]),
+  ...MODES.map((key) => [key, t(`game.mode.${key}`)]),
+  ['level', t('game.hud.level')],
+]);
+---
+
+<FocusLayout
+  title={`${t('game.play.title')} · ${t('site.name')}`}
+  description={t('game.play.description')}
+  noindex
+>
+  <div class="kana-rush" data-game data-labels={JSON.stringify(labels)}>
+    <h1 class="visually-hidden">Kana Rush</h1>
+    <section class="play column" aria-label={t('game.play.title')}>
+      <PlayHud />
+      <PlayField />
+      <PlayKeyboard />
+    </section>
+    <PlayResults />
+    <PlayBlocked />
+  </div>
+</FocusLayout>
+
+<script>
+  import { initPlay } from '../../game/play';
+
+  const root = document.querySelector<HTMLElement>('[data-game]');
+  if (root) void initPlay(root);
+</script>
+
+<style>
+  /*
+   * The game fits the window with no scroll: the column takes the height left under
+   * the 56px focus header and the field shrinks first (PlayField.astro).
+   */
+  .play {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    block-size: calc(100svh - 56px);
+    min-block-size: 0;
+    padding-block: var(--space-2) var(--space-4);
+  }
+
+  .kana-rush :global(.blocked),
+  .kana-rush :global(.results) {
+    display: none;
+  }
+
+  /* A finished run shows the results in place of the game (same route). */
+  .kana-rush:is([data-status='cleared'], [data-status='failed'], [data-status='quit']) .play {
+    display: none;
+  }
+
+  .kana-rush:is([data-status='cleared'], [data-status='failed'], [data-status='quit'])
+    :global(.results) {
+    display: grid;
+  }
+
+  /* Same query as BLOCKED in src/game/play.ts; "Play anyway" adds .is-forced. */
+  @media (width < 1024px), not (pointer: fine) {
+    .kana-rush:not(.is-forced) .play {
+      display: none;
+    }
+
+    .kana-rush:not(.is-forced) :global(.blocked) {
+      display: grid;
+    }
+  }
+</style>

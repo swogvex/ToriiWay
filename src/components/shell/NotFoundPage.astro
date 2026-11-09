@@ -1,0 +1,262 @@
+---
+/**
+ * 404 — an omikuji (paper fortune) to draw while the visitor finds their way
+ * (07-spec-shell, images 17a–17c). The "Pick a path" links are the real content and work
+ * without JS; the island in lib/omikuji/stage.ts only adds the shrine game.
+ */
+import { getCollection } from 'astro:content';
+
+import Button from '../../components/ui/Button.astro';
+import Chip from '../../components/ui/Chip.astro';
+import { getLocale, localizePath, type UiKey, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { SectionId } from '../../lib/nav';
+import { type Fortune, PATH_GLYPH, PATH_HREF } from '../../lib/omikuji/fortune';
+import type { OmikujiData } from '../../lib/omikuji/stage';
+import omikujiCss from '../../styles/omikuji.css?url';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const lang = locale === 'es' ? 'es' : 'en';
+
+const [file] = await getCollection('fortunes');
+const fortunes: Fortune[] = (file?.data.fortunes ?? []).map((fortune) => ({
+  rank: fortune.rank,
+  reading: fortune.reading,
+  romaji: fortune.romaji,
+  meaning: fortune.meaning[lang],
+  message: fortune.message[lang],
+  path: fortune.path,
+  word: fortune.word,
+  wordKana: fortune.wordKana,
+  wordMeaning: fortune.wordMeaning[lang],
+}));
+
+const PATHS = Object.keys(PATH_HREF) as SectionId[];
+const pathLabel = (id: SectionId) => t(`notFound.path.${id}` as UiKey);
+
+const data: OmikujiData = {
+  locale,
+  fortunes,
+  paths: Object.fromEntries(PATHS.map((id) => [id, pathLabel(id)])),
+  status: {
+    shaking: t('notFound.statusShaking'),
+    drawn: t('notFound.statusDrawn'),
+    tied: t('notFound.statusTied'),
+  },
+};
+
+const digits = [
+  { digit: '4', kana: 'よん' },
+  { digit: '0', kana: 'まる' },
+  { digit: '4', kana: 'よん' },
+];
+
+// "**bold**" and "{omikuji}" inside the lead become <strong> and a lang="ja" span.
+const lead = t('notFound.lead')
+  .split(/(\*\*.+?\*\*|\{omikuji\})/)
+  .filter(Boolean)
+  .map((part) =>
+    part === '{omikuji}'
+      ? { kind: 'ja' as const, text: 'おみくじ' }
+      : part.startsWith('**')
+        ? { kind: 'strong' as const, text: part.slice(2, -2) }
+        : { kind: 'text' as const, text: part },
+  );
+
+// Seven papers on the rope; yours hangs fourth (image 17c).
+const rope = [0, 1, 2, 3, 4, 5, 6];
+---
+
+<BaseLayout
+  title={`${t('notFound.title')} · ${t('site.name')}`}
+  description={t('notFound.metaDescription')}
+  noindex
+>
+  <link slot="head" rel="stylesheet" href={omikujiCss} />
+  <div class="omikuji page-frame column" data-omikuji>
+    <section class="omikuji__hero">
+      <div class="omikuji__intro">
+        <p class="omikuji__kicker">{t('notFound.kicker')}</p>
+        <div class="omikuji__digits" role="img" aria-label={t('notFound.digits')}>
+          {digits.map(({ digit, kana }) => (
+            <span class:list={['omikuji__digit', digit === '0' && 'omikuji__digit--zero']}>
+              <span class="omikuji__digit-kana" lang="ja">
+                {kana}
+              </span>
+              {digit}
+            </span>
+          ))}
+        </div>
+        <h1 class="omikuji__title">{t('notFound.heading')}</h1>
+        <p class="omikuji__lead">
+          {lead.map((part) =>
+            part.kind === 'ja' ? (
+              <span lang="ja">{part.text}</span>
+            ) : part.kind === 'strong' ? (
+              <strong>{part.text}</strong>
+            ) : (
+              part.text
+            ),
+          )}
+        </p>
+        <div class="omikuji__actions">
+          {/* Holds its place before the island starts (no layout shift), invisible without JS. */}
+          <Button variant="accent" size={52} data-omikuji-action="shake" data-omikuji-wait>
+            {t('notFound.shake')}
+          </Button>
+          <Button variant="accent" size={52} data-omikuji-action="tie-bad" hidden>
+            {t('notFound.tieBad')}
+          </Button>
+          <Button variant="primary" size={52} data-omikuji-action="tie-good" hidden>
+            {t('notFound.tieGood')}
+          </Button>
+          <Button variant="outline" size={52} data-omikuji-action="again" hidden>
+            {t('notFound.again')}
+          </Button>
+          <Button variant="accent" size={52} data-omikuji-action="another" hidden>
+            {t('notFound.another')}
+          </Button>
+          <a class="omikuji__home" href={localizePath('/', locale)}>
+            {t('notFound.home')}
+          </a>
+        </div>
+        <p class="omikuji__status" role="status" aria-live="polite" data-omikuji-status></p>
+      </div>
+
+      <div class="stage" data-state="idle" data-glyph="籤" data-omikuji-stage>
+        <div class="stage__rope" aria-hidden="true" data-omikuji-show="tied" hidden>
+          {rope.map((index) => (
+            <span
+              class:list={['stage__knot', index === 3 && 'stage__knot--yours']}
+              lang={index === 3 ? 'ja' : undefined}
+              data-fortune={index === 3 ? 'tied' : undefined}
+            />
+          ))}
+        </div>
+
+        <div class="stage__box" aria-hidden="true">
+          <span class="stage__stick" lang="ja">
+            四〇四
+          </span>
+          <span class="stage__lacquer" lang="ja">
+            <span class="stage__lacquer-text">御神籤</span>
+          </span>
+          <span class="stage__tube"></span>
+          <span class="stage__floor"></span>
+        </div>
+
+        <div class="stage__info" data-omikuji-show="idle shaking">
+          <p class="stage__kicker">
+            <span lang="ja">おみくじ</span> · {t('notFound.idleKicker')}
+          </p>
+          <h2 class="stage__title">{t('notFound.idleTitle')}</h2>
+          <p class="stage__text">{t('notFound.idleText')}</p>
+        </div>
+
+        <div class="stage__info" data-omikuji-show="tied" hidden>
+          <p class="stage__kicker">
+            <span lang="ja">結ぶ</span> · {t('notFound.tiedKicker')}
+          </p>
+          <h2 class="stage__title">{t('notFound.tiedTitle')}</h2>
+          <p class="stage__text">{t('notFound.tiedText')}</p>
+        </div>
+
+        <article class="fortune" aria-label={t('notFound.paper')} data-omikuji-show="open" hidden>
+          <div class="fortune__frame">
+            <p class="fortune__head">
+              <span class="fortune__number" lang="ja">
+                第四〇四番
+              </span>
+              <span class="fortune__no">{t('notFound.paperNumber')}</span>
+            </p>
+            <div class="fortune__rank">
+              <ruby class="fortune__rank-kanji" lang="ja">
+                <span data-fortune="rank"></span>
+                <rt data-fortune="reading"></rt>
+              </ruby>
+              <p class="fortune__meaning">
+                <strong data-fortune="meaning"></strong>
+                <span class="fortune__romaji" data-fortune="romaji"></span>
+              </p>
+            </div>
+            <p class="fortune__message" data-fortune="message"></p>
+            <dl class="fortune__list">
+              <div>
+                <dt>
+                  <span lang="ja">失物</span> <small>{t('notFound.lost')}</small>
+                </dt>
+                <dd>
+                  <span lang="ja">出でず</span> {t('notFound.lostText')}
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span lang="ja">方角</span> <small>{t('notFound.direction')}</small>
+                </dt>
+                <dd>
+                  {t('notFound.luckyPath')} <strong data-fortune="path"></strong>
+                </dd>
+              </div>
+              <div>
+                <dt>
+                  <span lang="ja">言葉</span> <small>{t('notFound.word')}</small>
+                </dt>
+                <dd>
+                  <ruby class="fortune__word" lang="ja">
+                    <span data-fortune="word"></span>
+                    <rt data-fortune="word-kana"></rt>
+                  </ruby>{' '}
+                  — <span data-fortune="word-meaning"></span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="paths" aria-labelledby="paths-title">
+      <div class="paths__head">
+        <h2 class="paths__title" id="paths-title">
+          {t('notFound.paths')}
+        </h2>
+        <p class="paths__note">
+          <span lang="ja">道</span> · {t('notFound.pathsNote')}
+        </p>
+      </div>
+      <ul class="paths__list">
+        {PATHS.map((id) => (
+          <li>
+            <a
+              class="paths__card"
+              href={localizePath(PATH_HREF[id], locale)}
+              data-omikuji-path={id}
+            >
+              <span class="paths__glyph" lang="ja" aria-hidden="true">
+                {PATH_GLYPH[id]}
+              </span>
+              <span class="paths__name">{pathLabel(id)}</span>
+              <span class="paths__lucky" data-omikuji-lucky hidden>
+                <span aria-hidden="true">
+                  <Chip tone="accent">{t('notFound.lucky')}</Chip>
+                </span>
+                <span class="visually-hidden">{t('notFound.luckyLabel')}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <script type="application/json" data-omikuji-data set:html={JSON.stringify(data)} />
+  </div>
+</BaseLayout>
+
+<script>
+  import { initOmikuji, type OmikujiData } from '../../lib/omikuji/stage';
+
+  const root = document.querySelector<HTMLElement>('[data-omikuji]');
+  const json = root?.querySelector('[data-omikuji-data]')?.textContent;
+  if (root && json) initOmikuji(root, JSON.parse(json) as OmikujiData);
+</script>

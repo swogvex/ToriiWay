@@ -1,0 +1,10 @@
+---
+import JlptResultPage from '../../../../components/jlpt/JlptResultPage.astro';
+import { loadResult } from '../../../../lib/jlpt/result-page';
+
+export const prerender = false;
+
+const result = await loadResult(Astro, Astro.response, Astro.params.id ?? '');
+---
+
+<JlptResultPage result={result} />
