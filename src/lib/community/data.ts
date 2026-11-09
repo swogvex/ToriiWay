@@ -33,13 +33,18 @@ async function init(sources: CommunitySources) {
     ...(data.title ? { title: data.title.en } : {}),
   }));
   return {
-    discord: discordCounts(sources, channels.discordInvite),
-    videos: channelVideos(
-      sources,
-      channels.youtubeChannelId,
-      playlists?.data.playlists ?? [],
-      videoOverrides,
-    ),
+    // No channel yet: nothing to ask Discord or YouTube for.
+    discord: channels.discordInvite
+      ? discordCounts(sources, channels.discordInvite)
+      : () => Promise.resolve(null),
+    videos: channels.youtubeChannelId
+      ? channelVideos(
+          sources,
+          channels.youtubeChannelId,
+          playlists?.data.playlists ?? [],
+          videoOverrides,
+        )
+      : () => Promise.resolve([]),
   };
 }
 

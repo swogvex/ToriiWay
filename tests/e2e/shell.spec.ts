@@ -182,7 +182,7 @@ test.describe('desktop shell', () => {
     await page.goto('/');
     // Video links open the player dialog instead (YouTube only without JavaScript).
     const external = page.locator('a[href^="http"]:not([data-video-open])');
-    expect(await external.count()).toBeGreaterThanOrEqual(6);
+    expect(await external.count()).toBeGreaterThanOrEqual(2);
     for (const link of await external.all()) {
       await expect(link).toHaveAttribute('target', '_blank');
       await expect(link).toHaveAttribute('rel', 'noopener');

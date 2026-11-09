@@ -1,4 +1,7 @@
+import { readFileSync } from 'node:fs';
+
 import { expect, type Page, test } from '@playwright/test';
+import { parse } from 'yaml';
 
 import { expectNoAxeViolations } from './axe';
 
@@ -26,9 +29,18 @@ async function mockApi(page: Page): Promise<void> {
   );
 }
 
+// These tests follow channels.yaml, so filling in a channel needs no change here.
+const channels = parse(readFileSync('src/content/community/channels.yaml', 'utf8')) as {
+  youtubeHandle: string | null;
+  discordInvite: string | null;
+};
+const hasChannels = Boolean(channels.youtubeHandle && channels.discordInvite);
+const noChannels = !channels.youtubeHandle && !channels.discordInvite;
+
 const cards = (page: Page) => page.locator('[data-video]:not([hidden])');
 
 test.describe('community', () => {
+  test.skip(!hasChannels, 'channels.yaml has no channels yet');
   test.use({ viewport: { width: 1440, height: 900 } });
 
   test('loads without any third-party request and passes axe', async ({ page }) => {
@@ -113,6 +125,7 @@ test.describe('community', () => {
 });
 
 test.describe('community on phones', () => {
+  test.skip(!hasChannels, 'channels.yaml has no channels yet');
   test.use({ viewport: { width: 375, height: 812 } });
 
   test('fits the width and passes axe', async ({ page }) => {
@@ -124,6 +137,28 @@ test.describe('community on phones', () => {
     );
     expect(overflow).toBe(0);
     await expectNoAxeViolations(page);
+  });
+});
+
+test.describe('without channels', () => {
+  test.skip(!noChannels, 'channels.yaml has channels');
+
+  test('community says they are coming and links to neither', async ({ page }) => {
+    await page.goto('/community');
+    await expect(page.getByText('are on their way')).toBeVisible();
+    await expect(page.locator('a[href*="discord.gg"], a[href*="youtube.com"]')).toHaveCount(0);
+    await expect(page.locator('section.videos')).toHaveCount(0);
+    await expectNoAxeViolations(page);
+  });
+
+  test('home and the footer hide both, and the API asks nobody', async ({ page, request }) => {
+    await page.goto('/');
+    await expect(page.locator('[data-home-community]')).toHaveCount(0);
+    await expect(page.locator('footer').getByRole('link', { name: /Discord|YouTube/ })).toHaveCount(
+      0,
+    );
+    const body = (await (await request.get('/api/community')).json()) as unknown;
+    expect(body).toEqual({ discord: null, videos: [] });
   });
 });
 

@@ -221,12 +221,14 @@ const typeLabel = (section: string, type: string) =>
 
       <JlptReview items={report.mistakes} />
 
-      <p class="result__credits">
-        <a href={discord} target="_blank" rel="noopener">
-          {t('jlpt.report.credits')}
-          <span class="visually-hidden">{t('a11y.newTab')}</span>
-        </a>
-      </p>
+      {discord && (
+        <p class="result__credits">
+          <a href={discord} target="_blank" rel="noopener">
+            {t('jlpt.report.credits')}
+            <span class="visually-hidden">{t('a11y.newTab')}</span>
+          </a>
+        </p>
+      )}
       <p class="result__disclaimer">{t('jlpt.disclaimer')}</p>
     </div>
   ) : (

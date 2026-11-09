@@ -14,12 +14,15 @@ export async function getSiteCopy(locale: Locale) {
     ...entry.data,
     video: {
       ...entry.data.video,
-      kicker: entry.data.video.kicker.replace('{handle}', channels.youtubeHandle),
+      // Without a channel, "YouTube · {handle}" is just "YouTube".
+      kicker: channels.youtubeHandle
+        ? entry.data.video.kicker.replace('{handle}', channels.youtubeHandle)
+        : entry.data.video.kicker.replace(/\s*·?\s*\{handle\}/, ''),
     },
     social: {
       // Before the rest: the footer shows the icons in this order.
-      discord: channels.discordInvite,
-      youtube: channels.youtubeUrl,
+      discord: channels.discordInvite ?? undefined,
+      youtube: channels.youtubeUrl ?? undefined,
       ...entry.data.social,
     },
   };

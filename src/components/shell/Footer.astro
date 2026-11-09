@@ -35,8 +35,12 @@ const columns: { title: UiKey; links: FooterLink[] }[] = [
   {
     title: 'footer.community',
     links: [
-      { key: 'footer.discord', href: site.social.discord, external: true },
-      { key: 'footer.youtube', href: site.social.youtube, external: true },
+      ...(site.social.discord
+        ? [{ key: 'footer.discord' as const, href: site.social.discord, external: true }]
+        : []),
+      ...(site.social.youtube
+        ? [{ key: 'footer.youtube' as const, href: site.social.youtube, external: true }]
+        : []),
       { key: 'nav.library', href: local('/library') },
     ],
   },

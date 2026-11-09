@@ -72,58 +72,65 @@ const jsonLd = jsonLdGraph(
   <div class="community column page-frame" data-community data-island={JSON.stringify(island)}>
     <SectionHeader level="h1" kicker={t('community.kicker')} title={t('community.title')} />
 
-    <DiscordCard invite={channels.discordInvite} discord={discord.data} counts={counts} />
+    {channels.discordInvite && (
+      <DiscordCard invite={channels.discordInvite} discord={discord.data} counts={counts} />
+    )}
+    {!channels.discordInvite && !channels.youtubeUrl && (
+      <p class="community__soon">{t('community.soon')}</p>
+    )}
 
-    <section class="videos" aria-labelledby="videos-title">
-      <div class="videos__head">
-        <h2 class="videos__title" id="videos-title">
-          {t('community.videos.title')}
-        </h2>
-        {tabs.length > 2 && (
-          <Segmented
-            class="videos__tabs"
-            name="category"
-            legend={t('community.videos.filter')}
-            options={tabs.map((tab) => ({ value: tab, label: label(tab) }))}
-          />
-        )}
-      </div>
+    {channels.youtubeUrl && (
+      <section class="videos" aria-labelledby="videos-title">
+        <div class="videos__head">
+          <h2 class="videos__title" id="videos-title">
+            {t('community.videos.title')}
+          </h2>
+          {tabs.length > 2 && (
+            <Segmented
+              class="videos__tabs"
+              name="category"
+              legend={t('community.videos.filter')}
+              options={tabs.map((tab) => ({ value: tab, label: label(tab) }))}
+            />
+          )}
+        </div>
 
-      {/* Always present: the island fills it when the feed was down during the build. */}
-      <ul class="videos__grid" data-video-list>
-        {videos.map((video, index) => (
-          <VideoCard video={video} hidden={index >= PAGE} />
-        ))}
-      </ul>
-      <p class="videos__empty" data-video-empty hidden={videos.length > 0}>
-        {t('community.videos.empty')}
-      </p>
+        {/* Always present: the island fills it when the feed was down during the build. */}
+        <ul class="videos__grid" data-video-list>
+          {videos.map((video, index) => (
+            <VideoCard video={video} hidden={index >= PAGE} />
+          ))}
+        </ul>
+        <p class="videos__empty" data-video-empty hidden={videos.length > 0}>
+          {t('community.videos.empty')}
+        </p>
 
-      <div class="videos__foot">
-        {/* Holds its place before the island starts, so nothing shifts when it appears. */}
-        <button
-          class="videos__more"
-          type="button"
-          data-video-more
-          data-wait
-          hidden={videos.length <= PAGE}
-        >
-          {t('community.videos.more')}
-        </button>
-        <a class="videos__youtube" href={channels.youtubeUrl} target="_blank" rel="noopener">
-          {t('community.videos.youtube')}
-          <Icon name="arrow-up-right" size={16} />
-          <span class="visually-hidden">{t('a11y.newTab')}</span>
-        </a>
-      </div>
-      <p class="videos__note">{t('community.videos.note')}</p>
-    </section>
+        <div class="videos__foot">
+          {/* Holds its place before the island starts, so nothing shifts when it appears. */}
+          <button
+            class="videos__more"
+            type="button"
+            data-video-more
+            data-wait
+            hidden={videos.length <= PAGE}
+          >
+            {t('community.videos.more')}
+          </button>
+          <a class="videos__youtube" href={channels.youtubeUrl} target="_blank" rel="noopener">
+            {t('community.videos.youtube')}
+            <Icon name="arrow-up-right" size={16} />
+            <span class="visually-hidden">{t('a11y.newTab')}</span>
+          </a>
+        </div>
+        <p class="videos__note">{t('community.videos.note')}</p>
+      </section>
+    )}
 
     <template data-video-template>
       <VideoCard />
     </template>
 
-    <VideoPlayer />
+    {channels.youtubeUrl && <VideoPlayer />}
   </div>
 </BaseLayout>
 
@@ -150,6 +157,10 @@ const jsonLd = jsonLdGraph(
   }
 
   /* On narrow phones the tabs scroll sideways instead of widening the page. */
+  .community__soon {
+    color: var(--muted);
+  }
+
   .videos__head :global(.segmented) {
     max-inline-size: 100%;
     overflow-x: auto;
