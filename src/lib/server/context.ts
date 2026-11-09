@@ -214,7 +214,11 @@ export async function gameDeps(context: RequestContext): Promise<GameDeps> {
         secretFor(process.env.VERCEL_ENV, TURNSTILE_SECRET_KEY),
         clientIp(context),
       ),
-    rateLimit: (key, limit, windowMs) => limits.rateLimit(key, limit, windowMs, Date.now()),
+    // Every e2e test shares one IP: the suite plays more runs than the hourly limit allows.
+    rateLimit: (key, limit, windowMs) =>
+      JLPT_MEMORY_STORE
+        ? Promise.resolve(true)
+        : limits.rateLimit(key, limit, windowMs, Date.now()),
     items: async (combo, duration) => {
       const lists = await Promise.all(
         reachablePools(combo, duration).map((difficulty) => listTexts(combo.script, difficulty)),
