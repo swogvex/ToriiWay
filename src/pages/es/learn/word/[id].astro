@@ -1,0 +1,10 @@
+---
+import WordPage from '../../../../components/learn/WordPage.astro';
+import { loadWord } from '../../../../lib/server/dictionary-pages';
+
+export const prerender = false;
+
+const { word, view } = await loadWord(Astro.params.id, Astro.response);
+---
+
+<WordPage word={word} view={view} />

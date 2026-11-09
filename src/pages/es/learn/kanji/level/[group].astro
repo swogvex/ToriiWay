@@ -1,0 +1,10 @@
+---
+import KanjiIndex from '../../../../../components/learn/KanjiIndex.astro';
+import { loadKanjiGroup } from '../../../../../lib/server/dictionary-pages';
+
+export const prerender = false;
+
+const { group, literals, view } = await loadKanjiGroup(Astro.params.group, Astro.response);
+---
+
+<KanjiIndex group={group} literals={literals} view={view} />

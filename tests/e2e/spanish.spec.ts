@@ -32,19 +32,49 @@ test.describe('Spanish routes', () => {
     );
   });
 
-  test('unpublished Spanish pages stay out of search engines', async ({ page, request }) => {
-    await page.goto('/es');
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex');
-    await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
-    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(0);
-    await expect(page.locator('[data-pagefind-body]')).toHaveCount(0);
+  test('Spanish pages are published with hreflang in both directions', async ({ page }) => {
+    await page.goto('/es/learn/hiragana');
+    await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      /\/es\/learn\/hiragana$/,
+    );
+    await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveAttribute(
+      'href',
+      /[^s]\/learn\/hiragana$/,
+    );
+    await expect(page.locator('[data-pagefind-body]')).toHaveCount(1);
 
-    await page.goto('/');
-    await expect(page.locator('link[rel="alternate"][hreflang="es"]')).toHaveCount(0);
+    await page.goto('/learn/hiragana');
+    await expect(page.locator('link[rel="alternate"][hreflang="es"]')).toHaveAttribute(
+      'href',
+      /\/es\/learn\/hiragana$/,
+    );
+    await expect(page.locator('[data-lang-link="es"]').first()).toHaveAttribute(
+      'href',
+      '/es/learn/hiragana',
+    );
+  });
 
-    const sitemap = await request.get('/sitemap-0.xml');
-    expect(sitemap.ok()).toBe(true);
-    expect(await sitemap.text()).not.toMatch(/<loc>[^<]*\/es(\/|<)/);
+  test('the sitemap lists Spanish pages with their English alternates', async ({ request }) => {
+    const sitemap = await (await request.get('/sitemap-0.xml')).text();
+    expect(sitemap).toMatch(/<loc>[^<]*\/es\/learn\/hiragana<\/loc>/);
+    expect(sitemap).toMatch(/hreflang="es"[^>]*\/es\/learn\/hiragana"/);
+    expect(sitemap).not.toMatch(/<loc>[^<]*\/es\/learn<\/loc>/);
+  });
+
+  test('the Spanish kana chart loads Spanish panel data', async ({ page }) => {
+    const data = page.waitForResponse((response) =>
+      response.url().endsWith('/data/kana/es/hiragana.json'),
+    );
+    await page.goto('/es/learn/hiragana');
+    expect((await data).ok()).toBe(true);
+  });
+
+  test('a guide that is not translated says so', async ({ page }) => {
+    await page.goto('/es/learn/guide/what-is-hiragana');
+    await expect(page.locator('[data-untranslated]')).toContainText('Aún no traducido');
+    await expect(page.locator('article.guide')).toHaveAttribute('lang', 'en');
   });
 
   const PAGES = [
@@ -57,6 +87,12 @@ test.describe('Spanish routes', () => {
     '/es/library',
     '/es/library/kanji-para-recordar-1',
     '/es/credits',
+    '/es/learn',
+    '/es/learn/hiragana',
+    '/es/learn/katakana',
+    '/es/learn/kana/%E3%81%8B',
+    '/es/learn/guide/what-is-katakana',
+    '/es/learn/search',
   ];
 
   for (const url of PAGES) {

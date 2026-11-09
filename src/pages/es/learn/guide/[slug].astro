@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+
+import GuidePage from '../../../../components/learn/GuidePage.astro';
+import { DEFAULT_LOCALE } from '../../../../i18n';
+
+// Every locale lists the English guides; a missing translation falls back to English.
+export const getStaticPaths = (async () => {
+  const guides = await getCollection(
+    'guides',
+    (entry) => entry.id.startsWith(`${DEFAULT_LOCALE}/`) && entry.data.section === 'learn',
+  );
+  return guides.map((guide) => ({
+    params: { slug: guide.id.slice(DEFAULT_LOCALE.length + 1) },
+  }));
+}) satisfies GetStaticPaths;
+---
+
+<GuidePage slug={Astro.params.slug} />

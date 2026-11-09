@@ -4,11 +4,18 @@
  * Katakana links, the dictionary box, the guide intro with its "In this guide" list,
  * the chart in three tabs and the detail panel.
  */
-import { getEntry, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 
 import { DEFAULT_LOCALE, getLocale, localizePath, useTranslations } from '../../i18n';
 import { CHART_GROUPS } from '../../lib/kana/chart';
-import { getKana, KANJIVG_CREDIT, panelKana, SCRIPTS, type Script } from '../../lib/kana/data';
+import {
+  getKana,
+  kanaDataUrl,
+  KANJIVG_CREDIT,
+  panelKana,
+  SCRIPTS,
+  type Script,
+} from '../../lib/kana/data';
 import JaText from '../content/JaText.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Tabs from '../ui/Tabs.astro';
@@ -32,14 +39,16 @@ if (!firstKana) throw new Error(`No ${script} kana`);
 const first = panelKana(firstKana, script, locale);
 
 const slug = `what-is-${script}`;
+// getCollection, not getEntry: a missing translation is expected and getEntry warns on it.
+const guides = await getCollection('guides');
 const guide =
-  (await getEntry('guides', `${locale}/${slug}`)) ??
-  (await getEntry('guides', `${DEFAULT_LOCALE}/${slug}`));
+  guides.find((entry) => entry.id === `${locale}/${slug}`) ??
+  guides.find((entry) => entry.id === `${DEFAULT_LOCALE}/${slug}`);
 const headings = guide ? (await render(guide)).headings.filter((h) => h.depth === 2) : [];
 const guideHref = localizePath(`/learn/guide/${slug}`, locale);
 
 // Panel data for the other kana (pages/data/kana/[script].json.ts), fetched after load.
-const dataUrl = `/data/kana/${script}.json`;
+const dataUrl = kanaDataUrl(script, locale);
 ---
 
 <div class="learn column page-frame">

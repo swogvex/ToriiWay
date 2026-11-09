@@ -1,7 +1,7 @@
 import { type CollectionEntry, getEntry } from 'astro:content';
 
 import kanjivg from '../../data/kanjivg/kana.json';
-import { localizePath, type Locale, useTranslations } from '../../i18n';
+import { DEFAULT_LOCALE, localizePath, type Locale, useTranslations } from '../../i18n';
 import { chartGroup, chartRowKey } from './chart';
 import { type GlyphData, type GlyphLayout, glyphLayout } from './glyph';
 
@@ -25,6 +25,13 @@ export async function getKana(script: Script): Promise<Kana[]> {
 
 export function kanaHref(char: string, locale: Locale): string {
   return localizePath(`/learn/kana/${char}`, locale);
+}
+
+/** Prerendered panel data of a script (pages/data/kana/[...file].json.ts). */
+export function kanaDataUrl(script: Script, locale: Locale): string {
+  return locale === DEFAULT_LOCALE
+    ? `/data/kana/${script}.json`
+    : `/data/kana/${locale}/${script}.json`;
 }
 
 export function scriptHref(script: Script, locale: Locale): string {

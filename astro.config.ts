@@ -48,10 +48,10 @@ export default defineConfig({
   integrations: [
     preact(),
     sitemap({
+      // Each page lists its other-language version as an hreflang alternate.
+      i18n: { defaultLocale: 'en', locales: { en: 'en', es: 'es' } },
       filter: (page) => {
-        const { pathname } = new URL(page);
-        // Spanish joins the sitemap when it is added to PUBLISHED_LOCALES.
-        if (pathname === '/es' || pathname.startsWith('/es/')) return false;
+        const pathname = new URL(page).pathname.replace(/^\/es(?=\/|$)/, '') || '/';
         // /learn duplicates /learn/hiragana (canonical), so only the canonical is listed.
         return !pathname.startsWith('/dev/') && !['/learn', '/learn/search'].includes(pathname);
       },
