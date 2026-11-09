@@ -156,3 +156,35 @@ test.describe('Spanish routes', () => {
     });
   }
 });
+
+test.describe('Spanish suggestion banner', () => {
+  test.use({ locale: 'es-ES' });
+
+  test('suggests the same page in Spanish without moving the page', async ({ page }) => {
+    await page.goto('/library');
+    const banner = page.locator('[data-lang-banner]');
+    await expect(banner).toBeVisible();
+    await expect(banner).toContainText('¿Ver esta página en español?');
+    await expect(banner.getByRole('link')).toHaveAttribute('href', '/es/library');
+    expect(await banner.evaluate((node) => getComputedStyle(node).position)).toBe('fixed');
+    await expectNoAxeViolations(page);
+  });
+
+  test('stays closed once dismissed', async ({ page }) => {
+    await page.goto('/');
+    await page.locator('[data-lang-banner-close]').click();
+    await expect(page.locator('[data-lang-banner]')).toBeHidden();
+    await page.reload();
+    await expect(page.locator('[data-lang-banner]')).toBeHidden();
+  });
+
+  test('never shows on Spanish pages', async ({ page }) => {
+    await page.goto('/es/library');
+    await expect(page.locator('[data-lang-banner]')).toHaveCount(0);
+  });
+});
+
+test('the banner stays hidden for browsers in English', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('[data-lang-banner]')).toBeHidden();
+});

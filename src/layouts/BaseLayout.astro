@@ -5,6 +5,7 @@
  */
 import Footer from '../components/shell/Footer.astro';
 import Head from '../components/shell/Head.astro';
+import LangBanner from '../components/shell/LangBanner.astro';
 import Header, { type Crumb } from '../components/shell/Header.astro';
 import MobileMenu from '../components/shell/MobileMenu.astro';
 import Rail from '../components/shell/Rail.astro';
@@ -63,6 +64,7 @@ const searchable = !noindex && !canonical && PUBLISHED_LOCALES.includes(locale);
     <SearchDialog />
     <ShortcutsDialog />
     <MobileMenu />
+    <LangBanner />
     <Toast />
   </body>
 </html>

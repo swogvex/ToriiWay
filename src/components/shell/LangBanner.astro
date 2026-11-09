@@ -1,0 +1,86 @@
+---
+/**
+ * "¿Ver esta página en español?" (07-spec-shell: language suggestion banner). Rendered
+ * hidden on English pages; lib/shell.ts shows it when the browser prefers Spanish and the
+ * visitor has neither dismissed it nor picked English. Fixed at the bottom, so showing it
+ * never moves the page. It is written in Spanish because only Spanish readers see it.
+ */
+import { DEFAULT_LOCALE, getLocale, localizePath, useTranslations } from '../../i18n';
+
+const pathname = Astro.url.pathname;
+const show = getLocale(pathname) === DEFAULT_LOCALE;
+const t = useTranslations('es');
+---
+
+{show && (
+  <aside class="lang-banner" lang="es" aria-label={t('lang.banner.label')} hidden data-lang-banner>
+    <p class="lang-banner__text">{t('lang.banner.text')}</p>
+    <a
+      class="lang-banner__link"
+      href={localizePath(pathname, 'es')}
+      hreflang="es"
+      data-lang-link="es"
+    >
+      {t('lang.banner.link')}
+    </a>
+    <button class="lang-banner__close" type="button" data-lang-banner-close>
+      {t('lang.banner.dismiss')}
+    </button>
+  </aside>
+)}
+
+<style>
+  .lang-banner {
+    position: fixed;
+    inset-block-end: var(--space-4);
+    inset-inline: var(--space-4);
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    align-items: center;
+    justify-content: center;
+    max-inline-size: 36rem;
+    margin-inline: auto;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    color: var(--ink);
+  }
+
+  .lang-banner[hidden] {
+    display: none;
+  }
+
+  .lang-banner__link,
+  .lang-banner__close {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--target-min);
+    padding-inline: var(--space-3);
+    border-radius: var(--radius-control);
+    font-weight: 700;
+  }
+
+  .lang-banner__link {
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+  }
+
+  .lang-banner__close {
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .lang-banner__link:focus-visible,
+  .lang-banner__close:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+</style>

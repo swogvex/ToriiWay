@@ -77,6 +77,14 @@ describe('POST /api/jlpt/runs/[id]/email', () => {
     expect(sent[0]?.text).toContain('Hi Ana,');
   });
 
+  it('follows the language of the result page', async () => {
+    await finishedRun();
+    expect((await ask({ locale: 'es' })).status).toBe(202);
+    expect(sent[0]?.text).toContain(`https://toriiway.xyz/es/jlpt/r/${ID}?utm_source=email`);
+    expect(sent[0]?.text).toContain('Hola, Ana:');
+    expect((await ask({ locale: 'fr' })).status).toBe(400);
+  });
+
   it('refuses bad tokens, bad addresses, open and unknown runs', async () => {
     expect((await ask({})).status).toBe(404);
     const open = createRun({ id: ID, level: 'N5', seed: 1, isPublic: false, now: clock });

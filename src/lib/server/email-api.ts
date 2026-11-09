@@ -2,6 +2,7 @@
 
 import { z } from 'astro/zod';
 
+import { LOCALES, localizePath } from '../../i18n';
 import { buildResultEmail } from './email';
 import { assertSameOrigin, HttpError, json, readJson } from './http';
 import type { JlptDeps } from './jlpt-api';
@@ -19,6 +20,8 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const emailBody = z.strictObject({
   email: z.email().max(254),
   token: z.string().min(1).max(2048),
+  /** Language of the result page that sent it; the email and its link follow it. */
+  locale: z.enum(LOCALES).default('en'),
 });
 
 export async function emailHandler(
@@ -46,7 +49,8 @@ export async function emailHandler(
     passed: run.scores.passed,
     total: run.scores.total,
     max: run.scores.max,
-    url: new URL(`/jlpt/r/${run.id}`, deps.site).href,
+    url: new URL(localizePath(`/jlpt/r/${run.id}`, body.locale), deps.site).href,
+    locale: body.locale,
   });
   if (!(await deps.sendEmail(message))) throw new HttpError('unavailable', 503, 'email not sent');
   await deps.store.setEmail(run.id, body.email, now);

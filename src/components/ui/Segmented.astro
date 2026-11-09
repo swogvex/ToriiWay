@@ -123,4 +123,11 @@ const { name, legend, options, value = options[0]?.value, class: className } = A
     outline: 2px solid var(--focus);
     outline-offset: 2px;
   }
+
+  /* Small phones: longer labels (Spanish "Fácil · Normal · Difícil · Extremo") must fit 360px. */
+  @media (width < 26rem) {
+    .segmented__label {
+      padding-inline: var(--space-3);
+    }
+  }
 </style>
