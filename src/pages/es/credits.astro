@@ -1,0 +1,10 @@
+---
+import CreditsPage from '../../components/shell/CreditsPage.astro';
+import { loadCreditSources } from '../../lib/server/credits';
+
+export const prerender = false;
+
+const sources = await loadCreditSources(Astro.response.headers);
+---
+
+<CreditsPage sources={sources} />

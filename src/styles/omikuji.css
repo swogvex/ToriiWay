@@ -1,0 +1,660 @@
+/* Only the 404 pages load this file: the site-wide bundle has no room for it. */
+
+.omikuji {
+  display: grid;
+  gap: var(--space-10);
+}
+
+.omikuji__hero {
+  display: grid;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (width >= 56rem) {
+  .omikuji__hero {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 460px);
+    gap: var(--space-8);
+  }
+}
+
+.omikuji__intro {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+}
+
+.omikuji__kicker,
+.stage__kicker,
+.paths__note {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.omikuji__digits {
+  display: flex;
+  margin-block-start: var(--space-6);
+  font-size: clamp(5rem, 16vw, 7rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+}
+
+.omikuji__digit {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+}
+
+.omikuji__digit--zero {
+  color: var(--accent);
+}
+
+.omikuji__digit-kana {
+  color: var(--accent-ink);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.omikuji__title {
+  margin-block-start: var(--space-8);
+  font-size: clamp(var(--text-xl), 4.4vw, 2.5rem);
+  letter-spacing: -0.02em;
+  line-height: var(--leading-display);
+}
+
+.omikuji__lead {
+  max-inline-size: 30rem;
+  margin-block-start: var(--space-5);
+  color: var(--muted);
+}
+
+.omikuji__lead strong {
+  color: var(--ink);
+}
+
+.omikuji__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  margin-block-start: var(--space-6);
+}
+
+/* visibility, not display: the button keeps its space, so nothing moves when it appears. */
+.omikuji__actions > [data-omikuji-wait] {
+  visibility: hidden;
+}
+
+.omikuji__home {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--target-min);
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Beside the buttons it keeps a wider gap; on its own line it lines up with them. */
+@media (width >= 40rem) {
+  .omikuji__home {
+    margin-inline-start: var(--space-4);
+  }
+}
+
+.omikuji__status {
+  min-block-size: 1.5em;
+  margin-block-start: var(--space-6);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+/* Stage ------------------------------------------------------------------------------- */
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template:
+    'rope' auto
+    'info' auto
+    'box' auto / minmax(0, 1fr);
+  gap: var(--space-6);
+  min-block-size: 420px;
+  padding: var(--space-6) var(--space-5);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+@media (width >= 40rem) {
+  .stage {
+    grid-template:
+      'rope rope' 72px
+      'box info' 1fr / 132px minmax(0, 1fr);
+    gap: 0 var(--space-8);
+    block-size: 520px;
+    padding: var(--space-6) var(--space-8) var(--space-8);
+  }
+}
+
+/* 籤 in the corner. A pseudo-element: axe measures contrast on aria-hidden spans too. */
+.stage::after {
+  position: absolute;
+  inset-block-end: -0.12em;
+  inset-inline-end: -0.04em;
+  color: var(--line);
+  font-family: var(--font-display-ja);
+  font-size: 11rem;
+  font-weight: 700;
+  line-height: 1;
+  content: attr(data-glyph);
+  pointer-events: none;
+}
+
+.stage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stage [hidden] {
+  display: none;
+}
+
+.stage__info {
+  grid-area: info;
+  align-self: center;
+  display: grid;
+  gap: var(--space-3);
+}
+
+@media (width >= 40rem) {
+  .stage__info {
+    margin-block-start: var(--space-12);
+  }
+
+  .stage[data-state='tied'] .stage__info {
+    align-self: start;
+    margin-block-start: var(--space-8);
+  }
+}
+
+.stage__title {
+  font-size: var(--text-lg);
+  line-height: 1.25;
+}
+
+.stage__text {
+  color: var(--muted);
+  font-size: var(--text-sm);
+  line-height: 1.65;
+}
+
+/* The box: black lacquer with a hexagonal top, the stick behind it. */
+.stage__box {
+  grid-area: box;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  place-self: end center;
+  inline-size: 148px;
+  padding-block-start: 132px;
+}
+
+@media (width >= 40rem) {
+  .stage__box {
+    justify-self: start;
+  }
+}
+
+.stage__lacquer {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  inline-size: 116px;
+  block-size: 240px;
+  margin-block-end: var(--space-2);
+  padding-block-start: 60px;
+  color-scheme: light;
+  background: var(--ink);
+  color: var(--bg);
+  clip-path: polygon(22% 0, 78% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+  transform-origin: 50% 100%;
+}
+
+.stage__lacquer-text {
+  font-family: var(--font-display-ja);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.15;
+  writing-mode: vertical-rl;
+}
+
+/* The short vermilion line under 御神籤. */
+.stage__lacquer::after {
+  inline-size: 34px;
+  block-size: 3px;
+  margin-block-start: var(--space-4);
+  border-radius: 2px;
+  background: var(--accent);
+  content: '';
+}
+
+.stage__stick {
+  /* Physical sizes: in vertical-rl the logical ones swap axes. */
+  position: absolute;
+  bottom: 140px;
+  left: calc(50% - 7px);
+  width: 14px;
+  height: 140px;
+  padding-top: 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px 3px 0 0;
+  color-scheme: light;
+  background: var(--key);
+  color: var(--accent-ink);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: start;
+  writing-mode: vertical-rl;
+
+  /* Turns with the box around its base (12px above the bottom of the box). */
+  transform-origin: 50% calc(100% + 128px);
+}
+
+/* The tube the stick slides through: a short dark collar on the flat top of the box. */
+.stage__tube {
+  position: absolute;
+  bottom: 248px;
+  left: calc(50% - 13px);
+  width: 26px;
+  height: 12px;
+  border-radius: 5px 5px 1px 1px;
+  color-scheme: light;
+  background: color-mix(in srgb, var(--ink) 78%, var(--bg));
+  transform-origin: 50% calc(100% + 236px);
+}
+
+/* Its opening, seen from slightly above. */
+.stage__tube::before {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 16px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink);
+  content: '';
+}
+
+.stage__floor {
+  inline-size: 148px;
+  block-size: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+}
+
+/* Risen: about 125px above the box, the whole 四〇四 in view. */
+.stage[data-state='open'] .stage__stick {
+  transform: translateY(-98px);
+}
+
+.stage[data-state='shaking'] .stage__lacquer,
+.stage[data-state='shaking'] .stage__tube,
+.stage[data-state='shaking'] .stage__stick {
+  animation: shake 0.9s var(--ease);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    rotate: 0deg;
+  }
+
+  15% {
+    rotate: -7deg;
+  }
+
+  30% {
+    rotate: 6deg;
+  }
+
+  45% {
+    rotate: -5deg;
+  }
+
+  60% {
+    rotate: 4deg;
+  }
+
+  75% {
+    rotate: -2deg;
+  }
+}
+
+/* The rope with the tied papers (image 17c). */
+.stage__rope {
+  grid-area: rope;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding-inline: var(--space-5);
+  min-block-size: 64px;
+}
+
+.stage__rope::before {
+  position: absolute;
+  inset: 16px 0 auto;
+  block-size: 3px;
+  border-radius: 2px;
+  background: var(--ink);
+  content: '';
+}
+
+.stage__knot {
+  position: relative;
+  inline-size: 24px;
+  block-size: 34px;
+  margin-block-start: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: var(--surface);
+  rotate: -4deg;
+}
+
+.stage__knot:nth-child(even) {
+  rotate: 3deg;
+}
+
+.stage__knot:nth-child(3n) {
+  rotate: -1deg;
+}
+
+.stage__knot--yours {
+  display: grid;
+  place-items: center;
+  inline-size: 38px;
+  block-size: 52px;
+  margin-block-start: 0;
+  padding-block-start: var(--space-3);
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-display-ja);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1;
+  rotate: 4deg;
+}
+
+/* The fortune paper: warm white in both themes, the one shadow outside the modals. */
+.fortune {
+  grid-area: info;
+  padding: var(--space-2);
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  color-scheme: light;
+  background: var(--paper);
+  box-shadow: var(--shadow-paper);
+  color: var(--ink);
+  transform-origin: 50% 0;
+}
+
+@media (width >= 40rem) {
+  .fortune {
+    grid-row: 1 / -1;
+    align-self: stretch;
+    margin-block: calc(-1 * var(--space-2)) 0;
+    margin-inline: calc(-1 * var(--space-6)) calc(-1 * var(--space-4));
+  }
+}
+
+.fortune__frame {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  block-size: calc(100% - 10px);
+  margin: 5px;
+  padding: var(--space-3);
+  border: 1px solid var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.fortune__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-block-end: var(--space-3);
+  border-block-end: 1px solid var(--line);
+}
+
+.fortune__number {
+  color: var(--accent-ink);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.fortune__no,
+.fortune__romaji,
+.fortune__list small {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+}
+
+.fortune__rank {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+  padding-block-end: var(--space-3);
+  border-block-end: 1px solid var(--line);
+}
+
+.fortune__rank-kanji {
+  color: var(--accent);
+  font-family: var(--font-display-ja);
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  ruby-position: over;
+}
+
+.stage[data-rank-size='long'] .fortune__rank-kanji {
+  font-size: 3.5rem;
+}
+
+.fortune__rank-kanji rt {
+  color: var(--accent-ink);
+  font-family: var(--font-body-ja);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.35em;
+}
+
+/* Centred on the kanji (the furigana sits above), a little high like image 17b. */
+.fortune__meaning {
+  display: grid;
+  gap: var(--space-1);
+  min-inline-size: 0;
+  padding-block-end: var(--space-2);
+  font-size: var(--text-md);
+  line-height: 1.15;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.stage[data-rank-size='long'] .fortune__meaning {
+  font-size: var(--text-base);
+}
+
+.fortune__meaning .fortune__romaji {
+  font-size: var(--text-xs);
+}
+
+.fortune__message {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+}
+
+.fortune__list {
+  display: grid;
+  gap: var(--space-2);
+  line-height: 1.4;
+  margin: 0;
+  font-size: var(--text-xs);
+}
+
+.fortune__list > div {
+  display: grid;
+  grid-template-columns: 4.25rem minmax(0, 1fr);
+  gap: var(--space-2);
+}
+
+.fortune__list dt {
+  display: grid;
+  align-content: start;
+  color: var(--accent-ink);
+  font-weight: 700;
+}
+
+.fortune__list small {
+  font-weight: 400;
+}
+
+.fortune__list dd {
+  margin: 0;
+}
+
+.fortune__word {
+  font-weight: 700;
+}
+
+.fortune__word rt {
+  color: var(--muted);
+  font-size: 0.65em;
+  font-weight: 400;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stage__stick {
+    transition: transform 0.5s var(--ease);
+  }
+
+  .stage[data-state='open'] .fortune {
+    animation: unfold 0.55s var(--ease) both;
+  }
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Pick a path ------------------------------------------------------------------------ */
+
+.paths {
+  display: grid;
+  gap: var(--space-5);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--ink);
+}
+
+.paths__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-4);
+}
+
+.paths__title {
+  font-size: var(--text-lg);
+}
+
+.paths__note {
+  text-transform: none;
+}
+
+.paths__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 40rem) {
+  .paths__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64rem) {
+  .paths__list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+.paths__card {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: var(--space-4);
+  block-size: 100%;
+  min-block-size: 112px;
+  padding: var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.paths__card:hover {
+  border-color: var(--ink);
+}
+
+.paths__card[data-lucky] {
+  border-color: var(--accent);
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.paths__glyph {
+  font-family: var(--font-display-ja);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.paths__name {
+  align-self: end;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.paths__lucky {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-4);
+}
+
+.paths__lucky[hidden] {
+  display: none;
+}

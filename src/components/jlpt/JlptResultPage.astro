@@ -1,0 +1,471 @@
+---
+/**
+ * Result page of a finished run (09-spec-jlpt, artboard 14). Rendered on demand from
+ * the database (see loadResult), never indexed, kept 180 days (then 410 Gone).
+ */
+import JlptReportCard from '../../components/jlpt/JlptReportCard.astro';
+import JlptReview from '../../components/jlpt/JlptReview.astro';
+import Button from '../../components/ui/Button.astro';
+import Field from '../../components/ui/Field.astro';
+import Icon from '../../components/ui/Icon.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import FocusLayout from '../../layouts/FocusLayout.astro';
+import { getSiteCopy } from '../../lib/content/site';
+import { nextLevel } from '../../lib/jlpt/report';
+import type { ResultData } from '../../lib/jlpt/result-page';
+import { siteKeyFor } from '../../lib/server/turnstile';
+
+interface Props {
+  result: ResultData;
+}
+
+const { id, view, run, report, percentile, now } = Astro.props.result;
+const DAY = 24 * 60 * 60 * 1000;
+// Real Turnstile keys only on Vercel production (previews use Cloudflare's test keys).
+const siteKey = siteKeyFor(process.env.VERCEL_ENV);
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const emailMessages = {
+  sending: t('jlpt.email.sending'),
+  sent: t('jlpt.email.sent'),
+  invalid: t('jlpt.email.invalid'),
+  verify: t('jlpt.email.verify'),
+  limit: t('jlpt.email.limit'),
+  check: t('jlpt.email.check'),
+  error: t('jlpt.email.error'),
+};
+
+const site = Astro.site ?? new URL(Astro.url.origin);
+const pageUrl = new URL(localizePath(`/jlpt/r/${id}`, locale), site);
+const discord = (await getSiteCopy(locale)).social.discord;
+const imageUrl = new URL(`/api/og/jlpt/${id}.png`, site);
+const imageName = run ? `toriiway-${run.level.toLowerCase()}-report.png` : '';
+const levelLabel = (level: string) => (level === 'kana' ? t('jlpt.level.kana') : level);
+const next = run ? nextLevel(run.level) : null;
+const date = run ? new Date(run.finishedAt ?? run.createdAt).toISOString().slice(0, 10) : '';
+const daysLeft = run ? Math.max(1, Math.ceil((run.expiresAt - now) / DAY)) : 0;
+const typeLabel = (section: string, type: string) =>
+  run?.level === 'kana'
+    ? `${t(`jlpt.section.${section}` as 'jlpt.section.hiragana')} — ${t(`jlpt.type.${type}` as 'jlpt.type.task')}`
+    : t(`jlpt.type.${type}` as 'jlpt.type.task');
+---
+
+<FocusLayout
+  title={`${t('jlpt.report.title')} · ${t('site.name')}`}
+  description={t('jlpt.report.description')}
+  noindex
+  image={view === 'report' ? imageUrl.href : undefined}
+>
+  {view === 'report' && run?.scores && report ? (
+    <div class="result column page-frame">
+      <header class="result__head">
+        <div>
+          <p class="result__kicker">
+            {t('jlpt.report.kicker', { run: run.id.slice(0, 8).toUpperCase() })}
+          </p>
+          <h1>
+            {run.name
+              ? t('jlpt.report.welldone', { name: run.name })
+              : t('jlpt.report.welldoneAnon')}
+          </h1>
+        </div>
+        <p class="result__expires">{t('jlpt.report.expires', { days: daysLeft })}</p>
+      </header>
+
+      <JlptReportCard
+        level={run.level}
+        name={run.name}
+        date={date}
+        scores={run.scores}
+        percentile={percentile}
+        correct={report.correct}
+        total={report.total}
+        url={`${pageUrl.host}${pageUrl.pathname}`}
+      />
+
+      <div class="actions">
+        <a class="actions__download" href={imageUrl.pathname} download={imageName}>
+          <Icon name="download" size={18} />
+          {t('jlpt.report.download')}
+        </a>
+        <button
+          type="button"
+          class="actions__copy"
+          data-copy-link={pageUrl.href}
+          data-copied={t('jlpt.report.copied')}
+        >
+          <Icon name="copy" size={18} />
+          <span>{t('jlpt.report.copy')}</span>
+        </button>
+      </div>
+
+      <div class="result__grid">
+        <section class="breakdown" aria-labelledby="breakdown-title">
+          <h2 id="breakdown-title">{t('jlpt.report.breakdown')}</h2>
+          <ul>
+            {report.breakdown.map((entry) => {
+              const percent = entry.total ? Math.round((entry.correct / entry.total) * 100) : 0;
+              return (
+                <li class:list={['breakdown__row', { 'breakdown__row--low': percent < 50 }]}>
+                  <span>{typeLabel(entry.section, entry.type)}</span>
+                  <svg
+                    class="breakdown__bar"
+                    viewBox="0 0 100 6"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                  >
+                    <rect class="breakdown__track" width="100" height="6" rx="3" />
+                    <rect class="breakdown__fill" width={percent} height="6" rx="3" />
+                  </svg>
+                  <span class="breakdown__value">
+                    {percent}%
+                    <span class="visually-hidden">
+                      {' '}
+                      ({entry.correct}/{entry.total})
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <nav class="steps" aria-labelledby="steps-title">
+          <h2 class="steps__title" id="steps-title">
+            {t('jlpt.report.next')}
+          </h2>
+          <ul>
+            <li>
+              {report.mistakes.length > 0 ? (
+                <a href="#review">
+                  {t('jlpt.report.next.review', { count: report.mistakes.length })}
+                  <Icon name="arrow-right" size={18} />
+                </a>
+              ) : (
+                <span>{t('jlpt.report.next.perfect')}</span>
+              )}
+            </li>
+            <li>
+              <a href={localizePath('/learn', locale)}>
+                {t('jlpt.report.next.learn')}
+                <Icon name="arrow-right" size={18} />
+              </a>
+            </li>
+            <li>
+              <a href={localizePath('/jlpt', locale)}>
+                {next
+                  ? t('jlpt.report.next.level', { level: levelLabel(next) })
+                  : t('jlpt.report.next.again', { level: levelLabel(run.level) })}
+                <Icon name="arrow-right" size={18} />
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <form
+        class="mail"
+        data-email-form
+        data-run={run.id}
+        data-sitekey={siteKey}
+        data-messages={JSON.stringify(emailMessages)}
+        novalidate
+      >
+        <h2 class="mail__title">{t('jlpt.email.title')}</h2>
+        <Field
+          id="jlpt-email-results"
+          name="email"
+          type="email"
+          label={t('jlpt.email.label')}
+          hint={t('jlpt.email.hint')}
+          placeholder="you@example.com"
+          autocomplete="email"
+        />
+        <div class="mail__check" data-email-turnstile></div>
+        <Button variant="accent" type="submit" data-email-send>
+          {t('jlpt.email.send')}
+        </Button>
+        <p class="mail__status" role="status" data-email-status></p>
+      </form>
+
+      <JlptReview items={report.mistakes} />
+
+      {discord && (
+        <p class="result__credits">
+          <a href={discord} target="_blank" rel="noopener">
+            {t('jlpt.report.credits')}
+            <span class="visually-hidden">{t('a11y.newTab')}</span>
+          </a>
+        </p>
+      )}
+      <p class="result__disclaimer">{t('jlpt.disclaimer')}</p>
+    </div>
+  ) : (
+    <section class="result__state column" aria-labelledby="state-title">
+      <h1 id="state-title">
+        {view === 'gone'
+          ? t('jlpt.report.gone.title')
+          : view === 'open'
+            ? t('jlpt.report.open.title')
+            : view === 'unavailable'
+              ? t('jlpt.start.error.unavailable')
+              : t('jlpt.report.missing.title')}
+      </h1>
+      <p>
+        {view === 'gone'
+          ? t('jlpt.report.gone.text')
+          : view === 'open'
+            ? t('jlpt.report.open.text')
+            : t('jlpt.report.missing.text')}
+      </p>
+      {view === 'open' ? (
+        <Button href={localizePath('/jlpt/run', locale)}>{t('jlpt.report.open.link')}</Button>
+      ) : (
+        <Button href={localizePath('/jlpt', locale)}>{t('jlpt.run.missing.link')}</Button>
+      )}
+    </section>
+  )}
+</FocusLayout>
+
+<script>
+  import { initEmailForm } from '../../lib/jlpt/email-form';
+
+  initEmailForm();
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-link]')) {
+    button.addEventListener('click', async () => {
+      const label = button.querySelector('span');
+      try {
+        await navigator.clipboard.writeText(button.dataset.copyLink ?? location.href);
+        if (label) label.textContent = button.dataset.copied ?? '';
+      } catch {
+        // Clipboard blocked: the address bar still has the link.
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Right under the report card: what you just read is what you save or share. */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-block-start: calc(var(--space-6) - var(--space-10));
+  }
+
+  /* Phones: the two do not fit on one row, so stack them at full width. */
+  @media (width < 30rem) {
+    .actions {
+      display: grid;
+    }
+
+    .actions > * {
+      justify-content: center;
+    }
+  }
+
+  .actions__download {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-block-size: 40px;
+    padding-inline: var(--space-4);
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration: none;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-control);
+  }
+
+  .actions__copy {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-block-size: 40px;
+    padding-inline: var(--space-4);
+    color: var(--bg);
+    font: inherit;
+    font-weight: 700;
+    background: var(--ink);
+    border: 0;
+    border-radius: var(--radius-control);
+    cursor: pointer;
+  }
+
+  .result {
+    display: grid;
+    gap: var(--space-10);
+  }
+
+  .result__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .result__kicker {
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .result__head h1 {
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+  }
+
+  .result__expires,
+  .result__disclaimer {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .result__grid {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  @media (width >= 60rem) {
+    .result__grid {
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+
+  .breakdown {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .breakdown h2 {
+    font-size: var(--text-xl);
+  }
+
+  .breakdown ul,
+  .steps ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .breakdown ul {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .breakdown__row {
+    display: grid;
+    grid-template-columns: minmax(8rem, 1fr) minmax(6rem, 1.4fr) 3.5rem;
+    gap: var(--space-4);
+    align-items: center;
+  }
+
+  .breakdown__bar {
+    inline-size: 100%;
+    block-size: 8px;
+  }
+
+  .breakdown__track {
+    fill: var(--line);
+  }
+
+  .breakdown__fill {
+    fill: var(--ink);
+  }
+
+  .breakdown__row--low .breakdown__fill {
+    fill: var(--accent);
+  }
+
+  .breakdown__value {
+    font-family: var(--font-mono);
+    text-align: end;
+  }
+
+  .breakdown__row--low .breakdown__value {
+    color: var(--accent-ink);
+  }
+
+  .steps {
+    padding: var(--space-5) var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .steps__title {
+    margin-block-end: var(--space-2);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    letter-spacing: var(--tracking-label);
+    text-transform: uppercase;
+  }
+
+  .steps li + li {
+    border-block-start: 1px solid var(--line);
+  }
+
+  .steps a,
+  .steps span {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-4);
+    color: var(--ink);
+    font-size: var(--text-md);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .steps a:hover {
+    text-decoration: underline;
+  }
+
+  .mail {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    padding: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-card);
+  }
+
+  .mail > :global(.field) {
+    inline-size: 100%;
+    max-inline-size: 28rem;
+  }
+
+  .mail__title {
+    font-size: var(--text-xl);
+  }
+
+  .mail__check:empty {
+    display: none;
+  }
+
+  .mail__status {
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+
+  .mail__status:empty {
+    display: none;
+  }
+
+  .result__state {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    padding-block: var(--space-16);
+  }
+</style>

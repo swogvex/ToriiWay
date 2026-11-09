@@ -1,0 +1,109 @@
+---
+/**
+ * Credits & data (14-privacy-legal). The pages load `sources`: on demand, because the
+ * data versions live in the database; the rest still renders when it cannot answer.
+ */
+import SectionHeader from '../../components/ui/SectionHeader.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { FONTS_AND_ICONS, LIBRARIES, type Credit } from '../../lib/credits';
+import type { DataSource } from '../../lib/dictionary/detail';
+import detailCss from '../../styles/dictionary-detail.css?url';
+
+interface Props {
+  sources: DataSource[];
+}
+
+const { sources } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+
+const date = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' });
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('footer.credits') },
+];
+const lists: { title: string; id: string; items: readonly Credit[] }[] = [
+  { title: t('credits.fonts'), id: 'credits-fonts', items: FONTS_AND_ICONS },
+  { title: t('credits.libraries'), id: 'credits-libraries', items: LIBRARIES },
+];
+---
+
+<BaseLayout
+  title={`${t('footer.credits')} · ${t('site.name')}`}
+  description={t('credits.description')}
+  breadcrumb={breadcrumb}
+>
+  <link slot="head" rel="stylesheet" href={detailCss} />
+  <article class="dict-detail column page-frame">
+    <SectionHeader level="h1" kicker={t('credits.kicker')} title={t('footer.credits')} />
+
+    <section aria-labelledby="credits-data">
+      <h2 class="dict-detail__label" id="credits-data">
+        {t('credits.data')}
+      </h2>
+      <p>
+        {t('credits.edrdg')}{' '}
+        <a href="https://www.edrdg.org/edrdg/licence.html" rel="noopener" target="_blank">
+          {t('credits.edrdgLink')}
+          <span class="visually-hidden">{t('a11y.newTab')}</span>
+        </a>
+      </p>
+      <p>{t('credits.kanjivg')}</p>
+      <p>{t('credits.tatoeba')}</p>
+      <p>{t('credits.openjlpt')}</p>
+      <p class="dict-detail__muted">{t('credits.shareAlike')}</p>
+      {sources.length > 0 ? (
+        <div class="credits__table">
+          <table>
+            <caption class="visually-hidden">{t('credits.versions')}</caption>
+            <thead>
+              <tr>
+                <th scope="col">{t('credits.source')}</th>
+                <th scope="col">{t('credits.version')}</th>
+                <th scope="col">{t('credits.license')}</th>
+                <th scope="col">{t('credits.imported')}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sources.map((source) => (
+                <tr>
+                  <th scope="row">
+                    <a href={source.url} rel="noopener" target="_blank">
+                      {source.name}
+                      <span class="visually-hidden">{t('a11y.newTab')}</span>
+                    </a>
+                  </th>
+                  <td>{source.version.slice(0, 12)}</td>
+                  <td>{source.license}</td>
+                  <td>{date.format(source.importedAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p class="dict-detail__muted">{t('credits.noVersions')}</p>
+      )}
+    </section>
+
+    {lists.map((list) => (
+      <section aria-labelledby={list.id}>
+        <h2 class="dict-detail__label" id={list.id}>
+          {list.title}
+        </h2>
+        <ul class="credits__list">
+          {list.items.map((item) => (
+            <li>
+              <a href={item.url} rel="noopener" target="_blank">
+                {item.name}
+                <span class="visually-hidden">{t('a11y.newTab')}</span>
+              </a>
+              <span class="dict-detail__muted">{item.license}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </article>
+</BaseLayout>
