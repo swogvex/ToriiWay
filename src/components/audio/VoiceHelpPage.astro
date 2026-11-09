@@ -1,0 +1,40 @@
+---
+/** Help page for installing a Japanese voice, in the locale of the current route. */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import SectionHeader from '../ui/SectionHeader.astro';
+import VoiceHelpContent from './VoiceHelpContent.astro';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('voice.help.title') },
+];
+const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pathname, site)));
+---
+
+<BaseLayout
+  title={`${t('voice.help.title')} · ${t('site.name')}`}
+  description={t('voice.help.description')}
+  breadcrumb={breadcrumb}
+  jsonLd={jsonLd}
+>
+  <div class="help column page-frame">
+    <SectionHeader level="h1" kicker={t('voice.help.kicker')} title={t('voice.help.title')} />
+    <VoiceHelpContent />
+  </div>
+</BaseLayout>
+
+<style>
+  .help {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .help > :global(.voice-help) {
+    max-inline-size: 65ch;
+  }
+</style>

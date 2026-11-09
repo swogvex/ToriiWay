@@ -1,0 +1,43 @@
+---
+/** Home in the locale of the current route; the pages in src/pages only mount it. */
+import { getLocale, localizePath } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { communityData } from '../../lib/community/data';
+import { toPublic } from '../../lib/community/public';
+import { latestVideo } from '../../lib/community/videos';
+import { getSiteCopy } from '../../lib/content/site';
+import UntranslatedNotice from '../shell/UntranslatedNotice.astro';
+import CommunityRow from './CommunityRow.astro';
+import Hero from './Hero.astro';
+import IndexGrid from './IndexGrid.astro';
+
+const locale = getLocale(Astro.url.pathname);
+const site = await getSiteCopy(locale);
+// Build-time snapshot; the row refreshes itself from /api/community (Home stays static).
+const community = toPublic(await communityData());
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ToriiWay',
+  alternateName: '鳥居ウェイ',
+  url: new URL(localizePath('/', locale), Astro.site).href,
+  inLanguage: locale,
+  description: site.description,
+};
+---
+
+<BaseLayout title={site.title} description={site.description} jsonLd={jsonLd}>
+  {!site.translated && <UntranslatedNotice />}
+  <div class="column" lang={site.translated ? undefined : 'en'}>
+    <Hero copy={site.hero} />
+    <IndexGrid copy={site.index} />
+    <CommunityRow
+      video={site.video}
+      discord={site.discord}
+      social={site.social}
+      latest={latestVideo(community.videos)}
+      counts={community.discord}
+    />
+  </div>
+</BaseLayout>

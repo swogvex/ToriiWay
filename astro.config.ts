@@ -50,6 +50,8 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const { pathname } = new URL(page);
+        // Spanish joins the sitemap when it is added to PUBLISHED_LOCALES.
+        if (pathname === '/es' || pathname.startsWith('/es/')) return false;
         // /learn duplicates /learn/hiragana (canonical), so only the canonical is listed.
         return !pathname.startsWith('/dev/') && !['/learn', '/learn/search'].includes(pathname);
       },

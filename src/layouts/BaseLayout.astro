@@ -11,7 +11,7 @@ import Rail from '../components/shell/Rail.astro';
 import SearchDialog from '../components/shell/SearchDialog.astro';
 import ShortcutsDialog from '../components/shell/ShortcutsDialog.astro';
 import Toast from '../components/ui/Toast.astro';
-import { getLocale, useTranslations } from '../i18n';
+import { getLocale, PUBLISHED_LOCALES, useTranslations } from '../i18n';
 
 interface Props {
   title: string;
@@ -28,7 +28,7 @@ interface Props {
 const { title, description, noindex, breadcrumb, jsonLd, canonical, searchMeta } = Astro.props;
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
-const searchable = !noindex && !canonical;
+const searchable = !noindex && !canonical && PUBLISHED_LOCALES.includes(locale);
 ---
 
 <!doctype html>

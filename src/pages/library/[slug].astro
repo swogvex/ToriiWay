@@ -6,7 +6,7 @@ import { render } from 'astro:content';
 import BookBadges from '../../components/library/BookBadges.astro';
 import BookCover from '../../components/library/BookCover.astro';
 import Icon from '../../components/ui/Icon.astro';
-import { DEFAULT_LOCALE, localizePath, useTranslations } from '../../i18n';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Book, getBooks, relatedBooks } from '../../lib/library/books';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
@@ -26,7 +26,7 @@ interface Props {
 
 const { book, related } = Astro.props;
 const { data } = book.entry;
-const locale = DEFAULT_LOCALE;
+const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(Astro.url.pathname, site);
