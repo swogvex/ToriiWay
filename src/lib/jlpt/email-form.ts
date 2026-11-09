@@ -52,7 +52,11 @@ export function initEmailForm(): void {
       const response = await fetch(`/api/jlpt/runs/${runId}/email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: input.value.trim(), token }),
+        body: JSON.stringify({
+          email: input.value.trim(),
+          token,
+          locale: document.documentElement.lang === 'es' ? 'es' : 'en',
+        }),
       });
       if (response.ok) {
         status.textContent = messages.sent;

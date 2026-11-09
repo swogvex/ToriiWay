@@ -24,6 +24,22 @@ describe('buildResultEmail', () => {
     expect(message.html).toContain('Not affiliated with');
   });
 
+  it('writes the email in Spanish when the result page was in Spanish', () => {
+    const message = buildResultEmail({
+      ...input,
+      name: 'Ana',
+      url: 'https://toriiway.xyz/es/jlpt/r/6f1c2f9e-3b5a-4d8e-9c1a-2b3c4d5e6f70',
+      locale: 'es',
+    });
+    expect(message.subject).toBe('Tu resultado del simulacro JLPT N5: aprobado');
+    expect(message.text).toContain('Hola, Ana:');
+    expect(message.text).toContain('合格 Aprobado · 122 / 180');
+    expect(message.text).toContain('/es/jlpt/r/');
+    expect(message.html).toContain('<html lang="es">');
+    expect(message.html).toContain('Ver mis resultados');
+    expect(message.html).toContain('Borramos tu email 30 días después del envío.');
+  });
+
   it('escapes names in HTML', () => {
     const { html } = buildResultEmail(input);
     expect(html).toContain('Hi &lt;Ana&gt;,');

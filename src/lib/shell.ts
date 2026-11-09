@@ -10,6 +10,36 @@ import { syncThemeToggles, toggleTheme } from './theme/theme';
 import { showToast } from './ui/toast';
 
 const LANG_STORAGE_KEY = 'tw:v1:lang';
+const BANNER_STORAGE_KEY = 'tw:v1:lang-banner';
+
+function read(key: string): string | null {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+/** Suggests the Spanish page once to browsers that prefer Spanish; never redirects. */
+function initLangBanner(): void {
+  const banner = document.querySelector<HTMLElement>('[data-lang-banner]');
+  if (!banner) return;
+  const prefersSpanish = (navigator.languages[0] ?? navigator.language)
+    .toLowerCase()
+    .startsWith('es');
+  if (
+    !prefersSpanish ||
+    read(BANNER_STORAGE_KEY) === 'dismissed' ||
+    read(LANG_STORAGE_KEY) === 'en'
+  ) {
+    return;
+  }
+  banner.hidden = false;
+  banner.querySelector('[data-lang-banner-close]')?.addEventListener('click', () => {
+    store(BANNER_STORAGE_KEY, 'dismissed');
+    banner.hidden = true;
+  });
+}
 
 function store(key: string, value: string): void {
   try {
@@ -68,6 +98,7 @@ export function initShell(): void {
   loadLateFonts();
   syncThemeToggles();
   syncRailToggle();
+  initLangBanner();
   matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeToggles);
 
   if (isMac()) {
