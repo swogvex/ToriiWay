@@ -1,0 +1,10 @@
+---
+import KanjiPage from '../../../../components/learn/KanjiPage.astro';
+import { loadKanji } from '../../../../lib/server/dictionary-pages';
+
+export const prerender = false;
+
+const { kanji, view } = await loadKanji(Astro.params.char, Astro.response);
+---
+
+<KanjiPage kanji={kanji} view={view} />

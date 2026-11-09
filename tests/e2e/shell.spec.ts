@@ -122,16 +122,15 @@ test.describe('desktop shell', () => {
     await expect(opener).toBeFocused();
   });
 
-  test('? opens the shortcuts dialog and L explains Spanish is coming', async ({ page }) => {
+  test('? opens the shortcuts dialog and L opens the Spanish page', async ({ page }) => {
     await page.goto('/');
     await page.locator('body').press('Shift+?');
     await expect(page.getByRole('dialog', { name: 'Keyboard shortcuts' })).toBeVisible();
     await page.keyboard.press('Escape');
 
     await page.locator('body').press('l');
-    await expect(page.locator('[data-toast-region]')).toHaveText(
-      'The Spanish version is coming soon.',
-    );
+    await expect(page).toHaveURL(/\/es$/);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'es');
   });
 
   test('single-key shortcuts do not fire while typing', async ({ page }) => {

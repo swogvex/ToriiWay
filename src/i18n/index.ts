@@ -6,7 +6,7 @@ export type Locale = (typeof LOCALES)[number];
 export const DEFAULT_LOCALE: Locale = 'en';
 
 /** Locales with translated pages. The language switch only links to these. */
-export const PUBLISHED_LOCALES: readonly Locale[] = ['en'];
+export const PUBLISHED_LOCALES: readonly Locale[] = ['en', 'es'];
 
 export type UiKey = keyof typeof en;
 type Params = Record<string, string | number>;

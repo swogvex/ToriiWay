@@ -1,0 +1,32 @@
+---
+/**
+ * One page per kana (10-spec-learn: SEO). URLs keep the character: /learn/kana/か.
+ */
+import type { GetStaticPaths } from 'astro';
+
+import KanaPage from '../../../../components/learn/KanaPage.astro';
+import { getKana, type Kana, SCRIPTS, type Script } from '../../../../lib/kana/data';
+
+export const getStaticPaths = (async () => {
+  const paths = [];
+  for (const script of SCRIPTS) {
+    const items = await getKana(script);
+    for (const [index, kana] of items.entries()) {
+      paths.push({
+        params: { char: kana.char },
+        props: { script, kana, prev: items[index - 1], next: items[index + 1] },
+      });
+    }
+  }
+  return paths;
+}) satisfies GetStaticPaths;
+
+interface Props {
+  script: Script;
+  kana: Kana;
+  prev?: Kana | undefined;
+  next?: Kana | undefined;
+}
+---
+
+<KanaPage {...Astro.props} />

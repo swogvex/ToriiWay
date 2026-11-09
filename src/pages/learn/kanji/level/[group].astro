@@ -1,24 +1,10 @@
 ---
 import KanjiIndex from '../../../../components/learn/KanjiIndex.astro';
-import { CDN_CACHE, isKanjiGroup } from '../../../../lib/dictionary/detail';
-import { getDictionaryDetailStore } from '../../../../lib/server/context';
+import { loadKanjiGroup } from '../../../../lib/server/dictionary-pages';
 
 export const prerender = false;
 
-const param = Astro.params.group;
-const group = isKanjiGroup(param) ? param : undefined;
-let literals: string[] = [];
-let view: 'ok' | 'missing' | 'unavailable' = group ? 'ok' : 'missing';
-if (group) {
-  try {
-    literals = await (await getDictionaryDetailStore()).kanjiByGroup(group);
-  } catch (error) {
-    console.error('[dictionary] kanji index', error);
-    view = 'unavailable';
-  }
-}
-Astro.response.status = { ok: 200, missing: 404, unavailable: 503 }[view];
-Astro.response.headers.set('Cache-Control', view === 'ok' ? CDN_CACHE : 'no-store');
+const { group, literals, view } = await loadKanjiGroup(Astro.params.group, Astro.response);
 ---
 
 <KanjiIndex group={group} literals={literals} view={view} />

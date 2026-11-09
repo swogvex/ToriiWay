@@ -1,0 +1,200 @@
+---
+/**
+ * Dictionary results (artboard 08). The page is static; the client script fills it from
+ * /api/dictionary/search. Results are not indexed: kanji and word pages will be.
+ */
+import DictionarySearchBox from './DictionarySearchBox.astro';
+import Button from '../ui/Button.astro';
+import Chip from '../ui/Chip.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Skeleton from '../ui/Skeleton.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dictionaryUrl } from '../../lib/dictionary/client';
+import dictionaryCss from '../../styles/dictionary.css?url';
+
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const self = localizePath('/learn/search', locale);
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('learn.title'), href: localizePath('/learn', locale) },
+  { label: t('dictionary.title') },
+];
+const suggestions = ['ichi', '日本語', 'water', 'comer'];
+const labels = {
+  title: t('dictionary.results'),
+  counts: t('dictionary.counts'),
+  showing: t('dictionary.showing'),
+  strokesOne: t('learn.strokes.one'),
+  strokesOther: t('learn.strokes.other'),
+  jlpt: t('dictionary.jlpt'),
+  gradeSchool: t('dictionary.grade'),
+  gradeSecondary: t('dictionary.gradeSecondary'),
+  jinmeiyo: t('dictionary.jinmeiyo'),
+  freq: t('dictionary.freq'),
+  common: t('dictionary.common'),
+  otherEn: t('dictionary.otherEn'),
+  otherEs: t('dictionary.otherEs'),
+  loading: t('dictionary.loading'),
+  error: t('dictionary.error'),
+};
+---
+
+<BaseLayout
+  title={`${t('dictionary.title')} · ${t('site.name')}`}
+  description={t('dictionary.description')}
+  breadcrumb={breadcrumb}
+  noindex
+>
+  <link slot="head" rel="stylesheet" href={dictionaryCss} />
+  <div
+    class="dict column page-frame"
+    data-dict-root
+    data-labels={JSON.stringify(labels)}
+    data-learn-base={localizePath('/learn', locale)}
+  >
+    <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('dictionary.title')} />
+    <DictionarySearchBox />
+
+    <div class="dict__region" data-dict-region aria-busy="false">
+      <p class="dict__message" data-dict-panel="idle">
+        {t('dictionary.idle')}
+      </p>
+
+      <div class="dict__skeletons" data-dict-panel="loading" hidden>
+        {[1, 2].map(() => (
+          <div class="dict-card">
+            <Skeleton shape="block" />
+            <div class="dict-card__body">
+              <Skeleton shape="title" />
+              <Skeleton shape="text" />
+              <Skeleton shape="text" />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="dict__message" data-dict-panel="empty" hidden>
+        <p data-dict-empty>
+          {t('dictionary.empty')} <span lang="und" data-dict-query></span>
+        </p>
+        <p>
+          {t('dictionary.try')}
+          {suggestions.map((term) => (
+            <a class="dict__try" href={dictionaryUrl(self, term)}>
+              {term}
+            </a>
+          ))}
+        </p>
+      </div>
+
+      <div class="dict__message" data-dict-panel="error" hidden>
+        <p>{t('dictionary.error')}</p>
+        <Button variant="outline" data-dict-retry>
+          {t('dictionary.retry')}
+        </Button>
+      </div>
+
+      <section
+        class="dict__results"
+        data-dict-panel="results"
+        aria-labelledby="dict-heading"
+        hidden
+      >
+        <div class="dict__head">
+          <h2 class="dict__heading" id="dict-heading" data-dict-heading>
+            {t('dictionary.title')}
+          </h2>
+          <p class="dict__counts" data-dict-counts></p>
+        </div>
+        <div class="dict__kanji" data-dict-kanji></div>
+        <ul class="dict__words" data-dict-words></ul>
+        <p class="dict__showing" data-dict-showing hidden></p>
+      </section>
+    </div>
+
+    <p class="visually-hidden" role="status" data-dict-status></p>
+
+    <p class="dict__credit">
+      <a href="https://www.edrdg.org/edrdg/licence.html" rel="noopener" target="_blank">
+        {t('dictionary.credit')}
+        <span class="visually-hidden">{t('a11y.newTab')}</span>
+      </a>
+    </p>
+
+    <template data-dict-kanji-template>
+      <article class="dict-card">
+        <div class="dict-card__glyph">
+          <a
+            class="dict-card__literal"
+            href={localizePath('/learn', locale)}
+            lang="ja"
+            data-glyph
+            data-kanji-link
+          >
+            {t('dictionary.kanji')}
+          </a>
+          <span class="dict-card__strokes" data-strokes></span>
+        </div>
+        <div class="dict-card__body">
+          <div class="dict-card__chips">
+            <Chip tone="accent" class="js-jlpt" />
+            <Chip class="js-grade" />
+            <Chip class="js-freq" />
+          </div>
+          <p class="dict-card__meaning" data-meaning></p>
+          <p class="dict-card__other" data-meaning-other></p>
+          <p class="dict-card__other" data-english-only>
+            {t('dictionary.englishOnly')}
+          </p>
+          <dl class="dict-card__readings">
+            <div data-reading-row="on">
+              <dt>{t('dictionary.on')}</dt>
+              <dd lang="ja" data-reading="on"></dd>
+            </div>
+            <div data-reading-row="kun">
+              <dt>{t('dictionary.kun')}</dt>
+              <dd lang="ja" data-reading="kun"></dd>
+            </div>
+          </dl>
+        </div>
+        <div class="dict-card__common" data-common>
+          <h3 class="dict-card__common-title">{t('dictionary.commonWords')}</h3>
+          <ul data-common-list></ul>
+        </div>
+      </article>
+    </template>
+
+    <template data-dict-word-template>
+      <li class="dict-word">
+        <div class="dict-word__head">
+          <a
+            class="dict-word__form"
+            href={localizePath('/learn', locale)}
+            lang="ja"
+            data-word-form
+            data-word-link
+          >
+            {t('dictionary.word')}
+          </a>
+          <span class="dict-word__reading" lang="ja" data-word-reading></span>
+          <Chip class="js-word-common" />
+          <Chip tone="accent" class="js-word-jlpt" />
+        </div>
+        <p class="dict-word__meaning" data-meaning></p>
+        <p class="dict-card__other" data-meaning-other></p>
+        <p class="dict-card__other" data-english-only>
+          {t('dictionary.englishOnly')}
+        </p>
+      </li>
+    </template>
+  </div>
+</BaseLayout>
+
+<script>
+  import { initDictionarySearch } from '../../lib/dictionary/search-page';
+
+  const root = document.querySelector<HTMLElement>('[data-dict-root]');
+  if (root) initDictionarySearch(root);
+</script>

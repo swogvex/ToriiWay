@@ -17,7 +17,9 @@
         "http://localhost:4321/community",
         "http://localhost:4321/jlpt/run",
         "http://localhost:4321/help/japanese-voice",
-        "http://localhost:4321/learn/search"
+        "http://localhost:4321/learn/search",
+        "http://localhost:4321/es",
+        "http://localhost:4321/es/learn/hiragana"
       ],
       "numberOfRuns": 5
     },
