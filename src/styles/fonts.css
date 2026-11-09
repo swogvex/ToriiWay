@@ -48,3 +48,19 @@
     U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
     U+A720-A7FF;
 }
+
+/*
+ * IBM Plex Mono loads after the page (lib/fonts.ts). Until then Windows draws Consolas,
+ * whose characters are 9% narrower (0.55em against 0.6em), so labels such as the library
+ * badges fit on one line and wrap when Plex arrives: a layout shift. This face scales
+ * Consolas to Plex's width and line metrics. Where Consolas is missing it is skipped; the
+ * macOS, Android and Linux monospace fonts already measure 0.6em.
+ */
+@font-face {
+  font-family: 'IBM Plex Mono Fallback';
+  src: local('Consolas');
+  size-adjust: 109.13%;
+  ascent-override: 93.93%;
+  descent-override: 25.2%;
+  line-gap-override: 0%;
+}

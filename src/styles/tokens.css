@@ -39,7 +39,8 @@
     --font-body-ja:
       'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI', 'Yu Gothic', 'Noto Sans JP',
       meiryo, sans-serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', menlo, monospace;
+    --font-mono:
+      'IBM Plex Mono', 'IBM Plex Mono Fallback', ui-monospace, 'SF Mono', menlo, monospace;
     --text-2xs: 0.75rem;
     --text-xs: 0.8125rem;
     --text-sm: 0.875rem;
