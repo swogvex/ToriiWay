@@ -35,8 +35,12 @@ export function staticCss(): AstroIntegration {
       'astro:build:done': async ({ dir, logger }) => {
         const outDir = fileURLToPath(dir);
         const files = await htmlFiles(outDir);
-        const first = await readFile(files[0] ?? '', 'utf8');
-        const sheets = linkedSheets(first);
+        // Not just the first file: public/ holds plain HTML too (Search Console verification).
+        let sheets: string[] = [];
+        for (const file of files) {
+          sheets = linkedSheets(await readFile(file, 'utf8'));
+          if (sheets.length >= 2) break;
+        }
         if (sheets.length < 2) return;
         const sizes = await Promise.all(sheets.map((sheet) => stat(join(outDir, sheet))));
         const largest = Math.max(...sizes.map((size) => size.size));
