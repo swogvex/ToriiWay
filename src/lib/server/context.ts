@@ -101,7 +101,11 @@ export async function dictionaryDeps(context: RequestContext): Promise<Dictionar
   return {
     store: await getDictionaryStore(),
     clientKey: () => hashIp(clientIp(context), salt()),
-    rateLimit: (key, limit, windowMs) => limits.rateLimit(key, limit, windowMs, Date.now()),
+    // Every e2e test shares one IP, so the suite would hit the per-minute search limit.
+    rateLimit: (key, limit, windowMs) =>
+      JLPT_MEMORY_STORE
+        ? Promise.resolve(true)
+        : limits.rateLimit(key, limit, windowMs, Date.now()),
   };
 }
 

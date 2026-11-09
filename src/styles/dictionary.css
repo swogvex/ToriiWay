@@ -5,6 +5,12 @@
   gap: var(--space-8);
 }
 
+/* Results arrive after the first paint: the footer starts out of view so nothing jumps. */
+.dict__region {
+  min-block-size: 100svh;
+  align-content: start;
+}
+
 .dict__region,
 .dict__results,
 .dict__skeletons,

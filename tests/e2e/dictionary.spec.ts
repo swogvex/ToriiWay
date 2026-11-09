@@ -44,7 +44,7 @@ test.describe('dictionary search page', () => {
 
   test('shows the empty state with suggestions', async ({ page }) => {
     await page.goto('/learn/search?q=zzzz');
-    await expect(page.getByText('Nothing found for')).toContainText('zzzz');
+    await expect(page.locator('[data-dict-empty]')).toContainText('zzzz');
     await expect(page.getByRole('link', { name: 'water' })).toBeVisible();
   });
 
@@ -91,7 +91,7 @@ test.describe('dictionary search page', () => {
       await expect(page.locator('.dict-card__literal').first()).toBeVisible();
       await expectNoAxeViolations(page);
       await page.goto('/learn/search?q=zzzz');
-      await expect(page.getByText('Nothing found for')).toBeVisible();
+      await expect(page.locator('[data-dict-empty]')).toBeVisible();
       await expectNoAxeViolations(page);
     });
   }
