@@ -6,10 +6,11 @@ import { render } from 'astro:content';
 import BookBadges from '../../components/library/BookBadges.astro';
 import BookCover from '../../components/library/BookCover.astro';
 import Icon from '../../components/ui/Icon.astro';
-import { DEFAULT_LOCALE, localizePath, useTranslations } from '../../i18n';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { type Book, getBooks, relatedBooks } from '../../lib/library/books';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import bookCss from '../../styles/book.css?url';
 
 export const getStaticPaths = (async () => {
   const books = await getBooks();
@@ -26,7 +27,7 @@ interface Props {
 
 const { book, related } = Astro.props;
 const { data } = book.entry;
-const locale = DEFAULT_LOCALE;
+const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
 const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(Astro.url.pathname, site);
@@ -69,6 +70,7 @@ const jsonLd = jsonLdGraph(
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
 >
+  <link slot="head" rel="stylesheet" href={bookCss} />
   <article class="book column page-frame">
     <header class="book__head">
       <BookCover level={book.coverLevel} kanji={data.coverKanji} tone={book.tone} size="lg" />
@@ -172,157 +174,3 @@ const jsonLd = jsonLdGraph(
     navigator.sendBeacon('/api/counters', body);
   });
 </script>
-
-<style>
-  .book {
-    display: grid;
-    gap: var(--space-10);
-  }
-
-  .book__head {
-    display: flex;
-    gap: var(--space-6);
-    align-items: end;
-    padding-block-end: var(--space-6);
-    border-block-end: 1px solid var(--ink);
-  }
-
-  .book__heading {
-    display: grid;
-    gap: var(--space-2);
-  }
-
-  .book__kicker {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-  }
-
-  .book__title {
-    font-size: clamp(var(--text-xl), 4vw, var(--text-2xl));
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: var(--leading-display);
-  }
-
-  .book__author {
-    color: var(--muted);
-  }
-
-  .book__body {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: var(--space-10);
-    align-items: start;
-  }
-
-  .book__text {
-    display: grid;
-    gap: var(--space-5);
-    font-size: var(--text-md);
-    line-height: var(--leading-body);
-  }
-
-  .book__visit {
-    display: inline-flex;
-    gap: var(--space-2);
-    align-items: center;
-    min-block-size: 3rem;
-    padding-inline: var(--space-5);
-    border-radius: var(--radius-control);
-    background: var(--ink);
-    color: var(--bg);
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  .book__visit:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  .book__facts {
-    display: grid;
-    gap: var(--space-4);
-    padding: var(--space-5);
-    margin: 0;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-card);
-    background: var(--surface);
-  }
-
-  .book__facts dt {
-    color: var(--muted);
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-label);
-    text-transform: uppercase;
-  }
-
-  .book__facts dd {
-    margin: 0;
-  }
-
-  .book__subtitle {
-    margin-block-end: var(--space-4);
-    font-size: var(--text-lg);
-    font-weight: 700;
-  }
-
-  .book__related-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-    gap: var(--space-3);
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .book__related-list a {
-    display: flex;
-    gap: var(--space-4);
-    align-items: center;
-    padding: var(--space-3);
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius-card);
-    background: var(--surface);
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .book__related-list a:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  .book__related-list span {
-    display: grid;
-    gap: var(--space-1);
-  }
-
-  .book__related-author {
-    color: var(--muted);
-    font-size: var(--text-sm);
-  }
-
-  .book__back {
-    display: inline-flex;
-    gap: var(--space-2);
-    align-items: center;
-    min-block-size: var(--target-min);
-    color: var(--ink);
-  }
-
-  @media (width < 48rem) {
-    .book__head {
-      flex-direction: column;
-      align-items: start;
-    }
-
-    .book__body {
-      grid-template-columns: minmax(0, 1fr);
-    }
-  }
-</style>

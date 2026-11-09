@@ -1,0 +1,18 @@
+---
+/** Shown on a Spanish page whose editorial content still falls back to English. */
+import { getLocale, useTranslations } from '../../i18n';
+
+const t = useTranslations(getLocale(Astro.url.pathname));
+---
+
+<p class="untranslated column" data-untranslated>
+  {t('lang.untranslated')}
+</p>
+
+<style>
+  .untranslated {
+    padding-block-start: var(--space-4);
+    color: var(--muted);
+    font-size: var(--text-sm);
+  }
+</style>

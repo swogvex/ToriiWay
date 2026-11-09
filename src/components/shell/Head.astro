@@ -1,6 +1,6 @@
 ---
 import '../../styles/base.css';
-import { DEFAULT_LOCALE, localizePath, PUBLISHED_LOCALES } from '../../i18n';
+import { DEFAULT_LOCALE, getLocale, localizePath, PUBLISHED_LOCALES } from '../../i18n';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import { THEME_PREPAINT_SCRIPT } from '../../lib/theme/prepaint';
@@ -20,11 +20,13 @@ interface Props {
 const {
   title,
   description,
-  noindex = false,
+  noindex: noindexProp = false,
   jsonLd,
   canonical: canonicalPath,
   image,
 } = Astro.props;
+// A locale stays out of search engines until its pages are published.
+const noindex = noindexProp || !PUBLISHED_LOCALES.includes(getLocale(Astro.url.pathname));
 const pathname = canonicalPath ?? Astro.url.pathname;
 const canonical = new URL(pathname, Astro.site);
 const alternates = PUBLISHED_LOCALES.map((locale) => ({
