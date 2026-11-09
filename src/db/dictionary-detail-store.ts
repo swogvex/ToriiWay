@@ -6,6 +6,7 @@ import { drizzle } from 'drizzle-orm/neon-http';
 
 import type {
   DictionaryDetailStore,
+  KanjiGroup,
   SentenceResult,
   WordDetail,
 } from '../lib/dictionary/detail.ts';
@@ -48,6 +49,17 @@ export const wordSentences = (id: number): SQL =>
     ORDER BY ${bestFirst}
     LIMIT ${WORD_SENTENCES}`;
 
+export function kanjiInGroup(group: KanjiGroup): SQL {
+  const value = Number(group.slice(1));
+  const filter = group.startsWith('n') ? sql`jlpt = ${value}` : sql`grade = ${value}`;
+  return sql`SELECT literal FROM kanji WHERE ${filter} ORDER BY freq ASC NULLS LAST, literal`;
+}
+
+const allSources = sql`SELECT name, version, license, url, imported_at FROM data_sources ORDER BY name`;
+const sitemapKanji = sql`SELECT literal FROM kanji
+  WHERE jlpt IS NOT NULL OR grade IS NOT NULL ORDER BY literal`;
+const sitemapWords = sql`SELECT id FROM words WHERE common ORDER BY id`;
+
 const toSentence = (row: Row): SentenceResult => ({
   id: row['id'] as number,
   ja: row['ja'] as string,
@@ -85,6 +97,28 @@ export function sqlDictionaryDetailStore(execute: Execute): DictionaryDetailStor
           glossesEs: (common['glosses_es'] as string[] | null) ?? [],
         })),
         sentences: sentenceRows.map(toSentence),
+      };
+    },
+
+    async kanjiByGroup(group) {
+      return (await execute(kanjiInGroup(group))).map((row) => row['literal'] as string);
+    },
+
+    async dataSources() {
+      return (await execute(allSources)).map((row) => ({
+        name: row['name'] as string,
+        version: row['version'] as string,
+        license: row['license'] as string,
+        url: row['url'] as string,
+        importedAt: new Date(row['imported_at'] as string | Date),
+      }));
+    },
+
+    async sitemapEntries() {
+      const [kanji, words] = await Promise.all([execute(sitemapKanji), execute(sitemapWords)]);
+      return {
+        kanji: kanji.map((row) => row['literal'] as string),
+        words: words.map((row) => row['id'] as number),
       };
     },
 

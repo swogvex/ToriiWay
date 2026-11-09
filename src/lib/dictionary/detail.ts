@@ -33,9 +33,44 @@ export interface WordDetail {
   sentences: SentenceResult[];
 }
 
+export const KANJI_GROUPS = [
+  'n5',
+  'n4',
+  'n3',
+  'n2',
+  'n1',
+  'g1',
+  'g2',
+  'g3',
+  'g4',
+  'g5',
+  'g6',
+  'g8',
+] as const;
+
+export type KanjiGroup = (typeof KANJI_GROUPS)[number];
+
+export const isKanjiGroup = (value: string | undefined): value is KanjiGroup =>
+  KANJI_GROUPS.includes(value as KanjiGroup);
+
+export const kanjiGroupHref = (learn: string, group: KanjiGroup): string =>
+  group === 'n5' ? `${learn}/kanji` : `${learn}/kanji/level/${group}`;
+
+export interface DataSource {
+  name: string;
+  version: string;
+  license: string;
+  url: string;
+  importedAt: Date;
+}
+
 export interface DictionaryDetailStore {
   getKanji(literal: string): Promise<KanjiDetail | null>;
   getWord(id: number): Promise<WordDetail | null>;
+  /** Kanji of a JLPT level or school grade, most frequent first. */
+  kanjiByGroup(group: KanjiGroup): Promise<string[]>;
+  dataSources(): Promise<DataSource[]>;
+  sitemapEntries(): Promise<{ kanji: string[]; words: number[] }>;
 }
 
 const SINGLE_KANJI = /^\p{Script=Han}$/u;
@@ -150,6 +185,26 @@ export function memoryDetailStore(): DictionaryDetailStore {
           },
         ],
         sentences: [sentence],
+      });
+    },
+    kanjiByGroup(group) {
+      return Promise.resolve(group === 'n5' ? [SAMPLE_KANJI.kanji.literal] : []);
+    },
+    dataSources() {
+      return Promise.resolve([
+        {
+          name: 'JMdict',
+          version: '2026-11-02',
+          license: 'CC BY-SA 4.0',
+          url: 'https://www.edrdg.org/jmdict/j_jmdict.html',
+          importedAt: new Date('2026-11-09T00:00:00Z'),
+        },
+      ]);
+    },
+    sitemapEntries() {
+      return Promise.resolve({
+        kanji: [SAMPLE_KANJI.kanji.literal],
+        words: [SAMPLE_WORD.word.id],
       });
     },
     getWord(id) {

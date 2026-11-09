@@ -1,6 +1,14 @@
 import { describe, expect, it } from 'vitest';
 
-import { isKanjiParam, isWordParam, memoryDetailStore, parseFurigana, posKeys } from './detail';
+import {
+  isKanjiGroup,
+  isKanjiParam,
+  isWordParam,
+  kanjiGroupHref,
+  memoryDetailStore,
+  parseFurigana,
+  posKeys,
+} from './detail';
 import { parseKanjiVg, strokeNumbers } from './kanjivg';
 
 describe('route parameters', () => {
@@ -17,6 +25,20 @@ describe('route parameters', () => {
     expect(isWordParam('0')).toBe(false);
     expect(isWordParam('123456789')).toBe(false);
     expect(isWordParam('1;drop')).toBe(false);
+  });
+});
+
+describe('kanji groups', () => {
+  it('accepts only the known groups', () => {
+    expect(isKanjiGroup('n3')).toBe(true);
+    expect(isKanjiGroup('g8')).toBe(true);
+    expect(isKanjiGroup('g7')).toBe(false);
+    expect(isKanjiGroup(undefined)).toBe(false);
+  });
+
+  it('gives the first group the short address', () => {
+    expect(kanjiGroupHref('/learn', 'n5')).toBe('/learn/kanji');
+    expect(kanjiGroupHref('/learn', 'g1')).toBe('/learn/kanji/level/g1');
   });
 });
 
