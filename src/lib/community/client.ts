@@ -129,6 +129,7 @@ export function initCommunity(root: HTMLElement): void {
       return;
     list.replaceChildren(...payload.videos.flatMap((video) => card(video) ?? []));
     markVideoLinks(list);
+    root.querySelector<HTMLElement>('[data-video-empty]')?.toggleAttribute('hidden', true);
     apply();
   }
 
