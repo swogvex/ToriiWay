@@ -61,13 +61,26 @@ test.describe('kana chart', () => {
     await expect(panel).not.toContainText('A blade with a spark');
   });
 
-  test('on desktop the panel stays in view next to the chart', async ({ page }) => {
+  test('on desktop the panel sits level with the chart', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto('/learn/hiragana');
-    // ん is in the last row: clicking it scrolls the chart, the pinned panel follows.
-    await page.getByRole('button', { name: 'ん n' }).click();
-    await expect(page.locator('#kana-panel')).toContainText('ん');
-    await expect(page.locator('#kana-panel')).toBeInViewport({ ratio: 0.9 });
+    await page.getByRole('button', { name: 'か ka' }).click();
+    await expect(page.locator('#kana-panel')).toContainText('か');
+    // The selector and the tabs share a bar, and the details sit level with the kana.
+    const nav = await page.getByRole('navigation', { name: 'Learn sections' }).boundingBox();
+    const tabs = await page.getByRole('tablist').first().boundingBox();
+    const chart = await page.locator('.tabs__panel:not([hidden])').boundingBox();
+    const panel = await page.locator('.learn-detail').boundingBox();
+    expect(nav && tabs && nav.y + nav.height <= tabs.y + tabs.height).toBe(true);
+    expect(nav && chart && nav.x > chart.x + chart.width).toBe(true);
+    // Clear of the bar, and in the same place on every tab, even when the chart is shorter.
+    expect((panel?.y ?? 0) - ((tabs?.y ?? 0) + (tabs?.height ?? 0))).toBeGreaterThan(24);
+    await page.getByRole('tab', { name: 'Dakuten' }).click();
+    expect((await page.locator('.learn-detail').boundingBox())?.y).toBe(panel?.y);
+    await page.getByRole('tab', { name: 'Basic 46' }).click();
+    // The tab bar shares the row and must not cover the selector.
+    await page.getByRole('link', { name: 'Katakana', exact: true }).click();
+    await expect(page).toHaveURL(/\/learn\/katakana$/);
     // The details never scroll on their own and never cover the guide below the chart.
     await page.setViewportSize({ width: 1440, height: 760 });
     await page.goto('/learn/katakana');
@@ -75,7 +88,62 @@ test.describe('kana chart', () => {
     expect(await detail.evaluate((el) => el.scrollHeight <= el.clientHeight)).toBe(true);
     const guide = await page.locator('.learn-intro').boundingBox();
     const side = await detail.boundingBox();
-    expect(guide && side && guide.x + guide.width <= side.x).toBe(true);
+    expect(guide && side && guide.y >= side.y + side.height).toBe(true);
+    // The guide takes the full width of the column, under both.
+    const body = await page.locator('.learn__body').boundingBox();
+    expect(guide?.width).toBe(body?.width);
+    // The details stay put when the page scrolls.
+    await page.evaluate(() => window.scrollTo(0, 400));
+    const scrolled = await detail.boundingBox();
+    expect((scrolled?.y ?? 0) + 400).toBeCloseTo(side?.y ?? 0, 0);
+  });
+
+  test('switching script keeps the place without reloading the page', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 600 });
+    await page.goto('/learn/hiragana');
+    await page.evaluate(() => {
+      (window as unknown as { sameDocument: boolean }).sameDocument = true;
+    });
+    await page.getByRole('searchbox', { name: 'Search the dictionary' }).fill('kept');
+    await page.getByRole('tab', { name: 'Dakuten' }).click();
+    await page.getByRole('button', { name: 'ざ za' }).click();
+    await page.evaluate(() => window.scrollTo(0, 250));
+
+    await page.getByRole('link', { name: 'Katakana', exact: true }).click();
+    await expect(page).toHaveURL(/\/learn\/katakana$/);
+    await expect(page.getByRole('heading', { name: 'What is katakana?' })).toBeVisible();
+    await expect(page).toHaveTitle(/katakana/i);
+    await expect(page.getByRole('tab', { name: 'Dakuten' })).toHaveAttribute(
+      'aria-selected',
+      'true',
+    );
+    await expect(page.locator('#kana-panel')).toContainText('ザ');
+    await expect(page.getByRole('link', { name: 'Katakana', exact: true })).toBeFocused();
+    await expect(page.getByRole('searchbox', { name: 'Search the dictionary' })).toHaveValue(
+      'kept',
+    );
+    expect(await page.evaluate(() => window.scrollY)).toBe(250);
+    expect(
+      await page.evaluate(() => (window as unknown as { sameDocument?: boolean }).sameDocument),
+    ).toBe(true);
+
+    // The new chart is live, and Back returns to the first script.
+    await page.getByRole('button', { name: 'ジ ji' }).click();
+    await expect(page.locator('#kana-panel')).toContainText('ジ');
+    await page.goBack();
+    await expect(page).toHaveURL(/\/learn\/hiragana$/);
+    await expect(page.getByRole('heading', { name: 'What is hiragana?' })).toBeVisible();
+  });
+
+  test('after switching script, practice opens once with that script', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/learn/hiragana');
+    await page.getByRole('link', { name: 'Katakana', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'What is katakana?' })).toBeVisible();
+    await page.getByRole('button', { name: 'Test this row' }).first().click();
+    await expect(page.getByRole('dialog')).toBeVisible();
+    await expect(page.locator('[data-practice-setup]')).toBeVisible();
+    await expect(page.locator('[data-practice]')).toHaveCount(1);
   });
 
   test('on a phone a tap brings the panel under the chart into view', async ({ page }) => {
@@ -177,6 +245,14 @@ test.describe('kana pages', () => {
 });
 
 test.describe('guides', () => {
+  test('the guide text uses the full width of the column', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/learn/guide/what-is-hiragana');
+    const prose = await page.locator('.guide__prose').boundingBox();
+    const column = await page.locator('article.guide .section-header').boundingBox();
+    expect(prose?.width).toBe(column?.width);
+  });
+
   test('every "In this guide" link lands on a heading of the guide', async ({ page }) => {
     await page.goto('/learn/hiragana');
     const links = page.getByRole('navigation', { name: 'In this guide' }).getByRole('link');

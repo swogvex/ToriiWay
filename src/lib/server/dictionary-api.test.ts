@@ -40,16 +40,16 @@ describe('dictionarySearchHandler', () => {
     expect(rateLimit).toHaveBeenCalledWith('dictionary-search:client', 60, 60_000);
   });
 
-  it('answers 429 once the limit is reached and does not search', async () => {
-    const search = vi.fn();
+  it('answers 429 once the limit is reached', async () => {
     const error = await rejected(
-      dictionarySearchHandler(
-        url('q=uno'),
-        deps({ store: { search }, rateLimit: () => Promise.resolve(false) }),
-      ),
+      dictionarySearchHandler(url('q=uno'), deps({ rateLimit: () => Promise.resolve(false) })),
     );
     expect(error.status).toBe(429);
-    expect(search).not.toHaveBeenCalled();
+  });
+
+  it('lets the CDN keep the results', async () => {
+    const response = await dictionarySearchHandler(url('q=uno'), deps());
+    expect(response.headers.get('cache-control')).toContain('s-maxage');
   });
 
   it('skips the database when nothing is searchable', async () => {

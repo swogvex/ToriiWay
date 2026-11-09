@@ -51,11 +51,15 @@ function neighbour(table: HTMLElement, button: HTMLElement, [dRow, dCol]: [numbe
  * detail panel and replays its strokes; arrow keys move between cells (one tab stop per
  * table, the roving tabindex pattern), Home and End jump to the ends of a row. The
  * panel's Listen, "Mark as learned" and "Test this row" follow the chosen kana.
+ * Returns a function that selects a kana from outside the chart.
  */
-export function initKanaExplorer(root: HTMLElement, progress: KanaProgress): void {
+export function initKanaExplorer(
+  root: HTMLElement,
+  progress: KanaProgress,
+): (char: string) => void {
   const panel = root.querySelector<HTMLElement>('[data-kana-panel]');
   const svg = panel?.querySelector<SVGSVGElement>('[data-strokes]');
-  if (!root.dataset.kanaSrc || !panel || !svg) return;
+  if (!root.dataset.kanaSrc || !panel || !svg) return () => undefined;
 
   // Fetched once, right after load (so practice needs no network later); a click that
   // comes before it arrives waits for it.
@@ -163,4 +167,6 @@ export function initKanaExplorer(root: HTMLElement, progress: KanaProgress): voi
     }
     target.focus();
   });
+
+  return (char) => void show(char);
 }

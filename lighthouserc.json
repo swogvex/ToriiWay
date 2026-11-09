@@ -16,14 +16,15 @@
         "http://localhost:4321/library/kanji-para-recordar-1",
         "http://localhost:4321/community",
         "http://localhost:4321/jlpt/run",
-        "http://localhost:4321/help/japanese-voice"
+        "http://localhost:4321/help/japanese-voice",
+        "http://localhost:4321/learn/search"
       ],
       "numberOfRuns": 5
     },
     "assert": {
       "assertMatrix": [
         {
-          "matchingUrlPattern": "^(?!.*/404[.]html$)(?!.*/game/play$)(?!.*/jlpt/run$).*$",
+          "matchingUrlPattern": "^(?!.*/404[.]html$)(?!.*/game/play$)(?!.*/jlpt/run$)(?!.*/learn/search$).*$",
           "assertions": {
             "categories:performance": [
               "error",
@@ -64,7 +65,7 @@
           }
         },
         {
-          "matchingUrlPattern": "/404[.]html$",
+          "matchingUrlPattern": "/(404[.]html|learn/search)$",
           "assertions": {
             "categories:performance": [
               "error",

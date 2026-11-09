@@ -10,7 +10,11 @@ type Mode = PracticeResult['mode'];
  * answer mode, answer 10–20 prompts with instant feedback, then see the score and the
  * kana to review. Results are stored locally. Everything runs on data already loaded.
  */
-export function initPractice(root: HTMLElement, progress: KanaProgress): void {
+export function initPractice(
+  root: HTMLElement,
+  progress: KanaProgress,
+  signal?: AbortSignal,
+): void {
   const dialog = root.closest('dialog');
   const setup = root.querySelector<HTMLFormElement>('[data-practice-setup]');
   const question = root.querySelector<HTMLElement>('[data-practice-question]');
@@ -186,8 +190,14 @@ export function initPractice(root: HTMLElement, progress: KanaProgress): void {
   });
 
   // "Test this row" opens the dialog (Dialog.astro) with that row chosen.
-  document.addEventListener('click', (event) => {
-    const opener = (event.target as Element).closest<HTMLElement>('[data-practice-row]');
-    if (opener) showSetup(opener.dataset.practiceRow);
-  });
+  // The signal ends this listener when the page swaps to the other script.
+  const listening = signal ? { signal } : {};
+  document.addEventListener(
+    'click',
+    (event) => {
+      const opener = (event.target as Element).closest<HTMLElement>('[data-practice-row]');
+      if (opener) showSetup(opener.dataset.practiceRow);
+    },
+    listening,
+  );
 }

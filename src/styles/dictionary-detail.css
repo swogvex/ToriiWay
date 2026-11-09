@@ -199,6 +199,112 @@
   visibility: hidden;
 }
 
+.dict-detail__heading {
+  font-size: var(--text-lg);
+  margin-block-end: var(--space-4);
+}
+
+.kanji-nav,
+.kanji-groups ul,
+.kanji-grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kanji-nav,
+.kanji-groups ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.kanji-nav a,
+.kanji-groups a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--target-min);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.kanji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--target-min), 1fr));
+  gap: var(--space-2);
+}
+
+.kanji-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: var(--text-md);
+  text-decoration: none;
+}
+
+.kanji-nav a:hover,
+.kanji-groups a:hover {
+  background: var(--key);
+}
+
+.kanji-nav a[aria-current],
+.kanji-groups a[aria-current] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.kanji-grid a:hover {
+  border-color: var(--ink);
+}
+
+.credits__table {
+  margin-block-start: var(--space-4);
+}
+
+.credits__table table {
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+.credits__table th,
+.credits__table td {
+  padding: var(--space-2) var(--space-3);
+  border-block-end: 1px solid var(--line);
+  font-weight: 400;
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+
+.credits__table thead th {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+}
+
+.credits__list {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.credits__list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
 @media (width >= 48rem) {
   .dict-detail__body {
     grid-template-columns: 280px minmax(0, 1fr);

@@ -74,10 +74,56 @@ test.describe('word page', () => {
   }
 });
 
+test.describe('kanji index', () => {
+  test('lists a group and links to its kanji', async ({ page }) => {
+    const response = await page.goto('/learn/kanji');
+    expect(response?.status()).toBe(200);
+    expect(response?.headers()['cache-control']).toContain('s-maxage');
+    await page.locator('.kanji-grid a').first().click();
+    await expect(page).toHaveURL(/\/learn\/kanji\/%E4%B8%80$/);
+  });
+
+  test('offers every level and grade, and marks the current one', async ({ page }) => {
+    await page.goto('/learn/kanji/level/n3');
+    const current = page.locator('.kanji-groups a[aria-current="page"]');
+    await expect(current).toHaveText('JLPT N3');
+    await expect(page.locator('.kanji-groups a')).toHaveCount(12);
+  });
+
+  test('answers 404 for an unknown group', async ({ page }) => {
+    expect((await page.goto('/learn/kanji/level/x9'))?.status()).toBe(404);
+  });
+
+  test('is reachable from the Learn page', async ({ page }) => {
+    await page.goto('/learn/hiragana');
+    await page.getByRole('link', { name: 'Kanji', exact: true }).click();
+    await expect(page).toHaveURL(/\/learn\/kanji$/);
+  });
+});
+
+test('credits list the data versions and licences', async ({ page }) => {
+  const response = await page.goto('/credits');
+  expect(response?.status()).toBe(200);
+  const main = page.getByRole('main');
+  await expect(main.getByRole('rowheader', { name: /JMdict/ })).toBeVisible();
+  await expect(main).toContainText('2026-11-02');
+  await expect(main).toContainText('Lucide');
+  await expect(main).toContainText('Schibsted Grotesk');
+});
+
+test('the dictionary sitemap lists kanji and words', async ({ request }) => {
+  const response = await request.get('/sitemap-dictionary.xml');
+  expect(response.status()).toBe(200);
+  expect(response.headers()['content-type']).toContain('application/xml');
+  const body = await response.text();
+  expect(body).toContain('/learn/kanji/%E4%B8%80</loc>');
+  expect(body).toContain('/learn/word/1160790</loc>');
+});
+
 for (const colorScheme of ['light', 'dark'] as const) {
   test(`detail pages have no axe violations in ${colorScheme}`, async ({ page }) => {
     await page.emulateMedia({ colorScheme, reducedMotion: 'reduce' });
-    for (const path of [KANJI, WORD, '/learn/kanji/二']) {
+    for (const path of [KANJI, WORD, '/learn/kanji/二', '/learn/kanji', '/credits']) {
       await page.goto(path);
       await expectNoAxeViolations(page);
     }
@@ -87,7 +133,7 @@ for (const colorScheme of ['light', 'dark'] as const) {
 for (const width of [360, 768, 1920]) {
   test(`detail pages do not scroll sideways at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 800 });
-    for (const path of [KANJI, WORD]) {
+    for (const path of [KANJI, WORD, '/learn/kanji', '/credits']) {
       await page.goto(path);
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,

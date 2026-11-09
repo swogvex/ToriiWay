@@ -1,0 +1,100 @@
+---
+/** Kanji grouped by JLPT level or school grade: /learn/kanji and /learn/kanji/level/[group]. */
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { kanjiHref } from '../../lib/dictionary/client';
+import { KANJI_GROUPS, kanjiGroupHref, type KanjiGroup } from '../../lib/dictionary/detail';
+import { SCRIPTS } from '../../lib/kana/data';
+import detailCss from '../../styles/dictionary-detail.css?url';
+import SectionHeader from '../ui/SectionHeader.astro';
+import DictionaryCredit from './DictionaryCredit.astro';
+import DictionaryNotice from './DictionaryNotice.astro';
+import DictionarySearchBox from './DictionarySearchBox.astro';
+
+interface Props {
+  group: KanjiGroup | undefined;
+  literals: string[];
+  view: 'ok' | 'missing' | 'unavailable';
+}
+
+const { group, literals, view } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+const learn = localizePath('/learn', locale);
+
+const groupLabel = (item: KanjiGroup): string => {
+  const value = Number(item.slice(1));
+  if (item.startsWith('n')) return t('dictionary.jlpt', { level: value });
+  return value === 8 ? t('dictionary.gradeSecondary') : t('dictionary.grade', { grade: value });
+};
+const rows = [
+  { label: t('dictionary.index.byLevel'), groups: KANJI_GROUPS.filter((g) => g.startsWith('n')) },
+  { label: t('dictionary.index.byGrade'), groups: KANJI_GROUPS.filter((g) => g.startsWith('g')) },
+];
+const current = group ? groupLabel(group) : undefined;
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: t('learn.title'), href: learn },
+  { label: t('dictionary.kanji') },
+];
+const notice = view === 'unavailable' ? 'unavailable' : 'missing';
+const title = current
+  ? t('dictionary.index.pageTitle', { group: current })
+  : t(`dictionary.${notice}.title`);
+---
+
+<BaseLayout
+  title={`${title} · ${t('site.name')}`}
+  description={t('dictionary.index.description')}
+  breadcrumb={breadcrumb}
+  noindex={view !== 'ok'}
+>
+  <link slot="head" rel="stylesheet" href={detailCss} />
+  {view === 'ok' && group ? (
+    <div class="dict-detail column page-frame">
+      <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('dictionary.kanji')} />
+      <DictionarySearchBox />
+      <nav class="kanji-nav" aria-label={t('learn.sections')}>
+        {SCRIPTS.map((script) => (
+          <a href={`${learn}/${script}`}>{t(`learn.${script}`)}</a>
+        ))}
+        <a href={`${learn}/kanji`} aria-current="page">
+          {t('dictionary.kanji')}
+        </a>
+      </nav>
+      {rows.map((row) => (
+        <nav class="kanji-groups" aria-label={row.label}>
+          <span class="dict-detail__label">{row.label}</span>
+          <ul>
+            {row.groups.map((item) => (
+              <li>
+                <a
+                  href={kanjiGroupHref(learn, item)}
+                  aria-current={item === group ? 'page' : undefined}
+                >
+                  {groupLabel(item)}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+      <section aria-labelledby="kanji-index-title">
+        <h2 class="dict-detail__heading" id="kanji-index-title">
+          {current}
+          <span class="dict-detail__muted"> · {literals.length}</span>
+        </h2>
+        <ul class="kanji-grid" lang="ja">
+          {literals.map((literal) => (
+            <li>
+              <a href={kanjiHref(learn, literal)}>{literal}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <DictionaryCredit />
+    </div>
+  ) : (
+    <DictionaryNotice kicker={t('dictionary.kanji')} view={notice} />
+  )}
+</BaseLayout>

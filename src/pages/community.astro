@@ -89,15 +89,15 @@ const jsonLd = jsonLdGraph(
         )}
       </div>
 
-      {videos.length > 0 ? (
-        <ul class="videos__grid" data-video-list>
-          {videos.map((video, index) => (
-            <VideoCard video={video} hidden={index >= PAGE} />
-          ))}
-        </ul>
-      ) : (
-        <p class="videos__empty">{t('community.videos.empty')}</p>
-      )}
+      {/* Always present: the island fills it when the feed was down during the build. */}
+      <ul class="videos__grid" data-video-list>
+        {videos.map((video, index) => (
+          <VideoCard video={video} hidden={index >= PAGE} />
+        ))}
+      </ul>
+      <p class="videos__empty" data-video-empty hidden={videos.length > 0}>
+        {t('community.videos.empty')}
+      </p>
 
       <div class="videos__foot">
         {/* Holds its place before the island starts, so nothing shifts when it appears. */}
