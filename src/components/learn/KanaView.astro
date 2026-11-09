@@ -42,36 +42,34 @@ const guideHref = localizePath(`/learn/guide/${slug}`, locale);
 const dataUrl = `/data/kana/${script}.json`;
 ---
 
-<div class="learn column page-frame" data-kana-explorer data-kana-src={dataUrl}>
-  <SectionHeader
-    level="h1"
-    kicker={t('learn.kicker')}
-    title={t('learn.title')}
-    class="learn__header"
-  >
-    <nav class="learn-nav" aria-label={t('learn.sections')}>
-      {SCRIPTS.map((item) => {
-        const href = localizePath(`/learn/${item}`, locale);
-        return (
-          <a
-            class="learn-nav__link"
-            href={href}
-            aria-current={href === current ? 'page' : item === script ? 'true' : undefined}
-          >
-            {t(`learn.${item}`)}
-          </a>
-        );
-      })}
-    </nav>
-  </SectionHeader>
+<div class="learn column page-frame">
+  <SectionHeader level="h1" kicker={t('learn.kicker')} title={t('learn.title')} />
 
   <DictionarySearchBox />
 
-  <div class="learn__body">
+  <div class="learn__body" data-kana-explorer data-kana-src={dataUrl}>
     <section class="learn-chart" aria-labelledby="learn-chart-title">
       <h2 class="visually-hidden" id="learn-chart-title">
         {t('learn.chartLabel', { script: t(`learn.${script}`) })}
       </h2>
+      <nav class="learn-nav" aria-label={t('learn.sections')}>
+        {SCRIPTS.map((item) => {
+          const href = localizePath(`/learn/${item}`, locale);
+          return (
+            <a
+              class="learn-nav__link"
+              data-script-link
+              href={href}
+              aria-current={href === current ? 'page' : item === script ? 'true' : undefined}
+            >
+              {t(`learn.${item}`)}
+            </a>
+          );
+        })}
+        <a class="learn-nav__link" href={localizePath('/learn/kanji', locale)}>
+          {t('dictionary.kanji')}
+        </a>
+      </nav>
       <Tabs
         id="kana-groups"
         label={t('learn.chartLabel', { script: t(`learn.${script}`) })}
@@ -130,22 +128,9 @@ const dataUrl = `/data/kana/${script}.json`;
 <KanaPractice items={items} script={script} dataUrl={dataUrl} />
 
 <script>
-  import { initKanaExplorer } from '../../lib/kana/explorer';
-  import { initLearned } from '../../lib/kana/learned';
-  import { initListen } from '../../lib/kana/listen';
-  import { initPractice } from '../../lib/kana/practice-ui';
-  import { localKanaProgress } from '../../lib/progress/kana';
+  import { initLearnPage } from '../../lib/kana/learn-page';
 
-  // One entry for the whole page keeps the number of script requests down.
-  const root = document.querySelector<HTMLElement>('[data-kana-explorer]');
-  const practice = document.querySelector<HTMLElement>('[data-practice]');
-  if (root) {
-    const progress = localKanaProgress();
-    initKanaExplorer(root, progress);
-    initLearned(root, progress);
-    void initListen(root);
-    if (practice) initPractice(practice, progress);
-  }
+  initLearnPage();
 </script>
 
 <style>
@@ -185,20 +170,6 @@ const dataUrl = `/data/kana/${script}.json`;
     font-weight: 700;
   }
 
-  /* Hiragana / Katakana sits beside the title, so the chart starts higher. */
-  @media (width >= 48rem) {
-    .learn :global(.learn__header) {
-      grid-template-columns: minmax(0, 1fr) auto;
-      column-gap: var(--space-6);
-    }
-
-    .learn :global(.learn__header) > .learn-nav {
-      grid-row: 1 / span 2;
-      grid-column: 2;
-      align-self: end;
-    }
-  }
-
   .learn__body {
     display: grid;
     gap: var(--space-8);
@@ -211,57 +182,12 @@ const dataUrl = `/data/kana/${script}.json`;
     container-type: inline-size;
   }
 
-  /* Chart and guide on the left, details on the right for the whole height, so the
-     details never cover the guide and short charts (Dakuten) leave no gap. Future
-     Learn views reuse this layout. */
-  @media (width >= 64rem) {
-    .learn__body {
-      grid-template-columns: minmax(0, 1fr) 21rem;
-      align-items: start;
-    }
-
-    .learn-detail {
-      grid-row: 1 / span 2;
-      grid-column: 2;
-    }
-
-    .learn-intro {
-      grid-column: 1;
-    }
-  }
-
-  /* Pinned only when the window shows all of it: the details never scroll on their own. */
-  @media (width >= 64rem) and (height >= 46rem) {
-    .learn-detail {
-      position: sticky;
-      inset-block-start: var(--space-6);
-    }
-  }
-
   /* The guide intro comes after the chart: reading text, then its contents. */
   .learn-intro {
     display: grid;
     gap: var(--space-4);
     padding-block-start: var(--space-8);
     border-block-start: 1px solid var(--line);
-  }
-
-  /* Tablets: the guide has the full width, so text and contents sit side by side. */
-  @media (width >= 48rem) and (width < 64rem) {
-    .learn-intro {
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-      column-gap: var(--space-10);
-      align-items: start;
-    }
-
-    .learn-intro > :not(.learn-intro__toc) {
-      grid-column: 1;
-    }
-
-    .learn-intro__toc {
-      grid-row: 1 / span 6;
-      grid-column: 2;
-    }
   }
 
   .learn-intro__title {
@@ -313,5 +239,62 @@ const dataUrl = `/data/kana/${script}.json`;
   .learn-chart__credit {
     color: var(--muted);
     font-size: var(--text-2xs);
+  }
+
+  /* Wide screens: selector and tabs share one bar, then the chart beside the details, and
+     the guide below using the full width. The section and the tabs dissolve into this grid
+     so the details can sit level with the kana, under the bar. */
+  @media (width >= 64rem) {
+    .learn__body {
+      grid-template-columns: minmax(0, 1fr) 21rem;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 0 var(--space-8);
+      align-items: start;
+    }
+
+    .learn-chart,
+    .learn-chart :global(.tabs) {
+      display: contents;
+    }
+
+    .learn-chart :global(.tabs__list) {
+      grid-row: 1;
+      grid-column: 1 / -1;
+      align-self: end;
+    }
+
+    .learn-chart .learn-nav {
+      grid-row: 1;
+      grid-column: 2;
+      justify-self: end;
+      margin-block-end: var(--space-1);
+
+      /* The tab bar shares this cell and comes later, so it would take the clicks. */
+      position: relative;
+      z-index: 1;
+    }
+
+    .learn-chart :global(.tabs__panel) {
+      grid-row: 2;
+      grid-column: 1;
+    }
+
+    .learn-chart__count {
+      grid-row: 3;
+      grid-column: 1;
+    }
+
+    /* A fixed offset, not centring: the charts differ in height and the panel must not
+       move between tabs or touch the bar when it is the taller of the two. */
+    .learn-detail {
+      grid-row: 2 / span 2;
+      grid-column: 2;
+      margin-block-start: calc(var(--space-10) * 2);
+    }
+
+    .learn-intro {
+      grid-column: 1 / -1;
+      margin-block-start: var(--space-8);
+    }
   }
 </style>
