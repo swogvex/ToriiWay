@@ -22,6 +22,7 @@ export interface CleanupResult {
   emails: number;
   runs: number;
   limits: number;
+  reports: number;
 }
 
 export interface RecentRun {
@@ -53,8 +54,16 @@ export interface RunStore {
   resolveReport(id: string): Promise<boolean>;
   /** Records the results email of a run and when it was sent. */
   setEmail(runId: string, email: string, sentAt: number): Promise<void>;
-  /** Clears emails sent before `emailsBefore`, deletes runs expired before `now` and old rate limits. */
-  cleanup(now: number, emailsBefore: number, limitsBefore: number): Promise<CleanupResult>;
+  /**
+   * Clears emails sent before `emailsBefore`, deletes runs expired before `now`, old rate
+   * limits, and resolved reports sent before `reportsBefore`.
+   */
+  cleanup(
+    now: number,
+    emailsBefore: number,
+    limitsBefore: number,
+    reportsBefore: number,
+  ): Promise<CleanupResult>;
   /** Latest finished runs that opted in to the public list. */
   recentPublic(limit: number): Promise<RecentRun[]>;
   /** Finished runs of a level, and how many of them scored below `total`. */
@@ -110,7 +119,7 @@ export function memoryStore(): RunStore {
     async setEmail(runId, email, sentAt) {
       emails.set(runId, { email, sentAt });
     },
-    async cleanup(now, emailsBefore, limitsBefore) {
+    async cleanup(now, emailsBefore, limitsBefore, reportsBefore) {
       let cleared = 0;
       for (const [runId, entry] of emails) {
         if (entry.sentAt < emailsBefore) {
@@ -134,7 +143,14 @@ export function memoryStore(): RunStore {
           limits += 1;
         }
       }
-      return { emails: cleared, runs: deleted, limits };
+      let resolved = 0;
+      for (const [id, report] of reports) {
+        if (report.status === 'resolved' && report.createdAt < reportsBefore) {
+          reports.delete(id);
+          resolved += 1;
+        }
+      }
+      return { emails: cleared, runs: deleted, limits, reports: resolved };
     },
     async createReport(report) {
       reports.set(report.id, { ...report });

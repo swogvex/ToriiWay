@@ -151,13 +151,35 @@ describe('GET /api/cron/cleanup', () => {
       emails: 1,
       runs: 0,
       limits: 2,
+      reports: 0,
     });
     clock += 150 * DAY;
     expect(await (await cron('Bearer cron-secret')).json()).toEqual({
       emails: 0,
       runs: 1,
       limits: 0,
+      reports: 0,
     });
     expect(await deps.store.getRun(ID)).toBeNull();
+  });
+
+  it('deletes resolved reports 90 days after they were sent, never open ones', async () => {
+    const report = (id: string) => ({
+      id,
+      questionId: 'q1',
+      runId: null,
+      category: 'typo' as const,
+      message: 'A typo in the second option.',
+      createdAt: clock,
+      status: 'open' as const,
+    });
+    await deps.store.createReport(report('00000000-0000-4000-8000-0000000000a1'));
+    await deps.store.createReport(report('00000000-0000-4000-8000-0000000000a2'));
+    await deps.store.resolveReport('00000000-0000-4000-8000-0000000000a1');
+    clock += 89 * DAY;
+    expect((await (await cron('Bearer cron-secret')).json()).reports).toBe(0);
+    clock += 2 * DAY;
+    expect((await (await cron('Bearer cron-secret')).json()).reports).toBe(1);
+    expect((await deps.store.listReports(10)).map((stored) => stored.status)).toEqual(['open']);
   });
 });

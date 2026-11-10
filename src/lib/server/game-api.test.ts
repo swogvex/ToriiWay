@@ -399,12 +399,27 @@ describe('gameCleanup', () => {
     const unused = await startRun();
     await play('Kenji', ALICE);
     clock = NOW + 3 * 60 * 60 * 1000;
-    expect(await gameCleanup(deps)).toEqual({ runs: 1 });
+    expect(await gameCleanup(deps)).toEqual({ runs: 1, reports: 0 });
     expect(await deps.store.getRun(unused)).toBeNull();
     clock = NOW + 25 * 60 * 60 * 1000;
-    expect(await gameCleanup(deps)).toEqual({ runs: 1 });
+    expect(await gameCleanup(deps)).toEqual({ runs: 1, reports: 0 });
     // The entry stays after its run is gone.
     expect((await board()).body.entries).toHaveLength(1);
+  });
+
+  it('deletes resolved reports 90 days after they were sent, never open ones', async () => {
+    const reviewed = String((await play('Kenji', ALICE)).body.id);
+    const pending = String((await play('Yuki_7', BOB)).body.id);
+    client = 'reporter';
+    await report(reviewed);
+    await report(pending);
+    // "Show" resolves the entry's open reports.
+    await deps.store.moderate(reviewed, 'show');
+    clock = NOW + 89 * 24 * 60 * 60 * 1000;
+    expect((await gameCleanup(deps)).reports).toBe(0);
+    clock = NOW + 91 * 24 * 60 * 60 * 1000;
+    expect((await gameCleanup(deps)).reports).toBe(1);
+    expect((await gameCleanup(deps)).reports).toBe(0);
   });
 });
 

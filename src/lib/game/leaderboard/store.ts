@@ -16,6 +16,7 @@ export const AUTO_HIDE_REPORTS = 3;
 
 export interface GameCleanupResult {
   runs: number;
+  reports: number;
 }
 
 export interface GameStore {
@@ -40,8 +41,15 @@ export interface GameStore {
   countAhead(filter: BoardFilter, key: RankKey): Promise<number>;
   /** Saves a report and counts it on the entry; hides the entry at AUTO_HIDE_REPORTS open reports. */
   addReport(report: GameReport): Promise<void>;
-  /** Deletes unused runs created before `unusedBefore` and used runs used before `usedBefore`. */
-  cleanup(unusedBefore: number, usedBefore: number): Promise<GameCleanupResult>;
+  /**
+   * Deletes unused runs created before `unusedBefore`, used runs used before `usedBefore`
+   * and resolved reports sent before `reportsBefore`.
+   */
+  cleanup(
+    unusedBefore: number,
+    usedBefore: number,
+    reportsBefore: number,
+  ): Promise<GameCleanupResult>;
   /** Entries for /admin: open reports first (most reported first), then hidden, then newest. */
   adminList(limit: number): Promise<AdminEntry[]>;
   /**
@@ -167,7 +175,7 @@ export function memoryGameStore(): GameStore {
       ).length;
       if (open >= AUTO_HIDE_REPORTS) score.status = 'hidden';
     },
-    async cleanup(unusedBefore, usedBefore) {
+    async cleanup(unusedBefore, usedBefore, reportsBefore) {
       let deleted = 0;
       for (const [id, run] of runs) {
         const stale =
@@ -177,7 +185,14 @@ export function memoryGameStore(): GameStore {
           deleted += 1;
         }
       }
-      return { runs: deleted };
+      let resolved = 0;
+      for (const [id, report] of reports) {
+        if (report.status === 'resolved' && report.createdAt < reportsBefore) {
+          reports.delete(id);
+          resolved += 1;
+        }
+      }
+      return { runs: deleted, reports: resolved };
     },
     async adminList(limit) {
       return [...scores.values()]

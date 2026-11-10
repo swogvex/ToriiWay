@@ -133,7 +133,7 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .set({ email, emailSentAt: new Date(sentAt) })
         .where(eq(jlptRuns.id, runId));
     },
-    async cleanup(now, emailsBefore, limitsBefore) {
+    async cleanup(now, emailsBefore, limitsBefore, reportsBefore) {
       const emails = await db
         .update(jlptRuns)
         .set({ email: null })
@@ -147,7 +147,16 @@ export function drizzleStore(databaseUrl: string): RunStore {
         .delete(rateLimits)
         .where(lt(rateLimits.windowStart, new Date(limitsBefore)))
         .returning({ key: rateLimits.key });
-      return { emails: emails.length, runs: runs.length, limits: limits.length };
+      const resolved = await db
+        .delete(reports)
+        .where(and(eq(reports.status, 'resolved'), lt(reports.createdAt, new Date(reportsBefore))))
+        .returning({ id: reports.id });
+      return {
+        emails: emails.length,
+        runs: runs.length,
+        limits: limits.length,
+        reports: resolved.length,
+      };
     },
     async createReport(report) {
       await db.insert(reports).values({ ...report, createdAt: new Date(report.createdAt) });

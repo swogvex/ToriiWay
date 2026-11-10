@@ -23,6 +23,10 @@ const PAGES = [
   '/community',
   '/credits',
   '/help/japanese-voice',
+  '/privacy',
+  '/legal',
+  '/accessibility',
+  '/terms',
   '/this-page-does-not-exist',
 ];
 
