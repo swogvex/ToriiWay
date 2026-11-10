@@ -1,8 +1,8 @@
-import { readFileSync } from 'node:fs';
-
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
 import { toRomaji } from 'wanakana';
+
+import { recordCspViolations, serveWithSiteHeaders } from './site-headers';
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 const PLAY = '/game/play?script=hiragana&difficulty=normal&mode=challenge&seed=1';
@@ -232,25 +232,8 @@ test.describe('Kana Rush play', () => {
   });
 
   test('runs under the site CSP enforced', async ({ context, page }) => {
-    const vercel = JSON.parse(readFileSync('vercel.json', 'utf8')) as {
-      headers: { headers: { key: string; value: string }[] }[];
-    };
-    const csp = vercel.headers
-      .flatMap((rule) => rule.headers)
-      .find((header) => header.key === 'Content-Security-Policy-Report-Only')?.value;
-    await context.route('**/*', async (route) => {
-      const response = await route.fetch();
-      await route.fulfill({
-        response,
-        headers: { ...response.headers(), 'content-security-policy': csp ?? '' },
-      });
-    });
-    await page.addInitScript(() => {
-      document.addEventListener('securitypolicyviolation', (event) => {
-        (window as unknown as { violations: string[] }).violations ??= [];
-        (window as unknown as { violations: string[] }).violations.push(event.violatedDirective);
-      });
-    });
+    await serveWithSiteHeaders(context);
+    const violations = await recordCspViolations(page);
     await startRun(page);
     await page.clock.runFor(3_000);
     // The fake clock keeps flowing while expect polls, so check that bubbles exist, not how many.
@@ -259,9 +242,7 @@ test.describe('Kana Rush play', () => {
       .first()
       .evaluate((el) => el.style.transform);
     expect(transform).toMatch(/^translate3d\(/);
-    expect(await page.evaluate(() => (window as { violations?: string[] }).violations)).toBe(
-      undefined,
-    );
+    expect(await violations()).toEqual([]);
   });
 });
 
