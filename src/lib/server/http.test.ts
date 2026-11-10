@@ -24,6 +24,7 @@ describe('readJson', () => {
     ['invalid JSON', post('{level'), 400],
     ['wrong content type', post('{"level":"N5"}', { 'content-type': 'text/plain' }), 415],
     ['a large body', post(JSON.stringify({ level: 'x'.repeat(40_000) })), 413],
+    ['a large declared size', post('{"level":"N5"}', { 'content-length': '10000000' }), 413],
   ])('rejects %s', async (_, request, status) => {
     await expect(readJson(request, schema)).rejects.toMatchObject({ status });
   });

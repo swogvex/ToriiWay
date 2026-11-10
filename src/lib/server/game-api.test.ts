@@ -15,6 +15,7 @@ import {
   PAGE_SIZE,
   rankHandler,
   reportScoreHandler,
+  sha256Hex,
   submitScoreHandler,
 } from './game-api';
 import { handle } from './http';
@@ -497,5 +498,110 @@ describe('POST /api/admin/game-names/[name]', () => {
     const unblock = (name: string) => handle(() => adminUnblockHandler(post('/x', {}), name, deps));
     expect((await unblock('nobody')).status).toBe(404);
     expect((await unblock('Bad Name!')).status).toBe(404);
+  });
+});
+
+// 13-security, M10 abuse review: each attack a player could try from the browser.
+describe('leaderboard abuse', () => {
+  async function submitWith(runId: string, over: Partial<RunClaim> = {}) {
+    const response = await handle(() =>
+      submitScoreHandler(
+        post('/api/game/scores', {
+          ...fakeClaim(over),
+          runId,
+          name: 'Kenji',
+          submitter: ALICE,
+          turnstile: 'human',
+        }),
+        deps,
+      ),
+    );
+    return { status: response.status, body: (await response.json()) as Record<string, unknown> };
+  }
+
+  it('rejects forged runs: unknown id, another combination, too early or expired', async () => {
+    clock = NOW;
+    const invalid = { status: 422, body: { error: 'invalid-run' } };
+    expect(await submitWith('9f1c2d3e-4b5a-4c6d-8e7f-0a1b2c3d4e5f')).toEqual(invalid);
+
+    clock = NOW - 160_000;
+    const hiragana = await startRun();
+    clock = NOW;
+    expect(await submitWith(hiragana, { script: 'katakana' })).toEqual(invalid);
+    expect(await submitWith(hiragana, { mode: 'endless' })).toEqual(invalid);
+
+    clock = NOW - 10_000;
+    const early = await startRun();
+    clock = NOW;
+    expect(await submitWith(early)).toEqual(invalid);
+
+    clock = NOW - 3 * 60 * 60 * 1000;
+    const old = await startRun();
+    clock = NOW;
+    expect(await submitWith(old)).toEqual(invalid);
+    expect((await board()).body.entries).toHaveLength(0);
+  });
+
+  it('stops name squatting by case or look-alike letters', async () => {
+    expect((await play('Kenji', ALICE)).status).toBe(201);
+    expect((await play('KENJI', BOB)).body).toEqual({ error: 'name-taken' });
+    expect((await play('kenji', BOB)).body).toEqual({ error: 'name-taken' });
+    // Cyrillic К and full-width letters never pass the ASCII-only pattern.
+    expect((await play('Кenji', BOB)).body).toEqual({ error: 'name-invalid' });
+    expect((await play('Ｋｅｎｊｉ', BOB)).body).toEqual({ error: 'name-invalid' });
+    expect((await play('Kenji ', BOB)).body).toEqual({ error: 'name-invalid' });
+  });
+
+  it('blocks offensive names behind separators, digits and repeated letters', async () => {
+    for (const name of ['F_U_C_K', 'Sh1T_99', 'h1tl3r-fan', 'fuuuuck', 'B-1-T-C-H', 'mi3rda']) {
+      expect((await play(name, ALICE)).body, name).toEqual({ error: 'name-invalid' });
+    }
+  });
+
+  it('limits report flooding across entries to the hourly allowance', async () => {
+    const entries: string[] = [];
+    for (let i = 0; i < LIMITS.report.limit + 1; i++) {
+      const token = (i + 10).toString(16).padStart(2, '0').repeat(32);
+      entries.push(String((await play(`player_${i}`, token)).body.id));
+    }
+    client = 'flooder';
+    const statuses: number[] = [];
+    for (const id of entries) statuses.push((await report(id)).status);
+    expect(statuses.slice(0, LIMITS.report.limit).every((status) => status === 201)).toBe(true);
+    expect(statuses.at(-1)).toBe(429);
+    // One flooder never hides anything.
+    expect((await board()).body.total).toBe(entries.length);
+  });
+
+  it('makes guessing the owner token useless: wrong tokens fail, then the limit stops them', async () => {
+    const { body } = await play('Kenji', ALICE);
+    const id = String(body.id);
+    client = 'guesser';
+    const statuses: number[] = [];
+    for (let i = 0; i < LIMITS.remove.limit + 1; i++) {
+      const guess = crypto.getRandomValues(new Uint8Array(32));
+      const token = [...guess].map((byte) => byte.toString(16).padStart(2, '0')).join('');
+      const response = await handle(() =>
+        deleteScoreHandler(
+          new Request(`${SITE}/api/game/scores/${id}`, {
+            method: 'DELETE',
+            headers: { authorization: `Bearer ${token}` },
+          }),
+          id,
+          deps,
+        ),
+      );
+      statuses.push(response.status);
+    }
+    expect(statuses.slice(0, LIMITS.remove.limit).every((status) => status === 403)).toBe(true);
+    expect(statuses.at(-1)).toBe(429);
+    expect((await board()).body.entries).toHaveLength(1);
+  });
+
+  it('never leaks the submitter hash or the run id in public responses', async () => {
+    await play('Kenji', ALICE);
+    const raw = JSON.stringify((await board()).body);
+    expect(raw).not.toMatch(/submitter|runId|run_id/i);
+    expect(raw).not.toContain(await sha256Hex(ALICE));
   });
 });
