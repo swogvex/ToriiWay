@@ -30,15 +30,20 @@ export async function serveWithSiteHeaders(context: BrowserContext): Promise<voi
     .filter((directive) => directive && directive !== 'upgrade-insecure-requests')
     .join('; ');
   await context.route(/^http:\/\/localhost:\d+\//, async (route) => {
-    try {
-      const response = await route.fetch();
-      await route.fulfill({
-        response,
-        headers: { ...response.headers(), ...headers, 'content-security-policy': csp },
-      });
-    } catch (error) {
-      // A request still in flight when the test ends (prefetch, analytics): nothing to serve.
-      if (!/Test ended|closed/i.test(String(error))) throw error;
+    // A busy preview server can reset a proxied request once; try it a second time.
+    for (let attempt = 1; ; attempt++) {
+      try {
+        const response = await route.fetch();
+        await route.fulfill({
+          response,
+          headers: { ...response.headers(), ...headers, 'content-security-policy': csp },
+        });
+        return;
+      } catch (error) {
+        // A request still in flight when the test ends (prefetch, analytics): nothing to serve.
+        if (/Test ended|closed/i.test(String(error))) return;
+        if (attempt >= 2 || !/ECONNRESET|socket hang up/i.test(String(error))) throw error;
+      }
     }
   });
 }
