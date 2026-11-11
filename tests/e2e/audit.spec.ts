@@ -44,6 +44,10 @@ test.describe('site audit on a small phone', () => {
       await answerCommunity(page);
       await page.goto(route);
       await page.waitForLoadState('load');
+      // Late fonts (medium, mono, Japanese display) register after the first paints and
+      // widen some labels: measure once they are in.
+      await page.waitForTimeout(800);
+      await page.evaluate(() => document.fonts.ready);
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );

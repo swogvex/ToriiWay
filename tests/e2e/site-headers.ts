@@ -41,7 +41,7 @@ export async function serveWithSiteHeaders(context: BrowserContext): Promise<voi
         return;
       } catch (error) {
         // A request still in flight when the test ends (prefetch, analytics): nothing to serve.
-        if (/Test ended|closed/i.test(String(error))) return;
+        if (/Test ended|closed|disposed/i.test(String(error))) return;
         if (attempt >= 2 || !/ECONNRESET|socket hang up/i.test(String(error))) throw error;
       }
     }

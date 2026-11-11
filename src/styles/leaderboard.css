@@ -63,6 +63,13 @@
   padding-inline: var(--space-2);
 }
 
+/* Small phones: five Spanish difficulty labels need ~341 px at 8 px padding, 328 px fit. */
+@media (width < 26rem) {
+  .board__filters:is(.board, .board *) .segmented__label {
+    padding-inline: var(--space-1);
+  }
+}
+
 .board__sort:is(.board, .board *) {
   flex-basis: 100%;
 }
