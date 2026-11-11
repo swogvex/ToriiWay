@@ -70,7 +70,21 @@ function registerLateFonts(): void {
   }
 }
 
+/**
+ * After load, two frames (so the page has painted its largest text) and then an idle moment.
+ * Registering right at load let these downloads start before the LCP paint on fast pages
+ * (/es/library): Lighthouse then counted them in the LCP chain (simulated 2.1 s vs 1.5 s).
+ */
+function afterFirstPaints(run: () => void): void {
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => {
+      if ('requestIdleCallback' in window) requestIdleCallback(run, { timeout: 1000 });
+      else setTimeout(run, 200);
+    }),
+  );
+}
+
 export function loadLateFonts(): void {
-  if (document.readyState === 'complete') registerLateFonts();
-  else addEventListener('load', registerLateFonts, { once: true });
+  if (document.readyState === 'complete') afterFirstPaints(registerLateFonts);
+  else addEventListener('load', () => afterFirstPaints(registerLateFonts), { once: true });
 }
