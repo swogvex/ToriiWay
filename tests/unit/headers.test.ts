@@ -44,7 +44,9 @@ describe('security headers in vercel.json (13-security)', () => {
   });
 
   it('sends the rest of the A+ header set', () => {
-    expect(header('Strict-Transport-Security')).toMatch(/^max-age=63072000; includeSubDomains/);
+    expect(header('Strict-Transport-Security')).toBe(
+      'max-age=63072000; includeSubDomains; preload',
+    );
     expect(header('X-Content-Type-Options')).toBe('nosniff');
     expect(header('Referrer-Policy')).toBe('strict-origin-when-cross-origin');
     expect(header('Permissions-Policy')).toContain('camera=()');
