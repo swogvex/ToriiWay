@@ -67,6 +67,10 @@ export async function readJson<T extends z.ZodType>(
   if (!type.toLowerCase().startsWith('application/json')) {
     throw new HttpError('bad-request', 415, 'content type');
   }
+  // A declared size over the limit is refused before the body is read into memory.
+  if (Number(request.headers.get('content-length') ?? 0) > maxBytes) {
+    throw new HttpError('bad-request', 413, 'body too large');
+  }
   const text = await request.text();
   if (new TextEncoder().encode(text).length > maxBytes) {
     throw new HttpError('bad-request', 413, 'body too large');

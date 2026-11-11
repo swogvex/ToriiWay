@@ -14,6 +14,8 @@ export const EMAILS_PER_RUN = 3;
 export const EMAILS_PER_IP_DAY = 10;
 /** Emails are deleted this long after sending (privacy note in every email). */
 export const EMAIL_RETENTION_DAYS = 30;
+/** Resolved reports are deleted this long after they were sent (14-privacy-legal). */
+export const REPORT_RETENTION_DAYS = 90;
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -69,7 +71,12 @@ export async function cleanupHandler(
   if (!sameText(given, `Bearer ${secret}`)) throw new HttpError('forbidden', 401);
   const now = deps.now();
   const result = {
-    ...(await deps.store.cleanup(now, now - EMAIL_RETENTION_DAYS * DAY, now - DAY)),
+    ...(await deps.store.cleanup(
+      now,
+      now - EMAIL_RETENTION_DAYS * DAY,
+      now - DAY,
+      now - REPORT_RETENTION_DAYS * DAY,
+    )),
     ...(await more()),
   };
   console.info('[cron] cleanup', result);

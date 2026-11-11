@@ -222,6 +222,12 @@ const categories = ['typo', 'answer', 'audio', 'other'] as const;
     display: grid;
   }
 
+  /* These screens bring their own h1; the exam's would be a second one. */
+  .run:is([data-status='missing'], [data-status='break'], [data-status='finished'])
+    [data-exam-title] {
+    display: none;
+  }
+
   .run__error {
     display: flex;
     flex-wrap: wrap;

@@ -9,7 +9,7 @@ import Icon from '../../components/ui/Icon.astro';
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import type { Book } from '../../lib/library/books';
-import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import { breadcrumbList, jsonLdGraph, metaDescription, pageTitle } from '../../lib/seo';
 import bookCss from '../../styles/book.css?url';
 
 interface Props {
@@ -25,7 +25,9 @@ const { translated } = book;
 const site = Astro.site ?? new URL(Astro.url.origin);
 const pageUrl = new URL(Astro.url.pathname, site);
 const { Content } = await render(book.body);
-const description = (book.body.body ?? '').trim().split(/(?<=\.)\s/)[0] ?? book.title;
+const description = metaDescription(
+  (book.body.body ?? '').trim().split(/(?<=\.)\s/)[0] ?? book.title,
+);
 
 const levelLabel = (level: string) => (level === 'kana' ? t('library.level.kana') : level);
 const resources = [
@@ -58,7 +60,7 @@ const jsonLd = jsonLdGraph(
 ---
 
 <BaseLayout
-  title={`${book.title} · ${t('library.title')} · ${t('site.name')}`}
+  title={pageTitle(book.title, t('library.title'), t('site.name'))}
   description={description}
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}

@@ -1,0 +1,33 @@
+/* Only the legal pages load this file: the site-wide bundle has no room for it. */
+
+.legal {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.legal__updated {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.legal__prose {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.legal__lead {
+  font-size: var(--text-md);
+}
+
+.legal__prose h2 {
+  margin-block-start: var(--space-8);
+  font-size: var(--text-lg);
+  line-height: 1.2;
+  scroll-margin-block-start: var(--space-8);
+}
+
+.legal__prose ul {
+  display: grid;
+  gap: var(--space-2);
+  padding-inline-start: var(--space-6);
+}

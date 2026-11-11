@@ -20,6 +20,7 @@ import { toPublic } from '../../lib/community/public';
 import { CATEGORIES, CATEGORY_GLYPH, tabsFor } from '../../lib/community/videos';
 import { getChannels } from '../../lib/content/channels';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import communityCss from '../../styles/community.css?url';
 
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -69,6 +70,7 @@ const jsonLd = jsonLdGraph(
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
 >
+  <link slot="head" rel="stylesheet" href={communityCss} />
   <div class="community column page-frame" data-community data-island={JSON.stringify(island)}>
     <SectionHeader level="h1" kicker={t('community.kicker')} title={t('community.title')} />
 
@@ -140,127 +142,3 @@ const jsonLd = jsonLdGraph(
   const root = document.querySelector<HTMLElement>('[data-community]');
   if (root) initCommunity(root);
 </script>
-
-<style>
-  /* minmax(0, 1fr): a wide child (the tabs on a phone) must not stretch the column. */
-  .community {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-8);
-  }
-
-  .videos {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-5);
-    margin-block-start: var(--space-4);
-  }
-
-  /* On narrow phones the tabs scroll sideways instead of widening the page. */
-  .community__soon {
-    color: var(--muted);
-  }
-
-  .videos__head :global(.segmented) {
-    max-inline-size: 100%;
-    overflow-x: auto;
-  }
-
-  .videos__head {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-4);
-  }
-
-  .videos__title {
-    font-size: var(--text-xl);
-    letter-spacing: -0.01em;
-  }
-
-  /* The tabs need no visible legend: the heading names them (artboard 10). */
-  .videos__head :global(.segmented__legend) {
-    position: absolute;
-    inline-size: 1px;
-    block-size: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-  }
-
-  .videos__grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-4);
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  @media (width >= 40rem) {
-    .videos__grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (width >= 64rem) {
-    .videos__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .videos__empty {
-    padding: var(--space-6);
-    border: 1px dashed var(--line-strong);
-    border-radius: var(--radius-card);
-    color: var(--muted);
-  }
-
-  .videos__foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--space-3) var(--space-6);
-  }
-
-  .videos__more {
-    min-block-size: 48px;
-    padding-inline: var(--space-5);
-    border: 1px solid var(--ink);
-    border-radius: var(--radius-control);
-    background: var(--surface);
-    color: var(--ink);
-    font-weight: 700;
-    cursor: pointer;
-  }
-
-  .videos__more:hover {
-    background: var(--key);
-  }
-
-  .videos__more[hidden] {
-    display: none;
-  }
-
-  /* visibility, not display: it keeps its space until the island starts (no shift). */
-  .videos__more[data-wait] {
-    visibility: hidden;
-  }
-
-  .videos__youtube {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-1);
-    min-block-size: var(--target-min);
-    margin-inline-start: auto;
-    color: var(--ink);
-    font-weight: 500;
-  }
-
-  .videos__note {
-    color: var(--muted);
-    font-size: var(--text-xs);
-  }
-</style>

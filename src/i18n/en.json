@@ -151,6 +151,7 @@
   "credits.noVersions": "The data versions cannot be shown right now.",
   "credits.fonts": "Fonts and icons",
   "credits.libraries": "Open-source libraries",
+  "legal.updated": "Last updated:",
   "footer.dictionaryData": "Dictionary data: EDRDG (CC BY-SA 4.0)",
   "footer.notAffiliated": "Not affiliated with the Japan Foundation or JEES",
   "a11y.newTab": "(opens in a new tab)",

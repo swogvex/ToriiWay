@@ -171,6 +171,7 @@ test.describe('JLPT start page', () => {
   test('the run page without a run points back to the start page', async ({ page }) => {
     await page.goto('/jlpt/run');
     await expect(page.getByRole('heading', { name: 'No simulation in progress' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
     await expect(page.getByRole('link', { name: 'Go to the JLPT page' })).toBeVisible();
   });
 });
@@ -214,6 +215,8 @@ test.describe('JLPT exam', () => {
     await expect(
       page.getByRole('heading', { name: 'Vocabulary done. Take a breath.' }),
     ).toBeVisible();
+    // The break brings its own h1; the exam's hidden one steps aside.
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
     await expect(page.getByRole('button', { name: /Continue in/ })).toBeDisabled();
     await expect(page.locator('[data-summary]').getByText(/^1\/21 · /)).toBeVisible();
     await page.getByRole('button', { name: 'Hard' }).click();
@@ -361,6 +364,15 @@ test.describe('JLPT exam on a phone', () => {
       390,
     );
     await expectNoAxeViolations(page);
+
+    // Same run (runs are limited per hour): the N3 stem that used to hang 2 px past the
+    // screen, because an ideographic space (U+3000) at a line end hangs (CSS Text).
+    await page.locator('[data-stem-text]').evaluate((stem) => {
+      stem.innerHTML = '寒いので、部屋を　<u>暖かく</u>　して　ください。';
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+      390,
+    );
   });
 });
 

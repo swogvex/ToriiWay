@@ -1,0 +1,59 @@
+---
+/**
+ * Privacy, legal notice, accessibility statement and terms (14-privacy-legal). The text is
+ * Markdown in the `guides` collection with `section: legal`, one file per language.
+ */
+import { getCollection, render } from 'astro:content';
+
+import SectionHeader from '../ui/SectionHeader.astro';
+import { getLocale, localizePath, useTranslations } from '../../i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import legalCss from '../../styles/legal.css?url';
+
+export type LegalSlug = 'privacy' | 'legal' | 'accessibility' | 'terms';
+
+interface Props {
+  slug: LegalSlug;
+}
+
+const { slug } = Astro.props;
+const locale = getLocale(Astro.url.pathname);
+const t = useTranslations(locale);
+// Every legal page exists in both languages; a missing one fails the build.
+const [page] = await getCollection(
+  'guides',
+  (entry) => entry.id === `${locale}/${slug}` && entry.data.section === 'legal',
+);
+if (!page) throw new Error(`Missing legal page ${locale}/${slug}`);
+const { Content } = await render(page);
+
+const updated = page.data.updated;
+const date = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(
+  updated,
+);
+const breadcrumb = [
+  { label: t('nav.home'), href: localizePath('/', locale) },
+  { label: page.data.title },
+];
+---
+
+<BaseLayout
+  title={`${page.data.title} · ${t('site.name')}`}
+  description={page.data.description}
+  breadcrumb={breadcrumb}
+>
+  <link slot="head" rel="stylesheet" href={legalCss} />
+  <article class="legal column page-frame">
+    <SectionHeader level="h1" kicker={t('credits.kicker')} title={page.data.title}>
+      <p class="legal__updated">
+        {t('legal.updated')} <time datetime={updated.toISOString().slice(0, 10)}>{date}</time>
+      </p>
+    </SectionHeader>
+    <div class="legal__prose">
+      {page.data.intro?.map((paragraph) => (
+        <p class="legal__lead">{paragraph}</p>
+      ))}
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

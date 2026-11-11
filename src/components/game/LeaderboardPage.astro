@@ -4,6 +4,7 @@ import { getLocale, localizePath, useTranslations } from '../../i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { siteKeyFor } from '../../lib/server/turnstile';
 import { breadcrumbList, jsonLdGraph } from '../../lib/seo';
+import leaderboardCss from '../../styles/leaderboard.css?url';
 
 const locale = getLocale(Astro.url.pathname);
 const t = useTranslations(locale);
@@ -24,5 +25,6 @@ const jsonLd = jsonLdGraph(breadcrumbList(breadcrumb, site, new URL(Astro.url.pa
   breadcrumb={breadcrumb}
   jsonLd={jsonLd}
 >
+  <link slot="head" rel="stylesheet" href={leaderboardCss} />
   <Leaderboard siteKey={siteKey} />
 </BaseLayout>

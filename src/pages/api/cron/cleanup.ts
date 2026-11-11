@@ -11,8 +11,8 @@ export const prerender = false;
 export const GET: APIRoute = (context) =>
   handle(async () =>
     cleanupHandler(context.request, await jlptDeps(context), CRON_SECRET, async () => {
-      const { runs } = await gameCleanup(await gameDeps(context));
-      return { gameRuns: runs };
+      const { runs, reports } = await gameCleanup(await gameDeps(context));
+      return { gameRuns: runs, gameReports: reports };
     }),
   );
 

@@ -1,7 +1,7 @@
-import { readFileSync } from 'node:fs';
-
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from '@playwright/test';
+
+import { recordCspViolations, serveWithSiteHeaders } from './site-headers';
 
 const AXE_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
 const PAGEFIND = '**/pagefind/pagefind.js';
@@ -73,33 +73,13 @@ test.describe('search with Pagefind', () => {
   });
 
   test('the index runs under the site CSP enforced', async ({ context, page }) => {
-    // `astro preview` sends no headers, so serve every response with the CSP from
-    // vercel.json switched from report-only to enforcing.
-    const vercel = JSON.parse(readFileSync('vercel.json', 'utf8')) as {
-      headers: { headers: { key: string; value: string }[] }[];
-    };
-    const csp = vercel.headers
-      .flatMap((rule) => rule.headers)
-      .find((header) => header.key === 'Content-Security-Policy-Report-Only')?.value;
-    expect(csp).toBeDefined();
-    await context.route('**/*', async (route) => {
-      const response = await route.fetch();
-      await route.fulfill({
-        response,
-        headers: { ...response.headers(), 'content-security-policy': csp ?? '' },
-      });
-    });
+    await serveWithSiteHeaders(context);
     // Home refreshes its community row on load; answer at once so no request is left
     // half-proxied when the test ends (the later route wins).
     await context.route('**/api/community', (route) =>
       route.fulfill({ contentType: 'application/json', body: '{"discord":null,"videos":[]}' }),
     );
-    await page.addInitScript(() => {
-      document.addEventListener('securitypolicyviolation', (event) => {
-        (window as unknown as { violations: string[] }).violations ??= [];
-        (window as unknown as { violations: string[] }).violations.push(event.violatedDirective);
-      });
-    });
+    const violations = await recordCspViolations(page);
     const errors: string[] = [];
     page.on('console', (message) => {
       if (message.type() === 'error') errors.push(message.text());
@@ -108,9 +88,7 @@ test.describe('search with Pagefind', () => {
     await openSearch(page);
     const urls = await searchBuiltIndex(page, 'torii');
     expect(urls).toContain('/');
-    expect(await page.evaluate(() => (window as { violations?: string[] }).violations)).toBe(
-      undefined,
-    );
+    expect(await violations()).toEqual([]);
     expect(errors).toEqual([]);
   });
 

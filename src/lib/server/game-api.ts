@@ -14,6 +14,7 @@ import type {
   ScoreRecord,
 } from '../game/leaderboard/types';
 import { type ItemLookup, RUN_TTL_MS, verifyRun } from '../game/leaderboard/verify';
+import { REPORT_RETENTION_DAYS } from './email-api';
 import { assertSameOrigin, HttpError, json, readJson } from './http';
 import { sameText } from './password';
 
@@ -387,8 +388,15 @@ export async function adminUnblockHandler(
   });
 }
 
-/** Part of the daily cron: unused runs after their 2 h life, used runs a day after use. */
+/**
+ * Part of the daily cron: unused runs after their 2 h life, used runs a day after use,
+ * resolved reports 90 days after they were sent.
+ */
 export async function gameCleanup(deps: Pick<GameDeps, 'store' | 'now'>) {
   const now = deps.now();
-  return deps.store.cleanup(now - RUN_TTL_MS, now - USED_RUN_TTL_MS);
+  return deps.store.cleanup(
+    now - RUN_TTL_MS,
+    now - USED_RUN_TTL_MS,
+    now - REPORT_RETENTION_DAYS * DAY,
+  );
 }

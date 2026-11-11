@@ -254,7 +254,7 @@ export function drizzleGameStore(databaseUrl: string): GameStore {
         })
         .where(eq(gameScores.id, report.scoreId));
     },
-    async cleanup(unusedBefore, usedBefore) {
+    async cleanup(unusedBefore, usedBefore, reportsBefore) {
       const deleted = await db
         .delete(gameRuns)
         .where(
@@ -264,7 +264,16 @@ export function drizzleGameStore(databaseUrl: string): GameStore {
           ),
         )
         .returning({ id: gameRuns.id });
-      return { runs: deleted.length };
+      const resolved = await db
+        .delete(gameReports)
+        .where(
+          and(
+            eq(gameReports.status, 'resolved'),
+            lt(gameReports.createdAt, new Date(reportsBefore)),
+          ),
+        )
+        .returning({ id: gameReports.id });
+      return { runs: deleted.length, reports: resolved.length };
     },
     async adminList(limit) {
       const openReports = sql<number>`(count(${gameReports.id}) filter (where ${gameReports.status} = 'open'))::int`;

@@ -352,7 +352,16 @@ export class Run {
     this.status = status;
     this.target = null;
     const rest = this.elapsed - this.samples.length;
-    if (rest >= MIN_SAMPLE) this.closeSample(rest);
+    const last = this.samples.at(-1);
+    if (rest >= MIN_SAMPLE || !last) {
+      this.closeSample(rest);
+    } else {
+      // Too short for a sample of its own: its keys join the last second, so the samples
+      // still add up to the key totals the server checks.
+      last.correct += this.second.correct;
+      last.wrong += this.second.wrong;
+      this.second = { correct: 0, wrong: 0 };
+    }
     this.events.push({ type: 'end', status });
   }
 }

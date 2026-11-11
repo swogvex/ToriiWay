@@ -273,6 +273,19 @@ describe('Run results data', () => {
     expect(run.samples.reduce((sum, s) => sum + s.correct, 0)).toBe(run.stats.correctKeys);
   });
 
+  it('keeps every key when the run ends just after a whole second', () => {
+    const run = newRun();
+    run.step(0.01);
+    play(run, 0.99);
+    // Under MIN_SAMPLE past the second: no sample of its own, but its keys must count.
+    run.step(0.02);
+    for (let i = 0; i < 3; i++) run.type('q');
+    run.quit();
+    expect(run.samples).toHaveLength(1);
+    expect(run.samples.reduce((sum, s) => sum + s.wrong, 0)).toBe(run.stats.wrongKeys);
+    expect(run.stats.wrongKeys).toBe(3);
+  });
+
   it('logs popped and missed items in order', () => {
     const run = newRun();
     run.step(0.01);
