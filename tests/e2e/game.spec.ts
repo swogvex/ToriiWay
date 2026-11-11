@@ -74,13 +74,15 @@ test.describe('Kana Rush play', () => {
   test('a bubble that crosses breaks and costs a life; no lives ends the run', async ({ page }) => {
     await startRun(page);
     await page.clock.runFor(12_000);
+    // One read: the installed clock keeps flowing, so a bubble can cross between two reads.
     const counts = await game(page).evaluate((el) => ({
       lives: Number(el.dataset['lives']),
       missed: Number(el.dataset['missed']),
+      lost: el.querySelectorAll('[data-life-bar] .is-lost').length,
     }));
     expect(counts.missed).toBeGreaterThan(0);
     expect(counts.lives).toBe(5 - counts.missed);
-    await expect(page.locator('[data-life-bar] .is-lost')).toHaveCount(counts.missed);
+    expect(counts.lost).toBe(counts.missed);
 
     await page.clock.runFor(30_000);
     await expect(game(page)).toHaveAttribute('data-status', 'failed');

@@ -365,6 +365,17 @@ test.describe('JLPT exam on a phone', () => {
     );
     await expectNoAxeViolations(page);
   });
+
+  test('a line ending in an ideographic space adds no sideways scroll', async ({ page }) => {
+    await startRun(page, 'N5');
+    // The N3 stem that used to hang 2 px past the screen (CSS Text: U+3000 at a line end).
+    await page.locator('[data-stem-text]').evaluate((stem) => {
+      stem.innerHTML = '寒いので、部屋を　<u>暖かく</u>　して　ください。';
+    });
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(
+      390,
+    );
+  });
 });
 
 test.describe('JLPT problem reports', () => {

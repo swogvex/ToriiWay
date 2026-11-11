@@ -14,7 +14,8 @@ concurrency:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    # The site-wide audit specs (axe, keyboard, CSP, weight on every route) add ~6 min.
+    timeout-minutes: 35
     env:
       PUBLIC_SITE_URL: http://localhost:4321
     steps:
@@ -57,7 +58,7 @@ jobs:
   # Its own job: runs in parallel with the e2e tests and can be re-run alone.
   lighthouse:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       PUBLIC_SITE_URL: http://localhost:4321
     steps:

@@ -20,7 +20,11 @@
         "http://localhost:4321/learn/search",
         "http://localhost:4321/es",
         "http://localhost:4321/es/learn/hiragana",
-        "http://localhost:4321/es/library"
+        "http://localhost:4321/es/library",
+        "http://localhost:4321/es/game",
+        "http://localhost:4321/es/jlpt",
+        "http://localhost:4321/es/community",
+        "http://localhost:4321/privacy"
       ],
       "numberOfRuns": 5
     },

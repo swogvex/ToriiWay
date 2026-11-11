@@ -273,6 +273,13 @@ const t = useTranslations(getLocale(Astro.url.pathname));
   .exam__body {
     padding-block: var(--space-8);
     background: var(--bg);
+
+    /*
+     * An ideographic space (U+3000) at the end of a line hangs past its box (CSS Text,
+     * white-space: pre-line) and could add 1–2 px of sideways scroll on phones. It is blank,
+     * so clip it at the screen edge. clip, not hidden: no scroll container, sticky still works.
+     */
+    overflow-x: clip;
   }
 
   .question {
