@@ -104,10 +104,34 @@ function write(key: string, value: string): void {
   }
 }
 
+const TOKEN_PATTERN = /^[0-9a-f]{64}$/;
+
 /** This browser's token, if it ever submitted a run. */
 export function submitterToken(): string | null {
   const token = read(SUBMITTER_KEY);
-  return token && /^[0-9a-f]{64}$/.test(token) ? token : null;
+  return token && TOKEN_PATTERN.test(token) ? token : null;
+}
+
+/** The token as a code people can read and compare: 8 groups of 8 characters. */
+export function formatCode(token: string): string {
+  return token.match(/.{1,8}/g)?.join(' ') ?? token;
+}
+
+/** A pasted code → the token, or null. Spaces, dashes and letter case are ignored. */
+export function parseCode(input: string): string | null {
+  const token = input.replace(/[\s-]/g, '').toLowerCase();
+  return TOKEN_PATTERN.test(token) ? token : null;
+}
+
+/**
+ * Use a token brought from another browser, so its names can be posted from here.
+ * The entries remembered here belong to the old token (the server would refuse to
+ * remove them now), so they are forgotten too.
+ */
+export function adoptSubmitterToken(token: string): void {
+  if (!TOKEN_PATTERN.test(token) || submitterToken() === token) return;
+  write(SUBMITTER_KEY, token);
+  write(MINE_KEY, '[]');
 }
 
 /** The token, created on first use: 256 random bits as hex. */

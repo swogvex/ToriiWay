@@ -198,4 +198,63 @@ test.describe('Kana Rush leaderboard', () => {
     );
     await expectNoAxeViolations(page);
   });
+
+  test('moves your names to another browser with a code', async ({ browser }) => {
+    const mine = 'a1'.repeat(32);
+    const other = 'b2'.repeat(32);
+
+    // Browser 1 already posted runs: it shows its code and copies it.
+    const first = await browser.newContext({ permissions: ['clipboard-read', 'clipboard-write'] });
+    await first.addInitScript((token) => localStorage.setItem('tw:v1:submitter', token), mine);
+    const one = await first.newPage();
+    await one.goto('/game/leaderboard?script=kanji&difficulty=easy&mode=endless');
+    await one.getByRole('button', { name: 'Show my code' }).click();
+    const show = one.getByRole('dialog', { name: 'Your code' });
+    const code = show.locator('[data-board-code-value]');
+    await expect(code).toHaveText(/^(a1a1a1a1 ){7}a1a1a1a1$/);
+    await show.getByRole('button', { name: 'Copy code' }).click();
+    await expect(show.getByRole('status')).toHaveText('Code copied.');
+    expect(await one.evaluate(() => navigator.clipboard.readText())).toBe(await code.innerText());
+    await expectNoAxeViolations(one);
+    await first.close();
+
+    // Browser 2 has its own token: a bad code is refused, the right one replaces it.
+    const second = await browser.newContext();
+    await second.addInitScript((token) => {
+      if (!sessionStorage.getItem('seeded')) {
+        localStorage.setItem('tw:v1:submitter', token);
+        localStorage.setItem('tw:v1:leaderboard-mine', '["old-entry"]');
+        sessionStorage.setItem('seeded', '1');
+      }
+    }, other);
+    const two = await second.newPage();
+    await two.goto('/game/leaderboard?script=kanji&difficulty=easy&mode=endless');
+    const opener = two.getByRole('button', { name: 'Enter a code' });
+    await opener.click();
+    const enter = two.getByRole('dialog', { name: 'Enter your code' });
+    await expect(enter.getByText(/already has its own code/)).toBeVisible();
+    const field = enter.getByLabel('Code from your other browser');
+    await field.fill('not a code');
+    await enter.getByRole('button', { name: 'Use this code' }).click();
+    await expect(field).toHaveAttribute('aria-invalid', 'true');
+    await expect(enter.getByRole('status')).toHaveText(/not valid/);
+    await expectNoAxeViolations(two);
+
+    await field.fill(`  ${'A1A1A1A1-'.repeat(7)}A1A1A1A1 `);
+    await enter.getByRole('button', { name: 'Use this code' }).click();
+    await expect(enter.getByRole('status')).toHaveText(/can now post under your names/);
+    await expect(enter).toBeHidden();
+    await expect(opener).toBeFocused();
+    expect(await two.evaluate(() => localStorage.getItem('tw:v1:submitter'))).toBe(mine);
+    expect(await two.evaluate(() => localStorage.getItem('tw:v1:leaderboard-mine'))).toBe('[]');
+
+    // A fresh browser has no code to show.
+    const third = await browser.newPage();
+    await third.goto('/es/game/leaderboard');
+    await third.getByRole('button', { name: 'Mostrar mi código' }).click();
+    await expect(third.getByText(/aún no ha enviado ninguna partida/)).toBeVisible();
+    await expect(third.getByRole('button', { name: 'Copiar código' })).toBeHidden();
+    await third.context().close();
+    await second.close();
+  });
 });

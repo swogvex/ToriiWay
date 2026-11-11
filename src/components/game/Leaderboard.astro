@@ -8,6 +8,7 @@ import { DIFFICULTIES, GAME_SCRIPTS, MODES } from '../../game/config';
 import { getLocale, localizePath, useTranslations } from '../../i18n';
 import Button from '../ui/Button.astro';
 import Dialog from '../ui/Dialog.astro';
+import Field from '../ui/Field.astro';
 import Icon from '../ui/Icon.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
 import Segmented from '../ui/Segmented.astro';
@@ -51,6 +52,11 @@ const labels = {
   removeText: t('game.board.remove.text'),
   removeError: t('game.board.remove.error'),
   removed: t('game.board.removed'),
+  codeCopied: t('game.board.code.copied'),
+  codeCopyFailed: t('game.board.code.copyFailed'),
+  codeInvalid: t('game.board.code.invalid'),
+  codeSame: t('game.board.code.same'),
+  codeSaved: t('game.board.code.saved'),
   sending: t('game.board.report.sending'),
   thanks: t('game.board.report.thanks'),
   verify: t('game.board.report.verify'),
@@ -139,6 +145,22 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
   <nav class="board__pages" aria-label={t('game.board.pages')} data-board-pages hidden></nav>
 
   <p class="board__note">{t('game.board.note')}</p>
+
+  <!-- Names belong to a browser token; this moves the token to another browser by hand. -->
+  <section class="board__device" id="device" aria-labelledby="board-device-title">
+    <h2 class="board__device-title" id="board-device-title">
+      {t('game.board.device.title')}
+    </h2>
+    <p class="board__device-text">{t('game.board.device.text')}</p>
+    <div class="board__device-actions">
+      <Button variant="outline" size={40} data-dialog-open="board-code-show" data-board-code-open>
+        {t('game.board.code.show')}
+      </Button>
+      <Button variant="outline" size={40} data-dialog-open="board-code-enter" data-board-code-open>
+        {t('game.board.code.enter')}
+      </Button>
+    </div>
+  </section>
 
   <!-- Row template and dialogs are not page text: keep them out of the search index. -->
   <div class="board__hidden" data-pagefind-ignore="all">
@@ -274,12 +296,68 @@ const skeletons = Array.from({ length: 5 }, (_, index) => index);
         </Button>
       </div>
     </Dialog>
+
+    <Dialog id="board-code-show" title={t('game.board.code.showTitle')}>
+      <div class="board__code-box" data-board-code-has>
+        <p>{t('game.board.code.showText')}</p>
+        <p class="board__code" data-board-code-value></p>
+        <p class="board__code-warn">{t('game.board.code.secret')}</p>
+      </div>
+      <p data-board-code-none hidden>
+        {t('game.board.code.none')}
+      </p>
+      <p class="board__dialog-status" role="status" data-board-code-copy-status></p>
+      <div slot="footer" class="board__dialog-actions">
+        <form method="dialog">
+          <Button variant="outline" type="submit">
+            {t('game.board.code.close')}
+          </Button>
+        </form>
+        <Button variant="accent" data-board-code-copy>
+          {t('game.board.code.copy')}
+        </Button>
+      </div>
+    </Dialog>
+
+    <Dialog id="board-code-enter" title={t('game.board.code.enterTitle')}>
+      <form class="board__dialog-form" id="board-code-form" data-board-code-form novalidate>
+        <Field
+          id="board-code-input"
+          label={t('game.board.code.label')}
+          hint={t('game.board.code.hint')}
+          autocomplete="off"
+        />
+        <p class="board__code-warn" data-board-code-replace hidden>
+          {t('game.board.code.replace')}
+        </p>
+        <p
+          class="board__dialog-status"
+          id="board-code-status"
+          role="status"
+          data-board-code-status
+        ></p>
+      </form>
+      <div slot="footer" class="board__dialog-actions">
+        <form method="dialog">
+          <Button variant="outline" type="submit">
+            {t('game.board.report.cancel')}
+          </Button>
+        </form>
+        <Button variant="accent" type="submit" form="board-code-form" data-board-code-save>
+          {t('game.board.code.save')}
+        </Button>
+      </div>
+    </Dialog>
   </div>
 </div>
 
 <script>
   import { initBoard } from '../../lib/game/leaderboard/board';
+  import { initCodeTransfer } from '../../lib/game/leaderboard/transfer';
 
   const root = document.querySelector<HTMLElement>('[data-board]');
-  if (root) initBoard(root);
+  if (root) {
+    initBoard(root);
+    initCodeTransfer(root);
+  }
 </script>

@@ -577,6 +577,49 @@
   justify-content: end;
 }
 
+.board__device:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-3);
+  margin-block-start: var(--space-8);
+  padding-block-start: var(--space-6);
+  border-block-start: 1px solid var(--line);
+}
+
+.board__device-title:is(.board, .board *) {
+  font-size: var(--text-lg);
+}
+
+.board__device-text:is(.board, .board *) {
+  max-inline-size: 68ch;
+  color: var(--muted);
+}
+
+.board__device-actions:is(.board, .board *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.board__code-box:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.board__code:is(.board, .board *) {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.board__code-warn:is(.board, .board *) {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
 /* Phones: the table becomes cards (rank + name, chips, Survived and WPM). */
 @media (width < 48rem) {
   .board__head:is(.board, .board *) {
