@@ -1,0 +1,640 @@
+/*
+ * Only the leaderboard pages load this file: the site-wide bundle has no room for it.
+ * Moved out of Leaderboard.astro. Each selector keeps the specificity Astro's scoping gave
+ * it: `:is(.board, .board *)` stands in for the data-astro-cid attribute (one class level).
+ */
+
+.board:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Wrapper for the search index only; adds no box to the page grid. */
+.board__hidden:is(.board, .board *) {
+  display: contents;
+}
+
+.board__intro:is(.board, .board *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: end;
+  justify-content: space-between;
+}
+
+.board__lead:is(.board, .board *) {
+  max-inline-size: 34rem;
+  color: var(--muted);
+  font-size: var(--text-md);
+}
+
+.board__cta:is(.board, .board *) {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.board__filters:is(.board, .board *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+/*
+ * Script, Difficulty and Mode share the row and grow to fill it (no empty space on the
+ * right). Options reserve their bold width (Segmented), so picking one never changes a
+ * group's size, and nothing moves or wraps.
+ */
+.board__filters:is(.board, .board *) > .segmented {
+  flex: 1 1 auto;
+}
+
+.board__filters:is(.board, .board *) > .segmented .segmented__track {
+  display: flex;
+  inline-size: 100%;
+}
+
+.board__filters:is(.board, .board *) .segmented__option {
+  flex: 1 1 auto;
+}
+
+/* Tight minimum so the three groups fit one row of the 1000px column; they grow from there. */
+.board__filters:is(.board, .board *) .segmented__label {
+  padding-inline: var(--space-2);
+}
+
+.board__sort:is(.board, .board *) {
+  flex-basis: 100%;
+}
+
+.board__sort[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+.board__sort:is(.board, .board *) .segmented__legend {
+  color: var(--accent-ink);
+}
+
+.board__summary:is(.board, .board *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-block-end: calc(-1 * var(--space-3));
+}
+
+.board__hint:is(.board, .board *) {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.board__table:is(.board, .board *) {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+/* Shared column grid for the header and every row button. */
+.board__head:is(.board, .board *),
+.row__toggle:is(.board, .board *) {
+  display: grid;
+  grid-template-columns:
+    3rem minmax(0, 1.6fr) minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr)
+    minmax(0, 1fr) 4rem 2.5rem;
+  gap: var(--space-3);
+  align-items: center;
+  padding-inline: var(--space-5) var(--space-3);
+}
+
+.board__head:is(.board, .board *) {
+  min-block-size: 2.75rem;
+  border-block-end: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.board__num:is(.board, .board *),
+.row__wpm:is(.board, .board *) {
+  text-align: end;
+}
+
+.board__rows:is(.board, .board *) {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.row:is(.board, .board *) + .row:is(.board, .board *) {
+  border-block-start: 1px solid var(--line);
+}
+
+.row__toggle:is(.board, .board *) {
+  inline-size: 100%;
+  min-block-size: 3.5rem;
+  padding-block: var(--space-2);
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+/*
+ * Only real hover: on touch screens :hover sticks to the last tapped row, which looked
+ * like a "painted" row after closing and opening it again.
+ */
+@media (hover: hover) {
+  .row__toggle:hover:is(.board, .board *) {
+    background: var(--bg);
+  }
+}
+
+.row__toggle:focus-visible:is(.board, .board *) {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+}
+
+.row--skeleton:is(.board, .board *) .row__toggle:is(.board, .board *) {
+  cursor: default;
+}
+
+/* Groups for the phone cards; on wide screens their cells sit in the row grid. */
+.row__meta:is(.board, .board *),
+.row__nums:is(.board, .board *) {
+  display: contents;
+}
+
+.row__rank:is(.board, .board *),
+.row__survived:is(.board, .board *),
+.row__wpm:is(.board, .board *) {
+  font-family: var(--font-mono);
+}
+
+.row__rank[data-top]:is(.board, .board *) {
+  color: var(--accent-ink);
+}
+
+.row__name:is(.board, .board *) {
+  overflow: hidden;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row__script:is(.board, .board *) {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.row__glyph:is(.board, .board *) {
+  display: grid;
+  place-items: center;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-body-ja);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.mode:is(.board, .board *) {
+  display: inline-block;
+  padding: 0.125rem var(--space-2);
+  border-radius: var(--radius-chip);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.mode[data-mode='challenge']:is(.board, .board *) {
+  background: var(--info-soft);
+  color: var(--info);
+}
+
+.mode[data-mode='endless']:is(.board, .board *) {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+/* Column headers show these on wide screens (screen readers still get them); on phones the cards show them. */
+.row__label:is(.board, .board *) {
+  position: absolute;
+  overflow: hidden;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.row__chevron:is(.board, .board *) {
+  justify-self: center;
+  color: var(--muted);
+  transition: rotate var(--duration-fast) var(--ease);
+}
+
+.row__toggle[aria-expanded='true']:is(.board, .board *) .row__chevron:is(.board, .board *) {
+  rotate: 180deg;
+}
+
+.row__details:is(.board, .board *) {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: var(--space-5);
+
+  /* Same space left and right, so the chart and the stats use the full width. */
+  padding: var(--space-2) var(--space-5) var(--space-5);
+}
+
+.row__details[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+.row__chart:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  margin: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--bg);
+}
+
+.row__charthead:is(.board, .board *),
+.row__axis:is(.board, .board *) {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+
+.row__charthead:is(.board, .board *) {
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.row__legend:is(.board, .board *) {
+  display: flex;
+  gap: var(--space-2);
+  color: var(--ink);
+  text-transform: none;
+}
+
+.row__legend-error:is(.board, .board *) {
+  color: var(--accent-ink);
+}
+
+.row__svg:is(.board, .board *) {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  aspect-ratio: 640 / 220;
+  touch-action: pan-y;
+}
+
+/* Chart nodes are created by src/game/chart.ts, outside Astro's scope. */
+.row__svg:is(.board, .board *) .chart__grid {
+  stroke: var(--line-strong);
+  stroke-dasharray: 3 4;
+}
+
+.row__svg:is(.board, .board *) .chart__axis {
+  stroke: var(--line-strong);
+}
+
+.row__svg:is(.board, .board *) .chart__label {
+  fill: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.row__svg:is(.board, .board *) .chart__line {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.row__svg:is(.board, .board *) .chart__error line {
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* Hover: a red dot on the line (no crosshair), ringed in the card colour so it reads on the line. */
+.row__svg:is(.board, .board *) .chart__dot {
+  fill: var(--accent);
+  stroke: var(--bg);
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.row__plot:is(.board, .board *) {
+  position: relative;
+}
+
+.row__tip:is(.board, .board *) {
+  position: absolute;
+  inset-block-start: 0;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-chip);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  white-space: nowrap;
+  pointer-events: none;
+  translate: -50% 0;
+}
+
+.row__tip[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+.row__axis:is(.board, .board *) {
+  /* Same insets as CHART.left and CHART.right, as shares of the 640 viewBox. */
+  padding-inline: 5.625% 1.25%;
+}
+
+.row__stats:is(.board, .board *) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  align-content: start;
+  margin: 0;
+}
+
+.stat:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--bg);
+}
+
+.stat--wide:is(.board, .board *) {
+  grid-column: 1 / -1;
+}
+
+.stat:is(.board, .board *) dt:is(.board, .board *) {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.stat:is(.board, .board *) dd:is(.board, .board *) {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+}
+
+.stat--wide:is(.board, .board *) dd:is(.board, .board *) {
+  font-size: var(--text-2xl);
+}
+
+.stat--info:is(.board, .board *) dd:is(.board, .board *) {
+  color: var(--info);
+}
+
+.stat--accent:is(.board, .board *) dd:is(.board, .board *) {
+  color: var(--accent-ink);
+}
+
+.row__actions:is(.board, .board *) {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: var(--space-4);
+  justify-content: end;
+  margin: 0;
+}
+
+.row__action:is(.board, .board *) {
+  min-block-size: var(--target-min);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.row__action:hover:is(.board, .board *) {
+  color: var(--ink);
+}
+
+.row__action:focus-visible:is(.board, .board *) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.row__action[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+.row__sk-rank {
+  inline-size: 1.5rem;
+}
+
+.row__sk-name {
+  inline-size: 70%;
+}
+
+.row__sk-cell {
+  inline-size: 60%;
+}
+
+.row__sk-chip {
+  inline-size: 4.5rem;
+  block-size: 1.25rem;
+}
+
+.row__sk-num {
+  inline-size: 2rem;
+  justify-self: end;
+}
+
+.board__state:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: center;
+  padding: var(--space-10) var(--space-6);
+  color: var(--muted);
+  text-align: center;
+}
+
+.board__state[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+.board__pages:is(.board, .board *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: center;
+}
+
+.board__pages[hidden]:is(.board, .board *) {
+  display: none;
+}
+
+/* Page buttons are built by board.ts, outside Astro's scope. */
+.board__pages:is(.board, .board *) .page {
+  display: grid;
+  place-items: center;
+  min-inline-size: var(--target-min);
+  min-block-size: var(--target-min);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
+.board__pages:is(.board, .board *) .page[aria-current='page'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+.board__pages:is(.board, .board *) .page:disabled {
+  color: var(--muted);
+  cursor: default;
+  opacity: 0.5;
+}
+
+.board__pages:is(.board, .board *) .page:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.board__pages:is(.board, .board *) .page-gap {
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+.board__note:is(.board, .board *) {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.board__dialog-form:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.board__reasons:is(.board, .board *) {
+  display: grid;
+  gap: var(--space-2);
+  padding: 0;
+  border: 0;
+}
+
+.board__reasons:is(.board, .board *) legend:is(.board, .board *) {
+  margin-block-end: var(--space-2);
+  font-weight: 700;
+}
+
+.board__reasons:is(.board, .board *) label:is(.board, .board *) {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-block-size: var(--target-min);
+}
+
+.board__dialog-status:empty:is(.board, .board *) {
+  display: none;
+}
+
+.board__dialog-actions:is(.board, .board *) {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: end;
+}
+
+/* Phones: the table becomes cards (rank + name, chips, Survived and WPM). */
+@media (width < 48rem) {
+  .board__head:is(.board, .board *) {
+    display: none;
+  }
+
+  .row__toggle:is(.board, .board *) {
+    grid-template-areas:
+      'rank name chevron'
+      'meta meta chevron'
+      'nums nums chevron';
+    grid-template-columns: auto minmax(0, 1fr) 2.5rem;
+    gap: var(--space-2) var(--space-3);
+    padding: var(--space-4);
+  }
+
+  .row__rank:is(.board, .board *) {
+    grid-area: rank;
+  }
+
+  .row__name:is(.board, .board *) {
+    grid-area: name;
+  }
+
+  .row__meta:is(.board, .board *),
+  .row__nums:is(.board, .board *) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-4);
+    align-items: center;
+  }
+
+  .row__meta:is(.board, .board *) {
+    grid-area: meta;
+  }
+
+  .row__nums:is(.board, .board *) {
+    grid-area: nums;
+  }
+
+  .row__wpm:is(.board, .board *) {
+    text-align: start;
+  }
+
+  .row__chevron:is(.board, .board *) {
+    grid-area: chevron;
+  }
+
+  .row__label:is(.board, .board *) {
+    position: static;
+    inline-size: auto;
+    block-size: auto;
+    clip-path: none;
+    margin-inline-end: var(--space-1);
+    color: var(--muted);
+    font-size: var(--text-xs);
+  }
+
+  .row__details:is(.board, .board *) {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 var(--space-4) var(--space-4);
+  }
+
+  .row--skeleton:is(.board, .board *) .row__toggle:is(.board, .board *) {
+    grid-template-areas: none;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

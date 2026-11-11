@@ -537,7 +537,7 @@
   "game.size.l": "Grande",
   "game.play.pressKey": "Pulsa cualquier tecla para empezar",
   "jlpt.title": "Simulacro JLPT",
-  "jlpt.description": "Simulacros gratuitos y cronometrados del JLPT para Kana, N5, N4 y N3, con la estructura real, descansos entre secciones e informe de resultados. Práctica no oficial.",
+  "jlpt.description": "Simulacros gratuitos y cronometrados del JLPT para Kana, N5, N4 y N3: estructura real, descansos entre secciones e informe de resultados. Práctica no oficial.",
   "jlpt.kicker": "04 / JLPT · Simulacro no oficial",
   "jlpt.lead": "Misma estructura, tiempos y escala de puntuación que el examen real. Las secciones van seguidas, cada una con su propio cronómetro.",
   "jlpt.levels": "Nivel",

@@ -1,0 +1,426 @@
+/*
+ * Only the community pages load this file: the site-wide bundle has no room for it.
+ * Moved out of CommunityPage, DiscordCard and VideoCard. Each selector keeps the specificity
+ * Astro's scoping gave it: the :is() after it stands in for the data-astro-cid attribute
+ * (one class level) and limits it to that component's elements.
+ */
+
+/* CommunityPage.astro */
+
+/* minmax(0, 1fr): a wide child (the tabs on a phone) must not stretch the column. */
+.community:is(.community, .community *) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-8);
+}
+
+.videos:is(.community, .community *) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+  margin-block-start: var(--space-4);
+}
+
+/* On narrow phones the tabs scroll sideways instead of widening the page. */
+.community__soon:is(.community, .community *) {
+  color: var(--muted);
+}
+
+.videos__head:is(.community, .community *) .segmented {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
+.videos__head:is(.community, .community *) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.videos__title:is(.community, .community *) {
+  font-size: var(--text-xl);
+  letter-spacing: -0.01em;
+}
+
+/* The tabs need no visible legend: the heading names them (artboard 10). */
+.videos__head:is(.community, .community *) .segmented__legend {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.videos__grid:is(.community, .community *) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (width >= 40rem) {
+  .videos__grid:is(.community, .community *) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64rem) {
+  .videos__grid:is(.community, .community *) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.videos__empty:is(.community, .community *) {
+  padding: var(--space-6);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-card);
+  color: var(--muted);
+}
+
+.videos__foot:is(.community, .community *) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+}
+
+.videos__more:is(.community, .community *) {
+  min-block-size: 48px;
+  padding-inline: var(--space-5);
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.videos__more:hover:is(.community, .community *) {
+  background: var(--key);
+}
+
+.videos__more[hidden]:is(.community, .community *) {
+  display: none;
+}
+
+/* visibility, not display: it keeps its space until the island starts (no shift). */
+.videos__more[data-wait]:is(.community, .community *) {
+  visibility: hidden;
+}
+
+.videos__youtube:is(.community, .community *) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-block-size: var(--target-min);
+  margin-inline-start: auto;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.videos__note:is(.community, .community *) {
+  color: var(--muted);
+  font-size: var(--text-xs);
+}
+
+/* DiscordCard.astro: the card and the rules below it are its two roots. */
+
+/* An ink block: ink background and paper text in light, the inverse in dark. */
+.discord:is(.discord, .discord *, .rules, .rules *) {
+  display: grid;
+  gap: var(--space-8);
+  padding: var(--space-8);
+  border-radius: var(--radius-card);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+@media (width >= 56rem) {
+  .discord:is(.discord, .discord *, .rules, .rules *) {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: var(--space-10);
+  }
+}
+
+@media (width < 40rem) {
+  .discord:is(.discord, .discord *, .rules, .rules *) {
+    padding: var(--space-6) var(--space-5);
+  }
+}
+
+.discord__main:is(.discord, .discord *, .rules, .rules *) {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+}
+
+.discord__kicker:is(.discord, .discord *, .rules, .rules *) {
+  color: color-mix(in srgb, var(--bg) 72%, var(--ink));
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.discord__counts:is(.discord, .discord *, .rules, .rules *) {
+  display: inline;
+}
+
+.discord__counts:is(.discord, .discord *, .rules, .rules *)
+  > *:is(.discord, .discord *, .rules, .rules *) {
+  margin-inline-start: var(--space-1);
+}
+
+.discord__counts[hidden]:is(.discord, .discord *, .rules, .rules *) {
+  display: none;
+}
+
+.discord__name:is(.discord, .discord *, .rules, .rules *) {
+  font-size: clamp(var(--text-xl), 3.4vw, var(--text-2xl));
+  letter-spacing: -0.02em;
+  line-height: var(--leading-display);
+}
+
+.discord__text:is(.discord, .discord *, .rules, .rules *) {
+  max-inline-size: 34rem;
+  color: color-mix(in srgb, var(--bg) 82%, var(--ink));
+}
+
+.discord__actions:is(.discord, .discord *, .rules, .rules *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block-start: var(--space-2);
+}
+
+.discord__button:is(.discord, .discord *, .rules, .rules *) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: 48px;
+  padding-inline: var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.discord__button:active:is(.discord, .discord *, .rules, .rules *) {
+  transform: translateY(1px);
+}
+
+.discord__button--join:is(.discord, .discord *, .rules, .rules *) {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.discord__button--join:hover:is(.discord, .discord *, .rules, .rules *) {
+  background: color-mix(in srgb, var(--accent) 88%, var(--ink));
+}
+
+.discord__button--rules:is(.discord, .discord *, .rules, .rules *) {
+  border-color: color-mix(in srgb, var(--bg) 45%, var(--ink));
+  color: var(--bg);
+}
+
+.discord__button--rules:hover:is(.discord, .discord *, .rules, .rules *) {
+  background: color-mix(in srgb, var(--bg) 10%, var(--ink));
+}
+
+.discord__list:is(.discord, .discord *, .rules, .rules *) {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.discord__channel:is(.discord, .discord *, .rules, .rules *) {
+  display: grid;
+  gap: 2px;
+  padding-block: var(--space-3);
+  border-block-end: 1px solid color-mix(in srgb, var(--bg) 16%, var(--ink));
+}
+
+.discord__channel:first-child:is(.discord, .discord *, .rules, .rules *) {
+  padding-block-start: 0;
+}
+
+.discord__channel:last-child:is(.discord, .discord *, .rules, .rules *) {
+  border-block-end: 0;
+}
+
+.discord__channel-name:is(.discord, .discord *, .rules, .rules *) {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.discord__channel-text:is(.discord, .discord *, .rules, .rules *) {
+  color: color-mix(in srgb, var(--bg) 72%, var(--ink));
+  font-size: var(--text-xs);
+}
+
+/* Server rules, opened by the "Server rules" button (owner, 2026-11-06). */
+.rules:is(.discord, .discord *, .rules, .rules *) {
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  scroll-margin-block-start: var(--space-8);
+}
+
+.rules__summary:is(.discord, .discord *, .rules, .rules *) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-block-size: var(--target-min);
+  padding: var(--space-3) var(--space-5);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+.rules__summary:is(.discord, .discord *, .rules, .rules *)::-webkit-details-marker {
+  display: none;
+}
+
+.rules:is(.discord, .discord *, .rules, .rules *) .rules__chevron {
+  transition: transform var(--duration-base) var(--ease);
+}
+
+.rules[open]:is(.discord, .discord *, .rules, .rules *) .rules__chevron {
+  transform: rotate(180deg);
+}
+
+.rules__list:is(.discord, .discord *, .rules, .rules *) {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-5) calc(var(--space-5) + 1.25em);
+  color: var(--muted);
+}
+
+/* VideoCard.astro */
+
+.video:is(.video, .video *) {
+  display: grid;
+}
+
+.video[hidden]:is(.video, .video *) {
+  display: none;
+}
+
+.video__link:is(.video, .video *) {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.video__link:hover:is(.video, .video *) {
+  border-color: var(--ink);
+}
+
+/* Always dark, like a video frame, in both themes. */
+.video__thumb:is(.video, .video *) {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  color-scheme: dark;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.video__thumb:is(.video, .video *)::before {
+  position: absolute;
+  inset-block-end: -0.12em;
+  inset-inline-start: var(--space-4);
+  color: color-mix(in srgb, var(--ink) 14%, var(--bg));
+  font-family: var(--font-display-ja);
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 1;
+  content: attr(data-glyph);
+}
+
+.video__play:is(.video, .video *) {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 52px;
+  block-size: 52px;
+  border-radius: 50%;
+  color-scheme: light;
+  background: var(--surface);
+  color: var(--ink);
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.video__link:hover:is(.video, .video *) .video__play:is(.video, .video *) {
+  transform: scale(1.06);
+}
+
+/* Nudge the triangle so it looks centred in the circle. */
+.video__play:is(.video, .video *) svg {
+  margin-inline-start: 2px;
+  fill: currentcolor;
+}
+
+.video__short:is(.video, .video *) {
+  position: absolute;
+  inset-block-end: var(--space-3);
+  inset-inline-end: var(--space-3);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-chip);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.video__short[hidden]:is(.video, .video *) {
+  display: none;
+}
+
+.video__body:is(.video, .video *) {
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding: var(--space-4);
+}
+
+.video__title:is(.video, .video *) {
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1.3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.video__meta:is(.video, .video *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}

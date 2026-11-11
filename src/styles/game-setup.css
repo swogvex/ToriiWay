@@ -1,0 +1,328 @@
+/*
+ * Only the Kana Rush setup pages load this file: the site-wide bundle has no room for it.
+ * Moved out of GameSetup.astro. Each selector keeps the specificity Astro's scoping gave
+ * it: `:is(.setup, .setup *)` stands in for the data-astro-cid attribute (one class level).
+ */
+
+.setup:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.setup__intro:is(.setup, .setup *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  align-items: end;
+  justify-content: space-between;
+}
+
+.setup__lead:is(.setup, .setup *) {
+  /* Grows to 52ch but can shrink, so stats and the Leaderboard button stay on its row. */
+  flex: 1 1 30ch;
+  max-inline-size: 52ch;
+  color: var(--muted);
+  font-size: var(--text-md);
+}
+
+.setup__stats:is(.setup, .setup *) {
+  display: flex;
+  gap: var(--space-8);
+
+  /* Stats and the Leaderboard button sit together on the right (image 05). */
+  margin-inline-start: auto;
+}
+
+/*
+ * On narrow phones the Leaderboard button always gets its own row. Around 412px
+ * it fitted beside the stats with the fallback font and wrapped once the mono
+ * font arrived, pushing the whole form down (layout shift 0.15).
+ */
+@media (width < 27rem) {
+  .setup__stats:is(.setup, .setup *) {
+    flex-basis: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.setup__stats:is(.setup, .setup *) dt:is(.setup, .setup *),
+.setup__legend:is(.setup, .setup *) {
+  padding: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.setup__stats:is(.setup, .setup *) dd:is(.setup, .setup *) {
+  font-family: var(--font-mono);
+  font-size: var(--text-xl);
+  font-variant-numeric: tabular-nums;
+}
+
+/*
+ * One compact column: sections are split by a hairline on their wrappers (a
+ * fieldset's legend would sit on its own border), and no side borders.
+ */
+.setup__form:is(.setup, .setup *) {
+  display: grid;
+}
+
+.setup__form:is(.setup, .setup *) > *:is(.setup, .setup *) + *:is(.setup, .setup *) {
+  padding-block-start: var(--space-6);
+  margin-block-start: var(--space-6);
+  background: linear-gradient(var(--line), var(--line)) top / 100% 1px no-repeat;
+}
+
+.setup__group:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-3);
+  min-inline-size: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.setup__legend:is(.setup, .setup *) {
+  margin-block-end: var(--space-1);
+  font-weight: 400;
+}
+
+.setup__cards:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.setup__cards--3:is(.setup, .setup *) {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+.setup__cards--2:is(.setup, .setup *) {
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+}
+
+.setup__pair:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Difficulty and mode side by side, with a line between them. */
+@media (width >= 48rem) {
+  .setup__pair:is(.setup, .setup *) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .setup__pair:is(.setup, .setup *) > :first-child:is(.setup, .setup *) {
+    padding-inline-end: var(--space-8);
+    border-inline-end: 1px solid var(--line);
+  }
+}
+
+.choice:is(.setup, .setup *) {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+}
+
+.choice:has(input:checked):is(.setup, .setup *) {
+  border-color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--ink);
+}
+
+.choice:has(input:focus-visible):is(.setup, .setup *) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.choice:is(.setup, .setup *) input:is(.setup, .setup *) {
+  position: absolute;
+  inset-block-start: var(--space-4);
+  inset-inline-end: var(--space-5);
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+.choice__glyph:is(.setup, .setup *) {
+  margin-block-end: var(--space-2);
+  font-family: var(--font-display-ja);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.choice__name:is(.setup, .setup *) {
+  font-size: var(--text-lg);
+  font-weight: 700;
+}
+
+.choice__note:is(.setup, .setup *),
+.setup__note:is(.setup, .setup *),
+.setup__saved:is(.setup, .setup *) {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.choice--row:is(.setup, .setup *) input:is(.setup, .setup *) {
+  inset-inline: var(--space-5) auto;
+}
+
+.choice--row:is(.setup, .setup *) {
+  padding-inline-start: calc(var(--space-5) + 20px + var(--space-3));
+}
+
+/* Only the note for the chosen difficulty shows (difficulty notes, challenge time). */
+[data-note]:is(.setup, .setup *) {
+  display: none;
+}
+
+/* Global: the difficulty radios live inside Segmented, outside this component's scope. */
+.setup:has([value='easy']:checked) [data-note='easy'],
+.setup:has([value='normal']:checked) [data-note='normal'],
+.setup:has([value='hard']:checked) [data-note='hard'],
+.setup:has([value='extreme']:checked) [data-note='extreme'] {
+  display: block;
+}
+
+.grid-wrap:is(.setup, .setup *) {
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-card);
+}
+
+.grid:is(.setup, .setup *) {
+  inline-size: 100%;
+  border-collapse: collapse;
+}
+
+.grid:is(.setup, .setup *) th:is(.setup, .setup *),
+.grid:is(.setup, .setup *) td:is(.setup, .setup *) {
+  padding: var(--space-3) var(--space-5);
+  text-align: start;
+  border-block-start: 1px solid var(--line);
+}
+
+.grid:is(.setup, .setup *) thead:is(.setup, .setup *) th:is(.setup, .setup *) {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  border-block-start: 0;
+}
+
+.grid:is(.setup, .setup *) tbody:is(.setup, .setup *) th:is(.setup, .setup *) {
+  font-weight: 700;
+}
+
+.grid:is(.setup, .setup *) td:is(.setup, .setup *) {
+  color: var(--muted);
+}
+
+/*
+ * The empty corner cell is a <td> in the header: without this it kept the cell top line,
+ * which doubled the table's top border over the first column.
+ */
+.grid:is(.setup, .setup *) thead:is(.setup, .setup *) td:is(.setup, .setup *) {
+  border-block-start: 0;
+}
+
+.grid__cleared:is(.setup, .setup *) {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  color: var(--info);
+}
+
+.grid__cleared[hidden]:is(.setup, .setup *),
+.grid__open[hidden]:is(.setup, .setup *) {
+  display: none;
+}
+
+.setup__footer:is(.setup, .setup *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.setup__options:is(.setup, .setup *) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.setup__access:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-4) var(--space-8);
+  align-items: start;
+}
+
+/* Three options in a row, bubble text size under the first. */
+@media (width >= 48rem) {
+  .setup__access:is(.setup, .setup *) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.setup__check-note:is(.setup, .setup *) {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.setup__note-small:is(.setup, .setup *) {
+  max-inline-size: 32ch;
+  padding-inline-start: calc(20px + var(--space-3));
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+/* The two checkboxes stack, so options and Start share one row in both languages. */
+.setup__checks:is(.setup, .setup *) {
+  display: grid;
+}
+
+.check:is(.setup, .setup *) {
+  display: inline-flex;
+  gap: var(--space-3);
+  align-items: center;
+  min-block-size: var(--target-min);
+  cursor: pointer;
+}
+
+.check:is(.setup, .setup *) input:is(.setup, .setup *) {
+  inline-size: 20px;
+  block-size: 20px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+/* Start stays on the right, also when the options wrap onto their own line. */
+.setup__go:is(.setup, .setup *) {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+.setup__go:is(.setup, .setup *) .btn {
+  gap: var(--space-2);
+}
+
+.setup__soon:is(.setup, .setup *) {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
