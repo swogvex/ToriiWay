@@ -188,7 +188,7 @@ importers:
         version: 3.7.4
       '@astrojs/vercel':
         specifier: 11.0.20
-        version: 11.0.20(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)(ws@8.22.1)
+        version: 11.0.20(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)(ws@8.22.1)
       '@neondatabase/serverless':
         specifier: 1.2.0
         version: 1.2.0
@@ -203,7 +203,7 @@ importers:
         version: 2.1.0
       astro:
         specifier: 7.4.7
-        version: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
+        version: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
       cuelume:
         specifier: 0.2.8
         version: 0.2.8
@@ -225,7 +225,7 @@ importers:
         version: 0.9.12(@emnapi/runtime@1.11.3)(prettier-plugin-astro@1.1.2(prettier@3.9.10))(prettier@3.9.10)(typescript@6.0.3)
       '@astrojs/node':
         specifier: 11.1.11
-        version: 11.1.11(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)
+        version: 11.1.11(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)
       '@axe-core/playwright':
         specifier: 4.14.0
         version: 4.14.0(playwright-core@1.65.0)
@@ -242,8 +242,8 @@ importers:
         specifier: 1.65.0
         version: 1.65.0
       '@vercel/blob':
-        specifier: 2.8.2
-        version: 2.8.2
+        specifier: 2.9.0
+        version: 2.9.0
       drizzle-kit:
         specifier: 0.31.11
         version: 0.31.11
@@ -1942,8 +1942,8 @@ packages:
       vue-router:
         optional: true
 
-  '@vercel/blob@2.8.2':
-    resolution: {integrity: sha512-ZUUWO2VA00r9ZTRtKgH4va7FGOUxUtge2FaRr9WZmeeX2s3C3qVe2tOTLTbv/tkcd+L+ijxaI2eP9S1/mGHc9Q==}
+  '@vercel/blob@2.9.0':
+    resolution: {integrity: sha512-o+1CMRlT8/RvGo1aGkFv40F7v3MLdSOaVaIccepBXWrXgonKId3hHKSKGQ+iBDPoSe03crmHfhpHtTs0CCXiig==}
     engines: {node: '>=20.0.0'}
 
   '@vercel/cli-config@0.3.1':
@@ -5348,10 +5348,10 @@ snapshots:
       github-slugger: 2.0.0
       satteri: 0.11.6
 
-  '@astrojs/node@11.1.11(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)':
+  '@astrojs/node@11.1.11(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.1
-      astro: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
+      astro: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
       send: 1.2.1(supports-color@10.2.2)
       server-destroy: 1.0.1
     transitivePeerDependencies:
@@ -5399,14 +5399,14 @@ snapshots:
       is-docker: 4.0.0
       package-manager-detector: 1.9.0
 
-  '@astrojs/vercel@11.0.20(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)(ws@8.22.1)':
+  '@astrojs/vercel@11.0.20(astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)(ws@8.22.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.13.1
       '@vercel/analytics': 2.0.1
       '@vercel/functions': 3.10.5(ws@8.22.1)
       '@vercel/nft': 1.11.0(supports-color@10.2.2)
       '@vercel/routing-utils': 6.6.1
-      astro: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
+      astro: 7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
       rolldown: 1.2.16
       tinyglobby: 0.2.17
     transitivePeerDependencies:
@@ -6671,7 +6671,7 @@ snapshots:
 
   '@vercel/analytics@2.0.1': {}
 
-  '@vercel/blob@2.8.2':
+  '@vercel/blob@2.9.0':
     dependencies:
       '@vercel/oidc': 3.8.10
       async-retry: 1.3.3
@@ -6952,7 +6952,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1):
+  astro@7.4.7(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1):
     dependencies:
       '@astrojs/compiler-rs': 0.5.2
       '@astrojs/internal-helpers': 0.13.1
@@ -6999,7 +6999,7 @@ snapshots:
       tinyps: 0.5.1
       ultrahtml: 1.7.0
       unifont: 1.0.3
-      unstorage: 1.17.6(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1))
+      unstorage: 1.17.6(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))
       verkit: 0.5.0
       vite: 8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1)
       vitefu: 1.1.3(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))
@@ -9818,7 +9818,7 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unstorage@1.17.6(@vercel/blob@2.8.2)(@vercel/functions@3.10.5(ws@8.22.1)):
+  unstorage@1.17.6(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1)):
     dependencies:
       anymatch: 3.1.3
       chokidar: 5.0.0
@@ -9829,7 +9829,7 @@ snapshots:
       ofetch: 1.5.1
       ufo: 1.6.4
     optionalDependencies:
-      '@vercel/blob': 2.8.2
+      '@vercel/blob': 2.9.0
       '@vercel/functions': 3.10.5(ws@8.22.1)
 
   update-browserslist-db@1.3.4(browserslist@4.29.5):
