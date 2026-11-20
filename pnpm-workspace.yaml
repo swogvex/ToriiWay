@@ -23,6 +23,9 @@ overrides:
   'puppeteer-core>@puppeteer/browsers': 3.2.5
   # ...which needs proxy-agent 8 as a peer (lhci uses the same ProxyAgent class).
   proxy-agent: 8.0.2
+  # The 2.0.0 betas break prettier-plugin-astro (setLastError is not a function); keep stable 1.x.
+  '@emnapi/core': ^1.7.1
+  '@emnapi/runtime': ^1.7.1
 
 # esbuild ships its binary as an optional package; its install script is not needed.
 allowBuilds:
