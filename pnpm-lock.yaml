@@ -192,8 +192,8 @@ importers:
         specifier: 11.0.22
         version: 11.0.22(astro@7.4.12(@types/node@24.19.2)(@vercel/blob@2.9.0)(@vercel/functions@3.10.5(ws@8.22.1))(esbuild@0.28.2)(tsx@4.23.15)(yaml@2.9.1))(supports-color@10.2.2)(ws@8.22.1)
       '@neondatabase/serverless':
-        specifier: 1.2.0
-        version: 1.2.0
+        specifier: 1.2.1
+        version: 1.2.1
       '@resvg/resvg-js':
         specifier: 2.6.2
         version: 2.6.2
@@ -211,7 +211,7 @@ importers:
         version: 0.2.8
       drizzle-orm:
         specifier: 0.45.4
-        version: 0.45.4(@neondatabase/serverless@1.2.0)(@opentelemetry/api@1.10.0)
+        version: 0.45.4(@neondatabase/serverless@1.2.1)(@opentelemetry/api@1.10.0)
       preact:
         specifier: 11.2.0
         version: 11.2.0(preact-render-to-string@6.8.2)
@@ -1317,8 +1317,8 @@ packages:
       '@emnapi/core': ^1.7.1
       '@emnapi/runtime': ^1.7.1
 
-  '@neondatabase/serverless@1.2.0':
-    resolution: {integrity: sha512-tnaqgixUengZQNd9ZrS3ytQfamJzLKY8QxgqWQTNHHtB+KrFQWk77JTbbpg4RD+J3qE4eO2lVytvGDX5Kj6FdQ==}
+  '@neondatabase/serverless@1.2.1':
+    resolution: {integrity: sha512-PI2JjuyEFE7oZDTkV/s6WP4KEceCwnjQHClfunhysuIATtvcVTBLdA4UgHTnJo7C0mkK+OZ6U7SV1NDnYa0HgA==}
     engines: {node: '>=19.0.0'}
 
   '@opentelemetry/api@1.10.0':
@@ -6315,7 +6315,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@neondatabase/serverless@1.2.0': {}
+  '@neondatabase/serverless@1.2.1': {}
 
   '@opentelemetry/api@1.10.0': {}
 
@@ -7723,9 +7723,9 @@ snapshots:
       esbuild: 0.25.12
       tsx: 4.23.15
 
-  drizzle-orm@0.45.4(@neondatabase/serverless@1.2.0)(@opentelemetry/api@1.10.0):
+  drizzle-orm@0.45.4(@neondatabase/serverless@1.2.1)(@opentelemetry/api@1.10.0):
     optionalDependencies:
-      '@neondatabase/serverless': 1.2.0
+      '@neondatabase/serverless': 1.2.1
       '@opentelemetry/api': 1.10.0
 
   dset@3.1.4: {}
